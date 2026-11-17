@@ -1,5 +1,5 @@
 {
-  "_doc": "Settings (src/client/settings.ts), saved in this browser (soma-skate:settings). Each group is a page under Settings; each option cycles through its values ([value, label]) when chosen, starting at default; note is the line under it. reduceMotion: how much of the camera's field-of-view changes stay with Reduce motion on (fovScale). palettes: the 2P colours (p1, p2), the balance meter (safe, mid, danger: from the middle out, danger at the ends; hatch draws stripes on the danger ends so colour is never the only cue) and the HUD's landed, bailed and goal colours. mph: km/h to mph. bench: on a new browser with Quality: auto, the first frames on the title are timed (after skipFrames, frames of them); a median above slowMs ms (phoneSlowMs on a phone: a touch screen under 600 px across, whose GPU the CPU-side timing understates) starts the game on low. autoStepDown: on auto, a frame rate under fps for seconds while skating switches to low once, with the toast. presets (src/client/render.ts setPreset): what each Quality draws: pixelRatio = the highest device pixel ratio drawn (a dpr 3 phone is not drawn at 3; phonePixelRatio on a phone, whose GPU the CPU-side timing cannot see), scale = the render scale (auto moves between the two as frames run late or early), ao = ambient occlusion, msaa = multisamples of the scene, shadowMap = the sun's shadow map texels at most, shadowReach = half the side of the shadowed square round the skater in the city (m), cityShadows = buildings, trees and cars cast shadows, drawDistance = the fog's distances times this (the city past the fog is not drawn), npcDistance / npcDetail = NPC skaters drawn within these metres / in full detail within these (beyond: one baked mesh each), birds = the share of pigeons and gulls drawn, vignettes = the ambient vignettes' draw distance times this (under 1, their extra people stay home; data/vignettes.json), castSimple = metres beyond which a cast member is one still merged mesh (0: never; castpeople.ts).",
+  "_doc": "Settings (src/client/settings.ts), saved in this browser (soma-skate:settings). Each group is a page under Settings; each option cycles through its values ([value, label]) when chosen, starting at default; note is the line under it. reduceMotion: how much of the camera's field-of-view changes stay with Reduce motion on (fovScale). palettes: the 2P colours (p1, p2), the balance meter (safe, mid, danger: from the middle out, danger at the ends; hatch draws stripes on the danger ends so colour is never the only cue) and the HUD's landed, bailed and goal colours. mph: km/h to mph. bench: on a new browser with Quality: auto, the first frames on the title are timed (after skipFrames, frames of them); a median above slowMs ms (phoneSlowMs on a phone: a touch screen under 600 px across, whose GPU the CPU-side timing understates) starts the game on low. autoStepDown: on auto, a frame rate under fps for seconds while skating switches to low once, with the toast. presets (src/client/render.ts setPreset): what each Quality draws: pixelRatio = the highest device pixel ratio drawn (a dpr 3 phone is not drawn at 3; phonePixelRatio on a phone, whose GPU the CPU-side timing cannot see), scale = the render scale (auto moves between the two as frames run late or early), ao = ambient occlusion, msaa = multisamples of the scene, shadowMap = the sun's shadow map texels at most, shadowReach = half the side of the shadowed square round the skater in the city (m), cityShadows = buildings, trees and cars cast shadows, drawDistance = the fog's distances times this (the city past the fog is not drawn), npcDistance / npcDetail = NPC skaters drawn within these metres / in full detail within these (beyond: one baked mesh each), birds = the share of pigeons and gulls drawn, vignettes = the ambient vignettes' draw distance times this (under 1, their extra people stay home; data/vignettes.json), castSimple = metres beyond which a cast member is one still merged mesh (0: never; castpeople.ts). presets.ultra: for a strong graphics card and video capture (aoScale: the ambient occlusion drawn at that multiple of the look's resolution).",
   "groups": [
     {
       "id": "camera",
@@ -417,9 +417,14 @@
             [
               "low",
               "low"
+            ],
+            [
+              "ultra",
+              "ultra"
             ]
           ],
-          "default": "auto"
+          "default": "auto",
+          "note": "Ultra: shadows three times as sharp, finer ambient occlusion, further draw distance; for a strong graphics card."
         },
         {
           "id": "lens",
@@ -595,6 +600,28 @@
       "carDetail": 45,
       "vignettes": 0.6,
       "castSimple": 30
+    },
+    "ultra": {
+      "pixelRatio": 2,
+      "scale": [
+        1,
+        1
+      ],
+      "ao": true,
+      "aoScale": 2,
+      "msaa": 8,
+      "shadowMap": 16384,
+      "shadowReach": 70,
+      "cityShadows": true,
+      "drawDistance": 1.35,
+      "npcDistance": 120,
+      "npcDetail": 6,
+      "birds": 1,
+      "paintFull": true,
+      "sealions": 1,
+      "carDetail": 220,
+      "vignettes": 1,
+      "castSimple": 0
     }
   }
 }

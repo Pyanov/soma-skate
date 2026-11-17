@@ -126,9 +126,9 @@ Straight, by drop height:
 
 | drop | impact | verdict now | before |
 |---|---|---|---|
-| 1-5 m | 4.4-9.8 m/s | clean | stumble from 3 m, bail at 5 m |
-| 6-10 m | 10.7-13.8 m/s | stumble (`stumbleSpeed` 10) | bail |
-| 11 m | 14.7 m/s | bail (`hardSpeed` 14) | bail |
+| 1-8 m | 4.4-12.5 m/s | clean (`stumbleSpeed` 13; it was 10, so 6-8 m were stumbles) | stumble from 3 m, bail at 5 m |
+| 9 m | 13.3 m/s | stumble | bail |
+| 10-11 m | 14.0-14.7 m/s | bail (`hardSpeed` 14) | bail |
 
 - **THPS 1+2:** a landing roughly straight or fakie rolls away, and a sideways one bails. Height almost
   never matters: you can drop off roofs and land clean.
@@ -174,6 +174,7 @@ drain over time. In the Tour scenarios it fills after 10 s and 2 combos (Castro)
 | 3 | `land.stumbleSpeed` 7 to 10, `land.hardSpeed` 9.5 to 14 | stumble from about 5 m, bail from about 11 m (section 4) | yes |
 | 4 | `land.cleanDeg` 15 to 20 | more clean landings; THPS 2 has no sketchy band | second pass |
 | 5 | `grind.bufferTicks` 10 to 14 | a longer early-press window (section 2) | second pass |
+| 6 | `land.stumbleSpeed` 10 to 13 | the big sets land clean, as in THPS (the full Harvey Milk set at 12.8 m/s, the full BART set at about 12 m/s); the bail stays at 14 | yes (2026-11-17) |
 
 The second pass took 4 and 5, each with what held it back:
 - **4: clean landings.** The S.K.A.T.E. locals' planned misses land a fixed distance past the clean band

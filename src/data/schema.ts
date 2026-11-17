@@ -142,6 +142,7 @@ export const lookSchema = z.object({
       sun: z.object({ color: hex.optional(), intensity: nonneg.optional(), from: z.tuple([z.number(), z.number(), pos]).optional() }).strict().optional(),
       daySky: z.object({ zenith: hex.optional(), horizon: hex.optional(), sunGlow: hex.optional(), glow: z.number().min(0).max(4).optional(), clouds: z.number().min(0).max(1).optional() }).strict().optional(),
       environment: nonneg.optional(), exposure: pos.optional(), sky: z.enum(['hdri', 'fog']).optional(), night: z.boolean().optional(), heightFog: z.number().min(0).max(1).optional(),
+      bloom: z.number().min(0).max(1).optional(),
     }).strict()).optional(),
     bloom: z.object({ strength: nonneg, radius: z.number().min(0).max(1), threshold: nonneg }).strict().optional(),
     heightFog: z.object({ density: nonneg, base: z.number(), falloff: pos, noiseScale: pos, wind: z.tuple([z.number(), z.number()]) }).strict().optional(),

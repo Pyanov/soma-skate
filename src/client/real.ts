@@ -596,8 +596,12 @@ export class RealPass {
    * low: the biggest fill cost on a phone).
    */
   private aoPreset = true
-  setQuality(ao: boolean, msaa: number) {
+  /** The preset's scale on the look's ambient occlusion resolution (ultra draws it finer). */
+  private aoScale = 1
+  private aoRes = 0.5
+  setQuality(ao: boolean, msaa: number, aoScale = 1) {
     this.aoPreset = ao
+    if (aoScale !== this.aoScale) { this.aoScale = aoScale; this.gtao.scale = Math.min(1, this.aoRes * aoScale); (this.composer as unknown as { _width: number })._width = -1 }
     this.setNight(this.night)
     const c = this.composer as unknown as { renderTarget1: THREE.WebGLRenderTarget; renderTarget2: THREE.WebGLRenderTarget }
     for (const t of [c.renderTarget1, c.renderTarget2]) if (t.samples !== msaa) { t.samples = msaa; t.dispose() }
@@ -618,7 +622,9 @@ export class RealPass {
   setLook(look: RealLook) {
     this.aoOn = look.ao.intensity > 0
     this.gtao.enabled = look.ao.intensity > 0 && this.aoAllowed && this.aoPreset && this.night < 0.5
-    if (this.gtao.scale !== look.ao.resolution) { this.gtao.scale = look.ao.resolution; (this.composer as unknown as { _width: number })._width = -1 }
+    this.aoRes = look.ao.resolution
+    const res = Math.min(1, look.ao.resolution * this.aoScale)
+    if (this.gtao.scale !== res) { this.gtao.scale = res; (this.composer as unknown as { _width: number })._width = -1 }
     this.gtao.blendIntensity = look.ao.intensity
     if (look.bloom) { this.bloom.strength = look.bloom.strength; this.bloom.radius = look.bloom.radius; this.bloom.threshold = look.bloom.threshold }
     this.gtao.updateGtaoMaterial({ radius: look.ao.radius, distanceExponent: 1.5, thickness: 1, scale: 1, samples: look.ao.samples ?? 16 })

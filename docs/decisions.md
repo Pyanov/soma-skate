@@ -2,6 +2,9 @@
 
 Newest first. One entry per decision: date, decision, why.
 
+## 2026-11-17: landings
+- **Big drops land clean (`physics.land.stumbleSpeed` 10 to 13 m/s).** A landing now stumbles only above 13 m/s into the ground (about a 9 m drop) and still bails above 14, so the full Harvey Milk Plaza set (7.1 m, 12.8 m/s) and the full 16th St BART set (about 12 m/s) roll away clean, as big drops do in THPS. A stumble by angle is unchanged. `lab-land-quality` case 3 is now a 9.2 m drop (13.2 m/s) to keep testing the stumble band; docs/feel-audit.md section 4 and tweak 6.
+
 ## 2026-11-17: the waypoint route across the squeezed city's joins
 - **The street graph joins its networks with road links checked against the ground, in its every-way edges only.**
   In the squeezed city the traffic paths stop short at three joins where the road runs on (19.5 to 52 m), so the

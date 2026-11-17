@@ -63,8 +63,8 @@ through a box (box) and for the export's feature of the line (feature: 'car roof
 keep it). Gaps, appended to gaps.json:
 - BART STAIRS (800): 16th St Mission BART's southwest stairs (49 steps of 14 cm, 7 m). Off the top in
   one ollie of at least 100 ticks, down 12 or more steps (toZ). The full set lands at about 12 m/s:
-  a stumble since the feel audit (stumbleSpeed 10, hardSpeed 14; it was a bail at 9.5), so the gap
-  is the top dozen steps and more; 15-20 steps is the usual landing, clean or a stumble. Riding a rail down and dropping off its end is not it (too short an air).
+  clean since stumbleSpeed went to 13 (it was a stumble at 10, a bail at 9.5; hardSpeed 14), so the gap
+  is the top dozen steps and more; 15-20 steps is the usual landing. Riding a rail down and dropping off its end is not it (too short an air).
 - BART HANDRAIL (600): grind any rail_* line in the BART stairwell (five handrails, 17.6 m and 7 m
   down; on at 4.6 m/s, off at 11.6 m/s).
 - PARAPET HOP (500): over either side parapet of the BART stairwell (57 cm above the plaza) from the

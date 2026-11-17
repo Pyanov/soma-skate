@@ -1,20 +1,20 @@
 # Landing quality. Three drops onto the flat, travelling north at 5 m/s:
 #  1. board 8 degrees off, 0.9 m drop: clean, the board lines up, the speed is kept;
 #  2. board 32 degrees off, same drop: sketchy, the board turns half way, the wheels scrub the rest;
-#  3. board straight, 5.5 m drop (10.4 m/s into the ground, over land.stumbleSpeed 10): stumble, speed x 0.6.
+#  3. board straight, 9.2 m drop (13.2 m/s into the ground, over land.stumbleSpeed 13, under land.hardSpeed 14): stumble, speed x 0.6.
 park lab
 cmd 0 teleport -20 -12 1.0 8
 cmd 1 set skater.vel.y 5
 cmd 150 teleport -10 -12 1.0 32
 cmd 151 set skater.vel.y 5
-cmd 300 teleport 0 -12 5.6 0
+cmd 300 teleport 0 -12 9.3 0
 cmd 301 set skater.vel.y 5
-run 520
+run 560
 expect event land{quality=clean} within 40..60
 expect skater.speed > 4.85 at 80
 expect event land{quality=sketchy} within 190..210
 expect skater.speed < 4.85 at 230
 expect skater.speed > 4.4 at 230
-expect event land{quality=stumble} within 425..429
-expect skater.speed < 3.2 at 440
+expect event land{quality=stumble} within 463..467
+expect skater.speed < 3.2 at 480
 expect no event bail

@@ -730,7 +730,8 @@ async function boot() {
     keys.rumbleOn = keys2.rumbleOn = S.get('rumble')
     // Quality: its preset (data/settings.json presets) when it changes: pixel ratio, passes, shadows,
     // draw distance, NPC detail, birds; auto's render scale then moves within the preset's range.
-    const q = S.get<string>('quality'), QP = settingsData.presets?.[q]
+    // ?quality=<preset> in the address picks a preset for this page without saving it (video capture, comparisons).
+    const urlQ = new URLSearchParams(location.search).get('quality'), q = urlQ && settingsData.presets?.[urlQ] ? urlQ : S.get<string>('quality'), QP = settingsData.presets?.[q]
     if (QP && q !== presetOn) {
       presetOn = q
       r.setPreset(QP); npcViews.setLod(QP.npcDistance, QP.npcDetail); pigeons.setDensity(QP.birds); seaLions?.setQuality(QP.sealions ?? 1, QP.drawDistance); traffic.setDetail(QP.carDetail ?? 120); if (crowd) crowd.vignetteLow = (QP.vignettes ?? 1) < 1; vignettes?.setScale(QP.vignettes ?? 1); if (castPeople) castPeople.simpleBeyond = QP.castSimple ?? 0

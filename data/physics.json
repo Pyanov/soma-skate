@@ -123,7 +123,7 @@
     "cleanDeg": 20,
     "stumbleDeg": 45,
     "straighten": 0.5,
-    "stumbleSpeed": 10,
+    "stumbleSpeed": 13,
     "hardSpeed": 14,
     "stumbleKeep": 0.6,
     "stumbleTicks": 36,

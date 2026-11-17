@@ -26,8 +26,8 @@ export type ViewRect = { x: number; y: number; w: number; h: number }
 /** A phone: a coarse pointer on a screen under 600 px across. */
 export const isPhone = () => typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 600
 /** A quality preset (data/settings.json presets): what the renderer draws and how sharply. */
-export type QualityPreset = { pixelRatio: number; phonePixelRatio?: number; scale: [number, number]; ao: boolean; msaa: number; shadowMap: number; shadowReach: number; cityShadows: boolean; drawDistance: number; npcDistance: number; npcDetail: number; birds: number; paintFull?: boolean; sealions?: number; carDetail?: number; vignettes?: number; castSimple?: number }
-type Wx = { fogNear: number; fogFar: number; fog: THREE.Color; sunI: number; sun: THREE.Color; from: THREE.Vector3; env: number; exposure: number; bgFog: number; night: number; hfog: number
+export type QualityPreset = { aoScale?: number; pixelRatio: number; phonePixelRatio?: number; scale: [number, number]; ao: boolean; msaa: number; shadowMap: number; shadowReach: number; cityShadows: boolean; drawDistance: number; npcDistance: number; npcDetail: number; birds: number; paintFull?: boolean; sealions?: number; carDetail?: number; vignettes?: number; castSimple?: number }
+type Wx = { fogNear: number; fogFar: number; fog: THREE.Color; sunI: number; sun: THREE.Color; from: THREE.Vector3; env: number; exposure: number; bgFog: number; night: number; hfog: number; bloom: number
   skyZ: THREE.Color; skyH: THREE.Color; skyGlow: THREE.Color; glow: number; clouds: number }
 /** The picture settings (data/settings.json video: lens, picture): the filmer's fisheye and the PS2 picture. */
 export type Picture = { lens: boolean; ps2: boolean }
@@ -285,7 +285,7 @@ export class Renderer {
       // Under the day sky the haze is the sky's own horizon colour, so the far city fades into the sky.
       fogNear: w.fog?.near ?? R.fog.near, fogFar: w.fog?.far ?? R.fog.far, fog: sky ? skyH.clone() : new THREE.Color(w.fog?.color ?? R.fog.color),
       sunI: w.sun?.intensity ?? R.sun.intensity, sun: new THREE.Color(w.sun?.color ?? R.sun.color), from: new THREE.Vector3(...(w.sun?.from ?? R.sun.from)),
-      env: w.environment ?? R.sky.environment, exposure: w.exposure ?? R.exposure, bgFog: w.sky === 'fog' ? 1 : 0, night: w.night ? 1 : 0, hfog: w.heightFog ?? 0,
+      env: w.environment ?? R.sky.environment, exposure: w.exposure ?? R.exposure, bgFog: w.sky === 'fog' ? 1 : 0, night: w.night ? 1 : 0, hfog: w.heightFog ?? 0, bloom: w.bloom ?? 0,
       skyZ: new THREE.Color(S.zenith ?? D?.zenith ?? R.fog.color), skyH, skyGlow: new THREE.Color(S.sunGlow ?? D?.sunGlow ?? '#000000'), glow: S.glow ?? D?.glow ?? 0, clouds: S.clouds ?? D?.clouds ?? 0,
     }
   }
@@ -293,7 +293,7 @@ export class Renderer {
     const a = this.wxFrom ?? this.preset(this.wxName), b = this.wxTo ?? a, k = this.wxT * this.wxT * (3 - 2 * this.wxT)
     const l = (x: number, y: number) => x + (y - x) * k
     return { fogNear: l(a.fogNear, b.fogNear), fogFar: l(a.fogFar, b.fogFar), fog: a.fog.clone().lerp(b.fog, k), sunI: l(a.sunI, b.sunI), sun: a.sun.clone().lerp(b.sun, k),
-      from: a.from.clone().lerp(b.from, k), env: l(a.env, b.env), exposure: l(a.exposure, b.exposure), bgFog: l(a.bgFog, b.bgFog), night: l(a.night, b.night), hfog: l(a.hfog, b.hfog),
+      from: a.from.clone().lerp(b.from, k), env: l(a.env, b.env), exposure: l(a.exposure, b.exposure), bgFog: l(a.bgFog, b.bgFog), night: l(a.night, b.night), hfog: l(a.hfog, b.hfog), bloom: l(a.bloom, b.bloom),
       skyZ: a.skyZ.clone().lerp(b.skyZ, k), skyH: a.skyH.clone().lerp(b.skyH, k), skyGlow: a.skyGlow.clone().lerp(b.skyGlow, k), glow: l(a.glow, b.glow), clouds: l(a.clouds, b.clouds) }
   }
   setWeather(name: string, instant = false) {
@@ -316,7 +316,8 @@ export class Renderer {
     if (this.visible.context && this.realAssets) this.scene.background = w.bgFog > 0.5 ? w.fog.clone() : this.realAssets.sky
     // Night: lamp lenses glow, light pools under the lamps, bloom halos.
     lampUniforms.glow.value = w.night
-    if (this.realPass) { this.realPass.bloom.enabled = w.night > 0.05; this.realPass.setNight(w.night); this.realPass.setHeightFog(w.hfog, w.fog, this.look.real) }
+    this.dayBloom = w.bloom
+    if (this.realPass) { this.applyBloom(w.night); this.realPass.setNight(w.night); this.realPass.setHeightFog(w.hfog, w.fog, this.look.real) }
     this.nightK = w.night
     this.hfogK = w.hfog
     // Night: a cool moonlit ambient from above (the hemisphere light, otherwise off in the real look) and the lamps' pools a
@@ -346,10 +347,19 @@ export class Renderer {
   setBloomShare(k: number) {
     if (Math.abs(k - this.bloomShare) < 0.005) return
     this.bloomShare = k
-    const b = this.look.real.bloom
-    if (this.realPass && b) this.realPass.bloom.strength = b.strength * k
+    this.applyBloom(this.nightK)
   }
   private bloomShare = 1
+  /** The weather's bloom by day (golden hour's low sun on glass and paint), 0..1 of the night's. */
+  private dayBloom = 0
+  /** Bloom: full at night, the weather's share by day; times the share indoors (setBloomShare). */
+  private applyBloom(night: number) {
+    const b = this.look.real.bloom
+    if (!this.realPass) return
+    const k = night > 0.05 ? 1 : this.dayBloom
+    this.realPass.bloom.enabled = k > 0.01
+    if (b) this.realPass.bloom.strength = b.strength * k * this.bloomShare
+  }
   private hfogK = 0
   private skyK = 1
   /** The haze's colour from the weather, the sun's glow and where the sun is: renderView leans the fog toward the glow when looking sunward. */
@@ -397,7 +407,7 @@ export class Renderer {
     this.look = look
     if (this.realMat) retuneParkMaterial(this.realMat, look.real)
     this.realPass?.setLook(look.real)
-    if (this.realPass && look.real.bloom) this.realPass.bloom.strength = look.real.bloom.strength * this.bloomShare
+    this.applyBloom(this.nightK)
     if (look.real.nightSky) this.nightSky?.setLook(look.real.nightSky)
     this.gradient.dispose()
     this.gradient = toonGradient(look.toon.bands)
@@ -884,7 +894,7 @@ export class Renderer {
   setPreset(q: QualityPreset) {
     this.q = q
     this.applyPixelRatio()
-    this.realPass?.setQuality(q.ao, q.msaa)
+    this.realPass?.setQuality(q.ao, q.msaa, q.aoScale ?? 1)
     this.city?.setShadows(q.cityShadows)
     this.setStyle(this.style)
     if (this.sharpState === 'held' && q.paintFull !== false) void this.sharpen()
