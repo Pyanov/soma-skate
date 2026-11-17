@@ -202,7 +202,7 @@ export class Cam {
     if (this.park) {
       this.eye = { x: p.x + t.up.x * 0.9, y: p.y + t.up.y * 0.9, z: p.z + t.up.z * 0.9 }
       // Something between camera and skater (a low wall, a ledge behind)? Rise over it first, like
-      // THPS, and at each height swing round the skater (a column right behind). Prefer a spot in the
+      // the classic games, and at each height swing round the skater (a column right behind). Prefer a spot in the
       // open (not down in a stairwell or between two walls): the lowest clear one with room either
       // side; failing that, the lowest clear one; failing that, slide in from the highest try.
       const L = D.collide.lifts

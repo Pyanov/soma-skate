@@ -2,7 +2,7 @@ import type { Sim, SimEvent } from '../sim.ts'
 import type { Thing } from '../thing.ts'
 import { tagCombo } from './twoplayer.ts'
 
-// Solo Graffiti (run graffiti; data run.graffiti, docs/mechanics/modes.md): THPS 2's tag mode for one
+// Solo Graffiti (run graffiti; data run.graffiti, docs/mechanics/modes.md): the classic games' tag mode for one
 // player. The same tags and rules as two-player Graffiti (game/twoplayer.ts): each grind line ground
 // (or lip tricked) and each gap in a combo is tagged when the combo banks. Tag as many obstacles as you
 // can before the clock runs out; a re-tag counts (a tagged event, from: 1) only when it beats your own

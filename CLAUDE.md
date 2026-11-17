@@ -1,6 +1,6 @@
 # SoMa Skate
 
-A THPS-style open-world skateboarding game: SoMa West Skatepark and San Francisco around it, in TypeScript and three.js. These are the project rules for contributors and AI coding assistants (CONTRIBUTING.md has the long form). Read `docs/architecture.md` once per session; load only the mechanic spec you are working on from `docs/mechanics/`.
+An arcade-style open-world skateboarding game: SoMa West Skatepark and San Francisco around it, in TypeScript and three.js. These are the project rules for contributors and AI coding assistants (CONTRIBUTING.md has the long form). Read `docs/architecture.md` once per session; load only the mechanic spec you are working on from `docs/mechanics/`.
 
 ## Setup
 - Node 25+ runs the harness's TypeScript directly. `npm install`, then `./skate world fetch` (the city and the park's photo paint; `--file <tarball>` for a local copy), then `./skate check`.

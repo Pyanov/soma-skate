@@ -8,7 +8,7 @@ import { clearRacers } from './npc.ts'
 import { clearLocals, freshTry, place, trackTry } from './skate.ts'
 import { clearLevel } from './tour.ts'
 
-// Local two-player (THPS 2 split screen; docs/mechanics/modes.md, data run.twoPlayer). Player 2 is a
+// Local two-player (classic split screen; docs/mechanics/modes.md, data run.twoPlayer). Player 2 is a
 // second skater Thing (player: 2) with its own session Thing, stepped on its own buttons (InputFrame.b2)
 // by the same skater code. The players never touch each other; each scores its own gaps, burritos and
 // city goals (game/session.ts). The game itself lives on player 1's session: Trick Attack (both skate,
@@ -120,7 +120,7 @@ export function stepTwoPlayer(sim: Sim, p: Players, events: SimEvent[]) {
   else {
     if (s.game === 'graffiti2p') { tag(sim, p, 1, events); tag(sim, p, 2, events) }
     if (s.mode !== 'ending' && --s.timeLeft <= 0) s.mode = 'ending'
-    // Time is up: the combos in progress may still land (THPS), then the game is over.
+    // Time is up: the combos in progress may still land (as in the classic games), then the game is over.
     if (s.mode === 'ending' && settled(p.sk[0]) && settled(p.sk[1])) {
       s.mode = 'over'
       if (s.game === 'trickattack2p') {

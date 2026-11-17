@@ -162,7 +162,7 @@ function stepGame(sim: Sim, s: Thing, sk: Thing, events: SimEvent[]) {
   else if (s.mode === 'muni') stepMuni(sim, s, sk, events)
   else if (s.mode === 'escape') stepEscape(sim, s, sk, events)
   else if (s.game === 'graffiti') stepGraffiti(sim, s, sk, events)   // through the ending too: the last combo still tags
-  // Time is up: the combo in progress may still land (THPS), then the game is over.
+  // Time is up: the combo in progress may still land (as in the classic games), then the game is over.
   if (s.mode === 'ending' && settled(sk)) {
     s.mode = 'over'
     if (s.game === 'run') events.push({ t: 'runOver', tick, score: sk.score, goals: [...s.goalsDone], bestCombo: s.bestCombo })

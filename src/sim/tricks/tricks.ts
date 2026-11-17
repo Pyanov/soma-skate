@@ -16,7 +16,7 @@ export function dir8(f: InputFrame): Dir {
 
 const pressed = (t: Thing, f: InputFrame, b: number) => has(f, b) && (t.prevB & b) === 0
 
-/** The flip for J + d (one press; twice: the direction pressed twice, THPS 2's Right, Right + flip). A double tap turns it into flipVariant(...) below. */
+/** The flip for J + d (one press; twice: the direction pressed twice, the classic games' Right, Right + flip). A double tap turns it into flipVariant(...) below. */
 export function flipFor(sim: Sim, d: Dir, twice = false): FlipDef {
   const T = sim.data.tricks
   return (twice ? T.flips.find((x) => x.dir === d && !x.taps && x.twice) : undefined) ?? T.flips.find((x) => x.dir === d && !x.taps && !x.twice) ?? T.flips.find((x) => x.id === T.defaults.flip)!
@@ -29,7 +29,7 @@ export function flipVariant(sim: Sim, base: FlipDef): FlipDef | null {
   return T.flips.find((x) => x.taps === taps && x.dir === dir && !!x.twice === !!base.twice) ?? null
 }
 /**
- * J with a direction pressed twice (THPS 2's double-direction slots: "R, R + Square", Right, then Right
+ * J with a direction pressed twice (the classic games' double-direction slots: "R, R + Square", Right, then Right
  * and the button together): the last two direction presses the same cardinal direction, close together, the
  * second with J, and only that direction held. Not a special: no meter needed.
  */
@@ -95,7 +95,7 @@ export function stepAirTricks(sim: Sim, t: Thing, f: InputFrame, events: SimEven
         r.dir = dd
         if (nd.id !== def.id) { r.id = nd.id; def = nd; events.push({ t: 'trickStart', tick, trick: airName(t, nd.name) }) }
       }
-      // Double and triple tap (THPS): J again soon after the last press turns the flip into its slot's next
+      // Double and triple tap (as in the classic games): J again soon after the last press turns the flip into its slot's next
       // variant (Kickflip into a Double Kickflip, then a Triple Kickflip; Pop Shove-It into a 360 Shove-It),
       // running on from here.
       const v = r.tick - (r.tapAt ?? 0) <= sim.data.tricks.doubleTapTicks && r.tick > 0 && pressed(t, f, Btn.flip) && sim.data.tricks.flips.includes(def) ? flipVariant(sim, def) : null
@@ -161,7 +161,7 @@ function finish(t: Thing, e: ComboEntry, tick: number, events: SimEvent[]) {
 }
 
 /**
- * Name and value of a combo, THPS style: the n-th time a trick (by id) is in the combo it is worth
+ * Name and value of a combo, arcade style: the n-th time a trick (by id) is in the combo it is worth
  * scoring.repeat[n - 1] of its points (the last share from then on), values[i] each entry's worth
  * after that (what the trick string shows); multiplier = trick count.
  */
@@ -182,7 +182,7 @@ export function comboValue(sim: Sim, entries: ComboEntry[]) {
 
 /**
  * Grinds, lip tricks or manuals already in this combo (by kind). Each makes the next one's balance
- * touchier (THPS 3+: the meter gets harder as a combo goes on): it starts further over
+ * touchier (the classic games 3+: the meter gets harder as a combo goes on): it starts further over
  * (comboTilt each) and tips faster (comboRamp each), so a chain of the same link cannot go on for ever.
  */
 export function comboLinks(sim: Sim, t: Thing, kind: 'grind' | 'lip' | 'manual') {

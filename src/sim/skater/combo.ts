@@ -57,7 +57,7 @@ export function stepManual(sim: Sim, t: Thing, f: InputFrame, events: SimEvent[]
   const dt = 1 / sim.data.physics.tickHz
   const m = t.manual!
   m.ticks++
-  const ramp = 1 + C.manualComboRamp * comboLinks(sim, t, 'manual') + (C.manualRamp * m.ticks) / sim.data.physics.tickHz   // longer manuals get harder (THPS), and more of them in one combo
+  const ramp = 1 + C.manualComboRamp * comboLinks(sim, t, 'manual') + (C.manualRamp * m.ticks) / sim.data.physics.tickHz   // longer manuals get harder (as in the classic games), and more of them in one combo
   const noise = (nextFloat(sim.world.rng) * 2 - 1) * C.manualNoise * ramp
   m.balanceVel += (C.manualInstability * ramp * m.balance + noise + C.manualControl * stick(f).y - C.manualDamping * m.balanceVel) * dt
   m.balance += m.balanceVel * dt

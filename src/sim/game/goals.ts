@@ -5,7 +5,7 @@ import { Kind, State, type Thing } from '../thing.ts'
 import { carFrame } from './traffic.ts'
 import { carTop, dimsOf } from '../skater/cars.ts'
 
-// City goals (THPS 2 style; data/goals.json, docs/mechanics/goals.md). Always on, in free skate
+// City goals (classic arcade style; data/goals.json, docs/mechanics/goals.md). Always on, in free skate
 // and every game: each completes once per session (goalComplete) and the client keeps the list
 // across sessions. Also the trackers they read: the car the skater is clearing in this air, where
 // the open combo started.

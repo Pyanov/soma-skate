@@ -1,5 +1,5 @@
 # An 11 m drop onto the flat hits at about 14.4 m/s, over land.hardSpeed (14): bail, however straight.
-# (Feel audit, phase 23: it was 9.5, a 5 m drop; THPS lets you down from far higher.)
+# (Feel audit, phase 23: it was 9.5, a 5 m drop; the classic games let you down from far higher.)
 park lab
 cmd 0 teleport 0 -12 11.1 0
 cmd 1 set skater.vel.y 4

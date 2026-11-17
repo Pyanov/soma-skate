@@ -4,7 +4,7 @@ import { findSpot, placeAt, type Sim, type SimEvent } from '../sim.ts'
 import { State, type Thing } from '../thing.ts'
 import { goalMet } from './goals.ts'
 
-// The Tour (docs/mechanics/tour.md; data/tour.json): THPS-style levels, each a world, a start spot,
+// The Tour (docs/mechanics/tour.md; data/tour.json): arcade-style levels, each a world, a start spot,
 // an area, S-K-A-T-E letters, a secret tape, two score tiers and its own goals, played as a
 // 2-minute run (`run level <id>`). The sim reports what got done this run (levelGoal, tapeFound,
 // levelOver); the career (which goals ever, which levels open) is the client's.

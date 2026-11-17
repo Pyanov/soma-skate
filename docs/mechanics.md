@@ -1,8 +1,8 @@
 # Mechanics catalog
 
-The THPS moves this game needs, grouped by milestone. Each move gets its own spec in `docs/mechanics/<name>.md` before it is built (template at the end). Exact button and direction bindings live in `data/controls.json` and `data/tricks.json`. They follow THPS 1+2 defaults and are confirmed in playtests.
+The classic moves this game needs, grouped by milestone. Each move gets its own spec in `docs/mechanics/<name>.md` before it is built (template at the end). Exact button and direction bindings live in `data/controls.json` and `data/tricks.json`. They follow the remake's defaults and are confirmed in playtests.
 
-## Controls (THPS-style, PlayStation names)
+## Controls (arcade-style, PlayStation names)
 
 | Button | Use |
 |---|---|

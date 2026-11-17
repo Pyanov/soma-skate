@@ -1,5 +1,5 @@
 {
-  "_doc": "Combo scoring (src/sim/tricks/tricks.ts comboValue, docs/mechanics/air-tricks.md). repeat: the share of its points a trick is worth the n-th time it is in one combo (THPS 2: 100%, 75%, 50%, 25%), by trick id, the last value from then on (the floor). The multiplier is the number of tricks in the combo.",
+  "_doc": "Combo scoring (src/sim/tricks/tricks.ts comboValue, docs/mechanics/air-tricks.md). repeat: the share of its points a trick is worth the n-th time it is in one combo (the classic games: 100%, 75%, 50%, 25%), by trick id, the last value from then on (the floor). The multiplier is the number of tricks in the combo.",
   "repeat": [1, 0.75, 0.5, 0.25, 0.1],
   "spinPer180": 60,
   "revertPoints": 100,

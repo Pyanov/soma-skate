@@ -30,7 +30,7 @@ Scenarios:    lab-grind-table-bs, lab-grind-table-fs, lab-grind-variants-fs, lab
 Physics changes (2026-10-16):
 - Air drag along the line too (board.md aero.*): with grind.friction it caps a downhill grind; the
   hill's curb tops out near 11.9 m/s on the 10% instead of accelerating forever (lab-hill-curb-grind).
-- Balance gets harder the longer the grind (THPS): instability and noise grow by grind.balanceRamp
+- Balance gets harder the longer the grind (as in the classic games): instability and noise grow by grind.balanceRamp
   (0.12) per second, so a 10 s grind is 2.2x as twitchy as the first moment. With no input a grind
   falls in about 2 s either way; a perfect balancer (the scenario bot) lasts about 19 s, so long
   curb and rail grinds are a skill. Lip stalls use the same ramp.

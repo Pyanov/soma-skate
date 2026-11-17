@@ -4,7 +4,7 @@ import { raycast, sphereContacts, type Contact } from '../park/park.ts'
 import type { Sim, SimEvent } from '../sim.ts'
 import { State, type Thing } from '../thing.ts'
 
-// Spine transfers (THPS 3+): in the air off a transition with another ramp back to back behind its
+// Spine transfers (later classic games): in the air off a transition with another ramp back to back behind its
 // lip, the revert button carries you over the spine to land going down the far side. The far ramp
 // is found by looking down along the way over the lip; the arc is set so it clears the spine top
 // and comes down onto the far wall, the board turned to meet it. Spec: docs/mechanics/air-tricks.md.

@@ -190,7 +190,7 @@
     ]
   },
   "twoPlayer": {
-    "_doc": "Local two-player (THPS 2 split screen; src/sim/game/twoplayer.ts, docs/mechanics/modes.md). player2 join [spot] puts a second skater in the world, on its own input (InputFrame.b2), beside player 1 (join.side metres to its left, on the ground there) when no spot is given; player2 leave takes it out. The players never touch each other; each scores its own gaps, burritos and city goals. trickAttack (run trickattack2p): both skate at once for seconds, the higher score wins. horse (run horse2p [word]): a game of S.K.A.T.E. between the players at the S.K.A.T.E. spot (run.skate: the spot, the trick rules, manualSeconds), with word (or one of words, named in the command) and these clocks; player 1 sets first, the setter changes every round. graffiti (run graffiti2p): both skate at once for seconds; each grind line ground (or lip tricked) and each gap in a combo is tagged for its player when the combo banks, if nobody owns it or it is the other's from a smaller combo (a bigger combo steals it back); whoever owns the most at the end wins.",
+    "_doc": "Local two-player (classic split screen; src/sim/game/twoplayer.ts, docs/mechanics/modes.md). player2 join [spot] puts a second skater in the world, on its own input (InputFrame.b2), beside player 1 (join.side metres to its left, on the ground there) when no spot is given; player2 leave takes it out. The players never touch each other; each scores its own gaps, burritos and city goals. trickAttack (run trickattack2p): both skate at once for seconds, the higher score wins. horse (run horse2p [word]): a game of S.K.A.T.E. between the players at the S.K.A.T.E. spot (run.skate: the spot, the trick rules, manualSeconds), with word (or one of words, named in the command) and these clocks; player 1 sets first, the setter changes every round. graffiti (run graffiti2p): both skate at once for seconds; each grind line ground (or lip tricked) and each gap in a combo is tagged for its player when the combo banks, if nobody owns it or it is the other's from a smaller combo (a bigger combo steals it back); whoever owns the most at the end wins.",
     "join": { "side": 1.5 },
     "trickAttack": { "seconds": 120 },
     "horse": { "word": "HORSE", "words": ["HORSE", "SOMA"], "setSeconds": 10, "matchSeconds": 10, "pauseSeconds": 2 },
@@ -231,7 +231,7 @@
     "survivalBonus": 500
   },
   "graffiti": {
-    "_doc": "Solo Graffiti (run graffiti; src/sim/game/graffiti.ts, docs/mechanics/modes.md): THPS 2's tag mode for one player, with two-player Graffiti's tags (twoPlayer graffiti): every grind line ground (or lip tricked, not a car's) and every gap in a combo is tagged when the combo banks; a bailed or lost combo tags nothing. Tag as many obstacles as you can in seconds; a re-tag counts only when its combo beats your own best there (it raises that best). The last combo may land after the clock, then graffitiOver with how many you hold.",
+    "_doc": "Solo Graffiti (run graffiti; src/sim/game/graffiti.ts, docs/mechanics/modes.md): the classic games' tag mode for one player, with two-player Graffiti's tags (twoPlayer graffiti): every grind line ground (or lip tricked, not a car's) and every gap in a combo is tagged when the combo banks; a bailed or lost combo tags nothing. Tag as many obstacles as you can in seconds; a re-tag counts only when its combo beats your own best there (it raises that best). The last combo may land after the clock, then graffitiOver with how many you hold.",
     "seconds": 120
   }
 }

@@ -1,4 +1,4 @@
-# The repetition curve (scoring.repeat, THPS 2): the same trick again in one combo is worth less each
+# The repetition curve (scoring.repeat, the classic games): the same trick again in one combo is worth less each
 # time, 100%, 75%, 50%, 25%, then the 10% floor. Up the vert ramp at 15.5 m/s, six kickflips in one
 # 2.5 s air: 100 + 75 + 50 + 25 + 10 + 10 = 270, x6 = 1,620 (each entry's value in the event).
 park lab

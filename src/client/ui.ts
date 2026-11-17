@@ -5,7 +5,7 @@ import { bombRoute } from '../sim/game/modes.ts'
 
 // The game's UI: HUD (score, timer, special, S-K-A-T-E, goals, the trick string,
 // balance), pops for gaps, letters and goals, landed and slammed callouts with stickers,
-// the menu, results, toasts and the radio's now-playing strip. THPS bones, Inter type,
+// the menu, results, toasts and the radio's now-playing strip. arcade bones, Inter type,
 // International Orange, San Francisco jokes from data/ui.json. Draw-only: it reads sim
 // state and events and never changes them. Type only (docs/art-direction.md): no stickers, no bursts.
 
@@ -712,7 +712,7 @@ export class Hud {
     if (names.length) {
       const v = comboValue(sim, sk.combo)
       const named = this.sig(names.join(' + '))
-      // Repeats in this combo (worth less each time, THPS style) are drawn faded with their share.
+      // Repeats in this combo (worth less each time, arcade style) are drawn faded with their share.
       const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;')
       const parts = [...sk.combo.map((c, i) => ({ name: this.sig(c.name).text, share: c.points > 0 ? v.values[i] / c.points : 1 })), ...(running ? [{ name: this.sig(running).text, share: 1 }] : [])]
       this.trickNames.innerHTML = parts.map((p) => p.share < 0.99 ? `<span class="tn rep">${esc(p.name)} <small>${Math.round(p.share * 100)}%</small></span>` : `<span class="tn">${esc(p.name)}</span>`).join(' + ')
@@ -724,7 +724,7 @@ export class Hud {
     // balance
     const bal = sk.grind ?? sk.lip ?? sk.manual ?? sk.skitch
     this.balance.classList.toggle('on', !!bal)
-    // Manuals balance nose-to-tail: the meter stands up, like THPS; grinds and lips side to side.
+    // Manuals balance nose-to-tail: the meter stands up, like the classic games; grinds and lips side to side.
     this.balance.classList.toggle('vertical', !!sk.manual && !sk.grind && !sk.lip)
     if (bal) {
       const b = Math.max(-1, Math.min(1, bal.balance))
@@ -855,7 +855,7 @@ export class Hud {
   }
 
   /** The radio's strip: station and what is playing. */
-  // Where you are: a THPS-style banner when you roll into a neighbourhood or a landmark (data/ui.json
+  // Where you are: an arcade-style banner when you roll into a neighbourhood or a landmark (data/ui.json
   // places; positions from OpenStreetMap). A landmark within its radius wins, else the nearest
   // neighbourhood centre. You must stay holdSeconds before it shows; each place waits cooldownSeconds.
   private placeEl: HTMLElement

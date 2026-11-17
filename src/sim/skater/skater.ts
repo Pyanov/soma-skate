@@ -250,7 +250,7 @@ function groundSupport(sim: Sim, t: Thing, dt: number): Vec3 | null {
   // pipe on its lip (rail-class
   // faces above the wheels, within this tick's travel and vert.copingReach beyond them): the next move would run into the
   // pipe, taking most of the air's speed and throwing the skater off the wall, or back down it (phase 27,
-  // soma-coping-speed). As in THPS, a lip with coping is vert: leave the wall now as vert air, the board
+  // soma-coping-speed). As in the classic games, a lip with coping is vert: leave the wall now as vert air, the board
   // turned toward it as a ground tick would turn it, and out from the wall by as much as the pipe
   // overhangs the way up (a few centimetres), so the air going up clears it.
   if (Math.max(t.up.z, n.z) < cos(P.vert.copingMinDeg * DEG) && t.vel.z > 0.3) {
@@ -478,7 +478,7 @@ function footTrickFor(sim: Sim, t: Thing) {
 }
 
 /**
- * Leaving the ground. Off a vert wall going up, the THPS rule: straight up, back down onto the ramp. The
+ * Leaving the ground. Off a vert wall going up, the classic rule: straight up, back down onto the ramp. The
  * wall is the face under the wheels (face: its normal, when known) or the board's up, whichever is
  * steeper, within vert.topToleranceDeg of vert.minWallDeg (phase 27); off a coping (coping), always.
  */

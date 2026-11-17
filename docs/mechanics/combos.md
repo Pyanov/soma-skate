@@ -5,7 +5,7 @@ Input: Up then Down quickly (W,S) = manual; Down then Up = nose manual; ; (rever
 States: ground gains manual (balance on pitch); new lip and wall states.
 Rules:
 - Landing grace: a clean landing does not bank the combo at once. For combo.graceTicks the combo stays open; a manual or a revert in that window continues it. Otherwise it banks.
-- Manual / nose manual: rolling with a pitch balance (unstable, world-RNG push, W/S correct). Ollie pops out and keeps the combo; losing balance bails; slowing below combo.manualMinSpeed ends it and banks. Can also start from rolling (THPS 2 style). Points per second.
+- Manual / nose manual: rolling with a pitch balance (unstable, world-RNG push, W/S correct). Ollie pops out and keeps the combo; losing balance bails; slowing below combo.manualMinSpeed ends it and banks. Can also start from rolling (classic arcade style). Points per second.
 - Revert: within the grace window after landing on a surface steeper than combo.revertMinDeg; adds Revert and reopens the grace window (so you can manual out of it). Pressed in the air up to combo.revertBufferTicks (20, 0.17 s) before touching down, it counts on the landing (Thing.revertWant). A plain air (nothing in the combo) can be reverted too, within as long after the landing as the grace: the revert starts the combo. On the landing tick the revert goes first, so a manual pressed with it links: Revert + Manual (feel pass 2026-11-09; before, the window was the 11 ticks after the landing only, 92 ms, and a plain air could not revert; now 30 ticks, 250 ms, either way). Scenarios lab-revert-early, lab-revert-plain, lab-revert-manual-early.
 - Lip trick: in vert air near a coping line with along-coping speed under combo.lipMaxAlong, I + direction stalls on the coping (lips table). Hold I to stay, release to drop back in fakie; balance on A/D; lose it and bail.
 - Wallride: in the air, I with a wall within combo.wallReach roughly along your travel; ride along it with reduced gravity for up to combo.wallrideTicks; K pops off; timeout drops off. The press counts for a wall only within combo.wallPressTicks (10) of it, though the grind buffer keeps it longer (grind.bufferTicks 14): the press for a grind beside a wall does not start a wallride on it (phase 24; scenarios lab-wallride-press-window, lab-wallride-early-press).
@@ -64,7 +64,7 @@ farms; each is closed by a rule, its numbers in data, and pinned by a scenario t
 - Manuals: none below combo.manualStartSpeed (2 m/s; they still run down to manualMinSpeed, 0.8): at
   walking pace a manual stopped at once and banked, 942 points a second standing still. Rocking W/S
   in a manual does not balance it. lab-manual-mash.
-- Balance gets touchier with each link of the same kind already in the combo (THPS 3+): a manual
+- Balance gets touchier with each link of the same kind already in the combo (later classic games): a manual
   starts combo.manualComboTilt (0.03) further over and tips combo.manualComboRamp (0.2) faster for
   each manual in it; grinds (and slides) and lip tricks the same with grind.comboTilt and
   grind.comboRamp. Even perfect presses lose a chain of about 28 (tricks.ts comboLinks).

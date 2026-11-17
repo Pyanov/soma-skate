@@ -36,7 +36,7 @@ describe('one player: as before two players', () => {
     // Both together (feel pass round 3 with physics phase 32): soma and sf re-pinned; lab is the feel pass's.
     // Feel pass round 3: the NPC skaters plan corners with the park carve's numbers (game/follow.ts): soma.
     // Tricks pass (2026-11-16): a trick in the air keeps the direction it was picked by (TrickRun.dir, the
-    // diagonal's late key), and the flip table follows THPS 1+2: all three (the runs flip).
+    // diagonal's late key), and the flip table follows the remake: all three (the runs flip).
     // The squeeze (docs/squeeze.md section 4): the sf world is the squeezed city: sf re-pinned (again for city
     // builds d565e2edfd8dd956 and 6d47b38c38bca28b).
     const pins: [string, string[], string][] = [['soma', ['npc spawn'], '5aa0d97d2f9b155e'], ['sf', ['ped spawn'], 'f8183e1d5818009e'], ['lab', [], 'a94aa14f9bd5510e']]

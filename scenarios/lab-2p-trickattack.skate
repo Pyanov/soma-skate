@@ -1,7 +1,7 @@
 # Two-player Trick Attack (run trickattack2p; data run.twoPlayer, here 3 s): both skate at once and
 # the higher score wins. Player 2 joins beside player 1 (join.side, 1.5 m to its left: north, as it
 # faces east) and kickflips on the flat (100); player 1 grinds the ledge (475). The clock runs out
-# at 361 while player 1 is still on the ledge: the game waits for that combo to land (THPS), at 467.
+# at 361 while player 1 is still on the ledge: the game waits for that combo to land (as in the classic games), at 467.
 park lab
 cmd 0 teleport 0 -0.6 0.14 90
 cmd 0 player2 join

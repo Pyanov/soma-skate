@@ -193,7 +193,7 @@ Feel notes:   (waiting for play)
   paths npcs.onlane, npcs.watching, npcs.riding count them).
 
 ## Local two-player (physics phase 21; src/sim/game/twoplayer.ts, data run.json twoPlayer)
-- THPS 2's split-screen games, the sim side (the split screen itself is the client's). `player2 join
+- The classic games' split-screen games, the sim side (the split screen itself is the client's). `player2 join
   [spot | x y z [heading]]` puts a second skater Thing (player: 2) and its own session Thing (player:
   2) in the world; without a place it stands join.side (1.5) m to player 1's left, facing the same
   way, on the ground there (on player 1 when that is not clear ground). `player2 leave` takes both out
@@ -379,7 +379,7 @@ Feel notes:   (waiting for play)
   streetcar); perf --mode 'muni f' | escape, measured by check --full.
 
 ## Solo Graffiti (physics phase 24; src/sim/game/graffiti.ts, data run.json graffiti)
-- `run graffiti` (any park): THPS 2's tag mode for one player, with two-player Graffiti's tags and
+- `run graffiti` (any park): the classic games' tag mode for one player, with two-player Graffiti's tags and
   state (above): park grind lines ('line:<index>', ground or lip tricked, not a car's) and gaps
   ('gap:<id>') in a combo are tagged when it banks; a bailed or lost combo tags nothing. Tag as many
   as you can in graffiti.seconds (120). A re-tag counts only when it beats your own best on that

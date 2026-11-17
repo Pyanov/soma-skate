@@ -315,7 +315,7 @@ export function stepGrind(sim: Sim, t: Thing, input: InputFrame, events: SimEven
 
   // Balance: unstable, pushed by the world RNG, corrected by A/D.
   const st = stick(input)
-  // THPS: the longer the grind, the harder it is to balance (balanceRamp per second), and the more
+  // the classic games: the longer the grind, the harder it is to balance (balanceRamp per second), and the more
   // grinds already in the combo (comboRamp each; they also start it further over, comboTilt each).
   const ramp = 1 + G.comboRamp * comboLinks(sim, t, 'grind') + (G.balanceRamp * g.ticks) / P.tickHz
   const noise = (nextFloat(sim.world.rng) * 2 - 1) * G.balanceNoise * ramp

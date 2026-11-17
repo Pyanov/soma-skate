@@ -2,7 +2,7 @@
 Milestone: physics, after M6. Replaces the turn-rate and lateral-grip rules of rolling.md.
 
 Goal (2026-10-16): the characters can look playful and eclectic, but the physics and the
-skateboard must be realistic and feel good. The THPS trick feel stays (big ollies,
+skateboard must be realistic and feel good. The classic trick feel stays (big ollies,
 generous grinds, arcade combos); rolling, turning, slopes and the board are physically grounded.
 
 Input:

@@ -1,7 +1,7 @@
 {
   "name": "soma-skate",
   "private": true,
-  "description": "A THPS-style open-world skateboarding game set in San Francisco, built in TypeScript and three.js.",
+  "description": "An arcade-style open-world skateboarding game set in San Francisco, built in TypeScript and three.js.",
   "license": "GPL-3.0-only",
   "repository": "github:Pyanov/soma-skate",
   "engines": { "node": ">=25" },

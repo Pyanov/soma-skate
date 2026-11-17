@@ -2,7 +2,7 @@
 
 An open-world skateboarding game set in San Francisco, built in TypeScript and three.js. It runs in the browser.
 
-It is a THPS-style game, inspired by classic skate games: ollies, flips, grabs, grinds, manuals, reverts, wallrides and long combos, scored the way those games score them. You start in SoMa West Skatepark under the Central Freeway, painted with photos of the real park, then roll out of the gates into the city around it: Duboce, Valencia's shops, Market St down to the Ferry Building and Pier 7, the Castro, Alamo Square, Chinatown, Lombard, and the Dolores hill bomb. The city is generated from open data. There is a story with a cast of locals, side missions, races, a Tour of levels, Game of S.K.A.T.E., local two-player, a radio with three made-up stations, weather and night.
+It is an arcade-style game, inspired by classic skate games: ollies, flips, grabs, grinds, manuals, reverts, wallrides and long combos, scored the way those games score them. You start in SoMa West Skatepark under the Central Freeway, painted with photos of the real park, then roll out of the gates into the city around it: Duboce, Valencia's shops, Market St down to the Ferry Building and Pier 7, the Castro, Alamo Square, Chinatown, Lombard, and the Dolores hill bomb. The city is generated from open data. There is a story with a cast of locals, side missions, races, a Tour of levels, Game of S.K.A.T.E., local two-player, a radio with three made-up stations, weather and night.
 
 San Francisco first, other cities next.
 

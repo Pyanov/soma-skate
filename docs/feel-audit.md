@@ -1,11 +1,11 @@
-# Feel audit: the core controls against THPS 1+2
+# Feel audit: the core controls against the remake
 
 Every number below comes from the real sim, run by `./skate feel` (the
 harness module `src/harness/feel.ts`; `--section ollie|capture|balance|landing|spin|special`,
 `--trials n`; `--tour` for section 8, every Tour goal with human hands; `--section flow` for section 11; `--section vert` for section
 9, every quarter's lip; `--section drive` for section 10, the vehicles). Re-run it after any change to `data/physics.json` and compare.
 
-THPS 1+2 references: neither game published its constants. The THPS column describes how the games
+The remake references: neither game published its constants. The classic column describes how the games
 play, from play and common player knowledge. It is approximate and has no measured numbers.
 
 The audit led to three data changes (section 7): balance damping doubled, a longer late-ollie window,
@@ -32,7 +32,7 @@ Rolling at 5 m/s gives the same numbers: the pop is straight up on the flat.
 - **Late ollie** (release just after rolling off an edge, off the 0.45 m ledge's end at 4 m/s): it
   pops up to 11 ticks (92 ms) into the air. Before: 7 ticks (58 ms). The data value is
   `ollie.lateTicks` 12 (before: 8); the first air tick is spent leaving the edge.
-- **THPS 1+2:** the pop comes on release, and a short crouch gives a higher ollie. A tapped ollie
+- **The remake:** the pop comes on release, and a short crouch gives a higher ollie. A tapped ollie
   clears curbs and benches. Ollieing just after leaving a ledge or a lip is forgiving.
 - **Finding:** the crouch-to-full time (0.25 s) and the tap height (0.53 m: a bench, a low ledge) fit.
   The late-ollie window was tight at 58 ms, about a third of a human reaction spread. Now 92 ms.
@@ -74,7 +74,7 @@ for the rail). The press is repeated every 3 ticks, so timing never matters. G m
   lab's wall, a grind press up to 9 ticks (75 ms) before the wall is in reach starts a wallride, as
   before; an earlier one does not, though it would still catch a line. When one window served both,
   growing it made the press for Patricia's Green bench also start a wallride on the wall beside it.
-- **THPS 1+2:** grinds are famously generous. Press grind near a rail or ledge and the skater snaps on
+- **The remake:** grinds are famously generous. Press grind near a rail or ledge and the skater snaps on
   from about a body width away and from almost any angle (across it, a boardslide or lipslide).
 - **Finding:** the reach (0.75 m, up to 1.0 m) and the any-angle rule fit. The 83 ms early-press buffer
   was the tightest part; the second pass made it 117 ms (proposal 5).
@@ -97,8 +97,8 @@ trials per player, each from its own seed.
 | decent: 200 ms, sd 0.05 | 9.5 (6.6-12.5) | 12.0 (7.3-15.7) | 3.6 / 3.9 |
 | casual: 280 ms, sd 0.08 | 2.4 (1.8-3.8) | 2.9 (2.0-3.3) | 1.9 / 1.9 |
 
-- **THPS 1+2:** a practised player keeps grinds and manuals for many seconds, and long manual links
-  are the backbone of a THPS 2 combo. The needle gets faster the longer you hold.
+- **The remake:** a practised player keeps grinds and manuals for many seconds, and long manual links
+  are the backbone of a classic combo. The needle gets faster the longer you hold.
 - **Finding:** before, a decent player (200 ms) fell off a grind in 3.6 s and a manual in 3.9 s. That is
   sim-heavy: the needle ran away faster than a human can answer it. Instability and its ramp were not
   the cause. Halving the ramp or cutting instability by a fifth moved the decent player by under half a
@@ -130,7 +130,7 @@ Straight, by drop height:
 | 9 m | 13.3 m/s | stumble | bail |
 | 10-11 m | 14.0-14.7 m/s | bail (`hardSpeed` 14) | bail |
 
-- **THPS 1+2:** a landing roughly straight or fakie rolls away, and a sideways one bails. Height almost
+- **The remake:** a landing roughly straight or fakie rolls away, and a sideways one bails. Height almost
   never matters: you can drop off roofs and land clean.
 - **Finding:** the angle bands fit (a 60-degree margin each side of straight and fakie). The impact
   limits did not: a 3 m drop stumbled and a 5 m drop bailed, in a city of stairs and roofs. Now only
@@ -150,7 +150,7 @@ can always be stopped short):
 | 1.6 s | 1.61 | 756 | 720 |
 | 2.0 s | 2.00 | 969 | 900 |
 
-- **THPS 1+2:** a 180 off any ollie and a 360 off a full one; 540-720 off a kicker or a decent quarter
+- **The remake:** a 180 off any ollie and a 360 off a full one; 540-720 off a kicker or a decent quarter
   air; the 900 is the big one.
 - **Finding:** fits. No change.
 
@@ -160,7 +160,7 @@ It fills by banked combo points over `combo.specialPoints` (3000) and empties on
 drain over time. In the Tour scenarios it fills after 10 s and 2 combos (Castro), 19 s and 4 combos
 (SoMa), or 64 s and 1 big combo (Hayes, whose run waits at first).
 
-- **THPS 1+2:** a few good combos fill it, a bail empties it, and it drains slowly while you are not
+- **The remake:** a few good combos fill it, a bail empties it, and it drains slowly while you are not
   tricking.
 - **Finding:** the fill rate fits. The missing idle drain is a code change, not a data tweak, so it is
   noted here and not proposed.
@@ -172,9 +172,9 @@ drain over time. In the Tour scenarios it fills after 10 s and 2 combos (Castro)
 | 1 | `grind.balanceDamping` and `combo.manualDamping` 0.6 to 1.2 | a decent player holds 10-12 s, not 3.6-3.9 (section 3) | yes |
 | 2 | `ollie.lateTicks` 8 to 12 | late-ollie window 58 to 92 ms (section 1) | yes |
 | 3 | `land.stumbleSpeed` 7 to 10, `land.hardSpeed` 9.5 to 14 | stumble from about 5 m, bail from about 11 m (section 4) | yes |
-| 4 | `land.cleanDeg` 15 to 20 | more clean landings; THPS 2 has no sketchy band | second pass |
+| 4 | `land.cleanDeg` 15 to 20 | more clean landings; the classic games have no sketchy band | second pass |
 | 5 | `grind.bufferTicks` 10 to 14 | a longer early-press window (section 2) | second pass |
-| 6 | `land.stumbleSpeed` 10 to 13 | the big sets land clean, as in THPS (the full Harvey Milk set at 12.8 m/s, the full BART set at about 12 m/s); the bail stays at 14 | yes (2026-11-17) |
+| 6 | `land.stumbleSpeed` 10 to 13 | the big sets land clean, as in the classic games (the full Harvey Milk set at 12.8 m/s, the full BART set at about 12 m/s); the bail stays at 14 | yes (2026-11-17) |
 
 The second pass took 4 and 5, each with what held it back:
 - **4: clean landings.** The S.K.A.T.E. locals' planned misses land a fixed distance past the clean band
@@ -538,7 +538,7 @@ partway up, or at its foot, when a seam between its triangles opened a few milli
   `vert.copingMinDeg` (45), the skater is moving up, and the coping pipe (a rail-class face) is above
   the wheels within this tick's travel plus `vert.copingReach` (0.03 m), the skater leaves the wall now
   as vert air. It is moved out by however much the pipe overhangs the way up (a few centimetres), so
-  the air clears it. As in THPS, a lip with coping is vert, whatever the face's angle.
+  the air clears it. As in the classic games, a lip with coping is vert, whatever the face's angle.
 - **The vert test reads the wall left from**, the face under the wheels or the board's up, whichever is
   steeper, within `vert.topToleranceDeg` (4) of `vert.minWallDeg`, so 61.6 degrees counts. The
   deck-behind-the-coping rule keeps its old test.
@@ -658,7 +658,7 @@ St up to Lombard (on its middle line), and the Lombard crooked block driven up i
 (one way down in life).
 
 The targets are arcade, not real. A van should feel quick and nimble, a garbage truck heavy but never
-a chore. Neither GTA-like games nor THPS publish their numbers, so the targets come from play: 0-50
+a chore. Neither GTA-like games nor the classic games publish their numbers, so the targets come from play: 0-50
 km/h in 3-4 s for the van and 5-7 s for the truck; stopping from 50 km/h in about 10-13 m and 13-18 m;
 a walking-pace turning circle of 11-14 m and 16-20 m; a handbrake turn that swaps ends (180 degrees)
 from 45 km/h in about 1.3 s for the van; kerbs climbed without a bump; no stalls on the city's
@@ -743,7 +743,7 @@ the city's streets):
    rolling into one at any speed stopped the skater in one tick, with no bump and no bail. The city is
    all curbs. Fixed: the curb hop (rolling.md).
 2. **Turning is slow.** Full lean takes 2.2 s for a 180 at 3 m/s and 3.0 s at 7 m/s (table below):
-   about half the rate THPS plays at. Fixed in round 2: the park-speed carve (board.md).
+   about half the rate the classic games play at. Fixed in round 2: the park-speed carve (board.md).
 3. **The revert had no early press.** The window was the 11 ticks after touching down (92 ms), so a
    press as the wheels met the ramp, or a little before (what players do), was lost, and a plain air
    could not be reverted at all. Fixed (combos.md).
