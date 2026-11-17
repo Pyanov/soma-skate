@@ -1,0 +1,29 @@
+# Missions: a collect step (the Pigeon's five crumbs round the park, 90 s): offer declined first (Not
+# now: missionAbandoned declined), then accepted; the crumbs picked up by teleport, one missionItem
+# each; back at the Pigeon his lines start; done with his sticker.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start pigeons
+cmd 1 mission next all
+cmd 2 mission decline
+cmd 10 mission start pigeons
+cmd 11 mission next all
+cmd 12 mission accept
+cmd 20 teleport 13 21.3 2
+cmd 40 teleport 30 24 1
+cmd 60 teleport 55.7 25.5 1
+cmd 80 teleport 67 15.1 1
+cmd 100 teleport 9.2 8.7 2
+cmd 140 teleport 17 10 1.5
+cmd 200 mission next
+cmd 201 mission next
+run 210
+expect event missionOffer{mission=pigeons} within 2..2
+expect event missionAbandoned{mission=pigeons,reason=declined} within 3..3
+expect event missionStep{mission=pigeons,step=1,kind=collect,seconds=90} within 13..13
+expect event talk{line=pigeons-05,bark=true} within 13..13
+expect event missionItem{n=1,of=5,item=crumb} within 20..24
+expect event missionItem{n=5,of=5} within 100..110
+expect event missionStep{step=2,kind=talk} within 100..110
+expect event talk{character=pigeon,line=pigeons-06,n=0} within 140..145
+expect event missionDone{mission=pigeons,sticker=side-pigeons} within 202..202

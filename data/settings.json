@@ -1,0 +1,600 @@
+{
+  "_doc": "Settings (src/client/settings.ts), saved in this browser (soma-skate:settings). Each group is a page under Settings; each option cycles through its values ([value, label]) when chosen, starting at default; note is the line under it. reduceMotion: how much of the camera's field-of-view changes stay with Reduce motion on (fovScale). palettes: the 2P colours (p1, p2), the balance meter (safe, mid, danger: from the middle out, danger at the ends; hatch draws stripes on the danger ends so colour is never the only cue) and the HUD's landed, bailed and goal colours. mph: km/h to mph. bench: on a new browser with Quality: auto, the first frames on the title are timed (after skipFrames, frames of them); a median above slowMs ms (phoneSlowMs on a phone: a touch screen under 600 px across, whose GPU the CPU-side timing understates) starts the game on low. autoStepDown: on auto, a frame rate under fps for seconds while skating switches to low once, with the toast. presets (src/client/render.ts setPreset): what each Quality draws: pixelRatio = the highest device pixel ratio drawn (a dpr 3 phone is not drawn at 3; phonePixelRatio on a phone, whose GPU the CPU-side timing cannot see), scale = the render scale (auto moves between the two as frames run late or early), ao = ambient occlusion, msaa = multisamples of the scene, shadowMap = the sun's shadow map texels at most, shadowReach = half the side of the shadowed square round the skater in the city (m), cityShadows = buildings, trees and cars cast shadows, drawDistance = the fog's distances times this (the city past the fog is not drawn), npcDistance / npcDetail = NPC skaters drawn within these metres / in full detail within these (beyond: one baked mesh each), birds = the share of pigeons and gulls drawn, vignettes = the ambient vignettes' draw distance times this (under 1, their extra people stay home; data/vignettes.json), castSimple = metres beyond which a cast member is one still merged mesh (0: never; castpeople.ts).",
+  "groups": [
+    {
+      "id": "camera",
+      "label": "Camera",
+      "options": [
+        {
+          "id": "cameraDistance",
+          "label": "Distance",
+          "values": [
+            [
+              0.8,
+              "close"
+            ],
+            [
+              1,
+              "normal"
+            ],
+            [
+              1.25,
+              "far"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "cameraHeight",
+          "label": "Height",
+          "values": [
+            [
+              0.75,
+              "low"
+            ],
+            [
+              1,
+              "normal"
+            ],
+            [
+              1.3,
+              "high"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "invertLook",
+          "label": "Invert look",
+          "values": [
+            [
+              "off",
+              "off"
+            ],
+            [
+              "y",
+              "up and down"
+            ],
+            [
+              "xy",
+              "both ways"
+            ]
+          ],
+          "default": "off",
+          "note": "For the free camera and photo mode."
+        },
+        {
+          "id": "slowmo",
+          "label": "Slow motion",
+          "values": [
+            [
+              "off",
+              "off"
+            ],
+            [
+              "big",
+              "big moments"
+            ],
+            [
+              "every",
+              "every trick"
+            ]
+          ],
+          "default": "big",
+          "note": "At a big air with a flip or grab, a special, a long grind or a gap. Never in races, the Robotaxi Escape, S.K.A.T.E. or with two players."
+        },
+        {
+          "id": "trickCams",
+          "label": "Trick cameras",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true,
+          "note": "A swing to the side for flips and grabs, an orbit at a big air's peak, a push-in along the rail. Off with Reduce motion."
+        },
+        {
+          "id": "reduceMotion",
+          "label": "Reduce motion",
+          "values": [
+            [
+              false,
+              "off"
+            ],
+            [
+              true,
+              "on"
+            ]
+          ],
+          "default": false,
+          "note": "No landing shake or dip, top-speed tremor, goal punch-in or special swing; gentler field of view changes."
+        }
+      ]
+    },
+    {
+      "id": "hud",
+      "label": "HUD",
+      "options": [
+        {
+          "id": "hud",
+          "label": "HUD",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true
+        },
+        {
+          "id": "hudScale",
+          "label": "Size",
+          "values": [
+            [
+              0.85,
+              "85%"
+            ],
+            [
+              1,
+              "100%"
+            ],
+            [
+              1.2,
+              "120%"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "highContrast",
+          "label": "High contrast",
+          "values": [
+            [
+              false,
+              "off"
+            ],
+            [
+              true,
+              "on"
+            ]
+          ],
+          "default": false,
+          "note": "The trick string and pops on solid dark plates."
+        },
+        {
+          "id": "minimap",
+          "label": "Minimap",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true
+        },
+        {
+          "id": "hints",
+          "label": "First-time tips",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true
+        },
+        {
+          "id": "captions",
+          "label": "Captions",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true,
+          "note": "Subtitles for the robotaxi, Muni's announcements and the radio DJs."
+        },
+        {
+          "id": "units",
+          "label": "Speed",
+          "values": [
+            [
+              "kmh",
+              "km/h"
+            ],
+            [
+              "mph",
+              "mph"
+            ]
+          ],
+          "default": "kmh",
+          "note": "The speedometer, the hill bombs and top speeds."
+        }
+      ]
+    },
+    {
+      "id": "audio",
+      "label": "Audio",
+      "options": [
+        {
+          "id": "master",
+          "label": "Master",
+          "values": [
+            [
+              1,
+              "100%"
+            ],
+            [
+              0.75,
+              "75%"
+            ],
+            [
+              0.5,
+              "50%"
+            ],
+            [
+              0.25,
+              "25%"
+            ],
+            [
+              0,
+              "off"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "sfx",
+          "label": "Sound effects",
+          "values": [
+            [
+              1,
+              "100%"
+            ],
+            [
+              0.75,
+              "75%"
+            ],
+            [
+              0.5,
+              "50%"
+            ],
+            [
+              0.25,
+              "25%"
+            ],
+            [
+              0,
+              "off"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "voices",
+          "label": "Voices",
+          "values": [
+            [
+              1,
+              "100%"
+            ],
+            [
+              0.75,
+              "75%"
+            ],
+            [
+              0.5,
+              "50%"
+            ],
+            [
+              0.25,
+              "25%"
+            ],
+            [
+              0,
+              "off"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "ambience",
+          "label": "Crowd and ambience",
+          "values": [
+            [
+              1,
+              "100%"
+            ],
+            [
+              0.75,
+              "75%"
+            ],
+            [
+              0.5,
+              "50%"
+            ],
+            [
+              0.25,
+              "25%"
+            ],
+            [
+              0,
+              "off"
+            ]
+          ],
+          "default": 1
+        },
+        {
+          "id": "music",
+          "label": "Music",
+          "values": [
+            [
+              1,
+              "100%"
+            ],
+            [
+              0.75,
+              "75%"
+            ],
+            [
+              0.5,
+              "50%"
+            ],
+            [
+              0.25,
+              "25%"
+            ],
+            [
+              0,
+              "off"
+            ]
+          ],
+          "default": 1
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "label": "Colours",
+      "options": [
+        {
+          "id": "palette",
+          "label": "Palette",
+          "values": [
+            [
+              "standard",
+              "standard"
+            ],
+            [
+              "cb",
+              "colour-blind safe"
+            ]
+          ],
+          "default": "standard",
+          "note": "The two players' graffiti tags in colours that stay apart for colour-blind eyes, and marks on the balance line where it gets dangerous."
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "label": "Video and controls",
+      "options": [
+        {
+          "id": "quality",
+          "label": "Quality",
+          "values": [
+            [
+              "auto",
+              "auto"
+            ],
+            [
+              "high",
+              "high"
+            ],
+            [
+              "low",
+              "low"
+            ]
+          ],
+          "default": "auto"
+        },
+        {
+          "id": "lens",
+          "label": "Lens",
+          "values": [
+            [
+              true,
+              "Fisheye"
+            ],
+            [
+              false,
+              "Flat"
+            ]
+          ],
+          "default": true,
+          "note": "The filmer's lens: a slight fisheye and darker corners, stronger on the trick cameras."
+        },
+        {
+          "id": "picture",
+          "label": "Picture",
+          "values": [
+            [
+              "standard",
+              "Standard"
+            ],
+            [
+              "ps2",
+              "Retro"
+            ]
+          ],
+          "default": "standard",
+          "note": "Retro draws the game at 448 lines with an ordered dither, like a 2002 console."
+        },
+        {
+          "id": "rumble",
+          "label": "Rumble",
+          "values": [
+            [
+              true,
+              "on"
+            ],
+            [
+              false,
+              "off"
+            ]
+          ],
+          "default": true
+        },
+        {
+          "id": "touch",
+          "label": "Touch controls",
+          "values": [
+            [
+              "auto",
+              "auto"
+            ],
+            [
+              "on",
+              "always"
+            ],
+            [
+              "off",
+              "never"
+            ]
+          ],
+          "default": "auto",
+          "note": "On a touch screen; hidden while a pad or keyboard is in use."
+        }
+      ]
+    }
+  ],
+  "reduceMotion": {
+    "fovScale": 0.3
+  },
+  "palettes": {
+    "standard": {
+      "p1": "#ff4f00",
+      "p2": "#6fd6ff",
+      "safe": "#4be08a",
+      "mid": "#ffd23f",
+      "danger": "#ff3b3b",
+      "hatch": false,
+      "landed": "#4be08a",
+      "bailed": "#ff3b3b",
+      "goal": "#4be08a"
+    },
+    "cb": {
+      "p1": "#e69f00",
+      "p2": "#56b4e9",
+      "safe": "#56b4e9",
+      "mid": "#f0e442",
+      "danger": "#d55e00",
+      "hatch": true,
+      "landed": "#56b4e9",
+      "bailed": "#d55e00",
+      "goal": "#56b4e9"
+    }
+  },
+  "mph": 0.621371,
+  "bench": {
+    "skipFrames": 30,
+    "frames": 90,
+    "slowMs": 28,
+    "phoneSlowMs": 20,
+    "toast": "Quality set to low for this device (Settings > Video and controls)"
+  },
+  "autoStepDown": {
+    "fps": 25,
+    "seconds": 10,
+    "toast": "Quality set to low: the frame rate stayed under 25 (Settings > Video and controls)"
+  },
+  "presets": {
+    "high": {
+      "pixelRatio": 2,
+      "scale": [
+        1,
+        1
+      ],
+      "ao": true,
+      "msaa": 4,
+      "shadowMap": 8192,
+      "shadowReach": 110,
+      "cityShadows": true,
+      "drawDistance": 1,
+      "npcDistance": 90,
+      "npcDetail": 5,
+      "birds": 1,
+      "paintFull": true,
+      "sealions": 1,
+      "carDetail": 160,
+      "vignettes": 1,
+      "castSimple": 0
+    },
+    "auto": {
+      "pixelRatio": 2,
+      "scale": [
+        0.5,
+        1
+      ],
+      "ao": true,
+      "msaa": 4,
+      "shadowMap": 8192,
+      "shadowReach": 110,
+      "cityShadows": true,
+      "drawDistance": 1,
+      "npcDistance": 90,
+      "npcDetail": 5,
+      "birds": 1,
+      "paintFull": true,
+      "sealions": 1,
+      "carDetail": 140,
+      "phonePixelRatio": 1.5,
+      "vignettes": 1,
+      "castSimple": 0
+    },
+    "low": {
+      "pixelRatio": 1,
+      "scale": [
+        0.85,
+        0.85
+      ],
+      "ao": false,
+      "msaa": 0,
+      "shadowMap": 2048,
+      "shadowReach": 45,
+      "cityShadows": false,
+      "drawDistance": 0.6,
+      "npcDistance": 40,
+      "npcDetail": 0,
+      "birds": 0.35,
+      "paintFull": false,
+      "sealions": 0.5,
+      "carDetail": 45,
+      "vignettes": 0.6,
+      "castSimple": 30
+    }
+  }
+}

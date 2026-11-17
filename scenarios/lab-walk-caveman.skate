@@ -1,0 +1,14 @@
+# Run, jump, and press E in the air: the board goes under the feet mid-air (a THUG caveman) and
+# you land rolling, tricks and grinds open in the air.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+tap walk 10
+hold up 20..120
+tap ollie 120
+tap walk 135
+run 260
+expect event boardDrop{air=true} within 135..137
+expect state air at 140
+expect event land{quality=clean} within 160..215
+expect state ground at end
+expect skater.speed > 3 at end

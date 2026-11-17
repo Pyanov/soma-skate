@@ -1,0 +1,17 @@
+# Robotaxi Escape anti-hide: you hide in the middle of Dolores Park, 89 m from the nearest street, and
+# stay. After 10 s more than 40 m from every street (escape.backup) the robotaxi calls for backup: a
+# second robotaxi at the street end nearest you, and both chase. Neither can leave the streets, so
+# you survive the 90 s, worth only the survival bonus (escape.survivalBonus, 500): no tricks.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -310 -230 20 90
+cmd 1 run escape
+run 11000
+expect event escapeStart{car=83} within 2..2
+expect session.escapeHide == 1185 at 1199
+expect event escapeBackup{car=84,dist=97.18} within 1201..1201   # 91.65 before city phase 11 (its streets listed nearest the park first)
+expect event escapeBackup count == 1
+expect event escapeOver{survived=true,score=500,bonus=500} within 10801..10801
+expect skater.score == 500 at end
+expect session.escapeBackup == 84 at end

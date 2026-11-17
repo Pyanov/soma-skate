@@ -1,0 +1,15 @@
+# WAVE AIR needs travel (gaps.json minMeters 3): a full ollie standing on top of the wave flies
+# 107 ticks but goes nowhere and pays nothing (it paid 150 every hop); rolling over it at 5 m/s and
+# ollieing off the top, 144 ticks and about 6 m, is WAVE AIR.
+park soma
+cmd 0 teleport 55 26.5 -0.4 90
+hold ollie 20..50
+cmd 400 teleport 50 26.5 -0.8 90
+cmd 430 speed 5
+hold ollie 460..510
+run 800
+expect event land{airTicks=107} within 156..160
+expect event gap{id=wave} count == 1
+expect event gap{id=wave,points=150} within 653..657
+expect event comboLanded{name=WAVE AIR,points=150} within 665..669
+expect no event bail

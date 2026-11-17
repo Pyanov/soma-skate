@@ -1,0 +1,16 @@
+# Pedestrians: `ped spawn` puts 24 walkers on the sidewalks around you (Valencia here), all within
+# 100 m; teleport to Dolores Park and they come back around you there, three a tick. (In the squeezed
+# city the park is 200 m from the Valencia shops: one walker, near Valencia and 15th St, is 127 m off,
+# inside despawn's 130 m, so it walks on where it is and 23 come back.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 ped spawn
+cmd 1200 teleport dolores_ledges
+run 1400
+expect peds.alive == 24 at 2
+expect peds.near == 24 at 2
+expect peds.near == 24 at 1100
+expect peds.near < 10 at 1201
+expect peds.near == 23 at 1220
+expect no event pedHit

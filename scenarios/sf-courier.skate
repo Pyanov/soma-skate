@@ -1,0 +1,23 @@
+# Courier mode (run courier): you start at Hector's door, Taqueria La Niebla on Mission (city phase 13's
+# interior; it was a taqueria on Valencia before physics phase 31, beside the skate shop's door now), and
+# pick up the first order at once (50 s: the sourdough line at Valencia & 17th is a block and a half from
+# Mission St). Delivered (here by teleport, 1.7 s in): +1000, and the next order is handed over on the
+# spot, its 60 s on top of the 48.3 s left (Dolores Park hammock). Delivered there too: the next one
+# (Clarion Alley) adds 45 s.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run courier
+cmd 200 teleport -55.3 -305 2.61 356
+cmd 600 teleport -235 -230 12.53 356
+run 700
+expect event courierPickup{leg=0,id=sourdough,seconds=50} within 1..3
+expect event courierDeliver{n=1,id=sourdough,points=1000,timeLeft=48.34} within 200..202
+expect event courierPickup{leg=1,id=hammock,timeLeft=108.34,bonus=48.34} within 200..202
+expect event courierDeliver{n=2,id=hammock} within 600..602
+expect event courierPickup{leg=2,id=mission} within 600..602
+expect session.courierDone == 2 at 650
+expect skater.score == 2000 at 650
+expect skater.pos.x < 160 at 2
+expect skater.pos.x > 150 at 2
+expect no event courierFail

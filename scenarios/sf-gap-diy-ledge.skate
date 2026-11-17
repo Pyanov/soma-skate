@@ -1,0 +1,18 @@
+# FREEWAY DIY (city phase 13's DIY spot under the Central Freeway): an ollie onto the top edge of its
+# concrete bank from beside it and a boardslide along it to its end.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -45.49 35.78 1.88 105.7
+cmd 3 set skater.vel.x 3.852
+cmd 3 set skater.vel.y -1.079
+hold ollie 94..124
+tap grind 136..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=FS Boardslide,line=ledge_-42_34} within 162..166
+expect event grindEnd{reason=end} within 449..453
+expect event gap{id=diy_ledge,gap=FREEWAY DIY,points=300} within 449..453
+expect event land{quality=clean} within 530..534
+expect event comboLanded{name=FS Boardslide + FREEWAY DIY} within 541..545
+expect no event bail
+expect event goalComplete{id=diy,name=DIY or Die} within 449..453

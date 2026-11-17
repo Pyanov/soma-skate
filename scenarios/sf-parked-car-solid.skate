@@ -1,0 +1,12 @@
+# Parked cars are solid (on an older build the skater rolled through them).
+# Roll at 5 m/s straight into the street side of a parked car on Valencia (west curb, heading
+# 355.7): the body stops the skater at its side; the skater never ends up inside the car. (The car
+# 3 m further south since city phase 11, the start with it.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -56.77 -265.2 2.4 265.7
+cmd 1 set skater.vel.x -4.99
+cmd 1 set skater.vel.y -0.37
+run 240
+expect min skater.pos.x > -62.07

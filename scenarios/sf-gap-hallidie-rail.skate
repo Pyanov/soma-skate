@@ -1,0 +1,19 @@
+# HALLIDIE RAIL: a handrail down Hallidie Plaza's steps toward the BART concourse, an ollie onto it near
+# its top and a 50-50 down it. (In the squeezed city the plaza slopes down to the rail's top, so the
+# run-up is short, and the takeoff is 0.2 m right of the rail's line, so the side is never a tie.)
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 529.06 336.39 -11.21 124.6
+cmd 3 set skater.vel.x 3.294
+cmd 3 set skater.vel.y -2.269
+hold ollie 31..61
+tap grind 73..131 every 4
+bot balance
+run 600
+expect event grindStart{trick=BS 50-50,line=rail_532_335} within 72..76
+expect event grindEnd{reason=end} within 275..279
+expect event gap{id=hallidie_rail,gap=HALLIDIE RAIL,points=500} within 275..279
+expect event land{quality=clean} within 328..332
+expect event comboLanded{name=BS 50-50 + HALLIDIE RAIL} within 339..343
+expect no event bail
+expect event goalComplete{id=hallidie,name=Hallidie Handrail} within 275..279

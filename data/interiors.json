@@ -1,0 +1,167 @@
+{
+  "_doc": [
+    "The interiors' dressing (src/client/interiors.ts), draw-only, on top of the city's rooms (city.interiors in sf.city.json:",
+    "door, inward, floor, height, polygon, anchors). Never collides: the city's own collision is untouched. Per room kind:",
+    "floor (an overlay on the room's floor: wood, checker, terrazzo, marble; colours, metres per tile), ceiling (an overlay",
+    "under the city's ceiling: colour, beams), and lists of placed things. A placement: at (an anchor of the room; its own",
+    "heading is the frame) or frame room (the door and the way in), off [right, ahead] metres in that frame, z metres over",
+    "the floor (onTop: on whatever is below instead, a counter or a table), face degrees turned from the frame's heading,",
+    "wall: pushed back (against the way it faces) onto the wall behind it, this far off it (the wall found at wallZ metres",
+    "over the floor, else its own height).",
+    "rugs (w, h, colours), lights (pendant, tube, spot, chandelier, sconce: a fixture with a glowing lamp and a pool of",
+    "light on the floor; colour), signs (neon, board, chalk, led: text lines on a plane, w, h, colours), props (kind and",
+    "colours: the props interiors.ts builds), people (a data/pedestrians.json type and an act, src/client/vignettes.ts ACTS,",
+    "seat for a chair; they join the crowd as small vignettes standing on the room's floor, and keep off the cast's own anchors",
+    "(cast.json inside: Hector at the grill, Gloria at her window, Big Lou behind his counter). drawDistance: metres from the",
+    "camera a room's dressing is drawn within; pool: the light pools' strength by day and by night; lampGain: the street",
+    "lights' share of the dressing's light at night (the room's own fixtures and pools carry the night look); indoorLampReach:",
+    "the reach (m) of the city's own night lamps inside a room (at a street light's 13 m two of them blow out a small room);",
+    "indoorBloom: the night bloom's share while the camera is inside a room (the export's lamp lenses haze a small room)."
+  ],
+  "drawDistance": 46,
+  "pool": { "day": 0.32, "night": 0.62 },
+  "lampGain": 0.25,
+  "indoorLampReach": 5,
+  "indoorBloom": 0.35,
+  "rooms": {
+    "skateshop": {
+      "floor": { "kind": "wood", "colors": ["#a9784a", "#946338", "#b98a58"], "tile": 0.18 },
+      "ceiling": { "color": "#c4b8a6", "beams": "#5a4030" },
+      "rugs": [ { "at": "counter", "off": [0, -0.5], "w": 2.4, "h": 1.5, "colors": ["#2a9a9a", "#e8642a", "#f4efe0"] }, { "frame": "room", "off": [-1.8, 1.4], "w": 1.6, "h": 1.0, "colors": ["#1f1f22", "#f2c84a", "#f4efe0"] } ],
+      "lights": [
+        { "kind": "pendant", "at": "counter", "off": [0, 0.7], "z": 3.2, "color": "#ffcf8a" },
+        { "kind": "spot", "at": "deck_wall", "off": [-1.2, 1.0], "z": 3.9, "color": "#fff0d0" }, { "kind": "spot", "at": "deck_wall", "off": [1.2, 1.0], "z": 3.9, "color": "#fff0d0" },
+        { "kind": "tube", "frame": "room", "off": [-1.8, 6.0], "z": 4.1, "color": "#ffe6b8" }, { "kind": "tube", "frame": "room", "off": [-1.8, 11.0], "z": 4.1, "color": "#ffe6b8" },
+        { "kind": "pendant", "at": "ramp", "off": [0, 1.4], "z": 3.6, "color": "#ffcf8a" }
+      ],
+      "signs": [
+        { "kind": "neon", "at": "deck", "off": [0, -0.4], "z": 2.6, "face": 0, "wall": 0.05, "w": 2.6, "h": 0.9, "text": ["FOG CITY", "SKATE"], "color": "#ff5fa2" },
+        { "kind": "board", "at": "counter", "off": [0, 0.75], "z": 2.75, "face": 180, "double": true, "w": 1.6, "h": 1.0, "text": ["DECKS $60", "GRIP $12", "WHEELS $38", "BEARINGS $20", "NO REFUNDS ON SLAMS"], "color": "#f4efe0", "bg": "#1f1f22" },
+        { "kind": "neon", "frame": "room", "off": [1.2, 0.6], "z": 2.4, "face": 0, "wall": 0.04, "w": 0.9, "h": 0.4, "text": ["OPEN"], "color": "#ff4040" },
+        { "kind": "board", "frame": "room", "off": [-3.0, 3.0], "z": 1.75, "face": 90, "wall": 0.02, "w": 0.7, "h": 0.95, "text": ["SOMA WEST", "JAM", "SAT · ALL AGES", "BRING A HELMET"], "color": "#f2c84a", "bg": "#22304a" },
+        { "kind": "board", "frame": "room", "off": [-3.0, 4.2], "z": 1.75, "face": 90, "wall": 0.02, "w": 0.7, "h": 0.95, "text": ["FOG CITY", "TEAM", "VIDEO", "PREMIERE"], "color": "#1f1f22", "bg": "#e8642a" },
+        { "kind": "board", "frame": "room", "off": [-2.4, 0.6], "z": 2.0, "face": 0, "wall": 0.02, "w": 1.1, "h": 0.5, "text": ["NO SKATING", "IN THE SHOP", "(mostly)"], "color": "#f4efe0", "bg": "#d8352a" }
+      ],
+      "props": [
+        { "kind": "stickers", "at": "counter", "off": [0, 0.75], "onTop": true },
+        { "kind": "griptape", "at": "counter", "off": [0.55, 0.85], "onTop": true },
+        { "kind": "register", "at": "counter", "off": [-0.5, 0.85], "onTop": true },
+        { "kind": "wheelDisplay", "at": "deck_wall", "off": [2.8, 0.4], "z": 1.85, "face": 180, "wall": 0.02 },
+        { "kind": "apparel", "at": "deck_wall", "off": [-0.4, 0.4], "face": 180, "wall": 0.0, "wallZ": 1.6, "length": 3.2, "colors": ["#1f1f22", "#e8642a", "#f4efe0", "#2a9a9a", "#1f1f22", "#d8352a", "#f2c84a"] },
+        { "kind": "shoeBoxes", "at": "deck_wall", "off": [-2.9, 1.15], "onTop": true, "face": 180 },
+        { "kind": "bench", "frame": "room", "off": [-3.6, 10.0], "face": 90 }
+      ],
+      "people": [
+        { "type": "techPhone", "act": "browse", "at": "deck_wall", "off": [0.3, 0.2], "face": 0 },
+        { "type": "rollerDisco", "act": "wait", "at": "counter", "off": [0.6, -0.4], "face": 0 },
+        { "type": "breaker", "act": "sitPhone", "frame": "room", "off": [-3.6, 10.0], "face": 90, "seat": 0.45 }
+      ]
+    },
+    "taqueria": {
+      "floor": { "kind": "checker", "colors": ["#c85a32", "#f2e2c4"], "tile": 0.5 },
+      "rugs": [],
+      "lights": [
+        { "kind": "pendant", "at": "counter", "off": [-1.4, 0.6], "z": 2.7, "color": "#ffc070" }, { "kind": "pendant", "at": "counter", "off": [1.4, 0.6], "z": 2.7, "color": "#ffc070" },
+        { "kind": "pendant", "frame": "room", "off": [-2.2, 3.2], "z": 2.7, "color": "#ffb060" }, { "kind": "pendant", "frame": "room", "off": [2.2, 3.2], "z": 2.7, "color": "#ffb060" },
+        { "kind": "pendant", "frame": "room", "off": [-2.2, 6.4], "z": 2.7, "color": "#ffb060" }, { "kind": "pendant", "frame": "room", "off": [2.2, 6.4], "z": 2.7, "color": "#ffb060" }
+      ],
+      "signs": [
+        { "kind": "chalk", "at": "cook", "off": [0, 0], "z": 1.85, "face": 0, "wall": 0.02, "w": 3.2, "h": 1.3, "text": ["BURRITO .......... 11", "SUPER  ............ +2", "TACOS ............ 3.50", "QUESADILLA ...... 9", "HORCHATA ......... 3"], "color": "#f4efe0", "bg": "#22302a" },
+        { "kind": "neon", "frame": "room", "off": [-3.0, 5.0], "z": 2.3, "face": 90, "wall": 0.04, "w": 1.6, "h": 0.6, "text": ["TACOS"], "color": "#ffb030" },
+        { "kind": "board", "at": "counter", "off": [-2.4, 0.3], "z": 1.25, "face": 0, "w": 0.7, "h": 0.32, "text": ["SALSA BAR"], "color": "#1f1f22", "bg": "#f2c84a" }
+      ],
+      "props": [
+        { "kind": "salsaBar", "at": "counter", "off": [-2.4, 0.2], "face": 0 },
+        { "kind": "aguas", "at": "counter", "off": [1.0, 0.75], "onTop": true },
+        { "kind": "papel", "frame": "room", "off": [0, 2.0], "z": 2.9, "face": 0, "colors": ["#e8642a", "#2a9a9a", "#f2c84a", "#f28ab4", "#8fd23a"] },
+        { "kind": "papel", "frame": "room", "off": [0, 5.2], "z": 2.9, "face": 0, "colors": ["#e8642a", "#2a9a9a", "#f2c84a", "#f28ab4", "#8fd23a"] },
+        { "kind": "napkins", "at": "table", "off": [0, 0.75], "onTop": true }
+      ],
+      "people": [
+        { "type": "barista", "act": "cook", "at": "cook", "off": [1.3, 0.1], "face": 0 },
+        { "type": "techPhone", "act": "wait", "at": "counter", "off": [0, 0], "face": 0 },
+        { "type": "tourist", "act": "wait", "at": "counter", "off": [0.3, -1.1], "face": 0 },
+        { "type": "laptopWorker", "act": "eat", "at": "table", "off": [0, 0], "face": 0, "seat": 0.46 }
+      ]
+    },
+    "laundromat": {
+      "floor": { "kind": "checker", "colors": ["#e8eef2", "#5a7a9a"], "tile": 0.4 },
+      "lights": [
+        { "kind": "tube", "frame": "room", "off": [-2.2, 4.0], "z": 3.5, "color": "#eef6ff" }, { "kind": "tube", "frame": "room", "off": [2.2, 4.0], "z": 3.5, "color": "#eef6ff" },
+        { "kind": "tube", "frame": "room", "off": [-2.2, 9.0], "z": 3.5, "color": "#eef6ff" }, { "kind": "tube", "frame": "room", "off": [2.2, 9.0], "z": 3.5, "color": "#eef6ff" },
+        { "kind": "tube", "frame": "room", "off": [0, 13.5], "z": 3.5, "color": "#eef6ff" }
+      ],
+      "signs": [
+        { "kind": "board", "frame": "room", "off": [0, 14.0], "z": 2.3, "face": 180, "wall": 0.02, "w": 2.4, "h": 1.0, "text": ["SUDS CITY", "WASH $3.50 · DRY 25¢ / 8 MIN", "OPEN 6AM - 11PM"], "color": "#1f1f22", "bg": "#f4efe0" },
+        { "kind": "board", "frame": "room", "off": [2.0, 6.5], "z": 1.75, "face": -90, "wall": 0.02, "w": 1.0, "h": 0.7, "text": ["LOST SOCKS"], "color": "#1f1f22", "bg": "#c8a070" }
+      ],
+      "props": [
+        { "kind": "basket", "at": "washers", "off": [-1.2, -0.7], "face": 20, "colors": ["#f28ab4", "#2a9a9a", "#f4efe0"] },
+        { "kind": "basket", "at": "washers", "off": [1.4, -0.6], "face": -15, "colors": ["#e8642a", "#22304a", "#f2c84a"] },
+        { "kind": "folded", "at": "counter", "off": [0.4, 0.6], "onTop": true },
+        { "kind": "folded", "at": "counter", "off": [-0.5, 0.6], "onTop": true },
+        { "kind": "changer", "frame": "room", "off": [2.0, 12.0], "face": -90, "wall": 0.02, "wallZ": 1.9 },
+        { "kind": "plant", "frame": "room", "off": [-4.1, 15.4], "face": 0 },
+        { "kind": "socks", "frame": "room", "off": [2.0, 6.5], "z": 1.75, "face": -90, "wall": 0.0 },
+        { "kind": "portholes", "at": "washers", "off": [0, 0], "z": 0.55, "face": 180, "length": 10.0, "spacing": 0.76 },
+        { "kind": "portholes", "frame": "room", "off": [0, 8.0], "z": 0.55, "face": -90, "length": 10.0, "spacing": 0.76 },
+        { "kind": "chairs", "frame": "room", "off": [-1.4, 5.5], "face": -90, "length": 1.65, "colors": ["#e8642a"] },
+        { "kind": "wetFloor", "frame": "room", "off": [1.3, 7.2], "face": 30 }
+      ],
+      "people": [
+        { "type": "tourist", "act": "fold", "at": "counter", "off": [0, 0], "face": 0 },
+        { "type": "techVR", "act": "sitPhone", "at": "bench", "off": [0, 0], "face": 0, "seat": 0.45 },
+        { "type": "grandma", "act": "sitPhone", "frame": "room", "off": [-1.4, 5.5], "face": -90, "seat": 0.44 },
+        { "type": "techPhone", "act": "wait", "at": "washers", "off": [1.6, 0.2], "face": 0 }
+      ]
+    },
+    "store": {
+      "floor": { "kind": "checker", "colors": ["#d8d8cc", "#b8bcb4"], "tile": 0.45 },
+      "rugs": [ { "at": "counter", "off": [0, -0.4], "w": 1.6, "h": 0.9, "colors": ["#22304a", "#d8352a", "#f4efe0"] } ],
+      "lights": [
+        { "kind": "tube", "frame": "room", "off": [-1.5, 3.0], "z": 3.5, "color": "#f4fbff" }, { "kind": "tube", "frame": "room", "off": [1.8, 3.0], "z": 3.5, "color": "#f4fbff" },
+        { "kind": "tube", "frame": "room", "off": [-1.5, 7.5], "z": 3.5, "color": "#f4fbff" }, { "kind": "tube", "frame": "room", "off": [1.8, 7.5], "z": 3.5, "color": "#f4fbff" },
+        { "kind": "spot", "at": "fruit", "off": [0, 0.8], "z": 3.4, "color": "#fff0d0" }
+      ],
+      "signs": [
+        { "kind": "board", "at": "clerk", "off": [0, 0], "z": 2.05, "face": 0, "wall": 0.02, "w": 1.8, "h": 0.6, "text": ["VALENCIA CORNER MARKET", "COLD DRINKS · SNACKS · TORTILLAS"], "color": "#f4efe0", "bg": "#d8352a" },
+        { "kind": "board", "at": "fruit", "off": [0, 1.28], "z": 1.06, "face": 180, "double": true, "w": 0.6, "h": 0.36, "text": ["MANGOS", "2 FOR $3"], "color": "#1f1f22", "bg": "#f2c84a" },
+        { "kind": "led", "at": "clerk", "off": [1.3, 0], "z": 1.55, "face": 0, "wall": 0.02, "w": 0.8, "h": 0.26, "text": ["LOTTO $47M"], "color": "#3aff6a", "bg": "#141414" },
+        { "kind": "neon", "frame": "room", "off": [0, 0.4], "z": 2.6, "face": 180, "w": 1.0, "h": 0.4, "text": ["OPEN"], "color": "#ff4040" }
+      ],
+      "props": [
+        { "kind": "fruit", "at": "fruit", "off": [0, 0.9], "face": 180 },
+        { "kind": "cooler", "frame": "room", "off": [1.5, 11.5], "face": 180, "wall": 0.03, "wallZ": 1.0 },
+        { "kind": "snacks", "at": "counter", "off": [-0.5, 0.7], "onTop": true }
+      ],
+      "people": [
+        { "type": "grandma", "act": "browse", "at": "fruit", "off": [0, 0], "face": 0 },
+        { "type": "elder", "act": "clerk", "at": "clerk", "off": [0, 0], "face": 0 }
+      ]
+    },
+    "cityhall": {
+      "floor": { "kind": "marble", "colors": ["#ece6d8", "#b8b0a2"], "tile": 1.2 },
+      "rugs": [ { "frame": "room", "off": [0, 22.0], "w": 2.6, "h": 40.0, "colors": ["#a8242a", "#d8b04a", "#a8242a"], "runner": true } ],
+      "lights": [
+        { "kind": "chandelier", "frame": "room", "off": [0, 8.0], "z": 7.6, "color": "#ffd8a0" }, { "kind": "chandelier", "frame": "room", "off": [0, 20.0], "z": 7.6, "color": "#ffd8a0" },
+        { "kind": "chandelier", "frame": "room", "off": [0, 32.0], "z": 7.6, "color": "#ffd8a0" }, { "kind": "chandelier", "frame": "room", "off": [0, 44.0], "z": 7.6, "color": "#ffd8a0" },
+        { "kind": "sconce", "at": "window", "off": [-1.6, 1.4], "z": 2.6, "color": "#ffd8a0" }, { "kind": "sconce", "at": "window", "off": [1.6, 1.4], "z": 2.6, "color": "#ffd8a0" }
+      ],
+      "signs": [
+        { "kind": "led", "at": "clerk", "off": [0, -0.5], "z": 2.55, "face": 0, "w": 1.2, "h": 0.34, "text": ["NOW SERVING 047"], "color": "#ff3a2a", "bg": "#141414" },
+        { "kind": "board", "at": "window", "off": [1.15, -4.6], "z": 1.4, "face": 0, "w": 0.75, "h": 0.5, "text": ["PERMITS", "LINE STARTS HERE", "→"], "color": "#1f1f22", "bg": "#f4efe0", "stand": true },
+        { "kind": "board", "at": "window", "off": [0, 0.75], "z": 2.15, "face": 180, "w": 1.0, "h": 0.28, "text": ["PERMITS · WINDOW 3"], "color": "#f4efe0", "bg": "#22304a" }
+      ],
+      "props": [
+        { "kind": "velvet", "at": "window", "off": [0, -0.6], "face": 0, "length": 5.0 }
+      ],
+      "people": [
+        { "type": "suit", "act": "wait", "at": "window", "off": [0, 0], "face": 0 },
+        { "type": "groom", "act": "wait", "at": "window", "off": [0, -1.0], "face": 0 },
+        { "type": "bride", "act": "wait", "at": "window", "off": [0, -1.9], "face": 0 },
+        { "type": "mapTourist", "act": "wait", "at": "window", "off": [0.1, -2.9], "face": 10 },
+        { "type": "techPhone", "act": "sitPhone", "at": "bench", "off": [0, 0], "face": 0, "seat": 0.45 }
+      ]
+    }
+  }
+}

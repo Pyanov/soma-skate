@@ -1,0 +1,36 @@
+# The crew van and the traffic (game/vehicles.ts, game/traffic.ts; docs/mechanics/driving.md). The van
+# stands in Duboce's eastbound lane with someone in it. A car comes up the lane: it yields to the van as
+# to a skater (its lane and stopping room grown by the van's size), stops behind it and honks. The van
+# backs into it: a bump (vanBump, what car), the van stops against its bumper, the car stays on its
+# lane. Then a robotaxi the same way: it stops dead (robotaxiStop), hazards on, a polite honk, and
+# backing into it is a bump too. No damage, no bail: bumping is all.
+park sf
+cmd 0 traffic clear
+cmd 1 van summon 78 -4 90
+cmd 2 teleport 78 -1.6 -1.7 90
+tap use 30
+cmd 40 car 52 -5.4 90 9
+hold down 700..900
+cmd 1100 traffic clear
+cmd 1101 vehicle exit
+cmd 1102 van summon 78 -4 90
+cmd 1103 teleport 78 -1.6 -1.7 90
+tap use 1130
+cmd 1140 car 52 -5.4 90 9 robo
+hold down 1800..2200
+run 2600
+expect event vehicleEnter{name=crew_van} count == 2
+expect car.car.yielding == 1 at 400
+expect car.car.speed < 0.1 at 450
+expect car.gap > 9 at 450
+expect event honk{robo=false} within 490..505
+expect event vanBump{what=car} within 990..1000
+expect van.hspeed < 0.5 at 1000
+expect car.pos.x < 68.5 at 1000
+expect event robotaxiStop within 1260..1270
+expect car.car.hazard == 1 at 1450
+expect event honk{robo=true} within 1480..1490
+expect event vanBump{what=robotaxi} within 2205..2215
+expect event vanBump count == 2
+expect no event bail
+expect no event carHit

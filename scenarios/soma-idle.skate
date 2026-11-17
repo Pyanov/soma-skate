@@ -1,0 +1,6 @@
+# Standing still (braking) at the Big 3 run-up: the idle fidget shows after a couple of seconds.
+park soma
+spawn big3
+hold down 0..300
+run 300
+expect skater.speed < 0.15 at end

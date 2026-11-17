@@ -1,0 +1,14 @@
+# TURNTABLE RIM at Powell & Market (and the city goal Turntable Rim): down Powell beside the cable car on the
+# turntable, 4.3 m off its middle, an ollie across the edge of the timber disc (in over the iron rim, out
+# over it again), 1 s in the air.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 600.79 407.63 -8.57 170.6
+cmd 3 set skater.vel.x 0.984
+cmd 3 set skater.vel.y -5.919
+hold ollie 160..190
+run 400
+expect event gap{id=turntable_powell,gap=TURNTABLE RIM,points=400} within 303..307
+expect event goalComplete{id=turntable,name=Turntable Rim} within 303..307
+expect event land{quality=clean} within 303..307
+expect no event bail

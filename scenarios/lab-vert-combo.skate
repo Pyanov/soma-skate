@@ -1,0 +1,14 @@
+# Vert air at 10 m/s: kickflip, then an Indy held a moment, land fakie: two tricks, multiplier 2.
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap flip+left 212
+hold grab+right 260..262
+hold grab 262..310
+run 600
+expect event air{vert=true} within 205..213
+expect event trickEnd{trick=Kickflip} within 254..262
+expect event trickEnd{trick=Indy} within 310..340
+expect event land{fakie=true} within 340..400
+expect event comboLanded{name=Kickflip + Indy,multiplier=2} within 340..400
+expect no event bail

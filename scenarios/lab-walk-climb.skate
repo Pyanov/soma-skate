@@ -1,0 +1,12 @@
+# On foot, run into the 0.45 m lab ledge: pressing forward climbs it (walk.climbMax 0.5 m) in
+# walk.climbTicks, up first and then over the edge; run across and drop off the far side.
+park lab
+cmd 0 teleport 7 -3 0.13 0
+tap walk 10
+hold up 20..260
+run 320
+expect event climb{height=0.45} within 140..146
+expect max skater.pos.z > 0.56 over 165..200
+expect event footLand within 238..252
+expect skater.pos.z < 0.13 at end
+expect skater.pos.y > 1.2 at end

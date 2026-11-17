@@ -1,0 +1,21 @@
+# Grab mashed behind a car: a skitch towed for less than traffic.skitch.minSeconds (1 s) never
+# happened. Behind a car at 7 m/s (sf-skitch-hold's setup), the grab tapped every 2 ticks for 10 s:
+# every grab lets go the next tick, skitchEnd reason void, no Skitch, no points. (Each tap was a
+# Skitch of 100 linked to the last: 246 of them and 658,542 points.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+tap grab 72..1300 every 2
+run 1400
+expect event skitchStart count == 614
+expect event skitchEnd{reason=void} count == 614
+expect no event trickEnd{trick=Skitch}
+expect no event comboLanded
+expect skater.score == 0 at end
+expect no event bail

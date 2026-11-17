@@ -1,0 +1,14 @@
+# Boneless (THUG): tap up twice, then release the ollie: a foot comes off and the pop is 20%
+# stronger. From a full charge the ollie rises about 1.66 m (1.15 m plain), and "Boneless" banks.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+hold ollie 10..40
+tap up 28
+tap up 34
+run 300
+expect event trickEnd{trick=Boneless} within 40..42
+expect max skater.pos.z > 1.7
+expect max skater.pos.z < 1.85
+expect skater.footTrick == boneless at 60
+expect event comboLanded{name=Boneless} within 150..260
+expect no event bail

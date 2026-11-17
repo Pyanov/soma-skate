@@ -1,0 +1,30 @@
+# Pedestrians and the crew van (game/peds.ts, game/vehicles.ts; docs/mechanics/driving.md). On Duboce's
+# south side a walker heads east along the sidewalk; the van comes the other way in the kerb lane at
+# 7 m/s, 3 m off their line. A skater there would pass unseen; the van's berth is its half width and
+# peds.see.vehicle more, so they step aside (2.1 m, the step grown by its half width) and back once it
+# has stopped a length away. Then the van waits across the sidewalk with the player in it and a walker
+# walks into it: they jump clear (pedStep) and walk round it, staying clear. No hit, no near miss.
+park sf
+cmd 0 traffic clear
+cmd 1 ped at 42 -20 90
+cmd 1 van summon 58 -16.4 270
+cmd 2 teleport 58 -14.1 -1.3 270
+tap use 30
+hold up 40..195
+hold down 195..285
+cmd 700 vehicle exit
+cmd 701 ped clear
+cmd 702 van summon 47 -19.5 90
+cmd 703 ped at 41 -20 90
+cmd 704 vehicle enter
+run 1300
+expect event vehicleEnter{name=crew_van} count == 2
+expect event pedStep{side=-2.1} within 190..200
+expect peds.aside == 1 at 250
+expect peds.aside == 0 at 600
+expect event pedStep{side=1.42} within 975..980
+expect event pedStep count == 2
+expect peds.aside == 1 at 1200
+expect no event pedHit
+expect no event nearMiss
+expect no event bail

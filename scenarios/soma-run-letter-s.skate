@@ -1,0 +1,12 @@
+# In a 2-minute run, the kickflip down Big 3 flies through the S and hits the BIG 3 GAP.
+park soma
+spawn big3
+cmd 0 run start
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 420
+expect event runStart within 1..2
+expect event letter{letter=S,have=S____} within 215..300
+expect event gap{gap=BIG 3 GAP} within 320..340
+expect session.letters == S at end

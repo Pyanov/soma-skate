@@ -1,0 +1,16 @@
+# Run into a walker from behind and you bail. The same walker heading north on Valencia; you come up
+# behind them at 6 m/s on their line. From right behind they do not see you (their view is 240
+# degrees), so they never step aside: a hit at 5.3 m/s, over hitSpeed 3.5: pedHit and a bail.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 ped at -65.5 -270 356
+cmd 1 teleport -64.09 -282 2.48 355.66
+cmd 2 set skater.vel.x -0.4536
+cmd 2 set skater.vel.y 5.983
+run 400
+expect event pedHit{bail=true,speed=5.301} within 326..330
+expect event bail{reason=ran into a pedestrian} within 326..330
+expect state bail at 340
+expect no event pedStep
+expect no event nearMiss

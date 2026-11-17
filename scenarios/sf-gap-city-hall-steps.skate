@@ -1,0 +1,15 @@
+# CITY HALL STEPS (city phase 9): San Francisco City Hall's front steps on Polk St, 16 steps of 16 cm
+# (2.5 m) between granite cheek walls. Rolling at 6.5 m/s across the porch at the top, a short crouch
+# and a pop at the edge: 1.13 s in the air (1.11 before the squeezed city), down clean on the lowest steps (the gap wants a landing on
+# the bottom four steps or past them, after at least 80 ticks of air), then out onto the forecourt.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 11.3 354.3 5.78 81.2
+cmd 2 set skater.vel.x 6.424
+cmd 2 set skater.vel.y 0.9945
+hold ollie 3..11
+run 300
+expect event pop within 10..14
+expect event land{quality=clean,airTicks=136} within 146..150
+expect event gap{id=city_hall_steps,gap=CITY HALL STEPS,points=700} within 146..150
+expect no event bail

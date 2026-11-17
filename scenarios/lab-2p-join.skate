@@ -1,0 +1,31 @@
+# Local two-player (game/twoplayer.ts): player 2 joins on player 1's spot and rides the same keys
+# from its own input (b2): ollie onto the 0.45 m ledge, BS 50-50 to the end, roll off. The players
+# never touch, so they ride it alike tick for tick, and each skater event comes twice, tagged player
+# 1 and player 2. Player 1 rides exactly as alone (lab-5050-ledge: 475 at 467). Then player 2 leaves.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+cmd 0 player2 join 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+bot balance
+p2 hold up 6..100
+p2 hold ollie 90..105
+p2 tap grind 176
+p2 bot balance
+cmd 520 player2 leave
+run 560
+expect event player2{joined=true} within 1..1
+expect event grindStart{trick=BS 50-50,player=1} within 177..177
+expect event grindStart{trick=BS 50-50,player=2} within 177..177
+expect event comboLanded{name=BS 50-50,points=475,player=1} within 467..467
+expect event comboLanded{name=BS 50-50,points=475,player=2} within 467..467
+expect event comboLanded count == 2
+expect skater.score == 475 at 500
+expect skater2.score == 475 at 500
+expect skater.pos.x > 12.19 at 500
+expect skater2.pos.x < 12.2 at 500
+expect players == 2 at 520
+expect event player2{joined=false} within 521..521
+expect players == 1 at end
+expect no event bail

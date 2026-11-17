@@ -1,0 +1,25 @@
+{
+  "_doc": "Off-leash dogs in the city's parks (src/client/dogs.ts), view only like the pigeons: client side, seeded, never in the sim or replays; drawn in play, clips and --life shots. Each park has dog owners standing on the lawn (pedestrians.json type dogOwner, placed by the crowd's gathers) and perOwner dogs each, roaming within roam metres of their owner, now and then a sniff or the zoomies. A skater riding past faster than minSpeed within notice metres of a dog gets chased: it runs alongside, side metres off the skater and lead metres ahead or behind, up to maxRun m/s, barking every bark seconds, for chase seconds (or until leash metres from its owner, or the skater is lost metres away), then trots back (cooldown seconds before it will chase again). Parks whose centre has no city ground (outside the built city) get no dogs. Sizes scale a medium dog; coats are sRGB.",
+  "seed": 23,
+  "parks": [
+    { "name": "Dolores Park", "at": [-319, -189], "radius": 170 },
+    { "name": "Duboce Park", "at": [-460, 217], "radius": 120 }
+  ],
+  "perOwner": [1, 3],
+  "roam": 11,
+  "notice": 34,
+  "minSpeed": 2.5,
+  "side": [1.1, 1.9],
+  "lead": [-0.8, 0.9],
+  "maxRun": 8.5,
+  "trot": 1.7,
+  "chase": [3.5, 6.5],
+  "leash": 55,
+  "lost": 36,
+  "cooldown": 7,
+  "bark": [0.35, 0.8],
+  "size": [0.6, 1.3],
+  "coats": ["#c9a15a", "#2a2420", "#f2efe6", "#8a5a2b", "#d9d6d0", "#5a4636", "#e0b070", "#3a3a40", "#b06a34"],
+  "collars": ["#c8372d", "#2f6fd6", "#f2c230", "#2e9e6a", "#ff7aa8"],
+  "lod": { "drawDistance": 120 }
+}

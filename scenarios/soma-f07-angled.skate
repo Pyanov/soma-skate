@@ -1,0 +1,21 @@
+# F07, the radial transition wrapped round a freeway column (feel --section vert, docs/feel-audit.md
+# section 9): a run at its top, 20 degrees off head-on either side, launches vert like the head-on
+# one. Each run starts 4 m out on the flat, aimed at the same top (54.4, 23.7), at 8.5 m/s. (Phase 27's
+# audit turned the angled runs at their start instead, so they crossed only the foot of the cone and
+# rode along it.) Nobody presses anything, so two of the vert airs come down crooked: the bails are
+# not the point here.
+park soma
+cmd 1 teleport 51.36 26.67 -0.91 134.1
+cmd 20 set skater.vel.x 6.1041
+cmd 20 set skater.vel.y -5.9153
+cmd 300 teleport 50.52 25.44 -0.89 114.1
+cmd 320 set skater.vel.x 7.7591
+cmd 320 set skater.vel.y -3.4708
+cmd 600 teleport 52.55 27.52 -0.93 154.1
+cmd 620 set skater.vel.x 3.7128
+cmd 620 set skater.vel.y -7.6462
+run 900
+expect event air{vert=true} count >= 3
+expect event air{vert=true} within 60..100
+expect event air{vert=true} within 360..400
+expect event air{vert=true} within 660..700

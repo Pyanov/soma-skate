@@ -1,0 +1,22 @@
+# Skitching a streetcar: the J line's race car on the right of way between Liberty and 20th Street at
+# its cruise, 11 m/s (the F no longer runs); you are put just behind it at its speed and grab its rear
+# once you are down on the ground and level with it. Towed 1.2 s, let go before the track's bend where
+# the right of way meets the next rail (a skitch through a bend throws you): Skitch 284 and MUNI SKITCH
+# 500 (gaps.json kind skitch, tram: a skitch that counted, on a streetcar), x2: 1,568. Then it brakes for 20th Street and
+# you roll into its back: a bump, like any car's rear (only its front shoves you off the track). The
+# driver rings the bell at the kid on the bumper (honk tram: a bell, not a horn).
+park sf
+cmd 0 traffic clear
+cmd 0 run muni j
+cmd 2110 teleport -385.56 -393.35 37.41 357.1
+cmd 2110 speed 11
+hold grab 2158..2305
+run 3000
+expect event skitchStart{car=83} within 2159..2159
+expect event honk{car=83,robo=false,tram=true} within 2231..2231
+expect event skitchEnd{reason=let go,points=284} within 2306..2306
+expect event gap{id=muni_skitch,gap=MUNI SKITCH,points=500} within 2306..2306
+expect event comboLanded{name=Skitch + MUNI SKITCH,points=1568} within 2350..2350
+expect event gap{id=muni_skitch} count == 1
+expect no event carHit
+expect no event bail

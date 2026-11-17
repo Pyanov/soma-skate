@@ -1,0 +1,13 @@
+# A very unstable balance (set for this test only) and no correction: falls off the ledge.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+cmd 0 setData physics.grind.balanceInstability 40
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+run 500
+expect event grindStart{trick=BS 50-50} within 172..190
+expect event grindEnd{reason=balance} within 180..300
+expect event bail within 180..300
+expect no event comboLanded
+expect event danger{why=grind balance} within 230..250

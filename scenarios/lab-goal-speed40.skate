@@ -1,0 +1,10 @@
+# The Hit 40 km/h goal fires on a tucked bomb down the lab hill during a run (40 km/h = 11.1 m/s,
+# reached on the 10% section), and not on the flat at push speed.
+park lab
+spawn lab_hill_top
+cmd 0 run start
+hold up 0..240
+hold ollie 240..1400
+run 1400
+expect event goal{goal=Hit 40 km/h} within 300..1400
+expect no event bail

@@ -1,0 +1,10 @@
+# Missions: a mode step lost (the courier's first order runs out of time: 3 s here): missionFailed
+# mode, back to free skate.
+park sf
+cmd 0 traffic clear
+cmd 0 setData run.courier.legs.0.seconds 3
+cmd 0 mission start burrito 1
+run 600
+expect event courierFail within 360..365
+expect event missionFailed{mission=burrito,step=1,reason=mode} within 360..600
+expect session.mode == free at end

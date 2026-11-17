@@ -1,0 +1,16 @@
+# CLARION WALLRIDE on the other side of the alley: the same push, ollie and I beside the south
+# wall's second mural (the walls are offset so no mural faces its twin). Either wall counts.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -19.54 -399.16 1.72 85.65
+hold up 6..90
+hold ollie 80..100
+tap grind 104
+run 400
+expect event wallrideStart within 100..110
+expect event wallrideEnd{reason=timeout} within 193..197
+expect event gap{id=clarion_wallride,gap=CLARION WALLRIDE,points=600} within 193..197
+expect event goalComplete{id=clarionmural} within 193..197
+expect event comboLanded{name=Wallride + CLARION WALLRIDE,multiplier=2} within 233..237
+expect skater.pos.y < -398.4 at end
+expect no event bail

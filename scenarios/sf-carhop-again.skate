@@ -1,0 +1,33 @@
+# CAR HOP pays once per car in the gap's again (30 s): the boneless over the parked car's trunk from
+# sf-goal-carhop, then the same hop again 3.3 s later (a teleport stands in for riding round):
+# only the first pays; the same car again 31 s after the first pays again. (Hopping one parked car
+# back and forth paid 500 every time.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 0
+cmd 30 teleport -41.25 -332.19 2.08 265.2
+cmd 40 set skater.vel.x -5.98
+cmd 40 set skater.vel.y -0.5
+hold ollie 42..140
+tap up 124
+tap up 132
+cmd 430 teleport -41.25 -332.19 2.08 265.2
+cmd 440 set skater.vel.x -5.98
+cmd 440 set skater.vel.y -0.5
+hold ollie 442..540
+tap up 524
+tap up 532
+cmd 3730 teleport -41.25 -332.19 2.08 265.2
+cmd 3740 set skater.vel.x -5.98
+cmd 3740 set skater.vel.y -0.5
+hold ollie 3742..3840
+tap up 3824
+tap up 3832
+run 4100
+expect event gap{id=car_hop,points=500} count == 2
+expect event gap{id=car_hop} within 280..282
+expect event comboLanded{name=Boneless,points=150,multiplier=1} within 690..694
+expect event gap{id=car_hop} within 3980..3982
+expect no event bail

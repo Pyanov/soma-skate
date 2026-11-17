@@ -1,0 +1,11 @@
+# Roll off the platform edge (air at tick 139) and release the ollie 4 ticks later:
+# the late-ollie window still pops.
+park lab
+spawn lab_stairs
+hold up 0..120
+hold ollie 113..143
+run 400
+expect event air within 138..140
+expect event pop within 142..145
+expect max skater.pos.z > 1.4
+expect no event bail

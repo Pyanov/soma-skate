@@ -1,0 +1,14 @@
+# A car on Valencia (northbound, 8 m/s) meets the skater standing in its lane: it brakes on a
+# gentle profile (v = sqrt(2 x 3 m/s^2 x distance)), stops traffic.yield.stop (7 m, centre to
+# skater) short, and honks once it has waited honkAfter (0.8 s).
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -50.9 -311.76 2.41 0
+cmd 2 car -51.1 -331.2 356 8
+run 520
+expect min car.gap > 6.7
+expect car.car.speed < 0.05 at 380
+expect event honk{robo=false} within 395..470
+expect no event robotaxiStop
+expect no event carHit

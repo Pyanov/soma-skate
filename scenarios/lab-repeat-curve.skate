@@ -1,0 +1,17 @@
+# The repetition curve (scoring.repeat, THPS 2): the same trick again in one combo is worth less each
+# time, 100%, 75%, 50%, 25%, then the 10% floor. Up the vert ramp at 15.5 m/s, six kickflips in one
+# 2.5 s air: 100 + 75 + 50 + 25 + 10 + 10 = 270, x6 = 1,620 (each entry's value in the event).
+park lab
+spawn lab_vert
+cmd 6 speed 15.5
+tap flip+left 132
+tap flip+left 179
+tap flip+left 226
+tap flip+left 273
+tap flip+left 320
+tap flip+left 367
+run 600
+expect event trickEnd{trick=Kickflip} count == 6
+expect event land{quality=clean} within 424..428
+expect event comboLanded{name=Kickflip + Kickflip + Kickflip + Kickflip + Kickflip + Kickflip,points=1620,multiplier=6} within 436..440
+expect no event bail

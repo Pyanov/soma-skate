@@ -1,0 +1,13 @@
+# LOMBARD STAIRS: down the brick stairs on the crooked block's south sidewalk, an ollie off the top of the
+# steep flight (east of the long treads) and down it, 1.1 s in the air, about 11 steps (1.9 m) below.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -198 704.3 5.95 82
+cmd 3 set skater.vel.x 4.95
+cmd 3 set skater.vel.y 0.74
+hold ollie 112..142
+run 400
+expect event pop within 141..145
+expect event gap{id=lombard_stairs,gap=LOMBARD STAIRS,points=600} within 280..284
+expect event land{quality=clean} within 280..284
+expect no event bail

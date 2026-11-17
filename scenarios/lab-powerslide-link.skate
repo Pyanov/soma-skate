@@ -1,0 +1,11 @@
+# A powerslide right after a landing links the combo like a manual: kickflip, land, powerslide
+# within the landing grace: "Kickflip + FS Powerslide", multiplier 2.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+hold slide 208..280
+run 380
+expect event comboLanded{name=Kickflip + FS Powerslide,multiplier=2} within 255..290
+expect no event bail

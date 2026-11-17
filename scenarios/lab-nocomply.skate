@@ -1,0 +1,12 @@
+# No comply (THUG): tap down, then release the ollie: the front foot steps off and the back foot
+# pops a quicker, lower hop (pop x 0.85): about 0.83 m from a full charge.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+hold ollie 10..40
+tap down 34
+run 300
+expect event trickEnd{trick=No Comply} within 40..42
+expect max skater.pos.z > 0.9
+expect max skater.pos.z < 1.05
+expect event comboLanded{name=No Comply} within 120..240
+expect no event bail

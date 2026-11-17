@@ -1,0 +1,14 @@
+# Lip-trick tapping: one lip trick per air. Straight up the vert ramp at 10 m/s, I tapped every 4
+# ticks at the coping: one Rock to Fakie, then the drop back in and the landing (tapping again
+# used to stall on the coping again each time: 30 lip tricks and 30,840 points in one air).
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap grind 244..364 every 4
+run 600
+expect event lipStart count == 1
+expect event lipStart{trick=Rock to Fakie} within 243..247
+expect event lipEnd{trick=Rock to Fakie,reason=drop in} within 244..249
+expect event land{fakie=true} within 319..323
+expect event comboLanded{name=Rock to Fakie,points=202} within 330..334
+expect no event bail

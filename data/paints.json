@@ -1,0 +1,33 @@
+{
+  "_doc": "Colours in the character picker (src/client/picker.ts; C or the pad's square opens it): each character has up to two slots (its main colour and an accent), each painting some of its colour keys (data/characters.json colors) with a palette colour, a key's number shifting the lightness (-0.2 darker, +0.15 lighter) so a shade or a highlight follows. The first palette entry, Original, leaves the character as it is. Remembered per character in the browser; NPCs keep their own looks; the race ghost takes your main colour for its tint.",
+  "palette": [
+    { "name": "Original", "color": "" },
+    { "name": "International Orange", "color": "#c0362c" },
+    { "name": "Muni Red", "color": "#d1342f" },
+    { "name": "Fog Grey", "color": "#b9bec4" },
+    { "name": "Ballpark Orange", "color": "#f45d22" },
+    { "name": "Dugout Black", "color": "#262626" },
+    { "name": "Bay Blue", "color": "#22468c" },
+    { "name": "Bay Gold", "color": "#f6c13a" },
+    { "name": "Painted Lady Pink", "color": "#f2a9bd" },
+    { "name": "Painted Lady Mint", "color": "#9fd6bd" },
+    { "name": "Painted Lady Lavender", "color": "#b9a6e6" },
+    { "name": "Painted Lady Butter", "color": "#f2d98a" },
+    { "name": "Dolores Green", "color": "#4f9e4a" }
+  ],
+  "slots": {
+    "can": [{ "name": "Label", "keys": { "navy": 0 } }, { "name": "Trim", "keys": { "gold": 0 } }],
+    "blob": [{ "name": "Body", "keys": { "gel": 0, "glove": 0, "deep": -0.2 } }],
+    "redmonster": [{ "name": "Fur", "keys": { "fur": 0, "tip": 0.12, "brow": -0.2 } }, { "name": "Muzzle", "keys": { "muzzle": 0 } }],
+    "mascot": [{ "name": "Fur", "keys": { "fur": 0, "tip": 0.12 } }, { "name": "Sneakers", "keys": { "sneaker": 0 } }],
+    "vampire": [{ "name": "Cape", "keys": { "cape": 0 } }, { "name": "Lining", "keys": { "lining": 0 } }],
+    "skeleton": [{ "name": "Bones", "keys": { "bone": 0 } }, { "name": "Eyes", "keys": { "glow": 0 } }],
+    "techbro": [{ "name": "Vest", "keys": { "vest": 0 } }, { "name": "Shirt", "keys": { "shirt": 0 } }],
+    "karl": [{ "name": "Cloud", "keys": { "cloud": 0, "mist": 0.12 } }, { "name": "Shades", "keys": { "frames": 0, "trim": 0 } }],
+    "burrito": [{ "name": "Foil", "keys": { "foil": 0 } }, { "name": "Shades", "keys": { "frames": 0, "stripe": 0 } }],
+    "pigeon": [{ "name": "Feathers", "keys": { "body": 0, "light": 0.15, "dark": -0.22 } }, { "name": "Cap", "keys": { "cap": 0, "brim": -0.08 } }],
+    "robotaxi": [{ "name": "Body", "keys": { "body": 0 } }, { "name": "Stripes", "keys": { "trim": 0 } }],
+    "cablecar": [{ "name": "Paint", "keys": { "paint": 0 } }, { "name": "Window band", "keys": { "cream": 0 } }],
+    "sealion": [{ "name": "Pelt", "keys": { "pelt": 0, "back": -0.12, "muzzle": 0.1, "belly": 0.3 } }, { "name": "Cap band", "keys": { "band": 0 } }]
+  }
+}

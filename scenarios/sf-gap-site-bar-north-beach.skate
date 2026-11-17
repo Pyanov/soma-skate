@@ -1,0 +1,18 @@
+# SITE FLAT BAR at the building site by North Beach: an ollie onto the flat bar and a 50-50 to its end
+# (the site's ledges pay nothing). The squeezed city re-homes the site to an empty lot by Columbus Ave at
+# Washington Square's south corner, built mirrored and turned: the start comes in at the bar's west end.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 114.75 649.04 7.12 61.0
+cmd 3 set skater.vel.x 3.498
+cmd 3 set skater.vel.y 1.939
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=FS 50-50,line=rail_118_651} within 119..123
+expect event grindEnd{reason=end} within 238..242
+expect event gap{id=site_bar_north_beach,gap=SITE FLAT BAR,points=250} within 238..242
+expect event land{quality=clean} within 288..292
+expect event comboLanded{name=FS 50-50 + SITE FLAT BAR} within 299..303
+expect no event bail

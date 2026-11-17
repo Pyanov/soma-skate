@@ -1,0 +1,10 @@
+# A Boneless on the west runway (W, W, then let go of K): the front foot plants, the hand grabs, a big pop.
+park soma
+spawn big3_runway
+cmd 8 speed 5
+hold ollie 10..40
+tap up 28
+tap up 34
+run 220
+expect event trickEnd{trick=Boneless} within 40..42
+expect no event bail

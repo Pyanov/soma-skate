@@ -1,0 +1,56 @@
+# Tour level Hill Country (data/tour.json), a 2-minute run from the top of Dolores: two of its goals,
+# the tape and S-K-A-T-E (Upper Market at 56 is tour-hills-twinpeaks, from the level's other start).
+# - Down Dolores crouched, the pop at the crest at 19th: SENT IT ON DOLORES (the goal Dolores Crest Air),
+#   S and K on the way, then two powerslides to scrub speed.
+# - Twin Peaks, at the curve at 19th at 11 m/s, an ollie: 19th Street Curve Air.
+# - At the crest at Market and Clayton, an ollie at 11 m/s (the tape hung over this crest until phase
+#   28; this air no longer reaches it).
+# - Below the crest at 19th on Dolores, a boneless beside the parked car (city phase 11 parked it 3 m
+#   further down than phase 28 first found it) and a BS 50-50 along its roof:
+#   the tape is on the roof (phase 28: a find), ROOF GRIND (Roof Grind a Hybrid), and the combo takes the
+#   run past Pro.
+# - Dolores again with the rider-line autopilot (slower): A, T and E.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills
+hold up 20..200
+hold ollie 200..900
+hold ollie 902..1664
+hold slide 1220..1290
+hold slide 1560..1630
+cmd 2000 teleport -1429.4 -368.7 73.75 5.6
+cmd 2010 set skater.vel.x 1.07
+cmd 2010 set skater.vel.y 10.95
+hold ollie 2010..2040
+cmd 2400 teleport -1325 -501.6 86.75 301.9
+cmd 2410 set skater.vel.x -9.34
+cmd 2410 set skater.vel.y 5.81
+hold ollie 2410..2440
+cmd 2700 teleport -205.12 -250.77 14.8 355.5
+cmd 2702 set skater.vel.x -0.3138
+cmd 2702 set skater.vel.y 3.9877
+hold ollie 2784..2814
+tap up 2802
+tap up 2809
+tap grind 2852
+hold right 2853..2860
+hold left 2890..2897
+cmd 3100 teleport dolores_bomb
+bot line dolores_bomb_line 3106
+run 14700
+expect event levelStart{level=hills,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 679..683
+expect event letter{letter=K,have=SK___} within 1063..1067
+expect event gap{id=doloressend} within 1030..1034
+expect event levelGoal{level=hills,id=crest,name=Dolores Crest Air} within 1030..1034
+expect event levelGoal{level=hills,id=curve,name=19th Street Curve Air} within 2150..2154
+expect no event tapeFound within 0..2699
+expect event tapeFound{level=hills} within 2860..2864
+expect event grindStart{trick=BS 50-50,line=car_-206_-245} within 2851..2855
+expect event levelGoal{level=hills,id=pro,name=Pro Score} within 2990..2994
+expect event letter{letter=E,have=SKATE} within 5206..5210
+expect event levelGoal{level=hills,id=skate} within 5206..5210
+expect event levelOver{level=hills,score=5660,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

@@ -1,0 +1,25 @@
+# Skitching a robotaxi: it notices (robotaxiStop, the chime), slows politely at 1.8 m/s^2 to a stop
+# with its hazards on, and waits there until you let go. Only the 3.3 s it towed you score (601).
+# (Balance noise off: this is about the robotaxi.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 setData traffic.skitch.noise 0
+cmd 0 setData traffic.skitch.balanceStart 0
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7 robo
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..900
+run 1100
+expect event skitchStart{robo=true} within 72..75
+expect event robotaxiStop within 72..75
+expect car.car.speed < 0.01 at 560
+expect car.car.hazard == 1 at 560
+expect skater.speed < 0.01 at 800
+expect event skitchEnd{reason=let go,points=601} within 900..902
+expect car.car.speed > 0.5 at 1100
+expect no event honk
+expect no event bail

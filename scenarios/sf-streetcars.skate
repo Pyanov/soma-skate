@@ -1,0 +1,15 @@
+# Streetcars in free roam (data run.muni.roam; with the traffic, here alone: streetcars on). Since the
+# squeezed city parked the F, the J alone: two streetcars with their own ids (1000000 on), one J each way
+# through Dolores Park. They stop at the stops (tramStop). At its line's end a car waits 20 s and goes on
+# as its pair: the inbound J (1000000) turns back at 18th Street onto the outbound track, the outbound
+# one (1000001) at Liberty Street onto the inbound.
+park sf
+cmd 0 traffic clear
+cmd 0 streetcars on
+run 11000
+expect event tramStop{car=1000001,line=j-out,n=1,name=Right of Way & 20th Street} within 1923..1923
+expect event tramStop{car=1000000,line=j-in,n=2,name=Right of Way & 18th Street} within 3528..3528
+expect event tramStop{car=1000001,line=j-out,n=2,name=Right of Way & Liberty Street} within 6398..6398
+expect event tramStop{car=1000001,line=j-in,n=0,name=Right of Way & Liberty Street} within 9724..9724
+expect event tramStop{car=1000000,line=j-out,n=1,name=Right of Way & 20th Street} within 10426..10426
+expect no event muniStop

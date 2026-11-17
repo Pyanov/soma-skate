@@ -1,0 +1,9 @@
+# The lawn on the east side of Mission St between 16th and 17th (about 100, -670) has no
+# invisible wall around it: roll east off the sidewalk onto the grass.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport 66.5 -272 -0.45 90
+cmd 1 set skater.vel.x 4
+run 200
+expect max skater.pos.x > 71.5

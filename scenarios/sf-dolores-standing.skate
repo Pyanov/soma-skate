@@ -1,0 +1,8 @@
+# Dolores St standing up (no tuck): past wobble.speed the trucks shimmy, the wobble grows and throws the rider (speed wobbles). Traffic cleared: this tests the street.
+park sf
+spawn dolores_bomb
+cmd 0 traffic clear
+cmd 0 teleport -185.0 -500 43.6 355.6   # from 22nd: the real hill is two blocks long (the spot at 20th is its second half)
+hold up 20..200
+run 1400
+expect event bail{reason=speed wobbles} within 200..1400

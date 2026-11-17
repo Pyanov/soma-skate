@@ -1,0 +1,16 @@
+# A late ollie at the lab's 0.45 m ledge (L04, its face at y 0, 0.5 m deep): rolling north at 6 m/s,
+# tapped 0.4 m before the face. The pop is too late to clear the face, and the wheels meet it on the way
+# up: before the feel pass's ledge pop the skater stopped dead in front of it (any late pop from 0.2 to
+# 0.8 m at 6 m/s did; with a crouch, 0.2 m bailed). Now (air.ledgePop) it is moved up past the edge with
+# 90% of its speed and the ollie's arc carries on: over this narrow ledge, a clean landing beyond it.
+park lab
+cmd 0 teleport 7 -6 0.13 0
+cmd 6 speed 6
+tap ollie 115
+run 220
+expect event pop within 115..119
+expect event bump{air=true} within 124..128
+expect event land{quality=clean} within 198..206
+expect no event bail
+expect skater.pos.y > 1 at end
+expect skater.speed > 5 at end

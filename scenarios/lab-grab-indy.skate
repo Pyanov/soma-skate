@@ -1,0 +1,11 @@
+# Indy: charged ollie, L + right held about a third of a second, let go before the
+# landing (grab review: ./skate strip --sheet scenarios/grabs.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap grab+right 96
+hold grab 97..140
+run 300
+expect event trickEnd{trick=Indy} within 120..200
+expect no event bail

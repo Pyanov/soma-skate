@@ -1,0 +1,46 @@
+# Two-player Graffiti for the split-screen clip (skate clip two-player-graffiti): 20 s, both players
+# tagging the park's ledges and gaps, a steal, the results. Off Big 3 together: player 2 kickflips it
+# and tags BIG 3 GAP; player 1 grinds the ledge beside the run-up (tagged) while player 2 rides the
+# wave line to WAVE AIR (tagged); player 1 steals BIG 3 GAP back with a Kickflip FS 180 while player 2
+# grinds the ledge on the west runway (tagged); player 1 then 50-50s the south rear runway's coping.
+park soma
+spawn big3
+bot balance
+p2 bot balance
+cmd 0 player2 join big3
+cmd 0 setData run.twoPlayer.graffiti.seconds 20
+cmd 0 run graffiti2p
+hold up 0..100
+hold ollie 166..196
+p2 hold up 0..100
+p2 hold ollie 166..196
+p2 tap flip+left 202
+# player 1: the ledge by the Big 3 run-up
+cmd 450 teleport big3
+hold up 450..546
+hold right 510..550
+hold ollie 550..562
+tap grind 572
+# player 2: the wave line
+cmd 450 player2 teleport wave_west_to_east
+p2 bot line wave_west_to_east 456
+p2 hold ollie 584..604
+# player 1: Big 3 again, Kickflip FS 180
+cmd 1100 teleport big3
+hold up 1100..1200
+hold ollie 1266..1296
+tap flip+left 1302
+hold spinL 1310..1350
+# player 2: the west runway ledge
+cmd 1100 player2 teleport big3_runway
+p2 hold up 1100..1216
+p2 hold ollie 1220..1232
+p2 tap grind 1242
+# player 1: the south rear runway's coping
+cmd 1750 teleport south_rear_runway_to_hellride
+cmd 1750 speed 4.5
+hold ollie 1754..1764
+tap grind 1790
+run 3100
+expect event graffitiOver count == 1
+expect no event bail

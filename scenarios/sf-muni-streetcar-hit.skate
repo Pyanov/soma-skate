@@ -1,0 +1,17 @@
+# The streetcar never stops for you: standing on the J line's track in Dolores Park, on the straight
+# down to 20th Street (the F no longer runs), you hear its bell once as it comes out of the curve
+# above, 15 m off (a honk from it), then it hits you at 11 m/s ("hit by a streetcar"), throws you off
+# its track to the side, and runs on past you to 20th Street. Only one hit.
+park sf
+cmd 0 traffic clear
+cmd 1 run muni j
+cmd 2 teleport -387.17 -362.0 35.8 87.1
+run 3400
+expect event honk{car=83,robo=false,tram=true} within 2125..2125
+expect event honk count == 1
+expect event bail{reason=hit by a streetcar} within 2293..2293
+expect event carHit{car=83,robo=false,reason=hit by a streetcar} within 2293..2293
+expect event carHit count == 1
+expect event recover within 2405..2505
+expect min car.gap > 3.5 over 2293..3400
+expect event muniStop{n=1,you=false} within 3342..3342

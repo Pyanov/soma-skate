@@ -1,0 +1,14 @@
+# Rolling head-on into a 14.5 cm city curb at 5 m/s (the road at 126.5, -159.7 meets the sidewalk at
+# x 126.2). Before: the wheels' sphere (12 cm) stopped dead against the curb's face in one tick, from any
+# speed. Now the board rolls up onto the sidewalk (ground.curbHop 0.18 m) keeping curbHopKeep (85%) of
+# its speed, with no air: a bump event.
+park sf
+cmd 0 teleport -53.45 -341.7 2.12 268
+cmd 30 set skater.vel.x -4.997   # 5 m/s along the heading (the road's crown left it rolling slowly the other way)
+cmd 30 set skater.vel.y -0.174
+run 180
+expect event bump within 145..157
+expect no event air
+expect state ground at end
+expect skater.pos.x < -58.75 at end
+expect skater.speed > 4 at end

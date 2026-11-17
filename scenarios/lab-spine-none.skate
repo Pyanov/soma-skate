@@ -1,0 +1,8 @@
+# The same air without the press: straight up and back down the south face, fakie.
+park lab
+spawn lab_spine_south
+cmd 6 speed 7.5
+run 400
+expect no event spineTransfer
+expect event land{fakie=true} within 270..290
+expect skater.vel.y < -3 at 320

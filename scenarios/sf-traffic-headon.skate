@@ -1,0 +1,13 @@
+# Two one-way blocks of Duboce run head-on into Valencia (cars from both sides turn there; one-way
+# streets drive the centre line). The first car from each side stopped nose to nose for good and
+# the street behind them jammed: the rider line valencia_north crawled behind five stopped cars
+# (city phase 10, when the bigger street network reshuffled the random traffic). An oncoming car
+# is the car ahead for only one of the two: the older goes first, the other waits, both drive on.
+park sf
+spawn park_gate
+cmd 0 traffic clear
+cmd 2 car -57 -79.8 270 8
+cmd 2 car -84 -83 90 8
+run 720
+expect car.car.speed > 1 at 360
+expect car.car.speed > 1 at 720

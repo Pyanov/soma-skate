@@ -1,0 +1,14 @@
+# The F-line down Market St (city phase 9): the streetcar rails in the street are grind lines, flush with
+# the road like the real ones. Rolling down Market toward downtown along the north rail of the
+# outbound track at 5 m/s, an ollie and grind pressed in the air: a 50-50 on the rail, ridden until it is let go.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 278.8 262.3 0.05 45.1
+cmd 2 set skater.vel.x 3.546
+cmd 2 set skater.vel.y 3.525
+hold ollie 10..20
+tap grind 26
+run 140
+expect event grindStart{trick=BS 50-50,line=rail_264_248} within 26..30
+expect skater.state == grind at 140
+expect no event bail

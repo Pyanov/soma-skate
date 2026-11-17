@@ -1,0 +1,18 @@
+{
+  "_doc": "On-screen controls for phones and tablets (src/client/touch.ts). stick: the virtual stick on the left, which appears where the thumb lands: radius (CSS px) the knob travels, dead (of the radius) before it reads, diagonal: how far off an axis a push still counts on the other axis too (0..1 of the radius). buttons: the I, J, K and L diamond on the right (at: n, w, e, s), each a Btn action, its letter (the player's rebound letter shows instead when it is one) and its word; pills: the smaller buttons beside it (step off, revert, powerslide); menu: the menu button; rotate: the line suggesting landscape on a portrait screen (while skating, never over a menu; once dismissed, never again; it fades by itself rotateSeconds after it first shows).",
+  "stick": { "radius": 58, "dead": 0.28, "diagonal": 0.42 },
+  "buttons": [
+    { "id": "grind", "key": "I", "label": "grind", "at": "n" },
+    { "id": "flip", "key": "J", "label": "flip", "at": "w" },
+    { "id": "grab", "key": "L", "label": "grab", "at": "e" },
+    { "id": "ollie", "key": "K", "label": "ollie", "at": "s" }
+  ],
+  "pills": [
+    { "id": "walk", "label": "step off" },
+    { "id": "revert", "label": "revert" },
+    { "id": "slide", "label": "slide" }
+  ],
+  "menu": "menu",
+  "rotate": "Sideways is better: the park is wide.",
+  "rotateSeconds": 8
+}

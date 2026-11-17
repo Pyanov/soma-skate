@@ -1,0 +1,15 @@
+# A line: the slide table's backside approach into a BS Noseslide (I + up as it locks on), popped out
+# with a pop shove-it (J + down).
+park lab
+cmd 0 teleport -8.5 1.4 0.14 25
+hold up 6..80
+hold ollie 70..90
+hold up 124..131
+tap grind 128
+hold ollie 165..182
+tap flip+down 186
+bot balance
+run 360
+expect event grindStart{trick=BS Noseslide,slide=true} within 125..135
+expect event trickEnd{trick=Pop Shove-It} within 200..240
+expect no event bail

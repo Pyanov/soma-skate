@@ -1,0 +1,13 @@
+# PIER 39 GATE: along the footway at a slant (a parked car stands at the curb in front of the gate), an
+# ollie through the gate between its posts, onto the pier.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 284.00 967.30 -8.49 40.0
+cmd 3 set skater.vel.x 3.214
+cmd 3 set skater.vel.y 3.830
+hold ollie 80..110
+run 400
+expect event gap{id=pier39_gate,gap=PIER 39 GATE,points=400} within 220..234
+expect event land{quality=clean} within 220..234
+expect no event bail
+expect no event wallplant

@@ -1,0 +1,81 @@
+{
+  "_doc": "The loading screen's and the Play menu's photographs (assets/ui/photo/<id>.jpg), staged in the game itself and rendered by ./skate photos (tools/photos.ts, src/client/photo.ts): docs/art-direction.md's house treatment, black and white fisheye flash pictures like an early-2000s skate magazine. No image model, no real people: the cast at the game's own places. Per photo: world and weather; skater (a scenario at a tick with the state it must be in, or stood at x y with the board's heading in degrees, 0 = +x; character; hidden); camera (orbit [az from behind the tail, el, dist, lookUp, ahead] or pos and look; shift moves the look point; roll in degrees; fov the lens, horizontal degrees); figures (model, state walk = on foot or ground = on the board, at x y or near [right, ahead] of the skater, face degrees or camera or skater, ticks and tick for the idle fidgets, emote ticks since it began, react cheer point wait at the skater, pose = a name in poses or poses.json fields over base, only board, hideBoard, lift); flash (a point light up and to the side of the lens, ambient scales the daylight) and develop (the darkroom: lens, image circle, levels, curve, grain, halation) override the defaults below. size is the file, render the oversampling of the wide render before the lens bends it. poses.sit: sat on its own board on the ground (hips low enough that no character's legs lift it).",
+  "size": [1600, 900],
+  "render": 2.0,
+  "flash": { "intensity": 25, "up": 0.35, "side": -0.3, "ambient": 0.8 },
+  "develop": { "fov": 120, "circle": 1.13, "circleSoft": 0.1, "vignette": 0.42, "exposure": 1, "lo": 0.01, "hi": 0.995, "gamma": 0.95, "contrast": 0.55, "grain": 0.16, "glow": 0.3 },
+  "poses": {
+    "sit": { "hips": [0, 0, 0.2], "hipsRot": [0, 10, 0], "spine": [0, 16, 0], "head": [0, -10, 0], "front": { "pos": [0.2, 0.42, 0], "board": 0, "toe": 10, "tilt": 10, "knee": [0.3, 1, 0.8] }, "back": { "pos": [-0.22, 0.4, 0], "board": 0, "toe": -10, "tilt": 10, "knee": [-0.3, 1, 0.8] }, "lead": { "pos": [0.16, 0.34, -0.3], "board": 0, "elbow": [0.5, -0.2, -0.4], "curl": 0.5 }, "rear": { "pos": [-0.16, 0.32, -0.32], "board": 0, "elbow": [-0.5, -0.2, -0.4], "curl": 0.5 } }
+  },
+  "photos": [
+    {
+      "id": "park", "note": "The beer can's Indy over Big 3 under the freeway, from the ground past the bottom step.",
+      "world": "sf",
+      "skater": { "scenario": "soma-big3-indy", "tick": 255, "state": "air", "character": "can" },
+      "camera": { "pos": [22.9, 20.1, -0.2], "look": [20.2, 21.3, 1.2], "fov": 105, "roll": -4 }
+    },
+    {
+      "id": "park-2", "note": "The Eucalyptus Monster's backside crooked on the south runway's ledge, from the ledge's side.",
+      "world": "sf",
+      "skater": { "scenario": "soma-ledge-crooked", "tick": 90, "state": "grind", "character": "redmonster" },
+      "camera": { "orbit": [230, 0, 2.3, 0.45], "fov": 115 }
+    },
+    {
+      "id": "hill", "note": "The mascot tucked down Dolores Street between the parked cars, from the street in front of it.",
+      "world": "sf",
+      "skater": { "scenario": "sf-dolores-bomb", "tick": 600, "state": "ground", "character": "mascot" },
+      "camera": { "orbit": [180, -2, 2.0, 0.5], "fov": 120, "roll": 6 }
+    },
+    {
+      "id": "hill-2", "note": "The tech bro down Upper Market from Twin Peaks, from the side a little ahead, the row houses falling away behind.",
+      "world": "sf",
+      "skater": { "scenario": "sf-bomb-twinpeaks", "tick": 900, "state": "ground", "character": "techbro" },
+      "camera": { "orbit": [110, 3, 2.3, 0.6, 0.5], "fov": 120, "roll": -6 }
+    },
+    {
+      "id": "night", "note": "The vampire down the City Hall steps at night, the floodlit granite behind.",
+      "world": "sf", "weather": "night",
+      "skater": { "scenario": "sf-gap-city-hall-steps", "tick": 70, "state": "air", "character": "vampire" },
+      "camera": { "orbit": [125, -10, 2.8, 0.6], "fov": 120 },
+      "flash": { "intensity": 14 }, "develop": { "glow": 0.15 }
+    },
+    {
+      "id": "night-2", "note": "The skeleton's 50-50 down the 16th St BART handrail at night.",
+      "world": "sf", "weather": "night",
+      "skater": { "scenario": "sf-gap-bart-rail", "tick": 250, "state": "grind", "character": "skeleton" },
+      "camera": { "orbit": [250, 10, 2.6, 0.8], "fov": 120 },
+      "flash": { "intensity": 14 }
+    },
+    {
+      "id": "crew", "note": "Kenji and the Eucalyptus Monster sat on their boards outside the Fog City Skate Shop, Dre and the skeleton stood by, from the gutter.",
+      "world": "sf",
+      "skater": { "at": [-44.6, -260.5], "heading": 90, "hidden": true },
+      "camera": { "pos": [-47.5, -256.7, 2.42], "look": [-45.0, -256.7, 2.8], "fov": 120 },
+      "figures": [
+        { "model": "kenji", "state": "ground", "at": [-45.1, -255.0], "face": 185, "pose": "sit" },
+        { "model": "redmonster", "state": "ground", "at": [-45.1, -256.3], "face": 180, "pose": "sit" },
+        { "model": "dre", "state": "walk", "at": [-44.5, -257.5], "face": "camera", "ticks": 400, "tick": 120 },
+        { "model": "skeleton", "state": "ground", "at": [-45.0, -258.6], "face": 165 }
+      ]
+    },
+    {
+      "id": "crew-2", "note": "Karl, Rosa (sat on her board) and the beer can hanging out under the freeway by Big 3.",
+      "world": "sf",
+      "skater": { "at": [18.0, 25.0], "heading": 0, "hidden": true },
+      "camera": { "pos": [24.3, 22.6, -0.25], "look": [22.0, 20.6, 0.55], "fov": 120 },
+      "figures": [
+        { "model": "karl", "state": "walk", "at": [23.4, 20.2], "face": "camera", "ticks": 300, "tick": 60 },
+        { "model": "rosa", "state": "ground", "at": [22.5, 20.7], "face": "camera", "pose": "sit" },
+        { "model": "can", "state": "walk", "at": [21.7, 21.6], "face": "camera", "emote": 30, "tick": 200 }
+      ]
+    },
+    {
+      "id": "board", "note": "The skeleton's deck on the slab past Big 3, the steps and the freeway behind.",
+      "world": "sf",
+      "skater": { "at": [18.0, 25.0], "heading": 0, "hidden": true },
+      "camera": { "pos": [23.2, 20.7, -0.22], "look": [22.4, 21.1, -0.42], "fov": 105 },
+      "flash": { "intensity": 4, "up": 0.5 },
+      "figures": [ { "model": "skeleton", "state": "ground", "at": [22.6, 21.0], "face": 120, "only": "board" } ]
+    }
+  ]
+}

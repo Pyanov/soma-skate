@@ -1,0 +1,133 @@
+# Russian Hill's Pro line (physics phase 32; feel --tour measures Pro on it): every 10 s, a 50-50 on a Lombard
+# flower bed's wall, a kickflip off its straight into a manual, ollied out: FS 50-50 + LOMBARD FLOWER BED +
+# Kickflip + Manual, about 4,172 each in the squeezed city (4,160 before); twelve, 50,064 (49,972 before, 49,796 before the feel pass's park carve). Short grinds and a manual, which a casual
+# player makes (the great run is the 53 m handrail). Pro (45,000 since the feel pass's round 4; 17,500 on the fifth before) on the eleventh.
+park sf
+cmd 0 traffic clear
+cmd 0 run level russianhill
+bot balance
+cmd 1 teleport -247.99 698.37 20.25 34.5
+cmd 3 set skater.vel.x 2.835
+cmd 3 set skater.vel.y 4.119
+cmd 1201 teleport -247.99 698.37 20.25 34.5
+cmd 1203 set skater.vel.x 2.835
+cmd 1203 set skater.vel.y 4.119
+cmd 2401 teleport -247.99 698.37 20.25 34.5
+cmd 2403 set skater.vel.x 2.835
+cmd 2403 set skater.vel.y 4.119
+cmd 3601 teleport -247.99 698.37 20.25 34.5
+cmd 3603 set skater.vel.x 2.835
+cmd 3603 set skater.vel.y 4.119
+cmd 4801 teleport -247.99 698.37 20.25 34.5
+cmd 4803 set skater.vel.x 2.835
+cmd 4803 set skater.vel.y 4.119
+cmd 6001 teleport -247.99 698.37 20.25 34.5
+cmd 6003 set skater.vel.x 2.835
+cmd 6003 set skater.vel.y 4.119
+cmd 7201 teleport -247.99 698.37 20.25 34.5
+cmd 7203 set skater.vel.x 2.835
+cmd 7203 set skater.vel.y 4.119
+cmd 8401 teleport -247.99 698.37 20.25 34.5
+cmd 8403 set skater.vel.x 2.835
+cmd 8403 set skater.vel.y 4.119
+cmd 9601 teleport -247.99 698.37 20.25 34.5
+cmd 9603 set skater.vel.x 2.835
+cmd 9603 set skater.vel.y 4.119
+cmd 10801 teleport -247.99 698.37 20.25 34.5
+cmd 10803 set skater.vel.x 2.835
+cmd 10803 set skater.vel.y 4.119
+cmd 12001 teleport -247.99 698.37 20.25 34.5
+cmd 12003 set skater.vel.x 2.835
+cmd 12003 set skater.vel.y 4.119
+cmd 13201 teleport -247.99 698.37 20.25 34.5
+cmd 13203 set skater.vel.x 2.835
+cmd 13203 set skater.vel.y 4.119
+hold ollie 31..63
+hold ollie 221..241
+hold ollie 561..576
+hold ollie 1231..1263
+hold ollie 1421..1441
+hold ollie 1761..1776
+hold ollie 2431..2463
+hold ollie 2621..2641
+hold ollie 2961..2976
+hold ollie 3631..3663
+hold ollie 3821..3841
+hold ollie 4161..4176
+hold ollie 4831..4863
+hold ollie 5021..5041
+hold ollie 5361..5376
+hold ollie 6031..6063
+hold ollie 6221..6241
+hold ollie 6561..6576
+hold ollie 7231..7263
+hold ollie 7421..7441
+hold ollie 7761..7776
+hold ollie 8431..8463
+hold ollie 8621..8641
+hold ollie 8961..8976
+hold ollie 9631..9663
+hold ollie 9821..9841
+hold ollie 10161..10176
+hold ollie 10831..10863
+hold ollie 11021..11041
+hold ollie 11361..11376
+hold ollie 12031..12063
+hold ollie 12221..12241
+hold ollie 12561..12576
+hold ollie 13231..13263
+hold ollie 13421..13441
+hold ollie 13761..13776
+tap grind 75..111 every 4
+tap flip 244
+tap up 377
+tap down 382
+tap grind 1275..1311 every 4
+tap flip 1444
+tap up 1577
+tap down 1582
+tap grind 2475..2511 every 4
+tap flip 2644
+tap up 2777
+tap down 2782
+tap grind 3675..3711 every 4
+tap flip 3844
+tap up 3977
+tap down 3982
+tap grind 4875..4911 every 4
+tap flip 5044
+tap up 5177
+tap down 5182
+tap grind 6075..6111 every 4
+tap flip 6244
+tap up 6377
+tap down 6382
+tap grind 7275..7311 every 4
+tap flip 7444
+tap up 7577
+tap down 7582
+tap grind 8475..8511 every 4
+tap flip 8644
+tap up 8777
+tap down 8782
+tap grind 9675..9711 every 4
+tap flip 9844
+tap up 9977
+tap down 9982
+tap grind 10875..10911 every 4
+tap flip 11044
+tap up 11177
+tap down 11182
+tap grind 12075..12111 every 4
+tap flip 12244
+tap up 12377
+tap down 12382
+tap grind 13275..13311 every 4
+tap flip 13444
+tap up 13577
+tap down 13582
+run 14700
+expect event comboLanded{name=FS 50-50 + LOMBARD FLOWER BED + Kickflip + Manual} count == 12
+expect event levelGoal{level=russianhill,id=pro} within 12692..12696   # Pro 45,000 since feel round 4 (17,500: at 5494)
+expect event levelOver{level=russianhill,score=50064} within 14399..14402   # 49,972 before the squeeze, 49,796 on phase 32's build
+expect no event bail

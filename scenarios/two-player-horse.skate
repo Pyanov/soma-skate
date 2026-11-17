@@ -1,0 +1,9 @@
+# Two-player HORSE for the split-screen clip (skate clip two-player-horse): soma-2p-horse-win (SOMA,
+# player 1's bot clean, player 2's sketchy) run on past the end so the results card shows.
+park soma
+cmd 0 player2 join
+cmd 0 run horse2p SOMA
+bot horse kickflip,heelflip,popshoveit,fs180
+p2 bot horse sketchy
+run 6900
+expect event horseOver{winner=1} count == 1

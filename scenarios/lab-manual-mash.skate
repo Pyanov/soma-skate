@@ -1,0 +1,16 @@
+# W and S mashed from a standstill (manual tapping and rocking). The W taps push, so the speed
+# builds; no manual starts below combo.manualStartSpeed (2 m/s), so the first is a Nose Manual at
+# 5.1 s, and rocking W, S in it does not balance it: it falls at 7.6 s (7.3 s before the feel audit
+# doubled the balance damping) and pays nothing. (A manual
+# used to start at walking pace, stop at once and bank its 50-75 points: 942 points a second
+# standing still.)
+park lab
+spawn lab_center
+tap up 20..1220 every 4
+tap down 22..1222 every 4
+run 1300
+expect event manualStart count == 1
+expect event manualStart{trick=Nose Manual} within 611..615
+expect event bail{reason=lost balance on the Nose Manual} within 910..914
+expect no event comboLanded
+expect skater.score == 0 at end

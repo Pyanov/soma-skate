@@ -1,0 +1,13 @@
+# The north fence (fence_NE) was built up to half a metre inside the plan line where the
+# export put the invisible boundary wall, leaving a slot behind the fence on top of W-NORTH.
+# Fuzz (seed 5) rolled into it past the fence's west end and wedged in its 24 cm part (the
+# old soma-walltop-stuck scenario started inside that slot). The export now pulls the
+# boundary in onto fences built inside the plan line and closes their free ends, so pushing
+# east along the wall into the old gap stops at the fence end instead of rolling in behind it.
+park soma
+cmd 0 teleport 45.6 30.62 -0.80 88
+hold up 10..120
+run 400
+expect max skater.pos.x < 46.8
+expect no event unstuck
+expect state ground at end

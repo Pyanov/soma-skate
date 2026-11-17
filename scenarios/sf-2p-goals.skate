@@ -1,0 +1,23 @@
+# Two players in the city: each scores its own gaps and completes city goals for itself, into its
+# own session. Player 2 50-50s a Dolores Park bench first (BENCH GRIND, goal Bench Press for player
+# 2); player 1 does the same later and completes the goal for itself too. Free skate, no game.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 player2 join
+cmd 30 player2 teleport -372.9 -350.6 34.93 268
+cmd 30 set skater2.vel.x -3
+p2 tap grind 31
+cmd 300 teleport -372.9 -350.6 34.93 268
+cmd 300 set skater.vel.x -3
+tap grind 301
+run 500
+expect event grindStart{line=bench_-374_-350,player=2} within 31..34
+expect event gap{id=bench,player=2} within 109..109
+expect event goalComplete{id=bench,area=Dolores,player=2} within 105..112
+expect event gap{id=bench,player=1} within 379..379
+expect event goalComplete{id=bench,area=Dolores,player=1} within 375..382
+expect event goalComplete count == 2
+expect skater2.score == 756 at 200
+expect skater.score == 0 at 200
+expect no event bail

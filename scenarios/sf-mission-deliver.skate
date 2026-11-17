@@ -1,0 +1,11 @@
+# Missions: a deliver step (Marge's chowder to Captain Barnacle at Pier 39 in 90 s, no spills): no
+# pickup place, so the clock starts with the step; delivered by teleport, his lines start at once.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start chowder 1
+cmd 100 teleport 288 964 -7
+run 200
+expect event missionStep{mission=chowder,step=1,kind=deliver,seconds=90} within 1..1
+expect event missionStep{mission=chowder,step=2,kind=talk} within 100..110
+expect event talk{character=barnacle,line=chowder-06,n=0} within 100..110
+expect no event missionFailed

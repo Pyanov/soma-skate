@@ -1,0 +1,12 @@
+# The skater appears 4 m in front of a car doing 11 m/s: it brakes hard (9 m/s^2) but cannot stop in
+# time. "Hit by a car": a bail, knocked forward with the car's speed plus traffic.knock.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 2 car -51.1 -331.2 356 11
+cmd 60 teleport -50.28 -321.36 2.01 0
+run 200
+expect event carHit{reason=hit by a car} within 80..90
+expect skater.speed > 10 at 90
+expect min skater.pos.z > 1.85

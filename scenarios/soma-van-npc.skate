@@ -1,0 +1,17 @@
+# NPC skaters and a van in the park (game/vehicles.ts reactNpcs, docs/mechanics/driving.md; data/vehicles.json
+# reactions). One NPC skater rides east along the north side and turns south down the east side; a van
+# comes west along the north side at 4 m/s to meet it. Coming at it, the skater shouts (npcShout, a line
+# from reactions.npcShouts); reached, it jumps clear to its side of the van (npcDodge) and, trying for its
+# line, keeps to the van's side until it has gone by. The van never drives through it, and nothing bails.
+park soma
+cmd 1 npc spawn 1
+cmd 1 vehicle spawn van 36 19.3 270
+cmd 2 vehicle enter van
+bot drive 36,19.3 20,19.3 from 200 speed 4 stop
+run 900
+expect event npcShout within 328..338
+expect event npcShout count == 1
+expect event npcDodge within 411..421
+expect min npc.gap > 1.3
+expect no event npcBail
+expect no event vanBump

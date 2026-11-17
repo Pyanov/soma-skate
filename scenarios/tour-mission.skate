@@ -1,0 +1,59 @@
+# Tour level The Mission (data/tour.json), a 2-minute run from Valencia: its three goals, the tape
+# and S-K-A-T-E, each set up with a teleport (the riding between spots is left out).
+# - Valencia: boneless beside the parked hybrid and BS 50-50 its roof; the tape is on the roof.
+# - 16th St BART: ollie off the top of the southwest stairs: Ollie the BART Stairs.
+# - Clarion Alley: wallride the north wall's first mural: Wallride a Mural.
+# - Dolores Park at 19th: seat wall 50-50 into a manual: 2,733, Bench Combo at Dolores Park.
+# - Letters: up Valencia (S, K) and round the BART plaza (A, T) by the rider-line autopilot, then
+#   down Clarion Alley (E).
+park sf
+cmd 0 traffic clear
+cmd 0 run level mission
+cmd 10 teleport -60.52 -273.21 2.37 -4.6
+cmd 12 set skater.vel.x -0.3208
+cmd 12 set skater.vel.y 3.9871
+hold ollie 155..185
+tap up 173
+tap up 180
+tap grind 229
+cmd 700 teleport 96.1 -201.1 -1.68 41.8
+cmd 702 set skater.vel.x 3.3327
+cmd 702 set skater.vel.y 3.7274
+hold ollie 832..844
+cmd 1300 teleport -26.94 -395.92 1.78 84.25
+hold up 1306..1390
+hold ollie 1380..1400
+tap grind 1404
+cmd 1900 teleport -233.805 -199.578 9.400 -5.33
+cmd 1902 set skater.vel.x -0.4179
+cmd 1902 set skater.vel.y 4.4806
+hold ollie 1992..2022
+tap grind 2029
+tap up 2184
+tap down 2189
+hold ollie 2420..2428
+cmd 3000 teleport valencia_shops
+bot line valencia_north 3006
+cmd 4700 teleport 126 -208 -2.0 -26.6
+bot line bart_plaza_line 4706
+cmd 6500 teleport clarion_alley
+hold up 6510..7700
+bot balance
+run 14700
+expect event levelStart{level=mission,seconds=120} within 0..2
+expect event tapeFound{level=mission} within 229..233
+expect event grindStart{trick=BS 50-50,line=car_-62_-266} within 228..232
+expect event levelGoal{level=mission,id=bart,name=Ollie the BART Stairs} within 984..988
+expect event levelGoal{level=mission,id=mural,name=Wallride a Mural} within 1493..1497
+expect event comboLanded{name=BS 50-50 + DOLORES SEAT WALL + Manual,points=2733} within 2525..2529
+expect event levelGoal{level=mission,id=bench,name=Bench Combo at Dolores Park} within 2525..2529
+expect event letter{letter=S,have=S____} within 4013..4017
+expect event letter{letter=K,have=SK___} within 4492..4496
+expect event letter{letter=A,have=SKA__} within 5087..5091
+expect event letter{letter=T,have=SKAT_} within 6003..6007
+expect event letter{letter=E,have=SKATE} within 7155..7159
+expect event levelGoal{level=mission,id=skate} within 7155..7159
+expect event levelOver{level=mission,score=7893,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

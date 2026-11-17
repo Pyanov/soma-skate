@@ -1,0 +1,12 @@
+# Not enough stairs for BART STAIRS: the same line at 3 m/s lands nine steps down (the gap wants 12).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 96.1 -201.1 -1.68 41.8
+cmd 2 set skater.vel.x 1.9996
+cmd 2 set skater.vel.y 2.2364
+hold ollie 228..240
+run 420
+expect event land{quality=clean} within 360..364
+expect skater.pos.z > -3.44 at 365
+expect no event gap{id=bart_stairs}
+expect no event goalComplete{id=bartstairs}

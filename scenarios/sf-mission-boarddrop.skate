@@ -1,0 +1,18 @@
+# Board Drop (data/missions.json boarddrop; a deliver step with a vehicle): Big Lou's twelve
+# decks in the shop's van, placed on Valencia by the mission. Its drop is set 50 m up Valencia for this run
+# (the park gate in play): driven there and stopped, at the wheel, the decks are delivered; Kenji's line;
+# the mission done, its van goes and you are out of it.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.boarddrop.steps.1.to [-60.3,-211.2,2.3]
+cmd 1 mission start boarddrop 1
+cmd 3 vehicle enter shop_van
+bot drive -56.6,-260.3 -57.5,-248.0 -58.5,-235.7 -59.4,-223.5 -60.3,-211.2 from 10 lane 1.8 speed 8 corner 4 stop
+run 1500
+expect event missionStep{mission=boarddrop,step=1,kind=deliver,seconds=150} within 2..2
+expect event vehicleEnter{name=shop_van} within 3..4
+expect event missionDone{mission=boarddrop} within 300..1500
+expect event talk{character=kenji,line=boarddrop-05,bark=true} within 300..1500
+expect event vehicleExit{name=shop_van} within 300..1500
+expect no event missionFailed
+expect no event vanBump

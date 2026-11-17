@@ -1,0 +1,20 @@
+# HALLIDIE PLAZA LEDGE (city phase 13's granite ledges in Hallidie Plaza, by the Powell turntable): an
+# ollie onto a ledge down the plaza's terraces and a 50-50 along it. The squeezed city lays the plaza's
+# ledges out again (four, running north): the same approach, 32 degrees to the ledge from its right and
+# just before its low end, onto the east edge of the one nearest the plaza's middle. It climbs less
+# (0.34 m in 5 m), so the skater rolls off its top end at 1.9 m/s and comes down clean.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 544.84 322.74 -13.43 318.9
+cmd 3 set skater.vel.x -2.628
+cmd 3 set skater.vel.y 3.016
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=BS 50-50,line=ledge_542_326} within 119..123
+expect event grindEnd{reason=end} within 322..326
+expect event gap{id=hallidie_ledge,gap=HALLIDIE PLAZA LEDGE,points=250} within 322..326
+expect event land{quality=clean} within 376..380
+expect event comboLanded{name=BS 50-50 + HALLIDIE PLAZA LEDGE} within 387..391
+expect no event bail

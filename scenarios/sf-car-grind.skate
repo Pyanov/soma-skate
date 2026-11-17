@@ -1,0 +1,19 @@
+# Grinding a moving car: a car does 7 m/s up Valencia; the skater comes down onto its roof's left
+# edge going 3 m/s faster, grind pressed: a 50-50 on the car roof (the line moves with the car, the
+# grind speed is relative to it), off the front end after 0.7 s, landing on the road at 9.5 m/s.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -50.35 -328.89 4.04 355.2
+cmd 60 set skater.vel.x -0.83
+cmd 60 set skater.vel.y 9.96
+tap grind 70
+run 300
+expect event grindStart{trick=FS 50-50,line=car roof} within 70..74
+expect event grindEnd{reason=end} within 150..165
+expect event land{quality=clean} within 240..255
+expect skater.speed > 9 at 255
+expect event comboLanded{name=FS 50-50} within 250..270
+expect no event bail

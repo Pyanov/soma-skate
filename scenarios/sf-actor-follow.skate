@@ -1,0 +1,22 @@
+# A follower (game/movers.ts, docs/mechanics/missions.md; data/movers.json): Marisol and her fisheye, an
+# actor started by command. Spawned 12 m behind you (movers.catchBack), she comes after you as you ride
+# west along Duboce at 6 m/s, up to her pace of 8, and settles 4 m behind (the spawn's gap), at your
+# speed. Teleported 120 m away, you have lost her (more than movers.catchUp): she comes round 12 m behind
+# you (actorCatchUp).
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 52 -8 -1.1 270
+cmd 2 actor spawn marisol follow 8 gap 4
+bot path 50,-8 30,-8 10,-8 -6,-8 from 60 speed 6
+cmd 1300 teleport -15 110 1.1 0
+run 1500
+expect event actorStart{who=marisol,mode=follow} within 2..4
+expect actor.gap > 11.9 at 3
+expect max actor.actor.speed < 8.01
+expect max actor.actor.speed > 7.9
+expect actor.gap > 3.8 at 1200
+expect actor.gap < 4.2 at 1200
+expect actor.actor.speed > 5.9 at 1200
+expect event actorCatchUp{who=marisol} within 1300..1302
+expect actor.gap < 12.1 at 1302
+expect no event bail

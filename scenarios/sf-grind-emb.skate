@@ -1,0 +1,18 @@
+# Embarcadero Plaza, EMB (city phase 10): granite ledges in rows across the brick, the fountain's
+# pool, tubes and blocks, the brick banks with granite coping and the three-block; every top edge
+# grinds. Rolling south-east at 4 m/s just beside a ledge of a row across the plaza, an ollie and
+# grind pressed in the air, the bot keeping the balance: a 50-50 the whole 10 m, landed. (Phase 25: the
+# Tour's EMB LEDGE gap pays on it.)
+park sf
+cmd 0 traffic clear
+bot balance
+cmd 0 teleport 568.85 708.35 -8.93 141.8
+cmd 2 set skater.vel.x 2.472
+cmd 2 set skater.vel.y -3.144
+hold ollie 4..14
+tap grind 22
+run 520
+expect event grindStart{trick=FS 50-50,line=ledge_569_708} within 26..30
+expect event grindEnd{reason=end} within 364..384
+expect event comboLanded{name=FS 50-50 + EMB LEDGE} within 430..450
+expect no event bail

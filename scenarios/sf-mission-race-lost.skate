@@ -1,0 +1,11 @@
+# Missions: a race step lost. Standing at the top of the crooked block arms the race (within 15 m);
+# Brayden rides the eight hairpins without you (easing up to 3.6 m/s, about 55 s), reaches the foot first, and the
+# mission fails (lost; the client says his line); his actor goes with the mission.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start lombard 1
+cmd 0 teleport -300 697 28.2 90
+run 7000
+expect event missionStep{mission=lombard,step=1,kind=race} within 1..1
+expect event missionFailed{mission=lombard,step=1,reason=lost} within 6590..6640
+expect no event missionStep{mission=lombard,step=2}

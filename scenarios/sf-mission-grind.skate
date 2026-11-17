@@ -1,0 +1,14 @@
+# Missions: a trick step on grind metres (Sal: 10 m on the cable car slot up Powell), the slot ridden
+# as sf-grind-cable-slot rides it.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start turntable 1
+cmd 0 teleport 586.26 520.14 -6.30 171.0
+cmd 2 set skater.vel.x 0.78
+cmd 2 set skater.vel.y -4.94
+hold ollie 30..40
+tap grind 46
+bot balance
+run 1500
+expect event grindStart{line=slot_585_522} within 45..49
+expect event missionStep{mission=turntable,step=2,kind=talk} within 100..1400

@@ -1,0 +1,276 @@
+{
+  "_doc": [
+    "Ambient vignettes in the neighbourhoods (src/client/vignettes.ts draws their props and runs their reactions and lines; the",
+    "people are the crowd's, src/client/crowd.ts, posed by their act). Draw-only, never in the sim. Each vignette: id (stable: the",
+    "story may hang side stories on it), name, area, at (site metres) and heading (compass degrees, 0 north/+y, the way it",
+    "faces), near (metres: what counts as near it), members (type: a data/pedestrians.json look; act: what they do, vignettes.ts",
+    "ACTS; at [right, ahead] metres from the anchor, face degrees turned from its heading, seat height for a chair, z over the ground",
+    "(the rope walker), extra: dropped on",
+    "low; path [[right, ahead], ...] and speed for one who walks a line back and forth; circle radius and speed for one who circles",
+    "the anchor), props (kind, at, face, z over the ground, length for a rope, text for a sign, held: a sign on a pole), react (what a",
+    "moment near it does:",
+    "combo, a big combo landed near: look, cheer, film or statue; trick, a trick started near: tip; grind, a grind started near:",
+    "flinch; pass, skating through near at speed: look, flinch, film, statue or scatter), sound (a loop played near it: guitar, drums,",
+    "boombox), lines (a few spoken lines, on combo, trick, grind or pass; voice in data/voices.json; tools/gen_voices.py makes the",
+    "mp3s; captioned). drawDistance: metres from the camera (times the preset's); lineCooldown: seconds before the same vignette",
+    "speaks again, globalCooldown: before any vignette speaks again; hear: metres within which a line is said; bigPoints: a combo's",
+    "points to count; passSpeed: m/s to count as skating through; soundFar: metres a loop fades out over."
+  ],
+  "drawDistance": 110,
+  "lineCooldown": 30,
+  "globalCooldown": 6,
+  "hear": 16,
+  "bigPoints": 600,
+  "passSpeed": 3,
+  "soundFar": 32,
+  "vignettes": [
+    {
+      "id": "market-chess", "name": "Chess on Market Street", "area": "Union Square", "at": [640, 405], "heading": 300, "near": 14,
+      "members": [
+        { "type": "chessPlayer", "act": "chess", "at": [-0.62, 0], "face": 90, "seat": 0.46 },
+        { "type": "chessPlayer", "act": "chess", "at": [0.62, 0], "face": -90, "seat": 0.46 },
+        { "type": "chessPlayer", "act": "chess", "at": [-0.62, 2.4], "face": 90, "seat": 0.46, "extra": true },
+        { "type": "chessPlayer", "act": "chess", "at": [0.62, 2.4], "face": -90, "seat": 0.46, "extra": true },
+        { "type": "chessKibitz", "act": "kibitz", "at": [1.25, 1.1], "face": -120 }
+      ],
+      "props": [
+        { "kind": "chessTable", "at": [0, 0], "face": 0 }, { "kind": "chair", "at": [-0.62, 0], "face": 90 }, { "kind": "chair", "at": [0.62, 0], "face": -90 },
+        { "kind": "chessTable", "at": [0, 2.4], "face": 0 }, { "kind": "chair", "at": [-0.62, 2.4], "face": 90 }, { "kind": "chair", "at": [0.62, 2.4], "face": -90 }
+      ],
+      "react": { "combo": "look" },
+      "lines": [
+        { "id": "vig-chess-1", "on": "combo", "voice": "elder", "text": "Check. Also, nice kickflip." },
+        { "id": "vig-chess-2", "on": "combo", "voice": "elder", "text": "Thirty years on this corner. That was a good one." },
+        { "id": "vig-chess-3", "on": "pass", "voice": "elder", "text": "Mind the board, the bishop's on a hot streak." }
+      ]
+    },
+    {
+      "id": "powell-busker", "name": "The busker at the Powell turntable", "area": "Union Square", "at": [619, 390], "heading": 270, "near": 12, "sound": "guitar",
+      "members": [ { "type": "busker", "act": "guitar", "at": [0, 0], "face": 0 } ],
+      "props": [ { "kind": "guitar", "at": [0.03, 0.2], "face": 0, "z": 1.02 }, { "kind": "guitarCase", "at": [0.2, 0.75], "face": 20 } ],
+      "react": { "trick": "tip", "combo": "cheer" },
+      "lines": [
+        { "id": "vig-busk-1", "on": "trick", "voice": "busker", "text": "That one's worth a dollar. Tip jar's open." },
+        { "id": "vig-busk-2", "on": "combo", "voice": "busker", "text": "I'm writing a song about that. It's in G." },
+        { "id": "vig-busk-3", "on": "pass", "voice": "busker", "text": "Requests are five bucks. Skating through is free." }
+      ]
+    },
+    {
+      "id": "powell-breakers", "name": "The breakdance crew at Powell and Market", "area": "Union Square", "at": [630, 403], "heading": 270, "near": 12, "sound": "boombox",
+      "members": [
+        { "type": "breaker", "act": "windmill", "at": [0, 0], "face": 0 },
+        { "type": "breaker", "act": "clap", "at": [-1.7, 0.6], "face": 60 },
+        { "type": "breaker", "act": "toprock", "at": [1.7, 0.6], "face": -60, "extra": true }
+      ],
+      "props": [ { "kind": "mat", "at": [0, 0], "face": 0 }, { "kind": "boombox", "at": [0, -1.6], "face": 0 } ],
+      "react": { "combo": "cheer" },
+      "lines": [
+        { "id": "vig-break-1", "on": "combo", "voice": "breaker", "text": "Yo! Board-boy wants a battle!" },
+        { "id": "vig-break-2", "on": "pass", "voice": "breaker", "text": "Not on the cardboard, man!" }
+      ]
+    },
+    {
+      "id": "dolores-sunbathers", "name": "Sunbathers on the Dolores hill", "area": "Mission Dolores", "at": [-370, -64], "heading": 20, "near": 12,
+      "members": [
+        { "type": "sunbather", "act": "sunbathe", "at": [0, 0], "face": 0 },
+        { "type": "sunbather", "act": "sunbathe", "at": [1.9, 0.4], "face": 10 },
+        { "type": "sunbather", "act": "sunbatheRead", "at": [-2.1, 0.8], "face": -15, "extra": true },
+        { "type": "sunbather", "act": "sunbathe", "at": [3.9, -0.3], "face": 5, "extra": true }
+      ],
+      "props": [ { "kind": "towel", "at": [0, 0], "face": 0 }, { "kind": "towel", "at": [1.9, 0.4], "face": 10 }, { "kind": "towel", "at": [-2.1, 0.8], "face": -15 }, { "kind": "towel", "at": [3.9, -0.3], "face": 5 } ],
+      "react": { "pass": "flinch", "combo": "look" },
+      "lines": [
+        { "id": "vig-sun-1", "on": "pass", "voice": "hippie", "text": "You're blocking my sun. All four minutes of it." },
+        { "id": "vig-sun-2", "on": "combo", "voice": "hippie", "text": "Whoa. Do it again, but slower, I'm napping." }
+      ]
+    },
+    {
+      "id": "dolores-tightrope", "name": "The tightrope walker between two Dolores trees", "area": "Mission Dolores", "at": [-312.4, -158.2], "heading": 287.6, "near": 12,
+      "members": [
+        { "type": "tightroper", "act": "tightrope", "at": [0, 1], "face": 0, "z": 1.17, "path": [[0, 1], [0, 7.6]], "speed": 0.45 },
+        { "type": "picnicker", "act": "clap", "at": [1.8, 4.3], "face": -90, "extra": true }
+      ],
+      "props": [ { "kind": "rope", "at": [0, 0], "face": 0, "z": 1.15, "length": 8.6 } ],
+      "react": { "combo": "cheer", "pass": "flinch" },
+      "lines": [
+        { "id": "vig-rope-1", "on": "pass", "voice": "hippie", "text": "Whoa, whoa, whoa. Okay. I'm centered. I'm centered." },
+        { "id": "vig-rope-2", "on": "combo", "voice": "hippie", "text": "Respect. We're both just balancing, man." }
+      ]
+    },
+    {
+      "id": "dolores-chocolate", "name": "The artisanal chocolate cooler", "area": "Mission Dolores", "at": [-299, -179], "heading": 120, "near": 10,
+      "members": [ { "type": "chocolatier", "act": "seller", "at": [0, 0], "face": 0 } ],
+      "props": [ { "kind": "cooler", "at": [0, 0.7], "face": 0 }, { "kind": "sign", "at": [0.75, 0.7], "face": 0, "text": "ARTISANAL\nCHOCOLATE\n$5" } ],
+      "react": { "combo": "cheer" },
+      "lines": [
+        { "id": "vig-choc-1", "on": "pass", "voice": "chocolatier", "text": "Artisanal chocolate. Very artisanal. Extremely chocolate." },
+        { "id": "vig-choc-2", "on": "combo", "voice": "chocolatier", "text": "Chocolate for the champion? It's mostly chocolate." }
+      ]
+    },
+    {
+      "id": "dolores-drums", "name": "The Dolores drum circle", "area": "Mission Dolores", "at": [-282, -202], "heading": 0, "near": 13, "sound": "drums",
+      "members": [
+        { "type": "drummer", "act": "drum", "at": [0, 1.3], "face": 180 },
+        { "type": "drummer", "act": "drum", "at": [1.24, 0.4], "face": -108 },
+        { "type": "drummer", "act": "drum", "at": [0.76, -1.05], "face": -36 },
+        { "type": "drummer", "act": "drum", "at": [-0.76, -1.05], "face": 36, "extra": true },
+        { "type": "drummer", "act": "drum", "at": [-1.24, 0.4], "face": 108, "extra": true }
+      ],
+      "props": [
+        { "kind": "djembe", "at": [0, 0.85], "face": 180 }, { "kind": "djembe", "at": [0.81, 0.26], "face": -108 }, { "kind": "djembe", "at": [0.5, -0.69], "face": -36 },
+        { "kind": "djembe", "at": [-0.5, -0.69], "face": 36 }, { "kind": "djembe", "at": [-0.81, 0.26], "face": 108 }
+      ],
+      "react": { "combo": "cheer" },
+      "lines": [
+        { "id": "vig-drum-1", "on": "combo", "voice": "hippie", "text": "The circle felt that, man." },
+        { "id": "vig-drum-2", "on": "pass", "voice": "hippie", "text": "Your wheels are off the beat. It's fine. Everything is fine." }
+      ]
+    },
+    {
+      "id": "chinatown-cards", "name": "Elders playing cards on Grant Avenue", "area": "Chinatown", "at": [243.1, 774.5], "heading": 0, "near": 11,
+      "members": [
+        { "type": "elder", "act": "cards", "at": [0, 0.62], "face": 180, "seat": 0.42 },
+        { "type": "elder", "act": "cards", "at": [0, -0.62], "face": 0, "seat": 0.42 },
+        { "type": "elder", "act": "cards", "at": [0.62, 0], "face": -90, "seat": 0.42 },
+        { "type": "elder", "act": "cards", "at": [-0.62, 0], "face": 90, "seat": 0.42, "extra": true }
+      ],
+      "props": [
+        { "kind": "cardTable", "at": [0, 0], "face": 0 }, { "kind": "stool", "at": [0, 0.62], "face": 0 }, { "kind": "stool", "at": [0, -0.62], "face": 0 },
+        { "kind": "stool", "at": [0.62, 0], "face": 0 }, { "kind": "stool", "at": [-0.62, 0], "face": 0 }
+      ],
+      "react": { "combo": "look", "pass": "flinch" },
+      "lines": [
+        { "id": "vig-cards-1", "on": "pass", "voice": "auntie", "text": "Aiya, slow down! You'll knock the cards!" },
+        { "id": "vig-cards-2", "on": "combo", "voice": "auntie", "text": "Show-off. Deal him in, he's lucky." }
+      ]
+    },
+    {
+      "id": "northbeach-taichi", "name": "The morning tai chi group in Washington Square", "area": "North Beach", "at": [15, 725], "heading": 0, "near": 12,
+      "members": [
+        { "type": "taichi", "act": "taichi", "at": [0, 0], "face": 0 },
+        { "type": "taichi", "act": "taichi", "at": [-1.6, -1.2], "face": 0 },
+        { "type": "taichi", "act": "taichi", "at": [1.6, -1.2], "face": 0 },
+        { "type": "taichi", "act": "taichi", "at": [-0.8, -2.5], "face": 0, "extra": true },
+        { "type": "taichi", "act": "taichi", "at": [0.8, -2.5], "face": 0, "extra": true }
+      ],
+      "props": [],
+      "react": { "pass": "look", "combo": "look" },
+      "lines": [
+        { "id": "vig-taichi-1", "on": "pass", "voice": "taichi", "text": "Breathe. You are rushing. The street is not going anywhere." },
+        { "id": "vig-taichi-2", "on": "combo", "voice": "taichi", "text": "Good. Now do it slowly, for twenty years." }
+      ]
+    },
+    {
+      "id": "castro-roller", "name": "The roller-disco circle at Castro and Market", "area": "The Castro", "at": [-625, -53], "heading": 0, "near": 12,
+      "members": [
+        { "type": "rollerDisco", "act": "roller", "at": [0, 4], "face": 0, "circle": 4, "speed": 2.3 },
+        { "type": "rollerDisco", "act": "roller", "at": [4, 0], "face": 0, "circle": 4, "speed": 2.3 },
+        { "type": "rollerDisco", "act": "roller", "at": [0, -4], "face": 0, "circle": 4, "speed": 2.3, "extra": true },
+        { "type": "rollerDisco", "act": "roller", "at": [-4, 0], "face": 0, "circle": 4, "speed": 2.3, "extra": true }
+      ],
+      "props": [ { "kind": "boombox", "at": [0, 0], "face": 0 } ],
+      "react": { "combo": "cheer" },
+      "lines": [
+        { "id": "vig-roll-1", "on": "combo", "voice": "drag", "text": "Serve! You are serving, honey!" },
+        { "id": "vig-roll-2", "on": "pass", "voice": "drag", "text": "Join the circle, sweetie! Wrong direction, but join it!" }
+      ]
+    },
+    {
+      "id": "castro-brunch", "name": "Drag brunch on a Castro Street parklet", "area": "The Castro", "at": [-561.6, -97.5], "heading": 355.75, "near": 11,
+      "members": [
+        { "type": "dragQueen", "act": "brunch", "at": [-0.62, 0.35], "face": 90, "seat": 0.62 },
+        { "type": "dragQueen", "act": "brunchFan", "at": [0.62, 0.35], "face": -90, "seat": 0.62 },
+        { "type": "rainbowFan", "act": "brunch", "at": [-0.62, -0.35], "face": 90, "seat": 0.62, "extra": true },
+        { "type": "techPhone", "act": "brunch", "at": [0.62, -0.35], "face": -90, "seat": 0.62, "extra": true }
+      ],
+      "props": [
+        { "kind": "parklet", "at": [0, 0], "face": 90 }, { "kind": "brunchTable", "at": [0, 0], "face": 90, "z": 0.16 },
+        { "kind": "chair", "at": [-0.62, 0.35], "face": 90, "z": 0.16 }, { "kind": "chair", "at": [0.62, 0.35], "face": -90, "z": 0.16 },
+        { "kind": "chair", "at": [-0.62, -0.35], "face": 90, "z": 0.16 }, { "kind": "chair", "at": [0.62, -0.35], "face": -90, "z": 0.16 }
+      ],
+      "react": { "combo": "cheer", "pass": "flinch" },
+      "lines": [
+        { "id": "vig-brunch-1", "on": "combo", "voice": "drag", "text": "Ten! Ten! Ten! Somebody get this child a mimosa." },
+        { "id": "vig-brunch-2", "on": "pass", "voice": "drag", "text": "Excuse me, this is a brunch, not a skatepark." }
+      ]
+    },
+    {
+      "id": "cityhall-wedding", "name": "A wedding shoot on the City Hall steps", "area": "Civic Center", "at": [12, 348], "heading": 81, "near": 18,
+      "members": [
+        { "type": "bride", "act": "couple", "at": [-0.32, 0], "face": 0 },
+        { "type": "groom", "act": "couple", "at": [0.32, 0], "face": 0 },
+        { "type": "photographer", "act": "photographer", "at": [0, 4.6], "face": 180 }
+      ],
+      "props": [ { "kind": "bouquet", "at": [-0.12, 0.3], "face": 0, "z": 1.0 } ],
+      "react": { "pass": "film", "combo": "film" },
+      "lines": [
+        { "id": "vig-wed-1", "on": "pass", "voice": "bride", "text": "You're in our wedding photos now. Forever." },
+        { "id": "vig-wed-2", "on": "combo", "voice": "photographer", "text": "Can you do that again? The light's perfect." },
+        { "id": "vig-wed-3", "on": "pass", "voice": "photographer", "text": "Keep going, keep going, I'll crop you out. Probably." }
+      ]
+    },
+    {
+      "id": "cityhall-protest", "name": "The Muni schedule protester at Civic Center", "area": "Civic Center", "at": [51, 361], "heading": 270, "near": 12,
+      "members": [ { "type": "protester", "act": "protest", "at": [0, 0], "face": 0 } ],
+      "props": [ { "kind": "sign", "at": [0, 0.25], "face": 0, "z": 1.55, "text": "BRING BACK THE\n2003 MUNI\nSCHEDULE", "held": true } ],
+      "react": { "combo": "cheer" },
+      "lines": [
+        { "id": "vig-protest-1", "on": "pass", "voice": "protester", "text": "Ask me about the 2003 schedule! The N came every six minutes!" },
+        { "id": "vig-protest-2", "on": "combo", "voice": "protester", "text": "Even the skaters agree! What do we want? The 2003 schedule!" }
+      ]
+    },
+    {
+      "id": "painted-postcard", "name": "Tourists posing for the Painted Ladies postcard", "area": "Alamo Square", "at": [-1008, 470], "heading": 270, "near": 12,
+      "members": [
+        { "type": "tourist", "act": "posePeace", "at": [-0.45, 0], "face": 0 },
+        { "type": "mapTourist", "act": "poseArms", "at": [0.45, 0], "face": 0 },
+        { "type": "tourist", "act": "phonePhoto", "at": [0, 3.6], "face": 180 }
+      ],
+      "props": [],
+      "react": { "pass": "flinch", "combo": "film" },
+      "lines": [
+        { "id": "vig-post-1", "on": "pass", "voice": "tourist", "text": "You photobombed the TV show house!" },
+        { "id": "vig-post-2", "on": "combo", "voice": "tourist", "text": "Okay, that's going on the postcard instead." }
+      ]
+    },
+    {
+      "id": "pier39-statue", "name": "The silver statue at Pier 39", "area": "Fisherman's Wharf", "at": [285, 988], "heading": 180, "near": 9,
+      "members": [ { "type": "silverStatue", "act": "statue", "at": [0, 0], "face": 0, "seat": 0.42 } ],
+      "props": [ { "kind": "pedestal", "at": [0, 0], "face": 0 }, { "kind": "tipBucket", "at": [0.6, 0.55], "face": 0 } ],
+      "react": { "pass": "statue", "combo": "statue" },
+      "lines": [
+        { "id": "vig-statue-1", "on": "pass", "voice": "statue", "text": "Gotcha." },
+        { "id": "vig-statue-2", "on": "combo", "voice": "statue", "text": "I saw nothing. I am a statue." }
+      ]
+    },
+    {
+      "id": "wharf-gulls", "name": "Gulls after a sourdough bowl on Jefferson Street", "area": "Fisherman's Wharf", "at": [55, 957], "heading": 180, "near": 10,
+      "members": [ { "type": "breadBowl", "act": "breadGuard", "at": [0, 0], "face": 0 } ],
+      "props": [ { "kind": "gull", "at": [0, 0], "face": 0 }, { "kind": "gull", "at": [0, 0], "face": 120 }, { "kind": "gull", "at": [0, 0], "face": 240 } ],
+      "react": { "pass": "scatter" },
+      "lines": [
+        { "id": "vig-gull-1", "on": "pass", "voice": "tourist", "text": "Not the bread bowl! Not again!" },
+        { "id": "vig-gull-2", "on": "combo", "voice": "tourist", "text": "Great, now the gulls are watching you instead. Thank you!" }
+      ]
+    },
+    {
+      "id": "valencia-cafe", "name": "Laptop workers at a Valencia café", "area": "The Mission", "at": [-40, -305], "heading": 270, "near": 8,
+      "members": [
+        { "type": "laptopWorker", "act": "laptop", "at": [-0.45, 0], "face": 90, "seat": 0.46 },
+        { "type": "laptopWorker", "act": "laptop", "at": [0.45, 1.8], "face": -90, "seat": 0.46 },
+        { "type": "laptopWorker", "act": "laptopCall", "at": [-0.45, 1.8], "face": 90, "seat": 0.46, "extra": true }
+      ],
+      "props": [
+        { "kind": "cafeTable", "at": [0, 0], "face": 0 }, { "kind": "chair", "at": [-0.45, 0], "face": 90 }, { "kind": "laptop", "at": [-0.12, 0], "face": 90, "z": 0.74 },
+        { "kind": "cafeTable", "at": [0, 1.8], "face": 0 }, { "kind": "chair", "at": [0.45, 1.8], "face": -90 }, { "kind": "chair", "at": [-0.45, 1.8], "face": 90 },
+        { "kind": "laptop", "at": [0.12, 1.8], "face": -90, "z": 0.74 }, { "kind": "laptop", "at": [-0.12, 1.8], "face": 90, "z": 0.74 }
+      ],
+      "react": { "grind": "flinch", "pass": "flinch" },
+      "lines": [
+        { "id": "vig-cafe-1", "on": "grind", "voice": "techie", "text": "I'm on a call! I am literally on a call!" },
+        { "id": "vig-cafe-2", "on": "grind", "voice": "techie", "text": "Cool, that's going in the standup." },
+        { "id": "vig-cafe-3", "on": "pass", "voice": "techie", "text": "Can you skate a little more quietly? I'm shipping." }
+      ]
+    }
+  ]
+}

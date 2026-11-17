@@ -1,0 +1,16 @@
+# NEAR MISS: overtake a walker 0.8 m to their side at 6 m/s. They only notice you as you come
+# alongside (they step away, too late to matter); you pass 0.93 m off them: NEAR MISS, banked on its
+# own like a gap.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 ped at -65.5 -270 356
+cmd 1 teleport -64.89 -282 2.48 355.66
+cmd 2 set skater.vel.x -0.4536
+cmd 2 set skater.vel.y 5.983
+run 400
+expect event nearMiss{points=250,distance=0.93} within 358..362
+expect event comboLanded{name=NEAR MISS,points=250} within 370..374
+expect skater.score == 250 at 400
+expect no event pedHit
+expect no event bail

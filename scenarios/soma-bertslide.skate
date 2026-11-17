@@ -1,0 +1,9 @@
+# A Bert Slide on the west runway: powerslide (Shift) crouched (K) at 9 m/s, a hand down.
+park soma
+spawn big3_runway
+cmd 8 speed 9
+hold ollie 10..80
+hold slide 12..80
+run 200
+expect event trickEnd{trick=FS Bert Slide} within 79..82
+expect no event bail

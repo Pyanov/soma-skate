@@ -1,0 +1,15 @@
+# 50-50 the ledge, ollie off halfway, kickflip, land: one combo "50-50 + Kickflip".
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+hold ollie 230..250
+tap flip+left 254
+bot balance
+run 560
+expect event grindEnd{trick=BS 50-50,reason=ollie} within 249..253
+expect event pop within 249..253
+expect event trickEnd{trick=Kickflip} within 290..310
+expect event comboLanded{name=BS 50-50 + Kickflip,multiplier=2} within 300..460
+expect no event bail

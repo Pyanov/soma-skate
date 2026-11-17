@@ -1,0 +1,12 @@
+# Cross the flat rail at a right angle, ollie, grind: board across the rail, so a Boardslide (FS: the rail is on the toe side, the rider ends up facing back down it).
+park lab
+cmd 0 teleport -7 1.4 0.14 0
+hold up 6..80
+hold ollie 70..90
+tap grind 128
+bot balance
+run 500
+expect event grindStart{trick=FS Boardslide,slide=true} within 124..140
+expect event grindEnd{trick=FS Boardslide} within 135..330
+expect event comboLanded{name=FS Boardslide} within 140..420
+expect no event bail

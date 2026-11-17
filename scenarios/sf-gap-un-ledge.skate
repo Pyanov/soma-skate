@@ -1,0 +1,59 @@
+# UN PLAZA LEDGE (Tour level 6): the granite ledges in UN Plaza's two rows (not the BART stairwell's
+# parapets at their east end) pay a gap; once a combo, so three ledges in one line pay it once. Along the
+# north row at 6 m/s, ledge to ledge: BS 50-50 + UN PLAZA LEDGE + FS 50-50 + BS 50-50, 4,004.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 262.3 407.0 0.4 80.3
+cmd 3 set skater.vel.x 5.9
+cmd 3 set skater.vel.y 1.0
+hold left 32..40
+hold left 102..117
+hold left 248..278
+hold left 336..369
+hold left 493..532
+hold left 590..618
+hold right 65..77
+hold right 221..236
+hold right 290..325
+hold right 463..484
+hold right 542..577
+hold right 633..654
+hold ollie 5..15
+hold ollie 32..132
+hold ollie 221..379
+hold ollie 463..653
+tap grind 24
+tap grind 30
+tap grind 138
+tap grind 144
+tap grind 150
+tap grind 156
+tap grind 162
+tap grind 168
+tap grind 174
+tap grind 180
+tap grind 186
+tap grind 192
+tap grind 198
+tap grind 204
+tap grind 210
+tap grind 216
+tap grind 384
+tap grind 390
+tap grind 396
+tap grind 402
+tap grind 408
+tap grind 414
+tap grind 420
+tap grind 426
+tap grind 432
+tap grind 438
+tap grind 444
+tap grind 450
+tap grind 456
+tap grind 462
+bot balance
+run 820
+expect event gap{id=un_ledge,gap=UN PLAZA LEDGE,points=250} count == 1
+expect event comboLanded{name=BS 50-50 + UN PLAZA LEDGE + FS 50-50 + BS Suski Grind,points=6076} within 796..806   # the last ledge a Smith grind since city phase 11 moved the plaza's edges by millimetres (BS 50-50, 4,004 before); a Suski since the double tap (tricks pass: the grind presses every 6 ticks tap twice)
+expect no event bail

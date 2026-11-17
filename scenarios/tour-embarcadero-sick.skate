@@ -1,0 +1,253 @@
+# A great run on the Embarcadero (the score tiers' measure; re-measured after city phase 15 rebuilt Pier 7 as it
+# is: its three blocks stand 9 to 12 m apart across the riding line, so a strong player gets one block a pass
+# there, and the level's best line is EMB's row of granite ledges by the banks). Every 10 s (the teleport
+# stands in for rolling back) at 7 m/s beside the row: a 50-50 down its second ledge (EMB LEDGE), popped off
+# with an impossible onto the third, a kickflip onto the fourth, an impossible off its end into a manual, a
+# kickflip out: 17,496 x9, landed by 9.8 s; eleven, 192,456. Pro (20,000) on the second,
+# Sick (162,000, 84% of it as 140,000 was of the old run's 166,320) on the tenth. A decent run (two ledges popped one
+# onto the next, 2,889, every 20 s) scores 17,334. Only impossibles and kickflips: their directions
+# (up, left) end no special's keys (right-down, left-right, up-down), whatever the balance bot pressed before,
+# so with the meter full the line stays the same line (a shove-it after the bot's right was a Kickflip Superman).
+park sf
+cmd 0 traffic clear
+cmd 0 run level embarcadero
+bot balance
+cmd 1 teleport 620.42 686.83 -9.3 141.9
+cmd 3 set skater.vel.x 4.320
+cmd 3 set skater.vel.y -5.509
+cmd 1201 teleport 620.42 686.83 -9.3 141.9
+cmd 1203 set skater.vel.x 4.320
+cmd 1203 set skater.vel.y -5.509
+cmd 2401 teleport 620.42 686.83 -9.3 141.9
+cmd 2403 set skater.vel.x 4.320
+cmd 2403 set skater.vel.y -5.509
+cmd 3601 teleport 620.42 686.83 -9.3 141.9
+cmd 3603 set skater.vel.x 4.320
+cmd 3603 set skater.vel.y -5.509
+cmd 4801 teleport 620.42 686.83 -9.3 141.9
+cmd 4803 set skater.vel.x 4.320
+cmd 4803 set skater.vel.y -5.509
+cmd 6001 teleport 620.42 686.83 -9.3 141.9
+cmd 6003 set skater.vel.x 4.320
+cmd 6003 set skater.vel.y -5.509
+cmd 7201 teleport 620.42 686.83 -9.3 141.9
+cmd 7203 set skater.vel.x 4.320
+cmd 7203 set skater.vel.y -5.509
+cmd 8401 teleport 620.42 686.83 -9.3 141.9
+cmd 8403 set skater.vel.x 4.320
+cmd 8403 set skater.vel.y -5.509
+cmd 9601 teleport 620.42 686.83 -9.3 141.9
+cmd 9603 set skater.vel.x 4.320
+cmd 9603 set skater.vel.y -5.509
+cmd 10801 teleport 620.42 686.83 -9.3 141.9
+cmd 10803 set skater.vel.x 4.320
+cmd 10803 set skater.vel.y -5.509
+cmd 12001 teleport 620.42 686.83 -9.3 141.9
+cmd 12003 set skater.vel.x 4.320
+cmd 12003 set skater.vel.y -5.509
+hold ollie 30..40
+tap grind 46..78 every 4
+hold ollie 226..238
+tap flip 241
+tap up 241
+tap grind 247..343 every 6
+hold ollie 500..512
+tap flip 515
+tap left 515
+tap grind 521..617 every 6
+hold ollie 846..858
+tap flip 861
+tap up 861
+tap up 958
+tap down 962
+hold ollie 1066..1074
+tap flip 1078
+tap left 1078
+hold ollie 1230..1240
+tap grind 1246..1278 every 4
+hold ollie 1426..1438
+tap flip 1441
+tap up 1441
+tap grind 1447..1543 every 6
+hold ollie 1700..1712
+tap flip 1715
+tap left 1715
+tap grind 1721..1817 every 6
+hold ollie 2046..2058
+tap flip 2061
+tap up 2061
+tap up 2158
+tap down 2162
+hold ollie 2266..2274
+tap flip 2278
+tap left 2278
+hold ollie 2430..2440
+tap grind 2446..2478 every 4
+hold ollie 2626..2638
+tap flip 2641
+tap up 2641
+tap grind 2647..2743 every 6
+hold ollie 2900..2912
+tap flip 2915
+tap left 2915
+tap grind 2921..3017 every 6
+hold ollie 3246..3258
+tap flip 3261
+tap up 3261
+tap up 3358
+tap down 3362
+hold ollie 3466..3474
+tap flip 3478
+tap left 3478
+hold ollie 3630..3640
+tap grind 3646..3678 every 4
+hold ollie 3826..3838
+tap flip 3841
+tap up 3841
+tap grind 3847..3943 every 6
+hold ollie 4100..4112
+tap flip 4115
+tap left 4115
+tap grind 4121..4217 every 6
+hold ollie 4446..4458
+tap flip 4461
+tap up 4461
+tap up 4558
+tap down 4562
+hold ollie 4666..4674
+tap flip 4678
+tap left 4678
+hold ollie 4830..4840
+tap grind 4846..4878 every 4
+hold ollie 5026..5038
+tap flip 5041
+tap up 5041
+tap grind 5047..5143 every 6
+hold ollie 5300..5312
+tap flip 5315
+tap left 5315
+tap grind 5321..5417 every 6
+hold ollie 5646..5658
+tap flip 5661
+tap up 5661
+tap up 5758
+tap down 5762
+hold ollie 5866..5874
+tap flip 5878
+tap left 5878
+hold ollie 6030..6040
+tap grind 6046..6078 every 4
+hold ollie 6226..6238
+tap flip 6241
+tap up 6241
+tap grind 6247..6343 every 6
+hold ollie 6500..6512
+tap flip 6515
+tap left 6515
+tap grind 6521..6617 every 6
+hold ollie 6846..6858
+tap flip 6861
+tap up 6861
+tap up 6958
+tap down 6962
+hold ollie 7066..7074
+tap flip 7078
+tap left 7078
+hold ollie 7230..7240
+tap grind 7246..7278 every 4
+hold ollie 7426..7438
+tap flip 7441
+tap up 7441
+tap grind 7447..7543 every 6
+hold ollie 7700..7712
+tap flip 7715
+tap left 7715
+tap grind 7721..7817 every 6
+hold ollie 8046..8058
+tap flip 8061
+tap up 8061
+tap up 8158
+tap down 8162
+hold ollie 8266..8274
+tap flip 8278
+tap left 8278
+hold ollie 8430..8440
+tap grind 8446..8478 every 4
+hold ollie 8626..8638
+tap flip 8641
+tap up 8641
+tap grind 8647..8743 every 6
+hold ollie 8900..8912
+tap flip 8915
+tap left 8915
+tap grind 8921..9017 every 6
+hold ollie 9246..9258
+tap flip 9261
+tap up 9261
+tap up 9358
+tap down 9362
+hold ollie 9466..9474
+tap flip 9478
+tap left 9478
+hold ollie 9630..9640
+tap grind 9646..9678 every 4
+hold ollie 9826..9838
+tap flip 9841
+tap up 9841
+tap grind 9847..9943 every 6
+hold ollie 10100..10112
+tap flip 10115
+tap left 10115
+tap grind 10121..10217 every 6
+hold ollie 10446..10458
+tap flip 10461
+tap up 10461
+tap up 10558
+tap down 10562
+hold ollie 10666..10674
+tap flip 10678
+tap left 10678
+hold ollie 10830..10840
+tap grind 10846..10878 every 4
+hold ollie 11026..11038
+tap flip 11041
+tap up 11041
+tap grind 11047..11143 every 6
+hold ollie 11300..11312
+tap flip 11315
+tap left 11315
+tap grind 11321..11417 every 6
+hold ollie 11646..11658
+tap flip 11661
+tap up 11661
+tap up 11758
+tap down 11762
+hold ollie 11866..11874
+tap flip 11878
+tap left 11878
+hold ollie 12030..12040
+tap grind 12046..12078 every 4
+hold ollie 12226..12238
+tap flip 12241
+tap up 12241
+tap grind 12247..12343 every 6
+hold ollie 12500..12512
+tap flip 12515
+tap left 12515
+tap grind 12521..12617 every 6
+hold ollie 12846..12858
+tap flip 12861
+tap up 12861
+tap up 12958
+tap down 12962
+hold ollie 13066..13074
+tap flip 13078
+tap left 13078
+run 14700
+expect event levelStart{level=embarcadero,seconds=120} within 0..2
+expect event comboLanded{name=BS 50-50 + EMB LEDGE + Impossible + FS 50-50 + Kickflip + BS 50-50 + Impossible + Manual + Kickflip,points=17496,multiplier=9} within 1173..1173
+expect event comboLanded{points=17496} count == 11
+expect event levelGoal{level=embarcadero,id=pro,name=Pro Score} within 2373..2373
+expect event levelGoal{level=embarcadero,id=sick,name=Sick Score} within 11973..11973
+expect event levelOver{level=embarcadero,score=192456} within 14400..14400
+expect no event bail

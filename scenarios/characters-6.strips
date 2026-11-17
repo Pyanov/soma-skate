@@ -1,0 +1,6 @@
+# Phase 6 review (the Sea Lion) in the real look: ./skate strip --sheet scenarios/characters-6.strips --height 300
+# label | moments | - | camera | character | style
+Rolling, kickflip, indy, 50-50, manual | lab-push-coast@330, lab-kickflip-lands@120, lab-grab-hold-points@130, lab-5050-ledge@210, lab-manual-from-flat@150 | - | orbit:150,15,3.9,0.8 | sealion | real
+Belly flop and up | lab-sideways-bail@30, lab-sideways-bail@60, lab-sideways-bail@95, lab-sideways-bail@130, lab-sideways-bail@170, lab-sideways-bail@200 | - | orbit:150,15,3.9,0.8 | sealion | real
+Bask, nose ball, clap (the emote) | soma-idle-long@1300, soma-idle-long@2050, soma-idle@60, soma-idle@90, soma-idle@120 | - | orbit:150,15,3.9,0.8 | sealion | real+emote@40
+Front | soma-idle@30 | - | orbit:180,6,3.0,0.7 | sealion | real

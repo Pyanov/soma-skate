@@ -1,0 +1,19 @@
+# Saving the ditch (physics phase 31): sf-scooter-ditch-bail's seed, the same 5 rad/s twist to the right, but
+# spin held left through the first 0.3 s of the air: the board comes down 50 degrees off, a stumble, and the
+# combo lands.
+park sf
+seed 8
+cmd 0 traffic clear
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..398
+tap up 400
+tap down 406
+bot balance
+tap ollie 700
+hold spinL 704..740
+run 1000
+expect event scooterDitch{spin=-5.015} within 699..703
+expect event land{quality=stumble} within 811..815
+expect event comboLanded{name=Scooter Wheelie + Scooter Ditch,points=1010} within 811..815
+expect no event bail

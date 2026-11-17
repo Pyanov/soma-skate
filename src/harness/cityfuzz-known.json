@@ -1,0 +1,4 @@
+{
+  "_doc": "City sweep findings already known and open (fixes belong in the world generator) (docs/city-sweep.md; a scenario each in scenarios/city-sweep/), so `check --full` passes until they are fixed and fails on anything new. A rule matches a finding of one of its kinds that is within radius metres of at, or (no at) whose skater touches every collection in touching. Remove a rule when the export fixes it.",
+  "rules": []
+}

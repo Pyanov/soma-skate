@@ -1,0 +1,28 @@
+# Grind review, every grind frontside and backside on the lab ledge (0.45 m, 0.5 m wide), four views
+# of one tick: along the edge from the tail end (toe side, heel side), from the nose end, and from the
+# heel side. Frontside: the ledge on the toe side (the rider faces it); backside: on the heel side.
+#   ./skate strip --sheet scenarios/grinds.strips --height 230
+# label | moments (scenario@tick:az/el/dist/lookUp) | - | cam | character | style
+FS 50-50 | lab-grind-table-fs@192:15/5/1.25/0.1, lab-grind-table-fs@192:-15/5/1.25/0.1, lab-grind-table-fs@192:165/5/1.25/0.1, lab-grind-table-fs@192:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Nosegrind | lab-grind-table-fs@215:15/5/1.25/0.1, lab-grind-table-fs@215:-15/5/1.25/0.1, lab-grind-table-fs@215:165/5/1.25/0.1, lab-grind-table-fs@215:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS 5-0 | lab-grind-table-fs@238:15/5/1.25/0.1, lab-grind-table-fs@238:-15/5/1.25/0.1, lab-grind-table-fs@238:165/5/1.25/0.1, lab-grind-table-fs@238:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Feeble Grind | lab-grind-table-fs@260:15/5/1.25/0.1, lab-grind-table-fs@260:-15/5/1.25/0.1, lab-grind-table-fs@260:165/5/1.25/0.1, lab-grind-table-fs@260:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Smith Grind | lab-grind-table-fs@282:15/5/1.25/0.1, lab-grind-table-fs@282:-15/5/1.25/0.1, lab-grind-table-fs@282:165/5/1.25/0.1, lab-grind-table-fs@282:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Crooked Grind | lab-grind-table-fs@304:15/5/1.25/0.1, lab-grind-table-fs@304:-15/5/1.25/0.1, lab-grind-table-fs@304:165/5/1.25/0.1, lab-grind-table-fs@304:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Overcrook | lab-grind-table-fs@326:15/5/1.25/0.1, lab-grind-table-fs@326:-15/5/1.25/0.1, lab-grind-table-fs@326:165/5/1.25/0.1, lab-grind-table-fs@326:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Salad Grind | lab-grind-variants-fs@220:15/5/1.25/0.1, lab-grind-variants-fs@220:-15/5/1.25/0.1, lab-grind-variants-fs@220:165/5/1.25/0.1, lab-grind-variants-fs@220:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Suski Grind | lab-grind-variants-fs@250:15/5/1.25/0.1, lab-grind-variants-fs@250:-15/5/1.25/0.1, lab-grind-variants-fs@250:165/5/1.25/0.1, lab-grind-variants-fs@250:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Willy Grind | lab-grind-variants-fs@280:15/5/1.25/0.1, lab-grind-variants-fs@280:-15/5/1.25/0.1, lab-grind-variants-fs@280:165/5/1.25/0.1, lab-grind-variants-fs@280:-90/6/1.6/0.2 | - | chase | techbro | cute
+FS Losi Grind | lab-grind-variants-fs@310:15/5/1.25/0.1, lab-grind-variants-fs@310:-15/5/1.25/0.1, lab-grind-variants-fs@310:165/5/1.25/0.1, lab-grind-variants-fs@310:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS 50-50 | lab-grind-table-bs@192:15/5/1.25/0.1, lab-grind-table-bs@192:-15/5/1.25/0.1, lab-grind-table-bs@192:165/5/1.25/0.1, lab-grind-table-bs@192:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Nosegrind | lab-grind-table-bs@215:15/5/1.25/0.1, lab-grind-table-bs@215:-15/5/1.25/0.1, lab-grind-table-bs@215:165/5/1.25/0.1, lab-grind-table-bs@215:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS 5-0 | lab-grind-table-bs@238:15/5/1.25/0.1, lab-grind-table-bs@238:-15/5/1.25/0.1, lab-grind-table-bs@238:165/5/1.25/0.1, lab-grind-table-bs@238:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Feeble Grind | lab-grind-table-bs@260:15/5/1.25/0.1, lab-grind-table-bs@260:-15/5/1.25/0.1, lab-grind-table-bs@260:165/5/1.25/0.1, lab-grind-table-bs@260:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Smith Grind | lab-grind-table-bs@282:15/5/1.25/0.1, lab-grind-table-bs@282:-15/5/1.25/0.1, lab-grind-table-bs@282:165/5/1.25/0.1, lab-grind-table-bs@282:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Crooked Grind | lab-grind-table-bs@304:15/5/1.25/0.1, lab-grind-table-bs@304:-15/5/1.25/0.1, lab-grind-table-bs@304:165/5/1.25/0.1, lab-grind-table-bs@304:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Overcrook | lab-grind-table-bs@326:15/5/1.25/0.1, lab-grind-table-bs@326:-15/5/1.25/0.1, lab-grind-table-bs@326:165/5/1.25/0.1, lab-grind-table-bs@326:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Salad Grind | lab-grind-variants-bs@220:15/5/1.25/0.1, lab-grind-variants-bs@220:-15/5/1.25/0.1, lab-grind-variants-bs@220:165/5/1.25/0.1, lab-grind-variants-bs@220:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Suski Grind | lab-grind-variants-bs@250:15/5/1.25/0.1, lab-grind-variants-bs@250:-15/5/1.25/0.1, lab-grind-variants-bs@250:165/5/1.25/0.1, lab-grind-variants-bs@250:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Willy Grind | lab-grind-variants-bs@280:15/5/1.25/0.1, lab-grind-variants-bs@280:-15/5/1.25/0.1, lab-grind-variants-bs@280:165/5/1.25/0.1, lab-grind-variants-bs@280:-90/6/1.6/0.2 | - | chase | techbro | cute
+BS Losi Grind | lab-grind-variants-bs@310:15/5/1.25/0.1, lab-grind-variants-bs@310:-15/5/1.25/0.1, lab-grind-variants-bs@310:165/5/1.25/0.1, lab-grind-variants-bs@310:-90/6/1.6/0.2 | - | chase | techbro | cute
+Switch FS Crooked Grind (on the board's back truck) | lab-switch-crooked@185:15/5/1.25/0.1, lab-switch-crooked@185:-15/5/1.25/0.1, lab-switch-crooked@185:165/5/1.25/0.1, lab-switch-crooked@185:-90/6/1.6/0.2 | - | chase | techbro | cute

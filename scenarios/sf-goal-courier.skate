@@ -1,0 +1,12 @@
+# City goal "Gig Economy" (kind courier: deliveries in one courier game): 5 in the data, 2 here.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 setData goals.goals.14.deliveries 2
+cmd 0 run courier
+cmd 200 teleport -55.3 -305 2.61 356
+cmd 600 teleport -235 -230 12.53 356
+run 700
+expect event courierDeliver{n=2} within 600..602
+expect event goalComplete{id=courier5} within 600..602
+expect event goalComplete count == 1

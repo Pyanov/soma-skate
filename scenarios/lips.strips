@@ -1,0 +1,10 @@
+# Lip trick review on the lab vert ramp's coping (3.4 m), world-fixed cameras: from the ramp, along the
+# coping, from the deck behind it, and a quarter view, one tick in the stall.
+#   ./skate strip --sheet scenarios/lips.strips --height 230
+Rock to Fakie  (from the ramp, along the coping, from the deck, quarter) | lab-lip-stall@250:w90/14/2.6/0.45, lab-lip-stall@250:w0/8/2.6/0.45, lab-lip-stall@250:w-90/14/2.6/0.45, lab-lip-stall@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Rock and Roll  (from the ramp, along the coping, from the deck, quarter) | lab-lip-rockandroll@250:w90/14/2.6/0.45, lab-lip-rockandroll@250:w0/8/2.6/0.45, lab-lip-rockandroll@250:w-90/14/2.6/0.45, lab-lip-rockandroll@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Axle Stall  (from the ramp, along the coping, from the deck, quarter) | lab-lip-axlestall@250:w90/14/2.6/0.45, lab-lip-axlestall@250:w0/8/2.6/0.45, lab-lip-axlestall@250:w-90/14/2.6/0.45, lab-lip-axlestall@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Disaster  (from the ramp, along the coping, from the deck, quarter) | lab-lip-disaster@250:w90/14/2.6/0.45, lab-lip-disaster@250:w0/8/2.6/0.45, lab-lip-disaster@250:w-90/14/2.6/0.45, lab-lip-disaster@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Nose Stall  (from the ramp, along the coping, from the deck, quarter) | lab-lip-nosestall@250:w90/14/2.6/0.45, lab-lip-nosestall@250:w0/8/2.6/0.45, lab-lip-nosestall@250:w-90/14/2.6/0.45, lab-lip-nosestall@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Tail Stall  (from the ramp, along the coping, from the deck, quarter) | lab-lip-tailstall@250:w90/14/2.6/0.45, lab-lip-tailstall@250:w0/8/2.6/0.45, lab-lip-tailstall@250:w-90/14/2.6/0.45, lab-lip-tailstall@250:w45/24/2.8/0.45 | - | chase | techbro | cute
+Blunt to Fakie  (from the ramp, along the coping, from the deck, quarter) | lab-lip-bluntstall@250:w90/14/2.6/0.45, lab-lip-bluntstall@250:w0/8/2.6/0.45, lab-lip-bluntstall@250:w-90/14/2.6/0.45, lab-lip-bluntstall@250:w45/24/2.8/0.45 | - | chase | techbro | cute

@@ -1,0 +1,18 @@
+# DOLORES SEAT WALL: the concrete planters at Dolores Park by 19th have 45 cm seat walls. Ollie onto
+# the east wall of the southern planter from the sidewalk side and 50-50 it to the end (4 m): the
+# gap, a 1,126-point combo, not yet the 2,500 the Bench Grind Combo goal asks for.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -233.805 -199.578 9.400 -5.33
+cmd 2 set skater.vel.x -0.4179
+cmd 2 set skater.vel.y 4.4806
+hold ollie 92..122
+tap grind 129
+bot balance
+run 400
+expect event grindStart{trick=BS 50-50,line=ledge_-235_-192} within 128..132
+expect event grindEnd{reason=end} within 226..230
+expect event gap{id=dolores_seatwall,gap=DOLORES SEAT WALL,points=300} within 226..230
+expect event comboLanded{points=1126} within 296..300
+expect no event goalComplete{id=dolorescombo}
+expect no event bail

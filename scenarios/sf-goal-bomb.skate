@@ -1,0 +1,16 @@
+# City goals on the Hill Bomb (kinds speed and bomb): the race line of sf-bomb-race passes 55 km/h
+# on Dolores (speed in a box) and finishes in 10.49 s (Hill Bomb Under 11); its two powerslides
+# are brakes, so No Brakes on Dolores stays open.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb
+hold up 20..200
+hold ollie 200..2400
+hold slide 1220..1290
+hold slide 1560..1630
+run 1760
+expect event goalComplete{id=dolores55,area=Dolores} within 1160..1175
+expect event bombFinish{braked=true} within 1690..1705
+expect event goalComplete{id=bomb11} within 1690..1705
+expect no event goalComplete{id=nobrakes}

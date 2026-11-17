@@ -1,0 +1,206 @@
+{
+  "_doc": "The story in the client (src/client/story.ts, mapscreen.ts, journal.ts; docs/story.md): interact: within radius metres of a character the talk prompt shows and the talk key (data/controls.json interact) talks; a neighbourhood's challenges start within challengeRadius of its Tour level's start spot. introDelay: seconds after the first key, click or pad button on the first launch before chapter 1 starts by itself (the browser lets the sound start with that first key, so Karl is heard); introWait: seconds it waits for one at most. visitRadius: metres from a named spot (data/spots.json labels) to count it visited (the map's Take Muni goes to visited spots and to your objective). travel: Take Muni's transition, seconds long, with the PA chime and one of lines (data/voices.json). route: the waypoint's route along the streets on the minimap, planned again every seconds or when you are off metres from it; reached: metres from the waypoint that clear it. map: the big map's zoom (pixels per metre: min, max, start), how fast keys and the pad pan it (screen fractions a second), the zoom from which street names show (names), and the major streets' names (streets: each name placed on the street nearest its seed point at, within 40 m). minimapIcons: pixels of a character's face on the minimap. complete: the journal's 100% page: each category's title at 100% (titles), the overall title and Karl's line at 100%. finale: the last chapter: when it is done the credits roll (credits.seconds long, any key skips) and every main character says their post line (data/cast.json post) once, the first time you pass within post.radius metres or talk to them. pacing (a fresh player meets a story within 30 s of skating, never nagged): call: a character with a story to give calls out once (one of their chatter lines, captioned) as you pass within radius metres, at most once every repeat seconds each, never within gap seconds of another call, not for afterNo seconds after Not now on their offer, and not in the first warmup seconds; never during a mission, a game, a conversation or a menu. rim: the nearest count stories within range metres beyond the minimap's edge show as small faces on its rim, pointing the way (about a minute's skate). check (tests/missions.test.ts, pacing): walks random routes along the streets for seconds at speed (m/s) from random street points; at least share of them must come within rim.range of a story a fresh player can start.",
+  "interact": {
+    "radius": 5,
+    "challengeRadius": 8
+  },
+  "introDelay": 1.2,
+  "introWait": 8,
+  "visitRadius": 60,
+  "travel": {
+    "seconds": 0.7,
+    "places": [
+      { "spot": "park_gate", "name": "SoMa West Skatepark" },
+      { "spot": "emb", "name": "Embarcadero" },
+      { "spot": "pier_7", "name": "Pier 7" },
+      { "spot": "pier_39", "name": "Pier 39" },
+      { "spot": "fishermans_wharf", "name": "Fisherman's Wharf" },
+      { "spot": "lombard_crooked", "name": "Lombard Street" },
+      { "spot": "hyde_hill", "name": "Russian Hill" },
+      { "spot": "washington_square", "name": "North Beach" },
+      { "spot": "dragon_gate", "name": "Chinatown" },
+      { "spot": "powell_turntable", "name": "Downtown" },
+      { "spot": "un_plaza", "name": "UN Plaza" },
+      { "spot": "city_hall", "name": "City Hall" },
+      { "spot": "patricias_green", "name": "Hayes Valley" },
+      { "spot": "alamo_square", "name": "Alamo Square" },
+      { "spot": "duboce_park", "name": "Duboce Park" },
+      { "spot": "castro_18th", "name": "The Castro" },
+      { "spot": "twin_peaks_bomb", "name": "Twin Peaks" },
+      { "spot": "dolores_ledges", "name": "Dolores Park" },
+      { "spot": "bart_16th", "name": "The Mission" },
+      { "spot": "24th_mission", "name": "Calle 24" }
+    ]
+  },
+  "route": {
+    "every": 2.5,
+    "off": 25,
+    "reached": 25
+  },
+  "map": {
+    "zoom": [
+      0.04,
+      3,
+      0.28
+    ],
+    "pan": 0.9,
+    "names": 0.3,
+    "streets": [
+      {"name": "Mason St", "at": [-70, 850]},
+      {
+        "name": "Market St",
+        "at": [
+          -228,
+          136
+        ]
+      },
+      {
+        "name": "Market St",
+        "at": [
+          561,
+          297
+        ]
+      },
+      {
+        "name": "Valencia St",
+        "at": [
+          -51,
+          -310
+        ]
+      },
+      {
+        "name": "Mission St",
+        "at": [
+          60,
+          -260
+        ]
+      },
+      {
+        "name": "Guerrero St",
+        "at": [
+          -135.5,
+          -300
+        ]
+      },
+      {
+        "name": "Dolores St",
+        "at": [
+          -215,
+          -300
+        ]
+      },
+      {
+        "name": "Church St",
+        "at": [
+          -440,
+          20
+        ]
+      },
+      {
+        "name": "Castro St",
+        "at": [
+          -571,
+          -115
+        ]
+      },
+      {
+        "name": "16th St",
+        "at": [
+          40,
+          -180
+        ]
+      },
+      {
+        "name": "18th St",
+        "at": [
+          -330,
+          -46
+        ]
+      },
+      {
+        "name": "24th St",
+        "at": [
+          380,
+          -200
+        ]
+      },
+      {
+        "name": "Duboce Ave",
+        "at": [
+          20,
+          -6
+        ]
+      },
+      {
+        "name": "Hayes St",
+        "at": [
+          -678,
+          450
+        ]
+      },
+      {
+        "name": "The Embarcadero",
+        "at": [
+          601,
+          880
+        ]
+      },
+      {
+        "name": "Columbus Ave",
+        "at": [
+          188,
+          770
+        ]
+      },
+      {
+        "name": "Grant Ave",
+        "at": [
+          255,
+          735
+        ]
+      },
+      {
+        "name": "Lombard St",
+        "at": [
+          -285,
+          699
+        ]
+      },
+      {
+        "name": "Hyde St",
+        "at": [
+          -296,
+          730
+        ]
+      },
+      {
+        "name": "Powell St",
+        "at": [
+          602,
+          512
+        ]
+      },
+      {
+        "name": "Jefferson St",
+        "at": [
+          40,
+          945
+        ]
+      }
+    ]
+  },
+  "minimapIcons": 15,
+  "finale": "ch6",
+  "credits": { "seconds": 60 },
+  "complete": {
+    "titles": { "chapters": "Saved SoMa West", "sides": "Everybody's Favourite Errand Kid", "challenges": "Tour Pro", "stickers": "Sticker Bomb", "tapes": "Rewinder", "decks": "Quiver Complete", "outfits": "Closet Full", "pieces": "Dressed for Everything" },
+    "overall": "Local Legend",
+    "line": "Karl says he taught you everything. He is lying. He is also very proud."
+  },
+  "pacing": {
+    "call": { "radius": 26, "repeat": 300, "gap": 45, "afterNo": 600, "warmup": 6 },
+    "rim": { "range": 400, "count": 3 },
+    "check": { "seconds": 30, "speed": 6, "share": 0.95, "walks": 4000 },
+    "post": { "radius": 14 }
+  }
+}

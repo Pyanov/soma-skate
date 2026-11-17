@@ -1,0 +1,30 @@
+# Attract mode (data/attract.json): the Embarcadero. Rolling north-west up the Embarcadero in front of
+# the Ferry Building (traffic cleared), the clock tower going by on the right: a kickflip, a heelflip
+# and a manual on the way. Then EMB: across the brick plaza at 4 m/s beside a ledge of a row, an ollie
+# and a 50-50 down its whole 10 m (the sf-grind-emb line), landed and rolled away.
+park sf
+cmd 0 traffic clear
+bot balance
+cmd 1 teleport 742.5 687.6 -9.3 323.5
+cmd 20 speed 7.5
+hold up 24..54
+hold ollie 200..222
+tap flip+left 228
+hold up 380..410
+hold ollie 520..542
+tap flip+right 548
+tap up 700
+tap down 705
+hold ollie 880..896
+cmd 1300 teleport 568.85 708.35 -8.93 141.8
+cmd 1302 set skater.vel.x 2.472
+cmd 1302 set skater.vel.y -3.144
+hold ollie 1304..1314
+tap grind 1322
+run 1900
+expect event trickEnd{trick=Kickflip} within 230..290
+expect event trickEnd{trick=Heelflip} within 550..610
+expect event comboLanded{name=Manual} within 1000..1010
+expect event grindStart{trick=FS 50-50,line=ledge_569_708} within 1326..1330
+expect event comboLanded{name=FS 50-50 + EMB LEDGE} within 1730..1750
+expect no event bail

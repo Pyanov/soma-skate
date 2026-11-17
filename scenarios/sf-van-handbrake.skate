@@ -1,0 +1,32 @@
+# A handbrake turn in the crew van (game/vehicles.ts, docs/mechanics/driving.md), on the wide road by the
+# park gate. Up to about 12 m/s heading east, then the handbrake (slide) with full right: the rear lets go
+# (grip.handbrake), the spin builds (grip.yawBoost, yawAccel) and dies away only slowly (yawFade), so in
+# 1.2 s the van swaps ends while it slides on east; then up (the brake against the slide, then the
+# throttle): it stops and drives off west. The same approach with the steering alone (after a fresh
+# summon) turns the way the tyres' grip allows: some 40 degrees in the same time, carving wide.
+park sf
+cmd 0 traffic clear
+cmd 1 van summon 10 -5 90
+cmd 2 teleport 10 -2.6 -0.2 90
+tap use 30
+hold up 40..340
+hold slide 340..482
+hold right 340..482
+hold up 490..700
+cmd 899 vehicle exit
+cmd 900 van summon 10 -5 90
+cmd 901 teleport 10 -2.6 -0.2 90
+tap use 930
+hold up 940..1240
+hold right 1240..1360
+run 1400
+expect event vehicleEnter{name=crew_van} count == 2
+expect no event vanBump
+expect van.hspeed > 11.5 at 340
+expect van.heading > 180 at 440
+expect van.heading > 240 at 490
+expect van.vel.x > 5 at 480
+expect van.hspeed < 1 at 570
+expect van.vel.x < -5 at 700
+expect van.heading < 135 at 1360
+expect van.hspeed > 11 at 1360

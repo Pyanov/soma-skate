@@ -1,0 +1,29 @@
+# A scooter wheelie and the ditch (physics phase 31): up to speed on a Vantage scooter, up then down
+# quickly lifts the front (Scooter Wheelie: the manual's balance on up and down while the motor runs; the
+# balance bot holds it), then ollie: the rider pops off its side onto the board, twisting off its line at a
+# drawn spin (this seed: 3.2 rad/s left), and lands it clean: Scooter Wheelie + Scooter Ditch, 1,010. The
+# scooter lies on its side where it was left; jumping off it is no CAR HOP.
+park sf
+seed 7
+cmd 0 traffic clear
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..398
+tap up 400
+tap down 406
+bot balance
+tap ollie 700
+run 1000
+expect event vehicleEnter{name=vantage_1,type=scooter} within 30..32
+expect event manualStart{trick=Scooter Wheelie} within 405..409
+expect state drive at 600
+expect event manualEnd{trick=Scooter Wheelie,reason=ollie} within 699..703
+expect event scooterDitch within 699..703
+expect event vehicleExit{name=vantage_1} within 699..703
+expect event land{quality=clean} within 811..815
+expect event comboLanded{name=Scooter Wheelie + Scooter Ditch,points=1010} within 822..826
+expect van.car.drive.ride.tipped == 1 at 900
+expect van.hspeed < 0.01 at 900
+expect no event gap{id=car_hop}
+expect no event carLand
+expect no event bail

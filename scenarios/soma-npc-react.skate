@@ -1,0 +1,24 @@
+# NPC skaters react to the player's combo. The thresholds are lowered here (cheer and copy at 500
+# points, copy every time) so the Big 3 kickflip (Kickflip + BIG 3 GAP, 700) counts as big. NPC 3,
+# rolling out of its own Big 3 send right by the landing, stomps its board (npcCheer) and rides the
+# player's line after them (npcCopy): from where the player got moving, at the player's speeds,
+# popping where the player popped, with a grab of its own (Indy) over the set (a Pop Shove-It while the
+# feel pass's park carve moved the NPCs' draws, until their corners took the park carve's numbers too). The player's run is
+# exactly the same as without them (soma-npcs-player).
+park soma
+cmd 0 npc spawn 6
+cmd 0 setData npc.cheer.points 500
+cmd 0 setData npc.copy.points 500
+cmd 0 setData npc.copy.chance 1
+spawn big3
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 1400
+expect event comboLanded{name=Kickflip + BIG 3 GAP,multiplier=2} within 336..340
+expect event npcCheer{id=3} within 336..340
+expect event npcCheer count == 1
+expect event npcCopy{id=3} within 336..340
+expect event npcTrick{id=3,trick=Indy} within 579..583
+expect event npcCombo{id=3,name=Indy} within 660..664
+expect no event bail

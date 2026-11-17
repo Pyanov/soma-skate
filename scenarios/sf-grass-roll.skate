@@ -1,0 +1,16 @@
+# Grass rolls slow: on a flat lawn in the city (element type park: ground.rollingByType.park, Crr
+# 0.12) a board pushed to 5 m/s loses about 1.24 m/s per second and stops after 4.1 s, 10 m on.
+# On road (Crr 0.018) the same push loses 0.23 m/s per second and would roll on for about 60 m.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport 108.0 322 2.50 0   # the flat lawn of Civic Center Plaza
+cmd 20 speed 5
+run 600
+expect skater.speed > 3.85 at 120
+expect skater.speed < 4.05 at 120
+expect skater.speed < 0.1 at 520
+expect skater.speed > 1.45 at 360   # (this lawn rises 0.2% northward)
+expect skater.pos.y > 331.5 at 600
+expect skater.pos.y < 332.6 at 600
+expect no event bail

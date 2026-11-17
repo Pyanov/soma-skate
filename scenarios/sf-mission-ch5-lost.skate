@@ -1,0 +1,14 @@
+# Chapter 5's race lost (mission start ch5 4): the autopilot rides Chad's streets from the park gate to Civic
+# Center Plaza at 5.5 m/s, slower than his 6.5. He reaches the end of his path first (about 58 s) and the
+# chapter fails (lost; the client says his line); the client's Try again starts it from this step (retry 4).
+park sf
+cmd 0 traffic clear
+cmd 0 mission start ch5 4
+cmd 0 teleport 24 1 -0.6 90
+bot path 30,2 72,4.5 100,8.5 116,30 114.5,62 111.5,120 108.5,150 105.5,178 113,205 119,226 117,250 112,272 110,283 from 5 speed 5.5 nocars
+run 7200
+expect event missionStep{mission=ch5,step=4,kind=race} within 1..1
+expect event actorDone{who=chad} within 6850..6980
+expect event missionFailed{mission=ch5,step=4,reason=lost} within 6850..6980
+expect no event missionStep{mission=ch5,step=5}
+expect skater.pos.y < 250 at 6900

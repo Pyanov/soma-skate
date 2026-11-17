@@ -1,0 +1,16 @@
+# A free-roam streetcar behaves like the race's: standing on the outbound J track in Dolores Park, on the
+# straight north of the street that crosses the park, you wait for the inbound car (1000000) to turn back at
+# 18th Street. Coming south at its cruise, it rings its bell once, 25 m off, then hits you at 11 m/s ("hit by
+# a streetcar") and throws you off the track; it runs on. (The F no longer runs. The spot is one where the
+# lawn is level with the track: in most places the car's route height sits above the lawn and it misses you.)
+park sf
+cmd 0 traffic clear
+cmd 0 streetcars on
+cmd 1 teleport -402.90 -164.85 22.9 123
+run 8200
+expect event honk{car=1000000,robo=false,tram=true} within 7442..7442
+expect event honk count == 1
+expect event carHit{car=1000000,robo=false,speed=11,reason=hit by a streetcar} within 7709..7709
+expect event bail{reason=hit by a streetcar} within 7709..7709
+expect event carHit count == 1
+expect event recover within 7859..7859

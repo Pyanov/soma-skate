@@ -1,0 +1,17 @@
+# Skitching through a corner: the car turns 88 degrees at the end of its street and throws you off
+# (its sideways pull is more than traffic.skitch.turnBail). Balance noise is off here so only the
+# turn can end it.
+park sf
+spawn park_gate
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 setData traffic.skitch.noise 0
+cmd 0 setData traffic.skitch.balanceStart 0
+cmd 1 car 52.8 -30.4 356 7
+cmd 30 teleport 52.88 -31.15 -1.41 355.9
+cmd 36 set skater.vel.x -0.5
+cmd 36 set skater.vel.y 6.98
+hold grab 38..900
+run 700
+expect event skitchStart within 38..41
+expect event bail{reason=thrown off: the car turned} within 420..440

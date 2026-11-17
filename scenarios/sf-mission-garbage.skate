@@ -1,0 +1,24 @@
+# Kevin's Garbage Run (data/missions.json garbage; a collect step with a vehicle and stop): Kevin's truck,
+# placed by the park on its route, past the parked crew van, by the mission, round SoMa West's block in the
+# right-hand lane (data/vehicles.json routes.garbage, as sf-truck-garbage), stopping at the five bins; Kevin
+# barks between bins (each), then calls (a phone talk); Esc and the mission is done, its truck gone.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start garbage 1
+cmd 2 vehicle enter kevins_truck
+bot drive 40,-6 30,-6 21,-7 from 10 lane 1.8 speed 9 corner 4 stop
+bot drive 21,-7 12,-8 0,-9 -7,-4 -8,9 -9,22 -9,34 -10,46 -11,58 -11.5,64 from 1600 lane 1.8 speed 9 corner 4 stop
+bot drive -11.5,64 -12,70 -13,82 -14,94 -15,106 -16,118 -17,130 -18,142 -19,154 -19,166 -18,178 -12,180 0,181 13,182 19,182.5 from 4100 lane 1.8 speed 9 corner 4 stop
+bot drive 19,182.5 25,183 37,184 60,185 74,183 86,184 96,189 104,182 108,164 109,150 110,132 111,121.5 from 7300 lane 1.8 speed 9 corner 4 stop
+bot drive 111,121.5 112,111 114,87 115,74 116,60 117,48 118,31 118,19 112,10 104,10 98,9.5 from 10500 lane 1.8 speed 9 corner 4 stop
+cmd 13800 mission next all
+run 14000
+expect event vehicleEnter{name=kevins_truck} within 2..3
+expect event missionItem{mission=garbage,item=bin} count == 5
+expect event talk{line=garbage-05,bark=true} within 3..13800
+expect event talk{line=garbage-08,bark=true} within 3..13800
+expect event missionStep{mission=garbage,step=2,kind=talk} within 12700..12900
+expect event talk{character=kevin,line=garbage-09} within 12700..12900
+expect event missionDone{mission=garbage} within 13801..13801
+expect no event vanBump
+expect no event missionFailed

@@ -1,0 +1,19 @@
+# The Embarcadero promenade (city phase 11): long low granite edges along Herb Caen Way on the bay side,
+# in runs of 24 m with gaps, every top edge a grind line. Rolling north-west beside one at 6 m/s, an
+# ollie and grind pressed in the air: a 50-50 down the whole run (the balance bot keeps it), off the end, landed
+# (since physics phase 31 the run pays PROMENADE EDGE). The squeezed city keeps two runs, re-homed to the
+# seawall in front of Pier 7: this is the 24 m one south-east of it.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 604.18 873.98 -9.54 324.2
+cmd 2 set skater.vel.x -3.516
+cmd 2 set skater.vel.y 4.866
+hold ollie 4..14
+tap grind 22
+bot balance
+run 800
+expect event grindStart{trick=FS 50-50,line=ledge_604_875} within 23..27
+expect event grindEnd{reason=end} within 655..680
+expect event gap{id=promenade_edge} within 655..680
+expect event comboLanded{name=FS 50-50 + PROMENADE EDGE} within 720..745
+expect no event bail

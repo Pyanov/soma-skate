@@ -1,0 +1,9 @@
+# Start at 6 m/s up the 25 degree bank, across its flat top, off the back edge onto the floor.
+park lab
+spawn lab_bank
+cmd 6 speed 6
+run 600
+expect event air within 100..400
+expect event land within 120..500
+expect state ground at end
+expect skater.pos.y > 25 at end

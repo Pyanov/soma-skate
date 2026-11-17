@@ -1,0 +1,19 @@
+# Missions: a deliver step with a vehicle (game/missions.ts, docs/mechanics/missions.md). A test mission
+# (its data set in this run only): pick up a crate at the kerb west of the park gate and drop it at the end
+# of the block, in the crew van (vehicle van), no bump of 4 m/s or more (noBump). On the board at the
+# pickup, nothing happens: it has to be the van. In the van, rolling past the pickup loads it
+# (missionItem), and stopping by the drop delivers it: done.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.test-deliver {"id":"test-deliver","name":"Test Deliver","kind":"side","area":"soma","giver":"karl","blurb":"A test.","world":"sf","steps":[{"kind":"deliver","text":"Take the crate down the block","from":[50,-16,-1.2],"to":[2,-9,-1],"item":"crate","vehicle":"van","noBump":4}]}
+cmd 1 mission start test-deliver
+cmd 2 teleport 50 -17 -1.2 270
+cmd 60 vehicle enter crew_van
+bot drive 57.5,-15.6 47,-16 from 80 speed 4 stop
+bot drive 47,-16 42,-10 30,-6 12,-8 2,-9 from 500 speed 10 corner 7 stop
+run 1600
+expect event missionStep{mission=test-deliver,step=0,kind=deliver} within 1..2
+expect no event missionItem within 0..79
+expect event missionItem{item=crate} within 80..400
+expect event missionDone{mission=test-deliver} within 900..1600
+expect no event missionFailed

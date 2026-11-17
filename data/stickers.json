@@ -1,0 +1,766 @@
+{
+  "_doc": "The Sticker Book (client only; src/client/stickers.ts): stickers you earn once, kept in this browser. Each has a name, a line, its art (assets/ui/<art>.png) and a rule: on = the sim event, and every other key must match that event's field: a number means at least that much, {\"max\": n} at most, a string or boolean must be equal. count: how many matching events it takes (counted across sessions). The story's stickers come with its missions (missionDone, data/missions.json reward). Besides the sim's events, the client sends placeVisit {name} when you skate into a landmark or neighbourhood (data/ui.json places), schoolGraduate when you finish Skate School (data/school.json), and graffitiOwned {owned} at the end of a Graffiti game (the most pieces anyone owned). distinct: count only different values of that event field (a+b: different pairs).",
+  "stickers": [
+    {
+      "id": "first-flip",
+      "name": "First Trick",
+      "line": "Landed your first trick. Your mom would be proud, probably.",
+      "art": "sick",
+      "rule": {
+        "on": "comboLanded",
+        "points": 100
+      }
+    },
+    {
+      "id": "combo-5k",
+      "name": "Hella Linked",
+      "line": "A 5,000-point combo.",
+      "art": "hella",
+      "rule": {
+        "on": "comboLanded",
+        "points": 5000
+      }
+    },
+    {
+      "id": "combo-20k",
+      "name": "Series A Combo",
+      "line": "20,000 in one line. VCs are calling.",
+      "art": "hella",
+      "rule": {
+        "on": "comboLanded",
+        "points": 20000
+      }
+    },
+    {
+      "id": "slam-10",
+      "name": "Copay Collector",
+      "line": "Slammed 10 times. Urgent care knows you by name.",
+      "art": "slam",
+      "rule": {
+        "on": "bail"
+      },
+      "count": 10
+    },
+    {
+      "id": "burritos",
+      "name": "Burrito Index",
+      "line": "Collected a Mission burrito.",
+      "art": "burrito",
+      "rule": {
+        "on": "burrito"
+      }
+    },
+    {
+      "id": "goal-1",
+      "name": "Local",
+      "line": "Finished a city goal.",
+      "art": "victorian",
+      "rule": {
+        "on": "goalComplete"
+      }
+    },
+    {
+      "id": "goals-10",
+      "name": "Big in the Mission",
+      "line": "Ten city goals done.",
+      "art": "victorian",
+      "rule": {
+        "on": "goalComplete"
+      },
+      "count": 10
+    },
+    {
+      "id": "robotaxi",
+      "name": "Incident Report",
+      "line": "Got knocked down by a robotaxi. It logged the incident.",
+      "art": "robotaxi",
+      "rule": {
+        "on": "carHit",
+        "robo": true
+      }
+    },
+    {
+      "id": "skitch-long",
+      "name": "Free Ride",
+      "line": "A 1,000-point skitch.",
+      "art": "muni",
+      "rule": {
+        "on": "skitchEnd",
+        "points": 1000
+      }
+    },
+    {
+      "id": "bomb-dolores",
+      "name": "Dolores Bomber",
+      "line": "Finished the Dolores Hill Bomb.",
+      "art": "cablecar",
+      "rule": {
+        "on": "bombFinish",
+        "route": "dolores"
+      }
+    },
+    {
+      "id": "beat-kevin",
+      "name": "Trash Talked",
+      "line": "Beat Kevin from Three Bin down Dolores.",
+      "art": "cablecar",
+      "rule": {
+        "on": "bombFinish",
+        "route": "dolores",
+        "place": {
+          "max": 1
+        }
+      }
+    },
+    {
+      "id": "bomb-twinpeaks",
+      "name": "Above the Fog",
+      "line": "Finished the Twin Peaks bomb.",
+      "art": "karl",
+      "rule": {
+        "on": "bombFinish",
+        "route": "twinpeaks"
+      }
+    },
+    {
+      "id": "beat-messenger",
+      "name": "Faster Than a Messenger",
+      "line": "Won the Twin Peaks bomb against the locals.",
+      "art": "karl",
+      "rule": {
+        "on": "bombFinish",
+        "route": "twinpeaks",
+        "place": {
+          "max": 1
+        }
+      }
+    },
+    {
+      "id": "skate-rosa",
+      "name": "Excelsior Respect",
+      "line": "Beat Rosa at S.K.A.T.E.",
+      "art": "pigeon",
+      "rule": {
+        "on": "skateOver",
+        "winner": "player",
+        "name": "Rosa"
+      }
+    },
+    {
+      "id": "skate-kenji",
+      "name": "Sunset Sesh",
+      "line": "Beat Kenji at S.K.A.T.E.",
+      "art": "pigeon",
+      "rule": {
+        "on": "skateOver",
+        "winner": "player",
+        "name": "Kenji"
+      }
+    },
+    {
+      "id": "skate-dre",
+      "name": "Bayview Certified",
+      "line": "Beat Dre at S.K.A.T.E.",
+      "art": "pigeon",
+      "rule": {
+        "on": "skateOver",
+        "winner": "player",
+        "name": "Dre"
+      }
+    },
+    {
+      "id": "skate-tash",
+      "name": "Mission Mayor",
+      "line": "Beat Tash at S.K.A.T.E.",
+      "art": "pigeon",
+      "rule": {
+        "on": "skateOver",
+        "winner": "player",
+        "name": "Tash"
+      }
+    },
+    {
+      "id": "courier-5",
+      "name": "Gig Economy",
+      "line": "Five deliveries in one shift. Tips not included.",
+      "art": "burrito",
+      "rule": {
+        "on": "courierOver",
+        "deliveries": 5
+      }
+    },
+    {
+      "id": "run-25k",
+      "name": "Rent Money",
+      "line": "25,000 in a 2-minute run.",
+      "art": "sick",
+      "rule": {
+        "on": "runOver",
+        "score": 25000
+      }
+    },
+    {
+      "id": "spine",
+      "name": "Spineless",
+      "line": "A spine transfer.",
+      "art": "slam",
+      "rule": {
+        "on": "spineTransfer"
+      }
+    },
+    {
+      "id": "bart-stairs",
+      "name": "Mind the Steps",
+      "line": "Ollied down the 16th St BART stairs.",
+      "art": "muni",
+      "rule": {
+        "on": "gap",
+        "id": "bart_stairs"
+      }
+    },
+    {
+      "id": "harvey-set",
+      "name": "Castro Send",
+      "line": "Ollied the Harvey Milk Plaza set.",
+      "art": "victorian",
+      "rule": {
+        "on": "gap",
+        "id": "harvey_set"
+      }
+    },
+    {
+      "id": "roof-grind",
+      "name": "Hood Ornament",
+      "line": "Ground the roof of a parked car. The owner is writing a post about it.",
+      "art": "robotaxi",
+      "rule": {
+        "on": "gap",
+        "id": "roof_grind"
+      }
+    },
+    {
+      "id": "courier-plazas",
+      "name": "Eight Minutes Away",
+      "line": "Delivered a burrito to the BART plaza.",
+      "art": "burrito",
+      "rule": {
+        "on": "courierDeliver",
+        "id": "bart"
+      }
+    },
+    {
+      "id": "near-miss-10",
+      "name": "Sidewalk Surfer",
+      "line": "Ten near misses. Everyone's fine. Probably.",
+      "art": "pigeon",
+      "rule": {
+        "on": "nearMiss"
+      },
+      "count": 10
+    },
+    {
+      "id": "ped-hit",
+      "name": "Excuse Me",
+      "line": "Ran into a pedestrian. They were on a call.",
+      "art": "slam",
+      "rule": {
+        "on": "pedHit",
+        "bail": true
+      }
+    },
+    {
+      "id": "clarion",
+      "name": "Gallery Opening",
+      "line": "Wallrode a mural in Clarion Alley. Respectfully.",
+      "art": "victorian",
+      "rule": {
+        "on": "gap",
+        "id": "clarion_wallride"
+      }
+    },
+    {
+      "id": "npc-cheer",
+      "name": "Local Legend",
+      "line": "A local stomped their board for your combo.",
+      "art": "hella",
+      "rule": {
+        "on": "npcCheer"
+      }
+    },
+    {
+      "id": "npc-copy",
+      "name": "Trendsetter",
+      "line": "A local copied your line.",
+      "art": "sick",
+      "rule": {
+        "on": "npcCopy"
+      }
+    },
+    {
+      "id": "tape-1",
+      "name": "Bootleg",
+      "line": "Found a secret tape.",
+      "art": "sick",
+      "rule": {
+        "on": "tapeFound"
+      }
+    },
+    {
+      "id": "tapes-4",
+      "name": "Mixtape Collector",
+      "line": "Found four different secret tapes.",
+      "art": "hella",
+      "rule": {
+        "on": "tapeFound"
+      },
+      "count": 4,
+      "distinct": "level"
+    },
+    {
+      "id": "level-goal-10",
+      "name": "On Tour",
+      "line": "Ten Tour goals done.",
+      "art": "cablecar",
+      "rule": {
+        "on": "levelGoal"
+      },
+      "count": 10,
+      "distinct": "level+id"
+    },
+    {
+      "id": "beat-landlord",
+      "name": "Rent Strike",
+      "line": "Beat the Painted Ladies landlord down Hayes St.",
+      "art": "victorian",
+      "rule": {
+        "on": "bombFinish",
+        "route": "hayes",
+        "place": {
+          "max": 1
+        }
+      }
+    },
+    {
+      "id": "balmy",
+      "name": "Mural Hunter",
+      "line": "Skated Balmy Alley.",
+      "art": "victorian",
+      "rule": {
+        "on": "placeVisit",
+        "name": "Balmy Alley"
+      }
+    },
+    {
+      "id": "ladies",
+      "name": "Postcard Row",
+      "line": "Visited the Painted Ladies.",
+      "art": "victorian",
+      "rule": {
+        "on": "placeVisit",
+        "name": "The Painted Ladies"
+      }
+    },
+    {
+      "id": "tourist",
+      "name": "Tourist",
+      "line": "Skated into 12 different places.",
+      "art": "cablecar",
+      "rule": {
+        "on": "placeVisit"
+      },
+      "count": 12,
+      "distinct": "name"
+    },
+    {
+      "id": "city-hall",
+      "name": "Public Hearing",
+      "line": "Ollied the City Hall steps.",
+      "art": "victorian",
+      "rule": {
+        "on": "gap",
+        "id": "city_hall_steps"
+      }
+    },
+    {
+      "id": "tour-complete",
+      "name": "Tour Pro",
+      "line": "Every Tour goal in every level.",
+      "art": "hella",
+      "rule": {
+        "on": "levelGoal"
+      },
+      "count": 77,
+      "distinct": "level+id"
+    },
+    {
+      "id": "graduate",
+      "name": "Graduate",
+      "line": "Finished Skate School. Karl the Fog signed the diploma. It is damp.",
+      "art": "graduate",
+      "rule": {
+        "on": "schoolGraduate"
+      }
+    },
+    {
+      "id": "beat-muni",
+      "name": "Faster Than Muni",
+      "line": "Beat a streetcar to the last stop. It was not hard.",
+      "art": "muni",
+      "rule": {
+        "on": "muniOver",
+        "won": true
+      }
+    },
+    {
+      "id": "escape",
+      "name": "Not a Road Hazard",
+      "line": "Escaped the robotaxi for 90 seconds.",
+      "art": "robotaxi",
+      "rule": {
+        "on": "escapeOver",
+        "survived": true
+      }
+    },
+    {
+      "id": "muni-delay",
+      "name": "Disabled Train Ahead",
+      "line": "Your streetcar was delayed. Classic.",
+      "art": "muni",
+      "rule": {
+        "on": "muniDelay"
+      }
+    },
+    {
+      "id": "couch-trickattack",
+      "name": "Couch Session",
+      "line": "Played a Trick Attack on one screen. Someone owes someone a burrito.",
+      "art": "burrito",
+      "rule": {
+        "on": "trickAttackOver"
+      }
+    },
+    {
+      "id": "couch-horse",
+      "name": "Spelled It Out",
+      "line": "Finished a game of HORSE on the couch.",
+      "art": "pigeon",
+      "rule": {
+        "on": "horseOver"
+      }
+    },
+    {
+      "id": "couch-graffiti",
+      "name": "Tagged the Whole Park",
+      "line": "Owned 15 pieces in one Graffiti game.",
+      "art": "sick",
+      "rule": {
+        "on": "graffitiOwned",
+        "owned": 15
+      }
+    },
+    {
+      "id": "ferry",
+      "name": "Ferry Tale",
+      "line": "Skated down to the Ferry Building. The clock says it is time to skate back up.",
+      "art": "ferry",
+      "rule": {
+        "on": "placeVisit",
+        "name": "Ferry Building"
+      }
+    },
+    {
+      "id": "muni-skitch",
+      "name": "Fare Evasion",
+      "line": "Hitched a ride on the back of a streetcar. No fare required.",
+      "art": "muni",
+      "rule": {
+        "on": "gap",
+        "id": "muni_skitch"
+      }
+    },
+    {
+      "id": "story-ch1",
+      "name": "New in Town",
+      "line": "Rosa says you can stay. Don't make it weird.",
+      "art": "karl",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch1"
+      }
+    },
+    {
+      "id": "story-ch2",
+      "name": "Get Seen",
+      "line": "Marisol posted your part at two in the morning.",
+      "art": "cast-marisol",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch2"
+      }
+    },
+    {
+      "id": "story-ch4",
+      "name": "In Triplicate",
+      "line": "Five signatures: one paw print, one heart, one in grease.",
+      "art": "cast-gloria",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch4"
+      }
+    },
+    {
+      "id": "story-ch5",
+      "name": "Tow Order Declined",
+      "line": "Lost the robotaxis, beat Chad to Civic Center, made the window at 4:59.",
+      "art": "cast-unit7",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch5"
+      }
+    },
+    {
+      "id": "story-ch6",
+      "name": "Not Mid",
+      "line": "The motion carries. SoMa West stays. Rosa said so.",
+      "art": "rosa",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch6"
+      }
+    },
+    {
+      "id": "side-pigeons",
+      "name": "Made Bird",
+      "line": "Under the Pigeon's protection. Mostly from other pigeons.",
+      "art": "pigeon",
+      "rule": {
+        "on": "missionDone",
+        "mission": "pigeons"
+      }
+    },
+    {
+      "id": "side-unit7",
+      "name": "Driver's Ed",
+      "line": "Taught a robotaxi the up part.",
+      "art": "robotaxi",
+      "rule": {
+        "on": "missionDone",
+        "mission": "unit7"
+      }
+    },
+    {
+      "id": "side-kenji",
+      "name": "Roof Retrieval",
+      "line": "Got Kenji's board off a roof by Duboce Park. Again.",
+      "art": "kenji",
+      "rule": {
+        "on": "missionDone",
+        "mission": "kenjiboard"
+      }
+    },
+    {
+      "id": "side-burrito",
+      "name": "Foil Is a Promise",
+      "line": "Three deliveries for Hector, all of them hot.",
+      "art": "hector",
+      "rule": {
+        "on": "missionDone",
+        "mission": "burrito"
+      }
+    },
+    {
+      "id": "side-clarion",
+      "name": "Analog-Adjacent",
+      "line": "Tagged Clarion Alley back to life, filmed on a flip phone.",
+      "art": "tash",
+      "rule": {
+        "on": "missionDone",
+        "mission": "clarion"
+      }
+    },
+    {
+      "id": "side-disco",
+      "name": "Disco Escort",
+      "line": "Kept up with Donna down Castro St. It's sequined.",
+      "art": "donna",
+      "rule": {
+        "on": "missionDone",
+        "mission": "disco"
+      }
+    },
+    {
+      "id": "side-rainbow",
+      "name": "Runway Ready",
+      "line": "Manualled Bev's rainbow runway. Legally a pedestrian.",
+      "art": "bev",
+      "rule": {
+        "on": "missionDone",
+        "mission": "rainbow"
+      }
+    },
+    {
+      "id": "side-scooters",
+      "name": "Disruptor Disrupted",
+      "line": "Beat Chad's scooter fleet down Hayes.",
+      "art": "cast-chad",
+      "rule": {
+        "on": "missionDone",
+        "mission": "scooters"
+      }
+    },
+    {
+      "id": "side-postcard",
+      "name": "Candid on Purpose",
+      "line": "Flew through Skye's Painted Ladies shot.",
+      "art": "skye",
+      "rule": {
+        "on": "missionDone",
+        "mission": "postcard"
+      }
+    },
+    {
+      "id": "side-stamp",
+      "name": "Approved",
+      "line": "Found Gloria's stamp. Your permit to skate is approved.",
+      "art": "cast-gloria",
+      "rule": {
+        "on": "missionDone",
+        "mission": "stamp"
+      }
+    },
+    {
+      "id": "side-delay",
+      "name": "We Are Being Held",
+      "line": "Beat Dolores's J Church down through Dolores Park. She was delayed.",
+      "art": "cast-dolores",
+      "rule": {
+        "on": "missionDone",
+        "mission": "delay"
+      }
+    },
+    {
+      "id": "side-turntable",
+      "name": "Cut the Line",
+      "line": "Ground the cable car slot for Sal.",
+      "art": "cast-sal",
+      "rule": {
+        "on": "missionDone",
+        "mission": "turntable"
+      }
+    },
+    {
+      "id": "side-barnacle",
+      "name": "Seniority",
+      "line": "Taught Captain Barnacle to skate. Admission is still free.",
+      "art": "sealion",
+      "rule": {
+        "on": "missionDone",
+        "mission": "barnacle"
+      }
+    },
+    {
+      "id": "side-chowder",
+      "name": "Bread Bowl Courier",
+      "line": "Chowder to the Captain, no spills, no gulls.",
+      "art": "marge",
+      "rule": {
+        "on": "missionDone",
+        "mission": "chowder"
+      }
+    },
+    {
+      "id": "story-ch3",
+      "name": "Flow Team",
+      "line": "Beat Dre at S.K.A.T.E. Big Lou put his face on your board.",
+      "art": "cast-biglou",
+      "rule": {
+        "on": "missionDone",
+        "mission": "ch3"
+      }
+    },
+    {
+      "id": "side-cartrace",
+      "name": "Dumpling Money",
+      "line": "Beat Grandma Wu up Grant Ave. Pork and chive.",
+      "art": "cast-grandmawu",
+      "rule": {
+        "on": "missionDone",
+        "mission": "cartrace"
+      }
+    },
+    {
+      "id": "side-lombard",
+      "name": "Huge Learnings",
+      "line": "Beat Brayden down the crooked block. The hill is a stakeholder now.",
+      "art": "cast-brayden",
+      "rule": {
+        "on": "missionDone",
+        "mission": "lombard"
+      }
+    },
+    {
+      "id": "side-statue",
+      "name": "Didn't Blink",
+      "line": "Gave Gus the statue something loud to stand next to.",
+      "art": "gus",
+      "rule": {
+        "on": "missionDone",
+        "mission": "statue"
+      }
+    },
+    {
+      "id": "side-poet",
+      "name": "Ode to a Kid Falling Up",
+      "line": "Skated Rocco a line that rhymes with nothing.",
+      "art": "rocco",
+      "rule": {
+        "on": "missionDone",
+        "mission": "poet"
+      }
+    },
+    {
+      "id": "gig-1",
+      "name": "Odd Job",
+      "line": "Your first gig. No benefits. Chips, though.",
+      "art": "hector",
+      "rule": {
+        "on": "missionDone",
+        "kind": "job"
+      }
+    },
+    {
+      "id": "gig-10",
+      "name": "Gig Economy",
+      "line": "Ten gigs. Your side hustle has a side hustle.",
+      "art": "burrito",
+      "rule": {
+        "on": "missionDone",
+        "kind": "job"
+      },
+      "count": 10
+    },
+    {
+      "id": "gig-25",
+      "name": "1099",
+      "line": "Twenty-five gigs. Somewhere, an accountant sighs.",
+      "art": "cast-biglou",
+      "rule": {
+        "on": "missionDone",
+        "kind": "job"
+      },
+      "count": 25
+    },
+    {
+      "id": "gig-all",
+      "name": "Portfolio Career",
+      "line": "Delivered, drove, posed and raced. Put it on the résumé.",
+      "art": "tash",
+      "rule": {
+        "on": "missionDone",
+        "kind": "job"
+      },
+      "count": 4,
+      "distinct": "gig"
+    }
+  ]
+}

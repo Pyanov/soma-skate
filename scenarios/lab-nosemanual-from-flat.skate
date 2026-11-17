@@ -1,0 +1,12 @@
+# Rolling on the flat, Down then Up starts a nose manual on its own; ollie out and land banks it.
+park lab
+spawn lab_ledge
+hold up 0..80
+tap down 100
+tap up 104
+hold ollie 200..220
+bot balance
+run 420
+expect event manualStart{trick=Nose Manual} within 104..106
+expect event comboLanded{name=Nose Manual} within 300..400
+expect no event bail

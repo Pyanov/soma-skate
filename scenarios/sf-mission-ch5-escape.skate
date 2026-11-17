@@ -1,0 +1,13 @@
+# Chapter 5's Escape (mission start ch5 2): Chad's robotaxis come for the ramps. Standing still by a
+# street (the Valencia shops, as sf-escape-pulled-over) you are pulled over: the Escape is lost and the
+# chapter fails (mode), with Karl's line; the client's Try again starts it from this step (retry 2).
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 mission start ch5 2
+run 1700
+expect event missionStep{mission=ch5,step=2,kind=mode} within 2..2
+expect event escapeStart within 2..2
+expect event escapeOver{survived=false} within 1400..1500
+expect event missionFailed{mission=ch5,step=2,reason=mode} within 1400..1500
+expect no event missionStep{mission=ch5,step=3}

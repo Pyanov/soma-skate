@@ -1,0 +1,22 @@
+# Tapping I on a ledge at a standstill must not score. Landed on the end of
+# Patricia's Green's first seat wall with no speed, every tap caught the ledge and stalled the next
+# tick, and each one scored a 50-50 into the combo: six taps were "FS 50-50 x6", 1,205 points. A
+# grind left before grind.voidTicks (12 ticks) now never happened: no entry, no gap, no combo. Phase
+# 25: a catch slower than grind.stallSpeed along the line is no grind at all (it was a void grind,
+# and a late ollie off it kept a combo in the air: sf-ledge-hop-farm), so no tap catches here.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -219.85 422 9.75 0
+cmd 2 set skater.vel.y 4.5
+hold ollie 20..50
+tap grind 56
+tap grind 62
+tap grind 68
+tap grind 74
+tap grind 80
+tap grind 86
+bot balance
+run 400
+expect no event grindStart
+expect no event comboLanded
+expect no event gap

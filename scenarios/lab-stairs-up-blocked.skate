@@ -1,0 +1,9 @@
+# Rolling into the foot of the lab's 3-stair from below: its risers are 17 cm, low enough for a curb
+# hop, but a tread is 35 cm deep (under ground.curbHopDepth), so stairs are not rolled up: the skater
+# stops against the first riser, as before (ollie them).
+park lab
+cmd 0 teleport 16 4 0.13 0
+cmd 6 speed 4
+run 200
+expect no event bump
+expect skater.pos.y < 7.3 at end

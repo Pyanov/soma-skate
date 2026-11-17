@@ -1,0 +1,14 @@
+# Muni Race on the J Church (the first line: plain `run muni`), through Dolores Park's right of way
+# from Liberty to 18th Street, downhill. You never push: you roll a little way down the slope and
+# stop; the streetcar stands at 20th Street and gets to 18th first, 371 m from you.
+park sf
+cmd 0 traffic clear
+cmd 1 run muni
+run 8000
+expect event muniStart{line=j,name=J Church} within 2..2
+expect event muniStop{n=1,name=Right of Way & 20th Street,you=false} within 3342..3342
+expect event muniStop{n=2,name=Right of Way & 18th Street,you=false} within 7896..7896
+expect event muniOver{won=false,margin=371.08,time=65.78} within 7896..7896
+expect event muniStop{you=true} count == 0
+expect session.mode == over at end
+expect session.muniLine == j at end

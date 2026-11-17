@@ -1,0 +1,12 @@
+# A line: square onto the flat rail into an FS Boardslide, popped out with an ollie.
+park lab
+cmd 0 teleport -7 1.4 0.14 0
+hold up 6..80
+hold ollie 70..90
+tap grind 128
+hold ollie 165..182
+bot balance
+run 320
+expect event grindStart{trick=FS Boardslide,slide=true} within 125..135
+expect event pop within 180..186
+expect no event bail

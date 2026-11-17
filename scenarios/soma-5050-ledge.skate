@@ -1,0 +1,10 @@
+# The low ledge on the south rear runway to the Hellride (F42), on the left: ollie, grind, BS 50-50.
+park soma
+spawn south_rear_runway_to_hellride
+cmd 0 speed 4.5
+hold ollie 4..14
+tap grind 40
+bot balance
+run 360
+expect event grindStart{trick=BS 50-50,slide=false} within 20..80
+expect no event bail

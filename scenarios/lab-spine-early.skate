@@ -1,0 +1,10 @@
+# Pressed on the way up the wall, a few ticks before the lip: remembered into the air
+# (spine.bufferTicks), the transfer starts once the arc clears the ridge.
+park lab
+spawn lab_spine_south
+cmd 6 speed 7.5
+tap revert 148
+run 400
+expect event spineTransfer within 157..160
+expect event land{quality=clean,fakie=false} within 270..290
+expect no event bail

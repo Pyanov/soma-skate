@@ -1,0 +1,18 @@
+# City sweep (skate cityfuzz): The same car-to-curb slot elsewhere: squeezed in at speed, the skater ends up 3.6 cm inside the car and the curb.
+# Finding: invariant at -783.62 -1335.97 66.20 (inside geometry (0.037 m deep, triangle 997281)), tick 742. Run it with `./skate run scenarios/city-sweep/car-curb-inside.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -820 -1340 78.65 327
+hold left+revert+slide 0..23
+hold up+right 23..86
+hold up 86..150
+hold up+left 150..253
+hold up+slide 253..318
+hold up 318..360
+hold up 360..400
+hold revert 437..555
+hold down 555..644
+hold down+right+flip+grind 644..669
+hold up 669..740
+run 744

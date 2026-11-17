@@ -1,0 +1,13 @@
+# Charged ollie, 360 Inward Heelflip (J + up right, then J again: THPS 1+2's double tap on that slot, added
+# 2026-11-16) right after the pop: the flip finishes and the combo lands (./skate strip --sheet scenarios/flips.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+up+right 96
+tap flip 99
+run 300
+expect event trickStart{trick=360 Inward Heelflip} within 100..100
+expect event trickEnd{trick=360 Inward Heelflip} within 120..180
+expect event comboLanded{name=360 Inward Heelflip,points=650} within 160..240
+expect no event bail

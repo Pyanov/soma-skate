@@ -1,0 +1,14 @@
+# The same street, a robotaxi: the moment the skater is in its lane ahead it stops dead (14 m/s^2,
+# robotaxiStop), its hazards blink after hazardAfter (0.4 s), and it chimes (honk, robo) after 1.2 s.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -50.9 -311.76 2.41 0
+cmd 2 car -51.1 -331.2 356 8 robo
+run 320
+expect event robotaxiStop within 78..86
+expect min car.gap > 11
+expect car.car.speed < 0.01 at 170
+expect car.car.hazard == 1 at 220
+expect event honk{robo=true} within 280..300
+expect no event carHit

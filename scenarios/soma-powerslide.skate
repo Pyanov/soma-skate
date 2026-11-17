@@ -1,0 +1,8 @@
+# Powerslide (Shift) on the west runway at 9 m/s, on the real park.
+park soma
+spawn big3_runway
+cmd 8 speed 9
+hold slide 12..140
+run 160
+expect event powerslide{on=true} within 12..14
+expect no event bail

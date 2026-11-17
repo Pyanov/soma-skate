@@ -1,0 +1,14 @@
+# A crooked on a real SoMa ledge (the south rear runway's, soma-5050-ledge's approach): I + up + toward
+# (backside: the ledge on the left, so left) as it locks on: BS Crooked Grind. The contact test seats it
+# with the view's own probe of the park (tests/trickcontact.test.ts).
+park soma
+spawn south_rear_runway_to_hellride
+cmd 0 speed 4.5
+hold ollie 4..14
+hold up 36..60
+hold left 36..60
+tap grind 40
+bot balance
+run 360
+expect event grindStart{trick=BS Crooked Grind,slide=false} within 20..80
+expect no event bail

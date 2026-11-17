@@ -1,0 +1,29 @@
+{
+  "_doc": "Street birds (src/client/life.ts, view only, never in the sim): pigeons pecking round the spawn spots, and in the city (world sf) seagulls at the bay edge, the piers and EMB. pigeons: flocks (at most this many, every few spawn spots), perFlock birds each, spread metres across, ahead metres in front of the spot; a bird scatters when a skater comes within scatter + scatterPerSpeed x speed (m/s) metres. gulls: areas are [x, y] centres with a radius r (metres) and n birds dropped on flat open ground there (edge: only where the bay is within edgeDist metres, a sample that far out finding no ground); roofs are rooftops they stand along (a box: centre, long axis, length and width in metres, the roof's height z), n birds spread along both long edges, inset metres in; ledges are single perches [x, y, z]; lamps: up to max birds on the street lights within r metres of each near centre [x, y, r], lift metres above the lamp head. Gulls scatter at scatter + scatterPerSpeed x speed metres (a perched one only when you come up level with it, within perchReach metres below), fly for flight seconds [min, max] circling (turn radians a second) at speed m/s, then glide back; size scales the bird; cry: the chance a flock that scatters cries (Settings > Audio > Crowd and ambience), heard to cryFar metres.",
+  "pigeons": { "flocks": 9, "perFlock": 5, "spread": 4, "ahead": 6, "scatter": 2.2, "scatterPerSpeed": 0.35 },
+  "gulls": {
+    "seed": 23,
+    "size": 1.9,
+    "areas": [
+      { "label": "EMB, the brick plaza", "at": [588.8, 705.8], "r": 40, "n": 9 },
+      { "label": "Pier 7 benches", "at": [593, 912], "r": 26, "n": 7 },
+      { "label": "Pier 7 out over the bay", "at": [639, 956], "r": 30, "n": 6, "edge": true },
+      { "label": "the bay edge along the Embarcadero", "at": [680, 860], "r": 90, "n": 10, "edge": true },
+      { "label": "behind the Ferry Building", "at": [800, 800], "r": 60, "n": 6, "edge": true }
+    ],
+    "edgeDist": 5,
+    "roofs": [
+      { "label": "the Ferry Building", "centre": [741.7, 749.2], "axis": [-0.595, 0.804], "length": 201.6, "width": 56.5, "z": 5.75, "n": 12, "inset": 4 }
+    ],
+    "ledges": [[719.19, 736.24, 41.7], [722.76, 731.42, 41.7]],
+    "lamps": { "near": [[588.8, 705.8, 90], [593, 912, 70], [690, 800, 70]], "max": 8, "lift": 0.28 },
+    "scatter": 3.5,
+    "scatterPerSpeed": 0.45,
+    "perchReach": 3,
+    "flight": [6, 11],
+    "turn": 0.9,
+    "speed": 4.2,
+    "cry": 0.6,
+    "cryFar": 60
+  }
+}

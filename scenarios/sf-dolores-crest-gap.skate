@@ -1,0 +1,25 @@
+# DOLORES CREST AIR and SENT IT ON DOLORES. Bombing Dolores, the crest
+# is the downhill edge of 19th St (the flat intersection, then 12% down). Crouched (tucked) to the
+# crest, the full ollie released there flies 130 ticks (128 before the squeezed city), 14 m down the block: SENT IT ON DOLORES
+# (1 s or more; a flat full ollie is 116 ticks), which replaces the crest air (gaps.json replaces:
+# one air, one gap, not both). Then from the top again, standing up, a short ollie at the crest flies
+# 112 ticks (110 before the squeezed city): DOLORES CREST AIR (0.375 s or more, takeoff on the crest, 8 m or more).
+# sf-dolores-flat-ollie: the same ollie on 18th St's flat pays nothing.
+park sf
+spawn dolores_bomb
+cmd 0 traffic clear
+hold up 20..200
+hold ollie 200..900
+cmd 1300 teleport dolores_bomb
+hold up 1320..1500
+hold ollie 2180..2200
+run 2600
+expect event land{airTicks=130,quality=clean} within 1027..1031
+expect event gap{gap=SENT IT ON DOLORES,points=1200} within 1027..1031
+expect event comboLanded{name=SENT IT ON DOLORES,points=1200} within 1039..1043
+expect no event gap{id=dolorescrest} within 0..1300
+expect event land{airTicks=112,quality=clean} within 2309..2313
+expect event gap{gap=DOLORES CREST AIR,points=400} within 2311..2315
+expect event gap{id=dolorescrest} count == 1
+expect event gap{id=doloressend} count == 1
+expect no event bail

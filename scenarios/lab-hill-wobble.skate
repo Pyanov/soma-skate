@@ -1,0 +1,10 @@
+# Standing tall at 14.5 m/s on the 10% section, over wobble.speed (12 m/s): the trucks start to
+# shimmy, the wobble grows and throws the rider off within a few seconds ("speed wobbles").
+# lab-hill-wobble-tuck rides the same start crouched and never wobbles.
+park lab
+spawn lab_hill_ten
+cmd 6 speed 14.5
+run 700
+expect max skater.wobble > 0.5
+expect event bail{reason=speed wobbles} within 150..600
+expect event danger{why=speed wobbles} within 150..200

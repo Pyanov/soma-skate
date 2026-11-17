@@ -1,0 +1,30 @@
+# Two-player Trick Attack (run trickattack2p; data run.twoPlayer, here 3 s): both skate at once and
+# the higher score wins. Player 2 joins beside player 1 (join.side, 1.5 m to its left: north, as it
+# faces east) and kickflips on the flat (100); player 1 grinds the ledge (475). The clock runs out
+# at 361 while player 1 is still on the ledge: the game waits for that combo to land (THPS), at 467.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+cmd 0 player2 join
+cmd 0 setData run.twoPlayer.trickAttack.seconds 3
+cmd 0 run trickattack2p
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+bot balance
+p2 hold ollie 20..50
+p2 tap flip+left 56
+run 600
+expect skater2.pos.y > 0.89 at 1
+expect skater2.pos.y < 0.91 at 1
+expect event trickAttackStart{seconds=3} within 1..1
+expect event comboLanded{name=Kickflip,points=100,player=2} within 178..178
+expect session.mode == ending at 362
+expect session2.mode == ending at 362
+expect event comboLanded{name=BS 50-50,points=475,player=1} within 467..467
+expect event trickAttackOver{winner=1} within 467..467
+expect event trickAttackOver count == 1
+expect skater.score == 475 at end
+expect skater2.score == 100 at end
+expect session.mode == over at end
+expect session2.game == trickattack2p at end
+expect no event bail

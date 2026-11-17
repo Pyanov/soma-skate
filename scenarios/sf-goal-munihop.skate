@@ -1,0 +1,13 @@
+# City goal "Muni Hop": rolling west across Church St at 7 m/s, a full ollie from east of the J-Church
+# tracks to past the first pair: the MUNI HOP gap (an air gap, box to box) and the goal. (On Church St
+# north of 18th in the squeezed city, where the cars parked on the west side leave a gap.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -429.5 29.5 9.81 270
+cmd 20 set skater.vel.x -7
+hold ollie 20..100
+run 300
+expect event gap{id=muni_hop_w,points=400} within 210..225
+expect event goalComplete{id=munihop,area=Church} within 210..225
+expect no event bail

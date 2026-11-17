@@ -1,0 +1,17 @@
+# Robotaxi Escape: the same stand at the Valencia shops (sf-escape-pulled-over: pulled over at 1439),
+# but a 360 Flip (500 points) as it closes in sets it recalculating for 2 s (recalc: 4 s per 1000
+# points), stopped with its hazards on: you are pulled over 292 ticks later, with the 500 points.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 run escape
+hold ollie 912..942
+tap flip+down+left 948
+tap flip 951
+run 1800
+expect event escapeClose within 941..941
+expect event comboLanded{name=360 Flip,points=500} within 1070..1070
+expect event escapeRecalc{seconds=2,points=500} within 1070..1070
+expect car.car.hazard == 1 at 1100
+expect car.car.speed < 0.5 at 1250
+expect event escapeOver{survived=false,score=500} within 1731..1731

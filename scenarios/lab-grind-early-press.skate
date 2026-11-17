@@ -1,0 +1,12 @@
+# The grind press is remembered for grind.bufferTicks (14 since phase 24): the low ledge's grind
+# (lab-5050-ledge) is first in reach on tick 168, and a press 13 ticks (108 ms) before it still
+# catches it. With the old 10 ticks it had to come within 83 ms. lab-grind-too-early: 14 ticks misses.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 155
+bot balance
+run 480
+expect event grindStart{trick=BS 50-50,slide=false} within 169..169
+expect no event bail

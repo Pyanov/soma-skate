@@ -1,0 +1,85 @@
+# Skate School with Karl the Fog (data/school.json, src/client/school.ts): a scripted run through every
+# lesson in order, for the clip (skate clip school-run --school) and tests/school.test.ts. Each lesson starts
+# with its own teleport (and setup) once Karl's done line for the last one has shown (doneSeconds); the
+# revert's push and the speed the tick after it are Karl's gust (boost). Built by tools/school-run.ts (node tools/school-run.ts).
+park soma
+bot balance
+run 5324
+# 1. Push and steer
+cmd 0 teleport pin05_entrance_flat_east_bank
+hold up 0..160
+hold left 110..330
+# 2. Ollie
+cmd 408 teleport entrance
+hold up 408..468
+hold ollie 478..516
+# 3. Flip trick
+cmd 827 teleport entrance
+hold up 827..887
+hold ollie 897..917
+tap flip+left 920
+# 4. Grab
+cmd 1215 teleport big3
+hold up 1215..1315
+hold ollie 1381..1411
+hold grab+right 1419..1421
+hold grab 1421..1500
+# 5. Grind
+cmd 1736 teleport big3_runway
+hold up 1736..1852
+hold ollie 1856..1868
+tap grind 1878
+# 6. Manual
+cmd 2073 teleport manual_pad
+hold up 2073..2213
+tap up 2233
+tap down 2237
+# 7. Link a combo
+cmd 2432 teleport big3_runway
+hold up 2432..2548
+hold ollie 2552..2564
+tap grind 2574
+tap up 2683
+tap down 2687
+hold ollie 2722..2736
+hold slide 2844..2992
+# 8. Revert
+cmd 3037 teleport 78 20.5 -1.6 71
+hold up 3067..3071
+cmd 3068 speed 9.5
+hold grab+right 3195..3196
+hold grab 3196..3247
+tap revert 3337
+# 9. Special trick
+cmd 3532 teleport big3
+cmd 3532 set skater.special 0.97
+hold up 3532..3580
+hold ollie 3582..3596
+tap flip+left 3598
+hold up 3692..3737
+hold ollie 3737..3767
+tap right 3770
+tap down 3773
+tap flip 3775
+# 10. Powerslide
+cmd 4103 teleport entrance
+hold up 4103..4253
+hold slide 4263..4433
+# 11. Step off and walk
+cmd 4586 teleport entrance
+tap walk 4616
+hold up 4636..4836
+# push done at 214
+# ollie done at 633
+# flip done at 1021
+# grab done at 1542
+# grind done at 1879
+# manual done at 2238
+# combo done at 2843
+# revert done at 3338
+# special done at 3909
+# powerslide done at 4392
+# walk done at 4746
+expect no event bail
+expect event comboLanded{name=FS 50-50 + Manual} within 2842..2844
+expect event revert within 3337..3339

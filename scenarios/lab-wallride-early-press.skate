@@ -1,0 +1,13 @@
+# A wallride takes the grind press only within combo.wallPressTicks (10) of it, though the grind
+# buffer lasts 14 (phase 24: the press for a grind beside a wall, Patricia's Green bench, used to
+# start a wallride on the wall when the buffer grew). Beside the lab wall (lab-wallride), pressed 10
+# ticks before the first air tick (101): no wallride. lab-wallride-press-window: 9 ticks wallrides.
+park lab
+cmd 0 teleport -27.3 -9 0.14 0
+hold up 6..90
+hold ollie 80..100
+tap grind 91
+run 300
+expect event pop within 101..101
+expect no event wallrideStart
+expect no event bail

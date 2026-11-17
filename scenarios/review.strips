@@ -1,0 +1,15 @@
+# Skater review sheet: ./skate strip --sheet scenarios/review.strips --title "..."  ->  out/strips/review-sheet.png
+# label | scenario | ticks a:b:n | camera
+Rolling | lab-push-coast | 300:360:3 | quarter
+Push (one stroke) | lab-push-coast | 8:108:10 | quarter
+Crouch (charging the ollie) | lab-ollie-height | 56:90:5 | quarter
+Ollie (pop and tuck) | lab-ollie-height | 86:146:10 | quarter
+Landing (absorb) | lab-kickflip-lands | 200:228:6 | quarter
+Kickflip | lab-kickflip-lands | 91:149:10 | quarter
+Heelflip | lab-heelflip-lands | 91:149:10 | quarter
+Pop shove-it | lab-popshoveit-lands | 91:143:10 | quarter
+Indy grab | lab-grab-hold-points | 90:175:10 | quarter
+50-50 on the ledge | lab-5050-ledge | 168:260:8 | quarter
+Boardslide on the rail | lab-boardslide-rail | 120:230:8 | quarter
+Manual | lab-manual-from-flat | 100:210:8 | quarter
+Bail and get up | lab-sideways-bail | 56:216:10 | quarter

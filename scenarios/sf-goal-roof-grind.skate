@@ -1,0 +1,25 @@
+# ROOF GRIND and the goal Roof Grind a Hybrid: parked cars' roof edges are grind lines (48,590 car edges
+# in the city). A roof is 1.47 m above the road, out of reach of an ollie (1.17 m), so a boneless
+# (up, up, pop: 20% more) from the street beside a car on Valencia, the grind pressed at the top: BS
+# 50-50 along the east roof edge to its end, then down clean in the street. (The car 3 m further
+# south since city phase 11, the start with it. In the squeezed city a longer car is parked there,
+# its roof 0.2 m longer and starting 0.67 m further north; the start moved with it again.)
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -60.53 -273.04 2.37 -4.6
+cmd 2 set skater.vel.x -0.3208
+cmd 2 set skater.vel.y 3.9871
+hold ollie 145..175
+tap up 163
+tap up 170
+tap grind 219
+bot balance
+run 480
+expect event trickEnd{trick=Boneless} within 174..178
+expect event grindStart{trick=BS 50-50,line=car_-62_-266} within 218..222
+expect event grindEnd{reason=end} within 289..293
+expect event gap{id=roof_grind,gap=ROOF GRIND,points=400} within 289..293
+expect event goalComplete{id=roofgrind,name=Roof Grind a Hybrid} within 289..293
+expect event land{quality=clean} within 371..375
+expect event comboLanded{name=Boneless + BS 50-50 + ROOF GRIND} within 382..386
+expect no event bail

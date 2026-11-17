@@ -1,0 +1,17 @@
+# LOMBARD HANDRAIL: the long handrail down the crooked block's north side (53 m, 12.7 m of drop), an ollie
+# onto it near its top and a 50-50 all the way down (4.8 m/s on, 12 m/s off), landed clean below.
+# (The upper handrail, rail_-208_723, runs into a street tree's trunk 7 m from its foot.)
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -203.08 720.82 7.44 84.8
+cmd 3 set skater.vel.x 3.983
+cmd 3 set skater.vel.y 0.364
+hold ollie 64..94
+tap grind 100..148 every 4
+bot balance
+run 800
+expect event grindStart{trick=FS 50-50,line=rail_-157_728} within 114..118
+expect event grindEnd{reason=end} within 653..657
+expect event gap{id=lombard_rail,gap=LOMBARD HANDRAIL,points=500} within 653..657
+expect event land{quality=clean} within 693..697
+expect no event bail

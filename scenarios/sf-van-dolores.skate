@@ -1,0 +1,21 @@
+# The crew van climbs Dolores (game/vehicles.ts, docs/mechanics/driving.md): summoned at the bottom of
+# the southbound carriageway past 18th, E to get in, then the driving autopilot up the hill past the
+# crest at 19th and 20th, about 290 m and 29 m up (10% on average, 14% in places). The slope pulls the
+# van back (gravity along the ground) and the engine's pull falls with speed, so it climbs slower than
+# it drives on the flat, but it never stalls; the wheels follow the hill and the crests (no air).
+park sf
+cmd 0 traffic clear
+cmd 1 van summon -226 -162 182
+cmd 2 teleport -224.2 -162 8.5 182
+tap use 30
+bot drive -226,-162 -226,-173 -225,-183 -224,-194 -223,-210 -222,-226 -221,-242 -220,-258 -218,-276 -217,-292 -215,-309 -214,-325 -213,-342 -211,-360 -210,-379 -209,-395 -207,-412 -206,-428 -205,-444 -204,-455 speed 14 corner 7 stop
+run 3600
+expect event vehicleEnter{name=crew_van} within 30..32
+expect no event vanBump
+expect no event vanLand
+expect max van.pos.z > 36
+expect min van.pos.y < -445
+expect max van.hspeed > 11
+expect min van.hspeed > 8 over 900..1700
+expect max van.car.drive.ground < 2
+expect min van.car.drive.ground > 0.5

@@ -1,0 +1,20 @@
+# The session marker (docs/mechanics/marker.md): set rolling at 5 m/s on the lab floor, ollie and start
+# a kickflip, and go back to the marker mid-air: the skater is on the marker at once, rolling the same
+# way at the same speed, and the kickflip in progress is dropped (no combo banks, no bail).
+park lab
+cmd 0 teleport -20 -15 0.13 90
+cmd 6 speed 5
+cmd 30 marker set
+hold ollie 60..80
+tap flip+left 84
+cmd 100 marker go
+run 200
+expect event marker{op=set,ok=true} within 31..31
+expect event trickStart{trick=Kickflip} within 84..90
+expect event marker{op=go,ok=true} within 101..101
+expect skater.pos.x < -18.8 at 101
+expect skater.pos.x > -19.2 at 101
+expect skater.speed > 4.8 at 110
+expect skater.vel.x > 4.8 at 110
+expect no event comboLanded
+expect no event bail

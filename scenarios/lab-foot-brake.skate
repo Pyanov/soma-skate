@@ -1,0 +1,16 @@
+# Foot brake (S): 3 m/s^2 when slow. From 4 m/s it stops in about 1.3 s; then at 12 m/s the same
+# foot does much less (it fades to 35% by 12 m/s), so the second stop takes far longer: at speed,
+# powerslide instead (lab-powerslide).
+park lab
+cmd 0 teleport -25 -12 0.13 90
+cmd 6 speed 4
+hold down 10..200
+cmd 200 teleport -25 -14 0.13 90
+cmd 206 speed 12
+hold down 210..570
+run 570
+expect skater.speed < 0.05 at 180
+expect skater.speed > 0.3 at 150
+expect skater.speed > 6 at 450
+expect skater.speed < 6 at 570
+expect skater.speed > 4 at 570

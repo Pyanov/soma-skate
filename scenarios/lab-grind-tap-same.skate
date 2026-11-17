@@ -1,0 +1,22 @@
+# Tapping I again on a rail without a new direction is no switch: the same
+# grind again used to end the entry and start another, stacking "BS 50-50 + BS 50-50 + ..." with a
+# multiplier each. Five plain taps during a 50-50 on the lab ledge now leave one 50-50. A real
+# switch (I + a direction into a different grind) still counts (lab-grind-switch), after
+# grind.switchTicks (20) on the grind it leaves.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+tap grind 200
+tap grind 215
+tap grind 230
+tap grind 245
+tap grind 260
+bot balance
+run 560
+expect event grindStart{trick=BS 50-50} within 175..179
+expect event grindStart count == 1
+expect event grindEnd{trick=BS 50-50,reason=end} within 400..404
+expect event comboLanded{name=BS 50-50,multiplier=1,points=475} within 465..469
+expect no event bail

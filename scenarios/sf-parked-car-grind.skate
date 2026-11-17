@@ -1,0 +1,19 @@
+# A parked car's roof edge is a grind line (city phase 4: the export lists every parked car's roof,
+# hood, trunk and bumper edges, like the sim's own cars). Drop onto the west roof edge of a car
+# parked on Valencia, moving along it at 3 m/s, and press grind. Since phase 10 that is a ROOF GRIND
+# gap (feature "car roof"), which changed this scenario's score and hash. City phase 11 parked the
+# car 3 m further south (its curbs moved once); the start moved with it. In the squeezed city a longer
+# car is parked there (roof 0.2 m longer, starting 0.67 m further north, hood 9 cm longer): the start
+# moved with the roof, and off its end the skater comes down on the hood and rolls off it to the street.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 30 teleport -63.25 -266.31 4.03 355.7
+cmd 30 set skater.vel.x -0.22
+cmd 30 set skater.vel.y 2.99
+tap grind 31
+run 260
+expect event grindStart{trick=BS 50-50,line=car_-63_-267} within 31..40
+expect no event bail
+expect event gap{id=roof_grind} within 118..122
+expect event comboLanded{name=BS 50-50 + ROOF GRIND} within 242..246

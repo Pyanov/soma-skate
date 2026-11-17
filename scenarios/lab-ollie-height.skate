@@ -1,0 +1,11 @@
+# Full-charge ollie on the flat: crouch 30 ticks, release, pop about 1.1 m.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+run 300
+expect event pop{charge=1} within 89..92
+expect max skater.pos.z > 1.17
+expect max skater.pos.z < 1.5
+expect event land{fakie=false} within 160..240
+expect no event bail

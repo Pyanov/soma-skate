@@ -1,0 +1,19 @@
+# Combo Challenge (run combo): the clock runs (6 s here instead of 60) and only the best single
+# combo counts: Kickflip + FS Powerslide (490) beats the later Kickflip (100); the score still adds
+# both, but the result is the best (comboOver best 490).
+park lab
+spawn lab_ledge
+cmd 0 setData run.combo.seconds 6
+cmd 0 run combo
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+hold slide 208..280
+hold ollie 450..480
+tap flip+left 486
+run 900
+expect event comboStart{seconds=6} within 1..2
+expect event comboLanded{points=490} within 250..300
+expect event comboLanded{name=Kickflip,points=100} within 590..630
+expect event comboOver{best=490,score=590} within 720..760
+expect session.mode == over at end

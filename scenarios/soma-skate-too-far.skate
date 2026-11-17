@@ -1,0 +1,13 @@
+# A try too far from the mark says so. Same set turn as soma-skate-quick-set, but you pop 3.34 m
+# before the mark (inside spot.near, 5 m, outside spot.radius, 2 m): a clean Ollie, yet the set
+# misses with reason "too far from the mark" (and at 3.34) instead of waiting for the clock.
+park soma
+cmd 0 run skate kenji
+hold up 592..712
+hold ollie 712..742
+run 1000
+expect event pop within 740..746
+expect event land{quality=clean} within 855..863
+expect event skateSetMiss{by=player,reason=too far from the mark,got=ollie,at=3.34} within 855..863
+expect event skateTurn{who=local,role=set} within 855..863
+expect no event skateSet{by=player}

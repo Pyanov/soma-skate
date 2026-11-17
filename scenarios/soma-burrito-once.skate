@@ -1,0 +1,14 @@
+# Burritos do not come back: picked up once in a session (or run), riding through the same spot
+# again (three times, teleported back onto the central island) pays nothing more.
+park soma
+cmd 0 teleport 39.5 24.5 0.2 90
+hold up 6..120
+cmd 200 teleport 39.5 24.5 0.2 90
+hold up 206..320
+cmd 400 teleport 39.5 24.5 0.2 90
+hold up 406..520
+run 600
+expect event burrito count == 1
+expect event burrito{n=1,points=250} within 1..200
+expect skater.score == 250 at end
+expect no event bail

@@ -1,0 +1,16 @@
+# City goal "The Long Way Home" (kind skitch, metres towed in one skitch): 200 m in the data, 20 m
+# here; the 3 s skitch behind a human driver at 7 m/s passes it after about 2.9 s.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 setData goals.goals.3.meters 20
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..432
+run 500
+expect event goalComplete{id=skitch200} within 410..425
+expect no event goalComplete{id=roboskitch}

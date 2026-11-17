@@ -1,0 +1,11 @@
+# Ride at the wall, ollie, tap K just before reaching it: plant, push off, land facing away.
+park lab
+cmd 0 teleport -24 0 0.14 270
+hold up 6..80
+hold ollie 60..80
+tap ollie 173
+run 400
+expect event wallplant within 172..176
+expect event comboLanded{name=Wallplant} within 200..330
+expect skater.pos.x > -27 at end
+expect no event bail

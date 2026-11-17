@@ -1,0 +1,21 @@
+# Robotaxi Escape through Clarion Alley, which is not a street: you ride it east from Valencia (the
+# rider-line autopilot) with a kickflip on the way, and stop at its Mission Street end. The robotaxi
+# cannot follow: it goes round by 17th and Mission (the squeezed Mission ends at the alley, so 18th is
+# gone) and waits at the alley's mouth, about 15 m from you, never within 3 m. Survived 90 s: the
+# kickflip's 100 points and the 500 survival bonus.
+park sf
+spawn clarion_alley
+cmd 0 traffic clear
+cmd 1 run escape
+bot line clarion_alley_line 6
+hold ollie 400..420
+tap flip+left 426
+run 11000
+expect event comboLanded{name=Kickflip,points=100} within 535..535
+expect event escapeClose{dist=15} within 5597..5597   # 5596 and 14.99 on the city build before the plazas came back; 4225 and 14.98 before the terraced walls moved the Guerrero gutter; 8622 and 14.99 before the squeezed city, round by 18th St; 8624 before the park carve, 8566 before curb hops (ground.curbHop), 14.98 before city phase 10 moved the streets by cm, 14.97 before phase 11, 14.96 before its second export change
+expect event escapeOver{survived=true,score=600,bonus=500} within 10801..10801
+expect event escapeOver count == 1
+expect car.pos.x > 145 at end
+expect car.car.speed == 0 at end
+expect session.escapeNear == 0 at end
+expect min car.gap > 6 over 1..10800

@@ -1,0 +1,7 @@
+# Pedestrians off (data peds.enabled false): `ped spawn` makes none.
+park sf
+spawn valencia_shops
+cmd 0 setData peds.enabled false
+cmd 1 ped spawn
+run 60
+expect peds.alive == 0 at 60

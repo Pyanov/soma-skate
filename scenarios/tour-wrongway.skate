@@ -1,0 +1,19 @@
+# A Tour level's area is a hint, not a wall. The Castro (area x -695 to -495, y -295 to 35),
+# its clock cut to 10 s here: 45 m outside it (on a lot east of it) the wrong-way hint comes up
+# (levelWrongWay, more than wrongWay.away 25 m out); 16 m out it stays up (it clears within
+# wrongWay.back 15 m); back at Harvey Milk Plaza it clears (levelBack). The run goes on to the end.
+park sf
+cmd 0 traffic clear
+cmd 0 setData tour.seconds 10
+cmd 0 run level castro
+cmd 100 teleport -455 55 11.8 90
+cmd 300 teleport -479 25 16.9 90
+cmd 500 teleport harvey_milk
+run 1500
+expect event levelStart{level=castro,seconds=10} within 0..2
+expect event levelWrongWay{level=castro} within 100..103
+expect event levelWrongWay count == 1
+expect no event levelBack within 0..500
+expect event levelBack{level=castro} within 500..503
+expect event levelOver{level=castro,score=0,tape=false} within 1199..1210
+expect no event runOver

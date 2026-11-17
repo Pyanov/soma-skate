@@ -1,0 +1,21 @@
+# The tape does not come back: found once a level run. Up onto the sculpture's plinth at Patricia's
+# Green twice (tour-hayes's approach, a teleport back between): one tapeFound, one Tape goal. The
+# landing on the plinth takes 116 ticks of air (as before city phase 10; 109 to 112 in between, as the
+# curbs round it moved by cm).
+park sf
+cmd 0 traffic clear
+cmd 0 run level hayes
+cmd 100 teleport -233.8 447.5 10.05 0
+cmd 130 set skater.vel.y 6.5
+hold ollie 168..198
+hold left 312..352
+cmd 600 teleport -233.8 447.5 10.05 0
+cmd 630 set skater.vel.y 6.5
+hold ollie 668..698
+hold left 812..852
+run 1000
+expect event tapeFound count == 1
+expect event tapeFound{level=hayes} within 288..292
+expect event levelGoal{level=hayes,id=tape} count == 1
+expect event land{airTicks=116} count == 2
+expect no event bail

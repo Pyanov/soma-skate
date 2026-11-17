@@ -1,0 +1,11 @@
+# Low (tapped) ollie and a late 360 flip: still flipping when the wheels touch down, so bail.
+park lab
+spawn lab_ledge
+hold up 0..60
+tap ollie 60
+tap flip+up+right 92
+run 400
+expect event bail within 120..160
+expect event comboLost within 120..160
+expect no event comboLanded
+expect event danger{why=mid-trick} within 110..130

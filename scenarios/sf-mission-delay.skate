@@ -1,0 +1,22 @@
+# Dolores's Delay from the race (mission start delay 1): the F is parked for good, so Dolores drives the J Church,
+# Liberty to 18th Street through Dolores Park (route j; the Muni Race places you on the platform at Liberty). Her
+# bark as it starts, then the autopilot rides the right of way ahead of the streetcar (as sf-muni-j-lose's line,
+# downhill: through the first curve early, straight across the bank of the second, north on the inbound track
+# past 20th Street and through the gap between the parked cars where the tracks cross the street in the park). It
+# reaches 18th Street first, 134 m ahead of her: Dolores on the radio; the rest read, done with its sticker.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start delay 1
+bot path -304.3,-445.5 -308.5,-438 -313,-431 -362,-415.5 -372,-410 -380,-401 -384.5,-392 -386.2,-380 -386.7,-358.6 -387.0,-346.7 -386.9,-334.7 -386.8,-322.7 -386.5,-310.7 -386.6,-302.7 -387.1,-294.6 -388.0,-282.7 -388.9,-270.7 -389.8,-258.8 -390.7,-246.8 -391.6,-234.8 -392.2,-226.8 -393.1,-214.9 -394.6,-204 -394.8,-199.5 -394.1,-191.5 -394.3,-187.5 -395.6,-181 -396.1,-175.0 -396.9,-163.0 -397.8,-151.1 -398.4,-143.1 -399.3,-131.1 -400.2,-119.1 -401.1,-107.2 -401.8,-99.2 -402.7,-91.2 -403.9,-83.3 -405.5,-75.4 -407.3,-67.6 -409.3,-59.8 -411.7,-52.2 -414.3,-44.6 -417.2,-37.1 from 5 speed 12 nocars
+cmd 6000 mission next all
+run 6100
+expect event missionStep{mission=delay,step=1,kind=mode} within 1..1
+expect event muniStart{line=j} within 1..2
+expect event talk{character=dolores,line=delay-05,bark=true} within 1..1
+expect event muniStop{n=1,name=Right of Way & 20th Street,you=true} within 2100..2240
+expect event muniOver{won=true} within 5880..6010
+expect event missionStep{mission=delay,step=2,kind=talk} within 5880..6010
+expect event talk{character=dolores,line=delay-06} within 5880..6010
+expect event missionDone{mission=delay,sticker=side-delay} within 6001..6001
+expect no event missionFailed
+expect no event bail

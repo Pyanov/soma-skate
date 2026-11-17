@@ -1,0 +1,19 @@
+# Pier 7's third block (the south-east one, nearest the landing; past it the plaza ramps up to the
+# seawall level instead of steps): crossing toward its south-east long edge at 25 degrees from the
+# street level at 5 m/s, an ollie and grind pressed in the air catch the long edge: a 50-50 toward the
+# bay to the end, off it onto the seawall level by the landing, landed.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 579.51 914.70 -9.25 29.5
+cmd 2 set skater.vel.x 2.465
+cmd 2 set skater.vel.y 4.350
+hold ollie 90..102
+tap grind 112..136 every 4
+bot balance
+run 330
+expect event grindStart{trick=BS 50-50,line=ledge_581_918} within 111..115
+expect event grindEnd{reason=end} within 206..214
+expect event gap{id=pier7_bench,gap=PIER 7 BLOCK,points=250} within 206..214
+expect event land{quality=clean} within 252..260
+expect event comboLanded{name=BS 50-50 + PIER 7 BLOCK} within 263..271
+expect no event bail

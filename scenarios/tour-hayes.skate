@@ -1,0 +1,82 @@
+# Tour level 5, Hayes Valley & Alamo Square (data/tour.json), a 2-minute run from Hayes and Pierce:
+# its three goals, the tape and S-K-A-T-E, each set up with a teleport after the bomb.
+# - Bombed down Hayes tucked all the way (S, K, A, T on the street): Octavia 57.8 s after leaving
+#   Pierce, Bomb Hayes in Under 60 (57.7 s before city phase 11's second export change).
+# - Patricia's Green: from beside the first bench, a full ollie onto the second, a 50-50, ollie, a 50-50
+#   on the short seat wall beyond it: Patricia's Green Line (a combo holding both PATRICIA'S BENCH and
+#   PATRICIA'S SEAT WALL). Phase 26: this line replaced one that began with a teleport into the first
+#   bench (thrown up out of it onto its top); a decent player does this one about half the time (feel
+#   --tour), the old one 2%.
+# - The first seat wall the whole way: E on it.
+# - Up onto the steel sculpture's plinth from the road south of it, steering clear of the slabs:
+#   the tape. (From 0.3 m further west since city phase 8: the green's ground moved by millimetres
+#   and the old line ran into the east slab.)
+# - Down the Alamo Square slope toward the Painted Ladies, rolling at 9 m/s 11 m before its steep last
+#   stretch (the teleport and its speed stand in for the ride down), crouched, and the full ollie at its
+#   edge: 1.2 s of air, Postcard Air. Phase 30: city 11 left the old line (from the top, a long push and
+#   two ollies) at 28% for a decent player; its little hops over the slope's bumps let a human's timing
+#   skip ahead to the one before the ollie (feel --tour follows a script by its moves). Then it rolls on
+#   east to a stop, still in the level's area (the wrong-way hint the old line gave on the way out has
+#   its own scenarios, tour-wrongway).
+park sf
+cmd 0 traffic clear
+cmd 0 run level hayes
+hold up 10..300
+hold ollie 300..6950
+cmd 7400 teleport -219.88 431.31 9.75 352.9
+cmd 7402 set skater.vel.x -0.5358
+cmd 7402 set skater.vel.y 4.3067
+hold ollie 7403..7427
+tap grind 7429
+tap grind 7436
+tap grind 7442
+tap grind 7448
+tap grind 7454
+tap grind 7460
+tap grind 7466
+tap grind 7472
+hold ollie 7475..7510
+tap grind 7514..7587 every 6
+cmd 8000 teleport -218.9 416 9.75 350.7
+cmd 8002 set skater.vel.x -0.7272
+cmd 8002 set skater.vel.y 4.4409
+hold ollie 8030..8060
+tap grind 8064
+tap grind 8070
+tap grind 8076
+tap grind 8082
+tap grind 8088
+tap grind 8094
+tap grind 8100
+tap grind 8106
+tap grind 8112
+tap grind 8118
+tap grind 8124
+tap grind 8130
+tap grind 8136
+tap grind 8142
+tap grind 8148
+tap grind 8154
+cmd 8800 teleport -233.8 447.5 10.05 0
+cmd 8830 set skater.vel.y 6.5
+hold ollie 8868..8898
+hold left 9012..9052
+cmd 9400 teleport -1030 485.5 56.0 80
+cmd 9402 set skater.vel.x 8.8
+cmd 9402 set skater.vel.y 1.56
+hold ollie 9403..9548
+bot balance
+run 14700
+expect event levelStart{level=hayes,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 842..846
+expect event letter{letter=T,have=SKAT_} within 3970..3974
+expect event levelGoal{level=hayes,id=bomb60,name=Bomb Hayes in Under 60} within 6925..6929
+expect event comboLanded{name=BS 50-50 + PATRICIA'S BENCH + BS 50-50 + PATRICIA'S SEAT WALL,points=3240} within 7675..7675
+expect event levelGoal{level=hayes,id=greenline,name=Patricia's Green Line} within 7675..7675
+expect event letter{letter=E,have=SKATE} within 8317..8321
+expect event levelGoal{level=hayes,id=skate} within 8317..8321
+expect event tapeFound{level=hayes} within 8990..8994
+expect event levelGoal{level=hayes,id=postcard,name=Postcard Air} within 9689..9693
+expect event levelOver{level=hayes,score=3240,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event bail

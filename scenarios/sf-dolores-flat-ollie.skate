@@ -1,0 +1,16 @@
+# A full ollie on a flat stretch of Dolores is not a crest air: the old crest-gap line (crouched
+# down from 20th, two powerslides to scrub speed, the pop on 18th St's flat intersection at 29 km/h)
+# flies 115 ticks (114 before the park carve), but the takeoff is not on the crest at 19th: no DOLORES CREST
+# AIR, no SENT IT ON DOLORES (they paid any full ollie anywhere on Dolores, every second).
+park sf
+spawn dolores_bomb
+cmd 0 traffic clear
+hold up 20..200
+hold ollie 200..1664
+hold slide 1220..1290
+hold slide 1560..1630
+run 1800
+expect event pop within 1664..1666
+expect event land{airTicks=115} within 1777..1781
+expect no event gap
+expect no event bail

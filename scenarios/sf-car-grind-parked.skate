@@ -1,0 +1,17 @@
+# A parked car's hood edge grinds like a ledge: down onto it at 3 m/s, a 50-50 to the front end,
+# off onto the road. (A parked car has no driver: no honk when you land in front of it.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 0
+cmd 30 teleport -50.34 -330.18 3.34 355.2
+cmd 30 set skater.vel.x -0.25
+cmd 30 set skater.vel.y 2.99
+tap grind 31
+run 300
+expect event grindStart{trick=FS 50-50,line=car hood} within 31..34
+expect event grindEnd{reason=end} within 75..90
+expect event comboLanded{name=FS 50-50} within 150..180
+expect no event honk
+expect no event bail

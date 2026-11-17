@@ -1,0 +1,26 @@
+# An escort (game/movers.ts, docs/mechanics/missions.md; data/movers.json): Donna, an actor started by
+# command, skates a route from the park gate along Duboce and up the street west of the park at 4 m/s.
+# You stand still: 14 m behind her along her route she stops and waits (actorWait). You ride after her at
+# 7 m/s: within 6 m she goes on (actorGo); 6 m past her, she notices (actorOvertaken). You stop: she passes
+# you (actorBehind), goes on, and waits again 14 m ahead. You follow at her pace to the end of her route
+# (actorDone). The numbers are the spawn's (wait, resume, lead), or data/movers.json's.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 52 -8 -1.1 270
+cmd 2 actor spawn donna escort 4 50,-8 30,-8 10,-8 -6,-8 -8,9 -9,22 -9,34 -10,46 wait 14 resume 6 lead 6
+bot path 50,-8 30,-8 10,-8 from 900 speed 7
+hold down 2050..2300
+bot path -6,-8 -8,9 -9,22 -9,34 from 3100 speed 4
+run 5200
+expect event actorStart{who=donna,mode=escort} within 2..4
+expect event actorWait{who=donna,behind=14.02} within 515..525
+expect actor.actor.speed == 0 at 900
+expect event actorGo{who=donna} within 1385..1395
+expect event actorOvertaken{who=donna,ahead=6.01} within 1735..1745
+expect event actorBehind{who=donna} within 2600..2610
+expect event actorWait count == 2
+expect event actorGo count == 2
+expect event actorDone{who=donna} within 4907..4917
+expect actor.actor.state == done at end
+expect actor.pos.y > 45 at end
+expect no event bail

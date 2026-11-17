@@ -1,0 +1,18 @@
+# DUBOCE ROOF (city phase 13's low roof by Duboce Park, up the pallets and the dumpster or the stair): on
+# the roof, an ollie onto its edge and a 50-50 along it.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -406.87 217.34 25.89 55.0
+cmd 3 set skater.vel.x 3.277
+cmd 3 set skater.vel.y 2.294
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=BS 50-50,line=ledge_-401_220} within 119..123
+expect event grindEnd{reason=end} within 236..240
+expect event gap{id=duboce_roof,gap=DUBOCE ROOF,points=400} within 236..240
+expect event land{quality=clean} within 358..362
+expect event comboLanded{name=BS 50-50 + DUBOCE ROOF} within 369..373
+expect no event bail
+expect event goalComplete{id=duboceroof,name=The Roof by Duboce Park} within 236..240

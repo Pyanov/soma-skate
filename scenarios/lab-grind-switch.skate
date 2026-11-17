@@ -1,0 +1,14 @@
+# 50-50 onto the ledge, then I + down switches to a 5-0 mid-ledge: both count in one combo.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+tap grind+down 260
+bot balance
+run 560
+expect event grindStart{trick=BS 50-50} within 172..190
+expect event grindEnd{trick=BS 50-50,reason=switch} within 255..265
+expect event grindStart{trick=BS 5-0} within 255..265
+expect event comboLanded{name=BS 50-50 + BS 5-0,multiplier=2} within 300..560
+expect no event bail

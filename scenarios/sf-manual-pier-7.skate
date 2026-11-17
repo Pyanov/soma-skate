@@ -1,0 +1,18 @@
+# Pier 7: the middle block's street end is 0.50 m tall. Rolling at it from the street level at 5 m/s,
+# an ollie up onto it and a manual down its whole length (4.1 m), off its seawall end onto the seawall
+# level (0.25 m below the top there), landed clean.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 568.85 922.23 -9.30 54.5
+cmd 2 set skater.vel.x 4.073
+cmd 2 set skater.vel.y 2.900
+hold ollie 74..86
+tap up 152
+tap down 156
+bot balance
+run 330
+expect event land{quality=clean} within 155..161
+expect event manualStart{trick=Manual} within 155..161
+expect event air within 226..234
+expect event land{quality=clean} within 250..258
+expect no event bail

@@ -1,0 +1,12 @@
+# A nosebluntslide on a real SoMa ledge: from the south rear runway at an angle, an ollie and I + up + toward as it
+# locks on the coping beside the runway (F04); about 40 ticks on, it runs into the F42 ledge's end and bails.
+park soma
+cmd 0 teleport 66.6 14.75 -0.3 30
+cmd 2 speed 4.2
+hold ollie 4..12
+hold up 16..24
+hold left 16..24
+tap grind 18
+bot balance
+run 200
+expect event grindStart{trick=BS Nosebluntslide,slide=true} within 14..30

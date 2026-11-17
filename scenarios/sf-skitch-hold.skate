@@ -1,0 +1,52 @@
+# The same skitch held for 10 s by catching the lean with A/D (short taps against the lean): 100 + 150 x 10.2 s = 1635 points.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..1300
+hold right 362..368
+hold right 374..380
+hold right 386..392
+hold right 398..404
+hold right 410..416
+hold right 422..428
+hold right 556..562
+hold right 568..574
+hold right 580..586
+hold right 592..598
+hold right 604..610
+hold right 616..622
+hold right 723..729
+hold right 735..741
+hold right 747..753
+hold right 759..765
+hold right 771..777
+hold right 821..827
+hold right 833..839
+hold right 875..881
+hold right 887..893
+hold right 899..905
+hold right 937..943
+hold right 949..955
+hold right 996..1002
+hold right 1008..1014
+hold right 1048..1054
+hold right 1060..1066
+hold right 1095..1101
+hold right 1107..1113
+hold right 1146..1152
+hold right 1158..1164
+hold right 1170..1176
+hold right 1208..1214
+hold right 1220..1226
+hold right 1232..1238
+hold right 1287..1293
+run 1400
+expect event skitchEnd{reason=let go,points=1635} within 1300..1302
+expect event comboLanded{name=Skitch,points=1635} within 1302..1340
+expect no event bail

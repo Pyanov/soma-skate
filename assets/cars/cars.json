@@ -1,0 +1,85 @@
+{
+ "_doc": "tools/cars.ts from assets/cars/src (CC0, LICENSES.md): per model its vertex count and byte offset in cars.bin: positions (f32 x3), normals (i8 x4), colours (u8 sRGB x3 and a flag: 255 painted body, 192 headlight, 96 rear light), non-indexed; x forward, y left, z up, fitted to the sim car box.",
+ "models": [
+  {
+   "id": "sedan",
+   "vertices": 4404,
+   "size": [
+    4.4,
+    1.8,
+    1.69
+   ],
+   "offset": 0
+  },
+  {
+   "id": "hatchback",
+   "vertices": 4134,
+   "size": [
+    4.4,
+    1.8,
+    1.733
+   ],
+   "offset": 88080
+  },
+  {
+   "id": "suv",
+   "vertices": 5244,
+   "size": [
+    4.4,
+    1.8,
+    1.75
+   ],
+   "offset": 170760
+  },
+  {
+   "id": "pickup",
+   "vertices": 4974,
+   "size": [
+    4.4,
+    1.8,
+    1.75
+   ],
+   "offset": 275640
+  },
+  {
+   "id": "sports",
+   "vertices": 4134,
+   "size": [
+    4.4,
+    1.8,
+    1.415
+   ],
+   "offset": 375120
+  },
+  {
+   "id": "muscle",
+   "vertices": 5196,
+   "size": [
+    4.4,
+    1.8,
+    1.388
+   ],
+   "offset": 457800
+  },
+  {
+   "id": "taxi",
+   "vertices": 4548,
+   "size": [
+    4.4,
+    1.8,
+    1.75
+   ],
+   "offset": 561720
+  },
+  {
+   "id": "police",
+   "vertices": 4524,
+   "size": [
+    4.4,
+    1.8,
+    1.75
+   ],
+   "offset": 652680
+  }
+ ]
+}

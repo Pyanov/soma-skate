@@ -1,0 +1,1 @@
+{ "target": "spot:hellride", "park": "soma", "cam": "top", "layers": ["park", "skater"], "threshold": 99.5 }

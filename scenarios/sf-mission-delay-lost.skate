@@ -1,0 +1,13 @@
+# Dolores's Delay lost (mission start delay 1): you stand on the platform at Liberty and never push. Dolores's J
+# Church is not delayed today (no delay drawn at 20th Street with this seed, as sf-muni-j-lose): it reaches 18th
+# Street first and the mission fails (mode; the client says her line about not being delayed).
+park sf
+cmd 0 traffic clear
+cmd 0 mission start delay 1
+run 8000
+expect event missionStep{mission=delay,step=1,kind=mode} within 1..1
+expect event muniStop{n=2,name=Right of Way & 18th Street,you=false} within 7895..7895
+expect event muniOver{won=false} within 7895..7895
+expect event missionFailed{mission=delay,step=1,reason=mode} within 7895..7895
+expect event muniDelay count == 0
+expect no event missionStep{mission=delay,step=2}

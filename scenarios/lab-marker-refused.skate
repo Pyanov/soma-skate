@@ -1,0 +1,16 @@
+# The session marker is for free skate: going back to it with none set is refused, and in a game (here
+# the two-minute run; the Tour, races, S.K.A.T.E., the Muni race, the escape, graffiti, the combo
+# challenge, courier and the two-player games the same) it is refused too, set or go, as during a story
+# mission and while driving. A game's teleport-free clock and lines stay honest.
+park lab
+cmd 0 teleport 0 -15 0.13 90
+cmd 6 marker go
+cmd 10 marker set
+cmd 20 run start
+cmd 30 marker go
+cmd 40 marker set
+run 60
+expect event marker{op=go,ok=false,why=no marker set} within 7..7
+expect event marker{op=set,ok=true} within 11..11
+expect event marker{op=go,ok=false,why=not during a game} within 31..31
+expect event marker{op=set,ok=false,why=not during a game} within 41..41

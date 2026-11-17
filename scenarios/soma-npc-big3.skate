@@ -1,0 +1,19 @@
+# Gnar NPC skaters send the Big 3: on a send line (data/npc.json sends) they ride at the send's speed
+# (6.5 m/s), crouch so the pop comes at the top of the set and go off it (npcSend kind gap) with a
+# grab, a flip or a plain ollie, landing on the flat past the set. Two gnar ones on the two Big 3
+# lines take turns (one spot).
+park soma
+cmd 0 setData npc.parks.soma.lines ["west_flat_big3_runup","review2_west_runway_to_big3"]
+cmd 0 setData npc.styles.tech.share 0
+cmd 0 setData npc.styles.cruiser.share 0
+cmd 0 setData npc.styles.gnar.send 1
+cmd 0 npc spawn 2
+run 3600
+expect event npcSend{id=3,kind=gap,line=west_flat_big3_runup} within 169..173
+expect event npcCombo{id=3,name=Indy} within 310..314
+expect event npcSend{id=4,kind=gap,line=west_flat_big3_runup} within 510..514
+expect event npcSend{id=3,kind=gap,line=review2_west_runway_to_big3} within 1039..1043
+expect event npcCombo{id=4,name=Melon} within 1521..1525
+expect event npcSend{kind=gap} count >= 7
+expect no event npcSend{kind=wall}
+expect max npcs.crowded <= 0

@@ -1,0 +1,40 @@
+# Getting in and out of the crew van (game/vehicles.ts, docs/mechanics/driving.md). F (the interact
+# action, the sim's use button when no talk prompt is up) gets in and out; E stays step off. By the
+# parked van but 2.2 m off its side (vehicles.enter is 2 m), F does nothing: nothing in reach. E steps
+# off the board there as anywhere. Half a metre closer on foot, F gets in (no board drop). Driving off at
+# 4.5 m/s, F does nothing but say why (vehicleExitBlocked, moving: out only below vehicles.exit.speed).
+# Stopped, F puts the skater out on the board beside the driver's door (the van's left); E there steps
+# off the board, and F on foot gets straight back in.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 57.5 -12.4 -1.25 180
+tap use 20
+tap walk 40
+hold up 60..95
+tap use 140
+hold right 150..230
+hold up 150..330
+tap use 300
+hold down 330..420
+tap use 520
+tap walk 560
+tap use 600
+run 700
+expect no event vehicleEnter within 0..139
+expect no event stepOff within 0..39
+expect event stepOff within 40..42
+expect event vehicleEnter{name=crew_van} within 140..142
+expect no event boardDrop within 0..519
+expect state drive at 200
+expect event vehicleExitBlocked{reason=moving} within 300..302
+expect van.hspeed > 4 at 301
+expect state drive at 400
+expect event vehicleExit{name=crew_van} within 520..522
+expect state ground at 530
+expect van.gap > 1.5 at 530
+expect van.gap < 2 at 530
+expect event stepOff within 560..562
+expect state walk at 580
+expect event vehicleEnter count == 2
+expect state drive at end
+expect no event bail

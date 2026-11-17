@@ -1,0 +1,9 @@
+# Same start as lab-hill-wobble, crouched: the tuck damps the wobble, so it rides on, faster.
+park lab
+spawn lab_hill_ten
+cmd 6 speed 14.5
+hold ollie 6..400
+run 400
+expect max skater.wobble < 0.001
+expect no event bail
+expect skater.speed > 15 at 400

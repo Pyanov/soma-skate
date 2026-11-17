@@ -1,0 +1,16 @@
+# Robotaxi Escape (run escape; data run.escape): standing still at the Valencia shops, by the street.
+# The robotaxi starts on the street 70 m behind you, drives up (within 15 m: escapeClose and a polite
+# honk), stops 2 m short, and once it has been within 3 m of you (its body's outline) for 2 s you
+# are pulled over: escapeOver, not survived, no score.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 run escape
+run 1600
+expect event escapeStart{seconds=90,car=83} within 2..2
+expect event escapeClose{dist=14.96} within 941..941
+expect event honk{car=83,robo=true} within 941..941
+expect event escapeOver{survived=false,score=0} within 1439..1439
+expect event escapeOver count == 1
+expect session.mode == over at end
+expect max car.car.speed <= 8.5 over 2..1600

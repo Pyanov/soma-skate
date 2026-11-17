@@ -1,0 +1,16 @@
+# Switch: an FS 180 lands rolling backward (fakie); popped off the nose rolling backward (Q held as K is
+# let go) is Switch: J + left is a Switch Kickflip, worth tricks.stance.switch (1.25) of its points. Off
+# the tail it would be a Fakie Kickflip (lab-halfcab).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold left 92..130
+hold ollie 250..272
+hold nose 266..272
+tap flip+left 276
+run 520
+expect event comboLanded{name=FS 180} within 160..240
+expect event pop{fakie=true,nose=true} within 273..273
+expect event comboLanded{name=Switch Kickflip,points=125} within 330..470
+expect no event bail

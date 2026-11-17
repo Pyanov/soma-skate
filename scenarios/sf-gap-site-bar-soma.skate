@@ -1,0 +1,19 @@
+# SITE FLAT BAR at the building site in SoMa: an ollie onto the flat bar and a 50-50 to its end. (The
+# squeezed city re-homes the site to an empty lot on Potrero del Sol's east side, built mirrored and
+# turned; the lot slopes 8 degrees and the bar follows it, 0.32 m over the lot at both ends; the start
+# comes in from the west to the bar's middle and the grind runs south to its end.)
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 642.20 -255.05 -12.75 140.0
+cmd 3 set skater.vel.x 2.571
+cmd 3 set skater.vel.y -3.064
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=FS 50-50,line=rail_644_-260} within 119..123
+expect event grindEnd{reason=end} within 191..195
+expect event gap{id=site_bar_soma,gap=SITE FLAT BAR,points=250} within 191..195
+expect event land{quality=clean} within 240..244
+expect event comboLanded{name=FS 50-50 + SITE FLAT BAR} within 251..255
+expect no event bail

@@ -1,0 +1,12 @@
+# Off the top of Big 3 with the special meter full: Right, Down, J = Kickflip Superman (each character's signature version).
+park soma
+spawn big3
+cmd 0 set skater.special 1
+hold up 0..100
+hold ollie 166..196
+tap right 199
+tap down 202
+tap flip 204
+run 440
+expect event trickStart{trick=Kickflip Superman} within 203..207
+expect no event bail

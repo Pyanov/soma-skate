@@ -1,0 +1,5 @@
+{
+ "frame": "squeeze-packed-1",
+ "from": "c7b535eb8401fb2f2a36d8ab60c13ec8184ce845",
+ "_doc": "The game data is in the squeezed frame (docs/squeeze.md): moved once from the unsqueezed city's frame, as at the commit in from. The world generator's warp (city/squeeze.py) checks the game's vignettes against the moved tiles when this file exists."
+}

@@ -1,0 +1,7 @@
+# Spawn on the west runway toward Big 3 and push: rolls on the real park without glitches.
+park soma
+spawn big3_runway
+hold up 0..360
+run 720
+expect skater.speed > 1 at 360
+expect max skater.speed < 12

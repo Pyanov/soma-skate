@@ -1,0 +1,18 @@
+# A grind must not capture a line through something solid (this setup since
+# city phase 8 moved parked cars 0.62 m off the curb, out of reach behind them). On the path beside
+# the 16th St BART stairs, the stairs' handrail is 0.6 m away and 0.1 m up, inside the stair wall
+# (0.55 m high, 0.3 m thick): the nearest line in reach. A small ollie with I tapped: the handrail is
+# refused (the way to it goes through the wall) and the near edge of the wall itself is caught
+# instead, on the way down. Without the check the boardslide went onto the handrail through the wall
+# one tick after the pop. (Run to 275: on the city phase 9 ground the slide goes on until its
+# balance runs out at 297.)
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 104.48 -197.43 -1.8 315
+hold ollie 30..40
+tap grind 40..140 every 2
+run 275
+expect event pop within 40..42
+expect no event grindStart{line=rail_103_-199}
+expect event grindStart{trick=BS Boardslide,line=ledge_103_-199} within 54..56
+expect no event bail

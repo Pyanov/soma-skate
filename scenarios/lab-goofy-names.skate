@@ -1,0 +1,14 @@
+# Goofy stance (right foot forward) flips the names: turning left is a backside 180, and the
+# ledge on the left (which a goofy rider faces) is a frontside 50-50.
+park lab
+cmd 0 setData rider.stance "goofy"
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+bot balance
+hold ollie 390..400
+hold left 402..440
+run 640
+expect event grindStart{trick=FS 50-50} within 176..178
+expect event comboLanded{name=FS 50-50 + BS 180} within 500..560

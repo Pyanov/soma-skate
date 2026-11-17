@@ -1,0 +1,23 @@
+# Every slide on the flat rail, backside: the slide table's rail crossed 25 degrees off square, drifting
+# toward the toe side, so the rider slides facing the way it goes (the view's review: tricks.strips).
+park lab
+cmd 0 teleport -8.5 1.4 0.14 25
+hold up 6..80
+hold ollie 70..90
+tap grind 128
+tap grind+up 150
+tap grind+down 172
+tap grind 194
+tap grind+down+left 216
+tap grind+up+left 238
+tap grind 260
+bot balance
+run 500
+expect event grindStart{trick=BS Boardslide,slide=true} within 129..130
+expect event grindStart{trick=BS Noseslide,slide=true} within 151..152
+expect event grindStart{trick=BS Tailslide,slide=true} within 173..174
+expect event grindStart{trick=BS Lipslide,slide=true} within 195..196
+expect event grindStart{trick=BS Bluntslide,slide=true} within 217..218
+expect event grindStart{trick=BS Nosebluntslide,slide=true} within 239..240
+expect event grindStart{trick=BS Lipslide,slide=true} within 261..262
+expect no event bail

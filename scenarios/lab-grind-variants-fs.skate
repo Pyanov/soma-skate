@@ -1,0 +1,31 @@
+# The double tap's grinds on the ledge, frontside: ledge on the right (the regular rider faces it): right = toward the far side. A 50-50, then each
+# grind with a switch (I + direction) and I again within doubleTapTicks for its variant: Feeble, then
+# Salad (nose up over the far side); Smith, then Suski (nose up, angled back over the approach side);
+# Crooked, then Willy (front truck, back truck dipped on the approach side); Overcrook, then Losi
+# (front truck, back truck over the far side). Review: ./skate strip --sheet scenarios/grinds.strips
+park lab
+cmd 0 teleport 0 1.1 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+tap grind+down+right 200
+tap grind+down+right 204
+tap grind+down+left 230
+tap grind+down+left 234
+tap grind+up+right 260
+tap grind+up+right 264
+tap grind+up+left 290
+tap grind+up+left 294
+bot balance
+run 560
+expect event grindStart{trick=FS 50-50} within 177..178
+expect event grindStart{trick=FS Feeble Grind} within 201..201
+expect event grindStart{trick=FS Salad Grind} within 205..205
+expect event grindStart{trick=FS Smith Grind} within 231..231
+expect event grindStart{trick=FS Suski Grind} within 235..235
+expect event grindStart{trick=FS Crooked Grind} within 261..261
+expect event grindStart{trick=FS Willy Grind} within 265..265
+expect event grindStart{trick=FS Overcrook} within 291..291
+expect event grindStart{trick=FS Losi Grind} within 295..295
+expect no event grindEnd{trick=FS Feeble Grind}
+expect no event bail

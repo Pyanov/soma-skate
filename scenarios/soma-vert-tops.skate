@@ -1,0 +1,24 @@
+# Vert off three of the park's quarters at 8.5 m/s head-on (feel --section vert):
+# - F33's quarterpipe: a seam between its triangles opened 3.3 mm, over stickGap, and launched the rider
+#   0.4 m under the top as a plain air. Climbing a transition, seams now hold up to transitionStickGap.
+# - F25's corner quarterpipe tops out at 52.7 degrees, far under the vert threshold, and its coping took
+#   half the speed: a plain air at 3.3 m/s. A lip with coping is vert now.
+# - F07's radial transition tops out at 58 degrees; the vert test reads the wall left from, within
+#   vert.topToleranceDeg (4) of minWallDeg (62).
+# Each one goes up and comes back down onto its quarter (a fakie landing).
+park soma
+cmd 0 teleport 3.86 16.23 0.62 266.2
+cmd 10 set skater.vel.x -8.4812
+cmd 10 set skater.vel.y -0.5651
+cmd 400 teleport 3.92 29.69 0.90 266.3
+cmd 410 set skater.vel.x -8.4824
+cmd 410 set skater.vel.y -0.5464
+cmd 800 teleport 55.72 18.36 -1.05 353.0
+cmd 810 set skater.vel.x -1.0332
+cmd 810 set skater.vel.y 8.4370
+run 1150
+expect event air{vert=true} count >= 3
+expect max skater.pos.z > 2.9 over 10..380
+expect max skater.pos.z > 2.6 over 410..780
+expect max skater.pos.z > 1.2 over 810..1100
+expect no event bail

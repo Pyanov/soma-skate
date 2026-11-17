@@ -1,0 +1,11 @@
+# Rolling fast down a straight, plain slope never leaves the ground. Before the ground-support fix
+# the neighbouring triangle's edge contact (same plane, up to 3 cm off) leaned the support normal up
+# to 13 degrees at every triangle edge, and at 11+ m/s that threw the skater into 10-tick hops
+# every few metres (the same glitch made the short airs on SoMa's flat runway).
+park lab
+spawn lab_hill_ten
+cmd 6 speed 12
+hold ollie 6..640
+run 640
+expect no event air within 40..640
+expect skater.speed > 13.8 at 640

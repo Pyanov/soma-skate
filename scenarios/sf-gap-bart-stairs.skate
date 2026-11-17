@@ -1,0 +1,18 @@
+# BART STAIRS (and the goal Ollie the BART Stairs): 16th St Mission BART's southwest plaza, the
+# stairs down to the station (49 steps of 14 cm, 7 m). Rolling at 5 m/s toward the top in the middle
+# of the flight, a short crouch and a pop just before the edge: 1.18 s in the air, down clean on the
+# 18th step (12 or more count; the full set would land at about 12 m/s, a bail). Then the rest of
+# the stairs, bumped down.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 96.1 -201.1 -1.68 41.8
+cmd 2 set skater.vel.x 3.3327
+cmd 2 set skater.vel.y 3.7274
+hold ollie 132..144
+run 420
+expect event pop within 143..147
+expect event land{quality=clean,airTicks=141} within 285..289
+expect event gap{id=bart_stairs,gap=BART STAIRS,points=800} within 285..289
+expect event goalComplete{id=bartstairs,name=Ollie the BART Stairs} within 285..289
+expect skater.pos.z < -4.3 at 287
+expect no event bail

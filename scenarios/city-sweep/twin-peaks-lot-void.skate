@@ -1,0 +1,26 @@
+# City sweep (skate cityfuzz --near -1945,-1374,40): west of the steep Twin
+# Peaks lots below Upper Market the city's ground ends along a diagonal edge, from about
+# (-1990, -1350) to (-1955, -1385), sloping down to z 102 at it, with no boundary wall and nothing
+# beyond or below (no catch floor). A skater rolling off it falls out of the world (z -15 after
+# about 8 s; three of 4,000 drops there, before this change too). For the world generator; not run by check.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1970 -1355 112.48 262
+hold up 0..60
+hold up+left+ollie+grind 60..167
+hold up+revert 167..258
+hold up+revert 258..295
+hold up+walk 295..334
+hold up+ollie+revert+walk 334..381
+hold up+left 381..406
+hold up+ollie+grab+slide 451..490
+hold up+revert 490..535
+hold right+revert 535..576
+hold up 576..662
+hold grind 662..752
+hold down+left 752..781
+hold up+grind 781..869
+hold up+right 869..936
+hold up 936..1001
+hold revert 1001..1013
+run 1015

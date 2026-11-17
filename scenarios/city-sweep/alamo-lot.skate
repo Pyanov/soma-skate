@@ -1,0 +1,24 @@
+# City sweep (skate cityfuzz): Alamo Square: a lot 0.13 m over the ground beside it, found ten times in 300 drops there.
+# Finding: underground at -1125.00 564.55 66.26 (city_lot_-1200_400 0.16 m above), tick 931. Run it with `./skate run scenarios/city-sweep/alamo-lot.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1120 565 67.40 301
+hold up+left+slide 0..36
+hold grab+slide 36..131
+hold right+slide 131..159
+hold up 159..188
+hold up 188..287
+hold up+ollie+revert 287..340
+hold up+grab+revert+walk 340..370
+hold up+flip+grab 370..468
+hold up 468..517
+hold up+revert 517..563
+hold up+grab+revert 563..618
+hold right+walk 618..728
+hold up+left 728..800
+hold up 800..833
+hold up+right 833..890
+hold up+flip 890..923
+hold down+flip+grab+walk 923..931
+run 933

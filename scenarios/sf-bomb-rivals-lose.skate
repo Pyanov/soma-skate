@@ -1,0 +1,20 @@
+# The same race scrubbing with two powerslides (11.97 s): Kevin from Three Bin (11.16 s) and the
+# Dolores Park DJ (11.48 s) come past after the slides; you are third of four, the Night-shift nurse
+# behind you (she was third in 11.51 s, you fourth, until city phase 11 moved the curbs once; third
+# before the city's sweep fixes, city phase 8, laid the parked cars out again). racerFinish carries each local's place and time; bombFinish your place.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb
+hold up 20..200
+hold ollie 200..2400
+hold slide 1220..1290
+hold slide 1560..1630
+run 1760
+expect session.racePlace == 1 at 1200
+expect session.racePlace == 2 at 1400
+expect session.racePlace == 3 at 1600
+expect event racerFinish{route=dolores,name=Kevin from Three Bin,place=1,time=11.16} within 1595..1610
+expect event racerFinish{name=Dolores Park DJ,place=2,time=11.48} within 1633..1648
+expect no event racerFinish{name=Night-shift nurse} within 0..1697
+expect event bombFinish{route=dolores,place=3,of=4,time=11.97} within 1690..1705

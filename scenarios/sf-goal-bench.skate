@@ -1,0 +1,16 @@
+# City goal "Bench Press" (kind gap; the BENCH GRIND gap matches any bench_* line): a 50-50 on a
+# Dolores Park bench. A second bench grind later scores the gap again but not the goal.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 30 teleport -372.9 -350.6 34.93 268
+cmd 30 set skater.vel.x -3
+tap grind 31
+cmd 300 teleport -372.9 -350.6 34.93 268
+cmd 300 set skater.vel.x -3
+tap grind 301
+run 500
+expect event grindStart{line=bench_-374_-350} within 31..34
+expect event gap{id=bench} count == 2
+expect event goalComplete{id=bench,area=Dolores} within 105..112
+expect event goalComplete count == 1

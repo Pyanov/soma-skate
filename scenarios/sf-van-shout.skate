@@ -1,0 +1,21 @@
+# A walker shouts at the crew van (game/peds.ts, docs/mechanics/driving.md; data/vehicles.json
+# reactions). On Duboce's south side, where the sidewalk's walking line runs by the curb, a walker heads
+# west; the van comes up behind them in the kerb lane (between the freeway's columns and the curb), at
+# 6 m/s when it reaches them, and stops short of the streetlight that stands in the lane in the squeezed
+# city. From behind they do not see it coming; it comes within 1.5 m of them (reactions.nearMiss) at
+# speed: a near miss, and they shout (pedShout near, a line from reactions.pedShouts), then step aside
+# late. Nothing scores; once per shoutCooldown.
+park sf
+cmd 0 traffic clear
+cmd 1 ped at 98 -20 270
+cmd 1 van summon 104 -15.85 270
+cmd 2 vehicle enter crew_van
+bot drive 104,-15.85 95.5,-15.85 from 40 speed 8 stop
+run 900
+expect event vehicleEnter within 2..3
+expect no event pedStep within 0..176
+expect event pedShout{near=true} within 172..182
+expect event pedShout count == 1
+expect no event nearMiss
+expect no event vanBump
+expect no event pedHit

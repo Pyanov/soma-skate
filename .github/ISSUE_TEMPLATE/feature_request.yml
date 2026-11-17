@@ -1,0 +1,21 @@
+name: Idea or feature
+description: A trick, a spot, a mission, a mechanic, a tool, a city.
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What it is and why it would make the game better. References to classic skate games are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: check
+    attributes:
+      label: How we would know it works
+      description: "A scenario, a number from the harness (./skate run -v, ./skate feel), or what a playtest should feel."
+  - type: textarea
+    id: data
+    attributes:
+      label: Data or code
+      description: "Which data/*.json files or modules it would touch, if you know. Numbers go in data/, not in code."

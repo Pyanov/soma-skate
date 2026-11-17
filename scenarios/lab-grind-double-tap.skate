@@ -1,0 +1,15 @@
+# Both presses of the double tap before the lock-on (I twice, the second while the first is still
+# buffered, down + right held as it locks on): it locks on in the variant, an FS Salad Grind, not a
+# Feeble. (The direction counts as it locks on, as for every grind.)
+park lab
+cmd 0 teleport 0 1.1 0.14 90
+hold up 6..100
+hold ollie 90..105
+hold down 150..180
+hold right 150..180
+tap grind 158
+tap grind 162
+bot balance
+run 300
+expect event grindStart{trick=FS Salad Grind} within 160..175
+expect no event grindStart{trick=FS Feeble Grind}

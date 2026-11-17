@@ -1,0 +1,16 @@
+# POTRERO RAIL: Potrero del Sol's flat rail on the deck, an ollie onto it and a 50-50 to its end.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 572.33 -213.57 -7.89 175.0
+cmd 3 set skater.vel.x 0.349
+cmd 3 set skater.vel.y -3.985
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=FS 50-50,line=rail_572_-218} within 119..123
+expect event grindEnd{reason=end} within 326..330
+expect event gap{id=potrero_rail,gap=POTRERO RAIL,points=300} within 326..330
+expect event land{quality=clean} within 378..382
+expect event comboLanded{name=FS 50-50 + POTRERO RAIL} within 389..393
+expect no event bail

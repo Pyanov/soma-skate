@@ -1,0 +1,13 @@
+# A skater rolling across the street toward a car doing 8 m/s: it sees them about to cross in front
+# (where they will be in traffic.yield.look, 1 s) and brakes for them: no collision.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 2 car -51.1 -331.2 356 8
+cmd 60 teleport -55.1 -320.26 2.15 90
+cmd 61 set skater.vel.x 6
+run 300
+expect no event carHit
+expect no event bail
+expect min car.gap > 2.4
+expect car.car.speed < 0.05 at 190

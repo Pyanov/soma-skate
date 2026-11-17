@@ -1,0 +1,13 @@
+# 19TH STREET CURVE AIR: the same on the crest where Market drops from the 19th Street intersection
+# (from flat to 12%) into the curve: an ollie at 11 m/s, 0.87 s of air, 500 points.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -1429.4 -368.7 73.75 5.6
+cmd 10 set skater.vel.x 1.07
+cmd 10 set skater.vel.y 10.95
+hold ollie 10..40
+run 300
+expect event gap{id=curve19th,points=500} within 147..157
+expect event comboLanded{name=19TH STREET CURVE AIR,points=500} within 150..165
+expect no event bail

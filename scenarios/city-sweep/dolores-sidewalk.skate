@@ -1,0 +1,21 @@
+# City sweep (skate cityfuzz): By Dolores Park: a sidewalk 0.19 m over the park beside it.
+# Finding: underground at -569.52 -1221.85 29.95 (city_sidewalk_-600_-1400 0.19 m above), tick 1022. Run it with `./skate run scenarios/city-sweep/dolores-sidewalk.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -560 -1200 23.98 60
+hold up+revert 0..74
+hold up 74..130
+hold down+left+revert 130..187
+hold revert 187..290
+hold up+right+grind 290..342
+hold up 342..383
+hold up+right+revert 383..446
+hold up+right+grab 446..543
+hold up+grab 543..626
+hold right 626..717
+hold up 717..797
+hold up+grind 797..896
+hold up+flip 896..1000
+hold up+right 1000..1022
+run 1024

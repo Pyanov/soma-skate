@@ -1,0 +1,22 @@
+# Every slide on the lab ledge (0.45 m, 0.5 m wide, angle-iron edges), 25 degrees off square, drifting toward the toe side: the
+# slides with the ledge top on the far side (the boardslide's far truck rests on it, the bluntslide's
+# back wheels hook over onto it). Same switches as lab-slide-table. Review: scenarios/slides.strips.
+park lab
+cmd 0 teleport 5.5 -2.6 0.14 25
+hold up 6..80
+hold ollie 70..90
+tap grind 128
+tap grind+up 150
+tap grind+down 172
+tap grind 194
+tap grind+down+left 216
+tap grind+up+left 238
+tap grind 260
+bot balance
+run 500
+expect event grindStart{trick=BS Boardslide,slide=true} within 120..140
+expect event grindStart{trick=BS Noseslide,slide=true} within 151..152
+expect event grindStart{trick=BS Tailslide,slide=true} within 173..174
+expect event grindStart{trick=BS Bluntslide,slide=true} within 217..218
+expect event grindStart{trick=BS Nosebluntslide,slide=true} within 239..240
+expect no event bail

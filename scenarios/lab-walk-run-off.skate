@@ -1,0 +1,9 @@
+# Running (W, 3.6 m/s) off the same edge, the rider does not grab it: a 1.2 m drop to the ground.
+park lab
+cmd 0 teleport -10 22.5 1.34 0
+tap walk 10
+hold up 20..100
+run 200
+expect no event hang
+expect event footLand within 120..150
+expect skater.pos.z < 0.15 at 190

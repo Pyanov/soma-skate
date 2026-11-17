@@ -1,0 +1,23 @@
+# Character review in the real look, same camera and light for every row (the before/after sheets with characters-faces.strips):
+#   ./skate strip --sheet scenarios/characters-review.strips --height 360 --each
+# Columns: standing 3/4 front, standing 3/4 back, ollie crouch, kickflip catch, BS 50-50, bail.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | can | real
+Big Blob | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | blob | real
+Eucalyptus Monster | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | redmonster | real
+Guy in the Orange Suit | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | mascot | real
+Count Kickflip | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | vampire | real
+Mr. Bones | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | skeleton | real
+Tech Bro | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | techbro | real
+Karl the Fog | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | karl | real
+Mission Burrito | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | burrito | real
+The Pigeon | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | pigeon | real
+The Robotaxi | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | robotaxi | real
+The Cable Car | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | cablecar | real
+The Sea Lion | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | sealion | real
+Chad Vantage (story) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | chad | real
+Dre (kit, crew) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | dre | real
+Rocco (kit) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | rocco | real
+Nonna Gia (kit) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | nonna | real
+Priya (kit) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | priya | real
+Kenny (kit) | soma-idle@260:120/6/3.0/0.9, soma-idle@260:235/8/3.0/0.9, soma-big3-kickflip@192, soma-big3-kickflip@243, soma-5050-ledge@95, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | kenny | real

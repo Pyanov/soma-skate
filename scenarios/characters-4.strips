@@ -1,0 +1,10 @@
+# Phase 4 review in the real look: ./skate strip --sheet scenarios/characters-4.strips --height 280
+# Each row: the bail (falling, down, recovering, back up), three idles (first, second, third), a burrito pickup, the Kickflip Superman.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | can | real
+Big Blob | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | blob | real
+Eucalyptus Monster | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | redmonster | real
+Guy in the Orange Suit | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | mascot | real
+Count Kickflip | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | vampire | real
+Mr. Bones | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | skeleton | real
+Tech Bro | soma-big3-bail@340, soma-big3-bail@370, soma-big3-bail@420, soma-big3-bail@462, soma-idle-long@400, soma-idle-long@1200, soma-idle-long@1650, soma-burrito-pickup@132, soma-special-superman@250 | - | orbit:150,18,3.9,0.8 | techbro | real

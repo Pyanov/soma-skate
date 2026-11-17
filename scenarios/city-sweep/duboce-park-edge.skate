@@ -1,0 +1,20 @@
+# City sweep (skate cityfuzz): The park edge lies 0.14 m over the sidewalk along it: rolling along the sidewalk the skater is under the park surface.
+# Finding: underground at -499.00 363.88 38.62 (city_park_-600_200 0.14 m above), tick 943. Run it with `./skate run scenarios/city-sweep/duboce-park-edge.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -500 360 38.95 149
+hold left+ollie+revert 0..53
+hold up+grind+revert+walk 53..105
+hold up+right+ollie 105..147
+hold down+ollie 147..180
+hold ollie+grind 273..308
+hold ollie 308..420
+hold slide 420..467
+hold up+flip+slide 467..520
+hold up 520..631
+hold down+revert 631..737
+hold left+grab+slide 737..849
+hold up 849..903
+hold up+revert 903..943
+run 945

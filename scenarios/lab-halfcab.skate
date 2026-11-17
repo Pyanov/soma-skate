@@ -1,0 +1,15 @@
+# Out of fakie: an FS 180 lands rolling fakie (the first air); popped fakie, a backside 180 (regular:
+# turning right) is a Half Cab, a kickflip on the way a Fakie Kickflip; it lands forward.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold left 92..130
+hold ollie 250..272
+tap flip+left 276
+hold right 280..318
+run 520
+expect event comboLanded{name=FS 180} within 160..240
+expect event pop{fakie=true} within 273..273
+expect event comboLanded{name=Fakie Kickflip + Half Cab} within 330..470
+expect no event bail

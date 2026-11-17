@@ -1,0 +1,19 @@
+# A playtest report of 2026-11-16: a grind down a rail turned and went up it. Ollied onto the
+# 16th St BART stairs' east handrail from the stairs beside it, still rising (2.5 m/s up as the feet reach
+# the rail), coming across it at 75 degrees: a boardslide. The catch took the ollie's climb as travel
+# along the rail (rising onto a down rail is uphill along it), and the slide's 2.5 m/s floor carried
+# that sign: it slid UP the handrail, stalled, and fell off backwards. Now the climb is not travel: it
+# slides down the rail to the bottom (tests/grinddownhill.test.ts sweeps every sloped line).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 103.093 -193.906 -2.634 116.75
+cmd 0 set skater.vel.x 2.6790
+cmd 0 set skater.vel.y -1.3502
+cmd 0 set skater.vel.z 2.5
+tap grind 1..30 every 3
+bot balance
+run 400
+expect event grindStart{line=rail_101_-197} within 1..12
+expect max skater.vel.z < 0.01 over 14..120
+expect event grindEnd{reason=end} within 60..400
+expect no event grindEnd{reason=stall}

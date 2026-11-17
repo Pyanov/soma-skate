@@ -1,0 +1,223 @@
+{
+  "_doc": "Odd jobs (src/sim/game/jobs.ts, docs/story.md Odd jobs): two gig boards, each in a city room (at: room/anchor; host: who runs it; hello: their line when you read it, empty: when every gig today is done), with perDay gigs a day of its kinds (gigs), the same for everyone on a San Francisco date: a hash of board, date and slot picks the kind's client, their line and the target. deliver: the order from the board's spot to the client (items; seconds: base + metres in a straight line / speed, rounded up to 5); carry: the client picked up at the kerb by their home in the board's van, to a spot from to (minFrom..maxFrom metres from them; radius); photo: a trick from tricks near a spot from spots (radius); race: beat the client along a course (distance: how close to set them off; finish: metres from the end). Every client line is voiced (tools/gen_voices.py). after: missions done or skipped before the boards open (the client's save). decks: a deck for the board shop after so many gigs from a board (the client's save; stickers.json has the gig stickers).",
+  "after": ["ch1"],
+  "perDay": 3,
+  "boards": [
+    {
+      "id": "fogcity",
+      "name": "Fog City gig board",
+      "host": "biglou",
+      "at": "fog_city_skate_shop/counter",
+      "area": "The Mission",
+      "gigs": ["photo", "race"],
+      "hello": { "id": "job-board-biglou-hello", "who": "biglou", "text": "Gig board. Small jobs. In ninety-four I took a small job. Eleven stitches." },
+      "empty": { "id": "job-board-biglou-empty", "who": "biglou", "text": "That's every gig today. Go home. Ice something." }
+    },
+    {
+      "id": "taqueria",
+      "name": "La Niebla gig board",
+      "host": "hector",
+      "at": "taqueria/menu",
+      "area": "The Mission",
+      "gigs": ["deliver", "carry"],
+      "hello": { "id": "job-board-hector-hello", "who": "hector", "text": "Orders on the board. Every order is a promise. Carry it with both hands." },
+      "empty": { "id": "job-board-hector-empty", "who": "hector", "text": "No more orders today. Tomorrow, new promises." }
+    }
+  ],
+  "deliver": {
+    "speed": 4.5,
+    "base": 30,
+    "items": ["a super burrito", "a carnitas burrito", "three al pastor tacos", "chips and guac", "a horchata", "a quesadilla suiza", "two tamales", "a veggie burrito without beans"],
+    "clients": [
+      {
+        "who": "tash",
+        "say": { "id": "job-deliver-tash-order", "who": "tash", "text": "Bring it to Clarion Alley. I'm filming it arriving. That's the whole film." },
+        "done": { "id": "job-deliver-tash-thanks", "who": "tash", "text": "Got it. The phone was closed. Bring another one tomorrow." },
+        "late": { "id": "job-deliver-tash-late", "who": "tash", "text": "The light's gone. The film is about waiting now." }
+      },
+      {
+        "who": "ramon",
+        "say": { "id": "job-deliver-ramon-order", "who": "ramon", "text": "For the band. Not the trumpet. He knows what he did." },
+        "done": { "id": "job-deliver-ramon-thanks", "who": "ramon", "text": "Gracias. Look, the trumpet is here. He smelled it." },
+        "late": { "id": "job-deliver-ramon-late", "who": "ramon", "text": "It's cold. Now it's a sad song." }
+      },
+      {
+        "who": "rosaura",
+        "say": { "id": "job-deliver-rosaura-order", "who": "rosaura", "text": "It's for you. Bring it here and eat it in front of me." },
+        "done": { "id": "job-deliver-rosaura-thanks", "who": "rosaura", "text": "Sit. Eat. All of it. I'm counting." },
+        "late": { "id": "job-deliver-rosaura-late", "who": "rosaura", "text": "Late. Look at you. Thinner already." }
+      },
+      {
+        "who": "walter",
+        "say": { "id": "job-deliver-walter-order", "who": "walter", "text": "To the J Church stop, please. I'll be here. The train won't." },
+        "done": { "id": "job-deliver-walter-thanks", "who": "walter", "text": "Thank you. Still no train. Great timing, though." },
+        "late": { "id": "job-deliver-walter-late", "who": "walter", "text": "You took so long I nearly caught a train." }
+      },
+      {
+        "who": "unit7",
+        "say": { "id": "job-deliver-unit7-order", "who": "unit7", "text": "I ordered food. I cannot eat. I would like to hold it." },
+        "done": { "id": "job-deliver-unit7-thanks", "who": "unit7", "text": "It is warm. I understand everything now." },
+        "late": { "id": "job-deliver-unit7-late", "who": "unit7", "text": "It is cold. I understand nothing again." }
+      },
+      {
+        "who": "pigeon",
+        "say": { "id": "job-deliver-pigeon-order", "who": "pigeon", "text": "Leave it on the ground. That's where I eat." },
+        "done": { "id": "job-deliver-pigeon-thanks", "who": "pigeon", "text": "Nice. The guac stays between us." },
+        "late": { "id": "job-deliver-pigeon-late", "who": "pigeon", "text": "Too slow. The seagulls are asking questions." }
+      },
+      {
+        "who": "gideon",
+        "say": { "id": "job-deliver-gideon-order", "who": "gideon", "text": "Leave it on the step. Don't knock. Don't breathe." },
+        "done": { "id": "job-deliver-gideon-thanks", "who": "gideon", "text": "Thank you. Now back away. The porch creaks." },
+        "late": { "id": "job-deliver-gideon-late", "who": "gideon", "text": "Too late. They're awake. Both of them." }
+      },
+      {
+        "who": "gravity",
+        "say": { "id": "job-deliver-gravity-order", "who": "gravity", "text": "Lunch, for an experiment. The experiment is lunch." },
+        "done": { "id": "job-deliver-gravity-thanks", "who": "gravity", "text": "Mass delivered. Science thanks you." },
+        "late": { "id": "job-deliver-gravity-late", "who": "gravity", "text": "Slower than a falling apple. I timed it." }
+      }
+    ]
+  },
+  "carry": {
+    "vehicle": { "name": "gig_van", "type": "van", "at": [147.4, -315.4, 355] },
+    "kerb": 4,
+    "radius": 12,
+    "every": 12,
+    "minFrom": 300,
+    "maxFrom": 1600,
+    "to": ["dolores_bomb", "castro_18th", "patricias_green", "24th_mission", "lowriders_24th", "park_gate", "valencia_shops", "hayes_hill", "market_st", "clarion_alley", "dolores_ledges"],
+    "clients": [
+      {
+        "who": "juniper",
+        "say": { "id": "job-carry-juniper-ask", "who": "juniper", "text": "My bike's got a flat. I need a ride. I'll be judging your braking." },
+        "ride": { "id": "job-carry-juniper-ride", "who": "juniper", "text": "You stopped at a stop sign. Interesting choice." },
+        "done": { "id": "job-carry-juniper-drop", "who": "juniper", "text": "Thanks. You braked forty times. I counted." }
+      },
+      {
+        "who": "philippa",
+        "say": { "id": "job-carry-philippa-ask", "who": "philippa", "text": "Drive me, please. Arriving by van is a statement." },
+        "ride": { "id": "job-carry-philippa-ride", "who": "philippa", "text": "This pothole says a great deal about the city." },
+        "done": { "id": "job-carry-philippa-drop", "who": "philippa", "text": "Thank you. I'll write about this ride. Unfavourably." }
+      },
+      {
+        "who": "lupita",
+        "say": { "id": "job-carry-lupita-ask", "who": "lupita", "text": "My cart broke and the sun is winning. Drive me and the paletas." },
+        "ride": { "id": "job-carry-lupita-ride", "who": "lupita", "text": "Mango is sweating. Coconut is holding on." },
+        "done": { "id": "job-carry-lupita-drop", "who": "lupita", "text": "Made it. We lost the mango. It died doing what it loved." }
+      },
+      {
+        "who": "memo",
+        "say": { "id": "job-carry-memo-ask", "who": "memo", "text": "My car's in the shop. Pick me up. Drive low and slow." },
+        "ride": { "id": "job-carry-memo-ride", "who": "memo", "text": "You call this low? My car is lower parked." },
+        "done": { "id": "job-carry-memo-drop", "who": "memo", "text": "Thanks, mijo. If anyone asks, I walked." }
+      },
+      {
+        "who": "lorraine",
+        "say": { "id": "job-carry-lorraine-ask", "who": "lorraine", "text": "Mayor Biscuits has a meeting. I need a ride. I am his assistant." },
+        "ride": { "id": "job-carry-lorraine-ride", "who": "lorraine", "text": "He's asleep. Take the bumps gently. He's the Mayor." },
+        "done": { "id": "job-carry-lorraine-drop", "who": "lorraine", "text": "The Mayor thanks you. He's still asleep, but he thanks you." }
+      }
+    ]
+  },
+  "photo": {
+    "radius": 50,
+    "spots": ["clarion_alley", "bart_16th", "dock_valencia", "dock_15th", "dolores_ledges", "site_mission", "site_soma", "dock_17th", "diy_freeway", "bank_wall_market", "bank_wall_duboce", "park_gate", "valencia_shops", "24th_mission", "bart_24th_ne_plaza", "lowriders_24th"],
+    "tricks": [
+      { "text": "a kickflip", "tricks": ["kickflip"] },
+      { "text": "a manual", "tricks": ["manual", "nosemanual"] },
+      { "text": "a big air (0.8 s)", "air": 0.8 },
+      { "text": "a 1,000 combo", "points": 1000 },
+      { "text": "a 600 combo", "points": 600 }
+    ],
+    "clients": [
+      {
+        "who": "marisol",
+        "say": { "id": "job-photo-marisol-ask", "who": "marisol", "text": "One shot for the edit. Do it like you mean it. Then do it again." },
+        "done": { "id": "job-photo-marisol-got", "who": "marisol", "text": "Got it. It's fine. It's the best fine I've had all week." }
+      },
+      {
+        "who": "skye",
+        "say": { "id": "job-photo-skye-ask", "who": "skye", "text": "Candid shot, please. I'll tell you when to be candid." },
+        "done": { "id": "job-photo-skye-got", "who": "skye", "text": "Perfect. I'm captioning it 'spontaneous'." }
+      },
+      {
+        "who": "tash",
+        "say": { "id": "job-photo-tash-ask", "who": "tash", "text": "Shot for my film. The phone's open. That's half the battery." },
+        "done": { "id": "job-photo-tash-got", "who": "tash", "text": "Got it. Eleven pixels. Every one of them is you." }
+      },
+      {
+        "who": "gravity",
+        "say": { "id": "job-photo-gravity-ask", "who": "gravity", "text": "I need evidence. A photo of you defying me." },
+        "done": { "id": "job-photo-gravity-got", "who": "gravity", "text": "Inconclusive. I'm framing it anyway." }
+      }
+    ]
+  },
+  "race": {
+    "distance": 15,
+    "finish": 10,
+    "courses": [
+      {
+        "id": "valencia",
+        "text": "down Valencia, 16th to Clarion Alley",
+        "path": [[-62.5, -182], [-61.3, -197.4], [-60.2, -212.9], [-59, -228.3], [-57.8, -243.7], [-56.7, -259.2], [-55.5, -274.6], [-54.3, -290.1], [-53.2, -305.5], [-52, -320.9], [-50.8, -336.4], [-49.7, -351.8], [-48.5, -367.2], [-47.3, -382.7], [-46.1, -398.1]]
+      },
+      {
+        "id": "eighteenth",
+        "text": "along 18th, Dolores to Church",
+        "path": [[-205, -2.7], [-220.8, -3.8], [-236.6, -4.9], [-252.4, -6.1], [-268.2, -7.2], [-284, -8.4], [-299.8, -9.6], [-315.6, -10.8], [-331.4, -12], [-347.2, -13.1], [-363, -14.3], [-378.8, -15.6], [-394.5, -17], [-410.3, -18.3], [-426.1, -19.7]]
+      },
+      {
+        "id": "guerrero",
+        "text": "down Guerrero, along the Dolores wall",
+        "path": [[-135.4, -465], [-135.4, -449.1], [-135.4, -433.3], [-135.4, -417.4], [-135.4, -401.5], [-135.4, -385.7], [-135.4, -369.8], [-135.4, -353.9], [-135.4, -338], [-135.4, -322.2], [-135.4, -306.3], [-135.4, -290.4], [-135.4, -274.6], [-135.4, -258.7], [-135.4, -242.8], [-135.4, -227], [-135.4, -211.1], [-135.4, -195.2], [-135.4, -179.3], [-135.4, -163.5], [-135.4, -147.6], [-135.4, -131.7], [-135.4, -115.9], [-135.4, -100]]
+      },
+      {
+        "id": "sixteenth",
+        "text": "down 16th, Guerrero to Mission",
+        "path": [[-140, -182.1], [-123.9, -182], [-107.9, -180.8], [-91.9, -179.6], [-75.9, -178.4], [-59.8, -177.2], [-43.8, -175.9], [-27.8, -174.7], [-11.8, -173.5], [4.2, -172.3], [20.3, -171.1], [36.3, -169.8], [52.3, -168.6], [68.3, -167.4], [84.3, -166.1], [100.4, -164.8], [116.4, -163.6], [132.4, -162.3]]
+      }
+    ],
+    "clients": [
+      {
+        "who": "dre",
+        "speed": 6.2,
+        "say": { "id": "job-race-dre-dare", "who": "dre", "text": "Race you. Loser says the other one's stance is fine." },
+        "done": { "id": "job-race-dre-beaten", "who": "dre", "text": "Fine. Your stance is fine. I hate this." },
+        "won": { "id": "job-race-dre-won", "who": "dre", "text": "Your stance is still not fine." }
+      },
+      {
+        "who": "rosa",
+        "speed": 6.6,
+        "say": { "id": "job-race-rosa-dare", "who": "rosa", "text": "Race. Try not to be mid about it." },
+        "done": { "id": "job-race-rosa-beaten", "who": "rosa", "text": "Less mid than usual." },
+        "won": { "id": "job-race-rosa-won", "who": "rosa", "text": "Mid." }
+      },
+      {
+        "who": "kenji",
+        "speed": 5.6,
+        "say": { "id": "job-race-kenji-dare", "who": "kenji", "text": "Race you. If I win, I get your board. I need one." },
+        "done": { "id": "job-race-kenji-beaten", "who": "kenji", "text": "Fine. I'll find my own board. One of them's somewhere." },
+        "won": { "id": "job-race-kenji-won", "who": "kenji", "text": "I won. Can I have your board? Mine's gone again." }
+      },
+      {
+        "who": "donna",
+        "speed": 6.0,
+        "say": { "id": "job-race-donna-dare", "who": "donna", "text": "A race, darling? I've been rolling since Carter. Keep up." },
+        "done": { "id": "job-race-donna-beaten", "who": "donna", "text": "You beat me. Don't tell the Castro." },
+        "won": { "id": "job-race-donna-won", "who": "donna", "text": "Since the Carter administration, darling. Still rolling." }
+      },
+      {
+        "who": "kevin",
+        "speed": 5.8,
+        "say": { "id": "job-race-kevin-dare", "who": "kevin", "text": "Race you. I usually do this street at three miles an hour. In a truck." },
+        "done": { "id": "job-race-kevin-beaten", "who": "kevin", "text": "You won. I'm going back to the truck. The truck respects me." },
+        "won": { "id": "job-race-kevin-won", "who": "kevin", "text": "Lunch-break champion. Twelve years running." }
+      }
+    ]
+  },
+  "decks": [
+    { "deck": "foil", "board": "taqueria", "gigs": 5 },
+    { "deck": "slime", "board": "fogcity", "gigs": 5 }
+  ]
+}

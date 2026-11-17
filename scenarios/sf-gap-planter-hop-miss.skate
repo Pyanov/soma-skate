@@ -1,0 +1,12 @@
+# Not a PLANTER HOP: the same full ollie on the sidewalk right beside the northern planter's east
+# wall, along it, never over it.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -235.4 -162 8.45 180
+cmd 2 set skater.vel.x 0
+cmd 2 set skater.vel.y -4
+hold ollie 60..90
+run 260
+expect event pop within 89..93
+expect event land{quality=clean} within 204..208
+expect no event gap{id=planter_hop}

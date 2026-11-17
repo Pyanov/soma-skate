@@ -1,0 +1,17 @@
+# Carve to control speed on the 10% section: full-lean S-turns at 14 m/s ask a little more than the
+# grip, so the board drifts and scrubs about as much as the slope gives: +0.4 m/s in 3.3 s, where
+# riding straight gains more and the wobble throws you off (lab-hill-wobble). Carving damps the wobble.
+park lab
+spawn lab_hill_ten
+cmd 6 speed 14
+hold left 10..70
+hold right 70..150
+hold left 150..230
+hold right 230..310
+hold left 310..390
+run 400
+expect max skater.speed < 14.6 over 10..400
+expect skater.speed > 13.8 at 400
+expect max skater.wobble < 0.2
+expect min skater.slip < -0.3
+expect no event bail

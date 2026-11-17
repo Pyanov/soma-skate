@@ -1,0 +1,10 @@
+# Same coast as lab-coast-drag, crouched (ollie held): the tuck cuts the drag area from 0.45 to
+# 0.30 m^2 (a crouch, not a racing tuck), so it ends faster. No transition under the wheels, so crouching does not pump.
+park lab
+cmd 0 teleport -25 -12 0.13 90
+cmd 6 speed 9
+hold ollie 6..606
+run 606
+expect skater.speed > 7.65 at 606
+expect skater.speed < 7.85 at 606
+expect no event pop

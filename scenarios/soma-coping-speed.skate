@@ -1,0 +1,14 @@
+# Vert air that the coping takes (skate feel --section vert): riding up a quarter
+# into the vert air, the wheels' sphere ran into the coping pipe just under the lip, and the air lost most
+# of its speed. F48's quarterpipe head-on at 8.5 m/s: 6.3 m/s up the wall the tick before, 1.3 m/s of
+# vert air after the pipe (the air peaked 0.1 m over the lip, at about -0.1 m). Then the Otis quarter
+# of the Hellride at 8.6 m/s: 3.8 m/s of air, where 8.4 and 9.0 m/s give 6.0 and 6.6.
+park soma
+cmd 0 teleport 91.68 17.17 -1.47 270
+cmd 10 set skater.vel.x -8.5
+cmd 10 set skater.vel.y 0
+cmd 400 teleport 82.5 20.2 -1.75 60.8
+cmd 430 speed 8.6
+run 700
+expect max skater.pos.z > 1.2 over 60..300
+expect max skater.pos.z > 1.0 over 500..650

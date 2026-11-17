@@ -1,0 +1,25 @@
+# Every slide on the flat rail: cross it at a right angle (nose over the far side = Boardslide),
+# then I + direction switches. Tailslide and Nosebluntslide turn the nose back over the approach
+# side (a bluntslide's nose is over the far side, its tail down at the edge and the back wheels
+# hooked over), so the plain switch after them is a Lipslide.
+park lab
+cmd 0 teleport -7 1.4 0.14 0
+hold up 6..80
+hold ollie 70..90
+tap grind 128
+tap grind+up 150
+tap grind+down 172
+tap grind 194
+tap grind+down+left 216
+tap grind+up+left 238
+tap grind 260
+bot balance
+run 500
+expect event grindStart{trick=FS Boardslide,slide=true} within 129..130
+expect event grindStart{trick=FS Noseslide,slide=true} within 151..152
+expect event grindStart{trick=FS Tailslide,slide=true} within 173..174
+expect event grindStart{trick=FS Lipslide,slide=true} within 195..196
+expect event grindStart{trick=FS Bluntslide,slide=true} within 217..218
+expect event grindStart{trick=FS Nosebluntslide,slide=true} within 239..240
+expect event grindStart{trick=FS Lipslide,slide=true} within 261..262
+expect no event bail

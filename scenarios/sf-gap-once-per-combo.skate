@@ -1,0 +1,21 @@
+# A gap pays once per combo: Patricia's Green Line with the carry-on, a
+# bench, ollie, the short seat wall and at its end across onto the long one beside it. The second
+# seat wall would be PATRICIA'S SEAT WALL again: it neither pays nor adds to the multiplier, so the
+# combo is BS 50-50 + PATRICIA'S BENCH + BS 50-50 + PATRICIA'S SEAT WALL + BS 50-50: 150 + 250 +
+# 120 + 300 + 441 (the third 50-50 at 50%), x5 = 6,305 (6,320 before the squeezed city; it was 9,018 x6 with the gap twice; 6,390
+# before phase 24's wider clean landing, whose clean landings keep a little more speed).
+park sf
+cmd 0 traffic clear
+cmd 10 teleport -219.72 429.80 9.75 340.4
+cmd 12 set skater.vel.x -1.7679
+cmd 12 set skater.vel.y 4.9777
+hold ollie 10..39
+hold ollie 129..143
+tap grind 68..135 every 6
+tap grind 178..233 every 6
+bot balance
+run 1000
+expect event gap{id=patricia_wall} count == 1
+expect event grindStart{line=ledge_-222_438_b} within 230..234
+expect event comboLanded{name=BS 50-50 + PATRICIA'S BENCH + BS 50-50 + PATRICIA'S SEAT WALL + BS 50-50,points=6305,multiplier=5} within 768..772
+expect no event bail

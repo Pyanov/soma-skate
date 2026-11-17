@@ -1,0 +1,20 @@
+# Kenji's Board (data/missions.json kenjiboard): his board lies on the low roof by Duboce Park (the city's
+# streetspots.rooftops duboce_roof board; a collect step with height 1.2). Below the roof, by the stair's
+# foot, it does not count; up on the roof it does. Then 45 s to bring it to Kenji, waiting down in the
+# park (the step's actors); his talk, and the story is done with its sticker.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start kenjiboard 1
+cmd 2 teleport -402.5 216.0 22.6 0
+cmd 200 teleport -403.85 217.6 25.8 0
+cmd 400 teleport -296 209 14.7 180
+cmd 600 mission next all
+run 700
+expect event missionStep{mission=kenjiboard,step=1,kind=collect} within 1..1
+expect no event missionItem within 2..199
+expect event missionItem{mission=kenjiboard,n=1,of=1} within 201..260
+expect event missionStep{mission=kenjiboard,step=2,kind=deliver,seconds=45} within 201..260
+expect event missionStep{mission=kenjiboard,step=3,kind=talk} within 401..460
+expect event talk{character=kenji,line=kenjiboard-06} within 401..460
+expect event missionDone{mission=kenjiboard,sticker=side-kenji} within 601..601
+expect no event missionFailed

@@ -1,0 +1,24 @@
+# Two-player HORSE (run horse2p: data word HORSE), both clean: player 1 sets a Kickflip, player 2
+# matches it and sets next (the matcher sets), a Heelflip from its list; player 1 matches that and
+# sets a Pop Shove-It (never a trick already set). No letters. Each try waits out the 2 s pause.
+park soma
+cmd 0 player2 join
+cmd 0 run horse2p
+bot horse kickflip,popshoveit
+p2 bot horse heelflip,fs180
+run 2950
+expect event horseStart{word=HORSE} within 1..1
+expect event horseSet{by=1,trick=kickflip,name=Kickflip} within 580..580
+expect event horseMatch{by=2,ok=true,trick=kickflip,got=kickflip} within 1160..1160
+expect event horseTurn{who=2,role=set} within 1160..1160
+expect event horseSet{by=2,trick=heelflip,name=Heelflip} within 1740..1740
+expect event horseTurn{who=1,role=match,trick=heelflip} within 1740..1740
+expect event horseMatch{by=1,ok=true,trick=heelflip,got=heelflip} within 2320..2320
+expect event horseSet{by=1,trick=popshoveit,name=Pop Shove-It} within 2900..2900
+expect event horseLetter count == 0
+expect session.horseTurn == 2 at end
+expect session.horseRole == match at end
+expect session.horseTrick == popshoveit at end
+expect session.mode == horse2p at end
+expect session2.mode == horse2p at end
+expect no event bail

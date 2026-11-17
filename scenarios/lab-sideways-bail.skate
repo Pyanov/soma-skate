@@ -1,0 +1,11 @@
+# Falling onto the floor while the board points across the direction of travel bails,
+# then the skater stands up where it stopped.
+park lab
+cmd 0 teleport 0 0 1.5 90
+cmd 1 set skater.vel.y 5
+run 400
+expect event bail within 1..80
+expect event recover within 100..300
+expect no event land within 1..200
+expect state ground at end
+expect event danger{why=sideways} within 35..50

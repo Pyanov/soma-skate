@@ -1,0 +1,93 @@
+# Tour level 7, the Embarcadero (data/tour.json), a 2-minute run from EMB: its three goals, the tape and
+# S-K-A-T-E, each set up with a teleport (keys recorded from closed-loop legs; since city phase 11,
+# whose ground under Pier 7 triangulated a little differently, the bot keeps the balance).
+# - From the terrace, an ollie down the seven stairs, E in the air over them: EMB SEVEN, EMB Seven.
+# - The three-block by the fountain: a boardslide on the second block's edge: THREE BLOCK, Three-Block.
+# - From the street the squeezed city runs along the fountain's north-east rim (where the banks were, with
+#   cars parked on it), an ollie across the rim into the pool between two parked cars, K over it: FOUNTAIN GAP.
+# - On the pool floor, an ollie up onto the lone granite block (the tape sat on it until phase 28).
+# - EMB's row by the banks, a 50-50 on its third ledge, S on it: EMB LEDGE, 1,384.
+# - The F-line rails where Market meets Steuart, A on the way, a 50-50 to the end of the rail: F-LINE
+#   RAIL, 4,316.
+# - Pier 7 (rebuilt as it is in city phase 15): from the seawall level onto the middle block's low side,
+#   a 50-50 down its south-east edge toward the street (T on it), popped off its street end with a
+#   kickflip (the ollie held through the grind: a full pop), a manual on landing, a heelflip out: 4,475, Pier 7 Line (3,000 with PIER 7 BLOCK, started
+#   at the blocks). The tape hangs high off that end, at the top of what a full pop reaches (a pop off
+#   half charged passes 0.17 m lower, out of reach).
+park sf
+cmd 0 traffic clear
+cmd 0 run level embarcadero
+bot balance
+cmd 1 teleport 562.56 694.85 -7.85 70.8
+cmd 3 set skater.vel.x 5.3291
+cmd 3 set skater.vel.y 1.8558
+cmd 401 teleport 615.42 675.24 -9.25 257
+cmd 403 set skater.vel.x -5.3883
+cmd 403 set skater.vel.y -1.2440
+cmd 801 teleport 619.72 733.09 -9.13 234.3
+cmd 803 set skater.vel.x -4.17
+cmd 803 set skater.vel.y -3.0
+cmd 1201 teleport 601.49 734.11 -9.75 240.5
+cmd 1203 set skater.vel.x -3.4727
+cmd 1203 set skater.vel.y -1.9648
+cmd 1601 teleport 629.56 677.48 -9.3 143.8
+cmd 1603 set skater.vel.x 3.4196
+cmd 1603 set skater.vel.y -4.6723
+cmd 2001 teleport 591.81 601.81 -9.36 46.0
+cmd 2003 set skater.vel.x 3.9356
+cmd 2003 set skater.vel.y 3.6828
+cmd 3201 teleport 579.76 928.46 -9.05 234.5
+cmd 3203 set skater.vel.x -4.073
+cmd 3203 set skater.vel.y -2.900
+hold ollie 55..65
+hold ollie 425..435
+hold ollie 858..880
+hold ollie 1228..1253
+hold ollie 1611..1640
+hold ollie 2004..2025
+tap grind 437
+tap grind 443
+tap grind 449
+tap grind 455
+tap grind 461
+tap grind 1642
+tap grind 1648
+tap grind 1654
+tap grind 1660
+tap grind 2027
+hold ollie 3223..3231
+tap grind 3239..3271 every 4
+hold ollie 3359..3375
+tap flip 3381
+tap left 3381
+tap up 3484
+tap down 3488
+hold ollie 3601..3609
+tap flip 3613
+tap right 3613
+run 14700
+expect event levelStart{level=embarcadero,seconds=120} within 0..2
+expect event letter{letter=E,have=____E} within 104..104
+expect event gap{id=emb_seven,gap=EMB SEVEN,points=600} within 184..184
+expect event levelGoal{level=embarcadero,id=seven,name=EMB Seven} within 184..184
+expect event gap{id=three_block,gap=THREE BLOCK,points=300} within 544..544
+expect event levelGoal{level=embarcadero,id=threeblock,name=Three-Block} within 544..544
+expect event comboLanded{name=BS Boardslide + THREE BLOCK,points=1060} within 603..603
+expect event letter{letter=K,have=_K__E} within 909..909
+expect event gap{id=fountain_gap,gap=FOUNTAIN GAP,points=400} within 1011..1011
+expect event gap{id=fountain_gap} count == 1
+expect no event tapeFound within 0..3200
+expect event tapeFound{level=embarcadero} within 3418..3418
+expect event letter{letter=S,have=SK__E} within 1753..1753
+expect event comboLanded{name=FS 50-50 + EMB LEDGE,points=1384} within 1965..1965
+expect event letter{letter=A,have=SKA_E} within 2136..2136
+expect event gap{id=fline_rail,gap=F-LINE RAIL,points=250} within 3113..3113
+expect event comboLanded{name=BS 50-50 + F-LINE RAIL,points=4316} within 3134..3134
+expect event letter{letter=T,have=SKATE} within 3303..3303
+expect event levelGoal{level=embarcadero,id=skate} within 3303..3303
+expect event comboLanded{name=FS 50-50 + PIER 7 BLOCK + Kickflip + Manual + Heelflip,points=4475} within 3708..3708
+expect event levelGoal{level=embarcadero,id=pier7line,name=Pier 7 Line} within 3708..3708
+expect event levelOver{level=embarcadero,score=12235,tape=true} within 14400..14400
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

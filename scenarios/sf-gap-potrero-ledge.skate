@@ -1,0 +1,21 @@
+# POTRERO DEL SOL (city phase 13's skatepark at 25th and Potrero): an ollie onto the ledge by the bowls'
+# deck and a 50-50 to its end, a kickflip off it. Any ledge or coping in the park pays it. (Feel pass
+# round 2: the ollie meets the ledge's face on the way up; that used to take about 40% of the speed into
+# the grind, which ran 385 ticks and banked over 2,000 on its own. The ledge pop keeps the speed: the grind
+# takes 227 ticks, so the line adds a kickflip off the ledge's end to make the goal's 2,000.)
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 576.39 -218.05 -7.89 115.0
+cmd 3 set skater.vel.x 3.625
+cmd 3 set skater.vel.y -1.690
+hold ollie 86..116
+tap grind 128..178 every 4
+tap flip+left 362
+bot balance
+run 700
+expect event grindStart{trick=BS 50-50,line=ledge_580_-219} within 127..131
+expect event grindEnd{reason=end} within 354..358
+expect event gap{id=potrero_ledge,gap=POTRERO DEL SOL,points=300} within 354..358
+expect event comboLanded{name=BS 50-50 + POTRERO DEL SOL + Kickflip} within 440..470
+expect no event bail
+expect event goalComplete{id=potrero,name=Potrero del Sol Line} within 440..470

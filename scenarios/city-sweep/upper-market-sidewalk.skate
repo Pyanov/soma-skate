@@ -1,0 +1,13 @@
+# City sweep (skate cityfuzz): Upper Market near 18th: a sidewalk 0.12-0.16 m over the surface beside it (two places 30 m apart).
+# Finding: underground at -1622.51 -1003.98 48.33 (city_sidewalk_-1800_-1200 0.16 m above), tick 361. Run it with `./skate run scenarios/city-sweep/upper-market-sidewalk.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1620 -1005 47.34 294
+hold up+grab 0..91
+hold up+revert 91..120
+hold up+grind 120..169
+hold up 169..246
+hold up 246..308
+hold up 308..359
+run 363

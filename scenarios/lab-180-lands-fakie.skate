@@ -1,0 +1,10 @@
+# Charged ollie and a frontside 180 (hold A about 0.3 s; regular, so turning left is frontside): lands rolling fakie, scores an FS 180.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold left 92..130
+run 320
+expect event land{fakie=true} within 160..240
+expect event comboLanded{name=FS 180} within 160..240
+expect no event bail

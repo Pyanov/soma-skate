@@ -1,0 +1,186 @@
+{
+  "_doc": "NPC skaters (command `npc spawn [n]`; src/sim/game/npc.ts, docs/mechanics/npc.md): per world, how many and which rider lines they ride. Each is born with a style (styles, picked by share) and a skill drawn from the style's range. speed: cruising speed (m/s, x the style's speed, +- speedJitter). A trick try every style.trickEvery seconds on a straight at speed: crouch chargeTicks, pop, then a flip (flipChance), a grab held grabTicks (grabChance), a grind try (grindChance, more likely when a rail or ledge is right ahead) or a plain ollie. A trick that starts a combo gets style.links more links: landing with the combo open, a manual (manualChance, held manualTicks) popped out into a flip, grab or grind; off a grind, a flip out (flipOut). A sloppy try (chance (1 - skill) x sloppy) flips lateTicks late or lets go of the balance for lapseTicks. Grinds are held grindTicks, then ollied off. sends: lines whose end a style with send > 0 goes for (gap: an ollie off the end over the set, wall: on up the wall), ridden as the line's first keep points (all of them when keep is left out; 0: the run starts at the first via point, off the line), then the via points [x, y] (past the set; head-on up the Otis quarter at the Hellride spine), at speed m/s. spots: lines that share a spot; one rider at a time per spot (a line not listed is its own spot): the next waits at the top (a step back or beside the start, waitGap metres from any other waiter; at most maxWait seconds, then picks another line); a respawn picks a free spot freeSpot of the time, and a run on a spot ends at its line's end. near: a line starting within radius metres of you is picked share of the time, when some lines do and some do not (a city's lines spread over it). cheer: an NPC within range metres of you when you land a combo of points or more stomps its board (npcCheer; once per cooldown seconds). copy: after such a combo of copy.points, chance that the nearest riding NPC within range rides your last copy.seconds of line after you, popping where you popped (npcCopy); your line is kept a point every trail.every ticks for trail.seconds. At a line's end they ride on to a line starting within linkRange m, else respawn; also after a bail, when stuck stuckTicks, or more than lostRange m from the line. castFrom: the height they look down from for the ground at a line start (under the freeway).",
+  "parks": {
+    "soma": {
+      "count": 4,
+      "lines": [
+        "north_wall_to_hellride",
+        "manual_approach",
+        "manual_on_pad",
+        "manual_landing_right_turn_south_bank",
+        "south_rear_runway_to_hellride",
+        "wave_east_to_west",
+        "wave_west_to_east",
+        "volcano_wave_seam",
+        "north_stair_ramp_bypass",
+        "west_flat_long_bank",
+        "west_flat_big3_runup",
+        "southwest_flat_east_bank",
+        "southwest_flat_south_bank",
+        "stevenson_clear_runway",
+        "review2_west_runway_to_big3",
+        "review2_north_bank_corner_approach",
+        "review2_north_rear_hellride_approach",
+        "review2_pyramid_east_bank",
+        "review2_south_pad_into_portal_quarter",
+        "pin05_entrance_flat_east_bank",
+        "pin06_angled_bank_down_south",
+        "pin11_west_lane_bank_up"
+      ]
+    },
+    "sf": {
+      "count": 4,
+      "lines": [
+        "north_wall_to_hellride",
+        "manual_approach",
+        "manual_on_pad",
+        "manual_landing_right_turn_south_bank",
+        "south_rear_runway_to_hellride",
+        "wave_east_to_west",
+        "wave_west_to_east",
+        "volcano_wave_seam",
+        "north_stair_ramp_bypass",
+        "west_flat_long_bank",
+        "west_flat_big3_runup",
+        "southwest_flat_east_bank",
+        "southwest_flat_south_bank",
+        "stevenson_clear_runway",
+        "review2_west_runway_to_big3",
+        "review2_north_bank_corner_approach",
+        "review2_north_rear_hellride_approach",
+        "review2_pyramid_east_bank",
+        "review2_south_pad_into_portal_quarter",
+        "pin05_entrance_flat_east_bank",
+        "pin06_angled_bank_down_south",
+        "pin11_west_lane_bank_up",
+        "emb_west_ledges",
+        "emb_east_rim",
+        "pier_7_benches"
+      ]
+    }
+  },
+  "speed": 5,
+  "speedJitter": 0.15,
+  "chargeTicks": [16, 34],
+  "grabTicks": [18, 40],
+  "grindTicks": [40, 120],
+  "styles": {
+    "tech": {
+      "share": 0.4,
+      "speed": 0.95,
+      "skill": [0.65, 0.95],
+      "trickEvery": [1.2, 3.5],
+      "flipChance": 0.6,
+      "grabChance": 0.05,
+      "grindChance": 0.3,
+      "links": [2, 4],
+      "manualChance": 0.85,
+      "manualTicks": [50, 110],
+      "flipOut": 0.8,
+      "send": 0
+    },
+    "gnar": {
+      "share": 0.3,
+      "speed": 1.2,
+      "skill": [0.45, 0.85],
+      "trickEvery": [1.5, 4],
+      "flipChance": 0.35,
+      "grabChance": 0.4,
+      "grindChance": 0.2,
+      "links": [0, 2],
+      "manualChance": 0.3,
+      "manualTicks": [30, 70],
+      "flipOut": 0.5,
+      "send": 0.7
+    },
+    "cruiser": {
+      "share": 0.3,
+      "speed": 0.85,
+      "skill": [0.3, 0.7],
+      "trickEvery": [3, 7],
+      "flipChance": 0.2,
+      "grabChance": 0.1,
+      "grindChance": 0.15,
+      "links": [0, 1],
+      "manualChance": 0.4,
+      "manualTicks": [40, 90],
+      "flipOut": 0.2,
+      "send": 0
+    }
+  },
+  "sloppy": 0.35,
+  "lateTicks": 40,
+  "lapseTicks": 30,
+  "sends": [
+    {
+      "line": "west_flat_big3_runup",
+      "kind": "gap",
+      "via": [[26, 21.3]],
+      "speed": 6.5
+    },
+    {
+      "line": "review2_west_runway_to_big3",
+      "kind": "gap",
+      "via": [[26, 21.3]],
+      "speed": 6.5
+    },
+    {
+      "line": "south_rear_runway_to_hellride",
+      "kind": "wall",
+      "keep": 0,
+      "via": [[73.8, 15.7], [82.5, 20.6], [92, 26.5]],
+      "speed": 9
+    }
+  ],
+  "spots": {
+    "big3": [
+      "west_flat_big3_runup",
+      "review2_west_runway_to_big3"
+    ],
+    "hellride": [
+      "north_wall_to_hellride",
+      "south_rear_runway_to_hellride",
+      "review2_north_rear_hellride_approach"
+    ],
+    "manualpad": [
+      "manual_approach",
+      "manual_on_pad",
+      "manual_landing_right_turn_south_bank"
+    ],
+    "wave": [
+      "wave_east_to_west",
+      "wave_west_to_east",
+      "volcano_wave_seam"
+    ],
+    "emb": [
+      "emb_west_ledges",
+      "emb_east_rim"
+    ],
+    "pier7": [
+      "pier_7_benches"
+    ]
+  },
+  "maxWait": 6,
+  "waitGap": 1.2,
+  "freeSpot": 0.8,
+  "near": { "radius": 200, "share": 0.85 },
+  "cheer": {
+    "points": 2000,
+    "range": 18,
+    "cooldown": 4
+  },
+  "copy": {
+    "points": 1500,
+    "chance": 0.35,
+    "range": 20,
+    "seconds": 5
+  },
+  "trail": {
+    "every": 10,
+    "seconds": 8
+  },
+  "linkRange": 25,
+  "stuckTicks": 300,
+  "lostRange": 25,
+  "castFrom": 3
+}

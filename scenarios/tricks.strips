@@ -1,0 +1,129 @@
+# Trick review (grinds, slides, flips, manuals, revert, powerslides), one strip per trick per character:
+#   ./skate strip --sheet scenarios/tricks.strips --height 220   (three strips per trick: the tech bro, the can, the blob)
+# label | scenario (or moments) | ticks a:b:n | camera | character | style
+FS 50-50 | lab-grind-table-fs | 183:198:3 | chase | techbro | real
+FS 50-50 | lab-grind-table-fs | 183:198:3 | chase | can | real
+FS 50-50 | lab-grind-table-fs | 183:198:3 | chase | blob | real
+FS Nosegrind | lab-grind-table-fs | 207:220:3 | chase | techbro | real
+FS Nosegrind | lab-grind-table-fs | 207:220:3 | chase | can | real
+FS Nosegrind | lab-grind-table-fs | 207:220:3 | chase | blob | real
+FS 5-0 | lab-grind-table-fs | 229:242:3 | chase | techbro | real
+FS 5-0 | lab-grind-table-fs | 229:242:3 | chase | can | real
+FS 5-0 | lab-grind-table-fs | 229:242:3 | chase | blob | real
+FS Feeble | lab-grind-table-fs | 251:264:3 | chase | techbro | real
+FS Feeble | lab-grind-table-fs | 251:264:3 | chase | can | real
+FS Feeble | lab-grind-table-fs | 251:264:3 | chase | blob | real
+FS Smith | lab-grind-table-fs | 273:286:3 | chase | techbro | real
+FS Smith | lab-grind-table-fs | 273:286:3 | chase | can | real
+FS Smith | lab-grind-table-fs | 273:286:3 | chase | blob | real
+FS Crooked | lab-grind-table-fs | 295:308:3 | chase | techbro | real
+FS Crooked | lab-grind-table-fs | 295:308:3 | chase | can | real
+FS Crooked | lab-grind-table-fs | 295:308:3 | chase | blob | real
+FS Overcrook | lab-grind-table-fs | 317:330:3 | chase | techbro | real
+FS Overcrook | lab-grind-table-fs | 317:330:3 | chase | can | real
+FS Overcrook | lab-grind-table-fs | 317:330:3 | chase | blob | real
+BS 50-50 | lab-grind-table-bs | 183:198:3 | chase | techbro | real
+BS 50-50 | lab-grind-table-bs | 183:198:3 | chase | can | real
+BS 50-50 | lab-grind-table-bs | 183:198:3 | chase | blob | real
+BS Nosegrind | lab-grind-table-bs | 207:220:3 | chase | techbro | real
+BS Nosegrind | lab-grind-table-bs | 207:220:3 | chase | can | real
+BS Nosegrind | lab-grind-table-bs | 207:220:3 | chase | blob | real
+BS 5-0 | lab-grind-table-bs | 229:242:3 | chase | techbro | real
+BS 5-0 | lab-grind-table-bs | 229:242:3 | chase | can | real
+BS 5-0 | lab-grind-table-bs | 229:242:3 | chase | blob | real
+BS Feeble | lab-grind-table-bs | 251:264:3 | chase | techbro | real
+BS Feeble | lab-grind-table-bs | 251:264:3 | chase | can | real
+BS Feeble | lab-grind-table-bs | 251:264:3 | chase | blob | real
+BS Smith | lab-grind-table-bs | 273:286:3 | chase | techbro | real
+BS Smith | lab-grind-table-bs | 273:286:3 | chase | can | real
+BS Smith | lab-grind-table-bs | 273:286:3 | chase | blob | real
+BS Crooked | lab-grind-table-bs | 295:308:3 | chase | techbro | real
+BS Crooked | lab-grind-table-bs | 295:308:3 | chase | can | real
+BS Crooked | lab-grind-table-bs | 295:308:3 | chase | blob | real
+BS Overcrook | lab-grind-table-bs | 317:330:3 | chase | techbro | real
+BS Overcrook | lab-grind-table-bs | 317:330:3 | chase | can | real
+BS Overcrook | lab-grind-table-bs | 317:330:3 | chase | blob | real
+FS Boardslide | lab-slide-table | 132:148:3 | chase | techbro | real
+FS Boardslide | lab-slide-table | 132:148:3 | chase | can | real
+FS Boardslide | lab-slide-table | 132:148:3 | chase | blob | real
+FS Noseslide | lab-slide-table | 154:170:3 | chase | techbro | real
+FS Noseslide | lab-slide-table | 154:170:3 | chase | can | real
+FS Noseslide | lab-slide-table | 154:170:3 | chase | blob | real
+FS Tailslide | lab-slide-table | 176:192:3 | chase | techbro | real
+FS Tailslide | lab-slide-table | 176:192:3 | chase | can | real
+FS Tailslide | lab-slide-table | 176:192:3 | chase | blob | real
+FS Lipslide | lab-slide-table | 198:214:3 | chase | techbro | real
+FS Lipslide | lab-slide-table | 198:214:3 | chase | can | real
+FS Lipslide | lab-slide-table | 198:214:3 | chase | blob | real
+FS Bluntslide | lab-slide-table | 220:236:3 | chase | techbro | real
+FS Bluntslide | lab-slide-table | 220:236:3 | chase | can | real
+FS Bluntslide | lab-slide-table | 220:236:3 | chase | blob | real
+FS Nosebluntslide | lab-slide-table | 242:258:3 | chase | techbro | real
+FS Nosebluntslide | lab-slide-table | 242:258:3 | chase | can | real
+FS Nosebluntslide | lab-slide-table | 242:258:3 | chase | blob | real
+BS Boardslide | lab-slide-table-bs | 132:148:3 | chase | techbro | real
+BS Boardslide | lab-slide-table-bs | 132:148:3 | chase | can | real
+BS Boardslide | lab-slide-table-bs | 132:148:3 | chase | blob | real
+BS Noseslide | lab-slide-table-bs | 154:170:3 | chase | techbro | real
+BS Noseslide | lab-slide-table-bs | 154:170:3 | chase | can | real
+BS Noseslide | lab-slide-table-bs | 154:170:3 | chase | blob | real
+BS Tailslide | lab-slide-table-bs | 176:192:3 | chase | techbro | real
+BS Tailslide | lab-slide-table-bs | 176:192:3 | chase | can | real
+BS Tailslide | lab-slide-table-bs | 176:192:3 | chase | blob | real
+BS Lipslide | lab-slide-table-bs | 198:214:3 | chase | techbro | real
+BS Lipslide | lab-slide-table-bs | 198:214:3 | chase | can | real
+BS Lipslide | lab-slide-table-bs | 198:214:3 | chase | blob | real
+BS Bluntslide | lab-slide-table-bs | 220:236:3 | chase | techbro | real
+BS Bluntslide | lab-slide-table-bs | 220:236:3 | chase | can | real
+BS Bluntslide | lab-slide-table-bs | 220:236:3 | chase | blob | real
+BS Nosebluntslide | lab-slide-table-bs | 242:258:3 | chase | techbro | real
+BS Nosebluntslide | lab-slide-table-bs | 242:258:3 | chase | can | real
+BS Nosebluntslide | lab-slide-table-bs | 242:258:3 | chase | blob | real
+Kickflip | lab-kickflip-lands@95, lab-kickflip-lands@103, lab-kickflip-lands@111, lab-kickflip-lands@120, lab-kickflip-lands@128, lab-kickflip-lands@137, lab-kickflip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Kickflip | lab-kickflip-lands@95, lab-kickflip-lands@103, lab-kickflip-lands@111, lab-kickflip-lands@120, lab-kickflip-lands@128, lab-kickflip-lands@137, lab-kickflip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Kickflip | lab-kickflip-lands@95, lab-kickflip-lands@103, lab-kickflip-lands@111, lab-kickflip-lands@120, lab-kickflip-lands@128, lab-kickflip-lands@137, lab-kickflip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Heelflip | lab-heelflip-lands@95, lab-heelflip-lands@103, lab-heelflip-lands@111, lab-heelflip-lands@120, lab-heelflip-lands@128, lab-heelflip-lands@137, lab-heelflip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Heelflip | lab-heelflip-lands@95, lab-heelflip-lands@103, lab-heelflip-lands@111, lab-heelflip-lands@120, lab-heelflip-lands@128, lab-heelflip-lands@137, lab-heelflip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Heelflip | lab-heelflip-lands@95, lab-heelflip-lands@103, lab-heelflip-lands@111, lab-heelflip-lands@120, lab-heelflip-lands@128, lab-heelflip-lands@137, lab-heelflip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Pop Shove-It | lab-popshoveit-lands@95, lab-popshoveit-lands@102, lab-popshoveit-lands@109, lab-popshoveit-lands@117, lab-popshoveit-lands@124, lab-popshoveit-lands@131, lab-popshoveit-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Pop Shove-It | lab-popshoveit-lands@95, lab-popshoveit-lands@102, lab-popshoveit-lands@109, lab-popshoveit-lands@117, lab-popshoveit-lands@124, lab-popshoveit-lands@131, lab-popshoveit-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Pop Shove-It | lab-popshoveit-lands@95, lab-popshoveit-lands@102, lab-popshoveit-lands@109, lab-popshoveit-lands@117, lab-popshoveit-lands@124, lab-popshoveit-lands@131, lab-popshoveit-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Varial Kickflip | lab-varialkickflip-lands@95, lab-varialkickflip-lands@103, lab-varialkickflip-lands@113, lab-varialkickflip-lands@123, lab-varialkickflip-lands@132, lab-varialkickflip-lands@142, lab-varialkickflip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Varial Kickflip | lab-varialkickflip-lands@95, lab-varialkickflip-lands@103, lab-varialkickflip-lands@113, lab-varialkickflip-lands@123, lab-varialkickflip-lands@132, lab-varialkickflip-lands@142, lab-varialkickflip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Varial Kickflip | lab-varialkickflip-lands@95, lab-varialkickflip-lands@103, lab-varialkickflip-lands@113, lab-varialkickflip-lands@123, lab-varialkickflip-lands@132, lab-varialkickflip-lands@142, lab-varialkickflip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Varial Heelflip | lab-varialheelflip-lands@95, lab-varialheelflip-lands@103, lab-varialheelflip-lands@113, lab-varialheelflip-lands@123, lab-varialheelflip-lands@132, lab-varialheelflip-lands@142, lab-varialheelflip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Varial Heelflip | lab-varialheelflip-lands@95, lab-varialheelflip-lands@103, lab-varialheelflip-lands@113, lab-varialheelflip-lands@123, lab-varialheelflip-lands@132, lab-varialheelflip-lands@142, lab-varialheelflip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Varial Heelflip | lab-varialheelflip-lands@95, lab-varialheelflip-lands@103, lab-varialheelflip-lands@113, lab-varialheelflip-lands@123, lab-varialheelflip-lands@132, lab-varialheelflip-lands@142, lab-varialheelflip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Hardflip | lab-hardflip-lands@95, lab-hardflip-lands@104, lab-hardflip-lands@114, lab-hardflip-lands@125, lab-hardflip-lands@135, lab-hardflip-lands@145, lab-hardflip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Hardflip | lab-hardflip-lands@95, lab-hardflip-lands@104, lab-hardflip-lands@114, lab-hardflip-lands@125, lab-hardflip-lands@135, lab-hardflip-lands@145, lab-hardflip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Hardflip | lab-hardflip-lands@95, lab-hardflip-lands@104, lab-hardflip-lands@114, lab-hardflip-lands@125, lab-hardflip-lands@135, lab-hardflip-lands@145, lab-hardflip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+360 Flip | lab-360flip-lands@95, lab-360flip-lands@104, lab-360flip-lands@115, lab-360flip-lands@127, lab-360flip-lands@138, lab-360flip-lands@149, lab-360flip-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+360 Flip | lab-360flip-lands@95, lab-360flip-lands@104, lab-360flip-lands@115, lab-360flip-lands@127, lab-360flip-lands@138, lab-360flip-lands@149, lab-360flip-lands@209 | - | orbit:50,15,3,0.8 | can | real
+360 Flip | lab-360flip-lands@95, lab-360flip-lands@104, lab-360flip-lands@115, lab-360flip-lands@127, lab-360flip-lands@138, lab-360flip-lands@149, lab-360flip-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Impossible | lab-impossible-lands@95, lab-impossible-lands@103, lab-impossible-lands@113, lab-impossible-lands@123, lab-impossible-lands@132, lab-impossible-lands@142, lab-impossible-lands@209 | - | orbit:50,15,3,0.8 | techbro | real
+Impossible | lab-impossible-lands@95, lab-impossible-lands@103, lab-impossible-lands@113, lab-impossible-lands@123, lab-impossible-lands@132, lab-impossible-lands@142, lab-impossible-lands@209 | - | orbit:50,15,3,0.8 | can | real
+Impossible | lab-impossible-lands@95, lab-impossible-lands@103, lab-impossible-lands@113, lab-impossible-lands@123, lab-impossible-lands@132, lab-impossible-lands@142, lab-impossible-lands@209 | - | orbit:50,15,3,0.8 | blob | real
+Manual | lab-manual-from-flat@112, lab-manual-from-flat@140, lab-manual-from-flat@165, lab-manual-from-flat@190, lab-manual-from-flat@215 | - | orbit:80,10,3.4,0.75 | techbro | real
+Manual | lab-manual-from-flat@112, lab-manual-from-flat@140, lab-manual-from-flat@165, lab-manual-from-flat@190, lab-manual-from-flat@215 | - | orbit:80,10,3.4,0.75 | can | real
+Manual | lab-manual-from-flat@112, lab-manual-from-flat@140, lab-manual-from-flat@165, lab-manual-from-flat@190, lab-manual-from-flat@215 | - | orbit:80,10,3.4,0.75 | blob | real
+Manual tipping (balance meter) | lab-manual-bail@120, lab-manual-bail@150, lab-manual-bail@165, lab-manual-bail@176, lab-manual-bail@184 | - | orbit:80,10,3.4,0.75 | techbro | real
+Manual tipping (balance meter) | lab-manual-bail@120, lab-manual-bail@150, lab-manual-bail@165, lab-manual-bail@176, lab-manual-bail@184 | - | orbit:80,10,3.4,0.75 | can | real
+Manual tipping (balance meter) | lab-manual-bail@120, lab-manual-bail@150, lab-manual-bail@165, lab-manual-bail@176, lab-manual-bail@184 | - | orbit:80,10,3.4,0.75 | blob | real
+Nose Manual | lab-nosemanual-from-flat@112, lab-nosemanual-from-flat@140, lab-nosemanual-from-flat@165, lab-nosemanual-from-flat@190, lab-nosemanual-from-flat@215 | - | orbit:80,10,3.4,0.75 | techbro | real
+Nose Manual | lab-nosemanual-from-flat@112, lab-nosemanual-from-flat@140, lab-nosemanual-from-flat@165, lab-nosemanual-from-flat@190, lab-nosemanual-from-flat@215 | - | orbit:80,10,3.4,0.75 | can | real
+Nose Manual | lab-nosemanual-from-flat@112, lab-nosemanual-from-flat@140, lab-nosemanual-from-flat@165, lab-nosemanual-from-flat@190, lab-nosemanual-from-flat@215 | - | orbit:80,10,3.4,0.75 | blob | real
+Revert | lab-revert@356, lab-revert@359, lab-revert@361, lab-revert@363, lab-revert@365, lab-revert@368, lab-revert@378 | - | top | techbro | real
+Revert | lab-revert@356, lab-revert@359, lab-revert@361, lab-revert@363, lab-revert@365, lab-revert@368, lab-revert@378 | - | top | can | real
+Revert | lab-revert@356, lab-revert@359, lab-revert@361, lab-revert@363, lab-revert@365, lab-revert@368, lab-revert@378 | - | top | blob | real
+FS Powerslide | lab-powerslide@11, lab-powerslide@14, lab-powerslide@18, lab-powerslide@24, lab-powerslide@60, lab-powerslide@140 | - | chase | techbro | real
+FS Powerslide | lab-powerslide@11, lab-powerslide@14, lab-powerslide@18, lab-powerslide@24, lab-powerslide@60, lab-powerslide@140 | - | chase | can | real
+FS Powerslide | lab-powerslide@11, lab-powerslide@14, lab-powerslide@18, lab-powerslide@24, lab-powerslide@60, lab-powerslide@140 | - | chase | blob | real
+BS Powerslide | lab-powerslide-bs@11, lab-powerslide-bs@14, lab-powerslide-bs@18, lab-powerslide-bs@24, lab-powerslide-bs@60, lab-powerslide-bs@140 | - | chase | techbro | real
+BS Powerslide | lab-powerslide-bs@11, lab-powerslide-bs@14, lab-powerslide-bs@18, lab-powerslide-bs@24, lab-powerslide-bs@60, lab-powerslide-bs@140 | - | chase | can | real
+BS Powerslide | lab-powerslide-bs@11, lab-powerslide-bs@14, lab-powerslide-bs@18, lab-powerslide-bs@24, lab-powerslide-bs@60, lab-powerslide-bs@140 | - | chase | blob | real
+FS Bert Slide | lab-bertslide@13, lab-bertslide@18, lab-bertslide@26, lab-bertslide@40, lab-bertslide@70 | - | chase | techbro | real
+FS Bert Slide | lab-bertslide@13, lab-bertslide@18, lab-bertslide@26, lab-bertslide@40, lab-bertslide@70 | - | chase | can | real
+FS Bert Slide | lab-bertslide@13, lab-bertslide@18, lab-bertslide@26, lab-bertslide@40, lab-bertslide@70 | - | chase | blob | real
+BS Bert Slide | lab-bertslide-bs@13, lab-bertslide-bs@18, lab-bertslide-bs@26, lab-bertslide-bs@40, lab-bertslide-bs@70 | - | chase | techbro | real
+BS Bert Slide | lab-bertslide-bs@13, lab-bertslide-bs@18, lab-bertslide-bs@26, lab-bertslide-bs@40, lab-bertslide-bs@70 | - | chase | can | real
+BS Bert Slide | lab-bertslide-bs@13, lab-bertslide-bs@18, lab-bertslide-bs@26, lab-bertslide-bs@40, lab-bertslide-bs@70 | - | chase | blob | real

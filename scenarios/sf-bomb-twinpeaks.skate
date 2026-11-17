@@ -1,0 +1,27 @@
+# Hill Bomb route Twin Peaks (run bomb twinpeaks): from Market and Grand View (97 m) down Upper Market,
+# through the Clayton, 19th, 18th and Douglass gates to the Castro finish, streets cleared, ridden
+# by the rider-line autopilot (bot line twin_peaks_line, from the same start as the line check):
+# 103.53 s, no falls, no brakes, second by 0.57 s to the Mission bike messenger (a rival; 103.6 s and
+# 0.58 s before the squeezed city; the autopilot was just ahead of him from city phase 8 until phase 11
+# moved the curbs once: 104.01 s; 103.36 s and 0.19 s before the feel pass's park carve). Below Clayton
+# his board leaves the road for a tick over a crest: racers keep the tuck in the air, as the autopilot
+# does (letting go of it there popped a full ollie, which cost him 0.6 m/s and the race). Another rival's heelflip near Noe lands (it came down
+# before it had turned from phase 11's second export change until the park carve). The events carry the route.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb twinpeaks
+bot line twin_peaks_line 6
+run 12900
+expect event bombReady{route=twinpeaks,name=Twin Peaks,gates=6} within 1..2
+expect event bombStart{route=twinpeaks,gate=Start} within 255..270
+expect event bombCheckpoint{route=twinpeaks,n=1,of=4,gate=Market & Clayton} within 2401..2421
+expect event bombCheckpoint{route=twinpeaks,n=2,gate=Market & 19th} within 4164..4179
+expect event bombCheckpoint{route=twinpeaks,n=3,gate=Market & 18th} within 5447..5462
+expect event bombCheckpoint{route=twinpeaks,n=4,gate=Market & Douglass} within 8426..8441
+expect event bombFinish{route=twinpeaks,time=103.53,falls=0,total=103.53,place=2,of=4} within 12679..12693
+expect event racerFinish{route=twinpeaks,name=Mission bike messenger,place=1,time=102.96} within 12610..12624
+expect no event npcBail
+expect session.mode == over at end
+expect no event bail
+expect no event goalComplete{id=bomb11}

@@ -1,0 +1,69 @@
+# Tour level 10, North Beach (data/tour.json, physics phase 31 on city phase 12's Washington Square and
+# Columbus Ave; the squeezed city keeps Columbus along the square only), a 2-minute run from the square: its
+# three goals, the tape and S-K-A-T-E, each set up with a teleport.
+# - Along the square's south path, an ollie onto a bench (S on it), a 50-50 to its end and a kickflip off
+#   it: BS 50-50 + WASHINGTON SQUARE BENCH + Kickflip, Washington Square Bench Line (1,500).
+# - Down Columbus toward the Wharf, the curb along its median: an ollie onto it, a 50-50 (K and A on it),
+#   Columbus Curb at 15 m, and a kickflip off.
+# - Down Columbus in the street beside the median: a kickflip into a manual (T), a heelflip out of it into
+#   another (E), ollied out: Kickflip + Manual + Heelflip + Manual, Café Manual.
+# - The tape: down Columbus beside a parked car, a boneless and a 50-50 along its roof edge, the tape on the
+#   roof: Boneless + FS 50-50 + ROOF GRIND (and the city goal Roof Grind a Hybrid).
+park sf
+cmd 0 traffic clear
+cmd 0 run level northbeach
+bot balance
+cmd 1 teleport 86.69 679.83 6.63 73.1
+cmd 3 set skater.vel.x 3.826
+cmd 3 set skater.vel.y 1.166
+hold ollie 53..83
+tap grind 95..143 every 4
+tap flip 168
+cmd 601 teleport 27.70 685.76 5.31 311.2
+cmd 603 set skater.vel.x -3.008
+cmd 603 set skater.vel.y 2.632
+hold ollie 629..659
+tap grind 671..723 every 4
+hold ollie 1239..1259
+tap flip 1262
+cmd 1801 teleport 34.82 678.47 5.69 308.9
+cmd 1803 set skater.vel.x -3.89
+cmd 1803 set skater.vel.y 3.14
+hold ollie 1850..1880
+tap flip 1882
+tap up 1988
+tap down 1993
+hold ollie 2200..2215
+tap right 2217
+tap flip 2217
+tap up 2305
+tap down 2310
+hold ollie 2500..2515
+cmd 2801 teleport -27.79 723.37 3.6 311.8
+cmd 2803 set skater.vel.x -2.611
+cmd 2803 set skater.vel.y 2.331
+hold ollie 2829..2859
+tap up 2847
+tap up 2854
+tap grind 2939..2979 every 4
+run 14700
+expect event levelStart{level=northbeach,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 94..98
+expect event gap{id=wsq_bench,points=250} within 159..163
+expect event comboLanded{name=BS 50-50 + WASHINGTON SQUARE BENCH + Kickflip,points=1680} within 226..230
+expect event levelGoal{level=northbeach,id=wsqline,name=Washington Square Bench Line} within 226..230
+expect event letter{letter=K,have=SK___} within 809..813
+expect event letter{letter=A,have=SKA__} within 986..990
+expect event levelGoal{level=northbeach,id=curb,name=Columbus Curb} within 1192..1196
+expect event comboLanded{name=FS 50-50 + Kickflip,points=2360} within 1379..1383
+expect event letter{letter=T,have=SKAT_} within 2059..2063
+expect event letter{letter=E,have=SKATE} within 2363..2367
+expect event levelGoal{level=northbeach,id=skate} within 2363..2367
+expect event comboLanded{name=Kickflip + Manual + Heelflip + Manual,points=3004} within 2620..2624
+expect event levelGoal{level=northbeach,id=cafe,name=Café Manual} within 2620..2624
+expect event tapeFound{level=northbeach} within 2948..2952
+expect event comboLanded{name=Boneless + FS 50-50 + ROOF GRIND,points=2409} within 3107..3111
+expect event levelOver{level=northbeach,score=9453,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

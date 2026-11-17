@@ -1,0 +1,9 @@
+# A No Comply on the west runway (S, then let go of K): the back foot steps off and down, the front pops the nose.
+park soma
+spawn big3_runway
+cmd 8 speed 5
+hold ollie 10..40
+tap down 34
+run 200
+expect event trickEnd{trick=No Comply} within 40..42
+expect no event bail

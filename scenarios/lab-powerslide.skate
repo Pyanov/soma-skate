@@ -1,0 +1,16 @@
+# Powerslide (Shift) at 9 m/s: the board swings about 85 degrees across the travel direction in a
+# fifth of a second (nose to the heel side: counterclockwise for a regular rider going forward),
+# and sliding friction (0.6 g) stops it in about 1.5 s and 7 m.
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold slide 10..240
+run 240
+expect event powerslide{on=true} within 10..12
+expect skater.heading < 10 at 40
+expect skater.speed < 1 at 185
+expect skater.speed > 1.5 at 160
+expect skater.pos.x < -12.5 at end
+expect skater.pos.x > -13.5 at end
+expect event powerslide{on=false} within 170..200
+expect no event bail

@@ -1,0 +1,12 @@
+# Missions: Brayden's Lombard Challenge won. The rider-line autopilot (lombard_crooked_line) rides the
+# crooked block from Hyde round all eight hairpins faster than his e-scooter, and his talk step starts.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start lombard 1
+spawn lombard_crooked
+bot line lombard_crooked_line 6
+run 4200
+expect event missionStep{mission=lombard,step=1,kind=race} within 1..1
+expect event missionStep{mission=lombard,step=2,kind=talk} within 3900..4050
+expect no event missionFailed
+expect no event bail

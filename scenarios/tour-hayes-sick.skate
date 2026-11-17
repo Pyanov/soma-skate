@@ -1,0 +1,314 @@
+# A great run on Hayes Valley & Alamo Square (the score tiers' measure): camping Patricia's Green
+# Line every 10 s (the teleport stands in for rolling back): a bench, ollie, the short seat wall, and
+# at its end across onto the long seat wall beside it (0.2 m higher) for 4 s: 6,305 each (the bench
+# pays PATRICIA'S BENCH only, phase 18, and the second seat wall nothing, phase 19: a gap pays once a
+# combo), eleven, 69,355 (6,320 and 69,520 before the squeezed city). Pro (9,500) on the second, Sick
+# (59,000) on the tenth. A decent run (the
+# bomb, then the line without the long wall, 3,280, three times 20 s apart) scores 9,840. (Phase 24
+# re-measured: 6,390, 70,290, 3,288 and 9,864 before the wider clean landing; the tiers stay.)
+park sf
+cmd 0 traffic clear
+cmd 0 run level hayes
+cmd 10 teleport -219.72 429.80 9.75 340.4
+cmd 12 set skater.vel.x -1.7679
+cmd 12 set skater.vel.y 4.9777
+hold ollie 10..39
+hold ollie 129..143
+tap grind 68
+tap grind 74
+tap grind 80
+tap grind 86
+tap grind 92
+tap grind 98
+tap grind 104
+tap grind 110
+tap grind 116
+tap grind 122
+tap grind 128
+tap grind 134
+tap grind 178
+tap grind 184
+tap grind 190
+tap grind 196
+tap grind 202
+tap grind 208
+tap grind 214
+tap grind 220
+tap grind 226
+tap grind 232
+cmd 1210 teleport -219.72 429.80 9.75 340.4
+cmd 1212 set skater.vel.x -1.7679
+cmd 1212 set skater.vel.y 4.9777
+hold ollie 1210..1239
+hold ollie 1329..1343
+tap grind 1268
+tap grind 1274
+tap grind 1280
+tap grind 1286
+tap grind 1292
+tap grind 1298
+tap grind 1304
+tap grind 1310
+tap grind 1316
+tap grind 1322
+tap grind 1328
+tap grind 1334
+tap grind 1378
+tap grind 1384
+tap grind 1390
+tap grind 1396
+tap grind 1402
+tap grind 1408
+tap grind 1414
+tap grind 1420
+tap grind 1426
+tap grind 1432
+cmd 2410 teleport -219.72 429.80 9.75 340.4
+cmd 2412 set skater.vel.x -1.7679
+cmd 2412 set skater.vel.y 4.9777
+hold ollie 2410..2439
+hold ollie 2529..2543
+tap grind 2468
+tap grind 2474
+tap grind 2480
+tap grind 2486
+tap grind 2492
+tap grind 2498
+tap grind 2504
+tap grind 2510
+tap grind 2516
+tap grind 2522
+tap grind 2528
+tap grind 2534
+tap grind 2578
+tap grind 2584
+tap grind 2590
+tap grind 2596
+tap grind 2602
+tap grind 2608
+tap grind 2614
+tap grind 2620
+tap grind 2626
+tap grind 2632
+cmd 3610 teleport -219.72 429.80 9.75 340.4
+cmd 3612 set skater.vel.x -1.7679
+cmd 3612 set skater.vel.y 4.9777
+hold ollie 3610..3639
+hold ollie 3729..3743
+tap grind 3668
+tap grind 3674
+tap grind 3680
+tap grind 3686
+tap grind 3692
+tap grind 3698
+tap grind 3704
+tap grind 3710
+tap grind 3716
+tap grind 3722
+tap grind 3728
+tap grind 3734
+tap grind 3778
+tap grind 3784
+tap grind 3790
+tap grind 3796
+tap grind 3802
+tap grind 3808
+tap grind 3814
+tap grind 3820
+tap grind 3826
+tap grind 3832
+cmd 4810 teleport -219.72 429.80 9.75 340.4
+cmd 4812 set skater.vel.x -1.7679
+cmd 4812 set skater.vel.y 4.9777
+hold ollie 4810..4839
+hold ollie 4929..4943
+tap grind 4868
+tap grind 4874
+tap grind 4880
+tap grind 4886
+tap grind 4892
+tap grind 4898
+tap grind 4904
+tap grind 4910
+tap grind 4916
+tap grind 4922
+tap grind 4928
+tap grind 4934
+tap grind 4978
+tap grind 4984
+tap grind 4990
+tap grind 4996
+tap grind 5002
+tap grind 5008
+tap grind 5014
+tap grind 5020
+tap grind 5026
+tap grind 5032
+cmd 6010 teleport -219.72 429.80 9.75 340.4
+cmd 6012 set skater.vel.x -1.7679
+cmd 6012 set skater.vel.y 4.9777
+hold ollie 6010..6039
+hold ollie 6129..6143
+tap grind 6068
+tap grind 6074
+tap grind 6080
+tap grind 6086
+tap grind 6092
+tap grind 6098
+tap grind 6104
+tap grind 6110
+tap grind 6116
+tap grind 6122
+tap grind 6128
+tap grind 6134
+tap grind 6178
+tap grind 6184
+tap grind 6190
+tap grind 6196
+tap grind 6202
+tap grind 6208
+tap grind 6214
+tap grind 6220
+tap grind 6226
+tap grind 6232
+cmd 7210 teleport -219.72 429.80 9.75 340.4
+cmd 7212 set skater.vel.x -1.7679
+cmd 7212 set skater.vel.y 4.9777
+hold ollie 7210..7239
+hold ollie 7329..7343
+tap grind 7268
+tap grind 7274
+tap grind 7280
+tap grind 7286
+tap grind 7292
+tap grind 7298
+tap grind 7304
+tap grind 7310
+tap grind 7316
+tap grind 7322
+tap grind 7328
+tap grind 7334
+tap grind 7378
+tap grind 7384
+tap grind 7390
+tap grind 7396
+tap grind 7402
+tap grind 7408
+tap grind 7414
+tap grind 7420
+tap grind 7426
+tap grind 7432
+cmd 8410 teleport -219.72 429.80 9.75 340.4
+cmd 8412 set skater.vel.x -1.7679
+cmd 8412 set skater.vel.y 4.9777
+hold ollie 8410..8439
+hold ollie 8529..8543
+tap grind 8468
+tap grind 8474
+tap grind 8480
+tap grind 8486
+tap grind 8492
+tap grind 8498
+tap grind 8504
+tap grind 8510
+tap grind 8516
+tap grind 8522
+tap grind 8528
+tap grind 8534
+tap grind 8578
+tap grind 8584
+tap grind 8590
+tap grind 8596
+tap grind 8602
+tap grind 8608
+tap grind 8614
+tap grind 8620
+tap grind 8626
+tap grind 8632
+cmd 9610 teleport -219.72 429.80 9.75 340.4
+cmd 9612 set skater.vel.x -1.7679
+cmd 9612 set skater.vel.y 4.9777
+hold ollie 9610..9639
+hold ollie 9729..9743
+tap grind 9668
+tap grind 9674
+tap grind 9680
+tap grind 9686
+tap grind 9692
+tap grind 9698
+tap grind 9704
+tap grind 9710
+tap grind 9716
+tap grind 9722
+tap grind 9728
+tap grind 9734
+tap grind 9778
+tap grind 9784
+tap grind 9790
+tap grind 9796
+tap grind 9802
+tap grind 9808
+tap grind 9814
+tap grind 9820
+tap grind 9826
+tap grind 9832
+cmd 10810 teleport -219.72 429.80 9.75 340.4
+cmd 10812 set skater.vel.x -1.7679
+cmd 10812 set skater.vel.y 4.9777
+hold ollie 10810..10839
+hold ollie 10929..10943
+tap grind 10868
+tap grind 10874
+tap grind 10880
+tap grind 10886
+tap grind 10892
+tap grind 10898
+tap grind 10904
+tap grind 10910
+tap grind 10916
+tap grind 10922
+tap grind 10928
+tap grind 10934
+tap grind 10978
+tap grind 10984
+tap grind 10990
+tap grind 10996
+tap grind 11002
+tap grind 11008
+tap grind 11014
+tap grind 11020
+tap grind 11026
+tap grind 11032
+cmd 12010 teleport -219.72 429.80 9.75 340.4
+cmd 12012 set skater.vel.x -1.7679
+cmd 12012 set skater.vel.y 4.9777
+hold ollie 12010..12039
+hold ollie 12129..12143
+tap grind 12068
+tap grind 12074
+tap grind 12080
+tap grind 12086
+tap grind 12092
+tap grind 12098
+tap grind 12104
+tap grind 12110
+tap grind 12116
+tap grind 12122
+tap grind 12128
+tap grind 12134
+tap grind 12178
+tap grind 12184
+tap grind 12190
+tap grind 12196
+tap grind 12202
+tap grind 12208
+tap grind 12214
+tap grind 12220
+tap grind 12226
+tap grind 12232
+bot balance
+run 14700
+expect event levelGoal{level=hayes,id=pro,name=Pro Score} within 4368..4372   # Pro 24,000 since feel round 4 (9,500: at 1974)
+expect event levelGoal{level=hayes,id=sick,name=Sick Score} within 11568..11572
+expect event levelOver{level=hayes,score=69355} within 14399..14402
+expect no event bail

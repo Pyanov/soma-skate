@@ -1,0 +1,31 @@
+# Slide review on the lab flat rail (0.35 m) and the lab ledge (0.45 m), the whole rider, four views of
+# one tick: along the obstacle from both ends, across it, and a quarter view. Frontside: the obstacle on
+# the toe side at the approach (boardslide blind, lipslide facing forward); backside: on the heel side.
+#   ./skate strip --sheet scenarios/slides.strips --height 230
+FS Boardslide on the rail | lab-slide-table@146:90/6/2.3/0.5, lab-slide-table@146:-90/6/2.3/0.5, lab-slide-table@146:0/10/2.6/0.55, lab-slide-table@146:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Noseslide on the rail | lab-slide-table@168:90/6/2.3/0.5, lab-slide-table@168:-90/6/2.3/0.5, lab-slide-table@168:0/10/2.6/0.55, lab-slide-table@168:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Tailslide on the rail | lab-slide-table@190:90/6/2.3/0.5, lab-slide-table@190:-90/6/2.3/0.5, lab-slide-table@190:0/10/2.6/0.55, lab-slide-table@190:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Lipslide on the rail | lab-slide-table@212:90/6/2.3/0.5, lab-slide-table@212:-90/6/2.3/0.5, lab-slide-table@212:0/10/2.6/0.55, lab-slide-table@212:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Bluntslide on the rail | lab-slide-table@234:90/6/2.3/0.5, lab-slide-table@234:-90/6/2.3/0.5, lab-slide-table@234:0/10/2.6/0.55, lab-slide-table@234:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Nosebluntslide on the rail | lab-slide-table@256:90/6/2.3/0.5, lab-slide-table@256:-90/6/2.3/0.5, lab-slide-table@256:0/10/2.6/0.55, lab-slide-table@256:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Boardslide on the rail | lab-slide-table-bs@146:90/6/2.3/0.5, lab-slide-table-bs@146:-90/6/2.3/0.5, lab-slide-table-bs@146:0/10/2.6/0.55, lab-slide-table-bs@146:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Noseslide on the rail | lab-slide-table-bs@168:90/6/2.3/0.5, lab-slide-table-bs@168:-90/6/2.3/0.5, lab-slide-table-bs@168:0/10/2.6/0.55, lab-slide-table-bs@168:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Tailslide on the rail | lab-slide-table-bs@190:90/6/2.3/0.5, lab-slide-table-bs@190:-90/6/2.3/0.5, lab-slide-table-bs@190:0/10/2.6/0.55, lab-slide-table-bs@190:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Lipslide on the rail | lab-slide-table-bs@212:90/6/2.3/0.5, lab-slide-table-bs@212:-90/6/2.3/0.5, lab-slide-table-bs@212:0/10/2.6/0.55, lab-slide-table-bs@212:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Bluntslide on the rail | lab-slide-table-bs@234:90/6/2.3/0.5, lab-slide-table-bs@234:-90/6/2.3/0.5, lab-slide-table-bs@234:0/10/2.6/0.55, lab-slide-table-bs@234:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Nosebluntslide on the rail | lab-slide-table-bs@256:90/6/2.3/0.5, lab-slide-table-bs@256:-90/6/2.3/0.5, lab-slide-table-bs@256:0/10/2.6/0.55, lab-slide-table-bs@256:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Boardslide on the ledge | lab-slide-ledge@146:90/6/2.3/0.5, lab-slide-ledge@146:-90/6/2.3/0.5, lab-slide-ledge@146:0/10/2.6/0.55, lab-slide-ledge@146:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Noseslide on the ledge | lab-slide-ledge@168:90/6/2.3/0.5, lab-slide-ledge@168:-90/6/2.3/0.5, lab-slide-ledge@168:0/10/2.6/0.55, lab-slide-ledge@168:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Tailslide on the ledge | lab-slide-ledge@190:90/6/2.3/0.5, lab-slide-ledge@190:-90/6/2.3/0.5, lab-slide-ledge@190:0/10/2.6/0.55, lab-slide-ledge@190:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Lipslide on the ledge | lab-slide-ledge@212:90/6/2.3/0.5, lab-slide-ledge@212:-90/6/2.3/0.5, lab-slide-ledge@212:0/10/2.6/0.55, lab-slide-ledge@212:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Bluntslide on the ledge | lab-slide-ledge@234:90/6/2.3/0.5, lab-slide-ledge@234:-90/6/2.3/0.5, lab-slide-ledge@234:0/10/2.6/0.55, lab-slide-ledge@234:45/22/2.8/0.55 | - | chase | techbro | cute
+FS Nosebluntslide on the ledge | lab-slide-ledge@256:90/6/2.3/0.5, lab-slide-ledge@256:-90/6/2.3/0.5, lab-slide-ledge@256:0/10/2.6/0.55, lab-slide-ledge@256:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Boardslide on the ledge | lab-slide-ledge-bs@146:90/6/2.3/0.5, lab-slide-ledge-bs@146:-90/6/2.3/0.5, lab-slide-ledge-bs@146:0/10/2.6/0.55, lab-slide-ledge-bs@146:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Noseslide on the ledge | lab-slide-ledge-bs@168:90/6/2.3/0.5, lab-slide-ledge-bs@168:-90/6/2.3/0.5, lab-slide-ledge-bs@168:0/10/2.6/0.55, lab-slide-ledge-bs@168:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Tailslide on the ledge | lab-slide-ledge-bs@190:90/6/2.3/0.5, lab-slide-ledge-bs@190:-90/6/2.3/0.5, lab-slide-ledge-bs@190:0/10/2.6/0.55, lab-slide-ledge-bs@190:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Lipslide on the ledge | lab-slide-ledge-bs@212:90/6/2.3/0.5, lab-slide-ledge-bs@212:-90/6/2.3/0.5, lab-slide-ledge-bs@212:0/10/2.6/0.55, lab-slide-ledge-bs@212:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Bluntslide on the ledge | lab-slide-ledge-bs@234:90/6/2.3/0.5, lab-slide-ledge-bs@234:-90/6/2.3/0.5, lab-slide-ledge-bs@234:0/10/2.6/0.55, lab-slide-ledge-bs@234:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Nosebluntslide on the ledge | lab-slide-ledge-bs@256:90/6/2.3/0.5, lab-slide-ledge-bs@256:-90/6/2.3/0.5, lab-slide-ledge-bs@256:0/10/2.6/0.55, lab-slide-ledge-bs@256:45/22/2.8/0.55 | - | chase | techbro | cute
+BS Noseslide on the SoMa park coping (F04) | soma-ledge-noseslide@32:w90/8/2.6/0.5, soma-ledge-noseslide@32:w0/6/2.4/0.4, soma-ledge-noseslide@32:w180/6/2.4/0.4, soma-ledge-noseslide@32:w45/24/2.8/0.5 | - | chase | techbro | real
+BS Bluntslide on the SoMa park coping (F04) | soma-ledge-bluntslide@32:w90/8/2.6/0.5, soma-ledge-bluntslide@32:w0/6/2.4/0.4, soma-ledge-bluntslide@32:w180/6/2.4/0.4, soma-ledge-bluntslide@32:w45/24/2.8/0.5 | - | chase | techbro | real
+BS Nosebluntslide on the SoMa park coping (F04) | soma-ledge-nosebluntslide@32:w90/8/2.6/0.5, soma-ledge-nosebluntslide@32:w0/6/2.4/0.4, soma-ledge-nosebluntslide@32:w180/6/2.4/0.4, soma-ledge-nosebluntslide@32:w45/24/2.8/0.5 | - | chase | techbro | real

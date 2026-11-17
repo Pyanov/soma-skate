@@ -1,0 +1,56 @@
+# Hopping on a ledge's end forever (found measuring the Embarcadero's tiers, phase 25, on the old Pier 7
+# benches; since city phase 15 rebuilt Pier 7, on EMB's row of granite ledges, the same kind of ledge, 3 m
+# apart): rolled along the row into the end of a ledge, the skater was stopped by it, and a grind press caught the bench at 0.2 m/s
+# along it. That grind stalled on its first tick (a void grind), a late ollie popped them straight up
+# off it, a flip, the bench caught again: a combo that never landed, 11,275 x11 open after 5 s (49,980
+# after 15); these keys: grindStart 13 times on the spot. A catch slower than grind.stallSpeed along the line is no
+# grind now (grind.ts tryCapture): the same keys bring the skater down on the ledge, mid-flip.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 567.86 708.15 -9.0 141.9
+cmd 3 set skater.vel.x 4.1150
+cmd 3 set skater.vel.y -5.2490
+hold ollie 7..20
+tap ollie 34
+tap ollie 85
+tap ollie 136
+tap ollie 181
+tap ollie 238
+tap ollie 289
+tap ollie 340
+tap ollie 385
+tap ollie 442
+tap ollie 493
+tap ollie 544
+tap ollie 589
+tap grind 22
+tap grind 30..600 every 6
+tap flip 37
+tap left 37
+tap flip 88
+tap right 88
+tap flip 139
+tap down 139
+tap flip 184
+tap up 184
+tap flip 241
+tap left 241
+tap flip 292
+tap right 292
+tap flip 343
+tap down 343
+tap flip 388
+tap up 388
+tap flip 445
+tap left 445
+tap flip 496
+tap right 496
+tap flip 547
+tap down 547
+tap flip 592
+tap up 592
+run 600
+expect event pop within 21..21
+expect no event grindStart
+expect no event comboLanded
+expect event comboLost count >= 1

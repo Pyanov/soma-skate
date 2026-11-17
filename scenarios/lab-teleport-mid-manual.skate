@@ -1,0 +1,19 @@
+# A teleport (a spot picked from the menu, or a scenario's next leg) in the middle of a manual or a
+# grind (phase 26, found by skate feel --tour: tour-hayes's E leg ends on a seat wall grind). The
+# teleport put the skater in the air but left the manual (and a grind's state) on it: landing at the
+# new spot, the old manual carried on, ending there ("stopped", its 120 points banked at the new spot),
+# and a leftover grind fed a balance bot a meter that never moved. A teleport now ends them: no
+# manual at the new spot, nothing banked.
+park lab
+spawn lab_ledge
+hold up 0..80
+tap up 100
+tap down 104
+cmd 160 teleport lab_ledge
+bot balance
+run 400
+expect event manualStart{trick=Manual} within 104..106
+expect no event manualStart within 107..400
+expect no event manualEnd
+expect no event comboLanded
+expect no event bail

@@ -1,0 +1,30 @@
+# Two-player HORSE (run horse2p SOMA: the fun word from data run.twoPlayer.horse.words) at the
+# S.K.A.T.E. spot, S.K.A.T.E.'s rules between the players: player 1 sets first, the setter changes
+# every round, a missed match is a letter. The bot rides player 1's turns clean (Kickflip, Heelflip,
+# Pop Shove-It, FS 180) and player 2's sketchy: player 2 misses every match and every set (its
+# Ollie): S-O-M-A in 11 turns of about 4.7 s (the 2 s pause and the ride), player 1 wins with none.
+park soma
+cmd 0 player2 join
+cmd 0 run horse2p SOMA
+bot horse kickflip,heelflip,popshoveit,fs180
+p2 bot horse sketchy
+run 6400
+expect event horseStart{word=SOMA} within 1..1
+expect event horseTurn{who=1,role=set,seconds=10} within 1..1
+expect event horseSet{by=1,trick=kickflip,name=Kickflip} within 580..580
+expect event horseTurn{who=2,role=match,trick=kickflip} within 580..580
+expect event horseMatch{by=2,ok=false,trick=kickflip,got=kickflip,reason=sketchy} within 1149..1149
+expect event horseLetter{who=2,letters=S} within 1149..1149
+expect event horseTurn{who=2,role=set} within 1149..1149
+expect event horseSetMiss{by=2,reason=sketchy,got=ollie} within 1718..1718
+expect event horseTurn{who=1,role=set} within 1718..1718
+expect event horseSet{by=1,trick=heelflip} within 2298..2298
+expect event horseLetter{who=2,letters=SOM} within 4585..4585
+expect event horseSet{by=1,trick=fs180,name=FS 180} within 5734..5734
+expect event horseLetter{who=2,letters=SOMA} within 6303..6303
+expect event horseOver{winner=1} within 6303..6303
+expect event horseLetter{who=1} count == 0
+expect event horseTurn count == 11
+expect session.mode == over at end
+expect session2.horseLetters == SOMA at end
+expect no event bail

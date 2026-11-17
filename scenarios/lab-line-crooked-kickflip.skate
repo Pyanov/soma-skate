@@ -1,0 +1,17 @@
+# A line (motion review: lines.strips, tests/posecontinuity.test.ts): ollie onto the ledge into an FS
+# Crooked Grind (up + toward, the ledge on the right, held as it locks on), pop out with a kickflip.
+park lab
+cmd 0 teleport 0 1.1 0.14 90
+hold up 6..100
+hold ollie 90..105
+hold up 170..182
+hold right 170..182
+tap grind 176
+hold ollie 230..250
+tap flip+left 254
+bot balance
+run 420
+expect event grindStart{trick=FS Crooked Grind} within 170..190
+expect event pop within 249..253
+expect event trickEnd{trick=Kickflip} within 280..320
+expect no event bail

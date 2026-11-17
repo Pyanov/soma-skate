@@ -1,0 +1,10 @@
+# Start at 10 m/s toward the 3.4 m vert ramp: ride up past the coping, fly, come back down onto the ramp.
+park lab
+spawn lab_vert
+cmd 6 speed 10
+run 900
+expect event air within 60..400
+expect max skater.pos.z > 3.6
+expect event land within 100..700
+expect state ground at end
+expect skater.pos.y < 20 at end

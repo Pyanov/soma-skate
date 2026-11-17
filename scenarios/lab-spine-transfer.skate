@@ -1,0 +1,13 @@
+# Spine transfer (THPS 3+): up the lab spine's south face at 7.5 m/s into vert air, ; (revert) in
+# the air carries the skater over the ridge: "Spine Transfer" (250), down the north face forward,
+# a clean landing (0.05 m/s into the wall), rolling away north.
+park lab
+spawn lab_spine_south
+cmd 6 speed 7.5
+tap revert 160
+run 400
+expect event spineTransfer{points=250} within 160..162
+expect event land{quality=clean,fakie=false} within 270..290
+expect skater.vel.y > 3 at 320
+expect event comboLanded{name=Spine Transfer,points=250} within 280..310
+expect no event bail

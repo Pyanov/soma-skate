@@ -1,0 +1,13 @@
+# Grab review: every grab held, from the front quarter (toe side), from behind on the heel side, and from
+# above the toe side, one tick in the hold. Indy and mute are toe-edge grabs (back hand, front hand),
+# melon and method heel-edge grabs with the front hand, stalefish the back hand behind the back leg.
+#   ./skate strip --sheet scenarios/grabs.strips --height 230
+Indy (back hand, toe edge) | lab-grab-indy@125:130/14/2.4/0.5, lab-grab-indy@125:-60/10/2.4/0.5, lab-grab-indy@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Melon (front hand, heel edge) | lab-grab-melon@125:130/14/2.4/0.5, lab-grab-melon@125:-60/10/2.4/0.5, lab-grab-melon@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Mute (front hand, toe edge) | lab-grab-mute@125:130/14/2.4/0.5, lab-grab-mute@125:-60/10/2.4/0.5, lab-grab-mute@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Stalefish (back hand, heel edge behind the back leg) | lab-grab-stalefish@125:130/14/2.4/0.5, lab-grab-stalefish@125:-60/10/2.4/0.5, lab-grab-stalefish@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Nosegrab (front hand, nose) | lab-grab-nosegrab@125:130/14/2.4/0.5, lab-grab-nosegrab@125:-60/10/2.4/0.5, lab-grab-nosegrab@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Tailgrab (back hand, tail) | lab-grab-tailgrab@125:130/14/2.4/0.5, lab-grab-tailgrab@125:-60/10/2.4/0.5, lab-grab-tailgrab@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Method (front hand, heel edge, board up behind) | lab-grab-method@125:130/14/2.4/0.5, lab-grab-method@125:-60/10/2.4/0.5, lab-grab-method@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Japan (front hand, toe edge, tweaked) | lab-grab-japan@125:130/14/2.4/0.5, lab-grab-japan@125:-60/10/2.4/0.5, lab-grab-japan@125:60/30/2.6/0.45 | - | chase | techbro | grey
+Benihana (back hand, tail; back foot off) | lab-grab-benihana@125:130/14/2.4/0.5, lab-grab-benihana@125:-60/10/2.4/0.5, lab-grab-benihana@125:60/30/2.6/0.45 | - | chase | techbro | grey

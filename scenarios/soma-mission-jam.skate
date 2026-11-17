@@ -1,0 +1,33 @@
+# Chapter 6, the jam (mission start ch6 2; also playable in the park alone): three combos of 1,200 or
+# more in the park in three minutes, a Supervisor's and Rosa's bark between them; three Kickflip FS
+# 360s over Big 3 (1,410 each). Then the vote: Supervisor Okafor talks at once (radius 6, the crowd
+# stands where the mission put them); Esc skips the rest and the story is done.
+park soma
+spawn big3
+cmd 0 mission start ch6 2
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+hold spinL 210..290
+cmd 420 teleport big3
+hold up 420..520
+hold ollie 586..616
+tap flip+left 622
+hold spinL 630..710
+cmd 840 teleport big3
+hold up 840..940
+hold ollie 1006..1036
+tap flip+left 1042
+hold spinL 1050..1130
+cmd 1300 teleport 9.3 30.5 0.2 0
+cmd 1400 mission next all
+run 1420
+expect event missionStep{mission=ch6,step=2,kind=trick,seconds=180} within 1..1
+expect event comboLanded{points=1410} count == 3
+expect event talk{line=ch6-07,bark=true} within 300..360
+expect event talk{line=ch6-08,bark=true} within 720..780
+expect event talk{line=ch6-09,bark=true} within 1140..1200
+expect event missionStep{mission=ch6,step=3,kind=talk} within 1140..1200
+expect event talk{character=okafor,line=ch6-10} within 1301..1303
+expect event missionDone{mission=ch6,sticker=story-ch6} within 1401..1401
+expect no event missionFailed

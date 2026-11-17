@@ -1,0 +1,14 @@
+# Twin Peaks goals (data/goals.json, route twinpeaks) on the autopilot's race: Twin Peaks at 56
+# (it tops out at 58.7 km/h before Douglass), Under 110 and No Brakes (103.53 s, never braking).
+# The Dolores goals stay open: they name the Dolores route.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb twinpeaks
+bot line twin_peaks_line 6
+run 12800
+expect event goalComplete{id=tp56,area=Twin Peaks} within 4914..4934
+expect event goalComplete{id=tp110} within 12676..12696
+expect event goalComplete{id=tpnobrakes} within 12676..12696
+expect no event goalComplete{id=bomb11}
+expect no event goalComplete{id=nobrakes}

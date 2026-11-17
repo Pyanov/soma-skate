@@ -1,0 +1,25 @@
+# A scooter's battery (physics phase 31), shortened here to 10 s with 4 s of low (the scooter re-placed so it
+# takes the new charge): ridden flat out on Market, it says low battery at 6 s (scooterBattery low: the
+# display's voice line) and its limiter brakes it from 4.7 m/s down to about 2 (lowTop 2.2, less rolling
+# and drag); at 10 s it is empty (scooterBattery empty) and the motor stops: it coasts, slowing, with the
+# rider still on it, the throttle held for nothing.
+park sf
+cmd 0 traffic clear
+cmd 0 setData vehicles.types.scooter.scooter.battery 10
+cmd 0 setData vehicles.types.scooter.scooter.low 4
+cmd 1 vehicle spawn scooter 359.5 323.1 45 vantage_1
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..1700
+run 1700
+expect event vehicleEnter{name=vantage_1} within 30..32
+expect van.hspeed > 4.6 at 740
+expect event scooterBattery{state=low} within 749..753
+expect van.hspeed < 2.2 at 1100
+expect van.hspeed > 1.9 at 1100
+expect event scooterBattery{state=empty} within 1229..1233
+expect van.car.drive.ride.charge == 0 at 1300
+expect van.hspeed < 2.05 at 1600   # coasting: UN Plaza's piece of Market falls a little this way
+expect state drive at end
+expect event scooterBattery count == 2
+expect no event bail

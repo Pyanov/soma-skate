@@ -1,0 +1,27 @@
+# The edge of the world below Upper Market holds (city phase 10; the city sweep's twin-peaks-lot-void):
+# the physics sweep's drop there, rolling and ollieing west off the Twin Peaks lots toward the region's
+# edge, ends against the boundary wall, which now spans the ground really beside it (8 m over the
+# highest surface, 7 m over any lot within 12 m) instead of standing on the street grade.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1345 -540 97.48 262
+hold up 0..60
+hold up+left+ollie+grind 60..167
+hold up+revert 167..258
+hold up+revert 258..295
+hold up+walk 295..334
+hold up+ollie+revert+walk 334..381
+hold up+left 381..406
+hold up+ollie+grab+slide 451..490
+hold up+revert 490..535
+hold right+revert 535..576
+hold up 576..662
+hold grind 662..752
+hold down+left 752..781
+hold up+grind 781..869
+hold up+right 869..936
+hold up 936..1001
+hold revert 1001..1013
+run 1015
+expect skater.pos.z > 80 at end
+expect skater.pos.x > -1365 at end

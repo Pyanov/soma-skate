@@ -1,0 +1,81 @@
+{
+  "_doc": "Sound (client only; src/client/sound.ts). Gains are linear (1 = full), frequencies Hz, times seconds, speeds m/s. master: overall gain and the bus mix. surfaces: what the wheels roll on, picked per park element (type, then collection, then id pattern), with joint spacing in metres (0 = no joints) and grit (rough asphalt crackle). roll: the wheel loops (rumble band rises with speed, hiss above, grit crackle). grind/slide: loops per material; slide.urethane is the wheels scrubbing in a powerslide or a carve that loses grip. wobble: the trucks rattling in a speed wobble (gain, and the wobble amplitude where it starts). wind: rises with speed squared. ambience: the freeway overhead (louder under the deck), passing trucks with the deck's expansion-joint thumps, distant sirens; streets: out from under the deck the city hum rises, birds chirp and far-off horns sound. hits: one-shot sample groups (assets/sound) with gain and pitch ranges. score: bell stingers.",
+  "master": { "gain": 0.9, "sfx": 1.0, "ambience": 0.55, "ui": 0.5, "reverb": { "open": 0.07, "underDeck": 0.22, "seconds": 1.6 } },
+  "surfaces": {
+    "kinds": {
+      "concrete": { "rumble": 1.0, "hiss": 0.8, "grit": 0.15, "joint": 3.0, "jointGain": 0.55 },
+      "sidewalk": { "rumble": 1.1, "hiss": 0.9, "grit": 0.35, "joint": 1.5, "jointGain": 0.7 },
+      "asphalt":  { "rumble": 1.35, "hiss": 1.0, "grit": 1.0, "joint": 0, "jointGain": 0 },
+      "metal":    { "rumble": 0.6, "hiss": 1.3, "grit": 0.0, "joint": 0, "jointGain": 0 },
+      "wood":     { "rumble": 1.4, "hiss": 0.7, "grit": 0.1, "joint": 0.6, "jointGain": 0.3 },
+      "grass":    { "rumble": 0.45, "hiss": 0.25, "grit": 0.9, "joint": 0, "jointGain": 0 }
+    },
+    "byType": { "stairs": "concrete" },
+    "byCollection": { "ground": "concrete", "obstacles": "concrete", "streets": "asphalt", "city_road": "asphalt", "city_lot": "asphalt", "city_marking": "asphalt", "city_sidewalk": "sidewalk", "city_median": "grass", "city_curb": "concrete", "city_car_top": "metal", "city_car": "metal", "city_roof": "concrete", "city_park": "grass", "city_path": "sidewalk", "city_shelter_top": "metal" },
+    "byIdPattern": [["(^|_)(street|road|asphalt)", "asphalt"], ["sidewalk", "sidewalk"], ["_edge_|_rail$", "metal"]],
+    "default": "concrete"
+  },
+  "roll": { "gain": 0.32, "refSpeed": 6, "rumbleHz": 260, "rumblePerMs": 45, "rumbleQ": 0.9, "hissHz": 2200, "hiss": 0.05, "grit": 0.15, "manual": 0.7, "wheelbase": 0.36 },
+  "grind": {
+    "metal":    { "gain": 0.32, "bands": [1150, 2480, 3920], "q": 9, "jitter": 0.35 },
+    "concrete": { "gain": 0.34, "bands": [520, 1100], "q": 1.4, "jitter": 0.6 }
+  },
+  "slide": {
+    "metal":    { "gain": 0.26, "bands": [1450], "q": 2.2, "jitter": 0.2 },
+    "concrete": { "gain": 0.3, "bands": [2300], "q": 0.8, "jitter": 0.3 },
+    "urethane": { "gain": 0.34, "bands": [1350, 2700], "q": 3.2, "jitter": 0.35 }
+  },
+  "wobble": { "gain": 0.5, "min": 0.15 },
+  "wind": { "gain": 0.09, "refSpeed": 12, "hz": 380, "perMs": 45 },
+  "drive": { "_doc": "Driving (sound.ts update and event; docs/mechanics/driving.md): the engine, a sawtooth and a square an octave down through a lowpass, its pitch idleHz rising perMs Hz per m/s through each gear (gears: the speeds where it shifts down to idle again), throttleHz higher with the pedal down, the truck pitched by truck; idleGain, plus gain with the pedal down. The tyres squeal (white noise through a narrow band at hz) with the handbrake held or sliding sideways past slip m/s, louder with speed up to full at fullSpeed. The door: a thump at hz and a latch click. A bump or a hard landing: a thump by speed. The van's horn: two tones (hz) for seconds. A rental scooter (physics phase 31): the engine pitched by scooter, its gain times scooterGain; unlock: two chirps (hz) getting on a vehicle of types, the other way round getting off (instead of the door).",
+    "engine": { "idleHz": 52, "perMs": 9, "gears": [6, 12, 19], "throttleHz": 14, "truck": 0.7, "scooter": 3.6, "scooterGain": 0.45, "idleGain": 0.025, "gain": 0.07, "lowpass": 900 },
+    "squeal": { "hz": 2600, "q": 9, "gain": 0.14, "slip": 2, "fullSpeed": 10 },
+    "door": { "hz": 95, "gain": 0.5 },
+    "unlock": { "types": ["scooter"], "hz": [1568, 2093], "gain": 0.22 },
+    "bump": { "gain": 0.6, "hz": 70 },
+    "horn": { "hz": [311, 392], "seconds": 0.45, "gain": 0.16 }
+  },
+  "ambience": {
+    "freeway": { "gain": 0.12, "underDeck": 1.7, "hz": 140 },
+    "city": { "gain": 0.05 },
+    "trucks": { "every": [14, 38], "seconds": 6, "gain": 0.32, "joints": 2 },
+    "sirens": { "every": [80, 200], "seconds": 7, "gain": 0.035 },
+    "streets": { "city": 0.14, "birds": { "every": [3, 9], "gain": 0.05 }, "horns": { "every": [18, 45], "gain": 0.05 } }
+  },
+  "hits": {
+    "pop":     { "files": "impactPlank_medium", "gain": 0.9, "rate": [1.05, 1.3] },
+    "popCrack":{ "gain": 0.5, "hz": 2400 },
+    "flip":    { "gain": 0.22, "seconds": 0.28 },
+    "catch":   { "files": "impactWood_light", "gain": 0.45, "rate": [1.1, 1.35] },
+    "land":    { "files": "impactWood_heavy", "gain": 0.9, "rate": [0.9, 1.1] },
+    "landClack": { "files": "impactPlank_medium", "gain": 0.6, "rate": [0.85, 1.0] },
+    "thump":   { "gain": 0.7, "hz": 72 },
+    "joint":   { "files": "impactWood_light", "gain": 0.32, "rate": [0.75, 0.95] },
+    "grindMetal": { "files": "impactMetal_light", "gain": 0.6, "rate": [0.9, 1.15] },
+    "grindConcrete": { "files": "impactPlank_medium", "gain": 0.55, "rate": [0.8, 0.95] },
+    "lip":     { "files": "impactMetal_medium", "gain": 0.6, "rate": [0.95, 1.05] },
+    "bailBody":{ "files": "impactSoft_heavy", "gain": 1.0, "rate": [0.9, 1.05] },
+    "bailHit": { "files": "impactPunch_medium", "gain": 0.55, "rate": [0.85, 1.0] },
+    "clatter": { "files": "impactWood_medium", "gain": 0.5, "rate": [0.95, 1.25], "count": 4 },
+    "step":    { "files": "footstep_concrete", "gain": 0.45, "rate": [0.9, 1.1], "stride": 0.75 },
+    "footLand": { "files": "footstep_concrete", "gain": 0.9, "rate": [0.7, 0.8] },
+    "push":    { "files": "footstep_concrete", "gain": 0.32, "rate": [1.1, 1.3], "seconds": 0.62 },
+    "pickup":  { "files": "impactPlank_medium", "gain": 0.4, "rate": [1.3, 1.5] },
+    "drop":    { "files": "impactPlank_medium", "gain": 0.85, "rate": [0.95, 1.1] }
+  },
+  "score": { "gain": 0.22, "ratio": 3.5, "index": 2.2, "bigCombo": 5000 },
+  "npc": { "_doc": "NPC skaters (sound.npc): their catch, grind, land and bail hits and character voice at gain, full up to near metres, falling off with distance, silent beyond far.", "gain": 0.3, "near": 5, "far": 45 },
+  "dogs": { "_doc": "Barks of the park dogs (sound.bark): one to woofs[1] woofs, each a voiced tone falling from hz[1] to hz[0] (higher for small dogs) through a mouth-shaped filter with a breath of noise, seconds long; full volume up to near metres, silent beyond far.", "gain": 0.55, "near": 6, "far": 60, "hz": [240, 620], "seconds": 0.14, "woofs": [1, 3] },
+  "voices": {
+    "_doc": "Per character (data/characters.json ids): extra sounds on pop, land, bail and the emote (taunt key), from the recipes in sound.ts (tink, fizz, squish, splat, fluff, cape, rattle, rattleBig, ding, sadDing, honk, whoosh, whooshBig, crinkle, super, coo, flap, whir, chime, errorTone, clang, clangClang, screech, clunk, bark, barkBig, flop). gain scales them all.",
+    "gain": 0.8,
+    "can":        { "pop": ["tink"], "land": ["tink", "fizz"], "bail": ["tinkHeavy", "fizz"], "emote": ["fizz", "tink", "fizz"] },
+    "blob":       { "pop": ["squish"], "land": ["squish"], "bail": ["splat"], "emote": ["squish", "squish"] },
+    "redmonster": { "pop": ["fluff"], "land": ["fluff"], "bail": ["fluff", "honk"], "emote": ["fluff", "honk"] },
+    "mascot":     { "pop": [], "land": ["fluff"], "bail": ["fluff", "honk"], "emote": ["honk", "fluff"] },
+    "vampire":    { "pop": ["cape"], "land": ["cape"], "bail": ["cape"], "emote": ["cape", "cape"] },
+    "skeleton":   { "pop": ["rattle"], "land": ["rattle"], "bail": ["rattleBig"], "emote": ["rattleBig"] },
+    "techbro":    { "pop": [], "land": ["ding"], "bail": ["sadDing"], "emote": ["ding", "ding"] }, "karl": {"pop": ["whoosh"], "land": ["whoosh"], "bail": ["whooshBig"], "emote": ["whoosh", "whoosh"]}, "burrito": {"pop": ["crinkle"], "land": ["crinkle", "squish"], "bail": ["crinkle", "splat"], "emote": ["super"]}, "pigeon": {"pop": ["flap"], "land": ["coo"], "bail": ["flap", "flap", "coo"], "emote": ["coo", "coo", "coo"]}, "robotaxi": {"pop": ["whir"], "land": ["clunk"], "bail": ["screech", "errorTone"], "emote": ["chime"]}, "cablecar": {"pop": ["clang"], "land": ["clunk", "clang"], "bail": ["screech", "clangClang"], "emote": ["clangClang", "clangClang"]}, "sealion": {"pop": ["flop"], "land": ["bark"], "bail": ["flop", "barkBig"], "emote": ["bark", "bark"]}
+  },
+  "applause": {"_doc": "The fans on the park's ledges cheering a big combo (sound.applause): claps scattered over seconds (more with more fans; full at fullAt fans), each a tiny noise burst in the hz band, after delay s; up to woos voice-ish woo glides.", "claps": 46, "fullAt": 6, "seconds": 1.6, "delay": 0.15, "hz": [1100, 2600], "gain": 1.2, "woos": 2, "wooGain": 0.06}
+}

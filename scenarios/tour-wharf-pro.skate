@@ -1,0 +1,121 @@
+# Fisherman's Wharf's Pro line (physics phase 32; feel --tour measures Pro on it): every 10 s, along Pier 39's
+# footway and a kickflip through its gate, into a manual, a kickflip out: Kickflip + PIER 39 GATE + Manual +
+# Kickflip, 2,940; twelve, 35,280. No long grind (the great run is a long nosegrind on Jefferson's curb, which
+# a casual player loses). Pro (16,500) on the sixth.
+park sf
+cmd 0 traffic clear
+cmd 0 run level wharf
+bot balance
+cmd 1 teleport 284.00 967.30 -8.49 40.0
+cmd 3 set skater.vel.x 3.214
+cmd 3 set skater.vel.y 3.830
+cmd 1201 teleport 284.00 967.30 -8.49 40.0
+cmd 1203 set skater.vel.x 3.214
+cmd 1203 set skater.vel.y 3.830
+cmd 2401 teleport 284.00 967.30 -8.49 40.0
+cmd 2403 set skater.vel.x 3.214
+cmd 2403 set skater.vel.y 3.830
+cmd 3601 teleport 284.00 967.30 -8.49 40.0
+cmd 3603 set skater.vel.x 3.214
+cmd 3603 set skater.vel.y 3.830
+cmd 4801 teleport 284.00 967.30 -8.49 40.0
+cmd 4803 set skater.vel.x 3.214
+cmd 4803 set skater.vel.y 3.830
+cmd 6001 teleport 284.00 967.30 -8.49 40.0
+cmd 6003 set skater.vel.x 3.214
+cmd 6003 set skater.vel.y 3.830
+cmd 7201 teleport 284.00 967.30 -8.49 40.0
+cmd 7203 set skater.vel.x 3.214
+cmd 7203 set skater.vel.y 3.830
+cmd 8401 teleport 284.00 967.30 -8.49 40.0
+cmd 8403 set skater.vel.x 3.214
+cmd 8403 set skater.vel.y 3.830
+cmd 9601 teleport 284.00 967.30 -8.49 40.0
+cmd 9603 set skater.vel.x 3.214
+cmd 9603 set skater.vel.y 3.830
+cmd 10801 teleport 284.00 967.30 -8.49 40.0
+cmd 10803 set skater.vel.x 3.214
+cmd 10803 set skater.vel.y 3.830
+cmd 12001 teleport 284.00 967.30 -8.49 40.0
+cmd 12003 set skater.vel.x 3.214
+cmd 12003 set skater.vel.y 3.830
+cmd 13201 teleport 284.00 967.30 -8.49 40.0
+cmd 13203 set skater.vel.x 3.214
+cmd 13203 set skater.vel.y 3.830
+hold ollie 81..111
+hold ollie 301..316
+hold ollie 1281..1311
+hold ollie 1501..1516
+hold ollie 2481..2511
+hold ollie 2701..2716
+hold ollie 3681..3711
+hold ollie 3901..3916
+hold ollie 4881..4911
+hold ollie 5101..5116
+hold ollie 6081..6111
+hold ollie 6301..6316
+hold ollie 7281..7311
+hold ollie 7501..7516
+hold ollie 8481..8511
+hold ollie 8701..8716
+hold ollie 9681..9711
+hold ollie 9901..9916
+hold ollie 10881..10911
+hold ollie 11101..11116
+hold ollie 12081..12111
+hold ollie 12301..12316
+hold ollie 13281..13311
+hold ollie 13501..13516
+tap flip 114
+tap up 217
+tap down 222
+tap flip 318
+tap flip 1314
+tap up 1417
+tap down 1422
+tap flip 1518
+tap flip 2514
+tap up 2617
+tap down 2622
+tap flip 2718
+tap flip 3714
+tap up 3817
+tap down 3822
+tap flip 3918
+tap flip 4914
+tap up 5017
+tap down 5022
+tap flip 5118
+tap flip 6114
+tap up 6217
+tap down 6222
+tap flip 6318
+tap flip 7314
+tap up 7417
+tap down 7422
+tap flip 7518
+tap flip 8514
+tap up 8617
+tap down 8622
+tap flip 8718
+tap flip 9714
+tap up 9817
+tap down 9822
+tap flip 9918
+tap flip 10914
+tap up 11017
+tap down 11022
+tap flip 11118
+tap flip 12114
+tap up 12217
+tap down 12222
+tap flip 12318
+tap flip 13314
+tap up 13417
+tap down 13422
+tap flip 13518
+run 14700
+expect event comboLanded{name=Kickflip + PIER 39 GATE + Manual + Kickflip,points=2940} count == 12
+expect event levelGoal{level=wharf,id=pro} within 6422..6426
+expect event levelOver{level=wharf,score=35280} within 14399..14402
+expect no event bail

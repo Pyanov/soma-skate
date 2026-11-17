@@ -1,0 +1,11 @@
+# A Bert Slide the other way: right held as the powerslide starts swings the nose clockwise, so a
+# regular rider going forward slides backside (toes leading), crouched with a hand down.
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold right 11..14
+hold ollie 10..80
+hold slide 12..80
+run 300
+expect event trickEnd{trick=BS Bert Slide} within 79..82
+expect no event bail

@@ -1,0 +1,25 @@
+# Two-player HORSE, player 2 never rides: its match runs out of time (the 2 s pause and the 10 s
+# clock, data run.twoPlayer.horse) and is a letter, H; then its set runs out (a set miss, no letter)
+# and player 1 sets again. Each turn puts whoever is up at the spot's start (x 45) and the other at
+# its watch spot (player 1 at playerWatch x 45.5, player 2 at localWatch x 47.5; y 21.6).
+park soma
+cmd 0 player2 join
+cmd 0 run horse2p
+bot horse kickflip
+run 3800
+expect skater.pos.x > 44.9 at 2
+expect skater.pos.x < 45.1 at 2
+expect skater2.pos.x > 47.4 at 2
+expect skater2.pos.x < 47.6 at 2
+expect event horseSet{by=1,trick=kickflip} within 580..580
+expect skater2.pos.x > 44.9 at 581
+expect skater2.pos.x < 45.1 at 581
+expect skater.pos.x > 45.4 at 581
+expect skater.pos.x < 45.6 at 581
+expect skater.pos.y > 21.5 at 581
+expect event horseMatch{by=2,ok=false,trick=kickflip,got=,reason=time,at=-1} within 2020..2020
+expect event horseLetter{who=2,letters=H} within 2020..2020
+expect event horseSetMiss{by=2,reason=time,at=-1} within 3460..3460
+expect event horseTurn{who=1,role=set} within 3460..3460
+expect session2.horseLetters == H at end
+expect no event bail

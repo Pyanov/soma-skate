@@ -1,0 +1,12 @@
+# Hanging from the deck, S lets go: the rider drops the last 10 cm to the ground and walks on.
+park lab
+cmd 0 teleport -10 22.5 1.34 0
+tap walk 10
+hold up+slide 20..140
+tap down 180
+run 260
+expect event hang within 100..112
+expect event hangEnd{how=let go} within 180..182
+expect event footLand within 182..200
+expect skater.pos.z < 0.15 at 250
+expect skater.hang == 0 at 250

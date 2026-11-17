@@ -1,0 +1,11 @@
+# Too slow: past bomb.maxSeconds (4 s here) after the start line it is a fail.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 setData run.bomb.maxSeconds 4
+cmd 0 run bomb
+hold up 20..200
+run 900
+expect event bombStart within 255..270
+expect event bombFail{reason=time,gate=0} within 735..750
+expect no event bombFinish

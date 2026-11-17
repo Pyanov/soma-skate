@@ -1,0 +1,12 @@
+# Scrub speed on the 10% section with a powerslide: sliding friction (0.6 g) against gravity along
+# the slope (1.2 m/s^2) takes about 4.7 m/s off per second. Let go and the board swings back in line.
+park lab
+spawn lab_hill_ten
+cmd 6 speed 15
+hold slide 20..140
+run 220
+expect event powerslide{on=true} within 20..22
+expect skater.speed < 10.5 at 140
+expect skater.speed > 8.5 at 140
+expect max skater.slip < 0.05 over 200..220
+expect no event bail

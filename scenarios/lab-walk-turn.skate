@@ -1,0 +1,9 @@
+# On foot, A/D turn at walk.turnRate (3.5 rad/s): a quarter turn standing takes about 0.45 s.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+tap walk 10
+hold right 20..74
+run 80
+expect skater.heading > 178 at 80
+expect skater.heading < 192 at 80
+expect max skater.speed < 0.01 over 20..80

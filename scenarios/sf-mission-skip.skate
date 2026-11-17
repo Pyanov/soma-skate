@@ -1,0 +1,19 @@
+# Missions: mission skip marks it skipped (the story moves on) and ends any game it wrapped; mission
+# abandon ends it unmarked; another game (run combo) abandons the mission on (reason mode).
+park sf
+cmd 0 traffic clear
+cmd 0 mission start burrito 1
+cmd 100 mission skip
+cmd 200 mission start pigeons
+cmd 201 mission next all
+cmd 202 mission accept
+cmd 300 mission abandon
+cmd 400 mission start stamp
+cmd 500 run combo
+run 520
+expect event courierPickup within 0..3
+expect event missionSkipped{mission=burrito} within 101..101
+expect session.mode == free at 150
+expect event missionAbandoned{mission=pigeons,reason=abandoned} within 301..301
+expect event missionAbandoned{mission=stamp,reason=mode} within 501..501
+expect event comboStart within 501..501

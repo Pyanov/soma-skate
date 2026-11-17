@@ -1,0 +1,55 @@
+# Tour level 8, Chinatown (data/tour.json, physics phase 31 on city phase 12's Grant Ave; the squeezed city
+# keeps Grant from Bush through the Dragon Gate to Pine), a 2-minute run from the Dragon Gate: its three
+# goals, the tape and S-K-A-T-E, each set up with a teleport.
+# - Up Grant from Bush at 6 m/s, an ollie through the Dragon Gate's middle opening, S in the air in it:
+#   Through the Dragon Gate.
+# - Grant's west curb below Pine, downhill: an ollie onto it, a 50-50 for 21 m (A and T on it) and a
+#   kickflip off: FS 50-50 + Kickflip, Lantern Line (2,000 started on Grant).
+# - From Pine down Grant, pushing all the way past the car parked in the street and out through the gate's
+#   middle opening (the path autopilot steers), K and E on the way: Bomb Grant in Under 10 (8.3 s).
+# - The tape: up the west sidewalk and through the gate's narrow west opening (2 m between its
+#   pillars) as a boneless: the tape at the top of it, out of an ollie's reach.
+# Every grind is pressed 12 ticks or more after the ollie's release: with a human's timing a press soon
+# after it found the line before the release, and the release popped straight off (feel --tour).
+park sf
+cmd 0 traffic clear
+cmd 0 run level chinatown
+bot balance
+cmd 1 teleport 265.8 658 -1.0 353.7
+cmd 3 set skater.vel.x -0.66
+cmd 3 set skater.vel.y 5.96
+hold ollie 117..147
+cmd 602 teleport 248.39 751.98 7.75 170.7
+cmd 604 set skater.vel.x 0.64
+cmd 604 set skater.vel.y -3.95
+hold ollie 630..660
+tap grind 672..724 every 4
+hold ollie 1200..1220
+tap flip 1223
+cmd 1802 teleport 254 762 7.7 174
+cmd 1804 set skater.vel.x 0.1
+cmd 1804 set skater.vel.y -2.0
+bot path 254,760 259,745 260,730 261,710 263,690 265,668 266,648 from 1804 speed 12 nobrake
+cmd 3302 teleport 260.98 655.08 -0.76 353.7
+cmd 3304 set skater.vel.x -0.603
+cmd 3304 set skater.vel.y 5.467
+hold ollie 3495..3525
+tap up 3513
+tap up 3520
+run 14700
+expect event levelStart{level=chinatown,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 189..193
+expect event levelGoal{level=chinatown,id=gate,name=Through the Dragon Gate} within 259..263
+expect event letter{letter=A,have=S_A__} within 874..878
+expect event letter{letter=T,have=S_AT_} within 1058..1062
+expect event comboLanded{name=FS 50-50 + Kickflip,points=2226} within 1349..1353
+expect event levelGoal{level=chinatown,id=lanterns,name=Lantern Line} within 1349..1353
+expect event letter{letter=K,have=SKAT_} within 2228..2232
+expect event letter{letter=E,have=SKATE} within 2790..2794
+expect event levelGoal{level=chinatown,id=skate} within 2790..2794
+expect event levelGoal{level=chinatown,id=bombgrant,name=Bomb Grant in Under 10} within 3039..3043
+expect event tapeFound{level=chinatown} within 3572..3576
+expect event levelOver{level=chinatown,score=2876,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

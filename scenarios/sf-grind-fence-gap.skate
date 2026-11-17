@@ -1,0 +1,26 @@
+# Grind capture through a slot no skater fits through. From the lot outside
+# the SoMa park's north fence, a full ollie with I tapped: the ledge just inside the fence (F47, its
+# edge 0.5 m away) is in reach, and the single sight ray of phase 15 slipped through the 10 cm gap
+# between the park's north wall and the fence on top of it, so the 50-50 caught it through the
+# fence. The sight check is now a 6 cm sphere swept along the way (grind.sightRadius): refused, the
+# skater comes back down on the lot. Then from the ledge top inside, the same edge 0.5 m away and a
+# small ollie: caught (nothing between). Phase 25: both roll west along the edge at 1.2 m/s, since a
+# catch slower than grind.stallSpeed along the line is no grind now (sf-ledge-hop-farm); at a
+# standstill neither half could catch, fence or not.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 12.18 33.85 0.25 270
+cmd 30 set skater.vel.x -1.2
+hold ollie 30..60
+tap grind 60..170 every 2
+cmd 300 teleport 12.2 32.85 0.85 270
+cmd 320 set skater.vel.x -1.2
+hold ollie 330..340
+tap grind 340..420 every 2
+run 500
+expect event pop within 60..62
+expect no event grindStart{line=F47_body} within 0..300
+expect event land{airTicks=116} within 175..179
+expect event grindStart{trick=FS 50-50,line=F47_body} within 341..343
+expect event grindEnd{reason=stall,points=305} within 465..465
+expect no event bail

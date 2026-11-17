@@ -1,0 +1,83 @@
+# The first hour, by bot: chapter 1 as the first launch starts it (Karl's offer, one
+# line read, the rest skipped with Esc, accepted), Rosa, the Big 3 kickflip, three combos, done; Take Muni
+# (the teleport the map sends) to the Mission and Hector's Burrito Run (the courier, three deliveries, his
+# call); Muni back and the Pigeon's crumbs; the Castro and Donna's escort (the autopilot behind her); a
+# story skipped and one abandoned at City Hall, each back to free roam. Nothing is ever stuck.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start ch1
+cmd 10 mission next
+cmd 20 mission next all
+cmd 30 mission accept
+cmd 40 teleport 44 28.5 0
+cmd 60 mission next
+cmd 100 teleport big3
+hold up 102..202
+hold ollie 268..298
+tap flip+left 304
+cmd 520 mission next all
+cmd 600 teleport big3
+hold up 602..702
+hold ollie 768..798
+tap flip+left 804
+cmd 1020 teleport big3
+hold up 1022..1122
+hold ollie 1188..1218
+tap flip+left 1224
+cmd 1440 teleport big3
+hold up 1442..1542
+hold ollie 1608..1638
+tap flip+left 1644
+cmd 1900 mission next all
+cmd 2000 teleport valencia_shops
+cmd 2010 mission start burrito
+cmd 2012 mission next all
+cmd 2014 mission accept
+cmd 2200 teleport -55.3 -305 2.61 356
+cmd 2400 teleport -235 -230 12.53 356
+cmd 2600 teleport -18.5 -395.2 1.94 356
+cmd 2700 mission next all
+cmd 2800 teleport big3_runway
+cmd 2810 mission start pigeons
+cmd 2812 mission next all
+cmd 2814 mission accept
+cmd 2830 teleport 13 21.3 2
+cmd 2850 teleport 30 24 1
+cmd 2870 teleport 55.7 25.5 1
+cmd 2890 teleport 67 15.1 1
+cmd 2910 teleport 9.2 8.7 2
+cmd 2950 teleport 17 10 1.5
+cmd 3000 mission next all
+cmd 3100 teleport harvey_milk
+cmd 3110 mission start disco
+cmd 3112 mission next all
+cmd 3114 mission accept
+cmd 3120 teleport -577 -41 18.6 180
+cmd 3122 set skater.vel.y -3
+bot path -576,-55 -574,-72 -571,-98 -568,-135 -565,-172 -563,-199 -561,-221 -560,-235 from 3256 speed 5.5 nocars
+cmd 7500 mission next all
+cmd 7600 teleport castro_18th
+cmd 7610 mission start rainbow
+cmd 7620 mission skip
+cmd 7700 teleport city_hall
+cmd 7710 mission start stamp
+cmd 7712 mission next all
+cmd 7714 mission accept
+cmd 7800 mission abandon
+run 7900
+expect event missionOffer{mission=ch1} within 21..21
+expect event missionStep{mission=ch1,step=2,kind=trick} within 61..61
+expect event missionStep{mission=ch1,step=3} within 400..470
+expect event missionStep{mission=ch1,step=5} within 1730..1810
+expect event missionDone{mission=ch1} within 1901..1901
+expect event courierDeliver{n=3} within 2600..2602
+expect event missionDone{mission=burrito} within 2701..2701
+expect event missionItem{mission=pigeons,n=5,of=5} within 2910..2915
+expect event missionDone{mission=pigeons} within 3001..3001
+expect event missionStep{mission=disco,step=2,kind=talk} within 7440..7520
+expect event missionDone{mission=disco} within 7501..7501
+expect event missionSkipped{mission=rainbow} within 7621..7621
+expect event missionAbandoned{mission=stamp,reason=abandoned} within 7801..7801
+expect no event missionFailed
+expect session.mode == free at end
+expect session.game == free at end

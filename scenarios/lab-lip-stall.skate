@@ -1,0 +1,15 @@
+# Straight up the vert ramp, press I at the coping (no speed along it): Rock to Fakie stall,
+# hold I about half a second, let go: drop back in and land fakie. 10 m/s from the spawn reaches
+# the coping with about 4 m/s up (drag and rolling resistance take the rest; 9 m/s barely gets there).
+park lab
+spawn lab_vert
+cmd 6 speed 10
+hold grind 212..278
+bot balance
+run 600
+expect event lipStart{trick=Rock to Fakie} within 210..220
+expect event lipEnd{trick=Rock to Fakie,reason=drop in} within 276..282
+expect event land{fakie=true} within 280..360
+expect event comboLanded{name=Rock to Fakie} within 280..380
+expect no event bail
+expect no event danger

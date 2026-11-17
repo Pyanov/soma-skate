@@ -1,0 +1,16 @@
+# E steps off the board (here at 2.4 m/s) and carries it; W runs at walk.runSpeed (3.6 m/s);
+# E again drops the board and rides off at the running speed.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+hold up 10..70
+tap walk 75
+hold up 90..250
+tap walk 260
+run 360
+expect event stepOff within 75..77
+expect state walk at 200
+expect max skater.speed < 3.61 over 140..250
+expect skater.speed > 3.59 at 240
+expect event boardDrop{air=false} within 260..262
+expect state ground at end
+expect skater.speed > 2.4 at end

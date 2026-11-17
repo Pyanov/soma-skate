@@ -1,0 +1,10 @@
+# Charged ollie, pop shove-it (J + down) right after the pop: the board turns half a turn and lands.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+down 96
+run 300
+expect event trickEnd{trick=Pop Shove-It} within 120..160
+expect event comboLanded{name=Pop Shove-It,points=100} within 160..240
+expect no event bail

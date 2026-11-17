@@ -1,0 +1,133 @@
+# Chinatown's Pro line (physics phase 32; feel --tour measures Pro on it): every 10 s, up Grant and a kickflip
+# through the Dragon Gate's middle opening, into a manual, a heelflip out: Kickflip + THROUGH THE DRAGON GATE +
+# Manual + Heelflip, 3,920; twelve, 47,040. No long grind: a casual player makes it (the great run is a
+# 45 m nosegrind down Grant's west curb, which a casual player loses). Pro (19,000) on the fifth.
+park sf
+cmd 0 traffic clear
+cmd 0 run level chinatown
+bot balance
+cmd 1 teleport 265.8 658 -1.0 353.7
+cmd 3 set skater.vel.x -0.66
+cmd 3 set skater.vel.y 5.96
+cmd 1201 teleport 265.8 658 -1.0 353.7
+cmd 1203 set skater.vel.x -0.66
+cmd 1203 set skater.vel.y 5.96
+cmd 2401 teleport 265.8 658 -1.0 353.7
+cmd 2403 set skater.vel.x -0.66
+cmd 2403 set skater.vel.y 5.96
+cmd 3601 teleport 265.8 658 -1.0 353.7
+cmd 3603 set skater.vel.x -0.66
+cmd 3603 set skater.vel.y 5.96
+cmd 4801 teleport 265.8 658 -1.0 353.7
+cmd 4803 set skater.vel.x -0.66
+cmd 4803 set skater.vel.y 5.96
+cmd 6001 teleport 265.8 658 -1.0 353.7
+cmd 6003 set skater.vel.x -0.66
+cmd 6003 set skater.vel.y 5.96
+cmd 7201 teleport 265.8 658 -1.0 353.7
+cmd 7203 set skater.vel.x -0.66
+cmd 7203 set skater.vel.y 5.96
+cmd 8401 teleport 265.8 658 -1.0 353.7
+cmd 8403 set skater.vel.x -0.66
+cmd 8403 set skater.vel.y 5.96
+cmd 9601 teleport 265.8 658 -1.0 353.7
+cmd 9603 set skater.vel.x -0.66
+cmd 9603 set skater.vel.y 5.96
+cmd 10801 teleport 265.8 658 -1.0 353.7
+cmd 10803 set skater.vel.x -0.66
+cmd 10803 set skater.vel.y 5.96
+cmd 12001 teleport 265.8 658 -1.0 353.7
+cmd 12003 set skater.vel.x -0.66
+cmd 12003 set skater.vel.y 5.96
+cmd 13201 teleport 265.8 658 -1.0 353.7
+cmd 13203 set skater.vel.x -0.66
+cmd 13203 set skater.vel.y 5.96
+hold ollie 118..148
+hold ollie 431..446
+hold ollie 1318..1348
+hold ollie 1631..1646
+hold ollie 2518..2548
+hold ollie 2831..2846
+hold ollie 3718..3748
+hold ollie 4031..4046
+hold ollie 4918..4948
+hold ollie 5231..5246
+hold ollie 6118..6148
+hold ollie 6431..6446
+hold ollie 7318..7348
+hold ollie 7631..7646
+hold ollie 8518..8548
+hold ollie 8831..8846
+hold ollie 9718..9748
+hold ollie 10031..10046
+hold ollie 10918..10948
+hold ollie 11231..11246
+hold ollie 12118..12148
+hold ollie 12431..12446
+hold ollie 13318..13348
+hold ollie 13631..13646
+tap flip 151
+tap up 250
+tap down 255
+tap right 448
+tap flip 448
+tap flip 1351
+tap up 1450
+tap down 1455
+tap right 1648
+tap flip 1648
+tap flip 2551
+tap up 2650
+tap down 2655
+tap right 2848
+tap flip 2848
+tap flip 3751
+tap up 3850
+tap down 3855
+tap right 4048
+tap flip 4048
+tap flip 4951
+tap up 5050
+tap down 5055
+tap right 5248
+tap flip 5248
+tap flip 6151
+tap up 6250
+tap down 6255
+tap right 6448
+tap flip 6448
+tap flip 7351
+tap up 7450
+tap down 7455
+tap right 7648
+tap flip 7648
+tap flip 8551
+tap up 8650
+tap down 8655
+tap right 8848
+tap flip 8848
+tap flip 9751
+tap up 9850
+tap down 9855
+tap right 10048
+tap flip 10048
+tap flip 10951
+tap up 11050
+tap down 11055
+tap right 11248
+tap flip 11248
+tap flip 12151
+tap up 12250
+tap down 12255
+tap right 12448
+tap flip 12448
+tap flip 13351
+tap up 13450
+tap down 13455
+tap right 13648
+tap flip 13648
+run 14700
+expect event comboLanded{name=Kickflip + THROUGH THE DRAGON GATE + Manual + Heelflip,points=3920} count == 12
+expect event levelGoal{level=chinatown,id=pro} within 5353..5357
+expect event levelOver{level=chinatown,score=47040} within 14399..14402
+expect no event bail

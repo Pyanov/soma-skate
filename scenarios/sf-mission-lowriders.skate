@@ -1,0 +1,21 @@
+# Lowrider Hop-off (data/missions.json lowrider; a collect step with height 0.6): Tio Memo's three lowriders on
+# 24th St (the city's city.lowriders, re-homed into the calle24 tile, parked facing east). Rolling along the
+# sidewalk beside them counts for nothing (the roof's item is too far up); up on each roof it counts, with
+# Memo's barks between, and the third ends it.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start lowrider 1
+cmd 2 teleport 436.85 -207.7 -6.55 85
+cmd 200 teleport 429.47 -205.58 -5.03 85
+cmd 400 teleport 436.85 -205.01 -5.16 85
+cmd 600 teleport 444.22 -204.44 -5.29 85
+run 800
+expect event missionStep{mission=lowrider,step=1,kind=collect,seconds=60} within 1..1
+expect no event missionItem within 2..199
+expect event missionItem{mission=lowrider,n=1,of=3} within 201..260
+expect event talk{line=lowrider-04,bark=true} within 201..260
+expect event missionItem{mission=lowrider,n=2,of=3} within 401..460
+expect event talk{line=lowrider-05,bark=true} within 401..460
+expect event missionItem{mission=lowrider,n=3,of=3} within 601..660
+expect event missionDone{mission=lowrider} within 601..660
+expect no event missionFailed

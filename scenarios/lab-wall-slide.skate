@@ -1,0 +1,12 @@
+# Push north beside the wall, turn into it and keep pushing: the skater slides along it and never passes through.
+# At 9 m/s a full-lean turn opens to about a 7 m radius (10 m before the feel pass's park carve), so it meets
+# the wall steeply, loses the speed into the wall (9 -> 5 m/s; 7 before) and scrapes along it to its end at y = 10.
+park lab
+spawn lab_wall
+hold up 0..600
+hold left 200..300
+run 600
+expect min skater.pos.x > -27.59 over 0..430
+expect max skater.pos.x < -27.5 over 345..425
+expect min skater.speed > 4.8 over 330..430
+expect state ground at end

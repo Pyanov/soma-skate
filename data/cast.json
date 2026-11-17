@@ -1,0 +1,2009 @@
+{
+  "_doc": "The cast (docs/story.md; src/client/castview.ts draws them, src/client/castpeople.ts the cast people with their own models (data/characters.json people), game/missions.ts reads where they stand): id, name, trait (their one joke), sticker (assets/ui/<sticker>.png, the dialogue portrait and map icon), voice (data/voices.json voices), home x y z and heading (degrees, 0 = north/+y, clockwise), area, model (a character in data/characters.json and its outfit; standIn: an existing look until theirs is built), chatter (what they say when you talk to them with no mission to give; voice lines like the missions').",
+  "cast": [
+    {
+      "id": "karl",
+      "name": "Karl the Fog",
+      "trait": "Smug mentor and narrator. Takes credit for everything, roasts you gently.",
+      "sticker": "karl",
+      "voice": "karl",
+      "home": [
+        5.5,
+        26.5,
+        0.65
+      ],
+      "heading": 222,
+      "area": "SoMa",
+      "model": {
+        "id": "karl"
+      },
+      "chatter": [
+        {
+          "id": "karl-chat-1",
+          "who": "karl",
+          "text": "Still here? I roll in at four. Bring a hoodie. Everyone forgets the hoodie."
+        },
+        {
+          "id": "karl-chat-2",
+          "who": "karl",
+          "text": "Fun fact: every cool photo of this city has me in it. Look closer."
+        }
+      ],
+      "post": [
+        {
+          "id": "karl-post",
+          "who": "karl",
+          "text": "I saved the park. You helped. I'll mention you in my memoir. In a footnote."
+        }
+      ]
+    },
+    {
+      "id": "rosa",
+      "name": "Rosa",
+      "trait": "Deadpan. The best skater in SoMa. Everything is \"mid\".",
+      "sticker": "rosa",
+      "voice": "rosa",
+      "home": [
+        46.0,
+        30.0,
+        -0.97
+      ],
+      "heading": 200,
+      "area": "SoMa",
+      "model": {
+        "id": "rosa"
+      },
+      "chatter": [
+        {
+          "id": "rosa-chat-1",
+          "who": "rosa",
+          "text": "Mid."
+        },
+        {
+          "id": "rosa-chat-2",
+          "who": "rosa",
+          "text": "You're getting less mid. Don't let it go to your head."
+        }
+      ],
+      "post": [
+        {
+          "id": "rosa-post",
+          "who": "rosa",
+          "text": "Still the best skater in SoMa. You're second. Frame it."
+        }
+      ]
+    },
+    {
+      "id": "chad",
+      "name": "Chad Vantage",
+      "trait": "Fleece vest, startup jargon, owns a robotaxi fleet. Never angry, always pivoting.",
+      "sticker": "cast-chad",
+      "voice": "chad",
+      "home": [
+        -1078.8,
+        368.6,
+        67.91
+      ],
+      "heading": 260,
+      "area": "Hayes Valley",
+      "model": {
+        "id": "chad"
+      },
+      "chatter": [
+        {
+          "id": "chad-chat-1",
+          "who": "chad",
+          "text": "Walking one-on-one. With myself. We're very aligned."
+        },
+        {
+          "id": "chad-chat-2",
+          "who": "chad",
+          "text": "Big things coming. Bigger than your little hobby. Respectfully."
+        }
+      ],
+      "post": [
+        {
+          "id": "chad-post",
+          "who": "chad",
+          "text": "We pivoted. The robotaxis drive people to the skatepark now. Synergy."
+        }
+      ]
+    },
+    {
+      "id": "marisol",
+      "name": "Marisol",
+      "trait": "Filmer with a fisheye. Never satisfied: \"again, but with feeling\".",
+      "sticker": "cast-marisol",
+      "voice": "marisol",
+      "home": [
+        6.0,
+        10.0,
+        0.78
+      ],
+      "heading": 60,
+      "area": "SoMa",
+      "model": {
+        "id": "marisol"
+      },
+      "chatter": [
+        {
+          "id": "marisol-chat-1",
+          "who": "marisol",
+          "text": "Again. But with feeling. I say that to everyone. Even my mom."
+        },
+        {
+          "id": "marisol-chat-2",
+          "who": "marisol",
+          "text": "I have four hundred hours of footage. Nobody has seen any of it."
+        }
+      ],
+      "post": [
+        {
+          "id": "marisol-post",
+          "who": "marisol",
+          "text": "The jam edit is done. I hate it. Again, but with feeling."
+        }
+      ]
+    },
+    {
+      "id": "pigeon",
+      "name": "The Pigeon",
+      "trait": "Runs the freeway columns. Favours for crumbs.",
+      "sticker": "pigeon",
+      "voice": "pigeon",
+      "home": [
+        16.0,
+        9.0,
+        0.09
+      ],
+      "heading": 30,
+      "area": "SoMa",
+      "model": {
+        "id": "pigeon"
+      },
+      "chatter": [
+        {
+          "id": "pigeon-chat-1",
+          "who": "pigeon",
+          "text": "Crumbs used to be bagel. Now it's sourdough. That's how you know the rent went up."
+        },
+        {
+          "id": "pigeon-chat-2",
+          "who": "pigeon",
+          "text": "The seagulls are moving into Duboce. I'm handling it."
+        }
+      ],
+      "post": [
+        {
+          "id": "pigeon-post",
+          "who": "pigeon",
+          "text": "The park stays, the crumbs stay. Pleasure doing business, kid."
+        }
+      ]
+    },
+    {
+      "id": "unit7",
+      "name": "Unit 7",
+      "trait": "A robotaxi becoming sentient. Wants to be a skater.",
+      "sticker": "cast-unit7",
+      "voice": "unit7",
+      "home": [
+        43.2,
+        8.5,
+        -1.0
+      ],
+      "heading": 180,
+      "area": "SoMa",
+      "model": {
+        "id": "robotaxi",
+        "outfit": "coned"
+      },
+      "chatter": [
+        {
+          "id": "unit7-chat-1",
+          "who": "unit7",
+          "text": "I practiced all night. I hit four cones. They were very supportive."
+        },
+        {
+          "id": "unit7-chat-2",
+          "who": "unit7",
+          "text": "Is it normal to feel something when a kickflip lands? Asking for a car."
+        }
+      ],
+      "post": [
+        {
+          "id": "unit7-post",
+          "who": "unit7",
+          "text": "I have been reclassified as a skater. My insurance company is confused."
+        }
+      ]
+    },
+    {
+      "id": "kenji",
+      "name": "Kenji",
+      "trait": "The crew. Loses boards.",
+      "sticker": "kenji",
+      "voice": "kenji",
+      "home": [
+        30.0,
+        22.0,
+        -0.36
+      ],
+      "heading": 300,
+      "area": "SoMa",
+      "model": {
+        "id": "kenji"
+      },
+      "chatter": [
+        {
+          "id": "kenji-chat-1",
+          "who": "kenji",
+          "text": "Have you seen my board? Not this one. The other one."
+        },
+        {
+          "id": "kenji-chat-2",
+          "who": "kenji",
+          "text": "I'm on board number six this month. Personal best."
+        }
+      ],
+      "post": [
+        {
+          "id": "kenji-post",
+          "who": "kenji",
+          "text": "Found my board. It was on the roof. It's always on the roof."
+        }
+      ]
+    },
+    {
+      "id": "hector",
+      "name": "Hector",
+      "trait": "Taqueria owner. Treats every burrito as a sacred promise.",
+      "sticker": "hector",
+      "voice": "hector",
+      "home": [
+        -45.0,
+        -248.0,
+        2.29
+      ],
+      "heading": 270,
+      "area": "The Mission",
+      "model": {
+        "id": "hector"
+      },
+      "chatter": [
+        {
+          "id": "hector-chat-1",
+          "who": "hector",
+          "text": "Every burrito is a promise. Some promises are extra large."
+        },
+        {
+          "id": "hector-chat-2",
+          "who": "hector",
+          "text": "The improv guy is doing a show about me. I'm the villain."
+        }
+      ],
+      "post": [
+        {
+          "id": "hector-post",
+          "who": "hector",
+          "text": "The burrito is named after you now. It's mostly beans. It is an honour.",
+          "say": "The burrito is named after you now. It's mostly beans. It is an honor."
+        }
+      ],
+      "inside": "taqueria/cook"
+    },
+    {
+      "id": "tash",
+      "name": "Tash",
+      "trait": "The crew. Always filming on a flip phone. Thinks it is art.",
+      "sticker": "tash",
+      "voice": "tash",
+      "home": [
+        -26.0,
+        -395.0,
+        1.65
+      ],
+      "heading": 270,
+      "area": "The Mission",
+      "model": {
+        "id": "tash"
+      },
+      "chatter": [
+        {
+          "id": "tash-chat-1",
+          "who": "tash",
+          "text": "Hold that face. Okay, now you're ruining it."
+        },
+        {
+          "id": "tash-chat-2",
+          "who": "tash",
+          "text": "This phone flips open. That's the whole special effect."
+        }
+      ],
+      "post": [
+        {
+          "id": "tash-post",
+          "who": "tash",
+          "text": "I filmed the whole jam on my flip phone. It's three pixels. It's art."
+        }
+      ]
+    },
+    {
+      "id": "donna",
+      "name": "Donna",
+      "trait": "Roller-disco legend. Rolling the Castro since the Carter administration.",
+      "sticker": "donna",
+      "voice": "donna",
+      "home": [
+        -589.0,
+        -33.0,
+        18.66
+      ],
+      "heading": 150,
+      "area": "The Castro",
+      "model": {
+        "id": "donna"
+      },
+      "chatter": [
+        {
+          "id": "donna-chat-1",
+          "who": "donna",
+          "text": "My skates are older than you, darling, and better dressed."
+        },
+        {
+          "id": "donna-chat-2",
+          "who": "donna",
+          "text": "Wheels are just shoes that believe in themselves."
+        }
+      ],
+      "post": [
+        {
+          "id": "donna-post",
+          "who": "donna",
+          "text": "Darling, that was a jam. I haven't seen a jam like that since 1979."
+        }
+      ]
+    },
+    {
+      "id": "bev",
+      "name": "Bev",
+      "trait": "Crossing guard of the rainbow crosswalk. Believes it is a runway.",
+      "sticker": "bev",
+      "voice": "bev",
+      "home": [
+        -569.0,
+        -225.0,
+        9.72
+      ],
+      "heading": 90,
+      "area": "The Castro",
+      "model": {
+        "id": "bev"
+      },
+      "chatter": [
+        {
+          "id": "bev-chat-1",
+          "who": "bev",
+          "text": "Walk it like you mean it, sweetie. Or roll it."
+        },
+        {
+          "id": "bev-chat-2",
+          "who": "bev",
+          "text": "Nineteen years, zero accidents, eleven standing ovations."
+        }
+      ]
+    },
+    {
+      "id": "skye",
+      "name": "Skye",
+      "trait": "Influencer. Wants you candid, but on purpose.",
+      "sticker": "skye",
+      "voice": "skye",
+      "home": [
+        -1018.0,
+        460.0,
+        56.42
+      ],
+      "heading": 260,
+      "area": "Hayes Valley",
+      "model": {
+        "id": "skye"
+      },
+      "chatter": [
+        {
+          "id": "skye-chat-1",
+          "who": "skye",
+          "text": "Can you do that again, but in better light?"
+        },
+        {
+          "id": "skye-chat-2",
+          "who": "skye",
+          "text": "I'm doing a sunrise shoot tomorrow. I'll wake up at noon for it."
+        }
+      ]
+    },
+    {
+      "id": "gloria",
+      "name": "Gloria",
+      "trait": "Permit clerk. Loves rules more than life. Forms in triplicate.",
+      "sticker": "cast-gloria",
+      "voice": "gloria",
+      "home": [
+        10.0,
+        352.0,
+        5.63
+      ],
+      "heading": 260,
+      "area": "Civic Center",
+      "model": {
+        "id": "gloria"
+      },
+      "chatter": [
+        {
+          "id": "gloria-chat-1",
+          "who": "gloria",
+          "text": "Take a number. The number is forty. We're serving number three."
+        },
+        {
+          "id": "gloria-chat-2",
+          "who": "gloria",
+          "text": "Without forms, there is only chaos. And skating."
+        }
+      ],
+      "post": [
+        {
+          "id": "gloria-post",
+          "who": "gloria",
+          "text": "Your permit is good for ninety-nine years. I will be checking."
+        }
+      ],
+      "inside": "city_hall_lobby/clerk"
+    },
+    {
+      "id": "dolores",
+      "name": "Dolores",
+      "trait": "Muni operator. Permanently delayed, permanently calm.",
+      "sticker": "cast-dolores",
+      "voice": "dolores",
+      "home": [
+        555.7,
+        303.7,
+        -9.64
+      ],
+      "heading": 135,
+      "area": "Downtown",
+      "model": {
+        "id": "dolores"
+      },
+      "chatter": [
+        {
+          "id": "dolores-chat-1",
+          "who": "dolores",
+          "text": "We are being held. I'll let you know when we're not. I won't."
+        },
+        {
+          "id": "dolores-chat-2",
+          "who": "dolores",
+          "text": "Fifteen years on the F line. Every year a little more delayed."
+        }
+      ],
+      "post": [
+        {
+          "id": "dolores-post",
+          "who": "dolores",
+          "text": "We are being held. For once, I don't mind."
+        }
+      ]
+    },
+    {
+      "id": "sal",
+      "name": "Sal",
+      "trait": "Cable car gripman. Strong opinions about tourists.",
+      "sticker": "cast-sal",
+      "voice": "sal",
+      "home": [
+        596.5,
+        430.0,
+        -8.42
+      ],
+      "heading": 270,
+      "area": "Downtown",
+      "model": {
+        "id": "sal"
+      },
+      "chatter": [
+        {
+          "id": "sal-chat-1",
+          "who": "sal",
+          "text": "Forty years on this car. Every day somebody asks where the seatbelts are."
+        },
+        {
+          "id": "sal-chat-2",
+          "who": "sal",
+          "text": "Tourist asked me if the bell was for her. It was not for her."
+        }
+      ],
+      "post": [
+        {
+          "id": "sal-post",
+          "who": "sal",
+          "text": "So I saved a skatepark. Big deal. I saved a cable car from a tourist this morning.",
+          "say": "So I saved a skate park. Big deal. I saved a cable car from a tourist this morning."
+        }
+      ]
+    },
+    {
+      "id": "barnacle",
+      "name": "Captain Barnacle",
+      "trait": "Sea lion, elder of the K-dock. Wants to skate.",
+      "sticker": "sealion",
+      "voice": "barnacle",
+      "home": [
+        290.3,
+        966.3,
+        -8.63
+      ],
+      "heading": 190,
+      "area": "The Embarcadero",
+      "model": {
+        "id": "sealion",
+        "outfit": "oldsalt"
+      },
+      "chatter": [
+        {
+          "id": "barnacle-chat-1",
+          "who": "barnacle",
+          "text": "Ork. The dock is warm. The tourists are loud. Life is good."
+        },
+        {
+          "id": "barnacle-chat-2",
+          "who": "barnacle",
+          "text": "Ork. My cousins have no idea I can skate. Let's keep it that way."
+        }
+      ],
+      "post": [
+        {
+          "id": "barnacle-post",
+          "who": "barnacle",
+          "text": "Ork. The K-Dock watched the vote on a tourist's phone. Ork ork."
+        }
+      ]
+    },
+    {
+      "id": "marge",
+      "name": "Marge",
+      "trait": "Chowder vendor. Hates seagulls more than anything.",
+      "sticker": "marge",
+      "voice": "marge",
+      "home": [
+        9.8,
+        936.6,
+        -9.33
+      ],
+      "heading": 0,
+      "area": "The Embarcadero",
+      "model": {
+        "id": "marge"
+      },
+      "chatter": [
+        {
+          "id": "marge-chat-1",
+          "who": "marge",
+          "text": "Seagulls. Looking at me. Every single day."
+        },
+        {
+          "id": "marge-chat-2",
+          "who": "marge",
+          "text": "Chowder's hot. Bread bowl's fresh. Seagulls, stay back."
+        }
+      ]
+    },
+    {
+      "id": "biglou",
+      "name": "Big Lou",
+      "trait": "Ex-pro from 1994, runs Fog City Skate Shop. Every story ends in an injury.",
+      "sticker": "cast-biglou",
+      "voice": "biglou",
+      "home": [
+        -44.7,
+        -257.3,
+        2.28
+      ],
+      "heading": 248,
+      "area": "The Mission",
+      "model": {
+        "id": "biglou"
+      },
+      "chatter": [
+        {
+          "id": "biglou-chat-1",
+          "who": "biglou",
+          "text": "Ninety-four, I kickflipped that exact curb. Woke up in a different zip code."
+        },
+        {
+          "id": "biglou-chat-2",
+          "who": "biglou",
+          "text": "Knee brace? Souvenir. The other knee's in a museum."
+        }
+      ],
+      "post": [
+        {
+          "id": "biglou-post",
+          "who": "biglou",
+          "text": "Your face is on a board in my window. Sold three. One was to me."
+        }
+      ],
+      "inside": "fog_city_skate_shop/clerk"
+    },
+    {
+      "id": "grandmawu",
+      "name": "Grandma Wu",
+      "trait": "The fastest grandma in SF. Races you with her shopping cart, pays in dumplings.",
+      "sticker": "cast-grandmawu",
+      "voice": "grandmawu",
+      "home": [
+        254.5,
+        700.9,
+        2.61
+      ],
+      "heading": 221,
+      "area": "Chinatown",
+      "model": {
+        "id": "grandmawu"
+      },
+      "chatter": [
+        {
+          "id": "grandmawu-chat-1",
+          "who": "grandmawu",
+          "text": "You call that pushing? My cart has more speed with one bad wheel."
+        },
+        {
+          "id": "grandmawu-chat-2",
+          "who": "grandmawu",
+          "text": "Too skinny. Eat a dumpling, then we race."
+        }
+      ]
+    },
+    {
+      "id": "brayden",
+      "name": "Brayden",
+      "trait": "E-scooter founder at the top of Lombard. A new startup every time you meet.",
+      "sticker": "cast-brayden",
+      "voice": "brayden",
+      "home": [
+        -281.1,
+        691.5,
+        28.14
+      ],
+      "heading": 333,
+      "area": "Russian Hill",
+      "model": {
+        "id": "brayden"
+      },
+      "chatter": [
+        {
+          "id": "brayden-chat-1",
+          "who": "brayden",
+          "text": "Quick pitch: it's a scooter, but for scooters. We're pre-revenue. Post-vibes."
+        },
+        {
+          "id": "brayden-chat-2",
+          "who": "brayden",
+          "text": "Lombard is basically a racetrack with flowers. I've been down it, like, twice. Fully."
+        }
+      ]
+    },
+    {
+      "id": "dre",
+      "name": "Dre",
+      "trait": "The crew. Trash-talks every try, his own included.",
+      "sticker": "dre",
+      "voice": "dre",
+      "home": [
+        58.0,
+        21.5,
+        -1.29
+      ],
+      "heading": 250,
+      "area": "SoMa",
+      "model": {
+        "id": "dre"
+      },
+      "chatter": [
+        {
+          "id": "dre-chat-1",
+          "who": "dre",
+          "text": "Is that your stance or are you falling slowly?"
+        },
+        {
+          "id": "dre-chat-2",
+          "who": "dre",
+          "text": "Your kickflip has a little jazz in it. Nobody asked for jazz."
+        }
+      ],
+      "post": [
+        {
+          "id": "dre-post",
+          "who": "dre",
+          "text": "I'd say you got lucky. Three combos in a row, though. That's a lot of luck."
+        }
+      ]
+    },
+    {
+      "id": "rocco",
+      "name": "Rocco",
+      "trait": "Beat poet of Washington Square. The fog never writes back.",
+      "sticker": "rocco",
+      "voice": "rocco",
+      "home": [
+        65.0,
+        752.0,
+        5.85
+      ],
+      "heading": 200,
+      "area": "North Beach",
+      "model": {
+        "id": "rocco"
+      },
+      "chatter": [
+        {
+          "id": "rocco-chat-1",
+          "who": "rocco",
+          "text": "The fog. The fog. The... I lost it. The fog took it."
+        },
+        {
+          "id": "rocco-chat-2",
+          "who": "rocco",
+          "text": "I had a poem about skateboards. It was mostly about knees."
+        }
+      ]
+    },
+    {
+      "id": "nonna",
+      "name": "Nonna Gia",
+      "trait": "Café owner on Columbus. Forty years of espresso. Never expresso.",
+      "sticker": "nonna",
+      "voice": "nonna",
+      "home": [
+        100.4,
+        659.8,
+        6.38
+      ],
+      "heading": 300,
+      "area": "North Beach",
+      "model": {
+        "id": "nonna"
+      },
+      "chatter": [
+        {
+          "id": "nonna-chat-1",
+          "who": "nonna",
+          "text": "Sit down, you look thin. Thin is not a style."
+        },
+        {
+          "id": "nonna-chat-2",
+          "who": "nonna",
+          "text": "Espresso. Not expresso. I hear expresso, I close the café."
+        }
+      ]
+    },
+    {
+      "id": "vito",
+      "name": "Vito",
+      "trait": "Bocce player since 1961. Too comfortable to fetch the ball.",
+      "sticker": "vito",
+      "voice": "vito",
+      "home": [
+        120.0,
+        700.0,
+        6.41
+      ],
+      "heading": 160,
+      "area": "North Beach",
+      "model": {
+        "id": "vito"
+      },
+      "chatter": [
+        {
+          "id": "vito-chat-1",
+          "who": "vito",
+          "text": "Enzo cheats. Fifty years, every game. I let him. It keeps him alive."
+        },
+        {
+          "id": "vito-chat-2",
+          "who": "vito",
+          "text": "Bocce is like skating. Except you stay still and nobody gets hurt."
+        }
+      ]
+    },
+    {
+      "id": "mo",
+      "name": "Mo",
+      "trait": "Hyde St cable car brakeman. Trusts nothing that rolls.",
+      "sticker": "mo",
+      "voice": "mo",
+      "home": [
+        -294.5,
+        770.0,
+        17.43
+      ],
+      "heading": 180,
+      "area": "Russian Hill",
+      "model": {
+        "id": "mo"
+      },
+      "chatter": [
+        {
+          "id": "mo-chat-1",
+          "who": "mo",
+          "text": "This hill is twenty-one percent. My blood pressure is higher."
+        },
+        {
+          "id": "mo-chat-2",
+          "who": "mo",
+          "text": "Hold on with both hands. Tourists always hold the camera instead."
+        }
+      ]
+    },
+    {
+      "id": "fitch",
+      "name": "Mrs. Fitch",
+      "trait": "Guards the last hydrangea on Lombard St.",
+      "sticker": "fitch",
+      "voice": "fitch",
+      "home": [
+        -140.0,
+        729.5,
+        -4.77
+      ],
+      "heading": 270,
+      "area": "Russian Hill",
+      "model": {
+        "id": "fitch"
+      },
+      "chatter": [
+        {
+          "id": "fitch-chat-1",
+          "who": "fitch",
+          "text": "Two hundred photos a day. Not one of them asks the hydrangea."
+        },
+        {
+          "id": "fitch-chat-2",
+          "who": "fitch",
+          "text": "Off the bed. The flower bed. All beds, really."
+        }
+      ]
+    },
+    {
+      "id": "gus",
+      "name": "Gus",
+      "trait": "Living statue at Fisherman's Wharf since 1987. Can't feel his legs.",
+      "sticker": "gus",
+      "voice": "gus",
+      "home": [
+        -35.0,
+        944.0,
+        -9.15
+      ],
+      "heading": 180,
+      "area": "Fisherman's Wharf",
+      "model": {
+        "id": "gus"
+      },
+      "chatter": [
+        {
+          "id": "gus-chat-1",
+          "who": "gus",
+          "text": "I'm a statue. Statues don't chat. Move along. Slowly. So I can watch."
+        },
+        {
+          "id": "gus-chat-2",
+          "who": "gus",
+          "text": "A kid tried to tip me with a gum wrapper. I respect the hustle."
+        }
+      ]
+    },
+    {
+      "id": "steve",
+      "name": "Steve",
+      "trait": "A seagull. Steals fries. It's a calling.",
+      "sticker": "steve",
+      "voice": "steve",
+      "home": [
+        115.8,
+        966.3,
+        -9.11
+      ],
+      "heading": 200,
+      "area": "Fisherman's Wharf",
+      "model": {
+        "id": "steve"
+      },
+      "chatter": [
+        {
+          "id": "steve-chat-1",
+          "who": "steve",
+          "text": "Nice fries. Shame if somebody... no. Not today. Today I'm resting."
+        },
+        {
+          "id": "steve-chat-2",
+          "who": "steve",
+          "text": "Marge thinks she can stop me. Marge has a ladle. I have wings."
+        }
+      ]
+    },
+    {
+      "id": "kenny",
+      "name": "Kenny",
+      "trait": "Leads a lion dance troupe. The lion is two guys.",
+      "sticker": "kenny",
+      "voice": "kenny",
+      "home": [
+        275.0,
+        637.0,
+        -1.66
+      ],
+      "heading": 0,
+      "area": "Chinatown",
+      "model": {
+        "id": "kenny"
+      },
+      "chatter": [
+        {
+          "id": "kenny-chat-1",
+          "who": "kenny",
+          "text": "Tonight's show is huge. The lion's been practising. Well, Eddie's been practising."
+        },
+        {
+          "id": "kenny-chat-2",
+          "who": "kenny",
+          "text": "If you hear drums, run toward them. That is where the fun is."
+        }
+      ]
+    },
+    {
+      "id": "mei",
+      "name": "Auntie Mei",
+      "trait": "Dim sum cart auntie on Grant Ave. Everyone is too skinny.",
+      "sticker": "mei",
+      "voice": "mei",
+      "home": [
+        246.0,
+        815.0,
+        6.44
+      ],
+      "heading": 200,
+      "area": "Chinatown",
+      "model": {
+        "id": "mei"
+      },
+      "chatter": [
+        {
+          "id": "mei-chat-1",
+          "who": "mei",
+          "text": "You eat yet? Don't lie. I can see your cheeks."
+        },
+        {
+          "id": "mei-chat-2",
+          "who": "mei",
+          "text": "Har gow, siu mai, char siu bao. Skating is not a meal."
+        }
+      ]
+    },
+    {
+      "id": "trent",
+      "name": "Trent",
+      "trait": "Finance bro. Always forty-five seconds from a meeting.",
+      "sticker": "trent",
+      "voice": "trent",
+      "home": [
+        550.6,
+        583.3,
+        -9.22
+      ],
+      "heading": 230,
+      "area": "Financial District",
+      "model": {
+        "id": "trent"
+      },
+      "chatter": [
+        {
+          "id": "trent-chat-1",
+          "who": "trent",
+          "text": "Can't talk. Circling back. Running point. Running, mostly."
+        },
+        {
+          "id": "trent-chat-2",
+          "who": "trent",
+          "text": "My calendar has a meeting about my other meetings."
+        }
+      ]
+    },
+    {
+      "id": "june",
+      "name": "Farmer June",
+      "trait": "Stone-fruit farmer at the Ferry Building market. Chefs fear her.",
+      "sticker": "june",
+      "voice": "june",
+      "home": [
+        650.0,
+        680.0,
+        -9.59
+      ],
+      "heading": 60,
+      "area": "The Embarcadero",
+      "model": {
+        "id": "june"
+      },
+      "chatter": [
+        {
+          "id": "june-chat-1",
+          "who": "june",
+          "text": "Try a peach. No? That's fine. Your loss, it's a big loss."
+        },
+        {
+          "id": "june-chat-2",
+          "who": "june",
+          "text": "Chefs come at seven. By nine I have nothing and a lot of opinions."
+        }
+      ]
+    },
+    {
+      "id": "vinny",
+      "name": "Vinny",
+      "trait": "The Pigeon's cousin. Runs Powell St.",
+      "sticker": "vinny",
+      "voice": "vinny",
+      "home": [
+        597.8,
+        506.0,
+        -7.06
+      ],
+      "heading": 180,
+      "area": "Downtown",
+      "model": {
+        "id": "vinny"
+      },
+      "chatter": [
+        {
+          "id": "vinny-chat-1",
+          "who": "vinny",
+          "text": "Powell Street. Cable cars, tourists, crumbs. Mostly crumbs."
+        },
+        {
+          "id": "vinny-chat-2",
+          "who": "vinny",
+          "text": "My cousin says hi. My cousin doesn't say hi. He says 'eh'."
+        }
+      ]
+    },
+    {
+      "id": "tiffany",
+      "name": "Tiffany",
+      "trait": "Shopaholic. Her robotaxi quit on her, emotionally.",
+      "sticker": "tiffany",
+      "voice": "tiffany",
+      "home": [
+        623.6,
+        472.9,
+        -7.82
+      ],
+      "heading": 250,
+      "area": "Downtown",
+      "model": {
+        "id": "tiffany"
+      },
+      "chatter": [
+        {
+          "id": "tiffany-chat-1",
+          "who": "tiffany",
+          "text": "I came in for one scarf. That was Tuesday."
+        },
+        {
+          "id": "tiffany-chat-2",
+          "who": "tiffany",
+          "text": "Do these bags make my arms look tired? They are tired."
+        }
+      ]
+    },
+    {
+      "id": "xochitl",
+      "name": "Xóchitl",
+      "trait": "Muralist on Calle 24. Paints you better than you are.",
+      "sticker": "xochitl",
+      "voice": "xochitl",
+      "home": [
+        355.5,
+        -213.9,
+        -5.72
+      ],
+      "heading": 180,
+      "area": "Calle 24",
+      "model": {
+        "id": "xochitl"
+      },
+      "chatter": [
+        {
+          "id": "xochitl-chat-1",
+          "who": "xochitl",
+          "text": "Don't lean on the wall. The wall is wet. The wall is always wet."
+        },
+        {
+          "id": "xochitl-chat-2",
+          "who": "xochitl",
+          "text": "Every mural on this street has a story. Mine has a pigeon. Long story."
+        }
+      ]
+    },
+    {
+      "id": "beto",
+      "name": "Don Beto",
+      "trait": "Baker on 24th St. Cold conchas make him sad.",
+      "sticker": "beto",
+      "voice": "beto",
+      "home": [
+        401.8,
+        -188.4,
+        -6.21
+      ],
+      "heading": 90,
+      "area": "Calle 24",
+      "model": {
+        "id": "beto"
+      },
+      "chatter": [
+        {
+          "id": "beto-chat-1",
+          "who": "beto",
+          "text": "Pan dulce, fresh out. The pigeons know. They always know."
+        },
+        {
+          "id": "beto-chat-2",
+          "who": "beto",
+          "text": "A concha a day keeps the sadness away. Two keeps the doctor busy."
+        }
+      ]
+    },
+    {
+      "id": "memo",
+      "name": "Tío Memo",
+      "trait": "Lowrider owner. His car hops higher than you.",
+      "sticker": "memo",
+      "voice": "memo",
+      "home": [
+        425.0,
+        -209.5,
+        -6.54
+      ],
+      "heading": 180,
+      "area": "Calle 24",
+      "model": {
+        "id": "memo"
+      },
+      "chatter": [
+        {
+          "id": "memo-chat-1",
+          "who": "memo",
+          "text": "Low and slow, mijo. That is the whole philosophy."
+        },
+        {
+          "id": "memo-chat-2",
+          "who": "memo",
+          "text": "My car's got more chrome than your whole personality. With love."
+        }
+      ]
+    },
+    {
+      "id": "ramon",
+      "name": "Don Ramón",
+      "trait": "Mariachi band leader. His trumpet player is on the 14 Mission.",
+      "sticker": "ramon",
+      "voice": "ramon",
+      "home": [
+        115.0,
+        -353.5,
+        -2.04
+      ],
+      "heading": 270,
+      "area": "The Mission",
+      "model": {
+        "id": "ramon"
+      },
+      "chatter": [
+        {
+          "id": "ramon-chat-1",
+          "who": "ramon",
+          "text": "Every song is about heartbreak. Even the happy ones."
+        },
+        {
+          "id": "ramon-chat-2",
+          "who": "ramon",
+          "text": "The trumpet is late. The trumpet is always late. The trumpet has a girlfriend."
+        }
+      ]
+    },
+    {
+      "id": "lupita",
+      "name": "Lupita",
+      "trait": "Paleta vendor. Racing the sun every day.",
+      "sticker": "lupita",
+      "voice": "lupita",
+      "home": [
+        132.0,
+        -250.5,
+        -2.24
+      ],
+      "heading": 90,
+      "area": "The Mission",
+      "model": {
+        "id": "lupita"
+      },
+      "chatter": [
+        {
+          "id": "lupita-chat-1",
+          "who": "lupita",
+          "text": "Mango, coconut, cucumber-chili. The chili one is for brave people."
+        },
+        {
+          "id": "lupita-chat-2",
+          "who": "lupita",
+          "text": "Every hot day I lose money and gain character."
+        }
+      ]
+    },
+    {
+      "id": "rosaura",
+      "name": "Abuela Rosaura",
+      "trait": "Grandmother. Her chancla has range.",
+      "sticker": "rosaura",
+      "voice": "rosaura",
+      "home": [
+        144.5,
+        -415.3,
+        -2.44
+      ],
+      "heading": 0,
+      "area": "The Mission",
+      "model": {
+        "id": "rosaura"
+      },
+      "chatter": [
+        {
+          "id": "rosaura-chat-1",
+          "who": "rosaura",
+          "text": "Did you eat? You look like you skated here on an empty stomach."
+        },
+        {
+          "id": "rosaura-chat-2",
+          "who": "rosaura",
+          "text": "Helmet. I don't care if it is not cool. Cool people have heads."
+        }
+      ]
+    },
+    {
+      "id": "priya",
+      "name": "Priya",
+      "trait": "Dog walker. Nine dogs. All of them are the corgi.",
+      "sticker": "priya",
+      "voice": "priya",
+      "home": [
+        -471.5,
+        159.7,
+        26.23
+      ],
+      "heading": 0,
+      "area": "Duboce Triangle",
+      "model": {
+        "id": "priya"
+      },
+      "chatter": [
+        {
+          "id": "priya-chat-1",
+          "who": "priya",
+          "text": "Biscuit, no. Biscuit. Biscuit! Sorry, Biscuit is a lot."
+        },
+        {
+          "id": "priya-chat-2",
+          "who": "priya",
+          "text": "Nine dogs, eighteen legs... no. Thirty-six legs. I am not a math person."
+        }
+      ]
+    },
+    {
+      "id": "ezra",
+      "name": "Ezra",
+      "trait": "Brews kombucha. It is alive, legally.",
+      "sticker": "ezra",
+      "voice": "ezra",
+      "home": [
+        -408.0,
+        164.5,
+        22.45
+      ],
+      "heading": 270,
+      "area": "Duboce Triangle",
+      "model": {
+        "id": "ezra"
+      },
+      "chatter": [
+        {
+          "id": "ezra-chat-1",
+          "who": "ezra",
+          "text": "This batch has notes of ginger and regret."
+        },
+        {
+          "id": "ezra-chat-2",
+          "who": "ezra",
+          "text": "Kombucha is a journey. Mostly a journey to the bathroom."
+        }
+      ]
+    },
+    {
+      "id": "gravity",
+      "name": "Dr. Gravity",
+      "trait": "Physicist. Thinks skaters cannot fly. Hopes he is wrong.",
+      "sticker": "gravity",
+      "voice": "gravity",
+      "home": [
+        -340.0,
+        168.0,
+        17.37
+      ],
+      "heading": 300,
+      "area": "Duboce Triangle",
+      "model": {
+        "id": "gravity"
+      },
+      "chatter": [
+        {
+          "id": "gravity-chat-1",
+          "who": "gravity",
+          "text": "Every ollie is a tiny argument with Newton. Newton usually wins."
+        },
+        {
+          "id": "gravity-chat-2",
+          "who": "gravity",
+          "text": "I dropped an apple once. Changed nothing. Very disappointing."
+        }
+      ]
+    },
+    {
+      "id": "dez",
+      "name": "Dez",
+      "trait": "Record store clerk on Haight. His demo is mostly feedback.",
+      "sticker": "dez",
+      "voice": "dez",
+      "home": [
+        -530.0,
+        322.0,
+        23.43
+      ],
+      "heading": 90,
+      "area": "Lower Haight",
+      "model": {
+        "id": "dez"
+      },
+      "chatter": [
+        {
+          "id": "dez-chat-1",
+          "who": "dez",
+          "text": "It's a record store. We sell records. And opinions. Mostly opinions."
+        },
+        {
+          "id": "dez-chat-2",
+          "who": "dez",
+          "text": "My band is called Fog Delay. We have one song. It is eleven minutes."
+        }
+      ]
+    },
+    {
+      "id": "philippa",
+      "name": "Philippa",
+      "trait": "Art critic at Patricia's Green. Everything is a metaphor.",
+      "sticker": "philippa",
+      "voice": "philippa",
+      "home": [
+        -218.0,
+        463.0,
+        9.72
+      ],
+      "heading": 180,
+      "area": "Hayes Valley",
+      "model": {
+        "id": "philippa"
+      },
+      "chatter": [
+        {
+          "id": "philippa-chat-1",
+          "who": "philippa",
+          "text": "The bench is a statement. The statement is: sit."
+        },
+        {
+          "id": "philippa-chat-2",
+          "who": "philippa",
+          "text": "I've written forty thousand words on this sculpture. It didn't read them."
+        }
+      ]
+    },
+    {
+      "id": "benny",
+      "name": "Benny",
+      "trait": "Sandwich shop on Haight St. Names every sandwich after a regular.",
+      "sticker": "benny",
+      "voice": "benny",
+      "home": [
+        -435.0,
+        328.5,
+        17.60
+      ],
+      "heading": 180,
+      "area": "Lower Haight",
+      "model": {
+        "id": "benny"
+      },
+      "chatter": [
+        {
+          "id": "benny-chat-1",
+          "who": "benny",
+          "text": "The Landlord: rye, pastrami, and a ten percent increase."
+        },
+        {
+          "id": "benny-chat-2",
+          "who": "benny",
+          "text": "Every sandwich here is named after someone. The pickle is named after my ex."
+        }
+      ]
+    },
+    {
+      "id": "juniper",
+      "name": "Juniper",
+      "trait": "Bike messenger. Rides the Wiggle. Does not believe in brakes.",
+      "sticker": "juniper",
+      "voice": "juniper",
+      "home": [
+        -357.2,
+        329.4,
+        16.14
+      ],
+      "heading": 270,
+      "area": "Lower Haight",
+      "model": {
+        "id": "juniper"
+      },
+      "chatter": [
+        {
+          "id": "juniper-chat-1",
+          "who": "juniper",
+          "text": "Brakes are a mindset. I don't have that mindset."
+        },
+        {
+          "id": "juniper-chat-2",
+          "who": "juniper",
+          "text": "The Wiggle is flat if you believe. And pedal."
+        }
+      ]
+    },
+    {
+      "id": "lau",
+      "name": "Mr. Lau",
+      "trait": "Writes the fortunes for a cookie bakery. Fifty years. Writer's block.",
+      "sticker": "lau",
+      "voice": "lau",
+      "home": [
+        260.7,
+        733.1,
+        5.88
+      ],
+      "heading": 300,
+      "area": "Chinatown",
+      "model": {
+        "id": "lau"
+      },
+      "chatter": [
+        {
+          "id": "lau-chat-1",
+          "who": "lau",
+          "text": "'You will find what you are looking for.' I wrote that in 1979. Still true. Vague, but true."
+        },
+        {
+          "id": "lau-chat-2",
+          "who": "lau",
+          "text": "A fortune should be short. Like my patience."
+        }
+      ]
+    },
+    {
+      "id": "pistachio",
+      "name": "Pistachio",
+      "trait": "One of the wild parrots of Telegraph Hill. Knows one word. The word is mid.",
+      "sticker": "pistachio",
+      "voice": "pistachio",
+      "home": [
+        325.5,
+        913.1,
+        -9.06
+      ],
+      "heading": 0,
+      "area": "Telegraph Hill",
+      "model": {
+        "id": "pistachio"
+      },
+      "chatter": [
+        {
+          "id": "pistachio-chat-1",
+          "who": "pistachio",
+          "text": "Squawk! Mid! Mid!"
+        },
+        {
+          "id": "pistachio-chat-2",
+          "who": "pistachio",
+          "text": "Pretty bird! Pretty bird does not do stairs! Squawk!"
+        }
+      ]
+    },
+    {
+      "id": "herb",
+      "name": "Herb",
+      "trait": "Cruise ship tourist from Ohio. Four hours ashore. Linda has the camera.",
+      "sticker": "herb",
+      "voice": "herb",
+      "home": [
+        534.2,
+        884.2,
+        -9.50
+      ],
+      "heading": 235,
+      "area": "The Embarcadero",
+      "model": {
+        "id": "herb"
+      },
+      "chatter": [
+        {
+          "id": "herb-chat-1",
+          "who": "herb",
+          "text": "We saw a sea lion. Linda says it saw us first."
+        },
+        {
+          "id": "herb-chat-2",
+          "who": "herb",
+          "text": "Four hours. We've done Alcatraz from the outside and a sourdough bowl from the inside."
+        }
+      ]
+    },
+    {
+      "id": "bernadette",
+      "name": "Bernadette",
+      "trait": "Coit Tower tour guide. Her group took scooters. She did not.",
+      "sticker": "bernadette",
+      "voice": "bernadette",
+      "home": [
+        366.1,
+        902.3,
+        -9.15
+      ],
+      "heading": 45,
+      "area": "Telegraph Hill",
+      "model": {
+        "id": "bernadette"
+      },
+      "chatter": [
+        {
+          "id": "bernadette-chat-1",
+          "who": "bernadette",
+          "text": "On your left, the bay. On your right, also the bay. It's a peninsula."
+        },
+        {
+          "id": "bernadette-chat-2",
+          "who": "bernadette",
+          "text": "Coit Tower is two hundred and ten feet tall. The stairs feel taller."
+        }
+      ]
+    },
+    {
+      "id": "okafor",
+      "name": "Supervisor Okafor",
+      "trait": "Chairs the Board of Supervisors. Has read every page of every permit. Tired.",
+      "sticker": "okafor",
+      "voice": "okafor",
+      "home": [
+        22.0,
+        340.0,
+        3.02
+      ],
+      "heading": 90,
+      "area": "Civic Center",
+      "model": {
+        "id": "okafor"
+      },
+      "chatter": [
+        {
+          "id": "okafor-chat-1",
+          "who": "okafor",
+          "text": "Public comment is limited to two minutes. Skating counts as comment."
+        },
+        {
+          "id": "okafor-chat-2",
+          "who": "okafor",
+          "text": "I have read four hundred pages about your skatepark. Most of them were Chad's."
+        }
+      ]
+    },
+    {
+      "id": "pham",
+      "name": "Supervisor Pham",
+      "trait": "Supervisor for the district. Accidentally loves skateboarding.",
+      "sticker": "pham",
+      "voice": "pham",
+      "home": [
+        22.0,
+        366.0,
+        3.13
+      ],
+      "heading": 90,
+      "area": "Civic Center",
+      "model": {
+        "id": "pham"
+      },
+      "chatter": [
+        {
+          "id": "pham-chat-1",
+          "who": "pham",
+          "text": "Is it called a kickflip because you kick it? Don't tell me. I want to find out."
+        },
+        {
+          "id": "pham-chat-2",
+          "who": "pham",
+          "text": "I tried to ollie a curb once. The curb won. I voted to fix the curb."
+        }
+      ]
+    },
+    {
+      "id": "delgado",
+      "name": "Supervisor Delgado",
+      "trait": "Supervisor. Sees a liability in everything, and secretly a ramp.",
+      "sticker": "delgado",
+      "voice": "delgado",
+      "home": [
+        23.0,
+        334.0,
+        2.97
+      ],
+      "heading": 90,
+      "area": "Civic Center",
+      "model": {
+        "id": "delgado"
+      },
+      "chatter": [
+        {
+          "id": "delgado-chat-1",
+          "who": "delgado",
+          "text": "Have you considered a helmet? Have you considered two helmets?"
+        },
+        {
+          "id": "delgado-chat-2",
+          "who": "delgado",
+          "text": "Every ramp is a liability. Some ramps are also very cool. Both can be true."
+        }
+      ]
+    },
+    {
+      "id": "jasper",
+      "name": "Jasper",
+      "trait": "Strung the slackline between two Dolores trees. Has fallen off both.",
+      "sticker": "jasper",
+      "voice": "jasper",
+      "home": [
+        -317.0,
+        -159.4,
+        15.53
+      ],
+      "heading": 76,
+      "area": "Mission Dolores",
+      "model": {
+        "id": "jasper"
+      },
+      "chatter": [
+        {
+          "id": "jasper-chat-1",
+          "who": "jasper",
+          "text": "Balance is a state of mind. My mind is mostly in the grass."
+        },
+        {
+          "id": "jasper-chat-2",
+          "who": "jasper",
+          "text": "I strung the line between two palms. One of them didn't consent."
+        }
+      ]
+    },
+    {
+      "id": "gideon",
+      "name": "Gideon",
+      "trait": "Noe Valley dad. The twins are finally asleep. He cannot move.",
+      "sticker": "gideon",
+      "voice": "gideon",
+      "home": [
+        -461.0,
+        -476.4,
+        58.59
+      ],
+      "heading": 90,
+      "area": "Noe Valley",
+      "model": {
+        "id": "gideon"
+      },
+      "chatter": [
+        {
+          "id": "gideon-chat-1",
+          "who": "gideon",
+          "text": "Shh. They're asleep. Skate quieter. Skate in a whisper."
+        },
+        {
+          "id": "gideon-chat-2",
+          "who": "gideon",
+          "text": "I haven't sat down since March. Not this March. A different March."
+        }
+      ]
+    },
+    {
+      "id": "misty",
+      "name": "Misty",
+      "trait": "Karl the Fog's cousin. Gets Twin Peaks and the tourists. Mostly the tourists.",
+      "sticker": "misty",
+      "voice": "misty",
+      "home": [
+        -1286.5,
+        -476.2,
+        74.0
+      ],
+      "heading": 120,
+      "area": "Twin Peaks",
+      "model": {
+        "id": "misty"
+      },
+      "chatter": [
+        {
+          "id": "misty-chat-1",
+          "who": "misty",
+          "text": "Karl gets the whole city. I get one hill and a parking lot."
+        },
+        {
+          "id": "misty-chat-2",
+          "who": "misty",
+          "text": "Tourists drive up here for the view. I am the view. They are never happy."
+        }
+      ]
+    },
+    {
+      "id": "walter",
+      "name": "Walter",
+      "trait": "Waiting for the J Church since 2009. Optimistic.",
+      "sticker": "walter",
+      "voice": "walter",
+      "home": [
+        -412.0,
+        -35.0,
+        7.22
+      ],
+      "heading": 170,
+      "area": "Mission Dolores",
+      "model": {
+        "id": "walter"
+      },
+      "chatter": [
+        {
+          "id": "walter-chat-1",
+          "who": "walter",
+          "text": "The sign says four minutes. The sign has said four minutes since 2009."
+        },
+        {
+          "id": "walter-chat-2",
+          "who": "walter",
+          "text": "I brought a sandwich. I've brought a sandwich every day. I've eaten many sandwiches here."
+        }
+      ]
+    },
+    {
+      "id": "lorraine",
+      "name": "Lorraine",
+      "trait": "Her pug, Mayor Biscuits, runs Market Street. She just walks behind him.",
+      "sticker": "lorraine",
+      "voice": "lorraine",
+      "home": [
+        100.0,
+        320.0,
+        2.46
+      ],
+      "heading": 315,
+      "area": "Civic Center",
+      "model": {
+        "id": "lorraine"
+      },
+      "chatter": [
+        {
+          "id": "lorraine-chat-1",
+          "who": "lorraine",
+          "text": "Mayor Biscuits has a schedule. I do not. I have Mayor Biscuits."
+        },
+        {
+          "id": "lorraine-chat-2",
+          "who": "lorraine",
+          "text": "He snores like a leaf blower. He is perfect."
+        }
+      ]
+    },
+    {
+      "id": "ruth",
+      "name": "Ruth",
+      "trait": "Beekeeper at the UN Plaza farmers market. The bees are on a field trip.",
+      "sticker": "ruth",
+      "voice": "ruth",
+      "home": [
+        410.0,
+        429.0,
+        -2.39
+      ],
+      "heading": 220,
+      "area": "Civic Center",
+      "model": {
+        "id": "ruth"
+      },
+      "chatter": [
+        {
+          "id": "ruth-chat-1",
+          "who": "ruth",
+          "text": "The bees aren't lost. The bees are on a field trip."
+        },
+        {
+          "id": "ruth-chat-2",
+          "who": "ruth",
+          "text": "Local honey. Very local. Some of it is from that planter."
+        }
+      ]
+    },
+    {
+      "id": "chela",
+      "name": "Doña Chela",
+      "trait": "Sells churros at the 24th St BART plaza. A churro without sugar is a stick.",
+      "sticker": "chela",
+      "voice": "chela",
+      "home": [
+        309.0,
+        -193.0,
+        -5.1
+      ],
+      "heading": 0,
+      "area": "Calle 24",
+      "model": {
+        "id": "chela"
+      },
+      "chatter": [
+        {
+          "id": "chela-chat-1",
+          "who": "chela",
+          "text": "Churros, mija. Hot ones. The cold ones are for people who are late."
+        },
+        {
+          "id": "chela-chat-2",
+          "who": "chela",
+          "text": "BART is late, the churros are not. Remember that."
+        }
+      ]
+    },
+    {
+      "id": "haverford",
+      "name": "Mrs. Haverford",
+      "trait": "Mother of the bride. The wedding shoot on the City Hall steps is hers now.",
+      "sticker": "haverford",
+      "voice": "haverford",
+      "home": [
+        15.6,
+        344.5,
+        5.69
+      ],
+      "heading": 314,
+      "area": "Civic Center",
+      "model": {
+        "id": "haverford"
+      },
+      "chatter": [
+        {
+          "id": "haverford-chat-1",
+          "who": "haverford",
+          "text": "The light is perfect. The groom is not. We work with what we have."
+        },
+        {
+          "id": "haverford-chat-2",
+          "who": "haverford",
+          "text": "I told them City Hall. They wanted a vineyard. We're at City Hall."
+        }
+      ]
+    },
+    {
+      "id": "lev",
+      "name": "Lev",
+      "trait": "Speed-chess hustler on Market Street. Has not bought his own coffee since 1988.",
+      "sticker": "lev",
+      "voice": "lev",
+      "home": [
+        637.9,
+        403.7,
+        -8.93
+      ],
+      "heading": 59,
+      "area": "Downtown",
+      "model": {
+        "id": "lev"
+      },
+      "chatter": [
+        {
+          "id": "lev-chat-1",
+          "who": "lev",
+          "text": "Chess is easy. You move the little horse in an L. Then you take their money."
+        },
+        {
+          "id": "lev-chat-2",
+          "who": "lev",
+          "text": "I lost once, in 1988. I still think about it."
+        }
+      ]
+    },
+    {
+      "id": "kevin",
+      "name": "Kevin",
+      "trait": "Drives a Three Bin Hauling truck. Bombs Dolores on his lunch break. Today Dolores bombed him.",
+      "sticker": "kevin",
+      "voice": "kevin",
+      "home": [
+        34.5,
+        6.7,
+        -0.8
+      ],
+      "heading": 190,
+      "area": "SoMa",
+      "model": {
+        "id": "kevin"
+      },
+      "chatter": [
+        {
+          "id": "kevin-chat-1",
+          "who": "kevin",
+          "text": "Nine years on the truck. I've found two wedding rings and a canoe."
+        },
+        {
+          "id": "kevin-chat-2",
+          "who": "kevin",
+          "text": "I bomb Dolores at lunch. The truck bombs it at three miles an hour."
+        }
+      ]
+    },
+    {
+      "id": "bjorn",
+      "name": "Bjorn",
+      "trait": "Tourist from Stockholm with a paper map from 1987. Confident.",
+      "sticker": "bjorn",
+      "voice": "bjorn",
+      "home": [
+        100.0,
+        320.0,
+        2.46
+      ],
+      "heading": 200,
+      "area": "Civic Center",
+      "model": {
+        "id": "bjorn"
+      },
+      "chatter": [
+        {
+          "id": "bjorn-chat-1",
+          "who": "bjorn",
+          "text": "My map says this is the Golden Gate Bridge. My map is very old. So is the bridge."
+        },
+        {
+          "id": "bjorn-chat-2",
+          "who": "bjorn",
+          "text": "In Stockholm we also have hills. Smaller. Politer."
+        }
+      ]
+    }
+  ]
+}

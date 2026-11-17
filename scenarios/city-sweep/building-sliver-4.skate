@@ -1,0 +1,23 @@
+# City sweep (skate cityfuzz): a building sliver by Duboce Park. Two faces of city_building_-800_200
+# (triangles 475848 and 475824, about -673, 337.5) cross 3 to 5 cm apart facing away from each other, over
+# a lot sloping into them: a sphere between them cannot be pushed out of both. Found in the feel pass's
+# round 2 (the park-speed carve sent these random keys there).
+# Finding: invariant at -672.45 337.55 46.74 (inside geometry (0.036 m deep, triangle 475848)), tick 717.
+# Run it with `./skate run scenarios/city-sweep/building-sliver-4.skate`; the end position is where the
+# problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -680 340 47.21 25
+hold up+walk 0..96
+hold down 193..240
+hold up+revert 240..318
+hold right+flip 318..387
+hold up+grind+walk 387..426
+hold up+flip 426..455
+hold up 455..515
+hold walk 515..538
+hold up+flip+grind+slide 538..592
+hold up 592..639
+hold up+grab 639..703
+hold up 703..717
+run 719

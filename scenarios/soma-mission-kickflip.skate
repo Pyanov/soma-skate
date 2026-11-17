@@ -1,0 +1,15 @@
+# Missions: a trick step (tricks: a banked combo holding a kickflip, near Rosa within 40 m). The Big 3
+# kickflip (soma-big3-kickflip) banks Kickflip + BIG 3 GAP 25 m from her: the step is done, and the
+# next talk step (radius 40) starts her line at once.
+park soma
+spawn big3
+cmd 0 mission start ch1 2
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 420
+expect event missionStep{mission=ch1,step=2,kind=trick} within 1..1
+expect event comboLanded{name=Kickflip + BIG 3 GAP} within 300..360
+expect event missionStep{mission=ch1,step=3,kind=talk} within 300..360
+expect event talk{character=rosa,line=ch1-06,n=0} within 300..360
+expect no event bail

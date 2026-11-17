@@ -1,0 +1,22 @@
+# Missions (docs/mechanics/missions.md): chapter 1's offer. Started, Karl's four lines come one
+# per mission next (the first at once: you pressed the talk key by him), then the offer waits for
+# accept. Accepted, the next step (find Rosa, a talk step) waits until you are by her: a teleport
+# there starts her line. Esc (mission next all) ends the conversation at once.
+park soma
+cmd 0 mission start ch1
+cmd 20 mission next
+cmd 40 mission next
+cmd 60 mission next
+cmd 80 mission next
+cmd 100 mission accept
+cmd 200 teleport 44 28.5 0
+cmd 300 mission next all
+run 320
+expect event missionStart{mission=ch1,name=New in Town,kind=story} within 1..1
+expect event talk{mission=ch1,character=karl,line=ch1-01,n=0,of=4} within 1..1
+expect event talk{character=karl,line=ch1-04,n=3} within 61..61
+expect event missionOffer{mission=ch1} within 81..81
+expect event missionStep{mission=ch1,step=1,kind=talk} within 101..101
+expect no event talk{character=rosa} within 101..200
+expect event talk{character=rosa,line=ch1-05,n=0,of=1} within 201..202
+expect event missionStep{mission=ch1,step=2,kind=trick,text=Kickflip for Rosa} within 301..301

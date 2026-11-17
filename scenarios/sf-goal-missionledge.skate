@@ -1,0 +1,16 @@
+# City goal "Grind the Mission Ledge": Mission Dolores is in a removed block, so the goal is the curb in front of
+# Fog City Skate Shop on Valencia (gap mission_ledge, VALENCIA CURB): a 50-50 along it, ollied out of (a grind
+# gap counts when the grind ends clean).
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 30 teleport -43.3 -289.3 2.35 355
+cmd 30 set skater.vel.x -0.26
+cmd 30 set skater.vel.y 3
+tap grind 31
+hold ollie 140..170
+run 400
+expect event grindStart{trick=FS 50-50,line=curb_-43_-290} within 31..34
+expect event gap{id=mission_ledge,gap=VALENCIA CURB,points=300} within 170..172
+expect event goalComplete{id=missionledge} within 170..172
+expect no event bail

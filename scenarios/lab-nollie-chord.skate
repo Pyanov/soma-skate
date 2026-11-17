@@ -1,0 +1,12 @@
+# The nose pop on the pad: both spin buttons together (L1 + R1; keys U + O; they cancel, so no spin) held
+# as the ollie is let go pop off the nose like the nose button: a Nollie Kickflip.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold spinL+spinR 84..90
+tap flip+left 96
+run 300
+expect event pop{nose=true} within 91..91
+expect event comboLanded{name=Nollie Kickflip} within 160..240
+expect no event bail

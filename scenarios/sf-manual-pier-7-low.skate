@@ -1,0 +1,19 @@
+# Pier 7's "low side" (Jenkem, 2021: where you ollie onto the ledges to manual): on the seawall level
+# the blocks stand 0.25 m. Rolling south-east across the plaza between the second and third blocks,
+# an ollie onto the third one's middle and a manual across its width, rolled off its far side
+# (0.37 m down to the plaza's ramp there), landed clean.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 578.37 925.07 -9.05 144.5
+cmd 2 set skater.vel.x 2.320
+cmd 2 set skater.vel.y -3.258
+hold ollie 105..117
+tap up 194
+tap down 198
+bot balance
+run 330
+expect event land{quality=clean} within 198..204
+expect event manualStart{trick=Manual} within 198..204
+expect event air within 216..226
+expect event land{quality=clean} within 250..260
+expect no event bail

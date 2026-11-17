@@ -1,0 +1,17 @@
+# Switch FS Crooked Grind: rolling tail first along the ledge with it on the toe side (the board's nose
+# points back the way it came, the chest faces the ledge), popped off the nose (the nose button, Q, held as K is let go)
+# into I + up + toward (left: the ledge is on the left of the way it travels): the crooked on the switch
+# front truck, the board's back truck. Scored at tricks.stance.switch.
+park lab
+cmd 0 teleport 0 -0.6 0.14 270
+cmd 2 set skater.vel.x 3.6
+hold ollie 60..90
+hold nose 84..90
+hold up 160..190
+hold left 160..190
+tap grind 165
+bot balance
+run 300
+expect event pop{fakie=true,nose=true} within 91..91
+expect event grindStart{trick=Switch FS Crooked Grind} within 120..200
+expect no event bail

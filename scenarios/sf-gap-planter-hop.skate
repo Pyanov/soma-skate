@@ -1,0 +1,15 @@
+# PLANTER HOP: ollie over a Dolores Park planter: here its north-east corner, from the grass north
+# of it to the sidewalk east (the trees in the middle of the planters stop a straight hop across).
+# The air passes over the planter's outline with both ends outside it.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -240.8 -164.9 8.86 137
+cmd 2 set skater.vel.x 2.7280
+cmd 2 set skater.vel.y -2.9254
+hold ollie 101..131
+run 330
+expect event pop within 130..134
+expect event land{quality=clean} within 245..249
+expect event gap{id=planter_hop,gap=PLANTER HOP,points=300} within 245..249
+expect skater.pos.x > -236.7 at 247
+expect no event bail

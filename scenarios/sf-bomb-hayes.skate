@@ -1,0 +1,26 @@
+# The Hayes St Hill Bomb (run bomb hayes): from Pierce at Alamo Square (68 m) east down Hayes past
+# Steiner, Fillmore, Webster, Buchanan and Laguna to Octavia (10 m), 10% for the first three blocks.
+# The route has no rider line, so its locals follow its start and gates. Pushed off straight and
+# tucked all the way (no steering needed: the street runs at heading 81), the player tops out at
+# 17.6 m/s past Fillmore, just under the tuck's wobble speed, and is home first in 57.48 s (57.49 before
+# the squeezed city, 57.43 before city phase 11), 0.3 s
+# ahead of the Painted Ladies landlord (the barista is 60.53, the tour guide 65.31 when they finish):
+# Hayes Under a Minute and Beat the Landlord.
+park sf
+cmd 0 traffic clear
+cmd 0 run bomb hayes
+hold up 10..300
+hold ollie 300..9000
+run 7300
+expect event bombReady{route=hayes,name=Hayes St,gates=7} within 0..2
+expect event bombStart{route=hayes,gate=Start} within 265..269
+expect event bombCheckpoint{route=hayes,n=1,gate=Hayes & Steiner} within 1242..1246
+expect event bombCheckpoint{route=hayes,n=2,gate=Hayes & Fillmore} within 2439..2443
+expect event bombCheckpoint{route=hayes,n=3,gate=Hayes & Webster} within 3491..3495
+expect event bombCheckpoint{route=hayes,n=4,gate=Hayes & Buchanan} within 4557..4561
+expect event bombCheckpoint{route=hayes,n=5,gate=Hayes & Laguna} within 5712..5716
+expect event bombFinish{route=hayes,time=57.48,falls=0,braked=false,place=1,of=4} within 7164..7168
+expect event goalComplete{id=hayes60,name=Hayes Under a Minute,area=Hayes Valley} within 7164..7168
+expect event goalComplete{id=hayeswin,name=Beat the Landlord} within 7164..7168
+expect no event racerFinish
+expect no event bail

@@ -1,0 +1,30 @@
+# Co-op skitch (physics phase 32): split screen, player 1 drives the crew van and player 2 skitches it. Player
+# 2 joins on the board behind the parked van, grabs its bumper (grab) while both stand still, and the van
+# tows them as any car would: the driving autopilot takes it west on Duboce and round the bend at 4.5 m/s,
+# player 2 balancing (the balance bot holds a skitch too), let go after 12 s: Skitch, 1,828.
+# The driver is not penalised: the van goes exactly where and as fast as it goes alone (sf-van-lap's start,
+# solo: 13.572, -6.050 at 3.501 m/s at tick 1500), no bump, and the van does not honk at its own partner
+# (a traffic driver honks at the kid on the bumper; a player's vehicle does not).
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 57.5 -17.8 -1.1 270
+cmd 2 player2 join 60.8 -15.6 -1.0 270
+tap use 30
+p2 hold grab 60..1500
+p2 bot balance
+bot drive 57.5,-15.6 46,-10 30,-6 12,-8 0,-9 -7,-4 -8,9 -9,22 -9,34 from 100 lane 1.8 speed 4.5 corner 3 stop
+run 1700
+expect event vehicleEnter{name=crew_van,player=1} within 30..32
+expect event skitchStart{car=2000000,player=2} within 60..62
+expect event skitchEnd{car=2000000,reason=let go,points=1828,player=2} within 1500..1502
+expect event comboLanded{name=Skitch,points=1828,player=2} within 1511..1513
+expect van.pos.x > 13.571 at 1500
+expect van.pos.x < 13.573 at 1500
+expect van.pos.y > -6.051 at 1500
+expect van.pos.y < -6.049 at 1500
+expect van.hspeed > 3.500 at 1500
+expect van.hspeed < 3.502 at 1500
+expect state drive at end
+expect no event honk
+expect no event vanBump
+expect no event bail

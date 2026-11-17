@@ -1,0 +1,10 @@
+# A transition air with a grab: straight up the vert ramp at 10 m/s, an Indy (L + right on the press,
+# held) at the top, let go on the way down, back in fakie.
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap grab+right 222
+hold grab 223..262
+run 420
+expect event trickEnd{trick=Indy} within 240..300
+expect no event bail

@@ -1,0 +1,10 @@
+# Phase 2 review in the real look: ./skate strip --sheet scenarios/characters-2.strips --height 280
+# Each row: picking the board up, walking, running with it, a carve, a powerslide, the Dolores tuck, a speed wobble, a celebration.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | can | real
+Big Blob | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | blob | real
+Eucalyptus Monster | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | redmonster | real
+Guy in the Orange Suit | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | mascot | real
+Count Kickflip | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | vampire | real
+Mr. Bones | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | skeleton | real
+Tech Bro | soma-walk-carry@74, soma-walk-carry@110, soma-walk-carry@200, soma-carve@60, soma-powerslide@40, sf-dolores-bomb@1000, sf-dolores-standing@1020, soma-big3-indy@372 | - | orbit:150,10,3.2,0.8 | techbro | real

@@ -1,0 +1,84 @@
+{
+  "_doc": "Drivable vehicles (src/sim/game/vehicles.ts, docs/mechanics/driving.md): the crew van and the mission vehicles, as car Things with car.drive. types: one per kind of vehicle. dims: the two collision boxes in the car's frame (x forward, y left, z up from the ground under its middle), the shape the skater lands on, grinds and runs into, as data/traffic.json body and cabin; name: what its edges are called (van roof). wheelbase, track: where the four wheels sit (m); maxStep: a wheel climbs a step this high (a curb), not higher; maxDrop: a wheel finds ground this far below the body, or it is in the air. engine: accel (m/s2 from rest, falling to 0 at topSpeed), topSpeed, reverseAccel, reverseTop, brake (m/s2), rolling (m/s2 always against the motion), drag (m/s2 per (m/s)2). steer: maxDeg at a standstill, falling as fade / (fade + speed) of it; rate and back (rad/s of wheel angle, turning and returning). grip: lateral (m/s2 the tyres hold sideways before the van slides), handbrake (what they hold with it on), yawBoost (how much harder a handbrake turn rotates), yawAccel (rad/s2: how fast its spin builds and fades), handbrakeDecel (m/s2 of the locked rear). body: spheres (count along it, radius half the width) from clearance above the ground: what hits walls and props; restitution and friction of a bump; yawKick: how much a bump at one end turns it. bumpSpeed: m/s into something for a vanBump event (cooldown seconds). driverless: m/s2 an empty vehicle brakes to a stop. enter: metres from its box the skater can get in from; exit: metres beside it the skater is put out, and only below exitSpeed m/s. seat: the skater's height in it, for the camera and everyone who reads the skater's place. parked: vehicles in a world from the start (world, id, type, x, y, heading in degrees clockwise from north). summon: van summon puts the crew van on the street nearest the skater, between near and far metres away. horn: seconds between honks (ollie).",
+  "types": {
+    "van": {
+      "name": "van",
+      "label": "Crew van",
+      "dims": { "body": { "length": 5.3, "width": 2.0, "bottom": 0, "top": 1.25 }, "cabin": { "length": 4.1, "width": 1.9, "offset": -0.45, "top": 2.45 } },
+      "wheelbase": 3.3, "track": 1.7, "maxStep": 0.4, "maxDrop": 1.2,
+      "engine": { "accel": 7, "topSpeed": 24, "reverseAccel": 3, "reverseTop": 6, "brake": 9, "rolling": 0.25, "drag": 0.003 },
+      "steer": { "maxDeg": 34, "fade": 9, "rate": 2.4, "back": 3.2 },
+      "grip": { "lateral": 9, "handbrake": 2.2, "yawBoost": 2.2, "yawAccel": 10, "yawFade": 2.5, "handbrakeDecel": 4.5 },
+      "body": { "spheres": 3, "clearance": 0.35, "restitution": 0.15, "friction": 0.3, "yawKick": 0.25 },
+      "bumpSpeed": 1.5, "bumpCooldown": 0.5, "driverless": 6
+    },
+    "garbage": {
+      "name": "garbage truck",
+      "label": "Three Bin truck",
+      "dims": { "body": { "length": 8.6, "width": 2.5, "bottom": 0, "top": 1.6 }, "cabin": { "length": 6.2, "width": 2.45, "offset": -1.0, "top": 3.5 } },
+      "wheelbase": 5.0, "track": 2.1, "maxStep": 0.45, "maxDrop": 1.2,
+      "engine": { "accel": 5, "topSpeed": 19.5, "reverseAccel": 1.8, "reverseTop": 4, "brake": 6.5, "rolling": 0.35, "drag": 0.0022 },
+      "steer": { "maxDeg": 38, "fade": 9, "rate": 1.6, "back": 2.4 },
+      "grip": { "lateral": 6, "handbrake": 2.5, "yawBoost": 1.6, "yawAccel": 5, "yawFade": 1.5, "handbrakeDecel": 3 },
+      "body": { "spheres": 4, "clearance": 0.45, "restitution": 0.1, "friction": 0.3, "yawKick": 0.15 },
+      "bumpSpeed": 1.5, "bumpCooldown": 0.5, "driverless": 5
+    },
+    "scooter": {
+      "_doc": "Chad Vantage's rental e-scooters (physics phase 31): ridden standing (stand, seat: the rider's height), slow (20 km/h), small wheels that only just climb a curb, no reverse and no handbrake. scooter: battery seconds of riding, low seconds left when it says low battery (scooterBattery) and holds itself to lowTop m/s (its limiter brakes at limiter m/s2 above it), then empty: no motor; ditch: ollie pops the rider off onto the board (a trick of name and points, pop m/s up), twisting off at up to spinMax rad/s (drawn; spin against it), so the landing decides; fare: what the ride costs (unlock, perMinute dollars; scooterRideEnd's fare in cents); view: for the client's model and the rider's pose (src/client/traffic.ts CarPose van.pitch, van.lean): the wheelie's angle (wheelieDeg, swinging swingDeg with its balance) and the most it leans into a turn (leanMaxDeg). Up then down quickly: a wheelie (the manual's balance; data/tricks.json manuals wheelie).",
+      "name": "scooter",
+      "label": "Vantage scooter",
+      "dims": { "body": { "length": 1.1, "width": 0.4, "bottom": 0, "top": 0.2 }, "cabin": { "length": 0.16, "width": 0.56, "offset": 0.44, "top": 1.12 } },
+      "wheelbase": 0.86, "track": 0.16, "maxStep": 0.17, "maxDrop": 0.5,
+      "engine": { "accel": 3, "topSpeed": 5.6, "reverseAccel": 0.01, "reverseTop": 0.5, "brake": 4, "rolling": 0.15, "drag": 0.006 },
+      "steer": { "maxDeg": 38, "fade": 3, "rate": 2.2, "back": 3.5 },
+      "grip": { "lateral": 5, "handbrake": 5, "yawBoost": 1, "yawAccel": 6, "yawFade": 3, "handbrakeDecel": 0 },
+      "body": { "spheres": 1, "clearance": 0.08, "restitution": 0.2, "friction": 0.3, "yawKick": 0.4 },
+      "bumpSpeed": 1.5, "bumpCooldown": 0.5, "driverless": 2.5,
+      "seat": 1.05, "stand": true,
+      "scooter": { "battery": 150, "low": 30, "lowTop": 2.2, "limiter": 1.5, "ditch": { "name": "Scooter Ditch", "points": 150, "pop": 4.2, "spinMax": 6.5 }, "fare": { "unlock": 1.0, "perMinute": 0.49 }, "view": { "wheelieDeg": 18, "swingDeg": 7, "leanMaxDeg": 28 } }
+    }
+  },
+  "enter": 2.0,
+  "exit": { "side": 0.7, "speed": 3 },
+  "seat": 1.3,
+  "passenger": 0.5,
+  "parked": [
+    { "world": "sf", "id": "crew_van", "type": "van", "x": 57.5, "y": -15.6, "heading": 270 },
+    { "world": "sf", "id": "vantage_1", "type": "scooter", "x": 359.5, "y": 323.1, "heading": 45 },
+    { "world": "sf", "id": "vantage_2", "type": "scooter", "x": 360.0, "y": 322.6, "heading": 45 },
+    { "world": "sf", "id": "vantage_3", "type": "scooter", "x": 360.5, "y": 322.1, "heading": 45 },
+    { "world": "sf", "id": "vantage_4", "type": "scooter", "x": -164.0, "y": 158.8, "heading": 45 },
+    { "world": "sf", "id": "vantage_5", "type": "scooter", "x": -163.5, "y": 158.3, "heading": 45 },
+    { "world": "sf", "id": "vantage_6", "type": "scooter", "x": -163.0, "y": 157.8, "heading": 45 },
+    { "world": "sf", "id": "vantage_7", "type": "scooter", "x": 575.2, "y": 607.7, "heading": 45 },
+    { "world": "sf", "id": "vantage_8", "type": "scooter", "x": 575.7, "y": 607.2, "heading": 45 },
+    { "world": "sf", "id": "vantage_9", "type": "scooter", "x": 576.2, "y": 606.7, "heading": 45 },
+    { "world": "sf", "id": "vantage_10", "type": "scooter", "x": 622.8, "y": 474.8, "heading": 81 },
+    { "world": "sf", "id": "vantage_11", "type": "scooter", "x": 622.9, "y": 474.1, "heading": 81 },
+    { "world": "sf", "id": "vantage_12", "type": "scooter", "x": 623.0, "y": 473.4, "heading": 81 }
+  ],
+  "summon": { "id": "crew_van", "type": "van", "near": 6, "far": 40 },
+  "horn": 0.8,
+  "routes": {
+    "garbage": {
+      "_doc": "Kevin's Garbage Run (the story's to write; data/missions.json): the garbage truck round SoMa West's block, 640 m, in the right-hand lane (lane metres right of path), no bump on the way; bins on the right-hand curb, for a collect step with vehicle and stop (radius 6). Tested by scenarios/sf-truck-garbage.skate (the truck placed at truck: x y heading).",
+      "type": "garbage",
+      "truck": [57.5, -15.6, 270],
+      "lane": 1.8,
+      "bins": [[20.6, -3.4, -0.59], [-7.9, 64.3, 0.62], [19.3, 178.9, 0.4], [107.4, 121.2, -1.96], [97.7, 13.1, -2.42]],
+      "path": [[57.5, -15.6], [46, -10], [30, -6], [12, -8], [0, -9], [-7, -4], [-8, 9], [-9, 22], [-9, 34], [-10, 46], [-11, 58], [-12, 70], [-13, 82], [-14, 94], [-15, 106], [-16, 118], [-17, 130], [-18, 142], [-19, 154], [-19, 166], [-18, 178], [-12, 180], [0, 181], [13, 182], [25, 183], [37, 184], [60, 185], [74, 183], [86, 184], [96, 189], [104, 182], [108, 164], [109, 150], [110, 132], [112, 111], [114, 87], [115, 74], [116, 60], [117, 48], [118, 31], [118, 19], [112, 10], [104, 10], [92, 9], [80, 7], [68, 5], [60, 0], [54, -8]]
+    }
+  },
+  "reactions": {
+    "_doc": "The world at a driven vehicle (game/vehicles.ts, docs/mechanics/driving.md). Pedestrians (player 1's vehicle) shout one of pedShouts when they jump clear of it, or when it passes within nearMiss metres of them at nearMissSpeed m/s or more; once per shoutCooldown seconds each. NPC skaters shout one of npcShouts when it comes at them (within npcLook seconds of its front at its speed, npcLane metres either side of its body, at npcSpeed m/s or more) and jump clear of its body when it reaches them. body: a person's radius against a vehicle (NPC skaters, actors). Actors (the story's characters) are solid to it: it stops against them, and one walking holds while a vehicle is in its way. The line is picked by the walker's id and the tick (no random draw).",
+    "body": 0.35,
+    "nearMiss": 1.5,
+    "nearMissSpeed": 5,
+    "shoutCooldown": 8,
+    "npcLook": 1.5,
+    "npcLane": 1.5,
+    "npcSpeed": 3,
+    "pedShouts": ["Hey! Sidewalk!", "Eyes on the road!", "Whoa, whoa, whoa!", "Seriously?", "Learn to drive!", "That's a crosswalk, buddy!"],
+    "npcShouts": ["Van! Van! Van!", "Dude, it's a skatepark!", "Brake, man!", "Not cool!", "Get that thing out of here!"]
+  }
+}

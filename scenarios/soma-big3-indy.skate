@@ -1,0 +1,10 @@
+# Push down the west flat, charged ollie at the top of Big 3, Indy grab held, land past the bottom step.
+park soma
+spawn big3
+hold up 0..100
+hold ollie 166..196
+hold grab+right 204..206
+hold grab 206..285
+run 420
+expect event trickEnd{trick=Indy} within 280..320
+expect no event bail

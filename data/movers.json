@@ -1,0 +1,11 @@
+{
+  "_doc": "How the story's characters move (src/sim/game/movers.ts, docs/mechanics/missions.md): Things of kind 'actor', a mission's follow step's character (game/missions.ts) or one started by `actor spawn`. They ride the ground (no physics: an actor never bails or blocks). accel, decel: m/s2 to and from their pace. Escort, the defaults a follow step or a spawn may override: it stops for you once you are wait metres behind it along its path, goes on once you are within resume, and says you overtook it once you are lead metres ahead (and again when you drop back behind it). Follow: it keeps gap metres behind you; lost more than catchUp metres away, it comes round at catchBack metres behind you.",
+  "accel": 2.5,
+  "decel": 4,
+  "wait": 14,
+  "resume": 6,
+  "lead": 6,
+  "gap": 4,
+  "catchUp": 60,
+  "catchBack": 12
+}

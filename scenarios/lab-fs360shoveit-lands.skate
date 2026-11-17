@@ -1,0 +1,15 @@
+# Charged ollie, FS 360 Shove-It (Right, then Right with J, then J again: the double tap on THPS 2's
+# double-direction slot; it was J + up left J before 2026-11-16, now the 360 Hardflip) right after the pop:
+# the flip finishes and the combo lands (the view's flip review: ./skate strip --sheet scenarios/flips.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap right 92
+tap flip+right 96
+tap flip 99
+run 300
+expect event trickStart{trick=FS 360 Shove-It} within 100..100
+expect event trickEnd{trick=FS 360 Shove-It} within 120..175
+expect event comboLanded{name=FS 360 Shove-It,points=300} within 160..240
+expect no event bail

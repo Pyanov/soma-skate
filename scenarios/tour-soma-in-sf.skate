@@ -1,0 +1,8 @@
+# The SoMa West Skatepark level played inside the sf world (the default): it starts at the park's
+# Big 3 runway with the level clock on.
+park sf
+spawn valencia_shops
+cmd 0 run level soma
+run 60
+expect event levelStart{level=soma,seconds=120} within 1..2
+expect session.mode == level at end

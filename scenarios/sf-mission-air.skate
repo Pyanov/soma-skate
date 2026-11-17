@@ -1,0 +1,13 @@
+# Missions: a trick step on air (Skye: 0.9 s of air taken off on the east slope of Alamo Square), the
+# slope ridden as tour-hayes rides its Postcard Air: down from the top, two full ollies.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start postcard 1
+cmd 0 teleport -1073 460 64.6 90
+hold up 10..300
+hold ollie 300..330
+hold ollie 610..640
+run 900
+expect event missionStep{mission=postcard,step=1,kind=trick} within 1..1
+expect event talk{line=postcard-04,bark=true} within 1..1
+expect event missionStep{mission=postcard,step=2,kind=talk} within 440..452

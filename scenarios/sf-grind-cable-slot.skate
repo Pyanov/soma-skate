@@ -1,0 +1,17 @@
+# The cable car slot down Powell St (city phase 11): the slot between the rails of each cable car track
+# is a grind line, flush with the street like the F-line's rails. Rolling down Powell from the top of
+# its kept block (the squeezed city keeps it from Ellis) toward the turntable at 5 m/s beside the slot, an ollie and grind pressed in the air: a 50-50 in
+# the slot, ridden down the hill (the balance bot keeps it; 12 s and 45 m on, still in the slot).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 586.26 520.14 -6.30 171.0
+cmd 2 set skater.vel.x 0.78
+cmd 2 set skater.vel.y -4.94
+hold ollie 30..40
+tap grind 46
+bot balance
+run 1500
+expect event grindStart{trick=FS 50-50,line=slot_585_522} within 45..49
+expect skater.state == grind at 1500
+expect skater.pos.y < 478.2 at 1500
+expect no event bail

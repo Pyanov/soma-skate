@@ -1,0 +1,21 @@
+# Bench Grind Combo at Dolores Park: the seat wall 50-50 (sf-gap-seatwall), then a manual from the
+# landing for two seconds and an ollie out of it: BS 50-50 + DOLORES SEAT WALL + Manual, 2,733 points
+# started at the planters, with the seat wall in it. (The park-wide Dolores Park Show-off goes too.)
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -233.805 -199.578 9.400 -5.33
+cmd 2 set skater.vel.x -0.4179
+cmd 2 set skater.vel.y 4.4806
+hold ollie 92..122
+tap grind 129
+tap up 284
+tap down 289
+hold ollie 520..528
+bot balance
+run 700
+expect event gap{id=dolores_seatwall} within 226..230
+expect event manualStart within 288..292
+expect event manualEnd{reason=ollie} within 527..531
+expect event comboLanded{name=BS 50-50 + DOLORES SEAT WALL + Manual,points=2733} within 625..629
+expect event goalComplete{id=dolorescombo,name=Bench Grind Combo at Dolores Park} within 625..629
+expect no event bail

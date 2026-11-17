@@ -1,0 +1,11 @@
+# A plain vert air (no trick) and a revert on the landing: the revert starts the combo, "Revert" (100).
+# Before, a revert needed a trick already in the combo, so a plain air could not be reverted.
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap revert 360
+run 600
+expect event land{fakie=true} within 354..358
+expect event revert within 358..362
+expect event comboLanded{name=Revert,points=100,multiplier=1} within 368..394
+expect no event bail

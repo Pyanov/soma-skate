@@ -1,0 +1,381 @@
+{
+  "_doc": "Trick tables (docs/mechanics/air-tricks.md, grinds.md). Flips (THPS 1+2 defaults, docs/mechanics/trick-list.md): J + dir picks the trick (a diagonal's second key up to dirTicks after J still counts); taps 2 = J pressed again within doubleTapTicks of the first press (THPS double tap) turns it into that variant, taps 3 = once more within doubleTapTicks of the second (triple tap); twice = the direction pressed twice in the air, the second with J (THPS 2's Right, Right + flip: FS Shove-It). roll: board turns about its long axis, +1 = a kickflip (the heel-side edge dips first, the front foot flicks off the heel-side corner of the nose), -1 = a heelflip (the toe-side edge dips first); yaw: turns about the up axis, +0.5 = a backside pop shove-it (the tail swings behind the rider, to the heel side), -0.5 = frontside; pitch: end over end, +1 = an impossible (nose up and back over the back foot). named: a flip and a body spin in one air that skaters call one trick (a 360 Shove-It with a BS 180 is a Bigspin); it takes the place of both entries. Grabs: L + dir; L L + right (the double tap) is a Mute (front hand on the toe edge; Indy is the back hand). Lips: I + dir at the coping; out forward = it drops back in forward (the rider turned round: Disaster, Rock and Roll, Tail Stall), else fakie. Grinds and slides: I + dir as you lock on (up = front truck, down = back truck, toward / away = the nose angled over the far side / back over the approach side); taps 2 = I pressed twice (both before the lock-on, or the second within doubleTapTicks after it) for the variant with the free end the other way (Feeble / Salad, Smith / Suski, Crooked / Willy, Overcrook / Losi). FS / BS comes from the side the obstacle was on at approach (toe side = frontside). Stance: K pops off the tail; hold Q (the nose button, data/controls.json nose; player 2 Numpad1), or both spin buttons together (pad L1 + R1, keys U + O), as you let go of K to pop off the nose. Rolling forward that is Nollie, rolling backward Switch; off the tail rolling backward it is Fakie (a fakie BS 180 is a Half Cab, a BS 360 a Full Cab). Switch spins are named in the other stance (a regular rider's switch FS 180 turns clockwise). stance: points multiplier for tricks in that stance.",
+  "doubleTapTicks": 16,
+  "dirTicks": 5,
+  "stance": { "fakie": 1, "nollie": 1.15, "switch": 1.25 },
+  "defaults": {
+    "flip": "kickflip",
+    "grab": "indy",
+    "grind": "5050",
+    "slide": "boardslide"
+  },
+  "flips": [
+    { "id": "kickflip", "name": "Kickflip", "dir": "left", "points": 100, "ticks": 46, "roll": 1, "yaw": 0, "pitch": 0 },
+    { "id": "heelflip", "name": "Heelflip", "dir": "right", "points": 100, "ticks": 46, "roll": -1, "yaw": 0, "pitch": 0 },
+    { "id": "popshoveit", "name": "Pop Shove-It", "dir": "down", "points": 100, "ticks": 40, "roll": 0, "yaw": 0.5, "pitch": 0 },
+    { "id": "impossible", "name": "Impossible", "dir": "up", "points": 200, "ticks": 52, "roll": 0, "yaw": 0, "pitch": 1 },
+    { "id": "varialkickflip", "name": "Varial Kickflip", "dir": "downleft", "points": 300, "ticks": 52, "roll": 1, "yaw": 0.5, "pitch": 0 },
+    { "id": "varialheelflip", "name": "Varial Heelflip", "dir": "downright", "points": 300, "ticks": 52, "roll": -1, "yaw": -0.5, "pitch": 0 },
+    { "id": "hardflip", "name": "Hardflip", "dir": "upleft", "points": 400, "ticks": 56, "roll": 1, "yaw": -0.5, "pitch": 0 },
+    { "id": "inwardheelflip", "name": "Inward Heelflip", "dir": "upright", "points": 400, "ticks": 56, "roll": -1, "yaw": 0.5, "pitch": 0 },
+    { "id": "doublekickflip", "name": "Double Kickflip", "dir": "left", "taps": 2, "points": 300, "ticks": 62, "roll": 2, "yaw": 0, "pitch": 0 },
+    { "id": "doubleheelflip", "name": "Double Heelflip", "dir": "right", "taps": 2, "points": 300, "ticks": 62, "roll": -2, "yaw": 0, "pitch": 0 },
+    { "id": "360shoveit", "name": "360 Shove-It", "dir": "down", "taps": 2, "points": 250, "ticks": 50, "roll": 0, "yaw": 1, "pitch": 0 },
+    { "id": "doubleimpossible", "name": "Double Impossible", "dir": "up", "taps": 2, "points": 450, "ticks": 68, "roll": 0, "yaw": 0, "pitch": 2 },
+    { "id": "360flip", "name": "360 Flip", "dir": "downleft", "taps": 2, "points": 500, "ticks": 60, "roll": 1, "yaw": 1, "pitch": 0 },
+    { "id": "laserflip", "name": "Laser Flip", "dir": "downright", "taps": 2, "points": 600, "ticks": 62, "roll": -1, "yaw": -1, "pitch": 0 },
+    { "id": "360hardflip", "name": "360 Hardflip", "dir": "upleft", "taps": 2, "points": 650, "ticks": 64, "roll": 1, "yaw": -1, "pitch": 0 },
+    { "id": "360inwardheelflip", "name": "360 Inward Heelflip", "dir": "upright", "taps": 2, "points": 650, "ticks": 64, "roll": -1, "yaw": 1, "pitch": 0 },
+    { "id": "triplekickflip", "name": "Triple Kickflip", "dir": "left", "taps": 3, "points": 600, "ticks": 76, "roll": 3, "yaw": 0, "pitch": 0 },
+    { "id": "tripleheelflip", "name": "Triple Heelflip", "dir": "right", "taps": 3, "points": 600, "ticks": 76, "roll": -3, "yaw": 0, "pitch": 0 },
+    { "id": "540shoveit", "name": "540 Shove-It", "dir": "down", "taps": 3, "points": 450, "ticks": 60, "roll": 0, "yaw": 1.5, "pitch": 0 },
+    { "id": "tripleimpossible", "name": "Triple Impossible", "dir": "up", "taps": 3, "points": 700, "ticks": 82, "roll": 0, "yaw": 0, "pitch": 3 },
+    { "id": "fsshoveit", "name": "FS Shove-It", "dir": "right", "twice": true, "points": 150, "ticks": 40, "roll": 0, "yaw": -0.5, "pitch": 0 },
+    { "id": "fs360shoveit", "name": "FS 360 Shove-It", "dir": "right", "twice": true, "taps": 2, "points": 300, "ticks": 50, "roll": 0, "yaw": -1, "pitch": 0 }
+  ],
+  "named": [
+    { "id": "bigspin", "name": "Bigspin", "points": 350, "of": "360shoveit", "spin": "bs180" },
+    { "id": "fsbigspin", "name": "FS Bigspin", "points": 350, "of": "fs360shoveit", "spin": "fs180" }
+  ],
+  "grabs": [
+    {
+      "id": "indy",
+      "name": "Indy",
+      "dir": "right",
+      "points": 150,
+      "pointsPerSecond": 250,
+      "enterTicks": 14,
+      "exitTicks": 10
+    },
+    {
+      "id": "melon",
+      "name": "Melon",
+      "dir": "left",
+      "points": 150,
+      "pointsPerSecond": 250,
+      "enterTicks": 14,
+      "exitTicks": 10
+    },
+    {
+      "id": "nosegrab",
+      "name": "Nosegrab",
+      "dir": "up",
+      "points": 150,
+      "pointsPerSecond": 250,
+      "enterTicks": 14,
+      "exitTicks": 10
+    },
+    {
+      "id": "tailgrab",
+      "name": "Tailgrab",
+      "dir": "down",
+      "points": 150,
+      "pointsPerSecond": 250,
+      "enterTicks": 14,
+      "exitTicks": 10
+    },
+    {
+      "id": "japan",
+      "name": "Japan",
+      "dir": "upleft",
+      "points": 250,
+      "pointsPerSecond": 300,
+      "enterTicks": 16,
+      "exitTicks": 12
+    },
+    {
+      "id": "method",
+      "name": "Method",
+      "dir": "upright",
+      "points": 250,
+      "pointsPerSecond": 300,
+      "enterTicks": 16,
+      "exitTicks": 12
+    },
+    {
+      "id": "benihana",
+      "name": "Benihana",
+      "dir": "downleft",
+      "points": 300,
+      "pointsPerSecond": 300,
+      "enterTicks": 16,
+      "exitTicks": 12
+    },
+    {
+      "id": "stalefish",
+      "name": "Stalefish",
+      "dir": "downright",
+      "points": 250,
+      "pointsPerSecond": 300,
+      "enterTicks": 16,
+      "exitTicks": 12
+    },
+    { "id": "mute", "name": "Mute", "dir": "right", "taps": 2, "points": 200, "pointsPerSecond": 250, "enterTicks": 14, "exitTicks": 10 }
+  ],
+  "grinds": [
+    {
+      "id": "5050",
+      "name": "50-50",
+      "dirs": [
+        "none"
+      ],
+      "points": 100,
+      "pointsPerSecond": 200
+    },
+    {
+      "id": "nosegrind",
+      "name": "Nosegrind",
+      "dirs": [
+        "up"
+      ],
+      "points": 150,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "5-0",
+      "name": "5-0",
+      "dirs": [
+        "down"
+      ],
+      "points": 150,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "crooked",
+      "name": "Crooked Grind",
+      "dirs": [
+        "upToward"
+      ],
+      "points": 200,
+      "pointsPerSecond": 300
+    },
+    {
+      "id": "overcrook",
+      "name": "Overcrook",
+      "dirs": [
+        "upAway"
+      ],
+      "points": 250,
+      "pointsPerSecond": 300
+    },
+    {
+      "id": "feeble",
+      "name": "Feeble Grind",
+      "dirs": [
+        "downToward",
+        "toward"
+      ],
+      "points": 200,
+      "pointsPerSecond": 300
+    },
+    {
+      "id": "smith",
+      "name": "Smith Grind",
+      "dirs": [
+        "downAway",
+        "away"
+      ],
+      "points": 200,
+      "pointsPerSecond": 300
+    },
+    { "id": "salad", "name": "Salad Grind", "dirs": ["downToward", "toward"], "taps": 2, "points": 250, "pointsPerSecond": 300 },
+    { "id": "suski", "name": "Suski Grind", "dirs": ["downAway", "away"], "taps": 2, "points": 250, "pointsPerSecond": 300 },
+    { "id": "willy", "name": "Willy Grind", "dirs": ["upToward"], "taps": 2, "points": 250, "pointsPerSecond": 300 },
+    { "id": "losi", "name": "Losi Grind", "dirs": ["upAway"], "taps": 2, "points": 250, "pointsPerSecond": 300 }
+  ],
+  "slides": [
+    {
+      "id": "boardslide",
+      "name": "Boardslide",
+      "dirs": [
+        "none",
+        "toward",
+        "away"
+      ],
+      "points": 100,
+      "pointsPerSecond": 200,
+      "nose": "far"
+    },
+    {
+      "id": "lipslide",
+      "name": "Lipslide",
+      "dirs": [
+        "none",
+        "toward",
+        "away"
+      ],
+      "points": 200,
+      "pointsPerSecond": 300,
+      "nose": "near"
+    },
+    {
+      "id": "noseslide",
+      "name": "Noseslide",
+      "dirs": [
+        "up"
+      ],
+      "points": 150,
+      "pointsPerSecond": 250,
+      "nose": "far"
+    },
+    {
+      "id": "tailslide",
+      "name": "Tailslide",
+      "dirs": [
+        "down"
+      ],
+      "points": 150,
+      "pointsPerSecond": 250,
+      "nose": "near"
+    },
+    {
+      "id": "nosebluntslide",
+      "name": "Nosebluntslide",
+      "dirs": [
+        "upToward",
+        "upAway"
+      ],
+      "points": 300,
+      "pointsPerSecond": 350,
+      "nose": "near"
+    },
+    {
+      "id": "bluntslide",
+      "name": "Bluntslide",
+      "dirs": [
+        "downToward",
+        "downAway"
+      ],
+      "points": 300,
+      "pointsPerSecond": 350,
+      "nose": "far"
+    }
+  ],
+  "manuals": [
+    {
+      "id": "manual",
+      "name": "Manual",
+      "points": 50,
+      "pointsPerSecond": 150
+    },
+    {
+      "id": "nosemanual",
+      "name": "Nose Manual",
+      "points": 75,
+      "pointsPerSecond": 175
+    },
+    {
+      "id": "wheelie",
+      "name": "Scooter Wheelie",
+      "points": 50,
+      "pointsPerSecond": 125
+    }
+  ],
+  "lips": [
+    {
+      "id": "rocktofakie",
+      "name": "Rock to Fakie",
+      "dir": "none",
+      "points": 200,
+      "pointsPerSecond": 200
+    },
+    {
+      "id": "axlestall",
+      "name": "Axle Stall",
+      "dir": "up",
+      "points": 250,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "disaster",
+      "name": "Disaster",
+      "dir": "down",
+      "out": "forward",
+      "points": 250,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "nosestall",
+      "name": "Nose Stall",
+      "dir": "left",
+      "points": 250,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "bluntstall",
+      "name": "Blunt to Fakie",
+      "dir": "right",
+      "points": 300,
+      "pointsPerSecond": 250
+    },
+    {
+      "id": "invert",
+      "name": "Invert",
+      "dir": "upleft",
+      "points": 500,
+      "pointsPerSecond": 400
+    },
+    {
+      "id": "handplant",
+      "name": "Handplant",
+      "dir": "upright",
+      "points": 500,
+      "pointsPerSecond": 400
+    },
+    { "id": "rockandroll", "name": "Rock and Roll", "dir": "downleft", "out": "forward", "points": 250, "pointsPerSecond": 250 },
+    { "id": "tailstall", "name": "Tail Stall", "dir": "downright", "out": "forward", "points": 250, "pointsPerSecond": 250 }
+  ],
+  "specials": [
+    {
+      "id": "kickflipsuperman",
+      "name": "Kickflip Superman",
+      "kind": "flip",
+      "seq": [
+        "right",
+        "down"
+      ],
+      "points": 1500,
+      "ticks": 72,
+      "roll": 1,
+      "yaw": 0,
+      "pitch": 0
+    },
+    {
+      "id": "christair",
+      "name": "Christ Air",
+      "kind": "grab",
+      "seq": [
+        "left",
+        "right"
+      ],
+      "points": 1500,
+      "pointsPerSecond": 500,
+      "enterTicks": 20,
+      "exitTicks": 14
+    },
+    {
+      "id": "540flip",
+      "name": "540 Flip",
+      "kind": "flip",
+      "seq": [
+        "up",
+        "down"
+      ],
+      "points": 2000,
+      "ticks": 80,
+      "roll": 1,
+      "yaw": 1.5,
+      "pitch": 0
+    }
+  ],
+  "powerslides": [
+    { "id": "powerslide", "name": "Powerslide", "points": 100, "pointsPerSecond": 120 },
+    { "id": "bertslide", "name": "Bert Slide", "points": 300, "pointsPerSecond": 200 }
+  ],
+  "foot": [
+    { "id": "boneless", "name": "Boneless", "points": 150, "pop": 1.2, "seq": ["up", "up"] },
+    { "id": "nocomply", "name": "No Comply", "points": 100, "pop": 0.85, "seq": ["down"] }
+  ],
+  "skitch": { "id": "skitch", "name": "Skitch", "points": 100, "pointsPerSecond": 150 },
+  "spine": { "id": "spine", "name": "Spine Transfer", "points": 250 }
+}

@@ -1,0 +1,12 @@
+# From the platform, ollie onto the down rail beside the 3-stair and 50-50 it to the bottom.
+park lab
+cmd 0 teleport 14.35 11 0.64 180
+hold up 6..70
+hold ollie 50..80
+tap grind 146
+bot balance
+run 400
+expect event grindStart{trick=FS 50-50} within 142..160
+expect event grindEnd{reason=end} within 150..260
+expect event comboLanded within 150..360
+expect no event bail

@@ -1,0 +1,21 @@
+# Pier 7 (city phase 15, the real spot): three concrete blocks with their long sides toward the bay,
+# each straddling the two steps between the street side and the seawall side (0.50 m tall on the
+# street side, 0.25 m on the seawall side), every top edge a grind line. Rolling toward the bay along
+# the middle block's south-east side at 5 m/s on the street level, an ollie and grind pressed in the
+# air: a 50-50 the length of its edge, off its seawall end, landed on the seawall level. (The Tour's
+# PIER 7 BLOCK gap pays on it.)
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 570.39 921.79 -9.25 54.5
+cmd 2 set skater.vel.x 4.073
+cmd 2 set skater.vel.y 2.900
+hold ollie 50..62
+tap grind 72..96 every 4
+bot balance
+run 330
+expect event grindStart{trick=BS 50-50,line=ledge_573_925} within 89..93
+expect event grindEnd{reason=end} within 195..203
+expect event gap{id=pier7_bench,gap=PIER 7 BLOCK,points=250} within 195..203
+expect event land{quality=clean} within 238..248
+expect event comboLanded{name=BS 50-50 + PIER 7 BLOCK} within 249..259
+expect no event bail

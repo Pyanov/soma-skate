@@ -1,0 +1,25 @@
+# Missions: a carry step (game/missions.ts, docs/mechanics/missions.md). A test mission (its data set in
+# this run only): Karl waits on Duboce's south sidewalk (the mission's actors). The crew van stops beside
+# him: he gets in (passengerIn; an actor at the passenger seat, not drawn standing). On the way to the end
+# of the block he says his two lines, one every 2 seconds of driving (barks). The van stops there: he
+# gets out beside the passenger door (passengerOut) and stands there; the next step, a talk with him,
+# starts at once, the van beside him.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.test-carry {"id":"test-carry","name":"Test Carry","kind":"side","area":"soma","giver":"karl","blurb":"A test.","world":"sf","actors":{"karl":[48.5,-20.1,-1.22,0]},"steps":[{"kind":"carry","text":"Give Karl a lift","who":"karl","to":[2,-9,-1],"vehicle":"van","every":2,"lines":[{"id":"test-carry-1","who":"karl","text":"Nice van."},{"id":"test-carry-2","who":"karl","text":"Mind the columns."}]},{"kind":"talk","text":"Talk to Karl","who":"karl","lines":[{"id":"test-carry-3","who":"karl","text":"Thanks for the lift."}]}]}
+cmd 1 mission start test-carry
+cmd 2 vehicle enter crew_van
+bot drive 57.5,-15.6 47,-16 from 10 speed 4 stop
+bot drive 47,-16 42,-10 30,-6 12,-8 2,-9 from 500 speed 10 corner 7 stop
+run 1700
+expect event missionStep{mission=test-carry,step=0,kind=carry} within 1..2
+expect no event passengerIn within 0..100
+expect event passengerIn{who=karl} within 260..280
+expect actor.state == drive at 600
+expect event talk{line=test-carry-1,bark=true} within 725..745
+expect event talk{line=test-carry-2,bark=true} within 965..985
+expect event passengerOut{who=karl} within 1245..1265
+expect event missionStep{mission=test-carry,step=1,kind=talk} within 1245..1265
+expect event talk{line=test-carry-3} within 1245..1265
+expect actor.state == ground at end
+expect actor.gap < 3 at end

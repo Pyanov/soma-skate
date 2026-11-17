@@ -1,0 +1,14 @@
+# No free-roam streetcars during a Muni Race but its own car: run muni j takes them away (the race runs
+# as in sf-muni-j-lose), and run free brings them back, as they were at the start (sf-streetcars: the
+# same stops 8500 ticks later).
+park sf
+cmd 0 traffic clear
+cmd 0 streetcars on
+cmd 10 run muni j
+cmd 8500 run free
+run 12500
+expect event muniStart{line=j,car=83} within 11..11
+expect no event tramStop within 1..8500
+expect event muniOver{won=false} within 7905..7905
+expect event tramStop{car=1000001,line=j-out,n=1} within 10423..10423
+expect event tramStop{car=1000000,line=j-in,n=2} within 12028..12028

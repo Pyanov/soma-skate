@@ -1,0 +1,15 @@
+# The Big 3 kickflip with four NPC skaters in the park: exactly the same run (they ride on their own
+# random stream and never touch the player).
+park soma
+cmd 0 npc spawn
+spawn big3
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 420
+expect event pop{charge=1} within 195..198
+expect event trickEnd{trick=Kickflip} within 240..260
+expect event comboLanded{name=Kickflip + BIG 3 GAP,multiplier=2} within 300..360
+expect event gap{gap=BIG 3 GAP} within 320..340
+expect skater.pos.x > 21.2 at end
+expect no event bail

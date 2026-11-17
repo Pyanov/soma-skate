@@ -1,0 +1,8 @@
+{
+  "_doc": "The derived world bundle this commit expects. ./skate world fetch downloads it from the GitHub release of this tag in repo (or --file <tarball>); ./skate world pack makes it.",
+  "tag": "world-6d47b38c38bca28b-ccb1d980",
+  "file": "world-6d47b38c38bca28b-ccb1d980.tar.gz",
+  "cityHash": "6d47b38c38bca28b",
+  "repo": "Pyanov/soma-skate",
+  "sha256": "667e9a67e7b0a28b46838b6543966606e0ff8601ac439c021bc8b0c2a51de1ed"
+}

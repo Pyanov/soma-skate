@@ -1,0 +1,11 @@
+# Charged ollie, Hardflip (J + up left) right after the pop: the flip finishes and the combo
+# lands (the view's flip review: ./skate strip --sheet scenarios/tricks.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+up+left 96
+run 300
+expect event trickEnd{trick=Hardflip} within 120..170
+expect event comboLanded{name=Hardflip,points=400} within 160..240
+expect no event bail

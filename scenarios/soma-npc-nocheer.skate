@@ -1,0 +1,12 @@
+# The same Big 3 kickflip with the real thresholds (data/npc.json: cheer at 2000 points, copy at
+# 1500): 700 points is not big enough. Nobody stomps, nobody copies.
+park soma
+cmd 0 npc spawn 6
+spawn big3
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 700
+expect event comboLanded{name=Kickflip + BIG 3 GAP,multiplier=2} within 336..340
+expect no event npcCheer
+expect no event npcCopy

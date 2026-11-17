@@ -1,0 +1,13 @@
+# A Muni delay: with seed 3 the J Church's own stream (world.muniRng) delays it at 20th Street, 12.4 s
+# more than its 4 s stop, "Delayed due to a disabled train ahead." It gets to 18th Street exactly
+# 12.4 s (1488 ticks) later than without the delay (sf-muni-j-lose: 7896).
+park sf
+seed 3
+cmd 0 traffic clear
+cmd 1 run muni j
+run 9500
+expect event muniStop{n=1,you=false} within 3342..3342
+expect event muniDelay{n=1,name=Right of Way & 20th Street,seconds=12.4,says=Delayed due to a disabled train ahead.} within 3342..3342
+expect event muniStop{n=2,you=false} within 9384..9384
+expect event muniOver{won=false,time=78.18} within 9384..9384
+expect event muniDelay count == 1

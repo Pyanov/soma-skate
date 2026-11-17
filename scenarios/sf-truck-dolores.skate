@@ -1,0 +1,19 @@
+# A mission vehicle from the same code (game/vehicles.ts; data/vehicles.json types.garbage): Kevin's
+# garbage truck, spawned at the bottom of Dolores (vehicle spawn), driven up the hill the crew van climbs
+# in sf-van-dolores. Only its numbers differ: 8.6 m long, a weaker engine for its weight (accel 5 to the
+# van's 7, top 19.5 m/s; the drive audit, docs/feel-audit.md section 10), slower steering: it climbs,
+# never below 9 m/s on the steepest part, and its length and width are what the skater and the cars meet
+# (vehicleEnter names its type). The crew van stays parked.
+park sf
+cmd 0 traffic clear
+cmd 1 vehicle spawn garbage -226 -162 182 garbage
+cmd 2 teleport -223.8 -162 8.5 182
+tap use 30
+bot drive -226,-162 -226,-173 -225,-183 -224,-194 -223,-210 -222,-226 -221,-242 -220,-258 -218,-276 -217,-292 -215,-309 -214,-325 speed 14 corner 7 stop
+run 3600
+expect event vehicleEnter{name=garbage,type=garbage} within 30..32
+expect no event vanBump
+expect max van.hspeed < 14.5
+expect min van.hspeed > 9 over 1200..1800
+expect min van.pos.y < -320
+expect van.hspeed < 0.2 at end

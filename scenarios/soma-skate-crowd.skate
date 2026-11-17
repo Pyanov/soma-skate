@@ -1,0 +1,18 @@
+# The park's NPC skaters keep off the S.K.A.T.E. lane while a game is on. In free skate their lines
+# cross it now and then (two at once here); once Dre comes out, any NPC on the lane (or on a line
+# over it) goes to watch from the crowd spots beside it, standing, and the rest ride lines clear of
+# it. When the game is over (here: run free), the watchers ride again. (Phase 12 changed how NPCs
+# ride, so the game starts later than it used to, after they have crossed the lane.)
+park soma
+cmd 0 npc spawn
+cmd 3500 run skate dre
+cmd 9500 run free
+run 14000
+expect max npcs.onlane >= 1 over 0..3500
+expect max npcs.watching <= 0 over 0..3500
+expect max npcs.onlane <= 0 over 3502..9500
+expect max npcs.watching >= 1 over 3502..9500
+expect event skateSet{by=local,trick=impossible,at=0.03} within 4096..4104
+expect event skateMatch{by=player,ok=false,reason=time,at=-1} within 7336..7344
+expect max npcs.watching <= 0 over 9502..14000
+expect npcs.riding == 4 at end

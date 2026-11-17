@@ -1,0 +1,20 @@
+# A scooter wheelie nobody balances (physics phase 31): up then down quickly at speed lifts the front, and
+# with no hand on up and down its balance runs away like a manual's: 2.6 s later the rider is thrown off
+# beside it (bail: fell off the scooter, the wheelie lost) and the scooter lies on its side, stopped. The
+# ride still ends (scooterRideEnd).
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..398
+tap up 400
+tap down 406
+run 1000
+expect event manualStart{trick=Scooter Wheelie} within 405..409
+expect event scooterRideEnd within 714..718
+expect event comboLost{name=Scooter Wheelie} within 714..718
+expect event bail{reason=fell off the scooter} within 714..718
+expect state bail at 760
+expect van.car.drive.ride.tipped == 1 at 760
+expect van.hspeed < 0.01 at 760
+expect no event comboLanded

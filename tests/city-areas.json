@@ -1,0 +1,167 @@
+{
+  "_doc": "Geometry hashes of the sf city export, area by area (src/harness/cityareas.ts): solid and drawn-only triangles, grind lines, parked cars, street lights and trees wholly inside each box (site metres: x0, y0, x1, y1). A city phase that adds or changes one area leaves the others exactly as they were (city/plan.py works on a fixed 1 mm grid with canonical rings). An area changed on purpose is re-pinned with node tools/city-areas.ts --write, and the commit says which.",
+  "areas": {
+    "soma_park": {
+      "box": [
+        -150,
+        -150,
+        150,
+        150
+      ],
+      "solid": "e501edf7a19bed58",
+      "look": "b158d5a17091b0bc",
+      "lines": "b463f5db72384065",
+      "props": "d2a7a2e00726dfbf",
+      "counts": [
+        22069,
+        8290,
+        1732,
+        382
+      ]
+    },
+    "mission_16th": {
+      "box": [
+        -30,
+        -310,
+        170,
+        -10
+      ],
+      "solid": "a2ee6c0a8b76fe80",
+      "look": "02096eaac2f051cf",
+      "lines": "1f6108afec01d7cc",
+      "props": "bd9a3f95a04bd22c",
+      "counts": [
+        17468,
+        7946,
+        1060,
+        212
+      ]
+    },
+    "dolores_park": {
+      "box": [
+        -330,
+        -300,
+        -130,
+        -50
+      ],
+      "solid": "0d4e16b90c569211",
+      "look": "1779428b477e55ce",
+      "lines": "85e2889cb125a5be",
+      "props": "323dc3c3936ae7e7",
+      "counts": [
+        17610,
+        4947,
+        1560,
+        280
+      ]
+    },
+    "castro": {
+      "box": [
+        -675,
+        -285,
+        -475,
+        -35
+      ],
+      "solid": "3f5d7f9b7e0fec99",
+      "look": "95b63a0ac30ece19",
+      "lines": "5feae9a0551e8c0e",
+      "props": "597c6853e22f99b0",
+      "counts": [
+        15058,
+        7951,
+        478,
+        122
+      ]
+    },
+    "twin_peaks": {
+      "box": [
+        -1440,
+        -560,
+        -1240,
+        -300
+      ],
+      "solid": "5ef3919a6ca832dc",
+      "look": "00d7380b013cb047",
+      "lines": "9da3fecf957fdb94",
+      "props": "c72d4e71f1dd566c",
+      "counts": [
+        13608,
+        4063,
+        277,
+        82
+      ]
+    },
+    "alamo_square": {
+      "box": [
+        -1178,
+        320,
+        -978,
+        520
+      ],
+      "solid": "0424658e01c80e6e",
+      "look": "a7dada8d2a9df7e6",
+      "lines": "6b136924d47ed08d",
+      "props": "d0963ea819026926",
+      "counts": [
+        9323,
+        2412,
+        434,
+        125
+      ]
+    },
+    "civic_center": {
+      "box": [
+        -100,
+        270,
+        320,
+        470
+      ],
+      "solid": "e57eeb891d3c45a3",
+      "look": "83f733f85209f269",
+      "lines": "bb6548ef6d02b934",
+      "props": "8957c6cf09f44c8c",
+      "counts": [
+        17042,
+        7444,
+        1153,
+        504
+      ]
+    },
+    "calle_24": {
+      "box": [
+        270,
+        -300,
+        470,
+        -130
+      ],
+      "solid": "14c8344ef450ba8d",
+      "look": "9e49166d2170fd8f",
+      "lines": "a2dd4fc97bbde52d",
+      "props": "8879df351913b73b",
+      "counts": [
+        7058,
+        4666,
+        344,
+        76
+      ]
+    },
+    "emb": {
+      "box": [
+        520,
+        620,
+        720,
+        820
+      ],
+      "solid": "44dd92fb8073c99b",
+      "look": "9e4a43088b4b7a58",
+      "lines": "fc82df4fc3bf1d3e",
+      "props": "1d6aa84016892a02",
+      "counts": [
+        6742,
+        2719,
+        242,
+        99
+      ]
+    }
+  }
+}

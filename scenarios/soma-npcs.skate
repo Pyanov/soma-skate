@@ -1,0 +1,10 @@
+# NPC skaters (npc spawn: four in the park): 30 s of them riding the rider lines with the autopilot,
+# popping flips, grabs and grinds now and then, sometimes bailing and respawning. Only their npc*
+# events reach the world; the player (standing at the spawn) sees nothing of them.
+park soma
+cmd 0 npc spawn
+run 3600
+expect event npcLand count >= 3
+expect event npcTrick count >= 3
+expect no event bail
+expect no event comboLanded

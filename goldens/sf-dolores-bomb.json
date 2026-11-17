@@ -1,0 +1,1 @@
+{ "target": "spot:dolores_bomb", "park": "sf", "cam": "chase", "style": "real", "layers": ["park", "context", "shadows"], "threshold": 99.5 }

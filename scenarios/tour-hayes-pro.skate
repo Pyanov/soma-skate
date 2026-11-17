@@ -1,0 +1,133 @@
+# Hayes Valley's Pro line (physics phase 32; feel --tour measures Pro on it): every 10 s, onto Patricia's Green's
+# first seat wall, a 50-50 along it for 1.7 s, a kickflip off into a manual, ollied out: BS 50-50 + PATRICIA'S
+# SEAT WALL + Kickflip + Manual, 4,140; twelve, 49,680. The great run's long wall made Pro a coin flip for a
+# decent player (74%); this line is a decent run's. Pro (24,000 since the feel pass's round 4; 9,500 on the third before) on the sixth.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hayes
+bot balance
+cmd 1 teleport -218.9 416 9.75 350.7
+cmd 3 set skater.vel.x -0.7272
+cmd 3 set skater.vel.y 4.4409
+cmd 1201 teleport -218.9 416 9.75 350.7
+cmd 1203 set skater.vel.x -0.7272
+cmd 1203 set skater.vel.y 4.4409
+cmd 2401 teleport -218.9 416 9.75 350.7
+cmd 2403 set skater.vel.x -0.7272
+cmd 2403 set skater.vel.y 4.4409
+cmd 3601 teleport -218.9 416 9.75 350.7
+cmd 3603 set skater.vel.x -0.7272
+cmd 3603 set skater.vel.y 4.4409
+cmd 4801 teleport -218.9 416 9.75 350.7
+cmd 4803 set skater.vel.x -0.7272
+cmd 4803 set skater.vel.y 4.4409
+cmd 6001 teleport -218.9 416 9.75 350.7
+cmd 6003 set skater.vel.x -0.7272
+cmd 6003 set skater.vel.y 4.4409
+cmd 7201 teleport -218.9 416 9.75 350.7
+cmd 7203 set skater.vel.x -0.7272
+cmd 7203 set skater.vel.y 4.4409
+cmd 8401 teleport -218.9 416 9.75 350.7
+cmd 8403 set skater.vel.x -0.7272
+cmd 8403 set skater.vel.y 4.4409
+cmd 9601 teleport -218.9 416 9.75 350.7
+cmd 9603 set skater.vel.x -0.7272
+cmd 9603 set skater.vel.y 4.4409
+cmd 10801 teleport -218.9 416 9.75 350.7
+cmd 10803 set skater.vel.x -0.7272
+cmd 10803 set skater.vel.y 4.4409
+cmd 12001 teleport -218.9 416 9.75 350.7
+cmd 12003 set skater.vel.x -0.7272
+cmd 12003 set skater.vel.y 4.4409
+cmd 13201 teleport -218.9 416 9.75 350.7
+cmd 13203 set skater.vel.x -0.7272
+cmd 13203 set skater.vel.y 4.4409
+hold ollie 31..61
+hold ollie 331..351
+hold ollie 561..576
+hold ollie 1231..1261
+hold ollie 1531..1551
+hold ollie 1761..1776
+hold ollie 2431..2461
+hold ollie 2731..2751
+hold ollie 2961..2976
+hold ollie 3631..3661
+hold ollie 3931..3951
+hold ollie 4161..4176
+hold ollie 4831..4861
+hold ollie 5131..5151
+hold ollie 5361..5376
+hold ollie 6031..6061
+hold ollie 6331..6351
+hold ollie 6561..6576
+hold ollie 7231..7261
+hold ollie 7531..7551
+hold ollie 7761..7776
+hold ollie 8431..8461
+hold ollie 8731..8751
+hold ollie 8961..8976
+hold ollie 9631..9661
+hold ollie 9931..9951
+hold ollie 10161..10176
+hold ollie 10831..10861
+hold ollie 11131..11151
+hold ollie 11361..11376
+hold ollie 12031..12061
+hold ollie 12331..12351
+hold ollie 12561..12576
+hold ollie 13231..13261
+hold ollie 13531..13551
+hold ollie 13761..13776
+tap grind 65..161 every 6
+tap flip 354
+tap up 447
+tap down 452
+tap grind 1265..1361 every 6
+tap flip 1554
+tap up 1647
+tap down 1652
+tap grind 2465..2561 every 6
+tap flip 2754
+tap up 2847
+tap down 2852
+tap grind 3665..3761 every 6
+tap flip 3954
+tap up 4047
+tap down 4052
+tap grind 4865..4961 every 6
+tap flip 5154
+tap up 5247
+tap down 5252
+tap grind 6065..6161 every 6
+tap flip 6354
+tap up 6447
+tap down 6452
+tap grind 7265..7361 every 6
+tap flip 7554
+tap up 7647
+tap down 7652
+tap grind 8465..8561 every 6
+tap flip 8754
+tap up 8847
+tap down 8852
+tap grind 9665..9761 every 6
+tap flip 9954
+tap up 10047
+tap down 10052
+tap grind 10865..10961 every 6
+tap flip 11154
+tap up 11247
+tap down 11252
+tap grind 12065..12161 every 6
+tap flip 12354
+tap up 12447
+tap down 12452
+tap grind 13265..13361 every 6
+tap flip 13554
+tap up 13647
+tap down 13652
+run 14700
+expect event comboLanded{name=BS 50-50 + PATRICIA'S SEAT WALL + Kickflip + Manual,points=4140} count == 12
+expect event levelGoal{level=hayes,id=pro} within 6697..6701   # Pro 24,000 since feel round 4 (9,500: at 3099)
+expect event levelOver{level=hayes,score=49680} within 14399..14402
+expect no event bail

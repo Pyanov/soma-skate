@@ -1,0 +1,15 @@
+# On the real park: the Otis portal quarterpipe and the north rear Hellride quarter stand back to
+# back. Up the Otis quarter at 9 m/s, ; in the air: over the spine, down the Hellride side and out
+# east on the floor (a clean landing, 6 m/s down from 1.3 m above the lip). Phase 27: the air leaves
+# the wall a tick sooner, before the coping pipe on the Otis lip (soma-coping-speed): the transfer comes
+# a few ticks later, the landing and the combo a few sooner.
+park soma
+cmd 0 teleport 82.5 20.2 -1.75 60.8
+cmd 30 speed 9
+tap revert 115
+run 400
+expect event spineTransfer within 120..120
+expect event land{quality=clean} within 274..274
+expect skater.vel.x > 3 at 320
+expect event comboLanded{name=Spine Transfer} within 285..285
+expect no event bail

@@ -1,0 +1,18 @@
+# City sweep (skate cityfuzz): A gap between two buildings at the back of a lot narrower than a skater: pushed in, it is squeezed 3.6 cm into the walls.
+# Finding: invariant at -459.92 752.78 12.37 (inside geometry (0.036 m deep, triangle 868434)), tick 707. Run it with `./skate run scenarios/city-sweep/building-sliver-1.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -460 740 12.25 23
+hold flip 0..85
+hold up+slide 85..144
+hold up+ollie 144..191
+hold up+flip 191..216
+hold up+flip 216..263
+hold up 263..366
+hold up+ollie 366..413
+hold up 413..461
+hold down 461..509
+hold grind 509..547
+hold flip 547..658
+run 709

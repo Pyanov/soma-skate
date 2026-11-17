@@ -1,0 +1,38 @@
+# Two-player Graffiti (run graffiti2p; here 16 s): a grind line ground in a combo is tagged for its
+# player when the combo banks. Player 1 grinds the ledge (park grind line 11): tagged, 475. Player 2
+# grinds it later and manuals on into a bigger combo (BS 50-50 + Manual, 1336): it steals the tag.
+# Player 1 grinds it again with the smaller 475: no steal. At the end player 2 owns 1, player 1 none.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+cmd 0 player2 join 0 -0.6 0.14 90
+cmd 0 setData run.twoPlayer.graffiti.seconds 16
+cmd 0 run graffiti2p
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+bot balance
+p2 hold up 606..700
+p2 hold ollie 690..705
+p2 tap grind 776
+p2 tap up 1052
+p2 tap down 1057
+p2 hold ollie 1170..1180
+p2 bot balance
+cmd 1300 teleport 0 -0.6 0.14 90
+hold up 1306..1400
+hold ollie 1390..1405
+tap grind 1476
+run 2000
+expect event graffitiStart{seconds=16} within 1..1
+expect event tagged{player=1,obstacle=line:11,points=475,from=0} within 467..467
+expect session.owned == 1 at 500
+expect event comboLanded{name=BS 50-50 + Manual,points=1336,player=2} within 1282..1282
+expect event tagged{player=2,obstacle=line:11,points=1336,from=1} within 1282..1282
+expect session.owned == 0 at 1300
+expect session2.owned == 1 at 1300
+expect event comboLanded{name=BS 50-50,points=475,player=1} within 1767..1767
+expect event tagged count == 2
+expect event graffitiOver{winner=2} within 1920..1920
+expect session2.owned == 1 at end
+expect session.mode == over at end
+expect no event bail

@@ -1,0 +1,27 @@
+# Game of S.K.A.T.E. against Kenji (Outer Sunset, skill 0.66). He sets first and bails his
+# Impossible (flipped too late); the bot rides your turns: it matches everything he sets and sets
+# hard flips (then the data list, never a trick twice). He lands your Hardflip, FS 180 Kickflip and
+# Ollie and misses the 360 Flip, Varial Heelflip, Impossible, BS 180 Heelflip and Kickflip, all
+# sketchy: S-K-A-T-E for Kenji, none for you. Each turn is the 2 s pause plus the ride: about 5 s.
+park soma
+cmd 0 run skate kenji
+bot skate hardflip,360flip,varialheelflip,impossible,bs180+heelflip,fs180+kickflip,varialkickflip
+run 17500
+expect event skateStart{local=kenji,name=Kenji,word=SKATE} within 1..1
+expect event skateTurn{who=local,role=set} within 1..1
+expect event skateSetMiss{by=local,reason=bail} within 585..593
+expect event skateSet{by=player,trick=hardflip,name=Hardflip} within 1165..1173
+expect event skateMatch{by=local,ok=true,trick=hardflip} within 1765..1773
+expect event skateMatch{by=local,ok=false,trick=360flip,got=360flip,reason=sketchy} within 3523..3531
+expect event skateLetter{who=local,letters=S} within 3523..3531
+expect event skateMatch{by=player,ok=true,trick=popshoveit} within 4703..4711
+expect event skateMatch{by=player,ok=true,trick=nosemanual} within 12090..12098
+expect event skateLetter{who=local,letters=SKAT} within 10616..10624
+expect event skateMatch{by=local,ok=false,trick=kickflip,reason=sketchy} within 17348..17356
+expect event skateLetter{who=local,letters=SKATE} within 17348..17356
+expect event skateOver{winner=player,name=Kenji,player=,local=SKATE} within 17348..17356
+expect event skateLetter{who=player} count == 0
+expect event skateMatch{by=player,ok=true} count == 5
+expect no event bail
+expect session.mode == over at end
+expect session.skateLocalLetters == SKATE at end

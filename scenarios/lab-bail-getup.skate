@@ -1,0 +1,15 @@
+# Quick get-up: after a bail, a fresh press of ollie (or push) stands the skater up once
+# bail.getUpTicks (0.5 s) have passed and the slide is slow (bail.getUpSpeed); waiting, it takes
+# bail.ticks (1.25 s). The get-up plays the bail's own end quickly (the clock jumps to bail.getUpFrom,
+# 112, and runs at bail.getUpRate, 3x: 13 ticks), so the press at 126 stands it up at 140. It does not
+# pop an ollie when it is let go. (Same fall as lab-sideways-bail;
+# the press at 126 is the first with the slide under 3 m/s.)
+park lab
+cmd 0 teleport 0 0 1.5 90
+cmd 1 set skater.vel.y 5
+tap ollie 90..130 every 6
+run 300
+expect event bail within 1..80
+expect event recover within 138..142
+expect no event pop
+expect state ground at end

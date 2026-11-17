@@ -1,0 +1,21 @@
+# The ditch at the cost of falling (physics phase 31): sf-scooter-wheelie-ditch's line on another seed. The
+# draw twists the rider off at 5 rad/s right, nobody spins against it, and the board comes down 88 degrees
+# sideways: a bail, the wheelie and the ditch lost with it. Spinning the other way in the air saves it
+# (sf-scooter-ditch-save).
+park sf
+seed 8
+cmd 0 traffic clear
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..398
+tap up 400
+tap down 406
+bot balance
+tap ollie 700
+run 1000
+expect event manualStart{trick=Scooter Wheelie} within 405..409
+expect event scooterDitch{spin=-5.015} within 699..703
+expect event comboLost{name=Scooter Wheelie + Scooter Ditch} within 811..815
+expect event bail within 811..815
+expect no event comboLanded
+expect van.car.drive.ride.tipped == 1 at 900

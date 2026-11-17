@@ -1,0 +1,9 @@
+# A trick on top of the transfer: "Spine Transfer + Kickflip" x2.
+park lab
+spawn lab_spine_south
+cmd 6 speed 7.5
+tap revert 160
+tap flip+left 175
+run 400
+expect event comboLanded{name=Spine Transfer + Kickflip,multiplier=2} within 280..310
+expect no event bail

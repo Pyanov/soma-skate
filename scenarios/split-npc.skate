@@ -1,0 +1,47 @@
+# Split screen with a park NPC standing in for player 2 (skate clip split-npc --split npc): player 1
+# rides Skate School's scripted lessons (school-run, to the revert) while the park's NPCs ride their
+# lines; the clip's bottom half follows the first of them.
+park soma
+bot balance
+cmd 0 npc spawn
+run 3300
+cmd 0 teleport pin05_entrance_flat_east_bank
+hold up 0..160
+hold left 110..330
+cmd 408 teleport stevenson_clear_runway
+hold up 408..468
+hold ollie 478..516
+cmd 827 teleport stevenson_clear_runway
+hold up 827..887
+hold ollie 897..917
+tap flip+left 920
+cmd 1215 teleport big3
+hold up 1215..1315
+hold ollie 1381..1411
+hold grab+right 1419..1421
+hold grab 1421..1500
+cmd 1736 teleport review2_west_runway_to_big3
+hold up 1736..1852
+hold ollie 1856..1868
+tap grind 1878
+cmd 2073 teleport manual_approach
+hold up 2073..2213
+tap up 2233
+tap down 2237
+cmd 2432 teleport review2_west_runway_to_big3
+hold up 2432..2548
+hold ollie 2552..2564
+tap grind 2574
+tap up 2683
+tap down 2687
+hold ollie 2722..2736
+hold slide 2844..2992
+cmd 3037 teleport 78 20.5 -1.6 68
+hold up 3067..3071
+cmd 3068 speed 9.5
+hold grab+right 3194..3195
+hold grab 3195..3247
+tap revert 3269
+expect event npcLand count >= 3
+expect event comboLanded{name=FS 50-50 + Manual} count >= 1
+expect no event bail

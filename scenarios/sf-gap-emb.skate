@@ -1,0 +1,54 @@
+# EMB's gaps (Tour level 7, phase 25; data gaps.json), each set up with a teleport:
+# - EMB SEVEN (600, air): taken off on the terrace, over the middle of the seven stairs (a band across
+#   them), down on the plaza, 40 ticks of air at least. An ollie down the set; rolled off the terrace at
+#   6.5 m/s it flies the set too (54 ticks of air): paid. Rolled off at 3 m/s it bumps down the steps
+#   (27-29 ticks each): no gap.
+# - FOUNTAIN GAP (400, air): from the plaza east of the fountain over its east rim, down in the pool, 40
+#   ticks of air at least (a teleport's drop into the pool kept the last takeoff and paid it). An ollie
+#   on the pool floor beside the rim, 107 ticks of air, does not cross it: no gap.
+# - THREE BLOCK (300, grind): an edge of the three stacked blocks by the fountain (a boardslide here);
+#   it replaces EMB LEDGE, the plaza's ledges.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 562.56 694.85 -7.85 70.8
+cmd 3 set skater.vel.x 5.3291
+cmd 3 set skater.vel.y 1.8558
+cmd 401 teleport 563.5 696 -7.85 60
+cmd 403 set skater.vel.x 2.5981
+cmd 403 set skater.vel.y 1.5000
+cmd 801 teleport 562.5 695.2 -7.85 60
+cmd 803 set skater.vel.x 5.6292
+cmd 803 set skater.vel.y 3.2500
+cmd 1201 teleport 620.91 731.44 -8.85 268.1
+cmd 1203 set skater.vel.x -5.1472
+cmd 1203 set skater.vel.y -0.1707
+cmd 1601 teleport 608.5 728.5 -9.75 75
+cmd 1603 set skater.vel.x 2.8978
+cmd 1603 set skater.vel.y 0.7765
+cmd 2001 teleport 615.42 675.24 -9.25 257
+cmd 2003 set skater.vel.x -5.3883
+cmd 2003 set skater.vel.y -1.2440
+hold left 2103..2110
+hold right 2066..2073
+hold ollie 55..65
+hold ollie 1258..1280
+hold ollie 1615..1640
+hold ollie 2025..2035
+tap grind 2037
+tap grind 2043
+tap grind 2049
+tap grind 2055
+tap grind 2061
+run 2400
+expect event gap{id=emb_seven,gap=EMB SEVEN,points=600} within 184..184
+expect event land{airTicks=27} within 590..590
+expect no event gap within 400..800
+expect event land{airTicks=54} within 954..954
+expect event gap{id=emb_seven,points=600} within 954..954
+expect event gap{id=fountain_gap,gap=FOUNTAIN GAP,points=400} within 1410..1410
+expect event land{airTicks=107} within 1748..1748
+expect no event gap within 1500..2100
+expect event gap{id=three_block,gap=THREE BLOCK,points=300} within 2144..2144
+expect event comboLanded{name=BS Boardslide + THREE BLOCK,points=1060} within 2203..2203
+expect no event gap{id=emb_ledge}
+expect no event bail

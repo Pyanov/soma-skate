@@ -1,0 +1,15 @@
+# Fakie Bigspin: rolling backward after an FS 180, popped off the tail (fakie), a 360 Shove-It (J + down,
+# J again) with a backside 180 (regular: turning right) in the same air.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold left 92..130
+hold ollie 250..272
+tap flip+down 276
+tap flip 279
+hold right 281..320
+run 520
+expect event pop{fakie=true} within 273..273
+expect event comboLanded{name=Fakie Bigspin} within 330..470
+expect no event bail

@@ -1,0 +1,25 @@
+# Missions: a follow step's character waits for you (game/movers.ts, docs/mechanics/missions.md). Donna
+# sets off down Castro St as you arrive (you start ahead of her: no pass). You stand still (Castro St runs
+# downhill: you hold the brake): she rolls past you (actorBehind) and 14 m on (data/movers.json wait)
+# stops for you (actorWait), short of the step's 20 m distance, so you are not lost. You ride after her
+# at 7 m/s: within 6 m she goes on (actorGo), and 6 m past her she notices (actorOvertaken). You stay
+# ahead to the end of her path (ahead is fine): the step is done when she gets there.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start disco 1
+cmd 0 teleport -577 -41 18.6 180
+hold down 1..995
+bot path -576,-55 -574,-72 -571,-98 -568,-135 -565,-172 -563,-199 -561,-221 -560,-235 from 1000 speed 7 nocars
+run 5600
+expect no event actorOvertaken within 0..999
+expect event actorBehind{who=donna} within 420..432
+expect event actorWait{who=donna,behind=14.03} within 726..738
+expect actor.actor.state == wait at 990
+expect actor.actor.speed == 0 at 990
+expect event actorGo{who=donna} within 1270..1290
+expect event actorOvertaken{who=donna,ahead=6.01} within 1660..1675
+expect event actorWait count == 1
+expect event actorDone{who=donna} within 4955..4975
+expect event missionStep{mission=disco,step=2,kind=talk} within 4955..4975
+expect no event missionFailed
+expect no event bail

@@ -1,0 +1,15 @@
+# Charged ollie, Triple Heelflip (J + right, then J twice more, each within doubleTapTicks of the last: THPS 1+2's
+# triple tap on that slot, added 2026-11-16) right after the pop: the flip finishes and the combo lands
+# (./skate strip --sheet scenarios/flips.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+right 96
+tap flip 99
+tap flip 102
+run 320
+expect event trickStart{trick=Double Heelflip} within 100..100
+expect event trickStart{trick=Triple Heelflip} within 103..103
+expect event comboLanded{name=Triple Heelflip,points=600} within 170..260
+expect no event bail

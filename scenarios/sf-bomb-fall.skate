@@ -1,0 +1,11 @@
+# The same race standing up: past 12 m/s the trucks wobble and throw you (a fall costs
+# bomb.fallPenalty, 3 s, on top of the time lost): 20.72 s + 3 = 23.72 (20.64 before the squeezed city, 20.58 before city phase 10, 20.59 before phase 11 put the export on a fixed grid).
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb
+cmd 0 setData physics.wobble.speed 10.5   # the real Dolores tops out near 13 m/s standing: wobbles start a little lower here, so the fall still comes
+hold up 20..200
+run 2800
+expect event bail{reason=speed wobbles} within 830..850
+expect event bombFinish{time=20.72,penalty=3,falls=1,total=23.72} within 2741..2755

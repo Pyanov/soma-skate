@@ -1,0 +1,146 @@
+# A great run on SoMa West Skatepark (the score tiers' measure; data/tour.json tiers): the Big 3
+# line every 10.5 s (the teleport stands in for rolling back to the run-up): kickflip over the set,
+# manual, heelflip, manual, impossible: 5,652 each (the second manual at 75%), eleven of them and a
+# burrito, 62,422. Pro (12,000) comes on the third, Sick (52,000) on the tenth. A decent run (the
+# line without the second manual, 2,464, every 20 s) scores 12,320.
+park soma
+cmd 0 traffic clear
+cmd 0 run level soma
+cmd 10 teleport big3
+hold up 10..110
+hold ollie 176..206
+hold ollie 410..430
+hold ollie 601..621
+tap flip+left 212
+tap up 330
+tap down 335
+tap flip+right 436
+tap up 521
+tap down 526
+tap flip+up 627
+cmd 1270 teleport big3
+hold up 1270..1370
+hold ollie 1436..1466
+hold ollie 1670..1690
+hold ollie 1861..1881
+tap flip+left 1472
+tap up 1590
+tap down 1595
+tap flip+right 1696
+tap up 1781
+tap down 1786
+tap flip+up 1887
+cmd 2530 teleport big3
+hold up 2530..2630
+hold ollie 2696..2726
+hold ollie 2930..2950
+hold ollie 3121..3141
+tap flip+left 2732
+tap up 2850
+tap down 2855
+tap flip+right 2956
+tap up 3041
+tap down 3046
+tap flip+up 3147
+cmd 3790 teleport big3
+hold up 3790..3890
+hold ollie 3956..3986
+hold ollie 4190..4210
+hold ollie 4381..4401
+tap flip+left 3992
+tap up 4110
+tap down 4115
+tap flip+right 4216
+tap up 4301
+tap down 4306
+tap flip+up 4407
+cmd 5050 teleport big3
+hold up 5050..5150
+hold ollie 5216..5246
+hold ollie 5450..5470
+hold ollie 5641..5661
+tap flip+left 5252
+tap up 5370
+tap down 5375
+tap flip+right 5476
+tap up 5561
+tap down 5566
+tap flip+up 5667
+cmd 6310 teleport big3
+hold up 6310..6410
+hold ollie 6476..6506
+hold ollie 6710..6730
+hold ollie 6901..6921
+tap flip+left 6512
+tap up 6630
+tap down 6635
+tap flip+right 6736
+tap up 6821
+tap down 6826
+tap flip+up 6927
+cmd 7570 teleport big3
+hold up 7570..7670
+hold ollie 7736..7766
+hold ollie 7970..7990
+hold ollie 8161..8181
+tap flip+left 7772
+tap up 7890
+tap down 7895
+tap flip+right 7996
+tap up 8081
+tap down 8086
+tap flip+up 8187
+cmd 8830 teleport big3
+hold up 8830..8930
+hold ollie 8996..9026
+hold ollie 9230..9250
+hold ollie 9421..9441
+tap flip+left 9032
+tap up 9150
+tap down 9155
+tap flip+right 9256
+tap up 9341
+tap down 9346
+tap flip+up 9447
+cmd 10090 teleport big3
+hold up 10090..10190
+hold ollie 10256..10286
+hold ollie 10490..10510
+hold ollie 10681..10701
+tap flip+left 10292
+tap up 10410
+tap down 10415
+tap flip+right 10516
+tap up 10601
+tap down 10606
+tap flip+up 10707
+cmd 11350 teleport big3
+hold up 11350..11450
+hold ollie 11516..11546
+hold ollie 11750..11770
+hold ollie 11941..11961
+tap flip+left 11552
+tap up 11670
+tap down 11675
+tap flip+right 11776
+tap up 11861
+tap down 11866
+tap flip+up 11967
+cmd 12610 teleport big3
+hold up 12610..12710
+hold ollie 12776..12806
+hold ollie 13010..13030
+hold ollie 13201..13221
+tap flip+left 12812
+tap up 12930
+tap down 12935
+tap flip+right 13036
+tap up 13121
+tap down 13126
+tap flip+up 13227
+bot balance
+run 14700
+expect event levelGoal{level=soma,id=pro,name=Pro Score} within 3269..3273
+expect event levelGoal{level=soma,id=sick,name=Sick Score} within 12089..12093
+expect event levelOver{level=soma,score=62172} within 14399..14402   # 62,422 before the feel pass's park carve (Sick is 52,000)
+expect no event bail

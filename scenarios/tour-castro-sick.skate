@@ -1,0 +1,119 @@
+# A great run on The Castro (the score tiers' measure): the Muni stairs rail every 16 s (the time
+# to come back up to the plaza): a full ollie on, FS 50-50 to the bottom, kickflip off the end:
+# 3,705 each, seven, 25,935. Pro (5,000) on the second, Sick (22,000) on the sixth. A decent run
+# (the rainbow combo and the Harvey Milk set in turn every 20 s) scores 5,137; camping the rainbow
+# crossing every 8 s, 16,506.
+park sf
+cmd 0 traffic clear
+cmd 0 run level castro
+cmd 10 teleport -590.525 -30.458 19.500 -121.69
+cmd 12 set skater.vel.x -4.2543
+cmd 12 set skater.vel.y -2.6270
+hold ollie 77..107
+hold ollie 410..424
+tap grind 114
+tap grind 120
+tap grind 126
+tap grind 132
+tap grind 138
+tap grind 144
+tap grind 150
+tap grind 156
+tap grind 162
+tap flip+left 430
+cmd 1930 teleport -590.525 -30.458 19.500 -121.69
+cmd 1932 set skater.vel.x -4.2543
+cmd 1932 set skater.vel.y -2.6270
+hold ollie 1997..2027
+hold ollie 2330..2344
+tap grind 2034
+tap grind 2040
+tap grind 2046
+tap grind 2052
+tap grind 2058
+tap grind 2064
+tap grind 2070
+tap grind 2076
+tap grind 2082
+tap flip+left 2350
+cmd 3850 teleport -590.525 -30.458 19.500 -121.69
+cmd 3852 set skater.vel.x -4.2543
+cmd 3852 set skater.vel.y -2.6270
+hold ollie 3917..3947
+hold ollie 4250..4264
+tap grind 3954
+tap grind 3960
+tap grind 3966
+tap grind 3972
+tap grind 3978
+tap grind 3984
+tap grind 3990
+tap grind 3996
+tap grind 4002
+tap flip+left 4270
+cmd 5770 teleport -590.525 -30.458 19.500 -121.69
+cmd 5772 set skater.vel.x -4.2543
+cmd 5772 set skater.vel.y -2.6270
+hold ollie 5837..5867
+hold ollie 6170..6184
+tap grind 5874
+tap grind 5880
+tap grind 5886
+tap grind 5892
+tap grind 5898
+tap grind 5904
+tap grind 5910
+tap grind 5916
+tap grind 5922
+tap flip+left 6190
+cmd 7690 teleport -590.525 -30.458 19.500 -121.69
+cmd 7692 set skater.vel.x -4.2543
+cmd 7692 set skater.vel.y -2.6270
+hold ollie 7757..7787
+hold ollie 8090..8104
+tap grind 7794
+tap grind 7800
+tap grind 7806
+tap grind 7812
+tap grind 7818
+tap grind 7824
+tap grind 7830
+tap grind 7836
+tap grind 7842
+tap flip+left 8110
+cmd 9610 teleport -590.525 -30.458 19.500 -121.69
+cmd 9612 set skater.vel.x -4.2543
+cmd 9612 set skater.vel.y -2.6270
+hold ollie 9677..9707
+hold ollie 10010..10024
+tap grind 9714
+tap grind 9720
+tap grind 9726
+tap grind 9732
+tap grind 9738
+tap grind 9744
+tap grind 9750
+tap grind 9756
+tap grind 9762
+tap flip+left 10030
+cmd 11530 teleport -590.525 -30.458 19.500 -121.69
+cmd 11532 set skater.vel.x -4.2543
+cmd 11532 set skater.vel.y -2.6270
+hold ollie 11597..11627
+hold ollie 11930..11944
+tap grind 11634
+tap grind 11640
+tap grind 11646
+tap grind 11652
+tap grind 11658
+tap grind 11664
+tap grind 11670
+tap grind 11676
+tap grind 11682
+tap flip+left 11950
+bot balance
+run 14700
+expect event levelGoal{level=castro,id=pro,name=Pro Score} within 2472..2476
+expect event levelGoal{level=castro,id=sick,name=Sick Score} within 10152..10156
+expect event levelOver{level=castro,score=25977} within 14399..14402
+expect no event bail

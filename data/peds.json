@@ -1,0 +1,15 @@
+{
+  "_doc": "Pedestrians (src/sim/game/peds.ts, docs/mechanics/peds.md): walkers on the city's sidewalks near the player, as sim Things (kind 'ped'), started by the command `ped spawn [n]` (count of them) in the worlds listed in parks, off entirely with enabled false. They walk lines offset from the city's curbs onto the sidewalk side (offset metres), at walk [min, max] m/s, turning back at a line's end; one more than despawn metres from the player comes back on a sidewalk between spawnNear and spawnFar of them. A walker is a soft cylinder (radius, height above the feet): hit faster than hitSpeed m/s (horizontal) and you bail; slower, you swerve off it keeping swerveKeep of your speed. One that sees you coming (you faster than see.speed, closing on them within see.time seconds, passing within see.clear metres, and inside their field of view see.fov degrees, so not from right behind) steps see.aside metres out of your way at see.stepSpeed m/s, at most see.maxSide off their line, then steps back once you are by; a vehicle you drive (src/sim/game/vehicles.ts) gets its half width more berth and see.vehicle metres besides, and one that reaches a walker sees them jump clear (no hit, no near miss); phone of them are on their phone and never look up. Passing within nearMiss.distance metres at nearMiss.speed m/s or more without touching (or over their head) is a NEAR MISS: nearMiss.points into the combo, once per walker in nearMiss.again seconds. After a hit or a near miss that walker is out of play for cooldown seconds; hit hard, they are knocked down for stagger seconds.",
+  "parks": ["sf"],
+  "enabled": true,
+  "count": 24,
+  "offset": 1.3,
+  "walk": [1.1, 1.6],
+  "spawnNear": 25, "spawnFar": 90, "despawn": 130,
+  "radius": 0.3, "height": 1.75,
+  "hitSpeed": 3.5, "swerveKeep": 0.5,
+  "see": { "speed": 3.5, "time": 1.3, "clear": 1.2, "fov": 240, "aside": 1.1, "stepSpeed": 1.8, "maxSide": 1.3, "vehicle": 1 },
+  "phone": 0.25,
+  "nearMiss": { "distance": 1.2, "speed": 4, "points": 250, "again": 15 },
+  "cooldown": 2, "stagger": 3
+}

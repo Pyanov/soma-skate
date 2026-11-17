@@ -1,0 +1,6 @@
+# Recorded in the browser during M0 testing: keyboard pushing down the west runway,
+# then a bridge teleport to the Hellride approach. Guards replay determinism of real play.
+park soma
+replay replays/browser-play-west-runway.replay.json
+expect event teleport count == 1
+expect max skater.speed < 12

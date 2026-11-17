@@ -1,0 +1,16 @@
+# An odd job (data/jobs.json, game/jobs.ts): the taqueria's first gig on 2026-11-14 is a veggie burrito
+# to Tash in Clarion Alley, 80 s once picked up. Read off the board by the menu (mission job ...), the
+# order is in your hands at once (you stand at the counter), Tash's order line is said; carried to her,
+# the gig is done as a job from the taqueria's board, her thanks said, the clock never ran out.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 168.10 -313.81 -2.13
+cmd 1 mission job taqueria 2026-11-14 0
+cmd 60 teleport -26.00 -393.00 2.05
+run 200
+expect event missionStart{mission=job-taqueria-2026-11-14-0,kind=job} within 2..2
+expect event talk{character=tash,line=job-deliver-tash-order,bark=true} within 2..2
+expect event missionItem{mission=job-taqueria-2026-11-14-0} within 2..5
+expect event missionDone{mission=job-taqueria-2026-11-14-0,kind=job,board=taqueria,gig=deliver} within 60..64
+expect event talk{character=tash,line=job-deliver-tash-thanks,bark=true} within 60..64
+expect no event missionFailed

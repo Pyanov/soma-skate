@@ -1,0 +1,23 @@
+# Missions: a go step (Clarion Alley, within 25 m), then a trick step on a gap done twice (CLARION
+# WALLRIDE, as sf-clarion-wallride rides it), with Marisol's barks: as it starts (say), between
+# (each: again, but with feeling) and when done.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start ch2 1
+cmd 0 teleport -26.94 -395.92 1.78 84.25
+hold up 6..90
+hold ollie 80..100
+tap grind 104
+cmd 400 teleport -26.94 -395.92 1.78 84.25
+hold up 406..490
+hold ollie 480..500
+tap grind 504
+run 800
+expect event missionStep{mission=ch2,step=1,kind=go} within 1..1
+expect event missionStep{mission=ch2,step=2,kind=trick} within 1..2
+expect event talk{line=ch2-04,character=marisol,bark=true} within 1..2
+expect event gap{id=clarion_wallride} within 193..197
+expect event talk{line=ch2-05,bark=true} within 233..238
+expect event gap{id=clarion_wallride} within 593..597
+expect event talk{line=ch2-06,bark=true} within 633..638
+expect event missionStep{mission=ch2,step=3,kind=go} within 633..638

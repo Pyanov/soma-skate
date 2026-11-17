@@ -1,0 +1,9 @@
+{
+  "_doc": "Rider lines this game adds to a world's own (the city export's, from the world generator's city config lines): the loaders (src/client/load.ts, src/harness/io.ts) append them to the park's lines, so NPC skaters (data/npc.json), the autopilot and ./skate lines ride them like any other. Per world: id, radius (how far off a point still counts as reaching it, metres), maxSlopeDeg, points [x, y] in site metres. EMB's two run south-east down the plaza a step beside its row of granite ledges and the fountain's rim (an NPC ollies onto the ledge or the rim as it passes); Pier 7's runs north-west between the two rows of benches. Valencia's (valencia_north) runs up Valencia St from the Mission into the park's streets: the city export's own ran through blocks the squeeze removed (docs/squeeze.md).",
+  "sf": [
+    {"id": "valencia_north", "radius": 4, "maxSlopeDeg": 2, "points": [[-51.52, -259.74], [-54.58, -219.74], [-57.64, -179.74], [-60.7, -139.74], [-62.6, -114.74], [-64.38, -89.74], [-66.68, -59.74]]},
+    {"id": "emb_west_ledges", "radius": 1.0, "maxSlopeDeg": 2, "points": [[553.14, 728.34], [555.62, 725.19], [558.09, 722.05], [560.56, 718.91], [563.04, 715.76], [565.51, 712.62], [567.98, 709.48], [570.46, 706.33], [572.93, 703.19], [575.41, 700.05], [577.88, 696.9], [580.35, 693.76], [582.83, 690.62], [585.3, 687.47], [587.77, 684.33]]},
+    {"id": "emb_east_rim", "radius": 1.0, "maxSlopeDeg": 2, "points": [[601.64, 709.37], [604.11, 706.23], [606.59, 703.09], [609.06, 699.94], [611.53, 696.8], [614.01, 693.66], [616.48, 690.51], [618.96, 687.37], [621.43, 684.23], [623.9, 681.08], [626.38, 677.94]]},
+    {"id": "pier_7_benches", "radius": 1.0, "maxSlopeDeg": 2, "points": [[555.03, 944.05], [559.67, 937.54], [562.33, 934.4], [564.02, 932.29], [568.84, 928.11], [571.68, 925.84], [573.3, 923.92], [577.05, 921.06], [578.87, 919.54], [580.54, 917.54], [582.88, 913.56], [585.13, 909.02]]}
+  ]
+}

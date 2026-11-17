@@ -1,0 +1,9 @@
+# Missions: a step's clock (the crumbs, here 2 s): out of time, missionFailed time and the mission is off.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.pigeons.steps.1.seconds 2
+cmd 0 mission start pigeons 1
+run 300
+expect event missionStep{mission=pigeons,step=1,seconds=2} within 1..1
+expect event missionFailed{mission=pigeons,step=1,reason=time} within 239..241
+expect no event missionItem

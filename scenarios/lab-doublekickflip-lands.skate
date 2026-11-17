@@ -1,0 +1,13 @@
+# Charged ollie, Double Kickflip (J + left, then J again: the THPS double tap) right after the pop: the flip finishes and the
+# combo lands (the view's flip review: ./skate strip --sheet scenarios/flips.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+tap flip 99
+run 300
+expect event trickStart{trick=Double Kickflip} within 100..100
+expect event trickEnd{trick=Double Kickflip} within 120..175
+expect event comboLanded{name=Double Kickflip,points=300} within 160..240
+expect no event bail

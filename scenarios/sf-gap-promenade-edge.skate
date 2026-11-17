@@ -1,0 +1,20 @@
+# PROMENADE EDGE: on the Embarcadero north of Pier 7, an ollie onto the first of the granite edges along the
+# promenade (0.45 m high, 24 m long, 4 m apart) and a 50-50 to its end. The squeezed city re-homes the edges
+# to the seawall in front of Pier 7 (a 24 m run south-east of it, a shorter one north-west), level where
+# today's falls 0.13 m along the run, so the grind takes 0.35 s longer.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 604.34 871.46 -8.97 344.0
+cmd 3 set skater.vel.x -1.656
+cmd 3 set skater.vel.y 5.767
+hold ollie 48..78
+tap grind 84..148 every 4
+bot balance
+run 1000
+expect event grindStart{trick=FS 50-50,line=ledge_604_875} within 84..88
+expect event grindEnd{reason=end} within 801..805
+expect event gap{id=promenade_edge,gap=PROMENADE EDGE,points=250} within 801..805
+expect event land{quality=clean} within 855..859
+expect no event bail
+expect no event wallrideStart
+expect event goalComplete{id=promenade,name=Grind the Promenade} within 801..805

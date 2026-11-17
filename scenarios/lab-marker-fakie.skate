@@ -1,0 +1,20 @@
+# The session marker keeps the stance: set while rolling fakie (the board faces east, the skater rolls
+# west at 4 m/s), rolled on and turned, then back to the marker: rolling fakie west again at 4 m/s.
+# A marker set at a standstill sends you back at marker.minSpeed (3 m/s), a gentle roll.
+park lab
+cmd 0 teleport 0 -15 0.13 90
+cmd 6 speed -4
+cmd 20 marker set
+hold left 40..80
+cmd 120 marker go
+cmd 200 speed 0
+cmd 230 marker set
+cmd 260 marker go
+run 300
+expect event marker{op=go,ok=true} within 121..121
+expect skater.vel.x < -3.8 at 125
+expect skater.heading > 85 at 125
+expect skater.heading < 95 at 125
+expect event marker{op=go,ok=true} within 261..261
+expect skater.speed > 2.8 at 265
+expect no event bail

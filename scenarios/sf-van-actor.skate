@@ -1,0 +1,25 @@
+# The story's characters and the crew van (game/vehicles.ts bumpActors, game/movers.ts; docs/mechanics/driving.md).
+# On Duboce's kerb lane the van waits with the player in it. Donna's route crosses the lane right
+# through it: she walks up to its side and holds there (no actorDone) while it stands in her way. The van
+# drives off west: she goes on and reaches the far sidewalk (actorDone). Further on Kenji stands in the
+# lane; the van runs into him at walking pace and stops against him (vanBump actor): actors are solid to
+# vehicles, and nobody is hurt.
+park sf
+cmd 0 traffic clear
+cmd 1 van summon 92 -15.85 270
+cmd 2 vehicle enter crew_van
+cmd 3 actor spawn donna escort 1.4 92,-11.5 92,-20
+cmd 3 actor spawn kenji escort 1 80,-15.85 80.2,-15.85
+bot drive 92,-15.85 70,-15.85 from 700 speed 3
+run 1500
+expect event actorDone{who=kenji} within 3..60
+expect no event actorDone{who=donna} within 0..760
+expect actor.actor.state == go at 690
+expect actor.actor.speed == 0 at 690
+expect actor.pos.y > -14.6 at 690
+expect actor.pos.y < -14.3 at 690
+expect event actorDone{who=donna} within 760..1400
+expect event vanBump{what=actor} within 800..1400
+expect van.hspeed < 0.3 at end
+expect van.pos.x > 82.5 at end
+expect no event pedHit

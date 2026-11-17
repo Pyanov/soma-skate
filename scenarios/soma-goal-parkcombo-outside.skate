@@ -1,0 +1,11 @@
+# The same combo with the goal's box moved elsewhere: started outside it, it does not count.
+park soma
+spawn big3
+cmd 0 setData goals.goals.11.points 600
+cmd 0 setData goals.goals.11.box [200,200,300,300]
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 420
+expect event comboLanded{points=700} within 330..345
+expect no event goalComplete

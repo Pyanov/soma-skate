@@ -1,0 +1,17 @@
+# Leaving a car is not clearing it: popping off a car's trunk after landing on it scores no CAR HOP.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 0
+cmd 30 teleport -41.25 -332.19 2.08 265.2
+cmd 40 set skater.vel.x -5.98
+cmd 40 set skater.vel.y -0.5
+hold ollie 42..100
+tap up 82
+tap up 90
+hold ollie 230..250
+run 450
+expect event carLand within 205..212
+expect no event gap{id=car_hop}
+expect no event goalComplete{id=carhop}

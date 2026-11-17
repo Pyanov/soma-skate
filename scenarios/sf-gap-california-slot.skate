@@ -1,0 +1,19 @@
+# The slot gap (id california_slot, POWELL SLOT): California St's slot is in a removed block (Chinatown stops at
+# Pine), so the gap pays on the Powell St slot down to the turntable. A 50-50 in the slot from the top of its
+# kept block, popped off a few metres before its end: the slot gap on the pop.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 585.4 522.00 -6.6 171.0
+cmd 3 set skater.vel.x 0.78
+cmd 3 set skater.vel.y -4.94
+hold ollie 20..30
+tap grind 32..60 every 6
+hold ollie 1340..1360
+bot balance
+run 1600
+expect event grindStart{trick=FS 50-50,line=slot_585_522} within 31..35
+expect event grindEnd{reason=ollie} within 1359..1363
+expect event gap{id=california_slot,gap=POWELL SLOT,points=300} within 1359..1363
+expect event land{quality=clean} within 1464..1468
+expect event comboLanded{name=FS 50-50 + POWELL SLOT} within 1475..1479
+expect no event bail

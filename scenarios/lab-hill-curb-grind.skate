@@ -1,0 +1,15 @@
+# Grind the hill's east curb down the 10%: the 17 cm curb is a 255 m grind line. Gravity along it
+# against grind friction and air drag gives about 11.9 m/s on the 10% (it no longer accelerates
+# forever). Balance gets harder the longer you grind (grind.balanceRamp, 12% per second): the
+# balance bot holds it for well over 10 s.
+park lab
+cmd 0 teleport 76 90 17.95 180
+cmd 1 set skater.vel.y -6
+cmd 1 set skater.vel.z -0.6
+tap grind 3
+bot balance
+run 1500
+expect event grindStart{line=hill_curb_east} within 2..6
+expect no event grindEnd within 6..1500
+expect max skater.speed < 12.2
+expect skater.speed > 8.5 at 1200

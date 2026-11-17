@@ -1,0 +1,19 @@
+# City sweep (skate cityfuzz): The same on Upper Market: a building and a lot meeting in a sliver.
+# Finding: invariant at -1819.03 -1417.40 100.36 (inside geometry (0.036 m deep, triangle 912540)), tick 777. Run it with `./skate run scenarios/city-sweep/building-sliver-2.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1820 -1440 104.99 22
+hold up+slide 0..37
+hold up 128..156
+hold up 193..254
+hold right 312..337
+hold up 337..401
+hold up+right 401..426
+hold up+revert 426..461
+hold up+slide 461..540
+hold up+grab 540..629
+hold up+grab 629..667
+hold up 667..705
+hold up+ollie+grab 705..777
+run 779

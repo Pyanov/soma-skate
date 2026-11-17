@@ -1,0 +1,12 @@
+# A manual with nobody balancing it (and a twitchy balance for this test) tips over: bail.
+park lab
+spawn lab_ledge
+cmd 0 setData physics.combo.manualInstability 30
+hold up 0..80
+tap up 100
+tap down 104
+run 400
+expect event manualStart within 104..106
+expect event bail within 106..200
+expect no event comboLanded
+expect event danger{why=manual balance} within 165..185

@@ -1,0 +1,192 @@
+{
+  "_doc": [
+    "Create-a-Skater (src/client/cas.ts builds the skater, src/client/caseditor.ts is the editor: Esc > Character > Create-a-Skater).",
+    "A skater is a choice per row (a piece id, or a colour from a palette); cas.ts turns the choices into a kit recipe",
+    "(src/client/skater/kitpeople.ts) on the full skater rig, with the attitude's riding style, the special's signature, the",
+    "bail and the emote. slots: how many skaters are kept (localStorage soma-skate:cas, each saved as { id, name, choices, kit }",
+    "so it reads like a kit recipe); nameMax: letters in a name. palettes: the colours each colour row cycles through.",
+    "bodies (girth, belly, bust, shoulder width) and heights (leg length, spine scale) make the rig. Pieces: id, name and the",
+    "kit fields they set (hair style, beard style, hat kind and colours, glasses kind, top neck, bottom kind, layer kind,",
+    "extra layer kind, prop kind, pattern kind). unlock: a piece is locked until the story's mission is done (story:",
+    "a mission id), a sticker is earned (sticker: its id), the Tour career has tapes or goals, or the piece was awarded by",
+    "id (cas.ts awardPiece, kept in soma-skate:cas-awards); hint is what a locked piece shows. attitudes: the riding style",
+    "(bend, arms, stretch, swing, squash, celebrations, idles, the catch flair and tweak, the face at rest). specials: the",
+    "signature flourish in the three specials and their names. bails: the bail style (src/client/skater/bails.ts). emotes:",
+    "the taunt and what it says. random: the funny name parts and how often the randomizer goes for a loud combo."
+  ],
+  "slots": 4,
+  "nameMax": 18,
+  "defaultBoard": { "graphic": "fog", "wheel": "#e8642a" },
+  "palettes": {
+    "skin": [
+      { "name": "Porcelain", "color": "#f6d7bd" }, { "name": "Peach", "color": "#f0c8a8" }, { "name": "Honey", "color": "#e0b08c" }, { "name": "Caramel", "color": "#c8906a" },
+      { "name": "Bronze", "color": "#b07850" }, { "name": "Cocoa", "color": "#8a5636" }, { "name": "Espresso", "color": "#6a4028" }, { "name": "Ebony", "color": "#4a2c1c" },
+      { "name": "Mint (fun)", "color": "#9ad8b0" }, { "name": "Sky (fun)", "color": "#8ab8e8" }
+    ],
+    "hair": [
+      { "name": "Black", "color": "#141414" }, { "name": "Dark brown", "color": "#3a2a1e" }, { "name": "Brown", "color": "#6a4428" }, { "name": "Auburn", "color": "#8a3a22" },
+      { "name": "Blonde", "color": "#e8c87a" }, { "name": "Platinum", "color": "#f2ead0" }, { "name": "Grey", "color": "#a8a8a8" }, { "name": "White", "color": "#f4f4f0" },
+      { "name": "Pink", "color": "#f28ab4" }, { "name": "Teal", "color": "#2a9a9a" }, { "name": "Orange", "color": "#e8642a" }, { "name": "Purple", "color": "#7a4ab0" }
+    ],
+    "cloth": [
+      { "name": "Orange", "color": "#e8642a" }, { "name": "Teal", "color": "#2a9a9a" }, { "name": "Cream", "color": "#f4efe0" }, { "name": "Black", "color": "#1f1f22" },
+      { "name": "Red", "color": "#d8352a" }, { "name": "Mustard", "color": "#f2c84a" }, { "name": "Navy", "color": "#22304a" }, { "name": "Forest", "color": "#2f6a4a" },
+      { "name": "Pink", "color": "#f28ab4" }, { "name": "Purple", "color": "#6a4a9a" }, { "name": "Sky", "color": "#7ab8e8" }, { "name": "Olive", "color": "#6a6a3a" },
+      { "name": "Grey", "color": "#8a8e96" }, { "name": "White", "color": "#fbfaf3" }, { "name": "Brown", "color": "#6a4428" }, { "name": "Lime", "color": "#8fd23a" }
+    ],
+    "eyes": [
+      { "name": "Brown", "color": "#3a2418" }, { "name": "Dark", "color": "#1a1410" }, { "name": "Hazel", "color": "#6a5a2a" }, { "name": "Green", "color": "#4a7a3a" },
+      { "name": "Blue", "color": "#3d6e9c" }, { "name": "Grey", "color": "#6a7a8a" }
+    ]
+  },
+  "bodies": [
+    { "id": "average", "name": "Average", "girth": 1.0, "belly": 0, "bust": 0, "shoulder": 0.19 },
+    { "id": "slim", "name": "Slim", "girth": 0.88, "belly": 0, "bust": 0, "shoulder": 0.18 },
+    { "id": "curvy", "name": "Curvy", "girth": 1.02, "belly": 0.01, "bust": 0.035, "shoulder": 0.18 },
+    { "id": "stocky", "name": "Stocky", "girth": 1.15, "belly": 0.04, "bust": 0, "shoulder": 0.21 },
+    { "id": "round", "name": "Round", "girth": 1.25, "belly": 0.1, "bust": 0, "shoulder": 0.21 }
+  ],
+  "heights": [
+    { "id": "medium", "name": "Medium", "leg": 0.42, "spine": 1.0, "head": 1.3 },
+    { "id": "short", "name": "Short", "leg": 0.36, "spine": 0.92, "head": 1.36 },
+    { "id": "tall", "name": "Tall", "leg": 0.47, "spine": 1.06, "head": 1.28 }
+  ],
+  "faces": [
+    { "id": "neutral", "name": "Deadpan", "neutral": "neutral" },
+    { "id": "smile", "name": "Friendly", "neutral": "smile" },
+    { "id": "grin", "name": "Gnarly grin", "neutral": "grin" }
+  ],
+  "hair": [
+    { "id": "short", "name": "Short", "style": "short" }, { "id": "tousled", "name": "Tousled", "style": "tousled" }, { "id": "shaggy", "name": "Shaggy", "style": "shaggy" },
+    { "id": "curly", "name": "Curly", "style": "curly" }, { "id": "wild", "name": "Mad scientist", "style": "wild" }, { "id": "bun", "name": "Top bun", "style": "bun", "bun": "top" },
+    { "id": "bunback", "name": "Low bun", "style": "bun", "bun": "back" }, { "id": "messy", "name": "Messy bun", "style": "bun", "bun": "messy" }, { "id": "manbun", "name": "Man bun", "style": "manbun" },
+    { "id": "bob", "name": "Bob with bangs", "style": "bob" }, { "id": "braid", "name": "Braid", "style": "braid" }, { "id": "ponytail", "name": "Ponytail", "style": "ponytail" },
+    { "id": "slick", "name": "Slicked back", "style": "slick" }, { "id": "wavy", "name": "Wavy", "style": "wavyShort" }, { "id": "thin", "name": "Thinning", "style": "thin" },
+    { "id": "bald", "name": "Bald", "style": "none" },
+    { "id": "afro", "name": "Afro", "style": "afro" },
+    { "id": "long", "name": "Long waves", "style": "long", "unlock": { "story": "slackline", "hint": "Show Jasper some Balance Solidarity" } },
+    { "id": "buzz", "name": "Buzz cut", "style": "buzz" }
+  ],
+  "beards": [
+    { "id": "none", "name": "Clean shaven" }, { "id": "stubble", "name": "Stubble", "style": "stubble" }, { "id": "moustache", "name": "Moustache", "style": "moustache" },
+    { "id": "big", "name": "Big moustache", "style": "big" }, { "id": "curl", "name": "Handlebar", "style": "curl" }, { "id": "thin", "name": "Pencil moustache", "style": "thin" },
+    { "id": "goatee", "name": "Goatee", "style": "goatee" }, { "id": "beard", "name": "Beard", "style": "beard" }
+  ],
+  "hats": [
+    { "id": "none", "name": "No hat" }, { "id": "backcap", "name": "Backwards cap", "kind": "backcap" }, { "id": "cap", "name": "Cap", "kind": "cap" },
+    { "id": "beanie", "name": "Beanie", "kind": "beanie" }, { "id": "beret", "name": "Beret", "kind": "beret" }, { "id": "flatcap", "name": "Flat cap", "kind": "flatcap" },
+    { "id": "bandana", "name": "Bandana", "kind": "bandana" }, { "id": "visor", "name": "Visor", "kind": "visor" }, { "id": "fedora", "name": "Fedora", "kind": "fedora" },
+    { "id": "sunhat", "name": "Sun hat", "kind": "sunhat" }, { "id": "straw", "name": "Straw hat", "kind": "straw" },
+    { "id": "baker", "name": "Baker's cap", "kind": "baker", "color": "#fbfaf3", "unlock": { "story": "concha", "hint": "Do Don Beto's Concha Express" } },
+    { "id": "sombrero", "name": "Mariachi sombrero", "kind": "sombrero", "color": "#1f1f22", "trim": "#e8e4da", "unlock": { "story": "mariachi", "hint": "Keep Don Ramón's Mariachi Tempo" } },
+    { "id": "muni", "name": "Muni conductor's cap", "kind": "peaked", "color": "#22304a", "band": "#c8372d", "unlock": { "story": "delay", "hint": "Help with Dolores's Delay" } },
+    { "id": "skipper", "name": "Sea Lion's skipper cap", "kind": "captain", "color": "#f4f4f0", "band": "#22304a", "trim": "#d8b04a", "unlock": { "story": "barnacle", "hint": "Teach Captain Barnacle to skate" } },
+    { "id": "cone", "name": "Traffic cone", "kind": "cone", "color": "#f07a1e", "unlock": { "sticker": "robotaxi", "hint": "Earn the Robotaxi sticker" } },
+    { "id": "wuvisor", "name": "Grandma Wu's visor", "kind": "visor", "color": "#2a9a9a", "band": "#e8642a", "unlock": { "story": "cartrace", "hint": "Beat Grandma Wu up Grant Ave" } },
+    { "id": "silvercap", "name": "Silver captain's cap", "kind": "captain", "color": "#b8bcc2", "band": "#a8acb2", "unlock": { "story": "statueoff", "hint": "Make the Pier 39 statue move for Gus" } },
+    { "id": "bucket", "name": "Bucket hat", "kind": "bucket", "unlock": { "story": "tourist", "hint": "Help Bjorn, The Lost Tourist" } },
+    { "id": "hairnet", "name": "Hairnet", "kind": "hairnet", "color": "#e8dccc", "unlock": { "story": "catering", "hint": "Do Hector's Catering, Gently" } },
+    { "id": "feather", "name": "Kenji's feather", "kind": "feather", "color": "#ece8e0", "unlock": { "story": "kenjiboard", "hint": "Find Kenji's board" } }
+  ],
+  "glasses": [
+    { "id": "none", "name": "No glasses" }, { "id": "round", "name": "Round", "kind": "round" }, { "id": "square", "name": "Square", "kind": "square" },
+    { "id": "cateye", "name": "Cat-eye", "kind": "cateye" }, { "id": "sun", "name": "Sunglasses", "kind": "sun" }, { "id": "bigsun", "name": "Big shades", "kind": "bigsun" },
+    { "id": "roundsun", "name": "Round shades", "kind": "roundsun" },
+    { "id": "goggles", "name": "Lab goggles", "kind": "goggles", "lens": "#8ad0d0", "unlock": { "story": "gravity", "hint": "Pass Dr. Gravity's Peer Review" } },
+    { "id": "karl", "name": "Karl's sunglasses", "kind": "sun", "color": "#1fa5a0", "lens": "#0e1216", "unlock": { "story": "ch1", "hint": "Finish chapter 1, New in Town" } },
+    { "id": "star", "name": "Disco stars", "kind": "star", "color": "#e8642a", "lens": "#2a1a14", "unlock": { "story": "disco", "hint": "Do Donna's Disco Escort" } }
+  ],
+  "tops": [
+    { "id": "tee", "name": "Tee" }, { "id": "hoodie", "name": "Hoodie", "neck": "hood" }, { "id": "shirt", "name": "Shirt", "neck": "collar" },
+    { "id": "turtleneck", "name": "Turtleneck", "neck": "turtleneck" }, { "id": "halfzip", "name": "Half-zip", "neck": "halfzip" }
+  ],
+  "patterns": [
+    { "id": "plain", "name": "Plain" }, { "id": "stripes", "name": "Stripes", "kind": "stripes" }, { "id": "plaid", "name": "Plaid", "kind": "plaid" },
+    { "id": "dots", "name": "Polka dots", "kind": "dots" }, { "id": "pinstripe", "name": "Pinstripe", "kind": "pinstripe" }, { "id": "bands", "name": "Racing bands", "kind": "bands" },
+    { "id": "zigzag", "name": "Zigzag", "kind": "zigzag" }, { "id": "floral", "name": "Floral", "kind": "floral" },
+    { "id": "splatter", "name": "Paint splatter", "kind": "splatter", "unlock": { "story": "mural", "hint": "Model for Xóchitl's mural" } },
+    { "id": "rainbow", "name": "Rainbow", "kind": "rainbow" },
+    { "id": "sequin", "name": "Sequins", "kind": "sequin", "unlock": { "story": "disco", "hint": "Do Donna's Disco Escort" } },
+    { "id": "sunwave", "name": "Sun and wave tee", "kind": "sunwave" }
+  ],
+  "bottoms": [
+    { "id": "pants", "name": "Pants", "kind": "pants" }, { "id": "shorts", "name": "Shorts", "kind": "shorts" }, { "id": "skirt", "name": "Skirt", "kind": "skirt" }
+  ],
+  "layers": [
+    { "id": "none", "name": "Nothing over it" }, { "id": "vest", "name": "Vest", "kind": "vest" }, { "id": "puffer", "name": "Puffer vest", "kind": "puffer" },
+    { "id": "cardigan", "name": "Cardigan", "kind": "cardigan" }, { "id": "jacket", "name": "Jacket", "kind": "jacket" }, { "id": "denim", "name": "Denim jacket", "kind": "denim" },
+    { "id": "hivis", "name": "Hi-vis vest", "kind": "hivis", "color2": "#f4f4f0" }, { "id": "apron", "name": "Apron", "kind": "apron" }, { "id": "overalls", "name": "Overalls", "kind": "overalls" },
+    { "id": "coat", "name": "Long coat", "kind": "coat" }, { "id": "labcoat", "name": "Lab coat", "kind": "labcoat" },
+    { "id": "burrito", "name": "Burrito costume", "kind": "burrito", "unlock": { "story": "burrito", "hint": "Do Hector's Burrito Run" } },
+    { "id": "cloud", "name": "Fog suit", "kind": "cloud", "unlock": { "story": "fogcousin", "hint": "Get Misty Above the Fog" } }
+  ],
+  "extras": [
+    { "id": "none", "name": "No extras" }, { "id": "scarf", "name": "Neckerchief", "kind": "scarf" }, { "id": "tie", "name": "Tie", "kind": "tie" },
+    { "id": "bowtie", "name": "Bow tie", "kind": "bowtie" }, { "id": "headphones", "name": "Headphones", "kind": "headphones" }, { "id": "lanyard", "name": "Lanyard", "kind": "lanyard" },
+    { "id": "straps", "name": "Backpack", "kind": "straps" }, { "id": "bag", "name": "Messenger bag", "kind": "bag" }, { "id": "sash", "name": "Sash", "kind": "sash" },
+    { "id": "fur", "name": "Fur trim", "kind": "fur" },
+    { "id": "pearls", "name": "Pearls", "kind": "pearls", "unlock": { "story": "weddingshot", "hint": "Do Mrs. Haverford's wedding shot" } },
+    { "id": "camera", "name": "Tourist camera", "kind": "camera" }
+  ],
+  "props": [
+    { "id": "none", "name": "Empty hands" }, { "id": "cup", "name": "Coffee", "prop": "cup" }, { "id": "espresso", "name": "Espresso", "prop": "espresso" },
+    { "id": "apple", "name": "Apple", "prop": "apple" }, { "id": "sandwich", "name": "Giant sandwich", "prop": "sandwich" }, { "id": "flag", "name": "Tour flag", "prop": "flag" },
+    { "id": "phone", "name": "Phone", "prop": "phone" }, { "id": "brush", "name": "Paintbrush", "prop": "brush" }, { "id": "spray", "name": "Spray can", "prop": "spray" },
+    { "id": "hydrangea", "name": "Hydrangea", "prop": "hydrangea" }, { "id": "package", "name": "Parcel", "prop": "package" }, { "id": "record", "name": "Record", "prop": "record" },
+    { "id": "bocce", "name": "Bocce ball", "prop": "bocce", "unlock": { "story": "bocce", "hint": "Play Vito's Bocce Ball" } },
+    { "id": "concha", "name": "Concha", "prop": "concha", "unlock": { "story": "concha", "hint": "Do Don Beto's Concha Express" } },
+    { "id": "chancla", "name": "Chancla", "prop": "chancla", "unlock": { "story": "chancla", "hint": "Survive Abuela Rosaura's Chancla" } },
+    { "id": "fries", "name": "Fries", "prop": "fries", "unlock": { "story": "fries", "hint": "Catch Steve the Fry Thief" } },
+    { "id": "liondance", "name": "Lion dance head", "prop": "liondance", "unlock": { "story": "lionluck", "hint": "Bring Kenny's lion dance some luck" } },
+    { "id": "steamer", "name": "Dim sum steamer", "prop": "steamer", "unlock": { "story": "hargow", "hint": "Run Auntie Mei's har gow" } },
+    { "id": "laptop", "name": "Laptop", "prop": "laptop", "unlock": { "story": "standup", "hint": "Get Trent to his standup" } },
+    { "id": "shears", "name": "Garden shears", "prop": "shears", "unlock": { "story": "hydrangeas", "hint": "Patrol Mrs. Fitch's hydrangeas" } },
+    { "id": "tipbucket", "name": "Tip bucket", "prop": "bucket", "unlock": { "story": "statue", "hint": "Give Gus something to stand next to" } },
+    { "id": "lever", "name": "Brake lever", "prop": "lever", "unlock": { "story": "brakeshoe", "hint": "Find Mo's brake shoe" } },
+    { "id": "crate", "name": "Peach crate", "prop": "crate", "unlock": { "story": "peaches", "hint": "Beat the chefs to Farmer June's peaches" } },
+    { "id": "jar", "name": "Kombucha jar", "prop": "jar", "unlock": { "story": "kombucha", "hint": "Carry Ezra's kombucha unshaken" } },
+    { "id": "notebook", "name": "Poet's notebook", "prop": "notebook", "unlock": { "story": "poet", "hint": "Skate Rocco a line" } },
+    { "id": "fortune", "name": "Fortune cookie", "prop": "fortune", "unlock": { "story": "fortune", "hint": "Give Mr. Lau something true to write" } },
+    { "id": "flipPhone", "name": "Flip phone", "prop": "flipPhone", "unlock": { "story": "clarion", "hint": "Do Tash's Clarion Touch-up" } },
+    { "id": "stopSign", "name": "Stop paddle", "prop": "stopSign", "unlock": { "story": "rainbow", "hint": "Land Bev's Rainbow Manual" } },
+    { "id": "selfieStick", "name": "Selfie stick", "prop": "selfieStick", "unlock": { "story": "postcard", "hint": "Take Skye's Painted Ladies Photo" } },
+    { "id": "breadBowl", "name": "Chowder bread bowl", "prop": "breadBowl", "unlock": { "story": "chowder", "hint": "Do Marge's Chowder Delivery" } },
+    { "id": "gavel", "name": "Gavel", "prop": "gavel", "unlock": { "story": "ch4", "hint": "Finish chapter 4, Get Permits" } },
+    { "id": "helmet", "name": "Spare helmet", "prop": "helmet", "unlock": { "story": "ch6", "hint": "Finish chapter 6, The Jam" } },
+    { "id": "knight", "name": "Chess knight", "prop": "knight", "unlock": { "story": "speedchess", "hint": "Beat Lev at Speed Chess" } },
+    { "id": "honey", "name": "Local honey", "prop": "honey", "unlock": { "story": "honey", "hint": "Help Ruth with Local Honey" } },
+    { "id": "churros", "name": "Churros", "prop": "churros", "unlock": { "story": "churros", "hint": "Do Doña Chela's Sugar Run" } },
+    { "id": "schedule", "name": "J Church schedule", "prop": "schedule", "unlock": { "story": "jchurch", "hint": "Wait Four Minutes with Walter" } }
+  ],
+  "attitudes": [
+    { "id": "chill", "name": "Chill", "bend": 0.45, "arms": 0.7, "stretch": 1.1, "swing": 0.35, "squash": 0.15, "celebrate": ["nod", "fist", "armsUp", "point"], "idle": "breathe", "idles": ["breathe", "coolCross"], "catch": "catchCool", "tweak": [24, 6, 8], "free": [0.3, 0.1, 0.24] },
+    { "id": "hype", "name": "Hype", "bend": 0.8, "arms": 1.1, "stretch": 1.2, "swing": 0.8, "squash": 0.3, "celebrate": ["hop", "flail", "armsUp", "dance"], "idle": "bounce", "idles": ["bounce", "wave", "dance"], "catch": "catchSplay", "tweak": [34, 0, 16], "free": [0.46, 0.1, 0.18] },
+    { "id": "goofy", "name": "Goofy", "bend": 1.0, "arms": 1.2, "stretch": 1.4, "swing": 0.9, "squash": 0.45, "celebrate": ["flail", "awkwardFist", "armsUp", "dance"], "idle": "wobble", "idles": ["wobble", "giggle", "headScratch"], "catch": "catchBig", "tweak": [0, 16, -20], "free": [0.3, 0.32, 0.28] },
+    { "id": "tough", "name": "Tough", "bend": 0.35, "arms": 0.55, "stretch": 1.0, "swing": 0.2, "squash": 0.1, "celebrate": ["nod", "nod", "fist", "point"], "idle": "breathe", "idles": ["breathe", "coolCross"], "catch": "catchStomp", "tweak": [0, -16, 12], "free": [0.36, 0.08, 0.22] },
+    { "id": "smooth", "name": "Smooth", "bend": 0.6, "arms": 0.8, "stretch": 1.15, "swing": 0.5, "squash": 0.2, "celebrate": ["nod", "point", "armsUp", "dance"], "idle": "breathe", "idles": ["breathe", "shakaWave", "coolCross"], "catch": "catchLow", "tweak": [22, 0, 0], "free": [0.3, 0.2, 0.0] }
+  ],
+  "specials": [
+    { "id": "giggle", "name": "Giggle spin", "signature": "giggle", "names": { "kickflipsuperman": "Belly Laugh Superman", "christair": "Giggle Christ Air", "540flip": "540 Giggle Flip" } },
+    { "id": "bighead", "name": "Bobblehead", "signature": "bighead", "names": { "kickflipsuperman": "Bobblehead Superman", "christair": "Wobble Christ Air", "540flip": "540 Bobble Flip" } },
+    { "id": "bat", "name": "Wings out", "signature": "bat", "names": { "kickflipsuperman": "Eagle Superman", "christair": "Wingspan Christ Air", "540flip": "540 Swoop Flip" } },
+    { "id": "selfie", "name": "Selfie", "signature": "selfie", "names": { "kickflipsuperman": "Selfie Superman", "christair": "Christ Air (Front Camera)", "540flip": "540 Story Flip" } },
+    { "id": "sensor", "name": "Robot", "signature": "sensor", "names": { "kickflipsuperman": "Robot Superman", "christair": "Beep Boop Christ Air", "540flip": "540 Servo Flip" } },
+    { "id": "salsa", "name": "Shaka", "signature": "salsa", "names": { "kickflipsuperman": "Shaka Superman", "christair": "Hang Loose Christ Air", "540flip": "540 Shaka Flip" } },
+    { "id": "feathers", "name": "Flap", "signature": "feathers", "names": { "kickflipsuperman": "Chicken Superman", "christair": "Flappy Christ Air", "540flip": "540 Flap Flip" } },
+    { "id": "mist", "name": "Too cool", "signature": "mist", "names": { "kickflipsuperman": "Unbothered Superman", "christair": "Too Cool Christ Air", "540flip": "540 Shrug Flip" } }
+  ],
+  "bails": [
+    { "id": "classic", "name": "Classic slam" }, { "id": "dazed", "name": "Dazed sit-up", "bail": "feathers" }, { "id": "flop", "name": "Belly flop", "bail": "flop" },
+    { "id": "dramatic", "name": "Dramatic", "bail": "slowmo" }, { "id": "roll", "name": "Side roll", "bail": "spill" }, { "id": "walkoff", "name": "Walk it off", "bail": "pullover" }
+  ],
+  "emotes": [
+    { "id": "coolnod", "name": "Cool nod", "kind": "coolnod", "say": "Yeah." }, { "id": "shaka", "name": "Shaka", "kind": "shaka", "say": "Hang loose." },
+    { "id": "dab", "name": "Dab", "kind": "dab", "say": "Nailed it." }, { "id": "strut", "name": "Strut", "kind": "strut", "say": "Make way." },
+    { "id": "giggle", "name": "Giggle", "kind": "giggle", "say": "Heh heh!" }, { "id": "jiggle", "name": "Wiggle", "kind": "jiggle", "say": "Wiggle wiggle." }
+  ],
+  "random": {
+    "loud": 0.45,
+    "first": ["Lil'", "Big", "Dr.", "Captain", "Sir", "Tiny", "Mega", "Saint", "Fog", "Sourdough", "Grandpa", "Auntie", "Cable Car", "Nacho", "Turbo", "Sneaky", "Professor", "Disco"],
+    "last": ["Kickflip", "Burrito", "Pothole", "Pigeon", "Hydrant", "Muni", "Wobble", "Ollie", "Gnar", "Noodle", "Taco", "Pretzel", "Biscuit", "Pancake", "Sprinkles", "Bagel", "Gravy", "Waffles"]
+  }
+}

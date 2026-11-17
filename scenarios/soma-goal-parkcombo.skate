@@ -1,0 +1,11 @@
+# City goal "Park Rat" (kind combo: points, started inside a box): 5,000 in the data, 600 here; the
+# Kickflip + BIG 3 GAP combo (700) started in the skatepark completes it.
+park soma
+spawn big3
+cmd 0 setData goals.goals.11.points 600
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+run 420
+expect event comboLanded{points=700} within 330..345
+expect event goalComplete{id=parkcombo,area=Park} within 330..345

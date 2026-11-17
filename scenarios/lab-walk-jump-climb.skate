@@ -1,0 +1,14 @@
+# The platform's side is 0.51 m, just over walk.climbMax: running into it stops you. Jump (K)
+# while pressing forward and the ledge is within reach of the raised feet: climb up.
+park lab
+cmd 0 teleport 20.5 10 0.13 270
+tap walk 10
+hold up 20..170
+tap ollie 180
+hold up 180..300
+run 300
+expect no event climb within 0..175
+expect event jump within 180..182
+expect event climb within 181..230
+expect skater.pos.z > 0.62 at end
+expect skater.pos.x < 17.8 at end

@@ -1,0 +1,27 @@
+# The Lost Tourist (data/missions.json tourist; a carry step): Bjorn waits at the curb by
+# Civic Center Plaza (the mission's actors), the mission's van behind him. His drop is set 100 m east along
+# McAllister Street, which carries straight on into the UN Plaza piece of the city, and his lines every 2 s
+# for this run (Pier 39 and 40 s in play). The van stops by him: he gets in; on the way he is wrong about two
+# landmarks; the van keeps north of the car parked by the island, then south of the one parked past the join,
+# and never bumps. Stopped at the drop, he gets out, says the line he says at Pier 39, and his talk starts
+# beside the van.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.tourist.steps.1.to [200,279.5,1.2]
+cmd 0 setData missions.missions.tourist.steps.1.every 2
+cmd 1 mission start tourist 1
+cmd 3 vehicle enter tour_van
+bot drive 88,272 94,273 101,274.5 from 10 speed 4 stop
+bot drive 101,274.5 120,275.3 138,276.2 155,276.2 163,274.8 173,274.8 187,277.2 200,279.5 from 500 speed 8 corner 6 stop
+run 2250
+expect event missionStep{mission=tourist,step=1,kind=carry} within 2..2
+expect event talk{line=tourist-03,bark=true} within 2..2
+expect event passengerIn{who=bjorn} within 50..90
+expect event talk{line=tourist-04,bark=true} within 290..330
+expect event talk{line=tourist-05,bark=true} within 660..700
+expect event passengerOut{who=bjorn} within 2160..2210
+expect event talk{line=tourist-08,bark=true} within 2160..2210
+expect event missionStep{mission=tourist,step=2,kind=talk} within 2160..2210
+expect event talk{character=bjorn,line=tourist-09} within 2160..2210
+expect no event missionFailed
+expect no event vanBump

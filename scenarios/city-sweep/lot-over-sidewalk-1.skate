@@ -1,0 +1,23 @@
+# City sweep (skate cityfuzz): A sidewalk 0.13 m over a lot edge beside it.
+# Finding: underground at -1124.28 -87.17 43.17 (city_sidewalk_-1200_-200 0.13 m above), tick 1152. Run it with `./skate run scenarios/city-sweep/lot-over-sidewalk-1.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1120 -80 39.67 200
+hold left 0..26
+hold up 26..67
+hold revert 67..157
+hold right+ollie+slide 157..203
+hold up 203..301
+hold up+right 328..433
+hold up+left 433..475
+hold up+flip 475..533
+hold down+right+grab 533..600
+hold up 600..643
+hold up+ollie+grab+walk 643..717
+hold up+right+grind 717..803
+hold up+right+walk 803..889
+hold up 889..1001
+hold left 1001..1086
+hold up+left+ollie+revert 1086..1152
+run 1154

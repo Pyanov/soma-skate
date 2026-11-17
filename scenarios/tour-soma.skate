@@ -1,0 +1,64 @@
+# Tour level SoMa West Skatepark (data/tour.json), a 2-minute run: its three goals, the tape and
+# S-K-A-T-E, each set up with a teleport (the riding between spots is left out).
+# - Big 3: kickflip over the set (S over it), manual on landing, heelflip out: 2,464, Big 3 Combo.
+# - Big 2: ollied at 5.5 m/s from the deck beside it (T along its rail): Ollie the Big 2.
+# - Otis quarter at 8.9 m/s, revert at the coping: Spine Transfer over the Hellride, Transfer the
+#   Hellride. (Phase 27: with the coping no longer taking the air's speed, this line, found with the
+#   decent player's hands, makes the transfer 90% of the time by feel --tour.)
+# - The same transfer at full speed (9 m/s), after the letters: the secret tape, which hangs high over
+#   the Hellride side of the spine at the top of what this transfer reaches (phase 28: a find again;
+#   the 8.9 m/s transfer passes under it).
+# - Letters: an ollie on the wave (K), onto the manual pad (A), down the south rear runway (E).
+# Five of the seven goals (the score tiers are tour-tiers). After the E the autopilot rides the rest of
+# the south rear runway line up the Hellride wall, at an angle since the feel pass's park carve, and
+# lands it sideways at 4152, before the next leg's teleport: outside every goal, the score unchanged.
+park soma
+cmd 0 run level soma
+cmd 5 teleport big3
+hold up 5..105
+hold ollie 171..201
+tap flip+left 207
+tap up 325
+tap down 330
+hold ollie 405..425
+tap flip+right 431
+cmd 800 teleport 12 18.8 0.4 90
+cmd 820 set skater.vel.x 5.5
+hold ollie 890..920
+cmd 1400 teleport 82.10 20.46 -1.75 63.6
+cmd 1430 speed 8.894
+tap revert 1523
+cmd 2000 teleport wave_west_to_east
+bot line wave_west_to_east 2007
+hold ollie 2135..2155
+cmd 2700 teleport manual_approach
+bot line manual_on_pad 2706
+hold ollie 2855..2875
+cmd 3500 teleport south_rear_runway_to_hellride
+bot line south_rear_runway_to_hellride 3506
+cmd 4500 teleport 82.10 20.46 -1.75 63.6
+cmd 4530 speed 9
+tap revert 4618
+bot balance
+run 14700
+expect event levelStart{level=soma,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 228..232
+expect event levelGoal{level=soma,id=big3combo,name=Big 3 Combo} within 530..534
+expect event letter{letter=T,have=S__T_} within 963..967
+expect event levelGoal{level=soma,id=big2,name=Ollie the Big 2} within 1045..1049
+expect event spineTransfer within 1529..1529
+expect no event tapeFound within 0..4499
+expect event levelGoal{level=soma,id=spine,name=Transfer the Hellride} within 1722..1722
+expect event spineTransfer within 4619..4619
+expect event tapeFound{level=soma} within 4691..4691
+expect event levelGoal{level=soma,id=tape,name=Find the Secret Tape} within 4691..4691
+expect event letter{letter=K,have=SK_T_} within 2160..2164
+expect event letter{letter=A,have=SKAT_} within 2927..2931
+expect event letter{letter=E,have=SKATE} within 3663..3667
+expect event levelGoal{level=soma,id=skate,name=Collect S-K-A-T-E} within 3663..3667
+expect event levelOver{level=soma,score=3314,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect session.mode == over at end
+expect no event levelWrongWay
+expect no event bail within 0..4140
+expect event bail count == 1

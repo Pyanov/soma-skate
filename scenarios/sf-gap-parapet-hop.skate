@@ -1,0 +1,16 @@
+# PARAPET HOP: from the plaza beside the 16th St BART stairwell, ollie over its parapet (57 cm above
+# the plaza, a 7 m drop on the other side further down) and land on the stairs inside, about 13 steps
+# down. The air has to pass over the parapet (both ends outside it) and land below the plaza.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 105.969 -201.810 -1.80 -18.25
+cmd 2 set skater.vel.x -1.2526
+cmd 2 set skater.vel.y 3.7988
+hold ollie 107..119
+run 400
+expect event pop within 118..122
+expect event land{quality=clean} within 249..253
+expect event gap{id=parapet_hop,gap=PARAPET HOP,points=500} within 249..253
+expect skater.pos.z < -3.5 at 251
+expect no event gap{id=bart_stairs}
+expect no event bail

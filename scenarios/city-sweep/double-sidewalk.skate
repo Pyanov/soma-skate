@@ -1,0 +1,20 @@
+# City sweep (skate cityfuzz): Two sidewalk layers 0.12 m apart overlap; the skater rides the lower one under the upper.
+# Finding: underground at -747.85 -661.44 19.90 (city_sidewalk_-800_-800 0.12 m above), tick 943. Run it with `./skate run scenarios/city-sweep/double-sidewalk.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -740 -700 16.31 94
+hold right 0..51
+hold up+right+grind 51..162
+hold up+grind 162..188
+hold up+right+ollie+slide 188..230
+hold up+right 348..432
+hold up+flip 432..480
+hold up 480..565
+hold up+flip 565..683
+hold up+ollie+flip 683..747
+hold flip 747..803
+hold up 803..834
+hold up 834..933
+hold right 933..943
+run 945

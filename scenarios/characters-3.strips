@@ -1,0 +1,10 @@
+# Phase 3 review in the real look: ./skate strip --sheet scenarios/characters-3.strips --height 280
+# Each row: the signature Kickflip Superman (twice), Christ Air, 540 Flip, the flip catch, a tweaked Indy, carrying the board, dropping it.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | can | real
+Big Blob | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | blob | real
+Eucalyptus Monster | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | redmonster | real
+Guy in the Orange Suit | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | mascot | real
+Count Kickflip | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | vampire | real
+Mr. Bones | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | skeleton | real
+Tech Bro | soma-special-superman@236, soma-special-superman@262, soma-special-christ@240, soma-special-540@238, soma-big3-kickflip@244, soma-big3-indy@255, soma-walk-carry@150, soma-walk-drop@235 | - | orbit:150,10,3.4,0.9 | techbro | real

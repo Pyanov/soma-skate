@@ -1,0 +1,12 @@
+# Mute: charged ollie, L + right then L again (the double tap) held about a third of a second, let go before the
+# landing (grab review: ./skate strip --sheet scenarios/grabs.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap grab+right 96
+tap grab 99
+hold grab 101..140
+run 300
+expect event trickEnd{trick=Mute} within 120..200
+expect no event bail

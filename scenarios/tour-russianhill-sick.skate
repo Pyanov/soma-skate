@@ -1,0 +1,173 @@
+# A great run on Russian Hill (the score tiers' measure): the long handrail down the crooked block's north
+# side every 10 s (the teleport stands in for walking back up): a boneless onto it near its top, a nosegrind
+# down it (53 m, 12.7 m of drop) and a 360 flip off just before its foot, LOMBARD HANDRAIL on the pop:
+# 9,524; twelve, 114,288. Pro (17,500) on the second, Sick (104,000) on the eleventh. A decent run (the
+# handrail as a plain 50-50 to its end, 2,996, every 20 s) scores 17,976.
+park sf
+cmd 0 traffic clear
+cmd 0 run level russianhill
+bot balance
+cmd 1 teleport -203.08 720.82 7.44 84.8
+cmd 3 set skater.vel.x 3.983
+cmd 3 set skater.vel.y 0.364
+cmd 1201 teleport -203.08 720.82 7.44 84.8
+cmd 1203 set skater.vel.x 3.983
+cmd 1203 set skater.vel.y 0.364
+cmd 2401 teleport -203.08 720.82 7.44 84.8
+cmd 2403 set skater.vel.x 3.983
+cmd 2403 set skater.vel.y 0.364
+cmd 3601 teleport -203.08 720.82 7.44 84.8
+cmd 3603 set skater.vel.x 3.983
+cmd 3603 set skater.vel.y 0.364
+cmd 4801 teleport -203.08 720.82 7.44 84.8
+cmd 4803 set skater.vel.x 3.983
+cmd 4803 set skater.vel.y 0.364
+cmd 6001 teleport -203.08 720.82 7.44 84.8
+cmd 6003 set skater.vel.x 3.983
+cmd 6003 set skater.vel.y 0.364
+cmd 7201 teleport -203.08 720.82 7.44 84.8
+cmd 7203 set skater.vel.x 3.983
+cmd 7203 set skater.vel.y 0.364
+cmd 8401 teleport -203.08 720.82 7.44 84.8
+cmd 8403 set skater.vel.x 3.983
+cmd 8403 set skater.vel.y 0.364
+cmd 9601 teleport -203.08 720.82 7.44 84.8
+cmd 9603 set skater.vel.x 3.983
+cmd 9603 set skater.vel.y 0.364
+cmd 10801 teleport -203.08 720.82 7.44 84.8
+cmd 10803 set skater.vel.x 3.983
+cmd 10803 set skater.vel.y 0.364
+cmd 12001 teleport -203.08 720.82 7.44 84.8
+cmd 12003 set skater.vel.x 3.983
+cmd 12003 set skater.vel.y 0.364
+cmd 13201 teleport -203.08 720.82 7.44 84.8
+cmd 13203 set skater.vel.x 3.983
+cmd 13203 set skater.vel.y 0.364
+hold ollie 65..95
+hold up 105..125
+hold ollie 601..631
+hold ollie 1265..1295
+hold up 1305..1325
+hold ollie 1801..1831
+hold ollie 2465..2495
+hold up 2505..2525
+hold ollie 3001..3031
+hold ollie 3665..3695
+hold up 3705..3725
+hold ollie 4201..4231
+hold ollie 4865..4895
+hold up 4905..4925
+hold ollie 5401..5431
+hold ollie 6065..6095
+hold up 6105..6125
+hold ollie 6601..6631
+hold ollie 7265..7295
+hold up 7305..7325
+hold ollie 7801..7831
+hold ollie 8465..8495
+hold up 8505..8525
+hold ollie 9001..9031
+hold ollie 9665..9695
+hold up 9705..9725
+hold ollie 10201..10231
+hold ollie 10865..10895
+hold up 10905..10925
+hold ollie 11401..11431
+hold ollie 12065..12095
+hold up 12105..12125
+hold ollie 12601..12631
+hold ollie 13265..13295
+hold up 13305..13325
+hold ollie 13801..13831
+tap up 83
+tap up 90
+tap grind 107..123 every 4
+tap down 633
+tap left 633
+tap flip 633
+tap flip 636
+tap up 1283
+tap up 1290
+tap grind 1307..1323 every 4
+tap down 1833
+tap left 1833
+tap flip 1833
+tap flip 1836
+tap up 2483
+tap up 2490
+tap grind 2507..2523 every 4
+tap down 3033
+tap left 3033
+tap flip 3033
+tap flip 3036
+tap up 3683
+tap up 3690
+tap grind 3707..3723 every 4
+tap down 4233
+tap left 4233
+tap flip 4233
+tap flip 4236
+tap up 4883
+tap up 4890
+tap grind 4907..4923 every 4
+tap down 5433
+tap left 5433
+tap flip 5433
+tap flip 5436
+tap up 6083
+tap up 6090
+tap grind 6107..6123 every 4
+tap down 6633
+tap left 6633
+tap flip 6633
+tap flip 6636
+tap up 7283
+tap up 7290
+tap grind 7307..7323 every 4
+tap down 7833
+tap left 7833
+tap flip 7833
+tap flip 7836
+tap up 8483
+tap up 8490
+tap grind 8507..8523 every 4
+tap down 9033
+tap left 9033
+tap flip 9033
+tap flip 9036
+tap up 9683
+tap up 9690
+tap grind 9707..9723 every 4
+tap down 10233
+tap left 10233
+tap flip 10233
+tap flip 10236
+tap up 10883
+tap up 10890
+tap grind 10907..10923 every 4
+tap down 11433
+tap left 11433
+tap flip 11433
+tap flip 11436
+tap up 12083
+tap up 12090
+tap grind 12107..12123 every 4
+tap down 12633
+tap left 12633
+tap flip 12633
+tap flip 12636
+tap up 13283
+tap up 13290
+tap grind 13307..13323 every 4
+tap down 13833
+tap left 13833
+tap flip 13833
+tap flip 13836
+run 14700
+expect event comboLanded{name=Boneless + FS Nosegrind + LOMBARD HANDRAIL + 360 Flip,points=9524} count == 12
+expect event levelGoal{level=russianhill,id=pro} within 5592..5596   # Pro 45,000 since feel round 4 (17,500: at 1994)
+expect event levelGoal{level=russianhill,id=sick} within 12792..12796
+expect event levelOver{level=russianhill,score=114288} within 14399..14402
+# Each loop's roll-out stops at the far side of Leavenworth St (the squeezed city; before, the first one ran
+# into a building at 1009, a bail outside every combo).
+expect no event bail

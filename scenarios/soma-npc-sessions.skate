@@ -1,0 +1,16 @@
+# NPC skaters take turns at a spot. Four of them on the lines of two spots (the Big 3 and the manual
+# pad): one rides each spot, the others wait at the top, a step back from the start. Whoever has
+# waited longest goes when the spot's run ends; the one who just rode joins the back of the queue
+# (for that tick three are waiting). Never two riding one spot, and never two waiters on one place
+# (waitGap apart; they used to stack on the same step back from a start).
+park soma
+cmd 0 setData npc.parks.soma.lines ["west_flat_big3_runup","review2_west_runway_to_big3","manual_approach","manual_on_pad","manual_landing_right_turn_south_bank"]
+cmd 0 npc spawn 4
+run 3600
+expect max npcs.crowded <= 0
+expect min npcs.waiting >= 2 over 1..3600
+expect max npcs.waiting >= 3
+expect npcs.waiting == 3 at 449   # 489 before the NPCs' corners took the park carve's numbers, 570 before the carve
+expect npcs.waiting == 2 at 450
+expect max npcs.stacked <= 0
+expect npcs.riding == 4 at end

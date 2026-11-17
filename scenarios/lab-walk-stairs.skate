@@ -1,0 +1,11 @@
+# Walk up the lab's 3-stair (0.17 m risers) onto the 0.51 m platform: each riser is a step-up
+# (walk.stepHeight 0.25), no climbing.
+park lab
+cmd 0 teleport 16 5.5 0.13 0
+tap walk 10
+hold up 20..200
+run 200
+expect no event climb
+expect skater.pos.z > 0.62 at end
+expect skater.pos.y > 9 at end
+expect state walk at end

@@ -1,0 +1,21 @@
+# The Hayes St locals on their own (the player pushes past the start line, which starts the race,
+# then drags the foot brake and rolls on far behind them, falling to the wobbles on the way): each
+# keeps to a lane of the route's start and gates (bomb.gateStep, at most bomb.gateLane, 1.5 m, off its
+# middle), so none drifts into the parking lane any more; on this seed the Painted Ladies landlord
+# (17.5 m/s, showing off out of the tuck) keeps his stand-up and wins in 57.78 s, the Hayes Valley
+# barista is second in 60.53, the Alamo Square tour guide third in 65.31 (57.82 and 60.49 before the
+# squeezed city; city phase 11). (Following the gates
+# themselves, one a block ahead, the guide drifted 3-4 m north of the middle between Steiner and
+# Fillmore, into the parking lane, where the cars now stand.)
+park sf
+cmd 0 traffic clear
+cmd 0 run bomb hayes
+hold up 10..300
+hold down 300..1200
+run 8600
+expect event bombStart{route=hayes} within 265..269
+expect event racerFinish{route=hayes,name=Painted Ladies landlord,place=1,time=57.78} within 7195..7203
+expect event racerFinish{route=hayes,name=Hayes Valley barista on a break,place=2,time=60.53} within 7525..7533
+expect event racerFinish{route=hayes,name=Alamo Square tour guide,place=3,time=65.31} within 8100..8108
+expect event racerFinish count == 3
+expect no event bombFinish

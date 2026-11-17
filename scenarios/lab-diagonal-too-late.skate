@@ -1,0 +1,14 @@
+# A second arrow well after J is a spin, not a diagonal: up and J, then right 8 ticks later (past
+# tricks.dirTicks, 5) keeps the Impossible.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold up 94..99
+tap flip 96
+hold right 104..106
+run 300
+expect event trickStart{trick=Impossible} within 97..97
+expect no event trickStart{trick=Inward Heelflip}
+expect event trickEnd{trick=Impossible} within 120..175
+expect no event bail

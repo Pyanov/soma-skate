@@ -1,0 +1,121 @@
+# A great run on The Mission (the score tiers' measure): camping the Dolores Park seat wall every
+# 9.5 s (the teleport stands in for rolling back): BS 50-50, DOLORES SEAT WALL, manual, kickflip out:
+# 4,044 each, twelve, 48,528. Pro (10,000) on the third, Sick (40,000) on the tenth. A decent run
+# (the seat wall, the roof grind and the Clarion wallride in turn every 20 s) scores 11,760.
+park sf
+cmd 0 traffic clear
+cmd 0 run level mission
+cmd 10 teleport -233.805 -199.578 9.400 -5.33
+cmd 12 set skater.vel.x -0.4179
+cmd 12 set skater.vel.y 4.4806
+hold ollie 102..132
+hold ollie 530..538
+tap grind 139
+tap up 294
+tap down 299
+tap flip+left 544
+cmd 1150 teleport -233.805 -199.578 9.400 -5.33
+cmd 1152 set skater.vel.x -0.4179
+cmd 1152 set skater.vel.y 4.4806
+hold ollie 1242..1272
+hold ollie 1670..1678
+tap grind 1279
+tap up 1434
+tap down 1439
+tap flip+left 1684
+cmd 2290 teleport -233.805 -199.578 9.400 -5.33
+cmd 2292 set skater.vel.x -0.4179
+cmd 2292 set skater.vel.y 4.4806
+hold ollie 2382..2412
+hold ollie 2810..2818
+tap grind 2419
+tap up 2574
+tap down 2579
+tap flip+left 2824
+cmd 3430 teleport -233.805 -199.578 9.400 -5.33
+cmd 3432 set skater.vel.x -0.4179
+cmd 3432 set skater.vel.y 4.4806
+hold ollie 3522..3552
+hold ollie 3950..3958
+tap grind 3559
+tap up 3714
+tap down 3719
+tap flip+left 3964
+cmd 4570 teleport -233.805 -199.578 9.400 -5.33
+cmd 4572 set skater.vel.x -0.4179
+cmd 4572 set skater.vel.y 4.4806
+hold ollie 4662..4692
+hold ollie 5090..5098
+tap grind 4699
+tap up 4854
+tap down 4859
+tap flip+left 5104
+cmd 5710 teleport -233.805 -199.578 9.400 -5.33
+cmd 5712 set skater.vel.x -0.4179
+cmd 5712 set skater.vel.y 4.4806
+hold ollie 5802..5832
+hold ollie 6230..6238
+tap grind 5839
+tap up 5994
+tap down 5999
+tap flip+left 6244
+cmd 6850 teleport -233.805 -199.578 9.400 -5.33
+cmd 6852 set skater.vel.x -0.4179
+cmd 6852 set skater.vel.y 4.4806
+hold ollie 6942..6972
+hold ollie 7370..7378
+tap grind 6979
+tap up 7134
+tap down 7139
+tap flip+left 7384
+cmd 7990 teleport -233.805 -199.578 9.400 -5.33
+cmd 7992 set skater.vel.x -0.4179
+cmd 7992 set skater.vel.y 4.4806
+hold ollie 8082..8112
+hold ollie 8510..8518
+tap grind 8119
+tap up 8274
+tap down 8279
+tap flip+left 8524
+cmd 9130 teleport -233.805 -199.578 9.400 -5.33
+cmd 9132 set skater.vel.x -0.4179
+cmd 9132 set skater.vel.y 4.4806
+hold ollie 9222..9252
+hold ollie 9650..9658
+tap grind 9259
+tap up 9414
+tap down 9419
+tap flip+left 9664
+cmd 10270 teleport -233.805 -199.578 9.400 -5.33
+cmd 10272 set skater.vel.x -0.4179
+cmd 10272 set skater.vel.y 4.4806
+hold ollie 10362..10392
+hold ollie 10790..10798
+tap grind 10399
+tap up 10554
+tap down 10559
+tap flip+left 10804
+cmd 11410 teleport -233.805 -199.578 9.400 -5.33
+cmd 11412 set skater.vel.x -0.4179
+cmd 11412 set skater.vel.y 4.4806
+hold ollie 11502..11532
+hold ollie 11930..11938
+tap grind 11539
+tap up 11694
+tap down 11699
+tap flip+left 11944
+cmd 12550 teleport -233.805 -199.578 9.400 -5.33
+cmd 12552 set skater.vel.x -0.4179
+cmd 12552 set skater.vel.y 4.4806
+hold ollie 12642..12672
+hold ollie 13070..13078
+tap grind 12679
+tap up 12834
+tap down 12839
+tap flip+left 13084
+bot balance
+run 14700
+expect event levelGoal{level=mission,id=pro,name=Pro Score} within 2915..2919
+expect event levelGoal{level=mission,id=sick,name=Sick Score} within 10895..10899
+expect event levelOver{level=mission,score=48528} within 14399..14402
+expect no event bail

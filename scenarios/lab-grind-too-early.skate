@@ -1,0 +1,11 @@
+# A grind press 14 ticks before the low ledge is in reach (tick 168) has run out: no grind, the
+# skater sails over the ledge's end and lands. lab-grind-early-press: 13 ticks still catches it.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 154
+run 300
+expect no event grindStart
+expect event land within 190..210
+expect no event bail

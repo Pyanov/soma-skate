@@ -1,0 +1,14 @@
+# Bomb the hill from the top: push 2 s, then tuck (hold K) all the way. About 13.6 m/s at the end of
+# the 10% section, 14.3 m/s (51 km/h) on the 12% before the bend: under wobble.tuckSpeed (17), so
+# the tuck never wobbles here. With no steering the skater scrapes along the outside curb through
+# the bend (the lab_hill_bomb rider line steers it).
+park lab
+spawn lab_hill_top
+hold up 0..240
+hold ollie 240..1700
+run 1700
+expect max skater.speed > 13.8 over 1000..1700
+expect max skater.speed < 15 over 1000..1700
+expect max skater.wobble < 0.001
+expect no event bail
+expect skater.pos.y < -15 at 1700

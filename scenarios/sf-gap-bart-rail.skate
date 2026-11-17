@@ -1,0 +1,21 @@
+# BART HANDRAIL: ollie onto the middle handrail at the top of the 16th St BART stairs and 50-50 it
+# (backside since city phase 11 moved the stairwell's curbs by millimetres)
+# all the way down (17.6 m, 7 m of drop: 4.6 m/s on, 11.6 m/s off), then down clean on the station
+# floor. Riding the rail down is not BART STAIRS: that one wants a single ollie of a second or more.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 96.873 -201.765 -1.730 41.77
+cmd 2 set skater.vel.x 2.9976
+cmd 2 set skater.vel.y 3.3562
+hold ollie 111..141
+tap grind 147
+tap grind 155
+bot balance
+run 560
+expect event grindStart{trick=BS 50-50,line=rail_101_-197} within 163..167
+expect event grindEnd{reason=end} within 429..433
+expect event gap{id=bart_rail,gap=BART HANDRAIL,points=600} within 429..433
+expect event land{quality=clean} within 498..502
+expect event comboLanded{name=BS 50-50 + BART HANDRAIL} within 509..513
+expect no event gap{id=bart_stairs}
+expect no event bail

@@ -1,0 +1,19 @@
+# Missions: a follow step (Donna down Castro St at 5.5 m/s; stay within 20 m). She sets off once you
+# are close, easing into her pace (game/movers.ts, data/movers.json accel); the autopilot rides her path
+# a little ahead of her, starting as late as her easing costs her, never behind enough for her to stop
+# and wait; at its end, her talk step (radius 25) starts.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start disco 1
+cmd 0 teleport -577 -41 18.6 180
+cmd 2 set skater.vel.y -3
+bot path -576,-55 -574,-72 -571,-98 -568,-135 -565,-172 -563,-199 -561,-221 -560,-235 from 136 speed 5.5 nocars
+run 4500
+expect event missionStep{mission=disco,step=1,kind=follow} within 1..1
+expect event talk{line=disco-05,bark=true} within 1..1
+expect no event actorWait
+expect no event actorOvertaken
+expect event actorDone{who=donna} within 4280..4480
+expect event missionStep{mission=disco,step=2,kind=talk} within 4280..4480
+expect event talk{character=donna,line=disco-06} within 4280..4480
+expect no event missionFailed

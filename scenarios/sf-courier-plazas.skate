@@ -1,0 +1,22 @@
+# Courier drop-offs at the city's new plazas: after Clarion Alley the orders go up to Harvey Milk
+# Plaza (Castro and Market: two burritos under the rainbow flag, 130 s) and then down to 16th St
+# Mission BART (a commuter whose train is "eight minutes away", 105 s), then on to Valencia. Here the
+# first three are delivered by teleport, then the two plaza orders; each adds its seconds to what is left.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run courier
+cmd 200 teleport -55.3 -305 2.61 356
+cmd 400 teleport -235 -230 12.53 356
+cmd 600 teleport -18.5 -395.2 1.89 356
+cmd 800 teleport -589.5 -28.5 19.26 240
+cmd 1000 teleport 96.5 -202 -1.55 40
+run 1100
+expect event courierPickup{leg=3,id=rainbow,seconds=130} within 600..602
+expect event courierDeliver{n=4,id=rainbow,points=1000} within 800..802
+expect event courierPickup{leg=4,id=bart,seconds=105,place=16th St Mission BART} within 800..802
+expect event courierDeliver{n=5,id=bart,place=16th St Mission BART} within 1000..1002
+expect event courierPickup{leg=5,id=barista} within 1000..1002
+expect event goalComplete{id=courier5} within 1000..1002
+expect session.courierDone == 5 at 1050
+expect no event courierFail

@@ -1,0 +1,16 @@
+# Bigspin: a 360 Shove-It (J + down, J again) with a backside 180 body turn (regular: turning right,
+# clockwise, is backside) in the same air is one trick by name: Bigspin, in place of both entries. It
+# lands fakie (the body turned half way round). It is a Bigspin by name from an eighth of the body's turn on.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+down 96
+tap flip 99
+hold right 101..140
+run 320
+expect event trickStart{trick=Bigspin} within 110..150
+expect event trickEnd{trick=Bigspin} within 120..175
+expect event land{fakie=true,quality=clean} within 160..240
+expect event comboLanded{name=Bigspin,points=350} within 160..260
+expect no event bail

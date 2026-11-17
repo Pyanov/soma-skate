@@ -1,0 +1,21 @@
+# A sketchy landing is a miss. Rosa sets an Impossible at the mark (her clock starts after the 2 s
+# pause; she rides the lane, pops on the mark and lands it). Your try: the same Impossible, landed
+# 26 degrees off the line of travel (the bot lands it crooked on purpose): sketchy, not clean, so
+# the match fails and you get an S; then it is your set (the setter changes every round).
+park soma
+cmd 0 run skate rosa
+bot skate sketchy
+run 1300
+expect event skateTurn{who=local,role=set,seconds=25} within 1..1
+expect event npcTrick{trick=Impossible} within 520..535
+expect event skateSet{by=local,trick=impossible,name=Impossible} within 596..604
+expect event skateTurn{who=player,role=match,trick=impossible,name=Impossible} within 596..604
+expect event pop within 1048..1058
+expect event trickEnd{trick=Impossible} within 1100..1115
+expect event land{quality=sketchy} within 1165..1173
+expect event skateMatch{by=player,ok=false,trick=impossible,got=impossible,reason=sketchy,line=That's a letter.} within 1165..1173
+expect event skateLetter{who=player,letters=S} within 1165..1173
+expect event skateTurn{who=player,role=set} within 1165..1173
+expect no event bail
+expect session.skatePlayer == S at end
+expect event skateLetter{who=local} count == 0

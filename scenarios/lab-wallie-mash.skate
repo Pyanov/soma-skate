@@ -1,0 +1,21 @@
+# Wallies up a wall: at most combo.wallridesPerAir (2) wallrides in one air. Beside the lab wall,
+# ollie, I: wallride; ollie off it (a wallie) and I at once: a second wallride on the same wall;
+# wallie again and I mashed every 3 ticks: no third. It lands from 1.55 m, Wallride + Wallride =
+# 504. (Each catch used to give at least 0.5 m/s up and there was no limit: wallride, wallie,
+# wallride... climbed past the 3 m wall top, 12 wallrides in one air.)
+park lab
+cmd 0 teleport -27.3 -9 0.14 0
+hold up 6..90
+hold ollie 80..100
+tap grind 104
+hold ollie 105..125
+tap grind 126
+hold ollie 127..147
+tap grind 150..300 every 3
+run 500
+expect event wallrideStart count == 2
+expect event wallrideEnd{reason=ollie} count == 2
+expect max skater.pos.z < 1.6 over 100..400
+expect event land within 262..266
+expect event comboLanded{name=Wallride + Wallride,points=504,multiplier=2} within 273..277
+expect no event bail

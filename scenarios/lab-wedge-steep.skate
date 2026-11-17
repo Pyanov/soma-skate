@@ -1,0 +1,17 @@
+# The ground wedge rule, on a synthetic slope: stopped on the ground for half
+# a second on a slope steeper than safe ground (ground.safeNormalZ) is wedged, and the skater goes
+# back to the last spot it stood on safe ground, stood up. The city's lots are eased under the 37
+# degrees it takes in play (sf-steep-lot-corner no longer wedges), so here safeNormalZ is raised to
+# 0.999 for the lab hill's 10% to count as steep: down the hill, the foot brake held to a stop at
+# y 87.5, and half a second later it is back on the flat top where it last stood (y 126.6).
+park lab
+cmd 0 setData physics.ground.safeNormalZ 0.999
+cmd 0 teleport lab_hill_top
+hold up 10..300
+hold down 400..1100
+run 1200
+expect skater.speed < 0.05 at 1000
+expect event unstuck within 1055..1059
+expect event unstuck count == 1
+expect skater.pos.y > 126 at 1100
+expect no event bail

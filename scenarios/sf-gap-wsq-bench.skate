@@ -1,0 +1,16 @@
+# WASHINGTON SQUARE BENCH: on the path along the south side of the square, an ollie onto a bench and a
+# 50-50 off its end: the square's own bench gap, not BENCH GRIND as well.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 86.69 679.83 6.63 73.1
+cmd 3 set skater.vel.x 3.826
+cmd 3 set skater.vel.y 1.166
+hold ollie 72..102
+tap grind 108..148 every 4
+bot balance
+run 500
+expect event grindStart{trick=BS 50-50,line=bench_90_681} within 109..113
+expect event gap{id=wsq_bench,gap=WASHINGTON SQUARE BENCH,points=250} within 284..288
+expect no event gap{id=bench}
+expect event comboLanded{name=BS 50-50 + WASHINGTON SQUARE BENCH} within 351..355
+expect no event bail

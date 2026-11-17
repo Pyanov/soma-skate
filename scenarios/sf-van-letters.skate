@@ -1,0 +1,18 @@
+# A vehicle takes no letters (game/tour.ts, game/session.ts; docs/mechanics/driving.md). In a Hill
+# Country run, the crew van drives down Dolores from 20th past the crest at 19th, past the S and through the
+# K at about 10 m/s (the seat passes 0.88 m from it, inside the 0.9 m letter radius): the letters, the tape, burritos and the
+# speed and dash goals are the skater's, on the board or on foot. None counts from inside a vehicle.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills
+cmd 1 van summon -198.6 -312 356
+cmd 2 teleport -200.6 -312 20.9 356
+tap use 40
+bot drive -198.6,-312 -199.6,-290 -201.6,-275 -204.1,-259 -204.4,-250 -204.7,-241 -205.0,-232 -206.5,-220 -207.8,-201 speed 10 corner 7 stop
+run 1500
+expect event vehicleEnter{name=crew_van} within 40..42
+expect van.pos.y > -205 at end
+expect max van.hspeed > 10
+expect no event letter
+expect no event vanBump
+expect session.letters.length == 0 at end

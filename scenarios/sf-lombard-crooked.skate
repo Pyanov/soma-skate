@@ -1,0 +1,11 @@
+# Lombard Street's crooked block (city phase 12): the brick lane winding down from Hyde to
+# Leavenworth between the flower beds, level across, 16 % along. The rider-line autopilot
+# (lombard_crooked_line) rides it from the top at Hyde at 5 m/s, braking down the hill, round all
+# eight hairpins to the foot of the block: no bail, still on the lane.
+park sf
+spawn lombard_crooked
+cmd 0 traffic clear
+bot line lombard_crooked_line 6
+run 4000
+expect skater.pos.x > -160 at end
+expect no event bail

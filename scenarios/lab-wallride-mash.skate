@@ -1,0 +1,15 @@
+# I mashed along a wall: at most combo.wallridesPerAir (2) wallrides in one air, and a wall
+# caught on the way down never lifts you. Beside the lab wall, ollie, I every 4 ticks: a wallride
+# to its timeout, caught again at once for a second, then down: Wallride + Wallride = 1,008. (It
+# used to catch again after every timeout, each catch giving 0.5 m/s up: 7 wallrides, 5,649.)
+park lab
+cmd 0 teleport -27.3 -9 0.14 0
+hold up 6..90
+hold ollie 80..100
+tap grind 104..400 every 4
+run 500
+expect event wallrideStart count == 2
+expect event wallrideEnd{reason=timeout} count == 2
+expect max skater.pos.z < 0.7 over 100..400
+expect event comboLanded{name=Wallride + Wallride,points=1008,multiplier=2} within 300..304
+expect no event bail

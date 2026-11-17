@@ -1,0 +1,12 @@
+# No Brakes on Dolores: push, tuck and hold on, no foot brake and no powerslide: 10.01 s (faster;
+# the speed wobbles only throw you after the finish line).
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb
+hold up 20..200
+hold ollie 200..1600
+run 1600
+expect event bombFinish{time=11,braked=false} within 1575..1590
+expect event goalComplete{id=nobrakes} within 1575..1590
+expect event goalComplete{id=bomb11} within 1575..1590

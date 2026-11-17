@@ -1,0 +1,15 @@
+# Charged ollie, FS Shove-It (Right, then Right with J: THPS 2's double-direction slot, which THPS 1+2
+# keeps; it was J + up, J before 2026-11-16, and J + up J is now a Double Impossible) right after the pop:
+# the flip finishes and the combo lands (the view's flip review: ./skate strip --sheet scenarios/flips.strips).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap right 92
+tap flip+right 96
+run 300
+expect event trickStart{trick=FS Shove-It} within 97..97
+expect no event trickStart{trick=Heelflip}
+expect event trickEnd{trick=FS Shove-It} within 120..175
+expect event comboLanded{name=FS Shove-It,points=150} within 160..240
+expect no event bail

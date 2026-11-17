@@ -1,0 +1,27 @@
+# The hill's 59 m bend at 16 m/s on a keyboard: tapping left a third of the time (9 of every 30
+# ticks) settles in a second to a steady part lean (0.45-0.64) and rides the bend 2 m outside the
+# centreline, not into a curb. At bombing speed the lean follows the keys as a lag
+# (board.leanAtSpeed); with the snappy park rates the same taps average 0.07 lean and run wide into
+# the outer curb, and holding the key carves past the grip (45 degrees for the 35 degree bend).
+park lab
+spawn lab_hill_twelve
+cmd 6 speed 15.5
+hold ollie 8..420
+hold left 50..59
+hold left 80..89
+hold left 110..119
+hold left 140..149
+hold left 170..179
+hold left 200..209
+hold left 230..239
+hold left 260..269
+hold left 290..299
+hold left 320..329
+run 420
+expect min skater.steer > -0.7 over 180..330
+expect max skater.steer < -0.42 over 180..330
+expect skater.pos.x > 78.3 at 330
+expect skater.pos.x < 80.3 at 330
+expect skater.fwd.x > 0.55 at 420
+expect skater.fwd.x < 0.7 at 420
+expect no event bail

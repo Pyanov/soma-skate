@@ -1,0 +1,50 @@
+# Tour level 11, Fisherman's Wharf (data/tour.json, physics phase 31 on city phases 11-12's waterfront; the
+# squeezed city packs the Wharf and Pier 39 side by side, with the Hyde St turntable re-homed at the Wharf's
+# west end), a 2-minute run from Pier 39: its three goals, the tape and S-K-A-T-E, each set up with a
+# teleport. The level runs from Pier 39 along Jefferson to the turntable (its fishermans_wharf start is the
+# closest); the run's teleports stand in for the riding.
+# - Along Pier 39's footway at a slant (a car is parked at the curb in front of the gate), an ollie through
+#   the gate, K in the air in it: Pier 39 Gate.
+# - Jefferson's north curb, coming from Pier 39: an ollie onto it, a 50-50 along it (S, A, E on it) and a
+#   kickflip off: FS 50-50 + Kickflip, Wharf Line (2,000 started on Jefferson).
+# - West along Jefferson just north of the turntable's cable car: a boneless across the edge of the disc, T in
+#   the air and the tape at the top of it (out of an ollie's reach): Boneless + TURNTABLE RIM, Turntable Rim.
+park sf
+cmd 0 traffic clear
+cmd 0 run level wharf
+bot balance
+cmd 1 teleport 284.00 967.30 -8.49 40.0
+cmd 3 set skater.vel.x 3.214
+cmd 3 set skater.vel.y 3.830
+hold ollie 80..110
+cmd 601 teleport 143.97 970.52 -8.95 261.1
+cmd 603 set skater.vel.x -5.93
+cmd 603 set skater.vel.y -0.93
+hold ollie 649..679
+tap grind 691..739 every 4
+hold ollie 1279..1299
+tap flip 1302
+cmd 1801 teleport -100 922.45 -9.0 270
+cmd 1803 set skater.vel.x -6
+cmd 1803 set skater.vel.y 0
+hold ollie 1920..1950
+tap up 1938
+tap up 1945
+run 14700
+expect event levelStart{level=wharf,seconds=120} within 0..2
+expect event letter{letter=K,have=_K___} within 148..152
+expect event levelGoal{level=wharf,id=gate,name=Pier 39 Gate} within 225..229
+expect event letter{letter=S,have=SK___} within 777..781
+expect event letter{letter=A,have=SKA__} within 987..991
+expect event letter{letter=E,have=SKA_E} within 1193..1197
+expect event comboLanded{name=FS 50-50 + Kickflip,points=2426} within 1413..1417
+expect event levelGoal{level=wharf,id=wharfline,name=Wharf Line} within 1413..1417
+expect event letter{letter=T,have=SKATE} within 1967..1971
+expect event levelGoal{level=wharf,id=skate} within 1967..1971
+expect event tapeFound{level=wharf} within 2001..2005
+expect event levelGoal{level=wharf,id=turntable,name=Turntable Rim} within 2088..2092
+expect event comboLanded{name=Boneless + TURNTABLE RIM,points=1100} within 2099..2103
+expect event levelOver{level=wharf,score=3926,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

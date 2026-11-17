@@ -1,0 +1,20 @@
+# Missions: drive steps (game/missions.ts, docs/mechanics/missions.md). A test mission (its data set in
+# this run only): drive the crew van past the corner west of the park (a drive step: within 8 m, any
+# speed), then to the end of the block and stop there (stop: no faster than getting out allows). The
+# van passes the first place at speed: done. It reaches the second at speed too, but the step waits for
+# it to stop.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.test-drive {"id":"test-drive","name":"Test Drive","kind":"side","area":"soma","giver":"karl","blurb":"A test.","world":"sf","steps":[{"kind":"drive","text":"Drive to the corner","to":[30,-6,-1],"vehicle":"van"},{"kind":"drive","text":"Stop at the end of the block","to":[2,-9,-1],"vehicle":"crew_van","stop":true}]}
+cmd 1 mission start test-drive
+cmd 2 vehicle enter crew_van
+bot drive 57.5,-15.6 46,-10 30,-6 12,-8 2,-9 from 10 speed 10 corner 7 stop
+run 1500
+expect event missionStep{mission=test-drive,step=0,kind=drive} within 1..2
+expect event missionStep{mission=test-drive,step=1,kind=drive} within 100..900
+expect van.hspeed > 5 at 600
+expect van.hspeed > 9 at 735
+expect van.pos.x < 10 at 735
+expect no event missionDone within 0..820
+expect event missionDone{mission=test-drive} within 820..860
+expect van.hspeed < 3.01 at end

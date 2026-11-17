@@ -1,0 +1,8 @@
+# Burritos are collectibles in free skate and runs: placed 1 m over the central island, one is
+# picked up by teleporting onto it and rolling, +250, and the burrito goal counts it.
+park soma
+cmd 0 teleport 39.5 24.5 0.2 90
+hold up 6..120
+run 200
+expect event burrito{n=1} within 1..200
+expect no event bail

@@ -1,0 +1,8 @@
+# Standing still, A pivots the board in place (a kick turn): about 3 rad/s, no travel.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+hold left 10..70
+run 70
+expect skater.heading < 10 at 70
+expect skater.heading > 0 at 1
+expect max skater.speed < 0.05 over 10..70

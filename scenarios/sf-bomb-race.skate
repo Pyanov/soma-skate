@@ -1,0 +1,18 @@
+# Hill Bomb race (run bomb): from the top of Dolores St, push, tuck, two scrubbing powerslides
+# (the line of sf-dolores-bomb). The clock starts at the start line 12 m down, a checkpoint at 19th
+# St, the finish at the bottom: 11.97 s, no falls.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 run bomb
+hold up 20..200
+hold ollie 200..2400
+hold slide 1220..1290
+hold slide 1560..1630
+run 1760
+expect event bombReady{gates=3} within 1..2
+expect event bombStart within 255..270
+expect event bombCheckpoint{n=1,of=1,gate=Dolores & 19th} within 940..960
+expect event bombFinish{time=11.97,penalty=0,falls=0,total=11.97} within 1690..1705
+expect session.mode == over at end
+expect no event bail

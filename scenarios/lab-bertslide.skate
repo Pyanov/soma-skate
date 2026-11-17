@@ -1,0 +1,13 @@
+# Crouched (K held) through a powerslide at speed, a hand goes down: a Bert Slide (300 + 200 per
+# second). Letting go of both at once pops an ollie out of it, so the slide carries the combo into
+# the air and banks on the landing.
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold ollie 10..80
+hold slide 12..80
+run 300
+expect event trickEnd{trick=FS Bert Slide} within 79..82
+expect event pop within 79..82
+expect event comboLanded{name=FS Bert Slide} within 150..260
+expect no event bail

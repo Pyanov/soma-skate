@@ -1,0 +1,25 @@
+# Missions: a trick step done count times (three combos of 500 or more in the park), with a bark
+# between (each): the Big 3 kickflip three times. Then Rosa (radius 60) talks at once; Esc
+# (mission next all) skips the rest and chapter 1 is done.
+park soma
+spawn big3
+cmd 0 mission start ch1 4
+hold up 0..100
+hold ollie 166..196
+tap flip+left 202
+cmd 420 teleport big3
+hold up 420..520
+hold ollie 586..616
+tap flip+left 622
+cmd 840 teleport big3
+hold up 840..940
+hold ollie 1006..1036
+tap flip+left 1042
+cmd 1300 mission next all
+run 1320
+expect event talk{line=ch1-14,bark=true} within 300..360
+expect event talk{line=ch1-15,bark=true} within 720..780
+expect event missionStep{step=5,kind=talk} within 1140..1200
+expect event talk{character=rosa,line=ch1-16} within 1140..1200
+expect event missionDone{mission=ch1,name=New in Town,sticker=story-ch1} within 1301..1301
+expect event comboLanded count == 3

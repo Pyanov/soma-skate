@@ -1,0 +1,14 @@
+# Roll straight across the 25 degree bank at 4 m/s. Gravity pulls 4.1 m/s^2 down the slope; the
+# wheels grip up to 0.85 x 0.906 g = 7.6 m/s^2 sideways, so the line holds (the free board turns
+# downhill only very slowly, 7 cm in 1.5 s), and the speed only fades with rolling resistance and
+# drag (no speed made out of sideways gravity).
+park lab
+cmd 0 teleport 8.6 21 0.58 90
+cmd 10 set skater.vel.x 4
+run 190
+expect max skater.pos.y < 21.0 over 20..190
+expect min skater.pos.y > 20.9 over 20..190
+expect skater.load > 0.88 at 190
+expect skater.load < 0.93 at 190
+expect skater.speed < 3.9 at 190
+expect skater.speed > 3.75 at 190

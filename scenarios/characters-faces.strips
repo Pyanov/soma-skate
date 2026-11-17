@@ -1,0 +1,23 @@
+# Faces close up for the character review: neutral from the front and three-quarter (before the idle fidget), the
+# landing celebration, and scared in the bail; the camera's height per character (where its face is).
+#   ./skate strip --sheet scenarios/characters-faces.strips --height 360 --each --gpu
+# label | moments | - | camera | character | style
+Can of Hella Fría face | soma-idle@120:165/4/2.0/1.05, soma-idle@120:120/4/2.0/1.05, soma-big3-kickflip@372:165/4/2.0/1.05, soma-big3-bail@345:150/8/2.3/0.63 | - | orbit:150,10,3.2,0.9 | can | real
+Big Blob face | soma-idle@120:165/4/2.0/1.0, soma-idle@120:120/4/2.0/1.0, soma-big3-kickflip@372:165/4/2.0/1.0, soma-big3-bail@345:150/8/2.3/0.60 | - | orbit:150,10,3.2,0.9 | blob | real
+Eucalyptus Monster face | soma-idle@120:165/4/1.7/1.4, soma-idle@120:120/4/1.7/1.4, soma-big3-kickflip@372:165/4/1.7/1.4, soma-big3-bail@345:150/8/2.0/0.84 | - | orbit:150,10,3.2,0.9 | redmonster | real
+Guy in the Orange Suit face | soma-idle@120:165/4/1.8/1.55, soma-idle@120:120/4/1.8/1.55, soma-big3-kickflip@372:165/4/1.8/1.55, soma-big3-bail@345:150/8/2.1/0.93 | - | orbit:150,10,3.2,0.9 | mascot | real
+Count Kickflip face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | vampire | real
+Mr. Bones face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | skeleton | real
+Tech Bro face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | techbro | real
+Karl the Fog face | soma-idle@120:165/4/2.1/1.0, soma-idle@120:120/4/2.1/1.0, soma-big3-kickflip@372:165/4/2.1/1.0, soma-big3-bail@345:150/8/2.4/0.60 | - | orbit:150,10,3.2,0.9 | karl | real
+Mission Burrito face | soma-idle@120:165/4/2.0/1.2, soma-idle@120:120/4/2.0/1.2, soma-big3-kickflip@372:165/4/2.0/1.2, soma-big3-bail@345:150/8/2.3/0.72 | - | orbit:150,10,3.2,0.9 | burrito | real
+The Pigeon face | soma-idle@120:165/4/2.0/1.15, soma-idle@120:120/4/2.0/1.15, soma-big3-kickflip@372:165/4/2.0/1.15, soma-big3-bail@345:150/8/2.3/0.69 | - | orbit:150,10,3.2,0.9 | pigeon | real
+The Robotaxi face | soma-idle@120:165/4/2.0/0.75, soma-idle@120:120/4/2.0/0.75, soma-big3-kickflip@372:165/4/2.0/0.75, soma-big3-bail@345:150/8/2.3/0.45 | - | orbit:150,10,3.2,0.9 | robotaxi | real
+The Cable Car face | soma-idle@120:165/4/2.2/0.95, soma-idle@120:120/4/2.2/0.95, soma-big3-kickflip@372:165/4/2.2/0.95, soma-big3-bail@345:150/8/2.5/0.57 | - | orbit:150,10,3.2,0.9 | cablecar | real
+The Sea Lion face | soma-idle@120:165/4/2.0/1.0, soma-idle@120:120/4/2.0/1.0, soma-big3-kickflip@372:165/4/2.0/1.0, soma-big3-bail@345:150/8/2.3/0.60 | - | orbit:150,10,3.2,0.9 | sealion | real
+Chad Vantage (story) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | chad | real
+Dre (kit, crew) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | dre | real
+Rocco (kit) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | rocco | real
+Nonna Gia (kit) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | nonna | real
+Priya (kit) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | priya | real
+Kenny (kit) face | soma-idle@120:165/4/1.6/1.45, soma-idle@120:120/4/1.6/1.45, soma-big3-kickflip@372:165/4/1.6/1.45, soma-big3-bail@345:150/8/1.9/0.87 | - | orbit:150,10,3.2,0.9 | kenny | real

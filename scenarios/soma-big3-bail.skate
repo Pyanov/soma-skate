@@ -1,0 +1,8 @@
+# Off the top of Big 3 with a kickflip flicked too late: lands mid-flip and bails.
+park soma
+spawn big3
+hold up 0..100
+hold ollie 166..196
+tap flip+left 300
+run 520
+expect event bail within 300..340

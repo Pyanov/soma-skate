@@ -1,0 +1,17 @@
+# Full lean left at 6 m/s on the flat. The lean builds in a quarter second, then the trucks carve
+# a circle of minRadius + v^2 / carveAccel: at park speeds board.park's 0.65 + 36/15 = 3.05 m (about
+# 1.2 g; it was 1 + 36/9 = 5 m, 0.73 g, before the feel pass's park carve): inside the park grip
+# (1.4), so the wheels never slip and the turn keeps its speed (docs/mechanics/board.md). It turns
+# about 100 degrees in the second (was 61: heading 90 to 29).
+park lab
+cmd 0 teleport 0 -12 0.13 90
+cmd 6 speed 6
+hold left 10..130
+run 130
+expect max skater.slip < 0.02 over 10..130
+expect min skater.slip > -0.02 over 10..130
+expect skater.lean < -0.2 at 60
+expect skater.heading < 356 at 130
+expect skater.heading > 344 at 130
+expect skater.speed > 5.7 at 130
+expect no event bail

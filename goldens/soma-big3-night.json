@@ -1,0 +1,1 @@
+{ "target": "spot:big3_runway", "park": "soma", "cam": "chase", "style": "real", "weather": "night", "layers": ["park", "context", "skater"], "threshold": 99.5 }

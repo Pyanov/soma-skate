@@ -1,0 +1,9 @@
+# The world under the squeeze flythrough: the skater standing on the park's floor for 95 s while the
+# city's traffic, people and park skaters carry on. Not one of the checked scenarios (no expectations);
+# it is the run that `skate clip` plays under the keyframed camera in squeeze.json beside it:
+#   ./skate clip scenarios/flythrough/squeeze.skate --campath scenarios/flythrough/squeeze.json --from 1 --size 1920x1080 --no-hud --music lofi
+# (--from 1: past the skater setting down on its spot, a click in the sound)
+park sf
+spawn west_flat_big3_runup
+cmd 0 teleport 35.4 18.2 -0.65 90   # a level spot on the park's floor: it stays put (from the west flat it rolls off its ledges)
+run 11400

@@ -1,0 +1,17 @@
+# With the special meter full, a diagonal pressed on the keyboard (D, then S two ticks later, both held)
+# and J is the Varial Heelflip, not the Kickflip Superman (Right, Down + J): two keys gone down within
+# tricks.dirTicks of each other and still held are one diagonal, not a sequence. Released between
+# (lab-special: Right, then Down, then J) it is the special.
+park lab
+spawn lab_ledge
+cmd 0 set skater.special 1
+hold up 0..60
+hold ollie 60..90
+hold right 94..99
+hold down 96..99
+tap flip 97
+run 320
+expect event trickStart{trick=Varial Heelflip} within 98..98
+expect no event trickStart{trick=Kickflip Superman}
+expect event comboLanded{name=Varial Heelflip} within 160..240
+expect no event bail

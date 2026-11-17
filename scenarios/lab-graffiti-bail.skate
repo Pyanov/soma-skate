@@ -1,0 +1,28 @@
+# Solo Graffiti: a bailed combo tags nothing. On the low ledge's BS 50-50 the stick is held over until
+# the balance goes: a bail, no tag. The next pass grinds it clean and tags it (475). A third, shorter
+# grind (ollied off half way, 240) banks less than that best: no re-tag, the best stays 475.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+cmd 0 run graffiti
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+hold right 190..400
+bot balance
+cmd 600 teleport 0 -0.6 0.14 90
+hold up 606..700
+hold ollie 690..705
+tap grind 776
+cmd 1300 teleport 0 -0.6 0.14 90
+hold up 1306..1400
+hold ollie 1390..1405
+tap grind 1476
+hold ollie 1540..1560
+run 1900
+expect event bail{reason=lost balance on the BS 50-50} within 267..267
+expect event comboLost within 267..267
+expect event tagged{player=1,obstacle=line:11,points=475,from=0} within 1067..1067
+expect event comboLanded{name=BS 50-50,points=240} within 1676..1676
+expect event tagged count == 1
+expect session.owned == 1 at end
+expect session.tags.line:11.points == 475 at end

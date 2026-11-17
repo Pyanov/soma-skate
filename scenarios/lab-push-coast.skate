@@ -1,0 +1,10 @@
+# Push for 2 s along the flat, then coast. Rolling basics on the lab floor.
+park lab
+spawn lab_ledge
+hold up 0..240
+run 480
+expect state ground at end
+expect skater.speed > 8.5 at 240
+expect skater.speed < 8.95 at end
+expect max skater.pos.z < 0.27
+expect no event air

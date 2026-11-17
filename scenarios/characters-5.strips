@@ -1,0 +1,10 @@
+# Phase 5 review in the real look: ./skate strip --sheet scenarios/characters-5.strips --height 280
+# Each row: Boneless, No Comply, Bert Slide, landing on a car roof (uh-oh), surfing the car, two of the bigger idles.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | can | real
+Big Blob | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | blob | real
+Eucalyptus Monster | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | redmonster | real
+Guy in the Orange Suit | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | mascot | real
+Count Kickflip | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | vampire | real
+Mr. Bones | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | skeleton | real
+Tech Bro | soma-boneless@46, soma-nocomply@45, soma-bertslide@50, sf-car-roof@150, sf-car-roof@300, soma-idle-long@1300, soma-idle-long@2050 | - | orbit:150,15,3.9,0.8 | techbro | real

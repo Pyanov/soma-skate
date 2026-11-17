@@ -1,0 +1,228 @@
+{
+  "tickHz": 120,
+  "gravity": 9.81,
+  "skater": {
+    "radius": 0.12
+  },
+  "ground": {
+    "pushAccel": 5,
+    "maxPushSpeed": 9,
+    "rollingResistance": 0.010,
+    "rollingByType": {
+      "road": 0.018,
+      "sidewalk": 0.014,
+      "lot": 0.016,
+      "median": 0.12,
+      "park": 0.12,
+      "path": 0.016,
+      "roof": 0.022,
+      "car": 0.010
+    },
+    "footBrakeDecel": 3.0,
+    "footBrakeFullSpeed": 5,
+    "footBrakeHighSpeed": 12,
+    "footBrakeHighFactor": 0.35,
+    "snapDistance": 0.06,
+    "maxSnapAngleDeg": 30,
+    "groundMinNormalZ": 0.6,
+    "safeNormalZ": 0.8,
+    "crouchPump": 0.12,
+    "stickGap": 0.003,
+    "transitionDeg": 15,
+    "transitionStickGap": 0.02,
+    "curbHop": 0.18,
+    "curbHopDeg": 50,
+    "curbHopMinSpeed": 1.5,
+    "curbHopDepth": 0.45,
+    "curbHopKeep": 0.85,
+    "curbHopBumpTicks": 12
+  },
+  "board": {
+    "leanMaxDeg": 14,
+    "leanIn": 4,
+    "leanOut": 7,
+    "leanAtSpeed": { "from": 12, "to": 16, "tauIn": 0.2, "tauOut": 0.6 },
+    "minRadius": 1.0,
+    "carveAccel": 9,
+    "park": { "from": 8, "to": 12, "minRadius": 0.65, "carveAccel": 15, "grip": 1.4 },
+    "pivotRate": 3.0,
+    "pivotMaxSpeed": 3.0,
+    "grip": 0.85,
+    "slideFriction": 0.6,
+    "carveSlipMaxDeg": 12,
+    "recoverYawRate": 10,
+    "slipMinSpeed": 0.5,
+    "loadSmoothing": 0.25
+  },
+  "aero": {
+    "airDensity": 1.2,
+    "massKg": 80,
+    "cdaStand": 0.45,
+    "cdaTuck": 0.30
+  },
+  "slide": {
+    "minSpeed": 2,
+    "angleDeg": 85,
+    "steerDeg": 15,
+    "yawRate": 9,
+    "minScoreTicks": 30,
+    "bertSpeed": 5
+  },
+  "wobble": {
+    "speed": 12,
+    "tuckSpeed": 17,
+    "grow": 2.0,
+    "seed": 0.08,
+    "damp": 1.0,
+    "crouchDamp": 2.5,
+    "carveDamp": 0.8,
+    "hz": 6,
+    "leanDeg": 6
+  },
+  "air": {
+    "spinAccel": 22,
+    "spinMax": 9.5,
+    "spinDecay": 12,
+    "ledgePop": { "ticks": 36, "minSpeed": 1.5, "deg": 50, "reach": 0.4, "maxHeight": 0.55, "depth": 0.3, "keep": 0.9 }
+  },
+  "collision": {
+    "maxSubstepMove": 0.05,
+    "iterations": 6
+  },
+  "surfaces": {
+    "flatMaxDeg": 4,
+    "bankMaxDeg": 50,
+    "steepMaxDeg": 80
+  },
+  "marker": {
+    "minSpeed": 3
+  },
+  "limits": {
+    "maxSpeed": 25
+  },
+  "vert": {
+    "minWallDeg": 62,
+    "topToleranceDeg": 4,
+    "copingReach": 0.03,
+    "copingMinDeg": 45,
+    "reentry": 0.35
+  },
+  "spine": {
+    "takeoffDeg": 30,
+    "reach": 2.5,
+    "faceMin": 0.35,
+    "minDeg": 20,
+    "landDrop": 0.6,
+    "maxSpeed": 6,
+    "clearance": 0.8,
+    "bufferTicks": 30
+  },
+  "land": {
+    "toleranceDeg": 60,
+    "maxUpDeg": 70,
+    "cleanDeg": 20,
+    "stumbleDeg": 45,
+    "straighten": 0.5,
+    "stumbleSpeed": 10,
+    "hardSpeed": 14,
+    "stumbleKeep": 0.6,
+    "stumbleTicks": 36,
+    "slowSpeed": 2
+  },
+  "bail": {
+    "ticks": 150,
+    "friction": 6,
+    "getUpTicks": 60,
+    "getUpSpeed": 3,
+    "getUpFrom": 112,
+    "getUpRate": 3
+  },
+  "ollie": {
+    "popMin": 3.2,
+    "popMax": 4.8,
+    "chargeTicks": 30,
+    "lateTicks": 12,
+    "upMix": 0.5
+  },
+  "grind": {
+    "lines": {
+      "topMaxDeg": 20,
+      "sideMinDeg": 55,
+      "minDrop": 0.12,
+      "minLength": 0.5,
+      "mergeDeg": 35,
+      "gridCell": 6
+    },
+    "captureRadius": 0.75,
+    "captureAbove": 1.0,
+    "captureBelow": 0.2,
+    "bufferTicks": 14,
+    "slideAngleDeg": 50,
+    "friction": 0.5,
+    "slideMinSpeed": 2.5,
+    "downhillSlope": 0.035,
+    "stallSpeed": 0.4,
+    "voidTicks": 12,
+    "regrabAbove": 0.1,
+    "sightRadius": 0.06,
+    "sightSkip": 0.2,
+    "switchTicks": 20,
+    "exitPop": 1.2,
+    "balanceInstability": 3.0,
+    "balanceNoise": 1.5,
+    "balanceControl": 5.0,
+    "balanceDamping": 1.2,
+    "balanceStart": 0.04,
+    "balanceRamp": 0.12,
+    "comboTilt": 0.03,
+    "comboRamp": 0.2
+  },
+  "combo": {
+    "graceTicks": 12,
+    "manualWindow": 14,
+    "manualMinSpeed": 0.8,
+    "manualStartSpeed": 2,
+    "manualInstability": 2.5,
+    "manualNoise": 1.2,
+    "manualControl": 5,
+    "manualDamping": 1.2,
+    "manualStart": 0.05,
+    "manualRamp": 0.12,
+    "manualComboTilt": 0.03,
+    "manualComboRamp": 0.2,
+    "revertMinDeg": 45,
+    "revertBufferTicks": 20,
+    "lipMaxAlong": 1.0,
+    "footWindow": 20,
+    "wallReach": 0.45,
+    "wallPressTicks": 10,
+    "wallrideTicks": 90,
+    "wallrideGravity": 0.3,
+    "wallrideMinSpeed": 2.5,
+    "wallrideMaxUp": 1.5,
+    "wallridesPerAir": 2,
+    "wallplantKeep": 0.6,
+    "wallplantPop": 3.5,
+    "specialPoints": 3000
+  },
+  "walk": {
+    "runSpeed": 3.6,
+    "walkSpeed": 1.5,
+    "backSpeed": 1.0,
+    "accel": 8,
+    "decel": 12,
+    "turnRate": 3.5,
+    "jumpSpeed": 3.4,
+    "stepHeight": 0.25,
+    "climbMax": 0.5,
+    "climbTicks": 36,
+    "maxSlopeDeg": 40,
+    "maxStepOffSpeed": 6,
+    "hardLandSpeed": 8,
+    "stumbleTicks": 45,
+    "hangMinDrop": 1.0,
+    "hangMaxSpeed": 2.0,
+    "hangDepth": 1.9,
+    "pullUpTicks": 60
+  }
+}

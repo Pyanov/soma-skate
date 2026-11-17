@@ -1,0 +1,18 @@
+# Courier: run out of time and the order is lost (courierFail); the game ends once you are
+# rolling with no combo open (courierOver, with the deliveries and the score). Short legs here
+# (10, 5 and 2 s): two deliveries, then the third order runs out.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 setData run.courier.legs.0.seconds 10
+cmd 0 setData run.courier.legs.1.seconds 5
+cmd 0 setData run.courier.legs.2.seconds 2
+cmd 0 run courier
+cmd 200 teleport -55.3 -305 2.61 356
+cmd 600 teleport -235 -230 12.53 356
+run 2200
+expect event courierDeliver{n=2} within 600..602
+expect event courierPickup{leg=2,timeLeft=12.02} within 600..602
+expect event courierFail{delivered=2,id=mission} within 2035..2045
+expect event courierOver{deliveries=2,score=2000} within 2035..2100
+expect session.mode == over at end

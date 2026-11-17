@@ -1,0 +1,9 @@
+# The same curb as sf-curb-hop, met 40 degrees off head-on at 6 m/s: up onto the sidewalk too.
+park sf
+cmd 0 teleport -54.45 -344.7 2.12 308
+cmd 30 speed 6
+run 160
+expect event bump within 60..140
+expect no event air
+expect skater.pos.x < -58.75 at end
+expect skater.speed > 4.5 at end

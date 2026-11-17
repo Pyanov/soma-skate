@@ -1,0 +1,11 @@
+# Vert air with a kickflip, land fakie on the ramp, revert (;) right away: "Kickflip + Revert" (x2).
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap flip+left 212
+tap revert 358
+run 600
+expect event land{fakie=true} within 350..362
+expect event revert within 356..362
+expect event comboLanded{name=Kickflip + Revert,multiplier=2} within 364..392
+expect no event bail

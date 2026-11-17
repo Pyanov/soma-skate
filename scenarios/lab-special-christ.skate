@@ -1,0 +1,12 @@
+# Special meter full (set for the test): Left, Right then L in the air is a Christ Air, held a moment.
+park lab
+spawn lab_ledge
+cmd 0 set skater.special 1
+hold up 0..60
+hold ollie 60..90
+tap left 92
+tap right 96
+hold grab 98..140
+run 320
+expect event trickStart{trick=Christ Air} within 97..101
+expect no event bail

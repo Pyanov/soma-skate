@@ -1,0 +1,25 @@
+# Game of S.K.A.T.E. against Dre (Bayview, skill 0.9), and every one of your tries lands about 25
+# degrees crooked: sketchy, so none counts. Your sets miss, so he sets every round; he lands five
+# (Impossible, Manual, FS 180 Kickflip, Heelflip, Nose Manual; one bail in between) and each is a
+# letter for you: S-K-A-T-E, Dre wins without a letter.
+park soma
+cmd 0 run skate dre
+bot skate sketchy
+run 10000
+expect event skateSet{by=local,trick=impossible,line=Impossible. Show me.} within 596..604
+expect event skateMatch{by=player,ok=false,trick=impossible,got=impossible,reason=sketchy} within 1165..1173
+expect event skateLetter{who=player,letters=S} within 1165..1173
+expect event skateSetMiss{by=player,reason=sketchy,got=ollie} within 1734..1742
+expect event skateSet{by=local,trick=manual} within 2481..2489
+expect event skateMatch{by=player,ok=false,trick=manual,got=manual,reason=sketchy} within 3197..3205
+expect event skateSetMiss{by=local,reason=bail} within 4355..4363
+expect event skateLetter{who=player,letters=SKAT} within 7831..7839
+expect event skateMatch{by=player,ok=false,trick=nosemanual,reason=sketchy} within 9863..9871
+expect event skateLetter{who=player,letters=SKATE} within 9863..9871
+expect event skateOver{winner=local,name=Dre,player=SKATE,local=} within 9863..9871
+expect event skateMatch{by=player,ok=true} count == 0
+expect event skateLetter{who=local} count == 0
+expect event land{quality=sketchy} count >= 9
+expect no event bail
+expect session.mode == over at end
+expect session.skatePlayer == SKATE at end

@@ -1,0 +1,27 @@
+# MUNI STAIRS RAIL and the goal Grind a Handrail at Harvey Milk Plaza ("Respect the plaza. Mind the
+# Muni riders."): a full ollie onto the middle handrail at the top (it starts 1.1 m above the plaza,
+# so the pop comes 2 m early) and a 50-50 to the bottom, 16.3 m and 7 m down, off at 11.4 m/s.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -590.525 -30.458 19.500 -121.69
+cmd 2 set skater.vel.x -4.2543
+cmd 2 set skater.vel.y -2.6270
+hold ollie 67..97
+tap grind 104
+tap grind 110
+tap grind 116
+tap grind 122
+tap grind 128
+tap grind 134
+tap grind 140
+tap grind 146
+tap grind 152
+bot balance
+run 560
+expect event grindStart{trick=FS 50-50,line=rail_-596_-34} within 150..154
+expect event grindEnd{reason=end} within 411..415
+expect event gap{id=muni_rail,gap=MUNI STAIRS RAIL,points=600} within 411..415
+expect event goalComplete{id=harveyrail,name=Grind a Handrail at Harvey Milk Plaza,area=Castro} within 411..415
+expect event land{quality=clean} within 480..484
+expect no event gap{id=harvey_set}
+expect no event bail

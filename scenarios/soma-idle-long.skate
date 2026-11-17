@@ -1,0 +1,6 @@
+# Standing still (braking) at the Big 3 run-up for 20 s: the first idle, then the character cycles its others.
+park soma
+spawn big3
+hold down 0..2400
+run 2400
+expect skater.speed < 0.15 at end

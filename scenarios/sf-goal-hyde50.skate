@@ -1,0 +1,12 @@
+# The city goal Hyde St at 50 on the squeezed city's top block of Hyde (Hyde below it to the bay is a removed
+# block): from Lombard, pushing across the flat stretch by the crooked block, then letting the hill run: 50 km/h
+# (13.9 m/s) near the foot of the block; a few km/h later the speed wobbles start and throw the skater.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -287.5 668 29.6 351
+cmd 3 set skater.vel.x -0.78
+cmd 3 set skater.vel.y 4.94
+hold up 30..700
+run 1400
+expect event goalComplete{id=hyde50,name=Hyde St at 50} within 1148..1152
+expect event bail{reason=speed wobbles} within 1326..1330

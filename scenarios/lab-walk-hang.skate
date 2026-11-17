@@ -1,0 +1,20 @@
+# Ledge hang: walking (Shift + W, 1.5 m/s) off the back of the small quarter's 1.2 m deck, the
+# rider grabs the edge and hangs facing the wall, feet just above the ground (knees bent: the deck
+# is lower than walk.hangDepth). Still holding W does nothing; a fresh tap of W pulls up (0.5 s)
+# back onto the deck, a little back from the lip.
+park lab
+cmd 0 teleport -10 22.5 1.34 0
+tap walk 10
+hold up+slide 20..140
+tap up 200
+run 320
+expect event hang{drop=1.2} within 100..112
+expect skater.hang == 1 at 195
+expect skater.pos.z < 0.3 at 195
+expect skater.fwd.y < -0.99 at 195
+expect event hangEnd{how=pull up} within 200..202
+expect skater.hang == 0 at 300
+expect skater.pos.z > 1.3 at 300
+expect skater.pos.y < 23.33 at 300
+expect no event footLand
+expect no event bail

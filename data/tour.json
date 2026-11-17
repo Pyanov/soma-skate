@@ -1,0 +1,1278 @@
+{
+  "_doc": "The Tour (THPS career; src/sim/game/tour.ts, docs/mechanics/tour.md): every level open from the start (docs/open-world.md: the neighbourhoods' open challenges, started from each level's marker in the city), played as runs of seconds (`run level <id> [start]`). Each level: world (soma or sf), a start spot (spot; starts: other spots a run may start from), area [minX, minY, maxX, maxY] (more than wrongWay.away metres outside it: event levelWrongWay, a hint, never a fail; back within wrongWay.back: levelBack), S-K-A-T-E letters (pos x, y, z: passed within data run.letterRadius), a secret tape (pos: found within tapeRadius), score tiers (pro, sick) and its own goals. A level's goal list is pro, sick, skate (all five letters), tape (names below) and its goals. Goal kinds: gap (any of gaps, ids in data/gaps.json), skitch (towed meters in one skitch; robo), speed (kmh inside box, within z), combo (a combo of points, started inside box when given; with gaps, holding one of them; with tricks, holding one of these trick ids, e.g. spine), grind (one grind at least meters long, inside box when given). worlds: other worlds a level can be played in (the park is inside sf too). areas: more boxes of the same level (the wrong-way hint is measured from the nearest); exclude: boxes inside them that are not this level (a spot of another level: the hint shows in them at once). Goal kinds also: air (an air of at least seconds taken off inside box), dash (from the from box into the to box within seconds); a combo with every holds all of its gaps.",
+  "seconds": 120,
+  "tapeRadius": 1.2,
+  "wrongWay": {
+    "away": 25,
+    "back": 15
+  },
+  "names": {
+    "pro": "Pro Score",
+    "sick": "Sick Score",
+    "skate": "Collect S-K-A-T-E",
+    "tape": "Find the Secret Tape"
+  },
+  "levels": [
+    {
+      "id": "soma",
+      "name": "SoMa West Skatepark",
+      "world": "soma",
+      "spot": "big3_runway",
+      "area": [
+        -5,
+        -3,
+        100,
+        40
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            19.8,
+            21.3,
+            1.15
+          ],
+          "hint": "over Big 3"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            55.5,
+            26.5,
+            0.35
+          ],
+          "hint": "over the wave"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            67,
+            25.15,
+            0.31
+          ],
+          "hint": "on the manual pad"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            19.45,
+            19.2,
+            1.1
+          ],
+          "hint": "along the Big 2 rail"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            72,
+            15.6,
+            -0.06
+          ],
+          "hint": "down the south rear runway to the Hellride"
+        }
+      ],
+      "tape": {
+        "pos": [
+          88.5,
+          23.0,
+          1.8
+        ],
+        "hint": "high over the Hellride side of the spine: hit the Otis quarter at full speed and transfer"
+      },
+      "tiers": {
+        "pro": 12000,
+        "sick": 52000
+      },
+      "goals": [
+        {
+          "id": "big3combo",
+          "name": "Big 3 Combo",
+          "description": "A 2,000-point combo with the Big 3 in it. The freeway is watching.",
+          "kind": "combo",
+          "points": 2000,
+          "gaps": [
+            "big3"
+          ]
+        },
+        {
+          "id": "big2",
+          "name": "Ollie the Big 2",
+          "description": "The Big 3's little sibling. It still counts.",
+          "kind": "gap",
+          "gaps": [
+            "big2"
+          ]
+        },
+        {
+          "id": "spine",
+          "name": "Transfer the Hellride",
+          "description": "Spine transfer over the Hellride from the Otis quarter. Hit it head-on and fast.",
+          "kind": "combo",
+          "points": 250,
+          "tricks": [
+            "spine"
+          ]
+        }
+      ],
+      "worlds": [
+        "sf"
+      ]
+    },
+    {
+      "id": "mission",
+      "name": "The Mission",
+      "world": "sf",
+      "spot": "valencia_shops",
+      "area": [
+        -460,
+        -445,
+        235,
+        -125
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            -54.58,
+            -219.74,
+            2.64
+          ],
+          "hint": "up Valencia"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            -56.11,
+            -199.74,
+            2.53
+          ],
+          "hint": "further up Valencia"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            120,
+            -196,
+            -1.92
+          ],
+          "hint": "on the 16th St BART plaza"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            95,
+            -176,
+            -1.37
+          ],
+          "hint": "round the BART stairwell"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            10,
+            -394.4,
+            1.4
+          ],
+          "hint": "down Clarion Alley, between the murals"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -62.47,
+          -266.1,
+          4.2
+        ],
+        "hint": "on the roof of a parked hybrid on Valencia"
+      },
+      "tiers": {
+        "pro": 10000,
+        "sick": 40000
+      },
+      "goals": [
+        {
+          "id": "mural",
+          "name": "Wallride a Mural",
+          "description": "Clarion Alley, either wall. The paint stays on the wall.",
+          "kind": "gap",
+          "gaps": [
+            "clarion_wallride"
+          ]
+        },
+        {
+          "id": "bart",
+          "name": "Ollie the BART Stairs",
+          "description": "A dozen steps or more in one ollie. The escalator is out again anyway.",
+          "kind": "gap",
+          "gaps": [
+            "bart_stairs"
+          ]
+        },
+        {
+          "id": "bench",
+          "name": "Bench Combo at Dolores Park",
+          "description": "A 1,500-point combo with a seat wall or bench grind in it, started in the park. Mind the picnic blankets.",
+          "kind": "combo",
+          "points": 1500,
+          "box": [
+            -445,
+            -360,
+            -208,
+            -140
+          ],
+          "gaps": [
+            "dolores_seatwall",
+            "bench"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "castro",
+      "name": "The Castro",
+      "world": "sf",
+      "spot": "harvey_milk",
+      "area": [
+        -695,
+        -295,
+        -495,
+        35
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            -585,
+            -37,
+            18.52
+          ],
+          "hint": "on Harvey Milk Plaza"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            -574.7,
+            -1.4,
+            18.7
+          ],
+          "hint": "down Market from the plaza"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            -570.4,
+            -80,
+            15.89
+          ],
+          "hint": "down Castro St"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            -567.8,
+            -125,
+            13.33
+          ],
+          "hint": "further down Castro"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            -564,
+            -185,
+            10.01
+          ],
+          "hint": "almost at 18th"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -609.8,
+          -41.0,
+          15.2
+        ],
+        "hint": "in the air off the bottom of the Muni stairs' middle rail: grind it and pop before the end"
+      },
+      "tiers": {
+        "pro": 5000,
+        "sick": 22000
+      },
+      "goals": [
+        {
+          "id": "rainbow",
+          "name": "Rainbow Combo",
+          "description": "A 1,000-point combo started on the rainbow crossing at Castro and 18th. Every colour counts.",
+          "kind": "combo",
+          "points": 1000,
+          "box": [
+            -590,
+            -265,
+            -535,
+            -205
+          ]
+        },
+        {
+          "id": "munirail",
+          "name": "All the Way Down",
+          "description": "Grind 15 m down a Muni stairs rail in one go. Respect the plaza, mind the riders.",
+          "kind": "grind",
+          "meters": 15,
+          "box": [
+            -615,
+            -50,
+            -590,
+            -25
+          ]
+        },
+        {
+          "id": "castrobomb",
+          "name": "Bomb Castro St",
+          "description": "Hit 34 km/h down Castro between Market and 18th. The theatre sign is not a finish line.",
+          "kind": "speed",
+          "kmh": 34,
+          "box": [
+            -580,
+            -225,
+            -555,
+            -45
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hills",
+      "name": "Hill Country",
+      "world": "sf",
+      "spot": "dolores_bomb",
+      "starts": [
+        "twin_peaks_bomb",
+        "hayes_hill"
+      ],
+      "area": [
+        -1460,
+        -740,
+        -150,
+        110
+      ],
+      "areas": [
+        [
+          -1108,
+          350,
+          -268,
+          540
+        ]
+      ],
+      "exclude": [
+        [
+          -450,
+          -350,
+          -228,
+          -140
+        ]
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            -201.6,
+            -282,
+            16.8
+          ],
+          "hint": "down Dolores from 20th"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            -204.7,
+            -241,
+            13.95
+          ],
+          "hint": "down Dolores"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            -207.8,
+            -201,
+            9.75
+          ],
+          "hint": "down Dolores, by the park"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            -210.9,
+            -160,
+            8.57
+          ],
+          "hint": "down Dolores, past 19th"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            -214,
+            -120,
+            7.76
+          ],
+          "hint": "at the bottom of Dolores"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -207.0,
+          -243.8,
+          15.85
+        ],
+        "hint": "on the roof of the car parked just below the crest at 19th on Dolores (a boneless gets you up)"
+      },
+      "tiers": {
+        "pro": 3500,
+        "sick": 23500
+      },
+      "goals": [
+        {
+          "id": "crest",
+          "name": "Dolores Crest Air",
+          "description": "Catch air off the crest at 19th Street on the Dolores bomb and land it. Mission High lets out at three.",
+          "kind": "gap",
+          "gaps": [
+            "dolorescrest",
+            "doloressend"
+          ]
+        },
+        {
+          "id": "upper56",
+          "name": "Upper Market at 56",
+          "description": "From Grand View, 56 km/h down Upper Market. The fog cannot keep up.",
+          "kind": "speed",
+          "kmh": 56,
+          "box": [
+            -1460,
+            -670,
+            -550,
+            20
+          ],
+          "z": [
+            10,
+            105
+          ]
+        },
+        {
+          "id": "curve",
+          "name": "19th Street Curve Air",
+          "description": "Air out of the curve at 19th. The guardrail is decorative.",
+          "kind": "gap",
+          "gaps": [
+            "curve19th"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hayes",
+      "name": "Hayes Valley & Alamo Square",
+      "world": "sf",
+      "spot": "hayes_hill",
+      "starts": [
+        "alamo_square",
+        "patricias_green"
+      ],
+      "area": [
+        -1143,
+        360,
+        -193,
+        560
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            -1018,
+            385.6,
+            61.55
+          ],
+          "hint": "down Hayes from Pierce"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            -908,
+            403.0,
+            51.4
+          ],
+          "hint": "down Hayes past Steiner"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            -768,
+            425.2,
+            38.15
+          ],
+          "hint": "down Hayes past Fillmore"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            -618,
+            449.1,
+            25.75
+          ],
+          "hint": "down Hayes past Webster"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            -220.9,
+            428.0,
+            10.55
+          ],
+          "hint": "on Patricia's Green's first seat wall"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -234.0,
+          457.0,
+          11.3
+        ],
+        "hint": "on the plinth of the steel sculpture at Patricia's Green, under the slabs (they are 7 m tall: the plinth is as high as it goes)"
+      },
+      "tiers": {
+        "pro": 24000,
+        "sick": 59000
+      },
+      "goals": [
+        {
+          "id": "bomb60",
+          "name": "Bomb Hayes in Under 60",
+          "description": "From Alamo Square at Pierce to Octavia in under a minute. The 21 Hayes takes twelve.",
+          "kind": "dash",
+          "from": [
+            -1096,
+            362,
+            -1063,
+            392
+          ],
+          "to": [
+            -270,
+            492,
+            -228,
+            530
+          ],
+          "seconds": 60
+        },
+        {
+          "id": "greenline",
+          "name": "Patricia's Green Line",
+          "description": "A 3,000-point combo with a seat wall grind and a bench grind in it. Mind the strollers.",
+          "kind": "combo",
+          "points": 3000,
+          "gaps": [
+            "patricia_wall",
+            "patricia_bench"
+          ],
+          "every": true
+        },
+        {
+          "id": "postcard",
+          "name": "Postcard Air",
+          "description": "A second of air (1.1 s) off the Alamo Square slope, facing the Painted Ladies. Smile, a tour bus is watching.",
+          "kind": "air",
+          "seconds": 1.1,
+          "box": [
+            -1078,
+            395,
+            -996,
+            505
+          ]
+        }
+      ]
+    },
+    {
+      "id": "civic",
+      "name": "Civic Center",
+      "world": "sf",
+      "spot": "un_plaza",
+      "starts": [
+        "city_hall"
+      ],
+      "area": [
+        -115,
+        245,
+        495,
+        492
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            285.85,
+            411.6,
+            1.0
+          ],
+          "hint": "on UN Plaza's north row of ledges"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            413.0,
+            437.2,
+            -1.7
+          ],
+          "hint": "on the fountain's rim, the Market side"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            295.5,
+            279.5,
+            0.15
+          ],
+          "hint": "on the F-line rails in Market St near 8th"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            71.0,
+            430.4,
+            3.75
+          ],
+          "hint": "on the ledge at the north-west corner of Civic Center Plaza's lawns"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            14.6,
+            354.8,
+            6.2
+          ],
+          "hint": "in the air off City Hall's porch, down the steps"
+        }
+      ],
+      "tape": {
+        "pos": [
+          415.5,
+          445.6,
+          -1.58
+        ],
+        "hint": "on top of the tallest pier in UN Plaza's fountain (from the fountain floor, a boneless)"
+      },
+      "tiers": {
+        "pro": 14000,
+        "sick": 115000
+      },
+      "goals": [
+        {
+          "id": "steps",
+          "name": "City Hall Steps",
+          "description": "Off the porch on Polk St, past the bottom four steps. Somebody's wedding photos just got better.",
+          "kind": "gap",
+          "gaps": [
+            "city_hall_steps"
+          ]
+        },
+        {
+          "id": "unline",
+          "name": "UN Plaza Line",
+          "description": "A 2,500-point combo with a UN Plaza ledge in it, started in the plaza. The chess players are watching.",
+          "kind": "combo",
+          "points": 2500,
+          "box": [
+            250,
+            369,
+            430,
+            469
+          ],
+          "gaps": [
+            "un_ledge"
+          ]
+        },
+        {
+          "id": "fline",
+          "name": "F-Line Grind",
+          "description": "25 m on the streetcar rails in Market St. The F stops for nobody.",
+          "kind": "grind",
+          "meters": 25,
+          "box": [
+            245,
+            235,
+            500,
+            490
+          ],
+          "feature": "streetcar rail"
+        }
+      ]
+    },
+    {
+      "id": "embarcadero",
+      "name": "Embarcadero",
+      "world": "sf",
+      "spot": "emb",
+      "starts": [
+        "pier_7"
+      ],
+      "area": [
+        465,
+        555,
+        825,
+        1030
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            634.6,
+            670.6,
+            -8.8
+          ],
+          "hint": "on the third ledge of EMB's row by the banks"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            615.64,
+            730.15,
+            -7.8
+          ],
+          "hint": "over the fountain's north-east rim"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            596.45,
+            606.38,
+            -9.25
+          ],
+          "hint": "on the F-line rails where Market meets Steuart"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            574.99,
+            925.86,
+            -8.86
+          ],
+          "hint": "on the edge of Pier 7's middle block"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            567.8,
+            696.7,
+            -7.25
+          ],
+          "hint": "in the air down the EMB seven"
+        }
+      ],
+      "tape": {
+        "pos": [
+          572.04,
+          923.66,
+          -6.91
+        ],
+        "hint": "high off the street end of Pier 7's middle block: grind it from the seawall side and pop off its end with all you've got"
+      },
+      "tiers": {
+        "pro": 20000,
+        "sick": 162000
+      },
+      "goals": [
+        {
+          "id": "seven",
+          "name": "EMB Seven",
+          "description": "Off the terrace and down the seven stairs into the plaza. Half the skate videos of the nineties were filmed right here.",
+          "kind": "gap",
+          "gaps": [
+            "emb_seven"
+          ]
+        },
+        {
+          "id": "threeblock",
+          "name": "Three-Block",
+          "description": "A grind on the three stacked granite blocks by the fountain. Pick a block, any block.",
+          "kind": "gap",
+          "gaps": [
+            "three_block"
+          ]
+        },
+        {
+          "id": "pier7line",
+          "name": "Pier 7 Line",
+          "description": "A 3,000-point combo with a Pier 7 block in it, started at the blocks. The lunch crowd is watching.",
+          "kind": "combo",
+          "points": 3000,
+          "box": [
+            551,
+            880,
+            616,
+            955
+          ],
+          "gaps": [
+            "pier7_bench"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chinatown",
+      "name": "Chinatown",
+      "world": "sf",
+      "spot": "dragon_gate",
+      "area": [
+        180,
+        555,
+        340,
+        820
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            264.76,
+            667.75,
+            0.25
+          ],
+          "hint": "in the air through the Dragon Gate's middle opening"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            259.40,
+            735.90,
+            6.47
+          ],
+          "hint": "in the street down Grant from Pine"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            249.68,
+            741.97,
+            7.33
+          ],
+          "hint": "on Grant's west curb below Pine"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            250.85,
+            734.85,
+            6.52
+          ],
+          "hint": "further down the same curb"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            263.00,
+            685.20,
+            0.96
+          ],
+          "hint": "down Grant, just above the Dragon Gate"
+        }
+      ],
+      "tape": {
+        "pos": [
+          259.8,
+          667.4,
+          1.7
+        ],
+        "hint": "high in the Dragon Gate's narrow west opening, over the sidewalk: a boneless through it"
+      },
+      "tiers": {
+        "pro": 19000,
+        "sick": 65000
+      },
+      "goals": [
+        {
+          "id": "gate",
+          "name": "Through the Dragon Gate",
+          "description": "Ollie through the Dragon Gate's middle opening, up Grant from Bush. Mind the pillars; they were here first.",
+          "kind": "gap",
+          "gaps": [
+            "dragon_gate"
+          ]
+        },
+        {
+          "id": "bombgrant",
+          "name": "Bomb Grant in Under 10",
+          "description": "From Pine down Grant and out through the Dragon Gate in under 10 seconds. The delivery vans take all morning.",
+          "kind": "dash",
+          "from": [
+            244,
+            748,
+            268,
+            770
+          ],
+          "to": [
+            254,
+            630,
+            282,
+            660
+          ],
+          "seconds": 10
+        },
+        {
+          "id": "lanterns",
+          "name": "Lantern Line",
+          "description": "A 2,000-point combo started on Grant under the lanterns. The shopkeepers say take it outside. You are outside.",
+          "kind": "combo",
+          "points": 2000,
+          "box": [
+            240,
+            672,
+            275,
+            768
+          ]
+        }
+      ]
+    },
+    {
+      "id": "russianhill",
+      "name": "Russian Hill",
+      "world": "sf",
+      "spot": "lombard_crooked",
+      "starts": [
+        "hyde_hill"
+      ],
+      "area": [
+        -365,
+        645,
+        -130,
+        795
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            -245.1,
+            704.32,
+            19.7
+          ],
+          "hint": "on the brick wall round a flower bed, near the top of the crooked block"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            -189.0,
+            705.34,
+            6.05
+          ],
+          "hint": "in the air down the steep flight of the Lombard stairs, south side"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            -187.43,
+            724.0,
+            3.6
+          ],
+          "hint": "on the long handrail down the north side of the block"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            -294.96,
+            725.46,
+            25.55
+          ],
+          "hint": "in the cable car slot down Hyde, below Lombard"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            -299.37,
+            752.84,
+            20.53
+          ],
+          "hint": "further down the Hyde slot"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -187.4,
+          705.5,
+          7.35
+        ],
+        "hint": "high over the steep flight of the Lombard stairs: a boneless off the top"
+      },
+      "tiers": {
+        "pro": 45000,
+        "sick": 104000
+      },
+      "goals": [
+        {
+          "id": "beds",
+          "name": "Lombard Flower Beds",
+          "description": "Grind the brick wall round one of the crooked block's flower beds. Eight switchbacks, and you found the one way down that is not on the postcards.",
+          "kind": "gap",
+          "gaps": [
+            "lombard_bed"
+          ]
+        },
+        {
+          "id": "stairs",
+          "name": "Lombard Stairs",
+          "description": "Ollie down the steep flight of the stairs on the south side, or grind the long handrail on the north side. The tourists filming the cars will film you instead.",
+          "kind": "gap",
+          "gaps": [
+            "lombard_stairs",
+            "lombard_rail"
+          ]
+        },
+        {
+          "id": "hyde",
+          "name": "Ride the Hyde Slot",
+          "description": "50 m in the cable car slot down Hyde from Lombard. The gripman waves. You wave back. Nobody brakes.",
+          "kind": "grind",
+          "meters": 50,
+          "box": [
+            -320,
+            660,
+            -270,
+            795
+          ],
+          "feature": "cable car slot"
+        }
+      ]
+    },
+    {
+      "id": "northbeach",
+      "name": "North Beach",
+      "world": "sf",
+      "spot": "washington_square",
+      "starts": [
+        "marini_plaza"
+      ],
+      "area": [
+        -85,
+        635,
+        175,
+        850
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            90.5,
+            681.0,
+            6.88
+          ],
+          "hint": "on a bench along Washington Square's south path"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            22.29,
+            691.1,
+            5.36
+          ],
+          "hint": "on the curb along Columbus's median, heading for the Wharf"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            18.39,
+            694.52,
+            5.21
+          ],
+          "hint": "further down the same curb"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            25.80,
+            686.10,
+            5.44
+          ],
+          "hint": "in the street down Columbus, beside the median"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            15.90,
+            695.0,
+            5.03
+          ],
+          "hint": "further down Columbus in the street, heading for the Wharf"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -29.64,
+          727.60,
+          5.10
+        ],
+        "hint": "on the roof of a car parked on Columbus by the square: a boneless beside it and a grind along its roof"
+      },
+      "tiers": {
+        "pro": 17500,
+        "sick": 105000
+      },
+      "goals": [
+        {
+          "id": "wsqline",
+          "name": "Washington Square Bench Line",
+          "description": "A 1,500-point combo with a Washington Square bench in it, started in the square. The tai chi group is not impressed. The tai chi group is never impressed.",
+          "kind": "combo",
+          "points": 1500,
+          "box": [
+            15,
+            660,
+            140,
+            765
+          ],
+          "gaps": [
+            "wsq_bench"
+          ]
+        },
+        {
+          "id": "curb",
+          "name": "Columbus Curb",
+          "description": "15 m of curb down Columbus. The espresso is strong and so is your balance.",
+          "kind": "grind",
+          "meters": 15,
+          "box": [
+            -90,
+            650,
+            70,
+            785
+          ],
+          "feature": "curb"
+        },
+        {
+          "id": "cafe",
+          "name": "Café Manual",
+          "description": "A 1,500-point combo with a manual in it, started on Columbus. Wheelie past the sidewalk tables like you own the café.",
+          "kind": "combo",
+          "points": 1500,
+          "box": [
+            -90,
+            650,
+            70,
+            785
+          ],
+          "tricks": [
+            "manual",
+            "nosemanual"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wharf",
+      "name": "Fisherman's Wharf",
+      "world": "sf",
+      "spot": "pier_39",
+      "starts": [
+        "fishermans_wharf"
+      ],
+      "area": [
+        140,
+        870,
+        440,
+        1160
+      ],
+      "areas": [
+        [
+          -130,
+          848,
+          145,
+          1038
+        ]
+      ],
+      "letters": [
+        {
+          "letter": "S",
+          "pos": [
+            133.80,
+            969.12,
+            -8.85
+          ],
+          "hint": "on Jefferson's north curb, coming from Pier 39"
+        },
+        {
+          "letter": "K",
+          "pos": [
+            288.4,
+            972.5,
+            -7.35
+          ],
+          "hint": "in the air through Pier 39's gate"
+        },
+        {
+          "letter": "A",
+          "pos": [
+            124.45,
+            967.64,
+            -8.85
+          ],
+          "hint": "further along the same curb"
+        },
+        {
+          "letter": "T",
+          "pos": [
+            -108.78,
+            922.47,
+            -7.80
+          ],
+          "hint": "in the air across the edge of the cable car turntable at the Wharf's west end"
+        },
+        {
+          "letter": "E",
+          "pos": [
+            116.98,
+            966.46,
+            -8.85
+          ],
+          "hint": "near the far end of the same curb"
+        }
+      ],
+      "tape": {
+        "pos": [
+          -110.3,
+          922.48,
+          -6.52
+        ],
+        "hint": "high over the edge of the turntable at the Wharf's west end: a boneless across it"
+      },
+      "tiers": {
+        "pro": 16500,
+        "sick": 52000
+      },
+      "goals": [
+        {
+          "id": "gate",
+          "name": "Pier 39 Gate",
+          "description": "Ollie through Pier 39's gate onto the pier. The sea lions bark either way.",
+          "kind": "gap",
+          "gaps": [
+            "pier39_gate"
+          ]
+        },
+        {
+          "id": "wharfline",
+          "name": "Wharf Line",
+          "description": "A 2,000-point combo started on Jefferson St, between the crab stands and the boats. The seagulls part like the Red Sea, then complain about it all afternoon.",
+          "kind": "combo",
+          "points": 2000,
+          "box": [
+            -125,
+            915,
+            146,
+            975
+          ]
+        },
+        {
+          "id": "turntable",
+          "name": "Turntable Rim",
+          "description": "Ollie across the edge of the cable car turntable at the Wharf's west end without touching the timber. The gripmen turn it by hand; you can at least not scuff it.",
+          "kind": "gap",
+          "gaps": [
+            "turntable_hyde"
+          ]
+        }
+      ]
+    }
+  ]
+}

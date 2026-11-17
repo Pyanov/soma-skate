@@ -1,0 +1,17 @@
+# MURAL WALLPLANT: across Clarion Alley at 3.1 m/s toward the north wall, ollie, and K tapped in the
+# air with the mural ahead: a wallplant off it (data/gaps.json kind wall, plant), pushed back off the
+# wall and down fakie with a stumble, still banked. Not a wallride, so not the mural goal.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -27 -399.5 1.78 55
+hold up 6..90
+hold ollie 285..300
+tap ollie 350
+run 560
+expect event wallplant within 349..353
+expect event gap{id=clarion_plant,gap=MURAL WALLPLANT,points=400} within 349..353
+expect event land{fakie=true,quality=stumble} within 455..459
+expect event comboLanded{name=Wallplant + MURAL WALLPLANT,multiplier=2} within 455..459
+expect no event gap{id=clarion_wallride}
+expect no event goalComplete
+expect no event bail

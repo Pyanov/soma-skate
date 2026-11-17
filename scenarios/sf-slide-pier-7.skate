@@ -1,0 +1,16 @@
+# Pier 7: across the middle block's south-east edge at 60 degrees from the street level, an ollie and
+# grind pressed in the air: a boardslide along the edge toward the bay, off its seawall end, landed.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 575.42 921.80 -9.30 354.5
+cmd 2 set skater.vel.x -0.431
+cmd 2 set skater.vel.y 4.479
+hold ollie 52..62
+tap grind 70..96 every 4
+bot balance
+run 330
+expect event grindStart{trick=BS Boardslide,line=ledge_573_925,slide=true} within 87..91
+expect event grindEnd{reason=end} within 218..228
+expect event gap{id=pier7_bench,gap=PIER 7 BLOCK} within 218..228
+expect event comboLanded{name=BS Boardslide + PIER 7 BLOCK} within 272..284
+expect no event bail

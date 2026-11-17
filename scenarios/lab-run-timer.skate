@@ -1,0 +1,14 @@
+# A run shortened to 2 s (for the test): time runs out mid-air, the combo still lands, then the run is over.
+park lab
+spawn lab_ledge
+cmd 0 setData run.durationSeconds 2
+cmd 0 run start
+hold up 0..60
+hold ollie 160..190
+tap flip+left 196
+run 600
+expect event runStart within 1..2
+expect event comboLanded{name=Kickflip} within 300..340
+expect event runOver within 300..360
+expect event runOver{score=100} within 300..360
+expect no event goal

@@ -1,0 +1,14 @@
+# Revert mashing: one revert per landing. Up the vert ramp, an Indy, back down fakie onto the
+# ramp, then ; tapped every 2 ticks for half a second: one Revert (the next one needs another
+# landing), the combo banks after the grace, Indy + Revert = 500. (Each revert used to reopen the
+# grace for the next: 272 reverts and 835,040 points from one landing while the key was mashed.)
+park lab
+spawn lab_vert
+cmd 6 speed 10
+hold grab 208..212
+tap revert 357..420 every 2
+run 600
+expect event revert count == 1
+expect event revert within 357..359
+expect event comboLanded{name=Indy + Revert,points=500,multiplier=2} within 368..372
+expect no event bail

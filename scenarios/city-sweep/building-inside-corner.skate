@@ -1,0 +1,28 @@
+# City sweep (city phase 11): sf-steep-lot-corner's keys on phase 11's export carry the skater head-on at
+# 5 m/s into a building's inside corner (two walls at 90 degrees) on a gentle part of the lot below Upper
+# Market, at tick 940. It stops dead and cannot turn or push out (left, then up, for seconds: under
+# 2 cm/s); the ground is safe there, so the wedge rule does not stand it up. The same corner trap, between
+# a curb face and the boundary wall, was the sweep's finding in Mission St, which the export now avoids
+# with a curb cut at the wall; inside corners of buildings are everywhere, so this one is the sim's.
+# Not run by check. Run it with `./skate run scenarios/city-sweep/building-inside-corner.skate`.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1940 -1380 115.56 223
+hold up+right 0..72
+hold up+flip 72..114
+hold up+flip 114..212
+hold up+left 212..234
+hold up+left 234..294
+hold up+right+grab+slide 294..388
+hold up+flip+grind 388..502
+hold up 502..601
+hold up+flip 601..691
+hold up 691..750
+hold up 750..771
+hold left 771..801
+hold up+right+grab 801..838
+hold up 838..926
+hold up+grind 926..971
+hold left 975..1005
+hold up 1005..1200
+run 1200

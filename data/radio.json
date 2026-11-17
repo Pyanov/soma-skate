@@ -1,0 +1,100 @@
+{
+  "_doc": "In-game radio (client only; src/client/radio.ts). ] next station, [ previous, \\ radio on/off; gamepad select/share = next. volume is linear. synth: lofi, punk or hyphy = generated in the browser (no stream); songs = made-up titles shown as each generated song starts. dj: its station ID (id) is said just after tuning in, then one of lines every every songs, in turn; the music ducks to duck of its level while the DJ talks (lines in data/voices.json). A station may instead give url (a stream played from the station's own server) and home (its page, shown when you tune in). The release ships only the generated stations: a live stream needs the station's written permission for third-party players (docs/roadmap.md, Radio). pollSeconds is kept for streams.",
+  "volume": 0.55,
+  "pollSeconds": 25,
+  "startOn": false,
+  "stations": [
+    {
+      "id": "soma-skate-fm",
+      "name": "SoMa Skate FM",
+      "where": "under the Central Freeway",
+      "about": "lo-fi beats generated live, works offline",
+      "synth": "lofi",
+      "songs": [
+        "fog study no. 3",
+        "sourdough starter",
+        "4am under the freeway",
+        "j church nap",
+        "rain on valencia",
+        "karl, again",
+        "slow muni",
+        "oat milk overtime",
+        "laundromat sunday",
+        "quiet bart ride"
+      ],
+      "dj": {
+        "id": "dj-lofi-id",
+        "lines": [
+          "dj-lofi-1",
+          "dj-lofi-2",
+          "dj-lofi-3"
+        ],
+        "every": 3,
+        "duck": 0.35
+      }
+    },
+    {
+      "id": "fog-city-punk",
+      "name": "Fog City Punk",
+      "where": "a garage in the Outer Sunset",
+      "about": "skate punk generated live, works offline",
+      "synth": "punk",
+      "songs": [
+        "Rent Is Due (Again)",
+        "Muni Never Came",
+        "Karl Ate My Summer",
+        "Series A, Series B, Series Dead",
+        "Burrito Coma",
+        "Parking Ticket Blues",
+        "Two Hour Brunch Line",
+        "Driverless, Clueless",
+        "Fog Machine (Is Just The Weather)",
+        "Stuck Behind The 22",
+        "Microdosing At The DMV",
+        "Ollie Over The Tech Shuttle",
+        "My Landlord Is A Hedge Fund",
+        "Dolores Park Sunburn",
+        "Pivot To Punk"
+      ],
+      "dj": {
+        "id": "dj-punk-id",
+        "lines": [
+          "dj-punk-1",
+          "dj-punk-2",
+          "dj-punk-3"
+        ],
+        "every": 3,
+        "duck": 0.35
+      }
+    },
+    {
+      "id": "ksoma-hyphy",
+      "name": "KSOMA Hyphy Hour",
+      "where": "across the Bay",
+      "about": "hyphy and Bay Area beats generated live, works offline",
+      "synth": "hyphy",
+      "songs": [
+        "Ghost Ride the Robotaxi",
+        "Hyphy on the 22",
+        "Scraper Bike to the Ferry",
+        "Go Dumb in the Fog",
+        "Sideshow on Valencia",
+        "Yadadamean (Remastered for Muni)",
+        "Hella Rent",
+        "Bart Doors Closing",
+        "Gas Station Burrito Freestyle",
+        "Oakland Said Hi"
+      ],
+      "dj": {
+        "id": "dj-hyphy-id",
+        "lines": [
+          "dj-hyphy-1",
+          "dj-hyphy-2",
+          "dj-hyphy-3"
+        ],
+        "every": 3,
+        "duck": 0.35
+      }
+    }
+  ]
+}

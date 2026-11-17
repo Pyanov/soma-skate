@@ -1,0 +1,9 @@
+# Roll up the small quarterpipe at 4.5 m/s (below its lip) and back down, holding
+# crouch (ollie key): pumping the way down gives more speed than lab-pump-plain.
+park lab
+spawn lab_qp_small
+cmd 6 speed 4.5
+hold ollie 0..500
+run 500
+expect no event air
+expect max skater.speed > 4.8 over 250..500

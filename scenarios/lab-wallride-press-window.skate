@@ -1,0 +1,12 @@
+# Beside the lab wall (lab-wallride), the grind pressed 9 ticks before the first air tick (101), on
+# the ground during the crouch: inside combo.wallPressTicks (10), so the wall takes it at once.
+# lab-wallride-early-press: 10 ticks is too early for a wall.
+park lab
+cmd 0 teleport -27.3 -9 0.14 0
+hold up 6..90
+hold ollie 80..100
+tap grind 92
+run 400
+expect event wallrideStart within 102..102
+expect event comboLanded{name=Wallride} within 140..320
+expect no event bail

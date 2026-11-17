@@ -1,0 +1,9 @@
+# Missions: a deliver step with noBail: a bail (landing sideways, as lab-sideways-bail) spills it.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start chowder 1
+cmd 10 teleport 9 934 -7.8 90
+cmd 11 set skater.vel.y 5
+run 200
+expect event bail within 11..90
+expect event missionFailed{mission=chowder,step=1,reason=bail} within 11..90

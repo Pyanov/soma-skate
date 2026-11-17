@@ -1,0 +1,22 @@
+# City sweep (skate cityfuzz): A parked car stands 0.25 m off the curb, a skater-wide slot (the skater is 0.24 m): stepped off the sidewalk into it, the skater jams between car and curb and none of a player's ways out (pivot and push, brake, ollie, walk) frees it.
+# Finding: trapped at 180.86 177.46 -1.87 (touching city_car_0_0, city_road_0_0, city_curb_0_0, city_sidewalk_0_0), tick 945. Run it with `./skate run scenarios/city-sweep/car-curb-trapped.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 180 180 -1.66 74
+hold down+right+grind 0..86
+hold up+right+grab 86..157
+hold up+right+revert+walk 157..213
+hold up+right 213..268
+hold up+right 268..346
+hold left+ollie+grind 346..399
+hold up 399..465
+hold up+walk 465..581
+hold up 581..663
+hold slide 663..706
+hold left 706..750
+hold up 750..792
+hold up+flip+grind 792..858
+hold up 858..927
+hold up+ollie 927..945
+run 947

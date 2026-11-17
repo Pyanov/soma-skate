@@ -1,0 +1,24 @@
+# The Dolores Hill Bomb (world sf): from the top of Dolores St at 20th, push a little, then tuck
+# (hold K) and let the hill take it down toward 19th and 18th. It must pick up real speed and
+# stay on the street: no bail, never below the street, never out of the northbound lanes.
+# Physics: docs/mechanics/board.md, hill.md. Since city phase 3 the elevation data sits where
+# it belongs (the first download was stretched north-south): Dolores from 20th falls about 11% for a
+# block, and a tuck reaches about 14 m/s before 19th. Two short powerslides (Shift) scrub it, and a
+# lean right after the first keeps the board off the cars parked along the median.
+park sf
+spawn dolores_bomb
+cmd 0 traffic clear   # the street and the physics; traffic has its own sf-car-* scenarios
+hold up 20..200
+hold ollie 200..1800
+hold slide 1220..1290
+hold slide 1560..1630
+hold right 1295..1370
+run 1800
+expect no event bail
+expect event powerslide{on=true} count == 2
+expect max skater.speed > 13.5
+expect max skater.speed < 18
+expect skater.pos.y > -250 at end
+expect min skater.pos.z > 8
+expect min skater.pos.x > -225
+expect max skater.pos.x < -185

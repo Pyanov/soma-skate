@@ -1,0 +1,16 @@
+# Skitching balances like a grind, left/right. Hands off the keys, the lean grows (the world RNG
+# pushes it, longer is harder) and after about 3.3 s you lose it: a bail, the combo lost.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..900
+run 900
+expect event skitchStart within 72..75
+expect event bail{reason=lost balance skitching} within 440..490
+expect no event comboLanded

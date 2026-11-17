@@ -1,0 +1,64 @@
+# The ledge-hop farm, popped (phase 25, the second way in after sf-ledge-hop-farm): on EMB's first row
+# ledge, a 50-50 that stalls mid-ledge, a late ollie, a kickflip, and the ledge caught again a little
+# faster than grind.stallSpeed; ollie released at once, the pop came off that void grind, a flip, caught
+# again: on the spot, 18,460 x13 open after 6 s. A release before grind.voidTicks now pops only once
+# they have passed (grind.ts popLate), and a void grind gives no late ollie: here the grind stalls
+# first, so no pop. (On city phase 11's export the skater catches the ledge once more, void again, and
+# lands the kickflip on it: the combo banks at 1,485 instead of falling apart mid-Heelflip. Since the
+# feel pass's park carve the 50-50 stalls at 84, off the ledge, and banks at 746 before the ollie; the
+# kickflip catches the ledge at 178, void, and the run falls apart mid-Heelflip again: still no farm.)
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 614.25 695.62 -9.3 145.5
+cmd 3 set skater.vel.x 3.5791
+cmd 3 set skater.vel.y -5.2077
+hold ollie 11..29
+hold ollie 40..97
+hold ollie 179..181
+tap ollie 231
+tap ollie 286
+tap ollie 343
+tap ollie 396
+tap ollie 451
+tap ollie 506
+tap ollie 563
+tap ollie 616
+tap ollie 671
+hold right 40..47
+hold left 77..84
+tap left 99
+hold left 179..181
+tap grind 31
+tap grind 36
+tap grind 102..720 every 6
+tap flip 99
+tap left 99
+tap flip 183
+tap right 183
+tap flip 234
+tap down 234
+tap flip 289
+tap up 289
+tap flip 346
+tap left 346
+tap flip 399
+tap right 399
+tap flip 454
+tap down 454
+tap flip 509
+tap up 509
+tap flip 566
+tap left 566
+tap flip 619
+tap right 619
+tap flip 674
+tap down 674
+run 720
+expect event grindEnd{reason=stall,points=173} within 84..84
+expect event gap{id=emb_ledge} within 84..84
+expect event grindStart{line=ledge_615_695_b} within 178..178
+expect event grindEnd{reason=void} within 183..183
+expect no event pop within 178..191
+expect event comboLanded{name=BS 50-50 + EMB LEDGE,points=746} within 98..98
+expect event comboLanded count == 1
+expect event grindStart count == 3

@@ -1,0 +1,10 @@
+# City goal "Burrito Completionist" (kind collect): all 12 in the data, 1 here: the Market St run
+# rolls through the burrito at the top.
+park sf
+spawn market_st
+cmd 0 traffic clear
+cmd 0 setData goals.goals.13.burritos 1
+hold up 10..200
+run 400
+expect event burrito within 230..245
+expect event goalComplete{id=burritos,area=City} within 230..245

@@ -1,0 +1,13 @@
+# UN Plaza (city phase 9): its granite ledges and benches run down both sides of the plaza, and every
+# top edge grinds. Rolling east along the north row at 4 m/s just beside the first ledge, an ollie
+# and grind pressed in the air: a 50-50 on its south edge.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 262.3 407.0 0.4 80.3
+cmd 2 set skater.vel.x 3.944
+cmd 2 set skater.vel.y 0.672
+hold ollie 4..14
+tap grind 22
+run 160
+expect event grindStart{trick=BS 50-50,line=ledge_262_408_b} within 29..33
+expect no event bail

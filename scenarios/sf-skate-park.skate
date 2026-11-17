@@ -1,0 +1,16 @@
+# Game of S.K.A.T.E. in the park inside sf (the same spot as in soma), against Tash (the Mission).
+# She bails her first set; the bot sets an Ollie and she matches it; her BS 180 Heelflip lands
+# sketchy, so it is your set again: a Kickflip.
+park sf
+cmd 0 run skate tash
+bot skate
+run 3000
+expect event skateStart{local=tash,name=Tash,hood=the Mission} within 1..1
+expect event skateSetMiss{by=local,reason=bail} within 585..593
+expect event skateSet{by=player,trick=ollie} within 1154..1162
+expect event skateMatch{by=local,ok=true,trick=ollie} within 1743..1751
+expect event skateSetMiss{by=local,reason=sketchy,got=bs180+heelflip} within 2332..2340
+expect event skateSet{by=player,trick=kickflip} within 2912..2920
+expect no event skateLetter
+expect session.skateTurn == local at end
+expect session.skateRole == match at end

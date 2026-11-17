@@ -1,0 +1,23 @@
+# City sweep (skate cityfuzz): The same in the Lower Haight: a building notch and a lot.
+# Finding: invariant at -835.35 309.36 44.47 (inside geometry (0.036 m deep, triangle 776836)), tick 1180. Run it with `./skate run scenarios/city-sweep/building-sliver-3.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -840 300 43.24 279
+hold right 0..44
+hold up+walk 44..111
+hold right 185..216
+hold up+grab+walk 216..334
+hold up 334..363
+hold down 363..395
+hold up+right 395..505
+hold walk 505..570
+hold down 570..624
+hold up+flip+grind+revert 624..739
+hold up+slide 739..779
+hold up+right+grab 779..880
+hold ollie+walk 880..926
+hold left 926..987
+hold up+left 987..1086
+hold up 1086..1180
+run 1182

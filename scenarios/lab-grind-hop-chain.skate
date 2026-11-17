@@ -1,0 +1,47 @@
+# Ollie-regrind chains along one curb. Down the lab hill's curb at 5 m/s, a tiny ollie after 14
+# ticks of each grind and I tapped every 2 ticks: the curb is caught again only on the way down
+# (grind.regrabAbove: lines no higher than the one left, only once falling), 42 ticks later; it used
+# to be the next tick, seven grinds a second. And each grind already in the combo makes the next
+# one's balance start further over (grind.comboTilt) and tip faster (grind.comboRamp): with the
+# balance bot's perfect presses the 28th grind falls and the combo of 27 is lost.
+park lab
+cmd 0 teleport 76 102 19.32 180
+cmd 1 set skater.vel.y -5
+bot balance
+tap grind 2..1760 every 2
+hold ollie 17..19
+hold ollie 76..78
+hold ollie 135..137
+hold ollie 194..196
+hold ollie 253..255
+hold ollie 312..314
+hold ollie 371..373
+hold ollie 430..432
+hold ollie 489..491
+hold ollie 548..550
+hold ollie 607..609
+hold ollie 666..668
+hold ollie 725..727
+hold ollie 784..786
+hold ollie 843..845
+hold ollie 902..904
+hold ollie 961..963
+hold ollie 1020..1022
+hold ollie 1079..1081
+hold ollie 1138..1140
+hold ollie 1197..1199
+hold ollie 1256..1258
+hold ollie 1315..1317
+hold ollie 1374..1376
+hold ollie 1433..1435
+hold ollie 1492..1494
+hold ollie 1551..1553
+hold ollie 1610..1612
+hold ollie 1669..1671
+run 1800
+expect event grindEnd{reason=ollie} within 19..21
+expect event grindStart within 61..63
+expect event grindStart count == 28
+expect event grindEnd{reason=balance} within 1609..1613
+expect event bail{reason=lost balance on the BS 50-50} within 1609..1613
+expect no event comboLanded

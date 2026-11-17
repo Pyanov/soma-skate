@@ -1,0 +1,10 @@
+# Step off (E), run with the board, then drop it (E) and ride off: the board falls from the carry while the rider hops on.
+park soma
+spawn big3
+hold up 0..40
+tap walk 60
+hold up 70..300
+tap walk 230
+run 320
+expect event boardDrop within 230..232
+expect state ground at 250

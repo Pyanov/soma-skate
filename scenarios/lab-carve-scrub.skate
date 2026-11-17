@@ -1,0 +1,13 @@
+# Full lean at 12 m/s asks for more than the wheels can hold (12^2 / (1 + 144/9) = 8.5 m/s^2 against
+# grip 0.85 g): the board breaks loose, drifts up to carveSlipMaxDeg off the travel direction and
+# the sliding wheels scrub speed. A hard carve at speed is a brake, not an instant turn.
+park lab
+cmd 0 teleport 0 -12 0.13 90
+cmd 6 speed 12
+hold left 10..130
+run 130
+expect max skater.slip > 1.2 over 60..130
+expect skater.speed < 11.4 at 130
+expect skater.speed > 10.5 at 130
+expect skater.heading > 50 at 130
+expect no event bail

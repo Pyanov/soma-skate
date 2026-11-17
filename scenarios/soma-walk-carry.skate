@@ -1,0 +1,9 @@
+# Off the board on the real park: push, step off (E) at a walk, run with the board toward Big 3, step back on.
+park soma
+spawn big3
+hold up 0..40
+tap walk 60
+hold up 70..300
+run 320
+expect event stepOff within 60..62
+expect state walk at 250

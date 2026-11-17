@@ -1,0 +1,14 @@
+# City sweep (skate cityfuzz): Upper Market below Grand View: a steep lot (53 degrees) reaches up to 0.9 m over the sidewalk at its foot; the skater rolls under its edge (the lot is above its centre).
+# Finding: underground at -1909.04 -1421.96 106.11 (city_lot_-2000_-1600 0.57 m above), tick 623. Run it with `./skate run scenarios/city-sweep/twin-peaks-lot.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1900 -1440 120.56 12
+hold up 0..43
+hold up+left+grab 43..162
+hold down+right 162..230
+hold up 230..308
+hold ollie+revert 308..425
+hold up 552..585
+hold up 585..623
+run 625

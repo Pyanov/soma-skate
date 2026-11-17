@@ -1,0 +1,16 @@
+# Repeats count by trick id: kickflip and heelflip in turn, three of each in one vert air, are each
+# 100, 75, 50: 450, x6 = 2,700 (six kickflips are 1,620: lab-repeat-curve).
+park lab
+spawn lab_vert
+cmd 6 speed 15.5
+tap flip+left 132
+tap flip+right 179
+tap flip+left 226
+tap flip+right 273
+tap flip+left 320
+tap flip+right 367
+run 600
+expect event trickEnd{trick=Kickflip} count == 3
+expect event trickEnd{trick=Heelflip} count == 3
+expect event comboLanded{name=Kickflip + Heelflip + Kickflip + Heelflip + Kickflip + Heelflip,points=2700,multiplier=6} within 436..440
+expect no event bail

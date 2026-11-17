@@ -1,0 +1,37 @@
+# Two-player Graffiti with gaps (here 10 s): a gap in a combo is tagged for its player when the
+# combo banks. Both go off Big 3 together: player 2 kickflips it (Kickflip + BIG 3 GAP, 700) and
+# tags it; player 1's plain BIG 3 GAP (250) banks a tick later and steals nothing. Player 2 rides the
+# wave line (rider-line autopilot) to WAVE AIR: tagged. Player 1 goes off Big 3 again with a
+# Kickflip FS 180 (1230), bigger than 700: it steals the gap back. 1 each: a draw (winner 0).
+park soma
+spawn big3
+cmd 0 player2 join big3
+cmd 0 setData run.twoPlayer.graffiti.seconds 10
+cmd 0 run graffiti2p
+hold up 0..100
+hold ollie 166..196
+p2 hold up 0..100
+p2 hold ollie 166..196
+p2 tap flip+left 202
+cmd 450 teleport big3
+hold up 450..550
+hold ollie 616..646
+tap flip+left 652
+hold spinL 660..700
+cmd 450 player2 teleport wave_west_to_east
+p2 bot line wave_west_to_east 456
+p2 hold ollie 584..604
+run 1300
+expect event gap{id=big3,player=1} within 327..327
+expect event gap{id=big3,player=2} within 327..327
+expect event tagged{player=2,obstacle=gap:big3,points=700,from=0} within 338..338
+expect event comboLanded{name=BIG 3 GAP,points=250,player=1} within 339..339
+expect event teleport{spot=wave_west_to_east,player=2} within 451..451
+expect event tagged{player=2,obstacle=gap:wave,points=150,from=0} within 746..746
+expect event comboLanded{name=Kickflip + FS 180 + BIG 3 GAP,points=1230,player=1} within 788..788
+expect event tagged{player=1,obstacle=gap:big3,points=1230,from=2} within 788..788
+expect event tagged count == 3
+expect event graffitiOver{winner=0} within 1200..1200
+expect session.owned == 1 at end
+expect session2.owned == 1 at end
+expect no event bail

@@ -1,0 +1,77 @@
+# Tour level The Castro (data/tour.json), a 2-minute run from Harvey Milk Plaza: its three goals, the
+# tape and S-K-A-T-E, each set up with a teleport (the riding between spots is left out).
+# - Ollie the whole Muni stairs from the plaza: HARVEY MILK SET (the tape hung over these stairs until
+#   phase 28; now it does not come with this ollie).
+# - A full ollie onto the middle stairs rail and a 50-50 to the bottom: 16 m, All the Way Down
+#   (the goal counts 15 m in one grind, while it is still going).
+# - Pushing down Castro from Market: 34 km/h past 18th's approach, Bomb Castro St (A, T, E on the way).
+# - Castro and 18th: kickflip, manual, heelflip on the rainbow crossing: 1,179, Rainbow Combo.
+# - Letters S on the plaza and K down Market; rolling on down Market it leaves the level's area:
+#   the wrong-way hint, and the run carries on.
+# - Back on the middle stairs rail, ollie held through the 50-50 and popped 0.16 s before its end:
+#   the tape, in the air past the bottom of the rail (phase 28: a find). The extra combo takes the run
+#   past Pro.
+park sf
+cmd 0 traffic clear
+cmd 0 run level castro
+cmd 10 teleport -591.0 -29.7 19.27 238.3
+cmd 12 set skater.vel.x -5.1049
+cmd 12 set skater.vel.y -3.1528
+hold ollie 116..136
+cmd 700 teleport -590.525 -30.458 19.500 -121.69
+cmd 702 set skater.vel.x -4.2543
+cmd 702 set skater.vel.y -2.6270
+hold ollie 767..797
+tap grind 804
+tap grind 810
+tap grind 816
+tap grind 822
+tap grind 828
+tap grind 834
+tap grind 840
+tap grind 846
+tap grind 852
+cmd 1500 teleport -572 -55 16.9 176.5
+hold up 1510..3900
+cmd 4200 teleport -562.5 -260 10.7 355.6
+cmd 4230 set skater.vel.x -0.31
+cmd 4230 set skater.vel.y 4.5
+hold ollie 4240..4260
+tap flip+left 4266
+tap up 4358
+tap down 4363
+hold ollie 4458..4478
+tap flip+right 4484
+cmd 5000 teleport -589 -34.5 18.8 122
+hold up 5010..5190
+cmd 5400 teleport -578 -7 18.6 30.5
+hold up 5410..5600
+cmd 8000 teleport -590.525 -30.458 19.500 -121.69
+cmd 8002 set skater.vel.x -4.2543
+cmd 8002 set skater.vel.y -2.6270
+hold ollie 8067..8097
+tap grind 8104..8152 every 6
+hold ollie 8300..8394
+bot balance
+run 14700
+expect event levelStart{level=castro,seconds=120} within 0..2
+expect no event tapeFound within 0..7999
+expect event tapeFound{level=castro} within 8426..8430
+expect event gap{id=harvey_set} within 296..300
+expect event levelGoal{level=castro,id=munirail,name=All the Way Down} within 1097..1101
+expect event grindEnd{trick=FS 50-50,reason=end} within 1112..1116
+expect event letter{letter=A,have=__A__} within 1930..1934
+expect event levelGoal{level=castro,id=castrobomb,name=Bomb Castro St} within 2343..2347
+expect event letter{letter=T,have=__AT_} within 2508..2512
+expect event letter{letter=E,have=__ATE} within 3250..3254
+expect event comboLanded{name=Kickflip + Manual + Heelflip,points=1179} within 4591..4595
+expect event levelGoal{level=castro,id=rainbow,name=Rainbow Combo} within 4591..4595
+expect event letter{letter=S,have=S_ATE} within 5150..5154
+expect event letter{letter=K,have=SKATE} within 5600..5604
+expect event levelGoal{level=castro,id=skate} within 5600..5604
+expect event levelWrongWay{level=castro} within 7386..7390
+expect event gap{id=muni_rail} count == 2
+expect event levelGoal{level=castro,id=pro,name=Pro Score} within 8552..8556
+expect event levelOver{level=castro,score=6459,tape=true} within 14399..14402
+expect session.levelGoals.length == 6 at end
+expect no event bail

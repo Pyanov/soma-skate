@@ -1,0 +1,9 @@
+# City goal "Faster Than the F" (kind speed in a box): down Market St from the spot, push and tuck:
+# 44 km/h by the bottom, past 40 on the way.
+park sf
+spawn market_st
+cmd 0 traffic clear
+hold up 10..200
+hold ollie 200..1800
+run 1800
+expect event goalComplete{id=market40,area=Market} within 1000..1500

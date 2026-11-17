@@ -1,0 +1,20 @@
+# The park's NPC skaters link combos (npc spawn: a gnar, two tech, a cruiser here). A trick that
+# opens a combo gets the style's links: landing with it open they manual, pop out of the manual into
+# a flip, a grab or a grind, and flip out of grinds. Each landed combo is an npcCombo {id, points,
+# name, multiplier} for the floating numbers. Two minutes of the park: slide-into-flip, flip-into-manual,
+# lip-into-flip, grind-into-flip and wallride-into-manual twos, and still some single tricks. (Re-pinned for
+# the feel pass: its park carve, then the NPCs' corners on the park carve's numbers (game/follow.ts
+# cornerSpeed), sent them on other courses: before, a four-link wallride line, then three-link lines.)
+park soma
+cmd 0 npc spawn
+run 14400
+expect event npcCombo{id=4,name=BS Boardslide + Fakie Impossible,multiplier=2} within 661..661
+expect event npcCombo{id=6,name=Pop Shove-It + Nose Manual,multiplier=2} within 1311..1311
+expect event npcCombo{id=4,name=FS Lipslide + Impossible,multiplier=2} within 2840..2840
+expect event npcCombo{id=6,name=BS 50-50 + Kickflip,multiplier=2} within 4614..4614
+expect event npcCombo{id=6,name=Wallride + Nose Manual,multiplier=2} within 2486..2486
+expect event npcCombo{id=3,name=Kickflip,multiplier=1} within 310..314
+expect event npcCombo count >= 30
+expect event npcCombo{multiplier=2} count >= 10
+expect no event bail
+expect no event comboLanded

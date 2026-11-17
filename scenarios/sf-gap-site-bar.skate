@@ -1,0 +1,23 @@
+# SITE FLAT BAR (city phase 13's building sites): at the site off Octavia, an ollie onto the low flat bar and
+# a grind along it. The sites in SoMa and North Beach have their own (site_bar_soma, site_bar_north_beach).
+# (A 50-50 that stalled at 322 before the feel pass's park carve: its grip holds the cross-slope line
+# more, the bar is met wider and it is a boardslide to the bar's end.) In the squeezed city the site
+# follows its lot, and the bar stands 0.3 m higher (0.32 m over the lot, 0.17 m in today's city); from
+# today's start the board rides up the corner of the kicker by the bar's east end and turns along the
+# bar, 1.7 m short of it, so the start is 1.6 m west and 1.15 m south, at 54 degrees to the bar.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 233.01 205.11 -1.57 332.0
+cmd 3 set skater.vel.x -1.878
+cmd 3 set skater.vel.y 3.532
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=FS Boardslide,line=rail_229_209} within 119..123
+expect event grindEnd{reason=end} within 223..227
+expect event gap{id=site_bar_octavia,gap=SITE FLAT BAR,points=250} within 223..227
+expect event land{quality=clean} within 272..276
+expect event comboLanded{name=FS Boardslide + SITE FLAT BAR} within 283..287
+expect no event bail
+expect event goalComplete{id=hardhat,name=Hard Hat Area} within 223..227

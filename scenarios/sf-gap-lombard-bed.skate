@@ -1,0 +1,17 @@
+# LOMBARD FLOWER BED: down the crooked block's brick lane, an ollie over the lane's curb onto the low brick
+# wall round a flower bed (0.6 m above the lane) and a 50-50 round the bed until it stalls on the climb back.
+# The grind taps start late: tapped at the pop, the lane's curb catches first and the wall beside it blocks it.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -247.99 698.37 20.25 34.5
+cmd 3 set skater.vel.x 2.835
+cmd 3 set skater.vel.y 4.119
+hold ollie 30..62
+tap grind 74..110 every 4
+bot balance
+run 900
+expect event grindStart{trick=FS 50-50,line=ledge_-248_698} within 73..77
+expect event grindEnd{reason=stall} within 770..774
+expect event gap{id=lombard_bed,gap=LOMBARD FLOWER BED,points=300} within 770..774
+expect no event bail
+expect event goalComplete{id=lombardbed} within 770..774

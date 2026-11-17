@@ -1,0 +1,12 @@
+# Coast 5 s on the flat from 9 m/s. Rolling resistance (0.010 x g = 0.1 m/s^2) plus air drag
+# (0.5 x 1.2 x 0.45 m^2 / 80 kg x v^2 = 0.27 m/s^2 at 9 m/s) take it to about 7.4 m/s; tucked
+# (lab-tuck-drag) it keeps more.
+park lab
+cmd 0 teleport -25 -12 0.13 90
+cmd 6 speed 9
+run 606
+expect skater.speed < 8.7 at 126
+expect skater.speed > 8.55 at 126
+expect skater.speed < 7.5 at 606
+expect skater.speed > 7.25 at 606
+expect no event air

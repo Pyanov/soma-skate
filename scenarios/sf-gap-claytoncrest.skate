@@ -1,0 +1,16 @@
+# CLAYTON CREST AIR (data/gaps.json): an air of 45+ ticks taken and landed on the crest at Market
+# and Clayton, where Upper Market steepens from 3% to 8%. An ollie off it at 11 m/s flies 0.86 s (the
+# street falls away under you); the gap banks alone, and the Clayton Crest goal completes.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -1325 -501.6 86.75 301.9
+cmd 10 set skater.vel.x -9.34
+cmd 10 set skater.vel.y 5.81
+hold ollie 10..40
+run 300
+expect event pop within 40..42
+expect event gap{id=claytoncrest,points=400} within 140..150
+expect event goalComplete{id=claytoncrest,area=Twin Peaks} within 140..150
+expect event comboLanded{name=CLAYTON CREST AIR,points=400} within 150..165
+expect no event bail

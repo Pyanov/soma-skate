@@ -1,0 +1,26 @@
+# A Tour level's score tiers are goals too (pro, sick). Lowered here to 1,000 and 2,400 so the Big 3
+# combo (Kickflip + BIG 3 GAP + Manual + Heelflip, 2,464) reaches both when it lands, with the
+# level's own Big 3 Combo goal on the same tick; the clock cut to 10 s, levelOver lists all three.
+park soma
+cmd 0 setData tour.levels.0.tiers.pro 1000
+cmd 0 setData tour.levels.0.tiers.sick 2400
+cmd 0 setData tour.seconds 10
+cmd 0 run level soma
+cmd 5 teleport big3
+hold up 5..105
+hold ollie 171..201
+tap flip+left 207
+tap up 325
+tap down 330
+hold ollie 405..425
+tap flip+right 431
+bot balance
+run 1300
+expect event comboLanded{name=Kickflip + BIG 3 GAP + Manual + Heelflip,points=2464} within 530..534
+expect event levelGoal{level=soma,id=pro,name=Pro Score} within 530..534
+expect event levelGoal{level=soma,id=sick,name=Sick Score} within 530..534
+expect event levelGoal{level=soma,id=big3combo,name=Big 3 Combo} within 530..534
+expect event levelGoal count == 3
+expect event levelOver{level=soma,score=2464,tape=false} within 1199..1210
+expect session.levelGoals.length == 3 at end
+expect no event bail

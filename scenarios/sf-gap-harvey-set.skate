@@ -1,0 +1,15 @@
+# HARVEY MILK SET: Harvey Milk Plaza at Castro and Market, the stairs down to the Muni (44 steps of
+# 15.5 cm). At 6 m/s with a two-thirds crouch, a pop at the top: 1.34 s in the air, down clean 17
+# steps lower (12 or more count). Then the rest of the stairs.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -591.0 -29.7 19.27 238.3
+cmd 2 set skater.vel.x -5.1049
+cmd 2 set skater.vel.y -3.1528
+hold ollie 106..126
+run 420
+expect event pop within 125..129
+expect event land{quality=clean,airTicks=163} within 288..292
+expect event gap{id=harvey_set,gap=HARVEY MILK SET,points=800} within 286..290
+expect skater.pos.z < 17.4 at 288
+expect no event bail

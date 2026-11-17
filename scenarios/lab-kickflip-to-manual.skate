@@ -1,0 +1,16 @@
+# Kickflip, press Up then Down just before landing: lands into a manual, ollie out, land:
+# one combo "Kickflip + Manual" (x2).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+tap up 198
+tap down 203
+hold ollie 300..320
+bot balance
+run 520
+expect event manualStart{trick=Manual} within 205..210
+expect event manualEnd{trick=Manual,reason=ollie} within 318..323
+expect event comboLanded{name=Kickflip + Manual,multiplier=2} within 400..480
+expect no event bail

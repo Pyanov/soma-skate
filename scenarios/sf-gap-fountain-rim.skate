@@ -1,0 +1,16 @@
+# FOUNTAIN RIM (Tour level 6): UN Plaza's sunken fountain has a granite rim round three sides (the
+# fourth is the steps down). From the plaza on the Market side, an ollie onto the rim and a 50-50 along
+# it toward Market; popped off: BS 50-50 + FOUNTAIN RIM, 1,936.
+park sf
+cmd 0 traffic clear
+cmd 2 teleport 405.85 427.13 -2.02 27.4
+cmd 4 set skater.vel.x 2.2641
+cmd 4 set skater.vel.y 4.3680
+hold ollie 28..43
+tap grind 45..85 every 6
+bot balance
+hold ollie 330..360
+run 900
+expect event grindStart{line=ledge_401_427_b} within 79..81
+expect event gap{id=fountain_rim,gap=FOUNTAIN RIM,points=400} within 360..362
+expect no event bail

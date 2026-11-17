@@ -1,0 +1,19 @@
+# THROUGH THE DRAGON GATE: up Grant Ave from Bush at 6 m/s, an ollie through the gate's middle opening
+# (over the road, between its two middle pillars), taken off south of the pillars and landed north of them.
+# Then a teleport up Grant: the landing after it is not an air from the gate (it paid the gate again
+# before physics phase 31: a teleport left the last takeoff where it was).
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 265.8 658 -1.0 353.7
+cmd 3 set skater.vel.x -0.66
+cmd 3 set skater.vel.y 5.96
+hold ollie 117..147
+cmd 400 teleport 248.5 763.6 7.95 350
+run 500
+expect event pop within 146..150
+expect event gap{id=dragon_gate,gap=THROUGH THE DRAGON GATE,points=500} within 258..264
+expect event land{quality=clean} within 258..264
+expect event gap{id=dragon_gate} count == 1
+expect no event bail
+expect no event wallplant
+expect event goalComplete{id=dragongate} within 258..264

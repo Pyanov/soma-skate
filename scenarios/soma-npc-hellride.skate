@@ -1,0 +1,22 @@
+# Gnar NPC skaters go up and out of the Hellride: the send on the south rear runway starts on the
+# deck by the fence (keep 0: off the line) and runs straight down the bank head-on at the Otis
+# quarter (heading about 61) at 9 m/s, and goes vert (npcSend kind wall) with a grab or a flip, back
+# down the quarter. The one waiting its turn stands beside the start and rides to it first. Two
+# gnar ones take turns; nearly every send lands (a gnar thing that can still go wrong). Phase 27: the
+# coping no longer takes the air's speed, so a send is a real vert air now and lands about 1.7 s after
+# leaving the wall, not half a second (the NPCs' turns move with it).
+park soma
+cmd 0 setData npc.parks.soma.lines ["north_wall_to_hellride","south_rear_runway_to_hellride"]
+cmd 0 setData npc.styles.tech.share 0
+cmd 0 setData npc.styles.cruiser.share 0
+cmd 0 setData npc.styles.gnar.send 1
+cmd 0 npc spawn 2
+run 7200
+expect event npcSend{id=3,kind=wall,line=south_rear_runway_to_hellride} within 316..320
+expect event npcCombo{id=3,name=Indy} within 521..521
+expect event npcSend{id=4,kind=wall,line=south_rear_runway_to_hellride} within 828..828
+expect event npcCombo{id=4,name=Pop Shove-It} within 1031..1031
+expect event npcSend{kind=wall} count >= 12
+expect event npcCombo count >= 12
+expect no event npcSend{kind=gap}
+expect max npcs.crowded <= 0

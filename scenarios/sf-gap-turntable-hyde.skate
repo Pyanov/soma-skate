@@ -1,0 +1,13 @@
+# TURNTABLE RIM at Hyde & Beach. The squeeze re-homed the turntable to the Wharf's west end, on Jefferson St,
+# with its cable car standing on it and cars parked beside it: rolling west along Jefferson just north of the
+# cable car's end, an ollie across the disc's north edge, taken off and landed outside it.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport -92 922.45 -9.0 270
+cmd 3 set skater.vel.x -6
+cmd 3 set skater.vel.y 0
+hold ollie 304..334
+run 500
+expect event gap{id=turntable_hyde,gap=TURNTABLE RIM,points=400} within 448..452
+expect no event gap{id=turntable_powell}
+expect no event bail

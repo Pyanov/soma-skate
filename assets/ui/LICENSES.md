@@ -1,0 +1,9 @@
+# UI art and fonts
+
+The full list of sources and licences is CREDITS.md at the repo root.
+
+- **Portraits** (`assets/ui/portrait/*.jpg`): rendered from the game's own 3D models by `tools/portraits.ts` (src/client/portrait.ts), 2026-11-09. Ours; re-run the tool when a model changes.
+- **Photographs** (`assets/ui/photo/*.jpg`: park, night, crew, hill, board and their second takes): rendered from the game itself by `./skate photos` (tools/photos.ts, src/client/photo.ts, staged in data/photos.json), 2026-11-16: the game's characters at the game's places, a flash and a 2D darkroom pass. Ours; no image model, no real people.
+- **Stickers and logo** (`assets/ui/*.png`): generated for this project with OpenAI gpt-image-2 on 2026-10-16 (the sea lion on 2026-10-17, the cast portraits on 2026-10-18: `cast-*.png` drawn from the characters' 3D models, the rest the story's) by `tools/gen_ui.py` (the prompts there are the source of truth), background keyed out by `tools/key_ui.py`. Originals at full size in `assets/ui/src/` (local only, not in git since 2026-10-18: regenerate with gen_ui.py if needed). Regenerate: `python3 tools/gen_ui.py <name> && python3 tools/key_ui.py <name>`. Retired by the art direction on 2026-11-09: the 74 stickers the UI showed are deleted (portraits and type replace them); `burrito.png` stays (the burritos in the world, src/client/render.ts) and `logo.png` stays (the app icons, tools/icons.py).
+- **Inter** Regular and Medium (`assets/fonts/Inter-*.woff2`, Latin): SIL Open Font License 1.1 (`Inter-OFL.txt`), from the Fontsource 5.3.0 package. The UI's text face.
+- **Archivo** (`assets/fonts/Archivo-Variable.woff2`, Latin, width and weight axes) and **IBM Plex Mono** Medium (`assets/fonts/IBMPlexMono-Medium.woff2`, Latin): SIL Open Font License 1.1 (`Archivo-OFL.txt`, `IBMPlexMono-OFL.txt`), from the Fontsource 5.3.0 packages.

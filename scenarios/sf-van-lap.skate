@@ -1,0 +1,23 @@
+# A lap of SoMa West's block in the crew van (game/vehicles.ts, docs/mechanics/driving.md). The van is
+# parked by the park gate on Duboce; E beside it gets in. The driving autopilot (bot drive) keeps to
+# the right-hand lane: west on Duboce, north up the narrow street west of the park, east along the top,
+# south down the one-way avenue, west home again, about 640 m at up to 13 m/s, slowing to 7 for the
+# corners, and stops near where it started. No bump on the way: the wheels follow the streets' ground
+# (up 2.4 m to the top and down 4 m to the avenue) and the body clears the parked cars and the poles.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 57.5 -17.8 -1.1 270
+tap use 30
+bot drive 57.5,-15.6 46,-10 30,-6 12,-8 0,-9 -7,-4 -8,9 -9,22 -9,34 -10,46 -11,58 -12,70 -13,82 -14,94 -15,106 -16,118 -17,130 -18,142 -19,154 -19,166 -18,178 -12,180 0,181 13,182 25,183 37,184 60,185 74,183 86,184 96,189 104,182 108,164 109,150 110,132 112,111 114,87 115,74 116,60 117,48 118,31 118,19 112,10 104,10 92,9 80,7 68,5 60,0 54,-8 lane 1.8 speed 13 corner 7 stop
+run 7500
+expect event vehicleEnter{name=crew_van} within 30..32
+expect no event vanBump
+expect no event vehicleExitBlocked
+expect state drive at end
+expect max van.pos.y > 180
+expect max van.pos.x > 115
+expect min van.pos.x < -15
+expect max van.hspeed > 12.5
+expect van.hspeed < 0.2 at end
+expect van.pos.x < 60 at end
+expect van.pos.y < 0 at end

@@ -1,0 +1,17 @@
+# A powerslide too short to count (under slide.minScoreTicks) is no link either: kickflip, land,
+# a 4-tick slide tap, then ollie into another kickflip. The tap banks the first Kickflip (100) and
+# the second is its own combo. (A tap used to hold the combo open with nothing in it, so the next
+# ollie carried it on: Kickflip + Kickflip, and so on for ever; the random farm search found it.)
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+hold slide 208..212
+hold ollie 214..240
+tap flip+left 246
+run 500
+expect event comboLanded{name=Kickflip,points=100,multiplier=1} count == 2
+expect event comboLanded{name=Kickflip} within 212..214
+expect event comboLanded{name=Kickflip} within 360..364
+expect no event bail

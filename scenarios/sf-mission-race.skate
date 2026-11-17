@@ -1,0 +1,13 @@
+# Missions: a race step (Grandma Wu pushes her cart up Grant Ave at 5.4 m/s, west on Pine and up the Columbus
+# gutter street: Grant above Pine is a removed block). She sets off once you are within 15 m; the autopilot
+# rides her path faster; reaching its end (within 12 m) first wins: her talk step starts and nothing fails.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start cartrace 1
+cmd 0 teleport 264 655 -1.1 352
+bot path 257,709 251,747 249,759 238.7,757.2 224.6,754.9 211.3,752.8 198.4,750.7 189.8,749.3 189.2,758.8 188.4,768.2 187.7,777.6 186.9,787.1 185.8,800.7 185.1,819 from 4 speed 8 nocars
+run 5000
+expect event missionStep{mission=cartrace,step=1,kind=race} within 1..1
+expect event talk{line=cartrace-05,bark=true} within 1..1
+expect event missionStep{mission=cartrace,step=2,kind=talk} within 3459..3569
+expect no event missionFailed

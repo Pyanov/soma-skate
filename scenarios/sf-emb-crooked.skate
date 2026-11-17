@@ -1,0 +1,15 @@
+# A crooked on a city ledge: Embarcadero Plaza's granite (sf-grind-emb's approach), I + up + toward
+# (frontside: the ledge on the right) as it locks on: FS Crooked Grind, seated on the granite by the
+# contact test with the view's own probe.
+park sf
+cmd 0 traffic clear
+bot balance
+cmd 0 teleport 568.85 708.35 -8.93 141.8
+cmd 2 set skater.vel.x 2.472
+cmd 2 set skater.vel.y -3.144
+hold ollie 4..14
+hold up 20..34
+hold right 20..34
+tap grind 22
+run 300
+expect event grindStart{trick=FS Crooked Grind,line=ledge_569_708} within 26..30

@@ -1,0 +1,257 @@
+# A great run on Chinatown (the score tiers' measure): Grant's west curb from Pine every 10 s (the teleport
+# stands in for riding back up; the squeezed city keeps Grant only up to Pine, so the California slot this
+# run used is gone): a kickflip onto the curb, a nosegrind down it (45 m, to just short of its end) and a
+# 360 flip off: 7,407; twelve, 88,884. Pro (19,000) on the third, Sick (65,000) on the ninth: Sick is set
+# from how often a decent player reaches it (about a third, ./skate feel --tour), not as 91% of this run (81,000,
+# which a decent player reached once in 50). (On the slot it was 10,032, CALIFORNIA SLOT on the pop; twelve,
+# 120,384, Sick 110,000.)
+park sf
+cmd 0 traffic clear
+cmd 0 run level chinatown
+bot balance
+cmd 1 teleport 248.39 751.98 7.75 170.7
+cmd 3 set skater.vel.x 0.80
+cmd 3 set skater.vel.y -4.94
+cmd 1201 teleport 248.39 751.98 7.75 170.7
+cmd 1203 set skater.vel.x 0.80
+cmd 1203 set skater.vel.y -4.94
+cmd 2401 teleport 248.39 751.98 7.75 170.7
+cmd 2403 set skater.vel.x 0.80
+cmd 2403 set skater.vel.y -4.94
+cmd 3601 teleport 248.39 751.98 7.75 170.7
+cmd 3603 set skater.vel.x 0.80
+cmd 3603 set skater.vel.y -4.94
+cmd 4801 teleport 248.39 751.98 7.75 170.7
+cmd 4803 set skater.vel.x 0.80
+cmd 4803 set skater.vel.y -4.94
+cmd 6001 teleport 248.39 751.98 7.75 170.7
+cmd 6003 set skater.vel.x 0.80
+cmd 6003 set skater.vel.y -4.94
+cmd 7201 teleport 248.39 751.98 7.75 170.7
+cmd 7203 set skater.vel.x 0.80
+cmd 7203 set skater.vel.y -4.94
+cmd 8401 teleport 248.39 751.98 7.75 170.7
+cmd 8403 set skater.vel.x 0.80
+cmd 8403 set skater.vel.y -4.94
+cmd 9601 teleport 248.39 751.98 7.75 170.7
+cmd 9603 set skater.vel.x 0.80
+cmd 9603 set skater.vel.y -4.94
+cmd 10801 teleport 248.39 751.98 7.75 170.7
+cmd 10803 set skater.vel.x 0.80
+cmd 10803 set skater.vel.y -4.94
+cmd 12001 teleport 248.39 751.98 7.75 170.7
+cmd 12003 set skater.vel.x 0.80
+cmd 12003 set skater.vel.y -4.94
+cmd 13201 teleport 248.39 751.98 7.75 170.7
+cmd 13203 set skater.vel.x 0.80
+cmd 13203 set skater.vel.y -4.94
+hold ollie 4..34
+tap flip 36
+tap up 90
+tap grind 90
+tap up 96
+tap grind 96
+tap up 102
+tap grind 102
+tap up 108
+tap grind 108
+tap up 114
+tap grind 114
+hold ollie 885..915
+tap down 917
+tap left 917
+tap flip 917
+tap flip 920
+hold ollie 1204..1234
+tap flip 1236
+tap up 1290
+tap grind 1290
+tap up 1296
+tap grind 1296
+tap up 1302
+tap grind 1302
+tap up 1308
+tap grind 1308
+tap up 1314
+tap grind 1314
+hold ollie 2085..2115
+tap down 2117
+tap left 2117
+tap flip 2117
+tap flip 2120
+hold ollie 2404..2434
+tap flip 2436
+tap up 2490
+tap grind 2490
+tap up 2496
+tap grind 2496
+tap up 2502
+tap grind 2502
+tap up 2508
+tap grind 2508
+tap up 2514
+tap grind 2514
+hold ollie 3285..3315
+tap down 3317
+tap left 3317
+tap flip 3317
+tap flip 3320
+hold ollie 3604..3634
+tap flip 3636
+tap up 3690
+tap grind 3690
+tap up 3696
+tap grind 3696
+tap up 3702
+tap grind 3702
+tap up 3708
+tap grind 3708
+tap up 3714
+tap grind 3714
+hold ollie 4485..4515
+tap down 4517
+tap left 4517
+tap flip 4517
+tap flip 4520
+hold ollie 4804..4834
+tap flip 4836
+tap up 4890
+tap grind 4890
+tap up 4896
+tap grind 4896
+tap up 4902
+tap grind 4902
+tap up 4908
+tap grind 4908
+tap up 4914
+tap grind 4914
+hold ollie 5685..5715
+tap down 5717
+tap left 5717
+tap flip 5717
+tap flip 5720
+hold ollie 6004..6034
+tap flip 6036
+tap up 6090
+tap grind 6090
+tap up 6096
+tap grind 6096
+tap up 6102
+tap grind 6102
+tap up 6108
+tap grind 6108
+tap up 6114
+tap grind 6114
+hold ollie 6885..6915
+tap down 6917
+tap left 6917
+tap flip 6917
+tap flip 6920
+hold ollie 7204..7234
+tap flip 7236
+tap up 7290
+tap grind 7290
+tap up 7296
+tap grind 7296
+tap up 7302
+tap grind 7302
+tap up 7308
+tap grind 7308
+tap up 7314
+tap grind 7314
+hold ollie 8085..8115
+tap down 8117
+tap left 8117
+tap flip 8117
+tap flip 8120
+hold ollie 8404..8434
+tap flip 8436
+tap up 8490
+tap grind 8490
+tap up 8496
+tap grind 8496
+tap up 8502
+tap grind 8502
+tap up 8508
+tap grind 8508
+tap up 8514
+tap grind 8514
+hold ollie 9285..9315
+tap down 9317
+tap left 9317
+tap flip 9317
+tap flip 9320
+hold ollie 9604..9634
+tap flip 9636
+tap up 9690
+tap grind 9690
+tap up 9696
+tap grind 9696
+tap up 9702
+tap grind 9702
+tap up 9708
+tap grind 9708
+tap up 9714
+tap grind 9714
+hold ollie 10485..10515
+tap down 10517
+tap left 10517
+tap flip 10517
+tap flip 10520
+hold ollie 10804..10834
+tap flip 10836
+tap up 10890
+tap grind 10890
+tap up 10896
+tap grind 10896
+tap up 10902
+tap grind 10902
+tap up 10908
+tap grind 10908
+tap up 10914
+tap grind 10914
+hold ollie 11685..11715
+tap down 11717
+tap left 11717
+tap flip 11717
+tap flip 11720
+hold ollie 12004..12034
+tap flip 12036
+tap up 12090
+tap grind 12090
+tap up 12096
+tap grind 12096
+tap up 12102
+tap grind 12102
+tap up 12108
+tap grind 12108
+tap up 12114
+tap grind 12114
+hold ollie 12885..12915
+tap down 12917
+tap left 12917
+tap flip 12917
+tap flip 12920
+hold ollie 13204..13234
+tap flip 13236
+tap up 13290
+tap grind 13290
+tap up 13296
+tap grind 13296
+tap up 13302
+tap grind 13302
+tap up 13308
+tap grind 13308
+tap up 13314
+tap grind 13314
+hold ollie 14085..14115
+tap down 14117
+tap left 14117
+tap flip 14117
+tap flip 14120
+run 14700
+expect event comboLanded{name=Kickflip + FS Nosegrind + 360 Flip,points=7407} count == 12
+expect event levelGoal{level=chinatown,id=pro} within 3461..3465
+expect event levelGoal{level=chinatown,id=sick} within 10661..10665
+expect event levelOver{level=chinatown,score=88884} within 14399..14402
+expect no event bail

@@ -1,0 +1,36 @@
+{
+  "_doc": "The board shop in the character picker (src/client/picker.ts; D or pad triangle opens it): any deck graphic (src/client/skater/decks.ts) and a wheel colour, remembered per character in the browser. The first deck and the first wheel are the character's own (data/characters.json style.board). name is what the shop shows.",
+  "decks": [
+    { "graphic": "", "name": "Their own" },
+    { "graphic": "goldengate", "name": "Golden Gate" },
+    { "graphic": "cablecar", "name": "Cable Car" },
+    { "graphic": "burrito", "name": "Super Burrito" },
+    { "graphic": "muni", "name": "Muni Map" },
+    { "graphic": "karl", "name": "Karl Was Here" },
+    { "graphic": "robotaxi", "name": "Arriving Now" },
+    { "graphic": "pier39", "name": "K-Dock" },
+    { "graphic": "victorians", "name": "Painted Ladies" },
+    { "graphic": "sunset", "name": "Sunset" },
+    { "graphic": "hellafria", "name": "Hella Fría" },
+    { "graphic": "slime", "name": "Slime" },
+    { "graphic": "cookie", "name": "Sutro Forest" },
+    { "graphic": "team", "name": "SoMa Fog" },
+    { "graphic": "coffin", "name": "Coffin Lid" },
+    { "graphic": "xray", "name": "X-Ray" },
+    { "graphic": "startup", "name": "Pivotly" },
+    { "graphic": "fog", "name": "Karl the Fog" },
+    { "graphic": "foil", "name": "Foil Burrito" },
+    { "graphic": "crumbs", "name": "Coo" }
+  ],
+  "wheels": [
+    { "color": "", "name": "Their own" },
+    { "color": "#f2eee3", "name": "Natural" },
+    { "color": "#c0362c", "name": "International Orange" },
+    { "color": "#1d1d22", "name": "Black" },
+    { "color": "#f2c230", "name": "Yellow" },
+    { "color": "#2fa4a0", "name": "Teal" },
+    { "color": "#3d6fd6", "name": "Blue" },
+    { "color": "#ff7aa8", "name": "Pink" },
+    { "color": "#5fd36a", "name": "Green" }
+  ]
+}

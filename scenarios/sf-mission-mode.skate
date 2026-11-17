@@ -1,0 +1,20 @@
+# Missions: a mode step (Hector's Burrito Run: Courier, three delivered). The courier starts as run
+# courier does (at the taqueria, the first order picked up); the third delivery wins the step, the
+# game gives way to free skate, and Hector's call starts at once (phone). Done once its lines are over.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start burrito 1
+cmd 200 teleport -55.3 -305 2.61 356
+cmd 400 teleport -235 -230 12.53 356
+cmd 600 teleport -18.5 -395.2 1.94 356
+cmd 700 mission next
+cmd 701 mission next
+run 720
+expect event missionStep{mission=burrito,step=1,kind=mode} within 1..1
+expect event courierPickup{leg=0} within 0..3
+expect event courierDeliver{n=3} within 600..602
+expect event missionStep{mission=burrito,step=2,kind=talk} within 600..602
+expect event talk{character=hector,line=burrito-06,n=0} within 600..602
+expect session.mode == free at 650
+expect event missionDone{mission=burrito,sticker=side-burrito} within 702..702
+expect no event courierOver

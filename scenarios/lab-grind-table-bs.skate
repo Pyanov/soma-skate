@@ -1,0 +1,25 @@
+# Every grind on the ledge, backside: ledge on the left (regular rider's back to it), so the far
+# side is left and left = toward. 50-50, then I + direction switches through the grinds table.
+park lab
+cmd 0 teleport 0 -0.6 0.14 90
+hold up 6..100
+hold ollie 90..105
+tap grind 176
+tap grind+up 200
+tap grind+down 222
+tap grind+down+left 244
+tap grind+down+right 266
+tap grind+up+left 288
+tap grind+up+right 310
+tap grind+left 332
+bot balance
+run 560
+expect event grindStart{trick=BS 50-50} within 177..178
+expect event grindStart{trick=BS Nosegrind} within 201..202
+expect event grindStart{trick=BS 5-0} within 223..224
+expect event grindStart{trick=BS Feeble Grind} within 245..246
+expect event grindStart{trick=BS Smith Grind} within 267..268
+expect event grindStart{trick=BS Crooked Grind} within 289..290
+expect event grindStart{trick=BS Overcrook} within 311..312
+expect event grindStart{trick=BS Feeble Grind} within 333..334
+expect no event bail

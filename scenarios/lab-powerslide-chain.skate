@@ -1,0 +1,15 @@
+# Powerslide, let go, powerslide: a slide does not link to the slide just before it (each banks).
+# Down the lab hill at 8 m/s, four slides of 31 ticks two ticks apart: four FS Powerslides of 131,
+# each its own combo. (They used to chain risk-free, FS Powerslide x N with a multiplier each.)
+park lab
+spawn lab_hill_ten
+cmd 30 speed 8
+hold slide 66..97
+hold slide 99..130
+hold slide 132..163
+hold slide 165..196
+run 400
+expect event comboLanded{name=FS Powerslide,points=131,multiplier=1} count == 4
+expect event comboLanded{name=FS Powerslide} within 99..101
+expect event comboLanded{name=FS Powerslide} within 206..210
+expect no event bail

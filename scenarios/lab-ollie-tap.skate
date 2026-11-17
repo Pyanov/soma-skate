@@ -1,0 +1,10 @@
+# A tapped ollie (no charge) pops lower than a charged one.
+park lab
+spawn lab_ledge
+hold up 0..60
+tap ollie 60
+run 260
+expect event pop within 60..63
+expect max skater.pos.z > 0.6
+expect max skater.pos.z < 0.85
+expect no event bail

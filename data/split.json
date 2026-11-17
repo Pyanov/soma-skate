@@ -1,0 +1,20 @@
+{
+  "_doc": "Split screen and the two-player games in the client (src/client/split.ts, src/client/twoplayer.ts; the games themselves are the sim's: docs/mechanics/modes.md). wideAspect: side by side when the screen is at least this wide (width / height), else top and bottom. renderScale: the render scale (of the screen's) while split, since two views cost more than one (Quality: auto still moves it). ao: ambient occlusion while split (real look). ?split=npc (and skate clip --split npc) puts a park NPC in as player 2, a dev stand-in. twoPlayer: each player's colour (split tags, Graffiti tags in the world, results), the games on the 2 Players menu (id: the sim's run, or free), the join line, the results card's words ({n}: the player), and Graffiti's tint: how high it sits over a grind line, its core's and halo's radius (m), and how opaque a tagged gap's areas are.",
+  "wideAspect": 2.2,
+  "renderScale": 0.8,
+  "ao": false,
+  "twoPlayer": {
+    "colors": ["#ff4f00", "#6fd6ff"],
+    "modes": [
+      { "id": "trickattack2p", "name": "Trick Attack", "line": "Two minutes, both skating. The higher score wins." },
+      { "id": "horse2p", "name": "HORSE", "line": "At the S.K.A.T.E. spot: set a trick, the other matches it or takes a letter. Spell HORSE and you lose." },
+      { "id": "graffiti2p", "name": "Graffiti", "line": "Trick a ledge, a rail or a gap to tag it in your colour. A bigger combo steals it. Most tags wins." },
+      { "id": "free", "name": "Free Skate", "line": "No clock, no rules. Just the two of you." }
+    ],
+    "join": "Player 2: press {ollie}, or ✕ on the second pad",
+    "win": "PLAYER {n} WINS",
+    "draw": "DRAW",
+    "lines": { "trickattack2p": "Highest score after two minutes.", "horse2p": "Player {loser} spelled {word}.", "graffiti2p": "Most obstacles tagged when the clock ran out." },
+    "tint": { "lift": 0.03, "radius": 0.06, "halo": 0.17, "gapOpacity": 0.32 }
+  }
+}

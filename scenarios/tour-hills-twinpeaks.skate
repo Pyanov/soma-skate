@@ -1,0 +1,13 @@
+# Hill Country's other start (data/tour.json starts): `run level hills twin_peaks_bomb` puts you at
+# Grand View, and the rider-line autopilot bombing Upper Market hits 56 km/h: Upper Market at 56.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills twin_peaks_bomb
+bot line twin_peaks_line 6
+run 5400
+expect event levelStart{level=hills,seconds=120} within 0..2
+expect skater.pos.x < -1195 at 5
+expect event levelGoal{level=hills,id=upper56,name=Upper Market at 56} within 4924..4928   # 4941..4945 before the squeeze, 4967..4971 before the feel pass's park carve
+expect event levelGoal count == 1
+expect session.level == hills at end
+expect no event bail

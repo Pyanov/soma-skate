@@ -1,0 +1,23 @@
+# Chad Vantage's rental scooters (data/vehicles.json types.scooter, game/vehicles.ts; physics phase 31):
+# twelve parked on Market, in threes at four docks. Beside the first, on UN Plaza's piece of Market, F (use)
+# gets on: vehicleEnter with its type (the client chirps, the display says ride started). Up: the motor,
+# slow (4.7 m/s, 17 km/h, after 5.5 s). Down brakes to a stop; F gets off on the board beside it, and the
+# ride ends: 7.7 s, $1.49 (a dollar to unlock, 49 cents for the minute started): scooterRideEnd's fare.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 358.9 323.7 -1.08 45
+tap use 30
+hold up 40..700
+hold down 720..900
+tap use 950
+run 1100
+expect event vehicleEnter{name=vantage_1,type=scooter} within 30..32
+expect state drive at 500
+expect van.hspeed > 4.5 at 700
+expect van.hspeed < 5.6 at 700
+expect van.hspeed < 0.3 at 900
+expect event vehicleExit{name=vantage_1,type=scooter} within 950..952
+expect event scooterRideEnd{fare=149} within 950..952
+expect state ground at 1000
+expect no event scooterBattery
+expect no event bail

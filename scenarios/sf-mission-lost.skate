@@ -1,0 +1,11 @@
+# Missions: a follow step lost: close enough for Donna to set off, then far away: more than lose (6 s)
+# behind, missionFailed lost; her character (an actor Thing) goes with the mission. In the squeezed city
+# Duboce Park lies off the first 10 m of her way, so you count as behind her only once she is past them
+# (1080; 761 before, when it lay off her start).
+park sf
+cmd 0 traffic clear
+cmd 0 mission start disco 1
+cmd 0 teleport -582 -37 19.5 180
+cmd 40 teleport duboce_park
+run 1200
+expect event missionFailed{mission=disco,step=1,reason=lost} within 1075..1115

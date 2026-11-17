@@ -1,0 +1,13 @@
+# Rolling across the street into the side of a parked car (cruise 0) at 6 m/s: more than
+# traffic.hitSpeed (3.5 m/s) into the car is a bail, "ran into a car", and a carHit event. (A moving
+# car would brake for a skater about to cross in front of it: sf-car-crossing.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 2 car -52.0 -321.5 356 0
+cmd 60 teleport -54.98 -321.5 2.13 90
+cmd 61 set skater.vel.x 6
+run 300
+expect event carHit{reason=ran into a car} within 130..145
+expect event bail{reason=ran into a car} within 130..145
+expect min skater.pos.z > 1.93

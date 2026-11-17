@@ -1,0 +1,26 @@
+# The same walker pays a NEAR MISS once in peds.nearMiss.again (15 s): overtaking one walker on
+# Valencia 0.8 m to their side at 6 m/s every 4 s (teleports behind them stand in for riding round)
+# pays the first pass only; the walker steps out of play for the cooldown (2 s) after each pass as
+# before. (sf-ped-near-miss-again: with again at 3 s every pass pays.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 ped at -65.5 -270 356
+cmd 10 teleport -64.90 -281.89 2.63 355.7
+cmd 12 set skater.vel.x -0.4547
+cmd 12 set skater.vel.y 5.9827
+cmd 490 teleport -65.28 -276.50 2.63 355.7
+cmd 492 set skater.vel.x -0.4547
+cmd 492 set skater.vel.y 5.9827
+cmd 970 teleport -65.70 -271.12 2.63 355.7
+cmd 972 set skater.vel.x -0.4547
+cmd 972 set skater.vel.y 5.9827
+cmd 1450 teleport -66.12 -265.73 2.64 355.6
+cmd 1452 set skater.vel.x -0.4563
+cmd 1452 set skater.vel.y 5.9826
+run 1900
+expect event nearMiss{points=250,distance=0.94} within 366..370
+expect event nearMiss count == 1
+expect skater.score == 250 at end
+expect no event pedHit
+expect no event bail

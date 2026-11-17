@@ -1,0 +1,20 @@
+node_modules/
+out/
+.vite/
+*.log
+.DS_Store
+.claude/
+# derived: the photo paint (./skate world fetch, or ./skate park from the world generator)
+assets/park/paint/
+assets/park/soma.park.paint.bin
+# derived: the city (./skate world fetch, or ./skate city from the world generator)
+assets/park/sf.city.json
+assets/park/sf.city.bin
+assets/park/sf.city.look.bin
+assets/park/sf.city.data.bin
+assets/park/sf.city.bvh.bin
+dist/
+
+# full-size sources of the generated UI art (tools/gen_ui.py writes them, tools/key_ui.py keys them into assets/ui/); kept local, out of git: ~1.4 MB each
+assets/ui/src/
+assets/park/.world-tag

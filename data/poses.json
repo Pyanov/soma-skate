@@ -1,0 +1,893 @@
+{
+  "_doc": "Skater pose keyframes (client only; read by src/client/skater/poses.ts). Stance space, regular stance (goofy, from data/rider.json, is drawn mirrored): vectors [n, f, u] = toward the nose, toward the toe side (where the rider faces), up; metres. Rotations [yaw, pitch, lean] in degrees: yaw turns the chest toward the nose, pitch bends forward, lean tips toward the nose. Feet: pos is on the grip when board = 1 (u = lift above the deck) and in the rider frame when board = 0 (u = height above the ground); toe = foot angle from across-the-board toward the nose; tilt + = toes up. Hands: pos is relative to the shoulders when board = 0. Board: lift (m), pitch (+ nose up) and yaw (+ nose toward the toe side) about pivot (-1 tail tip, -0.5 rear wheels, 0 centre, 0.5 front wheels, 1 nose tip), roll tweak (deg, + lifts the heel edge), n/f shift (m). Grind poses are written frontside (far side of the rail = toe side); backside mirrors yaw, roll and f. Poses list only what differs from base, or from the pose named in from. flipPivot: where a flip turns about, [n, u] off the deck centre (the impossible wraps round the back foot). flipTilt: degrees a flip stands the board up end on half way round (+ nose up; the hardflip passes near vertical between the legs, tail up). lipFrame: which way the rider stands on the coping for a lip trick: deck (default, the nose out over the deck), ramp (turned round, the nose over the ramp: disaster, tail stall), along (on the coping: axle stall); the board is seated on the coping and deck as for a slide on a ledge (an axle stall's hangers as for a grind). grindsTop / slidesTop: the pose on an obstacle with a top on the far side (a ledge, coping, a curb, a car roof; the view probes the park 12 cm out), where it differs from the rail one: the far wheels rest on the top (a 50-50 tips toward the approach side, a feeble's front truck lies on the top, a boardslide on a ledge pitches up over its far truck). Whatever the pose, the view seats the board on the line (poses.ts seat: the grinding truck's hanger on the edge, a slide's underside on it); tests/trickcontact.test.ts checks nothing goes through the ledge or rail. timing: flipTurnFrom/To/Ease ease the board's turn from the sim's trick progress so it is fastest off the flick and round when the feet catch (catch: feet on the bolts); grindLock (m) dips the knees over grindLockTicks as the trucks bite; grindArms and manualArms move the hands against the balance, windmill near the edge; lookAlong turns the head down the rail; revertTicks is the revert's swivel and revertSettle its crouch; slideTwist (deg) lags the shoulders behind a powerslide's swing. follow: weight and follow-through over the keyframes (poses.ts Follow): damped responses to the landing (by its impact), the pop, the grind lock-on and the push stroke; the hips move at once, the chest, head and arms a quarter period later, so they keep going and come back past rest.",
+  "timing": {
+    "crouchTicks": 14,
+    "landTicks": 22,
+    "landMinAir": 12,
+    "landReachSpeed": 3.5,
+    "flickIn": 0.08,
+    "flickOut": 0.24,
+    "catchAt": 0.78,
+    "flipLift": -0.02,
+    "grindBalanceLean": 22,
+    "manualBalanceLean": 14,
+    "manualBalancePitch": 4,
+    "spinLead": 20,
+    "walkStride": 1.5,
+    "walkLegSwing": 0.3,
+    "walkArmSwing": 0.16,
+    "leanBody": 1.15,
+    "grindLock": 0.07,
+    "grindLockTicks": 14,
+    "grindArms": 0.22,
+    "windmill": 0.17,
+    "manualArms": 0.26,
+    "lookAlong": 0.85,
+    "flipTurnFrom": 0.05,
+    "flipTurnTo": 0.8,
+    "flipTurnEase": 1.7,
+    "revertTicks": 10,
+    "revertSettle": 18,
+    "slideTwist": 30,
+    "grindInTicks": 7,
+    "landEaseTicks": 8,
+    "landReachDrop": 0.35,
+    "slideOutTicks": 9,
+    "grindOutTicks": 8,
+    "fakieLookTicks": 10,
+    "grindSwitchTicks": 6,
+    "bailIn": 6
+  },
+  "push": {
+    "period": 100,
+    "dip": 0.07,
+    "foot": [
+      [0.0, -0.27, 0.0, 0.0, 1],
+      [0.12, -0.04, 0.13, 0.12, 0],
+      [0.28, 0.1, 0.17, 0.0, 0],
+      [0.62, -0.44, 0.17, 0.0, 0],
+      [0.8, -0.4, 0.1, 0.13, 0],
+      [1.0, -0.27, 0.0, 0.0, 1]
+    ]
+  },
+  "flicks": {
+    "kickflip": "flickKick",
+    "heelflip": "flickHeel",
+    "popshoveit": "flickShove",
+    "varialkickflip": "flickKick",
+    "varialheelflip": "flickHeel",
+    "hardflip": "flickKick",
+    "360flip": "flickKick",
+    "impossible": "flickShove",
+    "doublekickflip": "flickKick",
+    "doubleheelflip": "flickHeel",
+    "360shoveit": "flickShove",
+    "fsshoveit": "flickShoveFs",
+    "fs360shoveit": "flickShoveFs",
+    "inwardheelflip": "flickHeel",
+    "laserflip": "flickHeel"
+  },
+  "flipHold": { "kickflipsuperman": "superman", "540flip": "flip540", "hardflip": "flipTuckWide", "inwardheelflip": "flipTuckWide", "impossible": "flipImpossible", "360hardflip": "flipTuckWide", "360inwardheelflip": "flipTuckWide", "doubleimpossible": "flipImpossible", "tripleimpossible": "flipImpossible" },
+  "flipPivot": { "impossible": [-0.25, 0.12], "doubleimpossible": [-0.25, 0.12], "tripleimpossible": [-0.25, 0.12] },
+  "flipTilt": { "hardflip": -72, "inwardheelflip": -45, "360hardflip": -60, "360inwardheelflip": -40 },
+  "flipTurn": { "impossible": [0.32, 0.75, 1.2], "doubleimpossible": [0.32, 0.75, 1.2], "tripleimpossible": [0.32, 0.75, 1.2], "hardflip": [0.3, 0.84, 1.5], "360hardflip": [0.3, 0.84, 1.5] },
+  "grabs": {
+    "indy": { "hand": "rear", "at": [-0.02, 0.1, -0.006], "pose": "grabIndy" },
+    "melon": { "hand": "lead", "at": [0.02, -0.1, -0.006], "pose": "grabMelon" },
+    "nosegrab": { "hand": "lead", "at": [0.37, 0, -0.006], "pose": "grabNose" },
+    "tailgrab": { "hand": "rear", "at": [-0.37, 0, -0.006], "pose": "grabTail" },
+    "japan": { "hand": "lead", "at": [0.12, 0.1, -0.006], "pose": "grabJapan" },
+    "method": { "hand": "lead", "at": [-0.02, -0.1, -0.006], "pose": "grabMethod" },
+    "benihana": { "hand": "rear", "at": [-0.37, 0, -0.006], "pose": "grabBenihana" },
+    "stalefish": { "hand": "rear", "at": [-0.1, -0.1, -0.006], "pose": "grabStalefish" },
+    "mute": { "hand": "lead", "at": [0.11, 0.1, -0.006], "pose": "grabMute" },
+    "christair": { "hand": "lead", "at": [-0.37, 0, -0.006], "pose": "grabChrist" }
+  },
+  "grinds": {
+    "5050": "g5050",
+    "5-0": "g50",
+    "nosegrind": "gNose",
+    "crooked": "gCrooked",
+    "overcrook": "gOvercrook",
+    "feeble": "gFeeble",
+    "smith": "gSmith",
+    "salad": "gSalad",
+    "suski": "gSuski",
+    "willy": "gWilly",
+    "losi": "gLosi"
+  },
+  "grindsTop": {
+    "overcrook": "gOvercrookTop",
+    "5050": "g5050Top",
+    "5-0": "g50Top",
+    "nosegrind": "gNoseTop",
+    "feeble": "gFeebleTop",
+    "crooked": "gCrookedTop",
+    "salad": "gSaladTop",
+    "suski": "gSuskiTop",
+    "losi": "gLosiTop"
+  },
+  "slidesTop": {
+    "boardslide": "sBoardTop",
+    "lipslide": "sLipTop"
+  },
+  "slides": {
+    "boardslide": "sBoard",
+    "lipslide": "sBoard",
+    "noseslide": "sNose",
+    "tailslide": "sTail",
+    "bluntslide": "sBlunt",
+    "nosebluntslide": "sNoseBlunt"
+  },
+  "lips": {
+    "rocktofakie": "lipRock",
+    "rockandroll": "lipRockRoll",
+    "axlestall": "lipAxle",
+    "disaster": "lipDisaster",
+    "nosestall": "lipNose",
+    "tailstall": "lipTail",
+    "bluntstall": "lipBlunt",
+    "invert": "lipRock",
+    "handplant": "lipRock"
+  },
+  "lipFrame": { "axlestall": "along", "disaster": "ramp", "tailstall": "ramp" },
+  "bail": [
+    [0, "bail0"],
+    [10, "bail1"],
+    [26, "bail2"],
+    [118, "bail3"],
+    [136, "bail4"],
+    [150, "base"]
+  ],
+  "follow": {
+    "land": {"from": 2, "base": 0.5, "perImpact": 0.14, "decay": 9, "freq": 0.21, "drop": 0.09, "pitch": 11, "nod": 14, "arms": 0.15, "armsOut": 0.05, "jaw": 0.9},
+    "pop": {"decay": 9, "freq": 0.22, "arms": 0.12, "nod": 10},
+    "push": {"pitch": 6, "arms": 0.08, "nod": 4},
+    "grind": {"decay": 8, "freq": 0.3, "drop": 0.05, "arms": 0.1, "nod": 7}
+  },
+  "poses": {
+    "base": {
+      "hips": [-0.05, -0.03, 0.7],
+      "hipsRot": [15, 12, 0],
+      "spine": [10, 12, 0],
+      "head": [50, 12, 0],
+      "front": { "pos": [0.16, 0.01, 0], "board": 1, "toe": 15, "tilt": 0, "knee": [0.5, 1, 0] },
+      "back": { "pos": [-0.27, 0.0, 0], "board": 1, "toe": 8, "tilt": 0, "knee": [-0.2, 1, 0] },
+      "lead": { "pos": [0.24, 0.06, -0.47], "board": 0, "elbow": [0.5, -0.6, -0.4], "curl": 0.3 },
+      "rear": { "pos": [-0.24, 0.06, -0.47], "board": 0, "elbow": [-0.5, -0.6, -0.4], "curl": 0.3 },
+      "board": { "lift": 0, "pitch": 0, "roll": 0, "yaw": 0, "n": 0, "f": 0, "pivot": 0 }
+    },
+    "fakieLook": { "head": [-35, 12, 0] },
+    "crouch": {
+      "hips": [-0.07, -0.06, 0.5],
+      "hipsRot": [12, 25, 0],
+      "spine": [10, 22, 0],
+      "head": [55, -5, 0],
+      "front": { "pos": [0.12, 0.0, 0] },
+      "back": { "pos": [-0.33, 0.0, 0] },
+      "lead": { "pos": [0.22, 0.3, -0.38] },
+      "rear": { "pos": [-0.25, 0.18, -0.42] }
+    },
+    "push": {
+      "hips": [0.02, -0.02, 0.68],
+      "hipsRot": [65, 14, 0],
+      "spine": [8, 10, 0],
+      "head": [15, 12, 0],
+      "front": { "pos": [0.13, 0.0, 0], "toe": 72, "knee": [1, 0.4, 0] },
+      "back": { "toe": 60, "knee": [1, 0.2, 0] },
+      "lead": { "pos": [0.05, -0.32, -0.42], "elbow": [-0.3, -0.5, -0.5] },
+      "rear": { "pos": [-0.05, 0.32, -0.42], "elbow": [-0.6, 0.3, -0.5] }
+    },
+    "pop": {
+      "hips": [-0.04, -0.02, 0.74],
+      "hipsRot": [15, 8, 0],
+      "spine": [10, 5, 0],
+      "head": [55, 5, 0],
+      "front": { "pos": [0.27, 0.0, 0.0], "toe": 25 },
+      "back": { "pos": [-0.36, 0.0, 0.0], "toe": 10 },
+      "lead": { "pos": [0.42, 0.16, 0.0] },
+      "rear": { "pos": [-0.44, 0.08, -0.22] },
+      "board": { "pitch": 30, "pivot": -0.5 }
+    },
+    "tuck": {
+      "hips": [-0.04, -0.04, 0.64],
+      "hipsRot": [15, 20, 0],
+      "spine": [10, 15, 0],
+      "head": [55, 10, 0],
+      "front": { "pos": [0.22, 0.0, 0], "toe": 20, "knee": [0.2, 1, 0.1] },
+      "back": { "pos": [-0.3, 0.0, 0], "knee": [-0.05, 1, 0.1] },
+      "lead": { "pos": [0.5, 0.12, -0.22] },
+      "rear": { "pos": [-0.5, 0.1, -0.26] },
+      "board": { "lift": 0.22, "pivot": -0.5 }
+    },
+    "airLand": {
+      "from": "tuck",
+      "hips": [-0.05, -0.04, 0.66],
+      "front": { "pos": [0.17, 0.0, 0], "toe": 15 },
+      "back": { "pos": [-0.27, 0.0, 0] },
+      "lead": { "pos": [0.52, 0.1, -0.26] },
+      "rear": { "pos": [-0.52, 0.08, -0.3] },
+      "board": { "lift": 0.06 }
+    },
+    "airDrop": {
+      "from": "airLand",
+      "hips": [-0.05, -0.04, 0.64],
+      "board": { "lift": 0.03 }
+    },
+    "airVert": {
+      "from": "airLand",
+      "hips": [-0.05, -0.03, 0.66],
+      "board": { "lift": 0.06 }
+    },
+    "land": {
+      "hips": [-0.06, -0.05, 0.48],
+      "hipsRot": [15, 28, 0],
+      "spine": [10, 20, 0],
+      "lead": { "pos": [0.45, 0.22, -0.32] },
+      "rear": { "pos": [-0.45, 0.16, -0.34] }
+    },
+    "flickKick": {
+      "from": "tuck",
+      "hips": [-0.03, -0.03, 0.7],
+      "front": { "pos": [0.42, -0.22, 0.32], "board": 0, "toe": 40, "knee": [0.6, 0.3, 0.3] },
+      "back": { "pos": [-0.27, 0.0, 0.34], "board": 0, "toe": 10 }
+    },
+    "flickHeel": {
+      "from": "tuck",
+      "hips": [-0.03, -0.03, 0.7],
+      "front": { "pos": [0.4, 0.26, 0.32], "board": 0, "toe": 45, "knee": [0.6, 1, 0.3] },
+      "back": { "pos": [-0.27, 0.0, 0.34], "board": 0, "toe": 10 }
+    },
+    "flickShove": {
+      "from": "tuck",
+      "hips": [-0.03, -0.03, 0.7],
+      "front": { "pos": [0.17, 0.02, 0.42], "board": 0 },
+      "back": { "pos": [-0.24, -0.17, 0.3], "board": 0, "toe": -10, "knee": [-0.3, 0.6, 0.2] }
+    },
+    "flipTuck": {
+      "from": "tuck",
+      "hips": [-0.04, -0.04, 0.72],
+      "front": { "pos": [0.19, -0.02, 0.44], "board": 0, "knee": [0.1, 1, 0.2] },
+      "back": { "pos": [-0.25, -0.02, 0.42], "board": 0, "knee": [-0.05, 1, 0.2] }
+    },
+    "flipTuckWide": {
+      "from": "flipTuck",
+      "hips": [-0.03, -0.05, 0.76],
+      "hipsRot": [15, 16, 0],
+      "front": { "pos": [0.33, -0.02, 0.52], "board": 0, "toe": 30, "knee": [0.9, 1, 0.3] },
+      "back": { "pos": [-0.37, -0.02, 0.5], "board": 0, "toe": 0, "knee": [-0.9, 1, 0.3] },
+      "lead": { "pos": [0.5, 0.16, -0.14] },
+      "rear": { "pos": [-0.52, 0.12, -0.16] }
+    },
+    "flipImpossible": {
+      "from": "flipTuck",
+      "hips": [-0.04, -0.05, 0.8],
+      "front": { "pos": [0.36, -0.15, 0.66], "board": 0, "toe": 30, "knee": [1, 0.6, 0.4] },
+      "back": { "pos": [-0.27, 0.2, 0.42], "board": 0, "knee": [-0.3, 1, 0.1] },
+      "board": { "lift": 0.27 },
+      "lead": { "pos": [0.52, 0.16, -0.1] },
+      "rear": { "pos": [-0.5, 0.12, -0.2] }
+    },
+    "catch": {
+      "from": "tuck",
+      "hips": [-0.03, -0.04, 0.6],
+      "front": { "pos": [0.19, 0.0, 0], "board": 1, "knee": [0.3, 1, 0.1] },
+      "back": { "pos": [-0.21, 0.0, 0], "board": 1, "knee": [-0.1, 1, 0.1] }
+    },
+    "revert": {
+      "hips": [-0.04, -0.04, 0.5],
+      "hipsRot": [15, 26, 0],
+      "spine": [12, 18, 0],
+      "head": [72, 10, 0],
+      "front": { "pos": [0.17, 0.0, 0] },
+      "back": { "pos": [-0.26, 0.0, 0] },
+      "lead": { "pos": [0.56, 0.22, 0.04], "elbow": [0.4, -0.4, -0.5] },
+      "rear": { "pos": [-0.56, 0.16, 0.0], "elbow": [-0.4, -0.4, -0.5] }
+    },
+    "grabTuck": {
+      "from": "tuck",
+      "hips": [-0.04, -0.1, 0.58],
+      "hipsRot": [12, 25, 0],
+      "spine": [5, 25, 0],
+      "front": { "pos": [0.17, 0.0, 0] },
+      "back": { "pos": [-0.25, 0.0, 0] },
+      "board": { "lift": 0.34, "pivot": 0 },
+      "head": [55, 25, 0]
+    },
+    "grabIndy": {
+      "from": "grabTuck",
+      "lead": { "pos": [0.55, 0.05, 0.05], "elbow": [0.4, -0.5, -0.6] }
+    },
+    "grabMelon": {
+      "from": "grabTuckHeel",
+      "rear": { "pos": [-0.55, 0.05, 0.0] }
+    },
+    "grabNose": {
+      "from": "grabTuck",
+      "rear": { "pos": [-0.55, 0.05, 0.0] },
+      "hipsRot": [15, 22, 10],
+      "board": { "pitch": 22 }
+    },
+    "grabTail": {
+      "from": "grabTuck",
+      "lead": { "pos": [0.55, 0.05, 0.05] },
+      "hipsRot": [10, 22, -12],
+      "board": { "pitch": -22 }
+    },
+    "grabJapan": {
+      "from": "grabTuck",
+      "rear": { "pos": [-0.55, 0.05, 0.0] },
+      "board": { "roll": -20, "pitch": 10 }
+    },
+    "grabMethod": {
+      "from": "grabTuckHeel",
+      "hips": [-0.04, 0.04, 0.6],
+      "hipsRot": [5, -6, 0],
+      "spine": [-8, 4, 0],
+      "head": [45, 10, 0],
+      "front": { "pos": [0.17, 0.0, 0], "knee": [0.3, -0.4, 1] },
+      "back": { "pos": [-0.25, 0.0, 0], "knee": [-0.2, -0.4, 1] },
+      "rear": { "pos": [-0.5, 0.2, 0.3] },
+      "board": { "lift": 0.36, "f": -0.2, "roll": 70 }
+    },
+    "grabMute": {
+      "from": "grabJapan",
+      "board": { "roll": -16, "pitch": 2 }
+    },
+    "grabBenihana": {
+      "from": "grabTail",
+      "back": { "pos": [-0.3, 0.2, -0.05], "board": 0 }
+    },
+    "grabStalefish": {
+      "from": "grabTuckHeel",
+      "hipsRot": [0, 16, -6],
+      "lead": { "pos": [0.55, 0.12, 0.1] },
+      "rear": { "pos": [-0.2, -0.24, -0.4], "elbow": [-0.6, -1, 0] },
+      "board": { "roll": 25 }
+    },
+    "grabChrist": {
+      "from": "grabTuck",
+      "hips": [-0.03, -0.03, 0.62],
+      "hipsRot": [10, 0, 0],
+      "spine": [5, -4, 0],
+      "head": [40, 0, 0],
+      "front": { "pos": [0.07, -0.02, 0.0], "board": 0, "toe": 10, "tilt": -30, "knee": [0.2, 1, 0] },
+      "back": { "pos": [-0.07, -0.02, 0.0], "board": 0, "toe": 5, "tilt": -30, "knee": [-0.1, 1, 0] },
+      "rear": { "pos": [-0.68, 0.0, 0.1] },
+      "board": { "lift": 0.75, "pitch": 0, "roll": -90, "n": 0.62, "f": 0.1 }
+    },
+    "g5050": {
+      "hips": [-0.03, -0.02, 0.58],
+      "hipsRot": [18, 20, 0],
+      "spine": [8, 14, 0],
+      "head": [60, 18, 0],
+      "front": { "pos": [0.19, 0.0, 0], "toe": 12, "knee": [0.4, 1, 0.1] },
+      "back": { "pos": [-0.21, 0.0, 0], "toe": 6, "knee": [-0.3, 1, 0.1] },
+      "lead": { "pos": [0.56, 0.22, 0.0], "elbow": [0.3, -0.5, -0.6], "curl": 0.25 },
+      "rear": { "pos": [-0.56, -0.12, -0.04], "elbow": [-0.3, -0.5, -0.6], "curl": 0.25 },
+      "board": { "lift": -0.0155 }
+    },
+    "g50": {
+      "from": "g5050",
+      "hips": [-0.03, -0.02, 0.6],
+      "hipsRot": [16, 10, -18],
+      "spine": [6, 8, -10],
+      "head": [62, 14, 6],
+      "front": { "pos": [0.2, 0.0, 0], "toe": 18, "knee": [0.9, 1, 0.3] },
+      "back": { "pos": [-0.2, 0.0, 0], "knee": [-0.6, 1, 0] },
+      "lead": { "pos": [0.5, 0.34, 0.24], "elbow": [0.5, -0.3, -0.5] },
+      "rear": { "pos": [-0.36, -0.2, -0.32], "elbow": [-0.4, -0.6, -0.3] },
+      "board": { "pitch": 11, "pivot": -0.5, "n": 0.207 }
+    },
+    "gNose": {
+      "from": "g5050",
+      "hips": [0.03, -0.02, 0.56],
+      "hipsRot": [20, 26, 16],
+      "spine": [10, 18, 10],
+      "head": [62, 28, -6],
+      "front": { "pos": [0.19, 0.0, 0], "knee": [0.6, 1, -0.2] },
+      "back": { "pos": [-0.22, 0.0, 0], "toe": 2, "knee": [-1, 0.8, 0.4] },
+      "lead": { "pos": [0.38, 0.3, -0.3], "elbow": [0.4, -0.6, -0.4] },
+      "rear": { "pos": [-0.5, -0.22, 0.24], "elbow": [-0.5, -0.3, -0.5] },
+      "board": { "pitch": -11, "pivot": 0.5, "n": -0.207 }
+    },
+    "gCrooked": {
+      "from": "gNose",
+      "hips": [0.06, -0.09, 0.54],
+      "hipsRot": [28, 28, 20],
+      "spine": [16, 22, 12],
+      "head": [66, 28, -8],
+      "front": { "pos": [0.2, 0.02, 0], "toe": 28, "knee": [0.6, 1, -0.2] },
+      "back": { "pos": [-0.22, 0.0, 0], "toe": 4, "knee": [-1, 0.7, 0.5] },
+      "lead": { "pos": [0.46, 0.3, -0.18] },
+      "rear": { "pos": [-0.32, -0.1, 0.46], "elbow": [-0.5, -0.2, -0.6] },
+      "board": { "pitch": -15, "yaw": 25, "roll": 16 }
+    },
+    "gOvercrook": {
+      "from": "gNose",
+      "hips": [0.05, 0.08, 0.55],
+      "hipsRot": [14, 34, 14],
+      "spine": [8, 24, 8],
+      "head": [55, 32, -4],
+      "lead": { "pos": [0.44, 0.4, 0.04] },
+      "rear": { "pos": [-0.46, 0.34, 0.1] },
+      "board": { "pitch": -10, "yaw": -26, "roll": -16 }
+    },
+    "gSmith": {
+      "from": "g50",
+      "hips": [-0.02, -0.08, 0.52],
+      "hipsRot": [22, 16, -6],
+      "spine": [10, 14, -4],
+      "head": [60, 30, 0],
+      "front": { "pos": [0.2, 0.0, 0], "toe": 24, "knee": [0.8, 1, -0.4] },
+      "back": { "pos": [-0.21, 0.0, 0], "knee": [-0.4, 1, 0.3] },
+      "lead": { "pos": [0.34, -0.24, -0.42], "elbow": [0.4, -0.7, -0.2] },
+      "rear": { "pos": [-0.46, 0.18, 0.32], "elbow": [-0.5, -0.2, -0.6] },
+      "board": { "pitch": -13, "yaw": -20, "roll": -16 }
+    },
+    "gFeeble": {
+      "from": "g50",
+      "hips": [-0.04, 0.08, 0.55],
+      "hipsRot": [18, 26, -10],
+      "spine": [8, 18, -6],
+      "head": [58, 26, 0],
+      "front": { "pos": [0.21, 0.02, 0], "toe": 20, "knee": [1, 1, 0.4] },
+      "lead": { "pos": [0.48, 0.42, 0.06] },
+      "rear": { "pos": [-0.44, -0.2, -0.28] },
+      "board": { "pitch": -12, "yaw": 30, "roll": 18 }
+    },
+    "gSalad": {
+      "from": "g50",
+      "hips": [-0.06, 0.05, 0.58],
+      "hipsRot": [18, 14, -18],
+      "spine": [8, 10, -10],
+      "head": [60, 22, 4],
+      "lead": { "pos": [0.5, 0.42, 0.16] },
+      "rear": { "pos": [-0.42, -0.24, -0.2] },
+      "board": { "pitch": 16, "yaw": 30, "roll": 6 }
+    },
+    "gSuski": {
+      "from": "g50",
+      "hips": [-0.06, -0.09, 0.58],
+      "hipsRot": [16, 8, -18],
+      "spine": [6, 6, -10],
+      "head": [58, 18, 4],
+      "lead": { "pos": [0.46, 0.18, 0.28] },
+      "rear": { "pos": [-0.38, 0.32, -0.12] },
+      "board": { "pitch": 16, "yaw": -30, "roll": -6 }
+    },
+    "gWilly": {
+      "from": "gNose",
+      "hips": [0.04, -0.08, 0.54],
+      "hipsRot": [22, 22, 12],
+      "spine": [12, 18, 6],
+      "head": [62, 26, -6],
+      "lead": { "pos": [0.4, 0.34, -0.12] },
+      "rear": { "pos": [-0.46, 0.06, 0.34] },
+      "board": { "pitch": 12, "yaw": 22, "roll": -20 }
+    },
+    "gLosi": {
+      "from": "gNose",
+      "hips": [0.05, 0.07, 0.55],
+      "hipsRot": [16, 30, 14],
+      "spine": [8, 22, 8],
+      "head": [56, 30, -4],
+      "front": { "pos": [0.2, 0.0, 0], "knee": [0.6, 1, -0.2] },
+      "back": { "pos": [-0.22, 0.0, 0], "knee": [-0.9, 1, 0.5] },
+      "lead": { "pos": [0.42, 0.42, 0.0] },
+      "rear": { "pos": [-0.44, 0.3, 0.14] },
+      "board": { "pitch": 13, "yaw": -27, "roll": 16 }
+    },
+    "flickShoveFs": {
+      "from": "tuck",
+      "hips": [-0.03, -0.03, 0.7],
+      "front": { "pos": [0.17, -0.02, 0.42], "board": 0 },
+      "back": { "pos": [-0.26, 0.18, 0.3], "board": 0, "toe": 25, "knee": [-0.3, 1, 0.2] }
+    },
+    "g5050Top": { "from": "g5050", "board": { "roll": -12 } },
+    "g50Top": { "from": "g50", "board": { "roll": -12 } },
+    "gNoseTop": { "from": "gNose", "board": { "roll": -12 } },
+    "gFeebleTop": { "from": "gFeeble", "board": { "pitch": 5, "yaw": 31, "roll": -10 } },
+    "gCrookedTop": { "from": "gCrooked", "board": { "pitch": -11, "yaw": 25, "roll": -14 } },
+    "gSaladTop": { "from": "gSalad", "board": { "roll": -12 } },
+    "gSuskiTop": { "from": "gSuski", "board": { "roll": -12 } },
+    "gOvercrookTop": { "from": "gOvercrook", "board": { "pitch": -15 } },
+    "gLosiTop": { "from": "gLosi", "board": { "pitch": -5, "yaw": -30, "roll": -10 } },
+    "sBoardTop": { "from": "sBoard", "hipsRot": [12, 20, 8], "board": { "pitch": 21, "pivot": 0 } },
+    "sLipTop": { "from": "sBoard", "hipsRot": [12, 20, -8], "board": { "pitch": -21, "pivot": 0 } },
+    "gBsBody": {
+      "hips": [0, -0.03, 0.56],
+      "hipsRot": [34, 24, 0],
+      "spine": [22, 16, 0],
+      "head": [95, 26, 0],
+      "lead": { "pos": [0.62, 0.16, 0.06], "elbow": [0.6, -0.3, -0.5] },
+      "rear": { "pos": [-0.42, 0.3, -0.08], "elbow": [-0.4, -0.2, -0.7] }
+    },
+    "grindCrouch": { "hips": [-0.06, -0.05, 0.5], "hipsRot": [12, 25, 0], "spine": [10, 22, 0] },
+    "sBoard": {
+      "hips": [-0.04, -0.03, 0.56],
+      "hipsRot": [12, 16, 0],
+      "spine": [8, 12, 0],
+      "head": [10, 22, 0],
+      "front": { "pos": [0.2, 0.0, 0], "toe": 10, "knee": [0.6, 1, 0] },
+      "back": { "pos": [-0.25, 0.0, 0], "toe": 5, "knee": [-0.6, 1, 0] },
+      "lead": { "pos": [0.6, 0.1, -0.06], "elbow": [0.3, -0.5, -0.6], "curl": 0.25 },
+      "rear": { "pos": [-0.6, 0.08, -0.1], "elbow": [-0.3, -0.5, -0.6], "curl": 0.25 },
+      "board": { "lift": -0.0815 }
+    },
+    "sNose": {
+      "from": "sBoard",
+      "hips": [0.08, -0.03, 0.58],
+      "hipsRot": [14, 18, 14],
+      "spine": [8, 14, 8],
+      "front": { "pos": [0.24, 0.0, 0], "knee": [0.8, 1, -0.2] },
+      "back": { "pos": [-0.22, 0.0, 0], "knee": [-1, 0.8, 0.3] },
+      "lead": { "pos": [0.44, 0.2, -0.28] },
+      "rear": { "pos": [-0.62, 0.1, 0.14] },
+      "board": { "n": -0.33, "pitch": -12, "pivot": 1, "lift": -0.0815 }
+    },
+    "sTail": {
+      "from": "sBoard",
+      "hips": [-0.16, -0.03, 0.6],
+      "hipsRot": [12, 12, -14],
+      "spine": [6, 8, -8],
+      "front": { "pos": [0.22, 0.0, 0], "knee": [1, 0.8, 0.3] },
+      "back": { "pos": [-0.27, 0.0, 0], "knee": [-0.8, 1, -0.2] },
+      "lead": { "pos": [0.62, 0.2, 0.16] },
+      "rear": { "pos": [-0.44, 0.06, -0.3] },
+      "board": { "n": 0.33, "pitch": 12, "pivot": -1, "lift": -0.0815 }
+    },
+    "sBlunt": {
+      "from": "sTail",
+      "hips": [-0.2, -0.04, 0.5],
+      "hipsRot": [14, 22, -6],
+      "spine": [8, 16, 0],
+      "front": { "pos": [0.22, 0.0, 0], "knee": [1, 1, 0.6] },
+      "back": { "pos": [-0.26, 0.0, 0], "knee": [-0.6, 1, -0.3] },
+      "lead": { "pos": [0.58, 0.24, 0.1] },
+      "rear": { "pos": [-0.5, 0.06, -0.24] },
+      "board": { "pitch": 55, "pivot": -0.5, "n": 0.237, "lift": 0 }
+    },
+    "sNoseBlunt": {
+      "from": "sNose",
+      "hips": [0.06, -0.04, 0.62],
+      "hipsRot": [16, 26, 10],
+      "spine": [10, 20, 6],
+      "front": { "pos": [0.24, 0.0, 0], "knee": [0.6, 1, -0.4] },
+      "back": { "pos": [-0.1, 0.0, 0], "knee": [-0.6, 1, 0.2] },
+      "lead": { "pos": [0.46, 0.24, -0.3] },
+      "rear": { "pos": [-0.6, 0.14, 0.2] },
+      "board": { "pitch": -55, "pivot": 0.5, "n": -0.237, "lift": 0 }
+    },
+    "manual": {
+      "hips": [-0.2, -0.03, 0.66],
+      "hipsRot": [15, 2, -20],
+      "spine": [10, 2, -10],
+      "head": [58, 10, 8],
+      "front": { "pos": [0.18, 0.0, 0], "toe": 15, "knee": [1, 0.6, 0.4] },
+      "back": { "pos": [-0.3, 0.0, 0], "knee": [-0.5, 1, 0] },
+      "lead": { "pos": [0.58, 0.2, -0.02], "elbow": [0.5, -0.4, -0.5] },
+      "rear": { "pos": [-0.5, 0.08, -0.22], "elbow": [-0.4, -0.6, -0.4] },
+      "board": { "pitch": 13, "pivot": -0.5 }
+    },
+    "nosemanual": {
+      "hips": [0.14, -0.03, 0.62],
+      "hipsRot": [15, 22, 18],
+      "spine": [10, 16, 10],
+      "head": [58, 24, -6],
+      "front": { "pos": [0.3, 0.0, 0], "knee": [0.6, 1, -0.3] },
+      "back": { "pos": [-0.16, 0.0, 0], "knee": [-1, 0.6, 0.4] },
+      "lead": { "pos": [0.46, 0.2, -0.3], "elbow": [0.4, -0.6, -0.4] },
+      "rear": { "pos": [-0.6, 0.12, 0.08], "elbow": [-0.5, -0.3, -0.5] },
+      "board": { "pitch": -13, "pivot": 0.5 }
+    },
+    "lipRock": {
+      "hips": [-0.1, -0.03, 0.6],
+      "hipsRot": [15, 14, -10],
+      "spine": [10, 12, -4],
+      "head": [30, 28, 0],
+      "front": { "pos": [0.18, 0.0, 0], "knee": [0.6, 1, -0.2] },
+      "back": { "pos": [-0.25, 0.0, 0], "knee": [-0.5, 1, 0.3] },
+      "lead": { "pos": [0.5, 0.18, -0.08] },
+      "rear": { "pos": [-0.52, 0.1, -0.12] },
+      "board": { "lift": -0.0815, "n": -0.02, "pitch": 21, "pivot": 0 }
+    },
+    "lipRockRoll": {
+      "from": "lipRock",
+      "hipsRot": [45, 14, -10],
+      "spine": [30, 10, -4],
+      "head": [-40, 20, 0],
+      "lead": { "pos": [0.54, 0.24, 0.0] },
+      "rear": { "pos": [-0.4, -0.1, -0.1] }
+    },
+    "lipAxle": {
+      "hips": [-0.03, -0.04, 0.6],
+      "hipsRot": [16, 18, 0],
+      "spine": [8, 12, 0],
+      "head": [45, 22, 0],
+      "front": { "pos": [0.19, 0.0, 0], "knee": [0.4, 1, 0.1] },
+      "back": { "pos": [-0.21, 0.0, 0], "knee": [-0.3, 1, 0.1] },
+      "lead": { "pos": [0.56, 0.22, 0.0] },
+      "rear": { "pos": [-0.56, 0.18, -0.04] },
+      "board": { "lift": -0.0155, "roll": 12, "pivot": 0 }
+    },
+    "lipDisaster": {
+      "from": "lipRock",
+      "hips": [0.1, -0.03, 0.6],
+      "hipsRot": [15, 18, 10],
+      "spine": [10, 14, 6],
+      "head": [55, 30, 0],
+      "front": { "pos": [0.2, 0.0, 0], "knee": [0.7, 1, -0.2] },
+      "back": { "pos": [-0.22, 0.0, 0], "knee": [-0.6, 1, 0.3] },
+      "lead": { "pos": [0.48, 0.22, -0.18] },
+      "rear": { "pos": [-0.54, 0.12, 0.06] },
+      "board": { "lift": -0.0815, "n": 0.02, "pitch": -21, "pivot": 0 }
+    },
+    "lipNose": {
+      "hips": [0.08, -0.06, 0.56],
+      "hipsRot": [16, 30, 14],
+      "spine": [10, 20, 8],
+      "head": [45, 30, 0],
+      "front": { "pos": [0.2, 0.0, 0], "knee": [0.6, 1, -0.3] },
+      "back": { "pos": [-0.24, 0.0, 0], "knee": [-0.9, 1, 0.4] },
+      "lead": { "pos": [0.46, 0.26, -0.1] },
+      "rear": { "pos": [-0.5, 0.16, 0.2] },
+      "board": { "pitch": 60, "pivot": 0.5, "n": -0.177, "lift": 0 }
+    },
+    "lipTail": {
+      "hips": [-0.1, -0.06, 0.56],
+      "hipsRot": [14, 26, -14],
+      "spine": [8, 18, -8],
+      "head": [50, 30, 0],
+      "front": { "pos": [0.2, 0.0, 0], "knee": [0.9, 1, 0.4] },
+      "back": { "pos": [-0.24, 0.0, 0], "knee": [-0.6, 1, -0.3] },
+      "lead": { "pos": [0.52, 0.18, 0.2] },
+      "rear": { "pos": [-0.46, 0.24, -0.1] },
+      "board": { "pitch": -60, "pivot": -0.5, "n": 0.177, "lift": 0 }
+    },
+    "lipBlunt": {
+      "from": "sBlunt",
+      "hips": [-0.18, -0.05, 0.5],
+      "hipsRot": [14, 24, -8],
+      "head": [40, 30, 0],
+      "board": { "pitch": 70, "pivot": -0.5, "n": 0.237, "lift": 0 }
+    },
+    "walk": {
+      "hips": [0, 0, 0.84],
+      "hipsRot": [0, 6, 0],
+      "spine": [0, 4, 0],
+      "head": [0, 6, 0],
+      "front": { "pos": [0.11, 0, 0], "board": 0, "toe": 0, "tilt": 0, "knee": [0, 1, 0.3] },
+      "back": { "pos": [-0.11, 0, 0], "board": 0, "toe": 0, "tilt": 0, "knee": [0, 1, 0.3] },
+      "lead": { "pos": [0.2, 0.0, -0.52], "board": 0, "elbow": [0.3, -0.5, -0.3], "curl": 0.3 },
+      "rear": { "pos": [-0.2, 0.0, -0.52], "board": 0, "elbow": [-0.3, -0.5, -0.3], "curl": 0.9 },
+      "board": { "lift": 0, "pitch": 0, "roll": 0, "yaw": 0, "n": 0, "f": 0, "pivot": 0 }
+    },
+    "bombTuck": {
+      "hips": [-0.03, -0.03, 0.5],
+      "hipsRot": [14, 36, 0],
+      "spine": [8, 30, 0],
+      "head": [48, -32, 0],
+      "front": { "pos": [0.15, 0.0, 0] },
+      "back": { "pos": [-0.28, 0.0, 0] },
+      "lead": { "pos": [0.04, -0.24, -0.32], "elbow": [0.6, -1, 0], "curl": 0.6 },
+      "rear": { "pos": [-0.04, -0.24, -0.34], "elbow": [-0.6, -1, 0], "curl": 0.6 }
+    },
+    "slideHeel": {
+      "hips": [-0.05, -0.2, 0.42],
+      "hipsRot": [12, -34, 0],
+      "spine": [8, -4, 0],
+      "head": [18, 24, 0],
+      "front": { "pos": [0.17, 0.0, 0], "knee": [0.4, 1, 0.2] },
+      "back": { "pos": [-0.28, 0.0, 0], "knee": [-0.2, 1, 0.2] },
+      "lead": { "pos": [0.3, 0.42, 0.02], "elbow": [0.6, -0.2, -0.4], "curl": 0.3 },
+      "rear": { "pos": [-0.2, -0.45, -0.07], "board": 1, "elbow": [-0.3, -1, 0.2], "curl": 0.15 }
+    },
+    "slideToe": {
+      "hips": [-0.05, 0.1, 0.44],
+      "hipsRot": [10, 46, 0],
+      "spine": [5, 22, 0],
+      "head": [28, -30, 0],
+      "front": { "pos": [0.17, 0.0, 0], "knee": [0.4, 1, 0] },
+      "back": { "pos": [-0.28, 0.0, 0], "knee": [-0.2, 1, 0] },
+      "lead": { "pos": [0.16, 0.44, -0.07], "board": 1, "elbow": [0.4, 0.2, 1], "curl": 0.15 },
+      "rear": { "pos": [-0.32, -0.24, -0.1], "elbow": [-0.6, -0.4, -0.4], "curl": 0.3 }
+    },
+    "wallride": {
+      "hips": [-0.05, -0.05, 0.58],
+      "hipsRot": [15, 18, 0],
+      "spine": [10, 12, 0],
+      "lead": { "pos": [0.5, 0.14, -0.12] },
+      "rear": { "pos": [-0.5, 0.1, -0.22] },
+      "board": { "lift": 0.0 }
+    },
+    "bail0": {
+      "hips": [0.0, 0.06, 0.6],
+      "hipsRot": [10, 35, 0],
+      "spine": [0, 15, 0],
+      "head": [20, -10, 0],
+      "front": { "pos": [0.2, 0.08, 0.05], "board": 0, "toe": 30 },
+      "back": { "pos": [-0.22, -0.04, 0.06], "board": 0, "toe": 20 },
+      "lead": { "pos": [0.38, 0.26, 0.12] },
+      "rear": { "pos": [-0.36, 0.3, 0.08] },
+      "board": { "n": 0.25, "lift": 0.06, "roll": 40 }
+    },
+    "bail1": {
+      "hips": [0.0, 0.25, 0.36],
+      "hipsRot": [10, 68, 0],
+      "spine": [0, 10, 0],
+      "head": [10, -30, 0],
+      "front": { "pos": [0.16, -0.18, 0.0], "board": 0, "toe": 20, "tilt": -40, "knee": [0.2, 1, -0.6] },
+      "back": { "pos": [-0.18, -0.2, 0.0], "board": 0, "toe": 10, "tilt": -40, "knee": [-0.1, 1, -0.6] },
+      "lead": { "pos": [0.24, 0.34, -0.58] },
+      "rear": { "pos": [-0.24, 0.34, -0.58] },
+      "board": { "n": 0.8, "lift": 0.02, "roll": 180 }
+    },
+    "bail2": {
+      "hips": [0.0, 0.0, 0.15],
+      "hipsRot": [10, 86, 0],
+      "spine": [0, -12, 0],
+      "head": [0, -40, 0],
+      "front": { "pos": [0.14, -0.7, 0.05], "board": 0, "toe": 10, "tilt": -80, "knee": [0, 0, -1] },
+      "back": { "pos": [-0.14, -0.72, 0.05], "board": 0, "toe": -10, "tilt": -80, "knee": [0, 0, -1] },
+      "lead": { "pos": [0.3, 0.34, -0.14] },
+      "rear": { "pos": [-0.3, 0.3, -0.14] },
+      "board": { "n": 1.2, "lift": 0.0, "roll": 180 }
+    },
+    "bail3": {
+      "from": "bail2",
+      "hips": [0.0, 0.02, 0.15],
+      "lead": { "pos": [0.32, 0.36, -0.12] }
+    },
+    "bail4": {
+      "hips": [0.0, -0.02, 0.4],
+      "hipsRot": [10, 45, 0],
+      "spine": [5, 20, 0],
+      "head": [30, 0, 0],
+      "front": { "pos": [0.18, 0.02, 0.0], "board": 0, "toe": 20 },
+      "back": { "pos": [-0.22, -0.2, 0.0], "board": 0, "toe": 10, "tilt": -50, "knee": [-0.1, 1, -0.8] },
+      "lead": { "pos": [0.3, 0.24, -0.36] },
+      "rear": { "pos": [-0.3, 0.24, -0.36] },
+      "board": { "n": 0.4, "roll": 0 }
+    },
+    "grabTuckHeel": {
+      "from": "grabTuck",
+      "hips": [-0.04, -0.02, 0.58],
+      "hipsRot": [5, 12, 0],
+      "spine": [0, 14, 0],
+      "board": { "lift": 0.36, "f": 0.08, "roll": 15 }
+    },
+    "celNod": { "head": [45, 18, 0], "lead": { "pos": [0.2, 0.15, -0.42] }, "rear": { "pos": [-0.2, 0.15, -0.42] } },
+    "celHop": { "spine": [8, 4, 0], "head": [40, -5, 0], "lead": { "pos": [0.32, 0.12, 0.02], "elbow": [0.8, 0, -0.5] }, "rear": { "pos": [-0.32, 0.12, 0.02], "elbow": [-0.8, 0, -0.5] } },
+    "celFist": { "spine": [12, 6, 0], "head": [45, 0, 0], "lead": { "pos": [0.2, 0.14, 0.02], "elbow": [0.7, 0.1, -0.8], "curl": 1.0 }, "rear": { "pos": [-0.22, 0.12, -0.42] } },
+    "waitStand": {
+      "hips": [0.0, 0.2, 0.8],
+      "hipsRot": [38, 3, 0],
+      "spine": [8, 4, 0],
+      "head": [40, 6, 0],
+      "front": { "pos": [0.2, 0.34, 0], "board": 0, "toe": 30, "tilt": 0, "knee": [0.2, 1, 0.1] },
+      "back": { "pos": [-0.2, 0.02, 0], "board": 1, "toe": 20, "tilt": 0, "knee": [-0.1, 1, 0.2] },
+      "lead": { "pos": [0.2, 0.04, -0.5], "board": 0, "elbow": [0.4, -0.5, -0.4], "curl": 0.4 },
+      "rear": { "pos": [-0.15, 0.12, -0.33], "board": 0, "elbow": [-0.9, -0.3, -0.2], "curl": 0.8 }
+    },
+    "celArmsUp": { "spine": [5, -6, 0], "head": [45, -18, 0], "lead": { "pos": [0.24, 0.06, 0.5], "elbow": [1, 0, 0.2], "curl": 0.5 }, "rear": { "pos": [-0.24, 0.06, 0.5], "elbow": [-1, 0, 0.2], "curl": 0.5 } },
+    "celPoint": { "spine": [8, -4, 0], "head": [50, -28, 0], "lead": { "pos": [0.14, 0.12, 0.56], "elbow": [1, 0, 0], "curl": 0.15 }, "rear": { "pos": [-0.16, -0.06, -0.26], "elbow": [-0.6, -0.8, 0] } },
+    "celFlail": { "head": [45, -8, 0], "lead": { "pos": [0.45, 0.12, 0.12], "curl": 0.1 }, "rear": { "pos": [-0.45, 0.12, 0.12], "curl": 0.1 } },
+    "celDance": { "head": [40, 6, 0], "lead": { "pos": [0.26, 0.26, -0.14], "elbow": [0.8, -0.4, -0.4] }, "rear": { "pos": [-0.26, 0.26, -0.14], "elbow": [-0.8, -0.4, -0.4] } },
+    "celFlare": { "spine": [6, -6, 0], "head": [48, -12, 0], "lead": { "pos": [0.52, 0.16, 0.04], "curl": 0.6 }, "rear": { "pos": [-0.52, 0.16, 0.04], "curl": 0.6 } },
+    "celAwkward": { "head": [45, 8, 0], "lead": { "pos": [0.08, 0.26, -0.16], "elbow": [0.3, -0.5, -0.8], "curl": 1.0 }, "rear": { "pos": [-0.16, 0.06, -0.46] } },
+    "idleWobble": { "lead": { "pos": [0.3, 0.05, -0.34] }, "rear": { "pos": [-0.3, 0.05, -0.34] } },
+    "idleBreathe": { "head": [45, 8, 0], "lead": { "pos": [0.14, 0.22, -0.26], "elbow": [0.6, -0.2, -0.7] }, "rear": { "pos": [-0.14, 0.22, -0.26], "elbow": [-0.6, -0.2, -0.7] } },
+    "idleBounce": { "head": [40, 0, 0], "lead": { "pos": [0.22, 0.1, -0.4] }, "rear": { "pos": [-0.22, 0.1, -0.4] } },
+    "idleScratch": { "head": [40, 18, 12], "lead": { "pos": [0.1, 0.06, 0.24], "elbow": [1, 0.1, 0.2], "curl": 0.6 }, "rear": { "pos": [-0.2, 0.08, -0.44] } },
+    "idleCross": { "head": [35, 4, 0], "spine": [8, 2, 0], "lead": { "pos": [-0.06, 0.26, -0.12], "elbow": [0.7, 0.4, -0.6], "curl": 0.7 }, "rear": { "pos": [0.06, 0.29, -0.1], "elbow": [-0.7, 0.4, -0.6], "curl": 0.7 } },
+    "idlePhone": { "head": [12, 38, 0], "spine": [14, 8, 0], "lead": { "pos": [0.16, 0.06, -0.46] }, "rear": { "pos": [0.02, 0.3, -0.18], "elbow": [-0.6, -0.4, -0.6], "curl": 0.6 } },
+    "idleRattle": { "head": [40, 10, 0], "lead": { "pos": [0.2, 0.06, -0.48] }, "rear": { "pos": [-0.2, 0.06, -0.48] } },
+    "superman": {
+      "from": "flipTuck",
+      "hips": [0.02, -0.04, 0.74],
+      "hipsRot": [88, 78, 0],
+      "spine": [0, 8, 0],
+      "head": [0, -48, 0],
+      "front": { "pos": [-0.32, 0.02, 0.62], "board": 0, "toe": 30, "tilt": -40, "knee": [-1, 0.2, 0.3] },
+      "back": { "pos": [-0.52, -0.04, 0.6], "board": 0, "toe": 30, "tilt": -40, "knee": [-1, 0.2, 0.3] },
+      "lead": { "pos": [0.37, 0.0, 0.0], "board": 1, "elbow": [0.3, 0.2, 0.9], "curl": 0.95 },
+      "rear": { "pos": [0.3, 0.1, 0.3], "board": 0, "elbow": [0.2, -0.3, 0.9], "curl": 0.2 },
+      "board": { "lift": 0.46, "n": 0.22, "pivot": 0 }
+    },
+    "flip540": {
+      "from": "flipTuck",
+      "hips": [-0.04, -0.04, 0.66],
+      "spine": [25, 26, 0],
+      "head": [55, 10, 0],
+      "front": { "pos": [0.16, -0.02, 0.4], "board": 0, "knee": [0.2, 1, 0.4] },
+      "back": { "pos": [-0.22, -0.02, 0.4], "board": 0, "knee": [-0.1, 1, 0.4] },
+      "lead": { "pos": [0.1, 0.26, -0.12], "board": 0, "elbow": [0.6, -0.4, -0.6], "curl": 0.9 },
+      "rear": { "pos": [-0.12, 0.26, -0.12], "board": 0, "elbow": [-0.6, -0.4, -0.6], "curl": 0.9 }
+    },
+    "catchStomp": { "from": "catch", "spine": [10, 30, 0], "head": [50, 15, 0], "lead": { "pos": [0.26, 0.12, -0.5], "curl": 1 }, "rear": { "pos": [-0.26, 0.12, -0.5], "curl": 1 } },
+    "catchLow": { "from": "catch", "hips": [-0.05, -0.06, 0.55], "lead": { "pos": [0.38, 0.12, -0.18] }, "rear": { "pos": [-0.38, 0.12, -0.18] } },
+    "catchSplay": { "from": "catch", "spine": [10, 8, 0], "head": [45, -10, 0], "lead": { "pos": [0.46, 0.1, 0.16], "curl": 0.1 }, "rear": { "pos": [-0.46, 0.1, 0.16], "curl": 0.1 } },
+    "catchBig": { "from": "catch", "spine": [14, 4, 0], "lead": { "pos": [0.3, 0.32, 0.24], "curl": 0.4 }, "rear": { "pos": [-0.22, 0.24, 0.3], "curl": 0.4 } },
+    "catchCape": { "from": "catch", "spine": [18, 14, 0], "head": [55, 5, 0], "lead": { "pos": [-0.04, 0.26, -0.1], "elbow": [0.7, 0.4, -0.5], "curl": 0.8 }, "rear": { "pos": [-0.46, -0.22, -0.08], "curl": 0.3 } },
+    "catchCool": { "from": "catch", "head": [50, -15, 0], "lead": { "pos": [0.16, 0.08, 0.48], "elbow": [1, 0, 0], "curl": 0.2 }, "rear": { "pos": [-0.24, 0.0, -0.46] } },
+    "catchStiff": { "from": "catch", "hipsRot": [15, 4, 0], "spine": [0, 2, 0], "head": [50, 0, 0], "lead": { "pos": [0.17, 0.02, -0.5], "curl": 0.9 }, "rear": { "pos": [-0.17, 0.02, -0.5], "curl": 0.9 } },
+    "bailPhone": {
+      "hips": [0.0, -0.05, 0.22],
+      "hipsRot": [10, 8, 0],
+      "spine": [5, 22, 0],
+      "head": [5, 42, 0],
+      "front": { "pos": [0.14, 0.42, 0.05], "board": 0, "toe": 10, "tilt": 20, "knee": [0.2, 0.3, 1] },
+      "back": { "pos": [-0.14, 0.38, 0.05], "board": 0, "toe": -10, "tilt": 20, "knee": [-0.2, 0.3, 1] },
+      "lead": { "pos": [0.3, -0.25, -0.38], "board": 0, "elbow": [0.4, -1, 0], "curl": 0.2 },
+      "rear": { "pos": [0.0, 0.3, -0.22], "board": 0, "elbow": [-0.6, -0.4, -0.6], "curl": 0.6 },
+      "board": { "n": 0.9, "lift": 0.0, "roll": 180 }
+    },
+    "idleCanOpen": { "head": [40, 0, 0], "lead": { "pos": [0.1, 0.12, 0.3], "elbow": [1, 0.2, 0.2], "curl": 0.7 }, "rear": { "pos": [-0.3, 0.05, -0.34] } },
+    "idleWave": { "head": [20, -12, 0], "spine": [5, -4, 0], "lead": { "pos": [0.3, 0.16, 0.52], "elbow": [1, 0, -0.2], "curl": 0.05 }, "rear": { "pos": [-0.2, 0.08, -0.44] } },
+    "idleGiggle": { "spine": [10, 18, 0], "head": [30, 10, 0], "lead": { "pos": [0.08, 0.24, -0.32], "curl": 0.8 }, "rear": { "pos": [-0.08, 0.24, -0.32], "curl": 0.8 } },
+    "idleSun": { "spine": [0, -14, 0], "head": [10, -45, 0], "lead": { "pos": [0.03, 0.22, 0.36], "elbow": [1, 0.1, 0.1], "curl": 0.0 }, "rear": { "pos": [-0.1, 0.24, -0.16], "elbow": [-0.6, 0.4, -0.6], "curl": 0.7 } },
+    "idleArmOff": { "spine": [0, 26, 0], "head": [-20, 40, 0], "lead": { "pos": [-0.1, 0.2, -0.58], "elbow": [0.6, -0.6, 0], "curl": 0.6 }, "rear": { "pos": [-0.22, 0.06, -0.46] } },
+    "idleSelfie": { "head": [-25, -10, 6], "spine": [6, -2, 0], "lead": { "pos": [0.26, 0.06, -0.3], "curl": 0.4 }, "rear": { "pos": [0.08, 0.42, 0.22], "elbow": [-0.6, -0.2, -0.6], "curl": 0.6 } },
+    "boneless": {
+      "from": "pop",
+      "hips": [-0.06, -0.04, 0.66],
+      "spine": [10, 20, 0],
+      "front": { "pos": [0.22, 0.1, -0.28], "board": 0, "toe": 10, "tilt": 0, "knee": [0.4, 1, 0] },
+      "back": { "pos": [-0.27, 0.0, 0.0], "board": 1 },
+      "lead": { "pos": [0.42, 0.2, 0.0], "elbow": [0.8, 0, -0.4], "curl": 0.2 },
+      "board": { "lift": 0.18, "pitch": 12, "pivot": -0.5 }
+    },
+    "nocomply": {
+      "from": "pop",
+      "hips": [-0.02, -0.04, 0.7],
+      "front": { "pos": [0.2, 0.0, 0.04], "board": 1, "knee": [0.6, 1, 0.3] },
+      "back": { "pos": [-0.26, 0.14, -0.26], "board": 0, "toe": 30, "tilt": 10, "knee": [-0.2, 1, 0] },
+      "lead": { "pos": [0.4, 0.16, -0.1] },
+      "rear": { "pos": [-0.38, 0.2, -0.1] },
+      "board": { "lift": 0.16, "pitch": 24, "pivot": -0.5 }
+    },
+    "bertHeel": {
+      "from": "slideHeel",
+      "hips": [-0.05, -0.28, 0.36],
+      "hipsRot": [16, -40, 0],
+      "spine": [8, -6, 0],
+      "head": [10, 26, 0],
+      "lead": { "pos": [0.34, 0.5, 0.18], "board": 0, "curl": 0.2 },
+      "rear": { "pos": [-0.25, -0.62, -0.07], "board": 1, "elbow": [-0.3, -1, 0.3], "curl": 0.1 }
+    },
+    "bertToe": {
+      "from": "slideToe",
+      "hips": [-0.05, 0.16, 0.38],
+      "hipsRot": [12, 55, 0],
+      "spine": [5, 26, 0],
+      "head": [28, -36, 0],
+      "lead": { "pos": [0.2, 0.62, -0.07], "board": 1, "curl": 0.1 },
+      "rear": { "pos": [-0.34, -0.3, 0.12], "board": 0, "curl": 0.2 }
+    },
+    "carSurf": {
+      "hips": [-0.05, -0.04, 0.6],
+      "hipsRot": [40, 22, 0],
+      "spine": [10, 12, 0],
+      "head": [40, 0, 0],
+      "front": { "pos": [0.17, 0.0, 0] },
+      "back": { "pos": [-0.29, 0.0, 0] },
+      "lead": { "pos": [0.5, 0.06, 0.04], "elbow": [0.8, 0, -0.3], "curl": 0.1 },
+      "rear": { "pos": [-0.5, 0.06, 0.04], "elbow": [-0.8, 0, -0.3], "curl": 0.1 }
+    },
+    "skitch": {
+      "hips": [-0.08, -0.03, 0.56],
+      "hipsRot": [70, 20, 0],
+      "spine": [10, 18, 0],
+      "head": [50, -10, 0],
+      "lead": { "pos": [0.55, 0.0, 0.0], "elbow": [0.6, -0.2, -0.6], "curl": 0.95 },
+      "rear": { "pos": [-0.3, 0.16, -0.3], "curl": 0.4 }
+    },
+    "emoteDab": { "spine": [20, 18, 0], "head": [70, 30, 0], "lead": { "pos": [0.5, 0.06, 0.32], "elbow": [1, 0, 0.2], "curl": 0.2 }, "rear": { "pos": [0.16, 0.24, 0.18], "elbow": [-0.4, 0.3, 0.8], "curl": 0.4 } },
+    "emoteHiss": { "spine": [5, -18, 0], "head": [30, -20, 0], "hipsRot": [15, -6, 0], "lead": { "pos": [0.08, 0.24, 0.3], "elbow": [0.8, 0.2, 0.4], "curl": 0.1 }, "rear": { "pos": [-0.3, 0.34, -0.06], "elbow": [-0.6, -0.4, -0.2], "curl": 0.75 } },
+    "emoteHiring": { "spine": [8, 14, 0], "head": [10, -6, 0], "lead": { "pos": [0.07, 0.3, 0.12], "elbow": [0.8, -0.2, -0.6], "curl": 0.5 }, "rear": { "pos": [-0.07, 0.3, 0.12], "elbow": [-0.8, -0.2, -0.6], "curl": 0.5 } },
+    "emoteCool": { "spine": [-4, 0, 0], "head": [8, 0, 0], "lead": { "pos": [-0.06, 0.24, -0.13], "elbow": [0.7, 0.4, -0.6], "curl": 0.6 }, "rear": { "pos": [0.07, 0.27, -0.11], "elbow": [-0.7, 0.4, -0.6], "curl": 0.6 } },
+    "emoteShaka": { "spine": [4, 10, 0], "head": [10, 12, 0], "lead": { "pos": [0.32, 0.6, 0.2], "elbow": [1, -0.2, -0.3], "curl": 0 }, "rear": { "pos": [-0.2, -0.05, 0.18], "elbow": [-0.6, -0.6, 0], "curl": 0.3 } },
+    "emoteStrut": { "spine": [-14, 0, 0], "head": [-6, 0, 0], "lead": { "pos": [0.24, -0.04, -0.14], "elbow": [0.4, 0.4, -0.8], "curl": 0.5 }, "rear": { "pos": [-0.24, -0.04, -0.14], "elbow": [-0.4, 0.4, -0.8], "curl": 0.5 } }
+  }
+}

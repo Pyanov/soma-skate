@@ -1,0 +1,12 @@
+# The ledge pop is for ledges up to air.ledgePop.maxHeight (0.55 m): an ollie popped 2 m before
+# the lab bank's 1 m back face (at y 24.14, met from the north) still meets the face and stops short,
+# as before. No bump. (A half crouch, 0.86 m, meets the face near its top: the top is in reach, the
+# ledge too high.)
+park lab
+cmd 0 teleport 12 30 0.13 180
+cmd 6 speed 5
+hold ollie 78..96
+run 260
+expect event pop within 95..99
+expect no event bump
+expect skater.pos.y > 24.14 at end

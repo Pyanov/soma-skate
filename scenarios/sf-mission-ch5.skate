@@ -1,0 +1,30 @@
+# Chapter 5 from the race (mission start ch5 4): Chad, on a new skateboard, waits at the park gate on Duboce and
+# sets off at 6.5 m/s once you are within 15 m; his path runs east on Duboce, north to the Oak St gutter and up to
+# Civic Center Plaza's south edge (366 m, about 58 s). The autopilot rides the same streets at 8 m/s and reaches
+# the finish (within 12 m of the path's end) first: Gloria's window before five starts, with Karl's bark (a go
+# step, 45 s). It rides on up Polk St to the foot of City Hall's steps (Civic Center Plaza's ledges are in the way
+# of the diagonal); a teleport on the spot turns it to face the door (the autopilot rides into the steps at an
+# angle), and it steps off at once (the forecourt's slope turns a standing board) and walks up into the lobby (the
+# city's room): within 12 m of Gloria the go step is done, 25 s after the race. A teleport to her window starts
+# her talk; the rest read, the chapter done with its sticker.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start ch5 4
+cmd 0 teleport 24 1 -0.6 90
+bot path 30,2 72,4.5 100,8.5 116,30 114.5,62 111.5,120 108.5,150 105.5,178 113,205 119,226 117,250 112,272 52,268 40,320 37,342 32,353 28,355 18,353.6 from 5 speed 8 nocars
+cmd 7760 teleport 20.5 354.5 3.3 272
+tap walk 7776
+hold up 7796..8470
+cmd 8500 teleport -4.6 358.9 5.4 351
+cmd 8520 mission next all
+run 8600
+expect event missionStep{mission=ch5,step=4,kind=race} within 1..1
+expect event talk{character=chad,line=ch5-18,bark=true} within 1..1
+expect event missionStep{mission=ch5,step=5,kind=go,seconds=45} within 5200..5400
+expect event talk{character=karl,line=ch5-14,bark=true} within 5200..5400
+expect event stepOff within 7777..7777
+expect event missionStep{mission=ch5,step=6,kind=talk} within 8300..8480
+expect event talk{character=gloria,line=ch5-15} within 8501..8503
+expect event missionDone{mission=ch5,sticker=story-ch5} within 8520..8521
+expect no event missionFailed
+expect no event bail

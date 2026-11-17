@@ -1,0 +1,19 @@
+# City sweep (skate cityfuzz): A lot 0.14 m over the ground beside it.
+# Finding: underground at -590.67 8.94 27.96 (city_lot_-600_0 0.14 m above), tick 882. Run it with `./skate run scenarios/city-sweep/lot-overlap.skate`; the
+# end position is where the problem is. Not run by check (the fix belongs in the world generator).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -600 20 29.05 97
+hold down+right+ollie+flip 0..95
+hold down+right 95..189
+hold up 189..270
+hold down+grab 270..372
+hold left 372..421
+hold ollie 421..488
+hold down 549..605
+hold left 605..639
+hold up 639..682
+hold up 682..742
+hold up+grab 742..848
+hold down+left+ollie 848..882
+run 884

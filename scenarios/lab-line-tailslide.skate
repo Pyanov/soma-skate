@@ -1,0 +1,11 @@
+# A line: along the lab ledge into a BS Tailslide (I + down as it locks on, the ledge-slide approach
+# 25 degrees off square), slid to the ledge's end and off.
+park lab
+cmd 0 teleport 5.5 -2.6 0.14 25
+hold up 6..80
+hold ollie 70..90
+hold down 124..131
+tap grind 128
+bot balance
+run 420
+expect event grindStart{trick=BS Tailslide,slide=true} within 125..135

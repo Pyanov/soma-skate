@@ -1,0 +1,14 @@
+# Disaster: straight up the vert ramp, I + down at the coping (the direction only as it catches, so
+# it barely spins): the stall (lip review: ./skate strip --sheet scenarios/lips.strips), let go: drop
+# back in forward (the rider turned round on the coping).
+park lab
+spawn lab_vert
+cmd 6 speed 10
+hold grind 212..278
+hold down 212..214
+bot balance
+run 600
+expect event lipStart{trick=Disaster} within 210..220
+expect event lipEnd{trick=Disaster,reason=drop in} within 276..282
+expect event land{fakie=false} within 280..380
+expect no event bail

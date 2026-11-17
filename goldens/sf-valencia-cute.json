@@ -1,0 +1,1 @@
+{ "target": "spot:valencia_shops", "park": "sf", "cam": "chase", "style": "cute", "layers": ["park", "context"], "threshold": 99.5 }

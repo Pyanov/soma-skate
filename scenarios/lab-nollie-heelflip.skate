@@ -1,0 +1,13 @@
+# Nollie: the nose button (Q) held as K is let go pops off the nose rolling forward; J + right is a
+# Nollie Heelflip, worth tricks.stance.nollie (1.15) of a heelflip's points.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold nose 84..90
+tap flip+right 96
+run 300
+expect event pop{fakie=false,nose=true} within 91..91
+expect event trickEnd{trick=Nollie Heelflip,points=115} within 120..160
+expect event comboLanded{name=Nollie Heelflip,points=115} within 160..240
+expect no event bail

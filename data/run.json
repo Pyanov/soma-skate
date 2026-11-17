@@ -1,0 +1,237 @@
+{
+  "durationSeconds": 120,
+  "letterRadius": 0.9,
+  "letters": [
+    { "letter": "S", "pos": [19.8, 21.3, 1.15], "hint": "over Big 3" },
+    { "letter": "K", "pos": [55.5, 26.5, 0.35], "hint": "over the wave" },
+    { "letter": "A", "pos": [41.0, 21.0, 0.3], "hint": "on the central island" },
+    { "letter": "T", "pos": [19.45, 19.2, 1.1], "hint": "along the Big 2 rail" },
+    { "letter": "E", "pos": [55.0, 23.4, 1.05], "hint": "above the volcano" }
+  ],
+  "burritoParks": ["soma", "sf"],
+  "burritoRadius": 1.1,
+  "burritoPoints": 250,
+  "burritos": [
+    { "pos": [41, 24.5, 0.13], "hint": "on the central island" },
+    { "pos": [74, 17, 0.4], "hint": "in the Hellride run" },
+    { "pos": [28, 12, 0.38], "hint": "by the south bank" },
+    { "pos": [46.94, 8.45, -0.23], "hint": "outside the park gate on Duboce" },
+    { "pos": [-220.89, 143.03, 13.49], "hint": "on Market St" },
+    { "pos": [-53.42, -235.07, 3.2], "hint": "on Valencia by the shops" },
+    { "pos": [-58.4, -170.27, 3], "hint": "further up Valencia" },
+    { "pos": [60.00, -391.00, 1.42], "hint": "in Clarion Alley" },
+    { "pos": [-202.2, -274.18, 16.84], "hint": "halfway down the Dolores bomb" },
+    { "pos": [-209.11, -184.44, 9.44], "hint": "at the bottom of Dolores" },
+    { "pos": [-49.00, -325.00, 3.10], "hint": "on Valencia at 17th" },
+    { "pos": [-437.00, 25.00, 10.25], "hint": "Church and 18th" }
+  ],
+  "goals": [
+    { "id": "score1", "name": "High Score: 10,000", "kind": "score", "value": 10000 },
+    { "id": "score2", "name": "Pro Score: 25,000", "kind": "score", "value": 25000 },
+    { "id": "score3", "name": "Sick Score: 50,000", "kind": "score", "value": 50000 },
+    { "id": "skate", "name": "Collect S-K-A-T-E", "kind": "letters", "value": 5 },
+    { "id": "gaps3", "name": "Hit 3 different gaps", "kind": "gaps", "value": 3 },
+    { "id": "combo5k", "name": "Land a 5,000 point combo", "kind": "combo", "value": 5000 },
+    { "id": "speed40", "name": "Hit 40 km/h", "kind": "speed", "value": 40 },
+    { "id": "burritos3", "name": "Grab 3 Mission burritos", "kind": "burritos", "value": 3 }
+  ],
+  "courier": {
+    "_doc": "Courier mode (run courier; sf only): pick up at start, deliver to each leg's drop before the clock runs out. Positions are the street at the stop (x, y, z); a drop counts within dropRadius metres across and dropHeight up or down. Each delivery scores deliveryPoints and hands you the next order on the spot: its seconds are added to what is left. The legs loop.",
+    "parks": ["sf"],
+    "start": { "pos": [156.0, -315.7, -2.52], "heading": 355.7, "place": "Taqueria La Niebla, Mission St", "line": "Hector has the order ready at La Niebla on Mission" },
+    "pickupRadius": 5, "dropRadius": 6, "dropHeight": 4, "deliveryPoints": 1000,
+    "legs": [
+      { "id": "sourdough", "to": [-55.3, -305, 2.15], "seconds": 50, "place": "Valencia & 17th", "line": "A burrito for a VC holding a spot in the sourdough line" },
+      { "id": "hammock", "to": [-235, -230, 12.21], "seconds": 60, "place": "Dolores Park", "line": "Deliver a burrito to a tech bro in a Dolores Park hammock" },
+      { "id": "mission", "to": [-18.5, -395.2, 1.61], "seconds": 45, "place": "Clarion Alley", "line": "A tourist in Clarion Alley asked for \"the\" burrito" },
+      { "id": "rainbow", "to": [-589.5, -28.5, 18.98], "seconds": 130, "place": "Harvey Milk Plaza, Castro & Market", "line": "Two burritos for a couple meeting under the rainbow flag at Castro and Market (one is vegan; the other says he is too)" },
+      { "id": "bart", "to": [96.5, -202, -1.83], "seconds": 105, "place": "16th St Mission BART", "line": "A burrito for a commuter whose train has been \"eight minutes away\" for twenty minutes" },
+      { "id": "barista", "to": [-58.4, -170.3, 2], "seconds": 80, "place": "Valencia St", "line": "A super burrito for a barista on Valencia: no beans, extra drama" },
+      { "id": "skater", "to": [47.6, 4.5, -1.23], "seconds": 40, "place": "the park gate on Duboce", "line": "Lunch for a skater at the park gate who only went in for one run" },
+      { "id": "founder", "to": [-228, 136, 13.02], "seconds": 75, "place": "Market St", "line": "A wet burrito for a founder pitching on Market St (bring napkins)" },
+      { "id": "taqueria", "to": [156.0, -315.7, -2.52], "seconds": 100, "place": "Taqueria La Niebla, Mission St", "line": "Back to La Niebla: Hector has more orders piling up" }
+    ]
+  },
+  "combo": {
+    "_doc": "Combo Challenge (run combo): seconds on the clock, only your best single combo counts.",
+    "seconds": 60
+  },
+  "bomb": {
+    "_doc": "Hill Bomb races (run bomb [route]; sf only). The top level is the default route, Dolores (from the top of Dolores St down to the finish); routes lists the others (Hayes St: from Alamo Square at Pierce down past Steiner, Fillmore, Webster, Buchanan and Laguna to Octavia, east and 58 m down; Twin Peaks: Upper Market from Grand View to Castro). Each route has an id, name, start, gates, maxSeconds, the rider line its racers follow (line; a route without one has them follow a lane down its start and gates, a point every gateStep metres reached within gateRadius, offset to their side of it by their line-up offset but at most gateLane metres, so they keep to the travel lanes and clear of parked cars) and its racers: locals who line up at the start line and race you once you cross it (name; look: character and outfit; speed: their cruising speed, m/s; brakeMargin: how far over the corner speed they let it run before braking; standUp: how often a second, above the wobble speed, they stand up for standFor seconds (letting go of the tuck pops a hop, with a flip at a random moment flipChance of the time: too late and they land mid-flip), which the speed wobbles punish too; offset: where they line up, metres left of the line). fallPenalty is shared. Gates are lines across the street (pos, the race direction dir, halfWidth metres each side, within height metres up or down); the clock starts at the first and stops at the last. Each fall adds fallPenalty seconds; after maxSeconds it is a fail.",
+    "parks": ["sf"],
+    "id": "dolores", "name": "Dolores",
+    "start": {"pos": [-197.6, -334, 23.96], "heading": 356},
+    "gates": [
+      {"name": "Start", "pos": [-198.5, -322, 22.04], "dir": [-0.077, 0.997], "halfWidth": 15, "height": 8},
+      {"name": "Dolores & 19th", "pos": [-203.75, -253.43, 16.36], "dir": [-0.077, 0.997], "halfWidth": 15, "height": 8},
+      {"name": "Finish", "pos": [-209.4, -180, 9.42], "dir": [-0.077, 0.997], "halfWidth": 15, "height": 8}
+    ],
+    "maxSeconds": 90,
+    "line": "dolores_bomb_line",
+    "racers": [
+      {"name": "Kevin from Three Bin", "look": 112, "speed": 15.5, "brakeMargin": 0.8, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": 1.8},
+      {"name": "Night-shift nurse", "look": 547, "speed": 13, "brakeMargin": 0.3, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": 3.6},
+      {"name": "Dolores Park DJ", "look": 803, "speed": 16.5, "brakeMargin": 1.2, "standUp": 1.5, "standFor": 2.5, "flipChance": 0.8, "offset": -1.6}
+    ],
+    "fallPenalty": 3,
+    "gateRadius": 4,
+    "gateStep": 5,
+    "gateLane": 1.5,
+    "routes": [
+      {
+        "id": "hayes",
+        "name": "Hayes St",
+        "start": {"pos": [-1082.0, 375.5, 68.13], "heading": 81},
+        "gates": [
+          {"name": "Start", "pos": [-1070.1, 377.4, 67.9], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Hayes & Steiner", "pos": [-976.0, 392.3, 58.6], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Hayes & Fillmore", "pos": [-829.7, 415.4, 44.5], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Hayes & Webster", "pos": [-685.0, 438.4, 30.9], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Hayes & Buchanan", "pos": [-538.8, 461.5, 21.1], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Hayes & Laguna", "pos": [-393.6, 484.5, 13.2], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10},
+          {"name": "Finish: Octavia", "pos": [-249.4, 507.4, 11.3], "dir": [0.9877, 0.1564], "halfWidth": 15, "height": 10}
+        ],
+        "maxSeconds": 150,
+        "racers": [
+          {"name": "Hayes Valley barista on a break", "look": 418, "speed": 15, "brakeMargin": 0.6, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": 2},
+          {"name": "Alamo Square tour guide", "look": 579, "speed": 13.5, "brakeMargin": 0.3, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": -1.5},
+          {"name": "Painted Ladies landlord", "look": 726, "speed": 17.5, "brakeMargin": 1, "standUp": 0.03, "standFor": 3, "flipChance": 0.5, "offset": -3.5}
+        ]
+      },
+      {
+        "id": "twinpeaks", "name": "Twin Peaks",
+        "start": {"pos": [-1206.1, -654.1, 97.528], "heading": -43.71},
+        "gates": [
+          {"name": "Start", "pos": [-1214.4, -645.4, 96.4], "dir": [-0.691, 0.723], "halfWidth": 20, "height": 10},
+          {"name": "Market & Clayton", "pos": [-1336.4, -495.0, 86.3], "dir": [-0.849, 0.528], "halfWidth": 20, "height": 10},
+          {"name": "Market & 19th", "pos": [-1428.5, -357.8, 73.0], "dir": [0.097, 0.995], "halfWidth": 20, "height": 10},
+          {"name": "Market & 18th", "pos": [-1314.0, -243.2, 59.0], "dir": [0.776, 0.631], "halfWidth": 20, "height": 10},
+          {"name": "Market & Douglass", "pos": [-952.7, -142.6, 31.9], "dir": [0.87, 0.493], "halfWidth": 20, "height": 10},
+          {"name": "Finish: Castro", "pos": [-580.1, -4.5, 18.4], "dir": [0.865, 0.503], "halfWidth": 20, "height": 10}
+        ],
+        "maxSeconds": 240,
+        "line": "twin_peaks_line",
+        "racers": [
+          {"name": "Mission bike messenger", "look": 231, "speed": 16.8, "brakeMargin": 0.8, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": 2.5},
+          {"name": "Muni operator (off duty)", "look": 668, "speed": 14, "brakeMargin": 0.3, "standUp": 0, "standFor": 0, "flipChance": 0, "offset": 5},
+          {"name": "Castro roller-disco legend", "look": 950, "speed": 17, "brakeMargin": 1, "standUp": 0.035, "standFor": 3, "flipChance": 0.6, "offset": 7.5}
+        ]
+      }
+    ]
+  },
+  "skate": {
+    "_doc": "Game of S.K.A.T.E. against a local (run skate [local id]; src/sim/game/skate.ts, docs/mechanics/modes.md). Flat-ground tricks at a marked spot in the park: the setter lands a trick there and the other has to land the same trick there, clean (a sketchy landing is a miss). A missed match earns the next letter of word; whoever spells it loses. The setter changes every round, the local first; a trick already set this game cannot be set again. A try starts with a pop (or a manual) on the ground within spot.near of spot.mark (from the start of the turn: the clock waits pauseSeconds, a quick rider need not) and counts when its combo banks if it started within spot.radius (else: too far from the mark): one trick at a time (a foot trick, a spin up to 360, a flip or a grab, or a manual of at least manualSeconds; nothing at all is an ollie). setSeconds and matchSeconds are the time to start a try (one under way may finish); pauseSeconds between turns, when whoever is up is put at spot.start facing spot.heading (the other waits at its watch spot facing watchHeading). Positions are park metres [x, y], the same in soma and in the park inside sf; headings degrees clockwise from north. A local rides the lane from spot.start toward spot.end at runSpeed, locks lockTicks before the mark, crouches and pops on it. difficulty: each part of a trick ('grab' for any grab); a trick's is the sum, and a local lands it with chance skill - hardness x difficulty (+ favoriteBonus for its favourites), kept within [minMake, maxMake]; when setting it picks one of its favourites favoriteChance of the time, else any of sets. lines: what a local says ({trick} is the trick's name). During a game the park's NPC skaters keep off the lane (spot.start to spot.end, 2 m longer each way, spot.clear either side): one whose line crosses it, or who is on it, goes and watches from one of the crowd spots ([x, y, heading]) until the game is over, and the others only ride lines clear of it.",
+    "parks": ["soma", "sf"],
+    "word": "SKATE",
+    "spot": {"mark": [52, 19.5], "radius": 2, "near": 5, "start": [45, 19.5], "end": [65, 19.5], "heading": 90, "playerWatch": [45.5, 21.6], "localWatch": [47.5, 21.6], "watchHeading": 110,
+      "clear": 2.5, "crowd": [[49.5, 22.8, 180], [51.5, 23.0, 180], [58, 23.8, 200], [60, 23.5, 200], [57.5, 16.6, 0], [59.5, 16.8, 0], [61.5, 17.0, 340]]},
+    "setSeconds": 25, "matchSeconds": 25, "pauseSeconds": 2,
+    "manualSeconds": 1,
+    "runSpeed": 5, "lockTicks": 45,
+    "hardness": 0.6, "favoriteBonus": 0.1, "favoriteChance": 0.5, "minMake": 0.05, "maxMake": 0.95,
+    "difficulty": {
+      "kickflip": 0.25, "heelflip": 0.25, "popshoveit": 0.15, "impossible": 0.45, "varialkickflip": 0.45, "varialheelflip": 0.5, "hardflip": 0.6, "360flip": 0.7,
+      "boneless": 0.15, "nocomply": 0.15, "manual": 0.2, "nosemanual": 0.3, "fs180": 0.2, "bs180": 0.25, "fs360": 0.6, "bs360": 0.65, "grab": 0.3
+    },
+    "sets": ["ollie", "kickflip", "heelflip", "popshoveit", "impossible", "varialkickflip", "varialheelflip", "hardflip", "360flip", "boneless", "nocomply", "manual", "nosemanual", "fs180", "bs180", "fs180+kickflip", "bs180+heelflip", "nocomply+bs180", "boneless+fs180"],
+    "locals": [
+      {
+        "id": "rosa", "name": "Rosa", "hood": "Excelsior", "look": 137, "skill": 0.82, "favorites": ["kickflip", "varialkickflip", "bs180"],
+        "lines": {
+          "set": ["{trick}. Your go.", "{trick}, like back at Crocker Amazon."],
+          "setMiss": ["Fog in my eyes. Your set.", "Nope. Go on, set something."],
+          "make": ["Easy.", "Got it. Next."],
+          "miss": ["Ugh. Give me the letter.", "That one bit me. Fine."],
+          "youMake": ["Okay, okay, you skate.", "Clean. Annoying, but clean."],
+          "youMiss": ["That's a letter.", "Not today."],
+          "win": ["S-K-A-T-E. Burritos are on you.", "Good game. Come back when the fog lifts."],
+          "lose": ["You got me. Rematch on Saturday.", "Alright, you run this spot. For now."]
+        }
+      },
+      {
+        "id": "kenji", "name": "Kenji", "hood": "Outer Sunset", "look": 604, "skill": 0.66, "favorites": ["nocomply", "boneless", "popshoveit"],
+        "lines": {
+          "set": ["{trick}. Old school.", "Do the {trick}, Ocean Beach style."],
+          "setMiss": ["Wind took it. Your set.", "Wet wheels. Go ahead."],
+          "make": ["Yeah! Still got it.", "Smooth like the N Judah."],
+          "miss": ["Aw, man. Letter.", "I swear that landed in my head."],
+          "youMake": ["Nice, nice.", "Okay, you're warmed up."],
+          "youMiss": ["Letter for you, dude.", "So close. Letter."],
+          "win": ["Game. Let's get Thai food.", "S-K-A-T-E, dude. Out at the beach we skate like that."],
+          "lose": ["You win. I'm going back to the beach.", "Good game. You're too fast for me."]
+        }
+      },
+      {
+        "id": "dre", "name": "Dre", "hood": "Bayview", "look": 871, "skill": 0.9, "favorites": ["heelflip", "impossible", "manual"],
+        "lines": {
+          "set": ["{trick}. Show me.", "{trick}. Embarcadero days."],
+          "setMiss": ["Rust. Your set.", "That's what I get for showing off. Go."],
+          "make": ["Still got it.", "Like riding a bike."],
+          "miss": ["Huh. Letter to me.", "Respect. That one's mine."],
+          "youMake": ["Alright, I see you.", "You can skate."],
+          "youMiss": ["Letter.", "Gotta land it clean, young one."],
+          "win": ["S-K-A-T-E. Come back next week.", "Good game. Keep pushing."],
+          "lose": ["Respect. You beat me fair.", "You took it. I'll be here tomorrow."]
+        }
+      },
+      {
+        "id": "tash", "name": "Tash", "hood": "the Mission", "look": 322, "skill": 0.74, "favorites": ["hardflip", "nosemanual", "fs180"],
+        "lines": {
+          "set": ["{trick}. Don't be scared.", "{trick}, hella clean."],
+          "setMiss": ["Ugh, the 22 was late and so was I. Your set.", "Didn't count. Go."],
+          "make": ["Done.", "Too easy, too easy."],
+          "miss": ["Hella annoying. Letter.", "Okay that was sketchy. Give it."],
+          "youMake": ["Fine, you landed it.", "Okay, you're not bad."],
+          "youMiss": ["Letter!", "That's a letter, sorry not sorry."],
+          "win": ["S-K-A-T-E. Mission rules.", "Game. You owe me a horchata."],
+          "lose": ["You got it. Respect.", "Good game. Next time I set the hardflips first."]
+        }
+      }
+    ]
+  },
+  "twoPlayer": {
+    "_doc": "Local two-player (THPS 2 split screen; src/sim/game/twoplayer.ts, docs/mechanics/modes.md). player2 join [spot] puts a second skater in the world, on its own input (InputFrame.b2), beside player 1 (join.side metres to its left, on the ground there) when no spot is given; player2 leave takes it out. The players never touch each other; each scores its own gaps, burritos and city goals. trickAttack (run trickattack2p): both skate at once for seconds, the higher score wins. horse (run horse2p [word]): a game of S.K.A.T.E. between the players at the S.K.A.T.E. spot (run.skate: the spot, the trick rules, manualSeconds), with word (or one of words, named in the command) and these clocks; player 1 sets first, the setter changes every round. graffiti (run graffiti2p): both skate at once for seconds; each grind line ground (or lip tricked) and each gap in a combo is tagged for its player when the combo banks, if nobody owns it or it is the other's from a smaller combo (a bigger combo steals it back); whoever owns the most at the end wins.",
+    "join": { "side": 1.5 },
+    "trickAttack": { "seconds": 120 },
+    "horse": { "word": "HORSE", "words": ["HORSE", "SOMA"], "setSeconds": 10, "matchSeconds": 10, "pauseSeconds": 2 },
+    "graffiti": { "seconds": 120 }
+  },
+  "muni": {
+    "_doc": "Muni Race (run muni [line]; sf only; src/sim/game/muni.ts, docs/mechanics/modes.md): race a streetcar to its line's last stop. A line runs on the city's streetcar rails (rails: the ids of the grind lines with feature streetcar rail, in order; the route is their track centre, chained, gaps between them bridged straight), stopping at stops ([x, y], OpenStreetMap's stop positions, in order; the first is the start). You start beside the streetcar at the first stop, platform metres right of its track, facing the way it goes. It waits startDwell seconds, then accelerates at accel up to the line's cruise, brakes at decel to stand at each stop for dwell seconds, and at a stop between the first and the last is delayed delay.chance of the time for delay.seconds more (drawn from its own stream, with one of delay.says). Lines: j (J Church, Liberty to 18th Street through Dolores Park: the menu's Muni Race and Dolores's Delay). The F does not run in the squeezed city: its streetcars stand parked on the Market pieces (the city export's parked streetcars). It never stops for you: on its track ahead within bell metres (and bellSide across) it rings once, and its ends shove you off the track (a hit, coming at more than traffic.hitSpeed). You reach a stop within stopRadius metres across (and 4 m up or down) of its point on the track, in any order and by any way; whoever reaches the last stop first wins. margin: how far the other still had, metres (the streetcar along its track, you in a straight line).",
+    "parks": ["sf"],
+    "accel": 1.2, "decel": 1.3, "creep": 0.5, "startDwell": 3, "dwell": 4, "stopRadius": 6, "platform": 2.6, "bell": 25, "bellSide": 1.8,
+    "delay": { "chance": 0.35, "seconds": [6, 14], "says": ["Delayed due to a disabled train ahead.", "Delayed due to an operator shift change.", "Delayed due to a double-parked car on the tracks.", "Delayed due to a police action ahead."] },
+    "lines": [
+      { "id": "j", "name": "J Church", "cruise": 11,
+        "rails": ["rail_-301_-537", "rail_-306_-449", "rail_-386_-367", "rail_-395_-187"],
+        "stops": [{ "name": "Right of Way & Liberty", "at": [-306.9, -445.8] }, { "name": "Right of Way & 20th Street", "at": [-387.4, -317.3] }, { "name": "Right of Way & 18th Street", "at": [-416.3, -40.9] }] }
+    ],
+    "roam": {
+      "_doc": "Streetcars in free roam (src/sim/game/muni.ts): in the city (parks), with the traffic (traffic clear takes them away; the command streetcars on | off), never during a Muni Race but its own car (they come back when the next game starts). Each line runs one way on one track, with lines' fields (rails, stops in order, cruise) as a race line, cars of them spread along it (parked: the first stands there, where the city's parked PCC near 2nd Street is, for layover seconds first). At its last stop a car waits layover seconds and goes on as its pair line: from the point of that line nearest it, or from its start (pairAt start: the outbound F track west of 5th Street has no rails in the export, so an outbound car leaves at Market & Cyril Magnin and the next inbound one sets off from Castro). They stop at every stop for dwell (and the race's delays, drawn from their own stream, world.tramRng, silently), ring for you on the track ahead and shove you off it like the race car; tramStop {car, line, n, name} at each stop.",
+      "parks": ["sf"],
+      "layover": 20,
+      "lines": [
+        { "id": "j-in", "name": "J Church", "cruise": 11, "cars": 1, "pair": "j-out",
+          "rails": ["rail_-301_-537", "rail_-306_-449", "rail_-386_-367", "rail_-395_-187"],
+          "stops": [{ "name": "Right of Way & Liberty Street", "at": [-306.9, -445.8] }, { "name": "Right of Way & 20th Street", "at": [-387.4, -317.3] }, { "name": "Right of Way & 18th Street", "at": [-416.3, -40.9] }] },
+        { "id": "j-out", "name": "J Church", "cruise": 11, "cars": 1, "pair": "j-in",
+          "rails": ["rail_-419_-46", "rail_-399_-203", "rail_-389_-385", "rail_-309_-465"],
+          "stops": [{ "name": "Right of Way & 18th Street", "at": [-424.3, -34.2] }, { "name": "Right of Way & 20th Street", "at": [-392, -362] }, { "name": "Right of Way & Liberty Street", "at": [-309.3, -465.3] }] }
+      ]
+    }
+  },
+  "escape": {
+    "_doc": "Robotaxi Escape (run escape; sf only; src/sim/game/escape.ts, docs/mechanics/modes.md): a robotaxi decides you are a road hazard and follows you for seconds. It starts on the street nearest to start metres behind you and drives the streets by the shortest way (A*) to the street point nearest you, planned again every plan seconds: the traffic network's street points, along each street (one-ways one way), each street's ends joined to the nearest point of any other street within link metres and streets joined where they share a point (the network's own junctions miss many). The map's waypoint route (the minimap) uses the same graph, either way down one-ways, with road links: a street end joins the nearest point of each street network it is not joined to yet within roadLink.reach metres when the straight line between them is road all the way (every metre the ground under it, seen through roadLink.through (parked cars), is one of roadLink.roads, within roadLink.height metres of the line), where the traffic paths stop short and the road runs on. The robotaxi takes a road link, or a one-way the wrong way, only when no legal way reaches you. It keeps lane metres right of the street's middle, drives at cruise (accel, brake), slows at decel for turns (over 45 degrees at turnSpeed, over 120 at uTurnSpeed) and to stop stopGap metres short of you, and keeps its distance from cars ahead. It cannot leave the streets: stairs, plazas, parks and alleys are escape routes. Within close metres it says so once (escapeClose, again only after it fell back past close + closeOut) and honks politely every honkEvery seconds while it stays that close. Within catch metres (and 3 m up or down) for catchSeconds in a row you are pulled over: the run ends. A combo of at least recalc.points sets it recalculating for recalc.secondsPer1000 seconds per 1000 points (at most recalc.maxSeconds; a longer one replaces a shorter one), driving at recalc.speed of cruise meanwhile. Anti-hide: more than backup.far metres from every street point for backup.seconds (looked at every 15 ticks) and it calls for backup: a second robotaxi at the street end nearest you, and both chase (once a run). Score: your tricks, plus survivalBonus when you survive to the end (the last combo may land first), then escapeOver.",
+    "parks": ["sf"],
+    "seconds": 90, "start": 70, "cruise": 8.5, "accel": 2.6, "brake": 9, "decel": 3, "stopGap": 2, "plan": 1, "link": 15, "lane": 1.5, "turnSpeed": 5, "uTurnSpeed": 2,
+    "roadLink": { "reach": 60, "height": 1.5, "roads": ["city_road", "city_median"], "through": ["city_car", "city_car_top"] },
+    "close": 15, "closeOut": 5, "catch": 3, "catchSeconds": 2, "honkEvery": 3,
+    "recalc": { "points": 200, "secondsPer1000": 4, "maxSeconds": 6, "speed": 0 },
+    "backup": { "far": 40, "seconds": 10 },
+    "survivalBonus": 500
+  },
+  "graffiti": {
+    "_doc": "Solo Graffiti (run graffiti; src/sim/game/graffiti.ts, docs/mechanics/modes.md): THPS 2's tag mode for one player, with two-player Graffiti's tags (twoPlayer graffiti): every grind line ground (or lip tricked, not a car's) and every gap in a combo is tagged when the combo banks; a bailed or lost combo tags nothing. Tag as many obstacles as you can in seconds; a re-tag counts only when its combo beats your own best there (it raises that best). The last combo may land after the clock, then graffitiOver with how many you hold.",
+    "seconds": 120
+  }
+}

@@ -1,0 +1,12 @@
+# A powerslide is a trick: held 0.75 s at 9 m/s and let go, it banks as "FS Powerslide" (the nose
+# swings counterclockwise for a regular rider: frontside, like a spin), 100 + 120 per second.
+# A tap shorter than slide.minScoreTicks (0.25 s) scores nothing (the second slide).
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold slide 10..100
+hold slide 150..170
+run 260
+expect event comboLanded{name=FS Powerslide,points=190} within 100..125
+expect event comboLanded count == 1
+expect no event bail

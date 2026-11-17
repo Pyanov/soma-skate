@@ -1,0 +1,214 @@
+{
+  "_doc": "Today's challenge (client only; src/client/daily.ts): one per day, picked from the San Francisco date so everyone gets the same one. Each has the text shown in the menu, a rule matched against the sim's events like data/stickers.json (on = event type; a number means at least that much, {\"max\": n} at most, strings and booleans equal), how many it takes, and where Go takes you: a spot (teleport) or a mode (mode, route or local).",
+  "challenges": [
+    {
+      "id": "near-misses",
+      "text": "Skim past 5 people on the sidewalk (NEAR MISS)",
+      "rule": {
+        "on": "nearMiss"
+      },
+      "count": 5,
+      "spot": "valencia_shops"
+    },
+    {
+      "id": "dolores-win",
+      "text": "Beat the locals down Dolores",
+      "rule": {
+        "on": "bombFinish",
+        "route": "dolores",
+        "place": {
+          "max": 1
+        }
+      },
+      "mode": "bomb",
+      "route": "dolores"
+    },
+    {
+      "id": "twinpeaks",
+      "text": "Finish the Twin Peaks bomb under 112 s",
+      "rule": {
+        "on": "bombFinish",
+        "route": "twinpeaks",
+        "total": {
+          "max": 112
+        }
+      },
+      "mode": "bomb",
+      "route": "twinpeaks"
+    },
+    {
+      "id": "combo-8k",
+      "text": "Land an 8,000-point combo",
+      "rule": {
+        "on": "comboLanded",
+        "points": 8000
+      },
+      "spot": "big3_runway"
+    },
+    {
+      "id": "burritos-3",
+      "text": "Collect 3 Mission burritos",
+      "rule": {
+        "on": "burrito"
+      },
+      "count": 3
+    },
+    {
+      "id": "skate-win",
+      "text": "Win a Game of S.K.A.T.E.",
+      "rule": {
+        "on": "skateOver",
+        "winner": "player"
+      },
+      "mode": "skate",
+      "local": "kenji"
+    },
+    {
+      "id": "skitch",
+      "text": "Skitch 600 points' worth behind a car",
+      "rule": {
+        "on": "skitchEnd",
+        "points": 600
+      },
+      "spot": "guerrero_18th"
+    },
+    {
+      "id": "courier-4",
+      "text": "Deliver 4 burritos in one Courier shift",
+      "rule": {
+        "on": "courierOver",
+        "deliveries": 4
+      },
+      "mode": "courier"
+    },
+    {
+      "id": "gaps-5",
+      "text": "Hit 5 gaps",
+      "rule": {
+        "on": "gap"
+      },
+      "count": 5,
+      "spot": "big3_runway"
+    },
+    {
+      "id": "bart",
+      "text": "Ollie the 16th St BART stairs",
+      "rule": {
+        "on": "gap",
+        "id": "bart_stairs"
+      },
+      "spot": "bart_16th"
+    },
+    {
+      "id": "roof",
+      "text": "Grind the roof of a parked car",
+      "rule": {
+        "on": "gap",
+        "id": "roof_grind"
+      },
+      "spot": "valencia_shops"
+    },
+    {
+      "id": "goals-2",
+      "text": "Finish 2 city goals",
+      "rule": {
+        "on": "goalComplete"
+      },
+      "count": 2
+    },
+    {
+      "id": "spine",
+      "text": "Spine transfer on the Hellride",
+      "rule": {
+        "on": "spineTransfer"
+      },
+      "spot": "hellride"
+    },
+    {
+      "id": "run-15k",
+      "text": "Score 15,000 in a 2-minute run",
+      "rule": {
+        "on": "runOver",
+        "score": 15000
+      },
+      "mode": "start"
+    },
+    {
+      "id": "clarion",
+      "text": "Wallride a mural in Clarion Alley",
+      "rule": {
+        "on": "gap",
+        "id": "clarion_wallride"
+      },
+      "spot": "clarion_alley"
+    },
+    {
+      "id": "harvey-rail",
+      "text": "Grind a handrail at Harvey Milk Plaza",
+      "rule": {
+        "on": "gap",
+        "id": "muni_rail"
+      },
+      "spot": "harvey_milk"
+    },
+    {
+      "id": "npc-cheer",
+      "text": "Land a combo big enough that a local stomps their board",
+      "rule": {
+        "on": "npcCheer"
+      },
+      "spot": "big3_runway"
+    },
+    {
+      "id": "hayes-win",
+      "text": "Beat the locals down the Hayes St hill",
+      "rule": {
+        "on": "bombFinish",
+        "route": "hayes",
+        "place": {
+          "max": 1
+        }
+      },
+      "mode": "bomb",
+      "route": "hayes"
+    },
+    {
+      "id": "muni-j",
+      "text": "Beat the J Church streetcar down through Dolores Park",
+      "rule": {
+        "on": "muniOver",
+        "won": true
+      },
+      "mode": "muni",
+      "route": "j"
+    },
+    {
+      "id": "escape",
+      "text": "Escape the robotaxi with 3,000 points",
+      "rule": {
+        "on": "escapeOver",
+        "survived": true,
+        "score": 3000
+      },
+      "mode": "escape"
+    },
+    {
+      "id": "graffiti-12",
+      "text": "Tag 12 pieces in one Graffiti game",
+      "rule": {
+        "on": "graffitiOwned",
+        "owned": 12
+      },
+      "mode": "graffiti"
+    },
+    {
+      "id": "emb",
+      "text": "Skate down Market from UN Plaza to EMB",
+      "rule": {
+        "on": "placeVisit",
+        "name": "Embarcadero Plaza (EMB)"
+      },
+      "spot": "un_plaza"
+    }
+  ]
+}

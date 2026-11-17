@@ -1,0 +1,17 @@
+# The THPS link, all pressed before touching down: revert (;) and Up, Down for a manual on the way
+# down onto the vert ramp. On the landing the board reverts and the manual starts: the combo carries
+# on through "Kickflip + Revert + Manual" and banks when the manual is ollied out of.
+park lab
+spawn lab_vert
+cmd 6 speed 10
+tap flip+left 212
+tap revert 346
+tap up 348
+tap down 352
+bot balance
+hold ollie 470..480
+run 700
+expect event revert within 354..358
+expect event manualStart{trick=Manual} within 354..358
+expect event comboLanded{name=Kickflip + Revert + Manual,multiplier=3} within 480..700
+expect no event bail

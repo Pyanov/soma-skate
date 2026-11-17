@@ -1,0 +1,12 @@
+# The same late ollie as lab-ledge-late-pop with a kickflip started on it: before the ledge pop the
+# skater stopped against the face mid-flip; now the arc carries on over the ledge and the kickflip has
+# the air to land (it lands at 202, the flip done at 164).
+park lab
+cmd 0 teleport 7 -6 0.13 0
+cmd 6 speed 6
+tap ollie 115
+tap flip+left 117
+run 230
+expect event bump{air=true} within 124..128
+expect event comboLanded{name=Kickflip} within 208..218
+expect no event bail

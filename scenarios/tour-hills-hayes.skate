@@ -1,0 +1,14 @@
+# Hill Country's third start (data/tour.json starts, areas): `run level hills hayes_hill` puts you at Hayes
+# and Pierce, a second box of the level's area, so bombing Hayes tucked shows no wrong-way hint
+# however far it is from Dolores and Twin Peaks.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills hayes_hill
+hold up 10..300
+hold ollie 300..6950
+run 7000
+expect event levelStart{level=hills,seconds=120} within 0..2
+expect skater.pos.x < -1073 at 5
+expect skater.pos.x > -278 at end
+expect no event levelWrongWay
+expect no event bail

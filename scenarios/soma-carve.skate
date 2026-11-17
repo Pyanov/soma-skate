@@ -1,0 +1,8 @@
+# A carve on the west runway: 6 m/s, full lean left for most of a second (real park).
+park soma
+spawn big3_runway
+cmd 8 speed 6
+hold left 12..90
+run 120
+expect skater.lean < -0.2 at 60
+expect no event bail

@@ -1,0 +1,21 @@
+# Drop onto the roof of a car driving north at 8 m/s: a clean landing judged against the car's
+# motion (carLand), then the board rides along on the roof (Thing.carRide), the board's physics
+# relative to the car. An ollie off the roof keeps the car's speed, so it lands back on the roof.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 2 car -51.1 -331.2 356 8
+cmd 60 teleport -49.74 -326.56 5.99 355.3
+cmd 61 set skater.vel.x -0.66
+cmd 61 set skater.vel.y 7.97
+hold ollie 500..530
+run 700
+expect event carLand within 135..145
+expect event land{quality=clean} within 135..145
+expect skater.carRide == 83 at 450
+expect min skater.pos.z > 3.39 over 150..500
+expect event pop within 528..532
+expect event carLand count >= 2   # on Valencia's real grade the board may settle with one more short hop
+expect skater.carRide == 83 at end
+expect no event bail

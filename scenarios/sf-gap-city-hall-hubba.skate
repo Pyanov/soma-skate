@@ -1,0 +1,16 @@
+# CITY HALL HUBBA (Tour level 6): the granite cheek walls of City Hall's Polk St steps slope down
+# from the porch, 9.8 m; from the porch an ollie onto the north one and a 50-50 down it to its end:
+# BS 50-50 + CITY HALL HUBBA, 1,700.
+park sf
+cmd 0 traffic clear
+cmd 2 teleport 9.84 362.53 5.78 49.3
+cmd 4 set skater.vel.x 3.6390
+cmd 4 set skater.vel.y 3.1301
+hold ollie 22..34
+tap grind 36..60 every 6
+bot balance
+run 300
+expect event grindStart{line=ledge_18_366} within 50..54
+expect event gap{id=city_hall_hubba,gap=CITY HALL HUBBA,points=500} within 200..204
+expect event comboLanded{name=BS 50-50 + CITY HALL HUBBA,points=1700} within 237..241
+expect no event bail

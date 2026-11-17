@@ -1,0 +1,15 @@
+# CIVIC CENTER LEDGE (Tour level 6): low granite ledges round Civic Center Plaza's lawns. From the path
+# at the north-west corner, an ollie onto the first and a 50-50 along it until it stalls:
+# FS 50-50 + CIVIC CENTER LEDGE.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 70.56 432.94 3.6 172.4
+cmd 2 set skater.vel.x 0.6143
+cmd 2 set skater.vel.y -4.6395
+hold ollie 0..20
+tap grind 22..355 every 6
+bot balance
+run 420
+expect event grindStart{line=ledge_71_432_b} within 21..25
+expect event gap{id=civic_ledge,gap=CIVIC CENTER LEDGE,points=200} within 358..364
+expect no event bail

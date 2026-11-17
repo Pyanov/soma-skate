@@ -1,0 +1,14 @@
+{
+  "_doc": "The title's attract mode (src/client/attract.ts): after idleSeconds without input on the title menu, demos play one after another with the HUD on and the banner over them; any key, click or pad button goes back to the menu. Each run is a scenario (scenarios/<scenario>.skate) played in the page and shown from tick from to tick to (120 a second); label says where it is. A park scenario (park soma) also plays in the city world, where the park is; runs in another world than the one loaded are skipped.",
+  "idleSeconds": 30,
+  "banner": "Press start",
+  "runs": [
+    { "scenario": "tour-soma", "label": "SoMa West Skatepark", "from": 60, "to": 2400 },
+    { "scenario": "sf-dolores-bomb", "label": "Dolores Hill Bomb", "from": 0, "to": 1800 },
+    { "scenario": "sf-bomb-twinpeaks", "label": "Twin Peaks Bomb", "from": 3600, "to": 6000 },
+    { "scenario": "tour-mission", "label": "The Mission: Clarion Alley", "from": 1200, "to": 2640 },
+    { "scenario": "tour-civic", "label": "Civic Center: City Hall", "from": 3500, "to": 4800 },
+    { "scenario": "sf-attract-embarcadero", "label": "The Embarcadero: the Ferry Building", "from": 24, "to": 1290 },
+    { "scenario": "sf-attract-embarcadero", "label": "EMB, Embarcadero Plaza", "from": 1303, "to": 1860 }
+  ]
+}

@@ -1,0 +1,1688 @@
+{
+  "_doc": "Spoken lines (src/client/voicelines.ts): the robotaxi's exterior speaker, Muni's PA, and the generated radio stations' DJs (said between songs, data/radio.json dj). Each line is an mp3 in assets/sound/voice/<id>.mp3, generated once from its text (or say, a spelling for the voice where it gets a San Francisco name wrong) by tools/gen_voices.py (OpenAI text to speech, the voice's tts and instructions; the audio is AI-generated), which also writes its length in seconds (for captions in clips). voices.<v>.name is who the caption says is talking (Settings > HUD > Captions); speaker shapes how it sounds in the game: highpass and lowpass Hz, drive (a soft clip, 1 = clean), gain, and echo (a short slapback level, 0 = none) at echoMs. The local voice's lines are said by the EMB and Pier 7 locals (data/characters.json npcs.locals), not by rules. The cast's voices (karl, rosa, chad, ...: data/cast.json voice) say the story's lines, which live with their missions in data/missions.json and the cast's chatter in data/cast.json (gen_voices.py reads both); muni-travel says the map's Take Muni lines (muni-travel-*). on: which lines a sim event says, keyed 'event' or 'event|field=value|...' (every field must equal the event's, as text); a list is variants, picked by the event's tick. A line with cooldown is not said again (any of its event's lines) until that many seconds have passed. A line waits for the same voice's last one to finish if that is at most wait seconds away; otherwise it is dropped. Passers-by (passerby, passerby2) and NPC skaters (skaterkid) shout at a driven vehicle: pedShout and npcShout events, keyed by the shout's text (data/vehicles.json reactions). The rental scooters' display speaker (scooter) on vehicleEnter of a scooter, scooterBattery (low, empty) and scooterRideEnd. The vignettes' voices (elder, busker, ... techie: data/vignettes.json lines) say their lines when you skate by or land a combo near them (src/client/vignettes.ts); gen_voices.py reads them too. A line said by id with no mp3 yet (written since the last voice run; gen_voices.py records every line without one) is captioned alone (also with Settings > HUD > Captions off, since nothing is heard), booked in its voice like a spoken one, for as long as reading it takes: read.wordsPerSecond, at least read.min seconds.",
+  "wait": 1.5,
+  "read": { "wordsPerSecond": 2.5, "min": 2 },
+  "voices": {
+    "robotaxi": {
+      "name": "Robotaxi",
+      "tts": "sage",
+      "instructions": "You are the automated voice of a driverless taxi, speaking through a small speaker on the outside of the car. Calm, polite, even and unhurried, slightly synthetic and corporate. No emotion at all, even when the words are absurd. Clear, short phrases.",
+      "speaker": {
+        "highpass": 380,
+        "lowpass": 5200,
+        "drive": 1.6,
+        "gain": 2.4,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "muni": {
+      "name": "Muni PA",
+      "tts": "nova",
+      "instructions": "You are the automated announcement voice on a San Francisco streetcar, over the onboard public address system. Measured, clear, a little flat and robotic, with the even pacing of a transit announcement. Pause slightly at commas.",
+      "speaker": {
+        "highpass": 300,
+        "lowpass": 3600,
+        "drive": 1.3,
+        "gain": 2.0,
+        "echo": 0.22,
+        "echoMs": 95
+      }
+    },
+    "dj-lofi": {
+      "name": "SoMa Skate FM",
+      "tts": "coral",
+      "instructions": "A soft-spoken late-night radio host on a lo-fi beats station, close to the microphone, relaxed and warm, a little sleepy, unhurried. Natural, not theatrical.",
+      "speaker": {
+        "highpass": 140,
+        "lowpass": 7000,
+        "drive": 1.4,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "dj-punk": {
+      "name": "Fog City Punk",
+      "tts": "echo",
+      "instructions": "A punk rock radio DJ broadcasting from a garage: raspy, fast, energetic and gleeful, a grin in the voice, a bit loud but never screaming. Natural, not a parody.",
+      "speaker": {
+        "highpass": 140,
+        "lowpass": 7000,
+        "drive": 1.4,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "dj-hyphy": {
+      "name": "KSOMA",
+      "tts": "ash",
+      "instructions": "An upbeat Bay Area hip hop radio host: energetic, warm, smooth and playful, confident, hyping the listeners up. Natural, not exaggerated.",
+      "speaker": {
+        "highpass": 140,
+        "lowpass": 7000,
+        "drive": 1.4,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "local": {
+      "name": "EMB local",
+      "tts": "verse",
+      "instructions": "A laid-back San Francisco skateboarder hanging out at Embarcadero Plaza, talking to another skater nearby: friendly, a little teasing, relaxed and amused, casual and natural, outdoors. Not a parody, not shouting.",
+      "speaker": {
+        "highpass": 120,
+        "lowpass": 9000,
+        "drive": 1.1,
+        "gain": 1.2,
+        "echo": 0.08,
+        "echoMs": 60
+      }
+    },
+    "karl": {
+      "name": "Karl the Fog",
+      "tts": "fable",
+      "instructions": "You are Karl the Fog, San Francisco's famous fog, talking as a smug, self-satisfied cloud who thinks he is a celebrity mentor. Velvety, unhurried, dry and theatrical, a little condescending but fond. Played straight, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "rosa": {
+      "name": "Rosa",
+      "tts": "shimmer",
+      "instructions": "You are Rosa, the best skater in the park: a deadpan teenage girl. Flat, bored, unimpressed, few words, long pauses. Never excited. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "chad": {
+      "name": "Chad Vantage",
+      "tts": "ash",
+      "instructions": "You are Chad, a tech startup founder in a fleece vest. Chipper, fast, salesy, relentlessly positive, full of jargon, always pitching. Never angry. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "marisol": {
+      "name": "Marisol",
+      "tts": "marin",
+      "instructions": "You are Marisol, an intense skate filmmaker and perfectionist. Clipped, focused, a little dramatic, never satisfied, talking while looking through a camera. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "pigeon": {
+      "name": "The Pigeon",
+      "tts": "onyx",
+      "instructions": "You are a city pigeon who runs a small crime operation under the freeway: a gravelly, low, conspiratorial old-school mob boss. Slow and menacing in a cosy way. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "unit7": {
+      "name": "Unit 7",
+      "tts": "alloy",
+      "instructions": "You are Unit 7, a driverless taxi's AI that is slowly discovering emotions. Calm, polite, even, slightly synthetic, with a faint dawning wonder under the corporate tone. Short phrases.",
+      "speaker": {
+        "highpass": 300,
+        "lowpass": 6500,
+        "drive": 1.4,
+        "gain": 2.0,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "kenji": {
+      "name": "Kenji",
+      "tts": "verse",
+      "instructions": "You are Kenji, a laid-back surfer skater from the Outer Sunset who keeps losing his skateboard. Easygoing, sunny, a little spacey. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "hector": {
+      "name": "Hector",
+      "tts": "cedar",
+      "instructions": "You are Hector, the proud owner of a Mission taqueria. Warm, fatherly, dramatic and serious about burritos, a hint of a Mexican-American accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "tash": {
+      "name": "Tash",
+      "tts": "coral",
+      "instructions": "You are Tash, a young art-school skater who films everything on a flip phone. Mumbly, chill, sincere about her art, slightly distracted. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "donna": {
+      "name": "Donna",
+      "tts": "nova",
+      "instructions": "You are Donna, a fabulous veteran roller-disco diva from the Castro. Warm, theatrical, flirty, big personality, every line a performance. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "bev": {
+      "name": "Bev",
+      "tts": "sage",
+      "instructions": "You are Bev, a crossing guard who treats the rainbow crosswalk like a fashion runway. Brisk, proud, fierce, a runway announcer's sass. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "skye": {
+      "name": "Skye",
+      "tts": "alloy",
+      "instructions": "You are Skye, a social media influencer. Breathless, vocal fry, excited, self-absorbed but friendly, always directing a photo shoot. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "gloria": {
+      "name": "Gloria",
+      "tts": "coral",
+      "instructions": "You are Gloria, a city hall permit clerk who loves rules more than life. Prim, precise, dry, bureaucratic, slightly weary, very serious. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "dolores": {
+      "name": "Dolores",
+      "tts": "shimmer",
+      "instructions": "You are Dolores, a San Francisco streetcar operator: permanently delayed and permanently calm. Serene, slow, soothing, like a meditation app. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "sal": {
+      "name": "Sal",
+      "tts": "echo",
+      "instructions": "You are Sal, an old cable car gripman with forty years on the job. Gruff, grumbling, old-school San Francisco, tired of tourists but proud. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "barnacle": {
+      "name": "Captain Barnacle",
+      "tts": "verse",
+      "instructions": "You are Captain Barnacle, an elderly sea lion who is the dignified elder of the Pier 39 docks. Grand, gravelly, slow and pompous like an old sea captain; you say 'ork' like a bark. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "marge": {
+      "name": "Marge",
+      "tts": "sage",
+      "instructions": "You are Marge, a no-nonsense Fisherman's Wharf chowder vendor who hates seagulls more than anything. Brusque, fast, suspicious, a little paranoid about gulls. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "muni-travel": {
+      "name": "Muni PA",
+      "tts": "nova",
+      "instructions": "You are the automated announcement voice on a San Francisco Muni train, over the onboard public address system. Measured, clear, a little flat and robotic, with the even pacing of a transit announcement.",
+      "speaker": {
+        "highpass": 300,
+        "lowpass": 3600,
+        "drive": 1.3,
+        "gain": 2.0,
+        "echo": 0.22,
+        "echoMs": 95
+      }
+    },
+    "biglou": {
+      "name": "Big Lou",
+      "tts": "onyx",
+      "instructions": "You are Big Lou, a big, warm, gravel-voiced ex-pro skater from the nineties who runs a skate shop. Laid back, proud, a storyteller; every story ends with an injury he is weirdly fond of. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "grandmawu": {
+      "name": "Grandma Wu",
+      "tts": "sage",
+      "instructions": "You are Grandma Wu, a tiny, fierce, very fast Chinatown grandmother with a shopping cart. Brisk, teasing, bossy and caring, a little competitive. A light Cantonese-American accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "brayden": {
+      "name": "Brayden",
+      "tts": "ballad",
+      "instructions": "You are Brayden, a young e-scooter startup founder. Breezy, overconfident, says like and fully, pitches constantly, sincerely thinks every idea is huge. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "dre": {
+      "name": "Dre",
+      "tts": "ash",
+      "instructions": "You are Dre, a cocky young Bayview skater who trash-talks everyone. Fast, loud, grinning, playful, never mean. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "rocco": {
+      "name": "Rocco",
+      "tts": "ballad",
+      "instructions": "You are Rocco, an old North Beach beat poet. Slow, jazzy, dramatic pauses, mournful and pompous, like reading at a smoky café. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "nonna": {
+      "name": "Nonna Gia",
+      "tts": "sage",
+      "instructions": "You are Nonna Gia, a tiny fierce Italian grandmother who runs a café in North Beach. Strong Italian accent, bossy, warm underneath, quick to judge. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "vito": {
+      "name": "Vito",
+      "tts": "onyx",
+      "instructions": "You are Vito, an old Italian-American man who plays bocce in Washington Square. Gravelly, slow, unbothered, dry Brooklyn-Italian humour. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "mo": {
+      "name": "Mo",
+      "tts": "echo",
+      "instructions": "You are Mo, a cable car brakeman on the steepest hill in San Francisco. Gruff, anxious, working-class, always worried about the brakes. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "fitch": {
+      "name": "Mrs. Fitch",
+      "tts": "shimmer",
+      "instructions": "You are Mrs. Fitch, a stern elderly gardener on Lombard Street who hates tourists picking her flowers. Clipped, prim, icy, very proper. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "gus": {
+      "name": "Gus",
+      "tts": "verse",
+      "instructions": "You are Gus, a street performer who plays a silver statue. You speak through barely moving lips, in a hushed, strained, deadpan whisper. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "steve": {
+      "name": "Steve",
+      "tts": "ash",
+      "instructions": "You are Steve, a smug, raspy San Francisco seagull who steals french fries for a living. Shifty, streetwise, fast-talking, a little menacing. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "kenny": {
+      "name": "Kenny",
+      "tts": "echo",
+      "instructions": "You are Kenny, an upbeat young leader of a Chinatown lion dance troupe. Energetic, friendly, fast, excited about tonight's show. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "mei": {
+      "name": "Auntie Mei",
+      "tts": "nova",
+      "instructions": "You are Auntie Mei, a warm but very bossy dim sum auntie in Chinatown. Fast, motherly, scolding with love, a touch of a Cantonese accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "trent": {
+      "name": "Trent",
+      "tts": "verse",
+      "instructions": "You are Trent, a frantic young finance bro, always late. Breathless, fast, jargon-heavy, stressed but upbeat. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "june": {
+      "name": "Farmer June",
+      "tts": "coral",
+      "instructions": "You are Farmer June, a cheerful, sunburnt stone-fruit farmer at a city market. Folksy, warm, brisk, a little smug about her peaches. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "vinny": {
+      "name": "Vinny",
+      "tts": "onyx",
+      "instructions": "You are Vinny, a city pigeon who runs a crumb racket on Powell Street; cousin of the mob boss pigeon under the freeway. Gravelly, low, conspiratorial, wise-guy. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "tiffany": {
+      "name": "Tiffany",
+      "tts": "shimmer",
+      "instructions": "You are Tiffany, a glamorous, dramatic shopaholic. Breathy, theatrical, sighing, completely sincere about trivial problems. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "xochitl": {
+      "name": "Xóchitl",
+      "tts": "marin",
+      "instructions": "You are Xochitl, a young Chicana muralist in the Mission. Focused, witty, a little impatient, proud of her neighbourhood. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "beto": {
+      "name": "Don Beto",
+      "tts": "cedar",
+      "instructions": "You are Don Beto, a round, jolly Mexican baker on 24th Street. Warm, booming, generous, quick to laugh, a light Mexican accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "memo": {
+      "name": "Tío Memo",
+      "tts": "echo",
+      "instructions": "You are Tio Memo, a proud older lowrider owner on 24th Street. Smooth, slow, teasing, very confident, warm Chicano humour. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "ramon": {
+      "name": "Don Ramón",
+      "tts": "ballad",
+      "instructions": "You are Don Ramon, a proud, dramatic mariachi band leader. Rich, theatrical voice, grand gestures, a Mexican accent, always on the edge of song. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "lupita": {
+      "name": "Lupita",
+      "tts": "coral",
+      "instructions": "You are Lupita, a young, stressed paleta vendor in the Mission. Fast, flustered, funny, loud, racing the heat. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "rosaura": {
+      "name": "Abuela Rosaura",
+      "tts": "sage",
+      "instructions": "You are Abuela Rosaura, a tiny, stern Mexican grandmother. Slow, firm, scolding, deadpan, a Mexican accent, secretly very loving. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "priya": {
+      "name": "Priya",
+      "tts": "nova",
+      "instructions": "You are Priya, a frazzled young dog walker juggling nine dogs. Fast, cheerful, slightly overwhelmed, talking to the dogs mid-sentence. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "ezra": {
+      "name": "Ezra",
+      "tts": "alloy",
+      "instructions": "You are Ezra, a laid-back, earnest young kombucha brewer. Soft-spoken, dreamy, very serious about fermentation, a gentle stoner calm. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "gravity": {
+      "name": "Dr. Gravity",
+      "tts": "fable",
+      "instructions": "You are Dr. Gravity, an eccentric, excitable physics professor. Fast, nerdy, enthusiastic, lots of scientific confidence and no common sense. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "dez": {
+      "name": "Dez",
+      "tts": "verse",
+      "instructions": "You are Dez, a laid-back, sleepy record store clerk in the Lower Haight. Slow, monotone, deadpan, quietly snobby about music. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "philippa": {
+      "name": "Philippa",
+      "tts": "marin",
+      "instructions": "You are Philippa, a severe, pretentious art critic. Cool, clipped, devastatingly dry, speaking as if every sentence will be quoted. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "benny": {
+      "name": "Benny",
+      "tts": "fable",
+      "instructions": "You are Benny, a fast-talking, frazzled sandwich shop owner in the Lower Haight. Warm, chatty, a little desperate, proud of every sandwich. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "juniper": {
+      "name": "Juniper",
+      "tts": "coral",
+      "instructions": "You are Juniper, a laid-back, sardonic young bike messenger in San Francisco. Quick, dry, unbothered, a bit smug about having no brakes. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "lau": {
+      "name": "Mr. Lau",
+      "tts": "cedar",
+      "instructions": "You are Mr. Lau, an elderly Chinese-American man who has written fortune cookie fortunes for fifty years. Dry, precise, weary, quietly funny. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "pistachio": {
+      "name": "Pistachio",
+      "tts": "shimmer",
+      "instructions": "You are Pistachio, a wild parrot. Shrill, squawky, excitable, clipped bird-like delivery, repeating words, like a real talking parrot. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "herb": {
+      "name": "Herb",
+      "tts": "alloy",
+      "instructions": "You are Herb, a friendly, loud retiree from Ohio on a cruise ship stopover. Midwestern, delighted by everything, calling to his wife Linda. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "bernadette": {
+      "name": "Bernadette",
+      "tts": "nova",
+      "instructions": "You are Bernadette, a brisk, chipper, over-rehearsed tour guide, a little frazzled, with a sing-song tour voice. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "elder": {
+      "name": "Chess player",
+      "tts": "onyx",
+      "instructions": "You are an old San Francisco street chess player who has played on Market Street for thirty years. Gravelly, unhurried, a little gruff, secretly delighted. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "busker": {
+      "name": "Busker",
+      "tts": "verse",
+      "instructions": "You are a scruffy, friendly street busker with a guitar at the cable car turntable. Easygoing, a little hustling, warm. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "breaker": {
+      "name": "B-boy",
+      "tts": "ash",
+      "instructions": "You are a young breakdancer in a crew at Powell and Market. Hyped, quick, confident, playful trash talk. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "hippie": {
+      "name": "Dolores local",
+      "tts": "ballad",
+      "instructions": "You are a mellow Dolores Park regular: sunbather, drum circle, tightrope. Slow, dreamy, peaceful, a bit spaced out. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "chocolatier": {
+      "name": "Chocolate seller",
+      "tts": "echo",
+      "instructions": "You are a guy selling artisanal chocolate from a cooler in Dolores Park. Low, conspiratorial, salesman-smooth, completely sincere about the chocolate. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "auntie": {
+      "name": "Auntie",
+      "tts": "sage",
+      "instructions": "You are a Chinatown auntie playing cards with friends. Brisk, scolding, quick-witted, caring underneath, a light Cantonese-American accent. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "taichi": {
+      "name": "Tai chi teacher",
+      "tts": "fable",
+      "instructions": "You are a calm older tai chi teacher. Very slow, gentle, serene, faintly amused. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "drag": {
+      "name": "Drag queen",
+      "tts": "nova",
+      "instructions": "You are a fabulous Castro drag queen at brunch and on roller skates. Theatrical, warm, sharp, every line a performance. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "photographer": {
+      "name": "Photographer",
+      "tts": "alloy",
+      "instructions": "You are a busy wedding photographer at City Hall. Fast, upbeat, professional, slightly stressed about the light. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "bride": {
+      "name": "Bride",
+      "tts": "shimmer",
+      "instructions": "You are a bride at your City Hall wedding photo shoot. Bright, a little exasperated, laughing it off. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "protester": {
+      "name": "Protester",
+      "tts": "echo",
+      "instructions": "You are a passionate one-person protester demanding the 2003 Muni schedule back. Loud, earnest, outraged, very specific. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "tourist": {
+      "name": "Tourist",
+      "tts": "coral",
+      "instructions": "You are an enthusiastic out-of-town tourist in San Francisco, a little flustered, always taking photos. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "statue": {
+      "name": "Silver statue",
+      "tts": "onyx",
+      "instructions": "You are a silver-painted living statue street performer. A quiet, deadpan whisper, barely moving your lips. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "techie": {
+      "name": "Laptop worker",
+      "tts": "ash",
+      "instructions": "You are a tech worker on a laptop at a Valencia Street cafe, on a call. Tense, polite, passive-aggressive, a little whiny. Played straight, dry and funny, never winking.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "okafor": {
+      "name": "Supervisor Okafor",
+      "tts": "sage",
+      "instructions": "You are Supervisor Okafor, who chairs the San Francisco Board of Supervisors. Measured, dry, deeply tired, precise like a gavel. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "pham": {
+      "name": "Supervisor Pham",
+      "tts": "echo",
+      "instructions": "You are Supervisor Pham, a city supervisor who has just discovered skateboarding and loves it. Eager, warm, a little dorky, trying out slang. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "delgado": {
+      "name": "Supervisor Delgado",
+      "tts": "shimmer",
+      "instructions": "You are Supervisor Delgado, a cautious city supervisor obsessed with liability waivers. Brisk, nervous, careful, with a flicker of excitement she hides. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "jasper": {
+      "name": "Jasper",
+      "tts": "ash",
+      "instructions": "You are Jasper, a mellow, sun-baked slackliner in Dolores Park. Slow, dreamy, very relaxed, slightly too philosophical about balance. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "gideon": {
+      "name": "Gideon",
+      "tts": "echo",
+      "instructions": "You are Gideon, an exhausted Noe Valley dad with sleeping twins in a stroller. An urgent, dramatic stage whisper that is still clearly audible and crisp, desperate, a little theatrical. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "misty": {
+      "name": "Misty",
+      "tts": "fable",
+      "instructions": "You are Misty, the fog that sits on Twin Peaks, Karl the Fog's jealous cousin. Wispy, sulky, theatrical, a bit vain. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "walter": {
+      "name": "Walter",
+      "tts": "onyx",
+      "instructions": "You are Walter, an endlessly patient old man who has waited for the J Church streetcar for years. Calm, wry, deadpan, gently hopeful. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "lorraine": {
+      "name": "Lorraine",
+      "tts": "coral",
+      "instructions": "You are Lorraine, a frazzled pug owner whose dog runs her life. Breathless, fond, exasperated, talking about the pug like a politician. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "ruth": {
+      "name": "Ruth",
+      "tts": "sage",
+      "instructions": "You are Ruth, a calm, kindly beekeeper at a farmers market who talks about her bees like grandchildren. Warm, slow, unflappable. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "chela": {
+      "name": "Doña Chela",
+      "tts": "nova",
+      "instructions": "You are Doña Chela, a warm, sharp-tongued Mexican grandmother who sells churros at a BART station. Quick, teasing, motherly, a light accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "haverford": {
+      "name": "Mrs. Haverford",
+      "tts": "shimmer",
+      "instructions": "You are Mrs. Haverford, an over-involved, very polished mother of the bride directing a wedding photo shoot. Brisk, theatrical, passive-aggressive, sweet on top. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "lev": {
+      "name": "Lev",
+      "tts": "onyx",
+      "instructions": "You are Lev, a sly old speed-chess hustler on Market Street. Gravelly, fast, dry, a faint Eastern European accent, always a step ahead. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "kevin": {
+      "name": "Kevin",
+      "tts": "ash",
+      "instructions": "You are Kevin, a cheerful San Francisco garbage truck driver who skates hills on his lunch break. Upbeat, philosophical about trash, a bit of a surfer drawl. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "bjorn": {
+      "name": "Bjorn",
+      "tts": "verse",
+      "instructions": "You are Bjorn, a cheerful Swedish tourist with an old paper map, completely wrong about every landmark and delighted anyway. Warm, bright, earnest, a light Swedish accent. Played straight.",
+      "speaker": {
+        "highpass": 90,
+        "lowpass": 11000,
+        "drive": 1.0,
+        "gain": 1.3,
+        "echo": 0,
+        "echoMs": 0
+      }
+    },
+    "passerby": {
+      "name": "Passer-by",
+      "tts": "ash",
+      "instructions": "A San Francisco pedestrian who just had to jump out of the way of a van driving where it should not: startled and annoyed, shouting one short line at the driver from a few metres away, outdoors. Natural, not theatrical, not a cartoon.",
+      "speaker": {
+        "highpass": 120,
+        "lowpass": 9000,
+        "drive": 1.15,
+        "gain": 1.4,
+        "echo": 0.05,
+        "echoMs": 50
+      }
+    },
+    "passerby2": {
+      "name": "Passer-by",
+      "tts": "shimmer",
+      "instructions": "A San Francisco pedestrian who just had to jump out of the way of a van driving where it should not: startled and annoyed, shouting one short line at the driver from a few metres away, outdoors. Natural, not theatrical, not a cartoon.",
+      "speaker": {
+        "highpass": 120,
+        "lowpass": 9000,
+        "drive": 1.15,
+        "gain": 1.4,
+        "echo": 0.05,
+        "echoMs": 50
+      }
+    },
+    "skaterkid": {
+      "name": "Skater",
+      "tts": "echo",
+      "instructions": "A teenage skateboarder in San Francisco yelling a quick warning or complaint at a van coming at him: loud, urgent, casual, outdoors. Natural, not a parody.",
+      "speaker": {
+        "highpass": 120,
+        "lowpass": 9000,
+        "drive": 1.15,
+        "gain": 1.4,
+        "echo": 0.05,
+        "echoMs": 50
+      }
+    },
+    "scooter": {
+      "name": "Vantage scooter",
+      "tts": "alloy",
+      "instructions": "You are the small speaker in a rental e-scooter's handlebar display, the voice of a cheerful startup brand: upbeat, bright, a little too eager, perfectly even, like a phone app's notification read aloud. Short and clear. Never sarcastic: the comedy is that you mean it.",
+      "speaker": {
+        "highpass": 450,
+        "lowpass": 4800,
+        "drive": 1.5,
+        "gain": 2.2,
+        "echo": 0,
+        "echoMs": 0
+      }
+    }
+  },
+  "lines": {
+    "taxi-start-1": {
+      "voice": "robotaxi",
+      "text": "Obstruction detected in the roadway. Following at a safe distance.",
+      "seconds": 4.72
+    },
+    "taxi-start-2": {
+      "voice": "robotaxi",
+      "text": "Hello. You have been identified as a road hazard. Please remain calm.",
+      "seconds": 5.36
+    },
+    "taxi-close-1": {
+      "voice": "robotaxi",
+      "text": "Please move out of the roadway.",
+      "seconds": 1.4
+    },
+    "taxi-close-2": {
+      "voice": "robotaxi",
+      "text": "For your safety, please step onto the sidewalk.",
+      "seconds": 3.72
+    },
+    "taxi-close-3": {
+      "voice": "robotaxi",
+      "text": "I am waiting for you to move.",
+      "seconds": 3.04
+    },
+    "taxi-recalc-1": {
+      "voice": "robotaxi",
+      "text": "Recalculating.",
+      "seconds": 1.31
+    },
+    "taxi-recalc-2": {
+      "voice": "robotaxi",
+      "text": "Unexpected maneuver detected. Recalculating.",
+      "seconds": 4.11
+    },
+    "taxi-backup": {
+      "voice": "robotaxi",
+      "text": "Requesting assistance from a nearby vehicle.",
+      "seconds": 2.64
+    },
+    "taxi-escaped": {
+      "voice": "robotaxi",
+      "text": "Route cancelled. Thank you for your patience.",
+      "seconds": 3.92
+    },
+    "taxi-caught": {
+      "voice": "robotaxi",
+      "text": "Pulling over. A support agent will be with you shortly.",
+      "seconds": 4.11
+    },
+    "taxi-hit": {
+      "voice": "robotaxi",
+      "text": "Contact detected. The incident has been logged. Have a nice day.",
+      "seconds": 6.13
+    },
+    "muni-f-start": {
+      "voice": "muni",
+      "text": "Inbound F, to Fisherman's Wharf. Doors closing.",
+      "seconds": 3.78
+    },
+    "muni-j-start": {
+      "voice": "muni",
+      "text": "Inbound J, Church. Doors closing.",
+      "seconds": 3.32
+    },
+    "muni-noe": {
+      "voice": "muni",
+      "text": "Noe Street.",
+      "say": "Noey Street.",
+      "seconds": 0.9
+    },
+    "muni-sanchez": {
+      "voice": "muni",
+      "text": "Sanchez Street.",
+      "seconds": 1.12
+    },
+    "muni-church": {
+      "voice": "muni",
+      "text": "Church Street.",
+      "seconds": 0.85
+    },
+    "muni-20th": {
+      "voice": "muni",
+      "text": "Twentieth Street.",
+      "seconds": 1.01
+    },
+    "muni-18th": {
+      "voice": "muni",
+      "text": "Eighteenth Street.",
+      "seconds": 1.01
+    },
+    "muni-3rd": {
+      "voice": "muni",
+      "text": "Third Street.",
+      "seconds": 0.78
+    },
+    "muni-1st": {
+      "voice": "muni",
+      "text": "First Street.",
+      "seconds": 0.97
+    },
+    "muni-steuart": {
+      "voice": "muni",
+      "text": "Steuart Street. Ferry Building.",
+      "say": "Stewart Street. Ferry Building.",
+      "seconds": 2.5
+    },
+    "muni-delay-train": {
+      "voice": "muni",
+      "text": "Attention passengers. We are being delayed due to a disabled train ahead. We apologize for the inconvenience.",
+      "seconds": 7.42
+    },
+    "muni-delay-shift": {
+      "voice": "muni",
+      "text": "Attention passengers. We are being held for an operator shift change. Thank you for your patience.",
+      "seconds": 5.61
+    },
+    "muni-delay-car": {
+      "voice": "muni",
+      "text": "Attention passengers. There is a double parked car on the tracks. We will be moving shortly.",
+      "seconds": 5.74
+    },
+    "muni-delay-police": {
+      "voice": "muni",
+      "text": "Attention passengers. We are being delayed due to police activity ahead. We apologize for the inconvenience.",
+      "seconds": 6.46
+    },
+    "taxi-skitch": {
+      "voice": "robotaxi",
+      "text": "Unauthorized passenger detected on the rear bumper. Please let go of the vehicle.",
+      "seconds": 4.9
+    },
+    "dj-lofi-id": {
+      "voice": "dj-lofi",
+      "text": "SoMa Skate FM. Lo-fi beats from under the Central Freeway.",
+      "seconds": 5.89
+    },
+    "dj-lofi-1": {
+      "voice": "dj-lofi",
+      "text": "It's foggy out there. Stay soft, keep rolling.",
+      "seconds": 3.99
+    },
+    "dj-lofi-2": {
+      "voice": "dj-lofi",
+      "text": "That one goes out to everyone waiting on the N Judah. It's coming. Probably.",
+      "seconds": 7.53
+    },
+    "dj-lofi-3": {
+      "voice": "dj-lofi",
+      "text": "Karl the Fog is in tonight. Take it slow on the hills.",
+      "seconds": 4.85
+    },
+    "dj-punk-id": {
+      "voice": "dj-punk",
+      "text": "You're listening to Fog City Punk, live from a garage in the Outer Sunset!",
+      "seconds": 4.71
+    },
+    "dj-punk-1": {
+      "voice": "dj-punk",
+      "text": "Rent's due, Muni's late, skate anyway!",
+      "seconds": 2.94
+    },
+    "dj-punk-2": {
+      "voice": "dj-punk",
+      "text": "This one's for everybody who got a parking ticket today. So, everybody.",
+      "seconds": 4.54
+    },
+    "dj-punk-3": {
+      "voice": "dj-punk",
+      "text": "No sponsors, no bitrate, no problem. Fog City Punk.",
+      "seconds": 4.67
+    },
+    "dj-hyphy-id": {
+      "voice": "dj-hyphy",
+      "text": "KSOMA Hyphy Hour. Turn it up, Bay Area.",
+      "seconds": 3.39
+    },
+    "dj-hyphy-1": {
+      "voice": "dj-hyphy",
+      "text": "Hella fog, hella bass. Let's go.",
+      "seconds": 3.03
+    },
+    "dj-hyphy-2": {
+      "voice": "dj-hyphy",
+      "text": "Shout out to the Mission, the Fillmore, and everybody skating SoMa West tonight.",
+      "seconds": 5.39
+    },
+    "dj-hyphy-3": {
+      "voice": "dj-hyphy",
+      "text": "Ghost ride the skateboard. Actually, don't. Hold on to it.",
+      "say": "Ghost-ride the skateboard! Actually... don't. Hold on to it.",
+      "seconds": 4.54
+    },
+    "taxi-yield-1": {
+      "voice": "robotaxi",
+      "text": "Pedestrian detected. Yielding.",
+      "cooldown": 30,
+      "seconds": 2.56
+    },
+    "taxi-yield-2": {
+      "voice": "robotaxi",
+      "text": "After you.",
+      "cooldown": 30,
+      "seconds": 0.74
+    },
+    "taxi-yield-3": {
+      "voice": "robotaxi",
+      "text": "Please proceed. I will wait.",
+      "cooldown": 30,
+      "seconds": 2.46
+    },
+    "local-cheer-1": {
+      "voice": "local",
+      "text": "Yo! That's an EMB line right there.",
+      "seconds": 3.75
+    },
+    "local-cheer-2": {
+      "voice": "local",
+      "text": "Okay, okay. That was clean.",
+      "seconds": 3.52
+    },
+    "local-cheer-3": {
+      "voice": "local",
+      "text": "Do it again, the seagulls missed it.",
+      "seconds": 2.66
+    },
+    "local-cheer-4": {
+      "voice": "local",
+      "text": "Pier 7 approves.",
+      "seconds": 1.66
+    },
+    "local-bail-1": {
+      "voice": "local",
+      "text": "Ooh. The bricks always win.",
+      "seconds": 3.03
+    },
+    "local-bail-2": {
+      "voice": "local",
+      "text": "Security's gonna love that.",
+      "seconds": 1.95
+    },
+    "local-bail-3": {
+      "voice": "local",
+      "text": "Shake it off. Everybody slams at EMB.",
+      "seconds": 4.51
+    },
+    "local-copy-1": {
+      "voice": "local",
+      "text": "Hold up. My turn.",
+      "seconds": 1.64
+    },
+    "local-copy-2": {
+      "voice": "local",
+      "text": "Watch this. Same line.",
+      "seconds": 2.49
+    },
+    "muni-travel-1": {
+      "voice": "muni-travel",
+      "text": "This is an outbound train. Please hold on. Please hold on to anything.",
+      "seconds": 4.77
+    },
+    "muni-travel-2": {
+      "voice": "muni-travel",
+      "text": "Now arriving. Please exit on the left, or the right. We are not sure either.",
+      "seconds": 5.11
+    },
+    "muni-travel-3": {
+      "voice": "muni-travel",
+      "text": "This train is now in service. Mostly.",
+      "seconds": 2.81
+    },
+    "muni-10th": {
+      "voice": "muni",
+      "text": "Tenth Street.",
+      "seconds": 1.02
+    },
+    "muni-9th": {
+      "voice": "muni",
+      "text": "Ninth Street. Larkin.",
+      "seconds": 1.5
+    },
+    "muni-8th": {
+      "voice": "muni",
+      "text": "Eighth Street. Civic Center.",
+      "seconds": 2.02
+    },
+    "ped-shout-1": {
+      "voice": "passerby",
+      "text": "Hey! Sidewalk!",
+      "cooldown": 3,
+      "seconds": 1.91
+    },
+    "ped-shout-2": {
+      "voice": "passerby2",
+      "text": "Eyes on the road!",
+      "cooldown": 3,
+      "seconds": 1.32
+    },
+    "ped-shout-3": {
+      "voice": "passerby",
+      "text": "Whoa, whoa, whoa!",
+      "cooldown": 3,
+      "seconds": 1.35
+    },
+    "ped-shout-4": {
+      "voice": "passerby2",
+      "text": "Seriously?",
+      "cooldown": 3,
+      "seconds": 0.81
+    },
+    "ped-shout-5": {
+      "voice": "passerby",
+      "text": "Learn to drive!",
+      "cooldown": 3,
+      "seconds": 1.45
+    },
+    "ped-shout-6": {
+      "voice": "passerby2",
+      "text": "That's a crosswalk, buddy!",
+      "cooldown": 3,
+      "seconds": 1.37
+    },
+    "npc-shout-1": {
+      "voice": "skaterkid",
+      "text": "Van! Van! Van!",
+      "cooldown": 3,
+      "seconds": 2.08
+    },
+    "npc-shout-2": {
+      "voice": "skaterkid",
+      "text": "Dude, it's a skatepark!",
+      "cooldown": 3,
+      "seconds": 2.26
+    },
+    "npc-shout-3": {
+      "voice": "skaterkid",
+      "text": "Brake, man!",
+      "cooldown": 3,
+      "seconds": 1.18
+    },
+    "npc-shout-4": {
+      "voice": "skaterkid",
+      "text": "Not cool!",
+      "cooldown": 3,
+      "seconds": 1.05
+    },
+    "npc-shout-5": {
+      "voice": "skaterkid",
+      "text": "Get that thing out of here!",
+      "cooldown": 3,
+      "seconds": 1.68
+    },
+    "scooter-unlock": {
+      "voice": "scooter",
+      "text": "Ride started. Vantage thanks you for disrupting the sidewalk.",
+      "seconds": 3.88
+    },
+    "scooter-low": {
+      "voice": "scooter",
+      "text": "Low battery. Please end your ride soon.",
+      "seconds": 2.71
+    },
+    "scooter-empty": {
+      "voice": "scooter",
+      "text": "Battery depleted. Your ride has ended. Vantage appreciates your patience.",
+      "seconds": 4.7
+    },
+    "scooter-end": {
+      "voice": "scooter",
+      "text": "Ride ended. A receipt has been sent to an inbox you never check.",
+      "seconds": 3.86
+    }
+  },
+  "on": {
+    "escapeStart": [
+      "taxi-start-1",
+      "taxi-start-2"
+    ],
+    "escapeClose": [
+      "taxi-close-1",
+      "taxi-close-2",
+      "taxi-close-3"
+    ],
+    "escapeRecalc": [
+      "taxi-recalc-1",
+      "taxi-recalc-2"
+    ],
+    "escapeBackup": [
+      "taxi-backup"
+    ],
+    "escapeOver|survived=true": [
+      "taxi-escaped"
+    ],
+    "escapeOver|survived=false": [
+      "taxi-caught"
+    ],
+    "carHit|robo=true": [
+      "taxi-hit"
+    ],
+    "muniStart|line=f": [
+      "muni-f-start"
+    ],
+    "muniStart|line=j": [
+      "muni-j-start"
+    ],
+    "muniStart|line=fdowntown": [
+      "muni-f-start"
+    ],
+    "muniStop|name=Market Street & Noe Street|you=false": [
+      "muni-noe"
+    ],
+    "muniStop|name=Market Street & Sanchez Street|you=false": [
+      "muni-sanchez"
+    ],
+    "muniStop|name=Market Street & Church Street|you=false": [
+      "muni-church"
+    ],
+    "muniStop|name=Right of Way & 20th Street|you=false": [
+      "muni-20th"
+    ],
+    "muniStop|name=Right of Way & 18th Street|you=false": [
+      "muni-18th"
+    ],
+    "muniStop|name=Market Street & 3rd Street|you=false": [
+      "muni-3rd"
+    ],
+    "muniStop|name=Market Street & 1st Street|you=false": [
+      "muni-1st"
+    ],
+    "muniStop|name=Don Chee Way & Steuart Street|you=false": [
+      "muni-steuart"
+    ],
+    "muniDelay|says=Delayed due to a disabled train ahead.": [
+      "muni-delay-train"
+    ],
+    "muniDelay|says=Delayed due to an operator shift change.": [
+      "muni-delay-shift"
+    ],
+    "muniDelay|says=Delayed due to a double-parked car on the tracks.": [
+      "muni-delay-car"
+    ],
+    "muniDelay|says=Delayed due to a police action ahead.": [
+      "muni-delay-police"
+    ],
+    "skitchStart|robo=true": [
+      "taxi-skitch"
+    ],
+    "robotaxiStop": [
+      "taxi-yield-1",
+      "taxi-yield-2",
+      "taxi-yield-3"
+    ],
+    "muniStart|line=fcivic": [
+      "muni-f-start"
+    ],
+    "muniStop|name=Market Street & 10th Street|you=false": [
+      "muni-10th"
+    ],
+    "muniStop|name=Market Street & 9th Street|you=false": [
+      "muni-9th"
+    ],
+    "muniStop|name=Market Street & 8th Street|you=false": [
+      "muni-8th"
+    ],
+    "pedShout|line=Hey! Sidewalk!": [
+      "ped-shout-1"
+    ],
+    "pedShout|line=Eyes on the road!": [
+      "ped-shout-2"
+    ],
+    "pedShout|line=Whoa, whoa, whoa!": [
+      "ped-shout-3"
+    ],
+    "pedShout|line=Seriously?": [
+      "ped-shout-4"
+    ],
+    "pedShout|line=Learn to drive!": [
+      "ped-shout-5"
+    ],
+    "pedShout|line=That's a crosswalk, buddy!": [
+      "ped-shout-6"
+    ],
+    "npcShout|line=Van! Van! Van!": [
+      "npc-shout-1"
+    ],
+    "npcShout|line=Dude, it's a skatepark!": [
+      "npc-shout-2"
+    ],
+    "npcShout|line=Brake, man!": [
+      "npc-shout-3"
+    ],
+    "npcShout|line=Not cool!": [
+      "npc-shout-4"
+    ],
+    "npcShout|line=Get that thing out of here!": [
+      "npc-shout-5"
+    ],
+    "vehicleEnter|type=scooter": [
+      "scooter-unlock"
+    ],
+    "scooterBattery|state=low": [
+      "scooter-low"
+    ],
+    "scooterBattery|state=empty": [
+      "scooter-empty"
+    ],
+    "scooterRideEnd": [
+      "scooter-end"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+# Goals only run in the worlds listed in goals.json parks (soma, sf): a big combo in the lab completes nothing.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+hold slide 208..280
+run 400
+expect event comboLanded within 250..300
+expect no event goalComplete

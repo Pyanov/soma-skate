@@ -1,0 +1,19 @@
+# Over a parked robotaxi instead: the ROBOTAXI HOP gap (not CAR HOP too), and both goals that
+# accept it: Robotaxi Hop and Ollie an EV.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 0 robo
+cmd 30 teleport -41.25 -332.19 2.08 265.2
+cmd 40 set skater.vel.x -5.98
+cmd 40 set skater.vel.y -0.5
+hold ollie 42..140
+tap up 124
+tap up 132
+run 400
+expect event gap{id=robo_hop,points=750} within 280..285
+expect no event gap{id=car_hop}
+expect event goalComplete{id=carhop} within 280..285
+expect event goalComplete{id=robohop} within 280..285
+expect no event bail

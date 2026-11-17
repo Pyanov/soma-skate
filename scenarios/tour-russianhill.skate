@@ -1,0 +1,64 @@
+# Tour level 9, Russian Hill (data/tour.json, physics phase 31 on city phase 12's crooked block and Hyde St),
+# a 2-minute run from the top of the crooked block: its three goals, the tape and S-K-A-T-E, each set up
+# with a teleport.
+# - Down the brick lane, an ollie over the lane's curb onto the low wall round a flower bed, a 50-50 along
+#   it (S on it) and a kickflip off its straight: FS 50-50 + LOMBARD FLOWER BED + Kickflip, 2,331, Lombard
+#   Flower Beds.
+# - The steep flight of the stairs on the south sidewalk: a boneless off its top, K in the air and the tape
+#   at the top of it (out of an ollie's reach): Boneless + LOMBARD STAIRS, Lombard Stairs.
+# - The long handrail down the north side: an ollie onto it near its top and a 50-50 to its foot (A on it):
+#   FS 50-50 + LOMBARD HANDRAIL, 2,996.
+# - The cable car slot down Hyde from Lombard (the squeezed city keeps the top of Hyde: about 75 m of slot
+#   below Lombard before the road rises over it): an ollie, the grind pressed in the air, a 50-50 (T and E in
+#   it), Ride the Hyde Slot at 50 m (10 m/s by then), a kickflip off: BS 50-50 + Kickflip, 4,126. Then a
+#   teleport to the corner of Lombard and Hyde, to stand there (Hyde ends at the tile's edge just below).
+park sf
+cmd 0 traffic clear
+cmd 0 run level russianhill
+bot balance
+cmd 1 teleport -247.99 698.37 20.25 34.5
+cmd 3 set skater.vel.x 2.835
+cmd 3 set skater.vel.y 4.119
+hold ollie 30..62
+tap grind 74..110 every 4
+hold ollie 220..240
+tap flip 243
+cmd 1001 teleport -198 704.3 5.95 82
+cmd 1003 set skater.vel.x 4.95
+cmd 1003 set skater.vel.y 0.74
+hold ollie 1112..1142
+tap up 1130
+tap up 1137
+cmd 1601 teleport -203.08 720.82 7.44 84.8
+cmd 1603 set skater.vel.x 3.983
+cmd 1603 set skater.vel.y 0.364
+hold ollie 1664..1694
+tap grind 1706..1750 every 4
+cmd 2401 teleport -290.20 696.61 28.30 350.8
+cmd 2403 set skater.vel.x -0.80
+cmd 2403 set skater.vel.y 4.94
+hold ollie 2440..2470
+tap grind 2482..2524 every 4
+hold ollie 3580..3600
+tap flip 3603
+cmd 3901 teleport -292 696 28.6 84.7
+run 14700
+expect event levelStart{level=russianhill,seconds=120} within 0..2
+expect event letter{letter=S,have=S____} within 130..134
+expect event levelGoal{level=russianhill,id=beds,name=Lombard Flower Beds} within 239..243
+expect event comboLanded{name=FS 50-50 + LOMBARD FLOWER BED + Kickflip,points=2331} within 396..400
+expect event letter{letter=K,have=SK___} within 1176..1180
+expect event tapeFound{level=russianhill} within 1207..1211
+expect event levelGoal{level=russianhill,id=stairs,name=Lombard Stairs} within 1315..1319
+expect event comboLanded{name=Boneless + LOMBARD STAIRS,points=1500} within 1326..1330
+expect event letter{letter=A,have=SKA__} within 1886..1890
+expect event comboLanded{name=FS 50-50 + LOMBARD HANDRAIL,points=2996} within 2303..2307
+expect event letter{letter=T,have=SKAT_} within 3072..3076
+expect event letter{letter=E,have=SKATE} within 3467..3471
+expect event levelGoal{level=russianhill,id=skate} within 3467..3471
+expect event levelGoal{level=russianhill,id=hyde,name=Ride the Hyde Slot} within 3425..3429
+expect event comboLanded{name=BS 50-50 + Kickflip,points=4126} within 3759..3763
+expect event levelOver{level=russianhill,score=10953,tape=true} within 14399..14402
+expect session.levelGoals.length == 5 at end
+expect no event levelWrongWay
+expect no event bail

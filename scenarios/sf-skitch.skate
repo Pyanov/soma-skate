@@ -1,0 +1,21 @@
+# Skitching (THUG): rolling at 7 m/s right behind a car on Valencia, L (grab) grabs its bumper and
+# it tows you. The driver honks after 0.6 s. Let go after 3 s: you ride on at the car's 7 m/s and the
+# Skitch banks: 100 + 150 per second towed = 550.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..432
+run 600
+expect event skitchStart{robo=false} within 72..75
+expect event honk{robo=false} within 140..150
+expect skater.speed > 6.9 at 300
+expect event skitchEnd{reason=let go,points=550} within 432..434
+expect skater.speed > 6.8 at 440
+expect event comboLanded{name=Skitch,points=550} within 434..470
+expect no event bail

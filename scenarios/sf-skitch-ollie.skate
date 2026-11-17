@@ -1,0 +1,19 @@
+# An ollie lets go of the bumper: the Skitch goes into the combo and carries on into the air, a
+# kickflip on top: "Skitch + Kickflip" x2.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..600
+hold ollie 300..330
+tap flip+left 340
+run 600
+expect event skitchEnd{reason=ollie,points=423} within 330..332
+expect event pop within 330..332
+expect event comboLanded{name=Skitch + Kickflip,multiplier=2} within 440..480
+expect no event bail

@@ -1,0 +1,78 @@
+# Tour level 6, Civic Center (data/tour.json), a 2-minute run from UN Plaza: its three goals, the tape
+# and S-K-A-T-E, each set up with a teleport.
+# - UN Plaza's north row at 7.2 m/s, coming in at a slant: a 50-50 on a ledge, popped off its end onto
+#   the next, three of them (S on the third): UN Plaza Line (2,500 with a UN PLAZA LEDGE, started in the
+#   plaza). Phase 26: a decent player makes this line half the time by feel --tour, the old one (6 m/s,
+#   straight along the row) a quarter.
+# - In the sunken fountain, a boneless from the floor onto the tallest pier: the tape.
+# - The fountain's rim on the Market side, K on it, popped off: BS 50-50 + FOUNTAIN RIM, 1,936.
+# - Civic Center Plaza, the ledge round the lawns at the north-west corner: T on it, 1,726.
+# - The F-line rails on UN Plaza's piece of Market near 8th, a 50-50 ridden 25 m down it (A on the way):
+#   F-Line Grind; it stalls after 10 s, 4,856.
+# - City Hall: the hubba down the north cheek wall of the Polk St steps, 1,700; then off the porch and
+#   down all the steps, E in the air over them: City Hall Steps.
+park sf
+cmd 0 traffic clear
+cmd 0 run level civic
+bot balance
+cmd 1 teleport 262.44 406.49 0.4 74.5
+cmd 3 set skater.vel.x 6.9646
+cmd 3 set skater.vel.y 1.9373
+hold ollie 4..12
+hold ollie 65..108
+hold ollie 197..300
+tap grind 14
+tap grind 19..62 every 6
+tap grind 109..194 every 6
+tap grind 301..374 every 6
+cmd 902 teleport 411.6 441.3 -2.9 42.8
+cmd 912 set skater.vel.x 2.039
+cmd 912 set skater.vel.y 2.201
+hold ollie 920..1000
+tap up 986
+tap up 993
+cmd 1402 teleport 405.85 427.13 -2.02 27.4
+cmd 1404 set skater.vel.x 2.2641
+cmd 1404 set skater.vel.y 4.3680
+hold ollie 1428..1443
+tap grind 1445..1485 every 6
+hold ollie 1730..1760
+cmd 2000 teleport 70.56 432.94 3.6 172.4
+cmd 2002 set skater.vel.x 0.6143
+cmd 2002 set skater.vel.y -4.6395
+hold ollie 2000..2020
+tap grind 2022..2355 every 6
+cmd 2502 teleport 288.50 272.49 0.14 45.1
+cmd 2504 set skater.vel.x 3.546
+cmd 2504 set skater.vel.y 3.525
+hold ollie 2512..2522
+tap grind 2528
+cmd 4002 teleport 9.84 362.53 5.78 49.3
+cmd 4004 set skater.vel.x 3.6390
+cmd 4004 set skater.vel.y 3.1301
+hold ollie 4022..4034
+tap grind 4036..4060 every 6
+cmd 4400 teleport 11.3 354.3 5.78 81.2
+cmd 4402 set skater.vel.x 6.424
+cmd 4402 set skater.vel.y 0.9945
+hold ollie 4403..4411
+run 14700
+expect event levelStart{level=civic,seconds=120} within 0..2
+expect event comboLanded{name=BS 50-50 + UN PLAZA LEDGE + FS 50-50 + BS 50-50,points=3196} within 590..590
+expect event levelGoal{level=civic,id=unline,name=UN Plaza Line} within 590..590
+expect event letter{letter=S,have=S____} within 428..428
+expect event tapeFound{level=civic} within 1097..1101
+expect event letter{letter=K,have=SK___} within 1715..1719
+expect event gap{id=fountain_rim,points=400} within 1759..1763
+expect event letter{letter=T,have=SK_T_} within 2095..2099
+expect event gap{id=civic_ledge,points=200} within 2359..2363
+expect event letter{letter=A,have=SKAT_} within 2741..2745
+expect event levelGoal{level=civic,id=fline,name=F-Line Grind} within 3555..3559
+expect event gap{id=city_hall_hubba,points=500} within 4200..4204
+expect event letter{letter=E,have=SKATE} within 4446..4450
+expect event levelGoal{level=civic,id=skate} within 4446..4450
+expect event levelGoal{level=civic,id=steps,name=City Hall Steps} within 4546..4550
+expect event levelOver{level=civic,score=14268,tape=true} within 14399..14402
+expect session.levelGoals.length == 6 at end
+expect no event levelWrongWay
+expect no event bail

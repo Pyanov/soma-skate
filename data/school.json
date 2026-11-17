@@ -1,0 +1,101 @@
+{
+  "_doc": "Skate School with Karl the Fog (src/client/school.ts, client only): the tutorial, taught in order in the park (parks: the worlds it is played in). Each lesson: spot (a spot id or alias, or 'x y z heading') it starts at (teleport), setup (more commands at its start), boost (Karl's gust: the first push after the lesson starts sets this speed, m/s), reset (a failed try puts you back at the spot resetSeconds later), Karl's line (say), the keys (keys: rows of actions from data/controls.json, shown with the player's keyboard keys, rebinds included, and the pad's buttons; '+' and 'then' are words between them), a hint after hintTries failed tries or hintSeconds without it, his line when it is done (done), and its check, from the sim's events: steps, each an event (t) with fields at least (min) or at most (max) a number, equal to one of (is), a trick of a kind (tricks: flips, grabs or specials, for trickEnd), or a combo holding entries of each kind (has: grind, manual, special, for comboLanded), in order; ride: rolling at speed m/s having turned turn degrees; walk: walking that many metres after the steps. A bail starts the steps over and is a failed try; in an air lesson so is coming down from a pop or a ramp without it done (judged landGraceSeconds after the landing, so a revert counts). doneSeconds: Karl's done line shows that long before the next lesson. prompt: the one-time question on the very first launch. graduate: the sticker event sent at the end (data/stickers.json), its art, and the card pointing on to the Tour and the game modes.",
+  "parks": ["soma", "sf"],
+  "hintTries": 3,
+  "hintSeconds": 22,
+  "doneSeconds": 1.6,
+  "resetSeconds": 1.4,
+  "landGraceSeconds": 0.15,
+  "prompt": { "title": "New here?", "line": "Skate School takes 2 minutes. Karl the Fog teaches. He is a cloud, but he means well.", "yes": "Teach me", "no": "I know how to skate" },
+  "graduate": { "event": "schoolGraduate", "sticker": "graduate", "title": "Graduated", "line": "Karl is proud. Karl is also just weather. Next: the city's <b>challenges</b>, a set in every neighbourhood, or the <b>Game modes</b>: Hill Bomb, S.K.A.T.E., Courier, Combo Challenge.", "tour": "Challenges", "modes": "Game modes", "stay": "Keep skating" },
+  "lessons": [
+    {
+      "id": "push", "title": "Push and steer", "spot": "pin05_entrance_flat_east_bank",
+      "say": "Welcome to Skate School. I'm Karl. I'm a cloud. Push to roll, lean to steer. Try not to hit a tourist.",
+      "keys": [{ "do": ["up"], "label": "push" }, { "do": ["left", "right"], "label": "lean to steer" }],
+      "hint": "Hold push for a couple of seconds, then lean while you roll.",
+      "done": "Look at you, rolling. Your mom would cry.",
+      "check": { "ride": { "speed": 3.5, "turn": 45 } }
+    },
+    {
+      "id": "ollie", "title": "Ollie", "spot": "entrance",
+      "say": "Roll, hold to crouch, let go to pop. Hold longer, go higher. Like rent.",
+      "keys": [{ "do": ["up"], "label": "roll" }, { "do": ["ollie"], "label": "hold, then let go" }],
+      "hint": "Hold it a moment before you let go. Quick taps make tiny ollies.",
+      "done": "Air! Brief. Like summer in SF.",
+      "check": { "air": true, "steps": [{ "t": "pop", "min": { "charge": 0.5 } }, { "t": "land", "is": { "quality": ["clean", "sketchy"] } }] }
+    },
+    {
+      "id": "flip", "title": "Flip trick", "spot": "entrance",
+      "say": "Pop, then flip with a direction. The board spins. You don't.",
+      "keys": [{ "do": ["ollie"], "label": "pop" }, { "do": ["flip", "+", "left"], "label": "in the air: kickflip" }],
+      "hint": "Press flip with a direction right after the pop, while you're still going up.",
+      "done": "Kickflip. Somebody film that.",
+      "check": { "air": true, "steps": [{ "t": "trickEnd", "tricks": "flips" }, { "t": "land", "is": { "quality": ["clean", "sketchy"] } }] }
+    },
+    {
+      "id": "grab", "title": "Grab", "spot": "big3", "reset": true,
+      "say": "Big 3. Push hard, pop at the top, grab with a direction and hold on. Like it's the last parking spot.",
+      "keys": [{ "do": ["up"], "label": "push hard" }, { "do": ["ollie"], "label": "pop at the top" }, { "do": ["grab", "+", "right"], "label": "hold: Indy" }],
+      "hint": "Push all the way down the run-up, pop right at the top of the stairs, then hold grab.",
+      "done": "Grabbed it. Nobody saw you sweat.",
+      "check": { "air": true, "steps": [{ "t": "trickEnd", "tricks": "grabs" }, { "t": "land", "is": { "quality": ["clean", "sketchy"] } }] }
+    },
+    {
+      "id": "grind", "title": "Grind", "spot": "big3_runway", "reset": true,
+      "say": "See the ledge ahead? Push, ollie onto it, and hit grind as you come down on it. Lean to stay on.",
+      "keys": [{ "do": ["ollie"], "label": "pop" }, { "do": ["grind"], "label": "over the ledge" }, { "do": ["left", "right"], "label": "balance" }],
+      "hint": "Push for two seconds, pop just before the ledge, and press grind while you're over it.",
+      "done": "Metal on concrete. That's music.",
+      "check": { "steps": [{ "t": "grindStart", "is": { "slide": [false] } }] }
+    },
+    {
+      "id": "manual", "title": "Manual", "spot": "manual_pad",
+      "say": "Roll up to the manual pad and tap up, then down. You're on the back wheels. Up and down keep you level.",
+      "keys": [{ "do": ["up", "then", "down"], "label": "quick, while rolling" }, { "do": ["up", "down"], "label": "balance" }],
+      "hint": "Get rolling, then tap up and down quickly, one after the other.",
+      "done": "Wheelie king of SoMa.",
+      "check": { "steps": [{ "t": "manualStart" }] }
+    },
+    {
+      "id": "combo", "title": "Link a combo", "spot": "big3_runway", "reset": true,
+      "say": "Now link them: grind the ledge, manual the second you land, then ollie out. The points multiply. Like condos.",
+      "keys": [{ "do": ["ollie", "then", "grind"], "label": "onto the ledge" }, { "do": ["up", "then", "down"], "label": "as you land" }, { "do": ["ollie"], "label": "pop out to bank it" }],
+      "hint": "The moment you land off the ledge, tap up then down. Then pop out of the manual to bank it.",
+      "done": "That's a combo. You're a professional now. Unpaid.",
+      "check": { "steps": [{ "t": "comboLanded", "has": ["grind", "manual"] }] }
+    },
+    {
+      "id": "revert", "title": "Revert", "spot": "78 20.5 -1.6 71", "boost": 9.5, "reset": true,
+      "say": "Push and I'll blow you up the quarter. I'm wind, technically. Grab in the air, then hit revert the moment you land.",
+      "keys": [{ "do": ["up"], "label": "push: Karl's gust" }, { "do": ["grab"], "label": "in the air" }, { "do": ["revert"], "label": "as you land" }],
+      "hint": "Ride straight up, hold grab in the air, and press revert right as your wheels touch.",
+      "done": "Smooth. Like fog through the Golden Gate.",
+      "check": { "air": true, "steps": [{ "t": "revert" }] }
+    },
+    {
+      "id": "special", "title": "Special trick", "spot": "big3", "setup": ["set skater.special 0.97"], "reset": true,
+      "say": "I topped up your special meter. Don't tell anyone. Land a kickflip to fill it, then off Big 3: two directions and flip.",
+      "keys": [{ "do": ["ollie", "then", "flip"], "label": "fills the meter" }, { "do": ["right", "then", "down", "+", "flip"], "label": "meter full: special" }],
+      "hint": "Kickflip on the run-up, then pop off Big 3 and press right, down and flip in the air.",
+      "done": "SPECIAL. You're basically me now.",
+      "check": { "steps": [{ "t": "specialReady" }, { "t": "comboLanded", "has": ["special"] }] }
+    },
+    {
+      "id": "powerslide", "title": "Powerslide", "spot": "entrance",
+      "say": "Going too fast? Hold powerslide, the board swings sideways, and you stop. Brakes are for robotaxis.",
+      "keys": [{ "do": ["up"], "label": "get some speed" }, { "do": ["slide"], "label": "hold till you stop" }],
+      "hint": "Get rolling fast first, then hold powerslide all the way to a stop.",
+      "done": "Stopped. Cleaner than Muni.",
+      "check": { "steps": [{ "t": "powerslide", "is": { "on": [false] }, "max": { "speed": 1.2 } }] }
+    },
+    {
+      "id": "walk", "title": "Step off and walk", "spot": "entrance",
+      "say": "Step off and walk. Some places you just stroll. Step off again to drop the board and roll.",
+      "keys": [{ "do": ["walk"], "label": "step off" }, { "do": ["up"], "label": "walk" }],
+      "hint": "Press step off, then walk a few steps.",
+      "done": "You walk too. Truly gifted.",
+      "check": { "steps": [{ "t": "stepOff" }], "walk": 2.5 }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# City goal "Skitch a Robotaxi" (kind skitch, robo): towed 12 m by a robotaxi as it slows politely
+# from 7 m/s (13.6 m to its stop). (Balance noise off: this is about the goal.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 setData traffic.skitch.noise 0
+cmd 0 setData traffic.skitch.balanceStart 0
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7 robo
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..900
+run 950
+expect event goalComplete{id=roboskitch,area=Mission} within 370..385

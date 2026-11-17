@@ -1,0 +1,17 @@
+# 24TH ST PLAZA LEDGE (city phase 13's granite ledges in the 24th St BART plazas): an ollie onto a ledge
+# in the north-east plaza and a boardslide to its end.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 313.73 -189.26 -4.83 335.7
+cmd 3 set skater.vel.x -1.649
+cmd 3 set skater.vel.y 3.644
+hold ollie 102..132
+tap grind 144..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=BS Boardslide,line=ledge_312_-186} within 143..147
+expect event grindEnd{reason=end} within 468..472
+expect event gap{id=bart24_ledge,gap=24TH ST PLAZA LEDGE,points=250} within 468..472
+expect event land{quality=clean} within 522..526
+expect event comboLanded{name=BS Boardslide + 24TH ST PLAZA LEDGE} within 533..537
+expect no event bail

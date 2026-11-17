@@ -1,0 +1,919 @@
+{
+  "_doc": "Game UI copy and timing (client only; src/client/ui.ts). praise lines are picked by combo size (points at or above each tier's min), bail lines on a slam, taglines rotate under the menu, tips show while loading and on pause, results lines get {score}, {pct} (share of a SoMa studio's monthly rent) and {burritos} (\"7 Mission burritos\"). rent and burrito are the dollar prices the jokes use. stickers: big combos slap sick.png, slams slap slam.png. signatures: each character's own names for the special tricks (by trick id), shown in the trick string with a glow. hints: first-time tips shown once each (remembered in the browser) when their moment comes. carHit / robotaxiHit / pedHit: callouts when a car or a robotaxi knocks you down, or you run into a pedestrian. credits: the Credits screen. places: the banner when you roll into a landmark (spots: centre and radius in site metres, or a box [minX, minY, maxX, maxY], checked first) or a neighbourhood (hoods: the nearest centre wins; a neighbourhood can have several centres); positions are the OpenStreetMap place nodes (or a point inside the place's outline where OSM maps it as an area: Alamo Square, the Lower Haight) and park outlines projected into the site frame (sf world only). You must stay holdSeconds before it shows, each place waits cooldownSeconds before it shows again, and it stays up showSeconds.",
+  "rent": 3400,
+  "burrito": 14,
+  "comboHoldSeconds": 2.2,
+  "praise": [
+    {
+      "min": 0,
+      "lines": [
+        "Clean.",
+        "Stoked.",
+        "Nice.",
+        "Smooth."
+      ]
+    },
+    {
+      "min": 1500,
+      "lines": [
+        "Hella sick.",
+        "Steezy.",
+        "Gnarly.",
+        "That's so Mission.",
+        "Certified SoMa."
+      ]
+    },
+    {
+      "min": 5000,
+      "lines": [
+        "HELLA SICK",
+        "Karl the Fog approves",
+        "Somebody call the magazines",
+        "Worth a $19 burrito",
+        "A robotaxi pulled over to watch",
+        "The tech bros are filming this"
+      ]
+    },
+    {
+      "min": 20000,
+      "lines": [
+        "LEGENDARY",
+        "Rent: paid (almost)",
+        "You just IPO'd",
+        "Even the pigeons clapped",
+        "Dolores Park heard that",
+        "Series A secured"
+      ]
+    }
+  ],
+  "bail": [
+    "Slammed.",
+    "Call urgent care.",
+    "That's a one-star review.",
+    "Muni would've been faster.",
+    "Even the robotaxi winced.",
+    "Copay: $40.",
+    "The fog saw that.",
+    "Gravity is undefeated.",
+    "Walk it off. Uphill. Both ways.",
+    "Sidewalk: 1, you: 0."
+  ],
+  "taglines": [
+    "Now with 100% more fog.",
+    "Under the Central Freeway since 2014.",
+    "No parking. No problem.",
+    "Burritos not included.",
+    "Watch out for robotaxis.",
+    "The only thing steeper than the hills is the rent.",
+    "Karl the Fog is watching.",
+    "Skate first. Find parking never.",
+    "Hella skate. Hella SoMa."
+  ],
+  "tips": [
+    "Hold K, let go to ollie. Longer hold, higher pop.",
+    "Press I near a ledge or rail to lock into a grind.",
+    "W then S lands you in a manual. Keep the combo alive.",
+    "Collect S-K-A-T-E in a run for bragging rights.",
+    "] tunes the radio. Three stations, all made up, all made in your browser.",
+    "The 22 Fillmore is not a skate spot.",
+    "Tuck to go faster downhill. Bring knees.",
+    "Land straight or eat concrete.",
+    "G cycles the look: real, cute, grey.",
+    "T emotes. The tech bro is always hiring.",
+    "In the character picker, left and right change the outfit.",
+    "Twin Peaks bomb: 1.6 km down Upper Market. Tuck the straights, scrub before the 19th curve.",
+    "Finish a Hill Bomb and your best run comes back as a ghost to race.",
+    "Fog City Punk plays without the internet. ] to tune in.",
+    "Game of S.K.A.T.E.: a sketchy landing counts as a miss. Land it clean.",
+    "Every neighbourhood's challenges hide a secret tape. Look up."
+  ],
+  "results": [
+    "{score} points: that covers {pct}% of a SoMa studio's rent.",
+    "{score} points, or about {burritos}.",
+    "{score}. Karl the Fog rates it: mid. Go again.",
+    "{score}. Not bad for a city with no parking."
+  ],
+  "signatures": {
+    "can": {
+      "kickflipsuperman": "Shotgun Superman",
+      "christair": "Christ Air (Bien Fría)",
+      "540flip": "540 Fizz Flip"
+    },
+    "blob": {
+      "kickflipsuperman": "Gelatin Superman",
+      "christair": "Jiggle Christ Air",
+      "540flip": "540 Splat Flip"
+    },
+    "redmonster": {
+      "kickflipsuperman": "Rent-Free Superman",
+      "christair": "Fuzzy Christ Air",
+      "540flip": "540 Fuzzball"
+    },
+    "mascot": {
+      "kickflipsuperman": "Halftime Superman",
+      "christair": "Big Head Christ Air",
+      "540flip": "540 Mascot Flip"
+    },
+    "vampire": {
+      "kickflipsuperman": "Bat Out of Hell",
+      "christair": "Coffin Air",
+      "540flip": "540 Bat Flip"
+    },
+    "skeleton": {
+      "kickflipsuperman": "Funny Bone Superman",
+      "christair": "Skeleton Key Air",
+      "540flip": "540 Rattle Flip"
+    },
+    "techbro": {
+      "kickflipsuperman": "Series A Superman",
+      "christair": "Christ Air (Pre-Revenue)",
+      "540flip": "540 Pivot Flip"
+    },
+    "karl": {
+      "kickflipsuperman": "Low Ceiling Superman",
+      "christair": "Marine Layer Christ Air",
+      "540flip": "540 Burn-Off Flip"
+    },
+    "burrito": {
+      "kickflipsuperman": "Super Burrito Superman",
+      "christair": "Christ Air con Todo",
+      "540flip": "540 Foil Flip"
+    },
+    "pigeon": {
+      "kickflipsuperman": "Dive Bomb Superman",
+      "christair": "Crumb Christ Air",
+      "540flip": "540 Coo Flip"
+    },
+    "robotaxi": {
+      "kickflipsuperman": "Phantom Braking Superman",
+      "christair": "Rerouting Christ Air",
+      "540flip": "540 Recalculating Flip"
+    },
+    "cablecar": {
+      "kickflipsuperman": "Powell Street Superman",
+      "christair": "Turnaround Christ Air",
+      "540flip": "540 Grip Flip"
+    },
+    "sealion": {
+      "kickflipsuperman": "Herring Run Superman",
+      "christair": "K-Dock Christ Air",
+      "540flip": "540 Ork Ork Flip"
+    }
+  },
+  "hints": [
+    {
+      "id": "push",
+      "text": "<kbd>W</kbd> push, <kbd>A</kbd><kbd>D</kbd> lean to turn"
+    },
+    {
+      "id": "ollie",
+      "text": "Hold <kbd>K</kbd> to crouch, let go to ollie"
+    },
+    {
+      "id": "flip",
+      "text": "In the air: <kbd>J</kbd> + arrow for a flip, <kbd>L</kbd> + arrow for a grab"
+    },
+    {
+      "id": "grind",
+      "text": "Near a ledge or rail, press <kbd>I</kbd> to grind"
+    },
+    {
+      "id": "manual",
+      "text": "<kbd>W</kbd> then <kbd>S</kbd> to manual and keep the combo going"
+    },
+    {
+      "id": "brake",
+      "text": "Too fast? <kbd>Shift</kbd> powerslides, <kbd>S</kbd> brakes"
+    },
+    {
+      "id": "walk",
+      "text": "<kbd>E</kbd> steps off the board. Walk anywhere, <kbd>E</kbd> again to ride"
+    },
+    {
+      "id": "radio",
+      "text": "<kbd>]</kbd> radio, <kbd>V</kbd> saves the last 15 s as a video"
+    },
+    {
+      "id": "skitch",
+      "text": "Right behind a car? Hold <kbd>L</kbd> to skitch, <kbd>A</kbd><kbd>D</kbd> to balance"
+    },
+    {
+      "id": "spine",
+      "text": "Over back-to-back ramps, <kbd>;</kbd> in the air spine-transfers"
+    },
+    {
+      "id": "goals",
+      "text": "<kbd>Esc</kbd> then Missions, Goals: things to do round San Francisco"
+    },
+    {
+      "id": "modes",
+      "text": "<kbd>M</kbd> the city map, <kbd>F</kbd> talks to anyone with a mark over them"
+    }
+  ],
+  "carHit": [
+    "Robotaxi'd.",
+    "Check your blind spot.",
+    "The driver is filing a report.",
+    "That's going on the neighborhood forum.",
+    "Car: 1, you: 0.",
+    "Should've taken Muni.",
+    "Insurance won't cover skateboards."
+  ],
+  "robotaxiHit": [
+    "The robotaxi is calling support.",
+    "Robotaxi: 'I'm sorry, Dave.'",
+    "Reported to the fleet.",
+    "It's leaving you a 1-star rating."
+  ],
+  "credits": [
+    {
+      "title": "The park",
+      "lines": [
+        "SoMa West Skatepark, San Francisco (New Line Skateparks design, SF Public Works). Rebuilt for the game from public plans and surveys, NOAA and USGS LiDAR, and 26 photos of the park taken for the project, which also paint it."
+      ]
+    },
+    {
+      "title": "The city",
+      "lines": [
+        "Map data © OpenStreetMap contributors, available under the Open Database License (openstreetmap.org/copyright)",
+        "DataSF (City and County of San Francisco), PDDL 1.0: right of way, curbs, curb ramps, building footprints, street trees, streets, Rec and Park assets",
+        "Elevation: U.S. Geological Survey, 3D Elevation Program (public domain)",
+        "Pier 7 measured on NOAA National Geodetic Survey 2022 orthoimagery of San Francisco (public domain)"
+      ]
+    },
+    {
+      "title": "Art and sound",
+      "lines": [
+        "Textures and sky: Poly Haven (CC0)",
+        "Sounds and props: Kenney Impact Sounds, City Kit (Roads), Furniture Kit, Mini Market and Retro Urban Kit (CC0)",
+        "Street cars: Free Low Poly Vehicles Pack by Raphael Gonçalves, Rgsdev (CC0)",
+        "AI-generated voices (OpenAI text to speech): the robotaxi, Muni, the radio DJs and the story's characters. Synthetic, not recordings of people.",
+        "AI-generated images (OpenAI): the murals, the logo and the burrito",
+        "Characters, boards, signs, portraits, menu photographs and the radio's music: made in code for the game",
+        "Type: Inter, Archivo and IBM Plex Mono (SIL Open Font License 1.1)"
+      ]
+    },
+    {
+      "title": "Radio",
+      "lines": [
+        "SoMa Skate FM, Fog City Punk and KSOMA Hyphy Hour: lo-fi beats, skate punk and Bay Area beats generated live in your browser. Every station is fictional."
+      ]
+    },
+    {
+      "title": "Made with",
+      "lines": [
+        "three.js, Vite, zod, Playwright, odiff",
+        "Made by the SoMa Skate contributors. Code under GPL-3.0, original art and data under CC BY-SA 4.0; third-party assets keep their own licences (CREDITS.md)."
+      ]
+    }
+  ],
+  "places": {
+    "holdSeconds": 1.2,
+    "cooldownSeconds": 90,
+    "showSeconds": 3.6,
+    "spots": [
+      {
+        "name": "Castro Theatre",
+        "at": [
+          -540,
+          -76
+        ],
+        "r": 30,
+        "box": [
+          -580,
+          -100,
+          -500,
+          -53
+        ],
+        "line": "Tonight: Karl the Fog in 'The Long Grey Summer'."
+      },
+      {
+        "name": "Clarion Alley",
+        "at": [
+          50,
+          -391
+        ],
+        "r": 20,
+        "box": [
+          -52,
+          -406,
+          152,
+          -377
+        ],
+        "line": "Every wall is a mural. Look, don't grind the paint."
+      },
+      {
+        "name": "SoMa West Skatepark",
+        "at": [
+          55,
+          25
+        ],
+        "r": 75,
+        "line": "Under the Central Freeway. Your home park."
+      },
+      {
+        "name": "Dolores Park",
+        "at": [
+          -324,
+          -190
+        ],
+        "r": 150,
+        "line": "Sunshine, tightrope walkers and the J Church rolling past.",
+        "box": [
+          -438,
+          -376,
+          -209,
+          -3
+        ]
+      },
+      {
+        "name": "Harvey Milk Plaza",
+        "at": [
+          -606,
+          -43
+        ],
+        "r": 45,
+        "line": "Castro and Market. Mind the stairs down to Muni."
+      },
+      {
+        "name": "Duboce Park",
+        "at": [
+          -460,
+          217
+        ],
+        "r": 95,
+        "line": "Dogs everywhere. Every one of them is a good dog."
+      },
+      {
+        "name": "The Painted Ladies",
+        "at": [
+          -966,
+          463
+        ],
+        "r": 30,
+        "box": [
+          -982,
+          432,
+          -950,
+          496
+        ],
+        "line": "Postcard Row. Somebody is taking your picture."
+      },
+      {
+        "name": "Alamo Square",
+        "at": [
+          -1138,
+          473
+        ],
+        "r": 120,
+        "box": [
+          -1287,
+          359,
+          -989,
+          587
+        ],
+        "line": "The best view of downtown, and the steepest picnic."
+      },
+      {
+        "name": "Patricia's Green",
+        "at": [
+          -233,
+          459
+        ],
+        "r": 30,
+        "box": [
+          -251,
+          412,
+          -216,
+          505
+        ],
+        "line": "Benches with a reputation. Be nice to the art."
+      },
+      {
+        "name": "24th St Mission BART",
+        "at": [
+          309,
+          -193
+        ],
+        "r": 30,
+        "line": "The plaza by the station: pigeons, pan dulce, a train every few minutes."
+      },
+      {
+        "name": "UN Plaza",
+        "at": [
+          340,
+          404
+        ],
+        "r": 60,
+        "box": [
+          255,
+          352,
+          471,
+          511
+        ],
+        "line": "Granite ledges for days. The pigeons were here first."
+      },
+      {
+        "name": "San Francisco City Hall",
+        "at": [
+          -35,
+          348
+        ],
+        "r": 70,
+        "box": [
+          -95,
+          275,
+          22,
+          420
+        ],
+        "line": "The steps everyone wants. Wedding parties have right of way."
+      },
+      {
+        "name": "Civic Center Plaza",
+        "at": [
+          105,
+          368
+        ],
+        "r": 80,
+        "box": [
+          27,
+          270,
+          179,
+          467
+        ],
+        "line": "Lawns, ledges and a dome that photobombs every clip."
+      },
+      {
+        "name": "Ferry Building",
+        "at": [
+          741,
+          753
+        ],
+        "r": 80,
+        "box": [
+          666,
+          657,
+          824,
+          847
+        ],
+        "line": "The clock tower at the foot of Market. Everybody's meeting someone here."
+      },
+      {
+        "name": "Embarcadero Plaza (EMB)",
+        "at": [
+          600,
+          695
+        ],
+        "r": 90,
+        "box": [
+          532,
+          570,
+          666,
+          792
+        ],
+        "line": "EMB. Half the ledges in skate history are here. Security knows."
+      },
+      {
+        "name": "Pier 7",
+        "at": [
+          651,
+          960
+        ],
+        "r": 80,
+        "box": [
+          551,
+          880,
+          802,
+          1078
+        ],
+        "line": "Long granite, long benches, and the bay right there if you overshoot."
+      },
+      {
+        "name": "Pier 39",
+        "at": [
+          285,
+          1018
+        ],
+        "r": 90,
+        "box": [
+          185,
+          928,
+          395,
+          1168
+        ],
+        "line": "The sea lions moved onto the K-dock in 1990 and never left. They have seniority."
+      },
+      {
+        "name": "Fisherman's Wharf",
+        "at": [
+          55,
+          953
+        ],
+        "r": 120,
+        "box": [
+          -125,
+          883,
+          295,
+          1033
+        ],
+        "line": "Chowder in a bread bowl, and a gull who wants it more than you."
+      },
+      {
+        "name": "Powell & Market",
+        "at": [
+          605,
+          412
+        ],
+        "r": 40,
+        "box": [
+          580,
+          374,
+          632,
+          474
+        ],
+        "line": "The cable car turns around by hand here. The line moves slower."
+      },
+      {
+        "name": "Lombard Street",
+        "at": [
+          -218,
+          711
+        ],
+        "r": 70,
+        "box": [
+          -282,
+          678,
+          -154,
+          744
+        ],
+        "line": "Eight hairpins of brick, hydrangeas, and a queue of rental cars."
+      },
+      {
+        "name": "Hyde Street",
+        "at": [
+          -296,
+          728
+        ],
+        "r": 60,
+        "box": [
+          -320,
+          665,
+          -270,
+          790
+        ],
+        "line": "The top of the cable car hill. Mind the slot."
+      },
+      {
+        "name": "Washington Square",
+        "at": [
+          67,
+          723
+        ],
+        "r": 70,
+        "box": [
+          -10,
+          670,
+          138,
+          772
+        ],
+        "line": "Tai chi at dawn, focaccia by noon, church bells all day."
+      },
+      {
+        "name": "Dragon Gate",
+        "at": [
+          264,
+          665
+        ],
+        "r": 25,
+        "box": [
+          245,
+          637,
+          285,
+          687
+        ],
+        "line": "The gate into Chinatown. Grant Avenue goes uphill from here."
+      },
+      {
+        "name": "Grant Avenue",
+        "at": [
+          255,
+          735
+        ],
+        "r": 80,
+        "box": [
+          230,
+          660,
+          280,
+          812
+        ],
+        "line": "Lanterns overhead and the oldest street in town underfoot."
+      },
+      {
+        "name": "Columbus Avenue",
+        "at": [
+          188,
+          770
+        ],
+        "r": 80,
+        "box": [
+          170,
+          714,
+          205,
+          830
+        ],
+        "line": "Espresso, gelato, and a street that cuts every block corner to corner."
+      },
+      {
+        "name": "Fog City Skate Shop",
+        "at": [
+          -36,
+          -254
+        ],
+        "r": 12,
+        "line": "Big Lou's shop. Decks on the walls, a mini ramp in the back."
+      },
+      {
+        "name": "Taqueria La Niebla",
+        "at": [
+          164,
+          -315
+        ],
+        "r": 9,
+        "line": "The fog comes in, the burritos go out."
+      },
+      {
+        "name": "Suds City Laundromat",
+        "at": [
+          -39,
+          -197
+        ],
+        "r": 9,
+        "line": "Spin cycle. Not that kind."
+      },
+      {
+        "name": "Valencia Corner Market",
+        "at": [
+          -76,
+          -206
+        ],
+        "r": 8,
+        "line": "Open late. Snacks, sodas, wax for your board."
+      },
+      {
+        "name": "City Hall Lobby",
+        "at": [
+          -15,
+          352
+        ],
+        "r": 22,
+        "line": "Gloria's permit window. Take a number."
+      },
+      {
+        "name": "Potrero del Sol",
+        "at": [
+          581,
+          -233
+        ],
+        "r": 40,
+        "line": "The city's biggest skatepark: bowls all the way down."
+      },
+      {
+        "name": "Lilac Street",
+        "at": [
+          355,
+          -295
+        ],
+        "r": 25,
+        "box": [
+          341,
+          -385,
+          369,
+          -210
+        ],
+        "line": "More murals. Look, don't grind the paint."
+      },
+      {
+        "name": "Freeway DIY",
+        "at": [
+          -40,
+          42
+        ],
+        "r": 18,
+        "line": "Concrete poured by skaters at night. Respect it."
+      },
+      {
+        "name": "Duboce Rooftop",
+        "at": [
+          -405,
+          217
+        ],
+        "r": 14,
+        "line": "A low roof. Pallets, a dumpster, a stair. Your call."
+      },
+      {
+        "name": "24th St Lowriders",
+        "at": [
+          437,
+          -205
+        ],
+        "r": 16,
+        "line": "Three lowriders, parked low. Hop them. Don't scratch the paint."
+      }
+    ],
+    "hoods": [
+      {
+        "name": "The Mission",
+        "at": [
+          150,
+          -250
+        ],
+        "line": "Burritos the size of your board. Rent the size of your salary."
+      },
+      {
+        "name": "The Mission",
+        "at": [
+          -40,
+          -400
+        ],
+        "line": "Burritos the size of your board. Rent the size of your salary."
+      },
+      {
+        "name": "The Castro",
+        "at": [
+          -558,
+          -203
+        ],
+        "line": "Rainbow crosswalks, excellent outfits, steep hills."
+      },
+      {
+        "name": "Duboce Triangle",
+        "at": [
+          -430,
+          165
+        ],
+        "line": "The N Judah is not a skate spot."
+      },
+      {
+        "name": "Lower Haight",
+        "at": [
+          -650,
+          445
+        ],
+        "line": "Bikes take the Wiggle. You take the hill."
+      },
+      {
+        "name": "Haight-Ashbury",
+        "at": [
+          -2242,
+          0
+        ],
+        "line": "Peace, love and a 9% grade."
+      },
+      {
+        "name": "Twin Peaks",
+        "at": [
+          -1325,
+          -435
+        ],
+        "line": "Karl the Fog lives up here."
+      },
+      {
+        "name": "Mission Dolores",
+        "at": [
+          -310,
+          -50
+        ],
+        "line": "Palm trees down the middle of Dolores. Hills on both sides."
+      },
+      {
+        "name": "Hayes Valley",
+        "at": [
+          -260,
+          440
+        ],
+        "line": "Boutiques, a freeway that came down, and a park that went up."
+      },
+      {
+        "name": "Alamo Square",
+        "at": [
+          -1139,
+          472
+        ],
+        "line": "Painted Ladies, picnic blankets, a very steep lawn."
+      },
+      {
+        "name": "Hayes Valley",
+        "at": [
+          -200,
+          520
+        ],
+        "line": "Boutiques, a freeway that came down, and a park that went up."
+      },
+      {
+        "name": "Lower Haight",
+        "at": [
+          -470,
+          320
+        ],
+        "line": "Bikes take the Wiggle. You take the hill."
+      },
+      {
+        "name": "Calle 24",
+        "at": [
+          380,
+          -200
+        ],
+        "line": "Papel picado overhead, panaderias, the best murals in the city."
+      },
+      {
+        "name": "Civic Center",
+        "at": [
+          330,
+          420
+        ],
+        "line": "Where the city does its paperwork. Bring a permit or a fast getaway."
+      },
+      {
+        "name": "Civic Center",
+        "at": [
+          60,
+          360
+        ],
+        "line": "Where the city does its paperwork. Bring a permit or a fast getaway."
+      },
+      {
+        "name": "South of Market",
+        "at": [
+          1813,
+          1206
+        ],
+        "line": "Warehouses, startups and sidewalks wide enough to push for blocks."
+      },
+      {
+        "name": "Union Square",
+        "at": [
+          590,
+          470
+        ],
+        "line": "Shopping bags, cable car bells, and guards who have seen every trick."
+      },
+      {
+        "name": "Financial District",
+        "at": [
+          520,
+          560
+        ],
+        "line": "Towers and granite. On a Sunday morning the ledges are all yours."
+      },
+      {
+        "name": "Telegraph Hill",
+        "at": [
+          330,
+          900
+        ],
+        "line": "Coit Tower up top, wild parrots, and stairs where the street should be."
+      },
+      {
+        "name": "North Beach",
+        "at": [
+          164,
+          757
+        ],
+        "line": "Espresso, focaccia, and poets who never left."
+      },
+      {
+        "name": "Fisherman's Wharf",
+        "at": [
+          -70,
+          932
+        ],
+        "line": "Sourdough, souvenir hoodies, and the smell of crab."
+      },
+      {
+        "name": "Russian Hill",
+        "at": [
+          -230,
+          720
+        ],
+        "line": "Stairs instead of sidewalks, and a view at the top of every one."
+      },
+      {
+        "name": "Chinatown",
+        "at": [
+          255,
+          720
+        ],
+        "line": "Dim sum, fortune cookies, and alleys older than the cable cars."
+      }
+    ]
+  },
+  "pedHit": [
+    "Sorry. Sorry.",
+    "They were on a call.",
+    "That's a neighborhood forum post now.",
+    "Sidewalks are for walking, apparently.",
+    "They're filing a 311 report.",
+    "Wrong place, wrong podcast.",
+    "You owe them an oat latte."
+  ]
+}

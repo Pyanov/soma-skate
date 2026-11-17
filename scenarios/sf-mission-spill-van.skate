@@ -1,0 +1,16 @@
+# Missions: a hard bump spills a vehicle's load (game/missions.ts deliver noBump, docs/mechanics/missions.md).
+# A test mission (its data set in this run only): the crew van loads a crate in Duboce's kerb lane and is
+# to take it west, no bump of 4 m/s or more. It drives into a parked car at about 6 m/s: vanBump,
+# missionFailed bump, and the mission is over.
+park sf
+cmd 0 traffic clear
+cmd 0 setData missions.missions.test-spill {"id":"test-spill","name":"Test Spill","kind":"side","area":"soma","giver":"karl","blurb":"A test.","world":"sf","steps":[{"kind":"deliver","text":"Take the crate west","from":[89,-14.4,-1.7],"to":[2,-9,-1],"item":"crate","vehicle":"van","noBump":4}]}
+cmd 1 mission start test-spill
+cmd 1 van summon 89 -14.4 270
+cmd 2 vehicle enter crew_van
+bot drive 89,-14.4 50,-14.4 from 20 speed 6
+run 900
+expect event missionItem{item=crate} within 2..20
+expect event vanBump{what=wall} within 100..700
+expect event missionFailed{mission=test-spill,reason=bump} within 100..700
+expect no event missionDone

@@ -1,0 +1,9 @@
+# Roll off the top of the 3-stair platform heading south.
+park lab
+spawn lab_stairs
+hold up 0..120
+run 400
+expect event air within 10..200
+expect event land within 20..300
+expect state ground at end
+expect skater.pos.y < 7 at end

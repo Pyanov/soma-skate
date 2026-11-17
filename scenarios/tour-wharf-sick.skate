@@ -1,0 +1,173 @@
+# A great run on Fisherman's Wharf (the score tiers' measure): Jefferson's north curb coming from Pier 39 every
+# 10 s (the teleport stands in for rolling back; the promenade's granite edges north of Pier 7 that this run
+# used are not in the squeezed city): a boneless onto it, a nosegrind along it for 24 m (as long as the
+# promenade's edge) and a 360 flip off: 6,330; twelve, 75,960. Pro (16,500) on the third, Sick (52,000) on the
+# ninth: Sick is set from how often a decent player reaches it (about a third, ./skate feel --tour), not as 91%
+# of this run (69,000, which a decent player never reached in 50). (On the promenade edge it was 9,452,
+# PROMENADE EDGE on the pop; twelve, 113,424, Sick 103,000.)
+park sf
+cmd 0 traffic clear
+cmd 0 run level wharf
+bot balance
+cmd 1 teleport 143.96 970.53 -8.95 261.1
+cmd 3 set skater.vel.x -5.93
+cmd 3 set skater.vel.y -0.93
+cmd 1201 teleport 143.96 970.53 -8.95 261.1
+cmd 1203 set skater.vel.x -5.93
+cmd 1203 set skater.vel.y -0.93
+cmd 2401 teleport 143.96 970.53 -8.95 261.1
+cmd 2403 set skater.vel.x -5.93
+cmd 2403 set skater.vel.y -0.93
+cmd 3601 teleport 143.96 970.53 -8.95 261.1
+cmd 3603 set skater.vel.x -5.93
+cmd 3603 set skater.vel.y -0.93
+cmd 4801 teleport 143.96 970.53 -8.95 261.1
+cmd 4803 set skater.vel.x -5.93
+cmd 4803 set skater.vel.y -0.93
+cmd 6001 teleport 143.96 970.53 -8.95 261.1
+cmd 6003 set skater.vel.x -5.93
+cmd 6003 set skater.vel.y -0.93
+cmd 7201 teleport 143.96 970.53 -8.95 261.1
+cmd 7203 set skater.vel.x -5.93
+cmd 7203 set skater.vel.y -0.93
+cmd 8401 teleport 143.96 970.53 -8.95 261.1
+cmd 8403 set skater.vel.x -5.93
+cmd 8403 set skater.vel.y -0.93
+cmd 9601 teleport 143.96 970.53 -8.95 261.1
+cmd 9603 set skater.vel.x -5.93
+cmd 9603 set skater.vel.y -0.93
+cmd 10801 teleport 143.96 970.53 -8.95 261.1
+cmd 10803 set skater.vel.x -5.93
+cmd 10803 set skater.vel.y -0.93
+cmd 12001 teleport 143.96 970.53 -8.95 261.1
+cmd 12003 set skater.vel.x -5.93
+cmd 12003 set skater.vel.y -0.93
+cmd 13201 teleport 143.96 970.53 -8.95 261.1
+cmd 13203 set skater.vel.x -5.93
+cmd 13203 set skater.vel.y -0.93
+hold ollie 49..79
+hold up 89..113
+tap up 67
+tap up 74
+tap grind 91..111 every 4
+hold ollie 700..720
+tap down 722
+tap left 722
+tap flip 722
+tap flip 725
+hold ollie 1249..1279
+hold up 1289..1313
+tap up 1267
+tap up 1274
+tap grind 1291..1311 every 4
+hold ollie 1900..1920
+tap down 1922
+tap left 1922
+tap flip 1922
+tap flip 1925
+hold ollie 2449..2479
+hold up 2489..2513
+tap up 2467
+tap up 2474
+tap grind 2491..2511 every 4
+hold ollie 3100..3120
+tap down 3122
+tap left 3122
+tap flip 3122
+tap flip 3125
+hold ollie 3649..3679
+hold up 3689..3713
+tap up 3667
+tap up 3674
+tap grind 3691..3711 every 4
+hold ollie 4300..4320
+tap down 4322
+tap left 4322
+tap flip 4322
+tap flip 4325
+hold ollie 4849..4879
+hold up 4889..4913
+tap up 4867
+tap up 4874
+tap grind 4891..4911 every 4
+hold ollie 5500..5520
+tap down 5522
+tap left 5522
+tap flip 5522
+tap flip 5525
+hold ollie 6049..6079
+hold up 6089..6113
+tap up 6067
+tap up 6074
+tap grind 6091..6111 every 4
+hold ollie 6700..6720
+tap down 6722
+tap left 6722
+tap flip 6722
+tap flip 6725
+hold ollie 7249..7279
+hold up 7289..7313
+tap up 7267
+tap up 7274
+tap grind 7291..7311 every 4
+hold ollie 7900..7920
+tap down 7922
+tap left 7922
+tap flip 7922
+tap flip 7925
+hold ollie 8449..8479
+hold up 8489..8513
+tap up 8467
+tap up 8474
+tap grind 8491..8511 every 4
+hold ollie 9100..9120
+tap down 9122
+tap left 9122
+tap flip 9122
+tap flip 9125
+hold ollie 9649..9679
+hold up 9689..9713
+tap up 9667
+tap up 9674
+tap grind 9691..9711 every 4
+hold ollie 10300..10320
+tap down 10322
+tap left 10322
+tap flip 10322
+tap flip 10325
+hold ollie 10849..10879
+hold up 10889..10913
+tap up 10867
+tap up 10874
+tap grind 10891..10911 every 4
+hold ollie 11500..11520
+tap down 11522
+tap left 11522
+tap flip 11522
+tap flip 11525
+hold ollie 12049..12079
+hold up 12089..12113
+tap up 12067
+tap up 12074
+tap grind 12091..12111 every 4
+hold ollie 12700..12720
+tap down 12722
+tap left 12722
+tap flip 12722
+tap flip 12725
+hold ollie 13249..13279
+hold up 13289..13313
+tap up 13267
+tap up 13274
+tap grind 13291..13311 every 4
+hold ollie 13900..13920
+tap down 13922
+tap left 13922
+tap flip 13922
+tap flip 13925
+run 14700
+expect event comboLanded{name=Boneless + FS Nosegrind + 360 Flip,points=6330} count == 12
+expect event levelGoal{level=wharf,id=pro} within 3328..3332
+expect event levelGoal{level=wharf,id=sick} within 10528..10532
+expect event levelOver{level=wharf,score=75960} within 14399..14402
+expect no event bail

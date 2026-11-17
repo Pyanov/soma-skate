@@ -1,0 +1,16 @@
+# Hill Country is the hills: Dolores Park, at the bottom of the bomb and
+# inside the level's box, is one of its exclude boxes (it belongs to the Mission), so the wrong-way
+# hint shows there at once, though it is only 15 m from Dolores St; back on the street, it clears.
+# Patricia's Green (the Hayes level's seat walls) is past the end of the level's Hayes St box, which
+# stops short of Octavia now: the hint shows there too.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills
+cmd 100 teleport -233.805 -199.578 9.4 355
+cmd 400 teleport -209 -200 9.6 355
+cmd 700 teleport -222 430 9.75 0
+run 900
+expect event levelWrongWay{level=hills} within 100..104
+expect event levelBack{level=hills} within 400..404
+expect event levelWrongWay{level=hills} within 700..704
+expect event levelWrongWay count == 2

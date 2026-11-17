@@ -1,0 +1,15 @@
+# Catering, Gently (data/missions.json catering; a deliver step with a vehicle and noBump 3): Hector's forty
+# burritos in the taqueria's van, placed on Valencia by the mission, loaded at once (no pickup). Driven
+# into the shop fronts on the east side at speed, the van bumps harder than 3 m/s: the burritos spill and
+# the mission fails (bump), with Hector's line; its van goes.
+park sf
+cmd 0 traffic clear
+cmd 0 mission start catering 1
+cmd 2 vehicle enter taqueria_van
+bot drive -54,-250 -54,-238 -32,-242 -22,-244 from 10 speed 9 corner 9
+run 1500
+expect event missionStep{mission=catering,step=1,kind=deliver,seconds=200} within 1..1
+expect event vehicleEnter{name=taqueria_van} within 2..3
+expect event vanBump within 250..270
+expect event missionFailed{mission=catering,step=1,reason=bump} within 250..270
+expect no event missionDone

@@ -1,0 +1,220 @@
+{
+  "keyboard": {
+    "up": [
+      "KeyW",
+      "ArrowUp"
+    ],
+    "down": [
+      "KeyS",
+      "ArrowDown"
+    ],
+    "left": [
+      "KeyA",
+      "ArrowLeft"
+    ],
+    "right": [
+      "KeyD",
+      "ArrowRight"
+    ],
+    "ollie": [
+      "KeyK",
+      "Space"
+    ],
+    "flip": [
+      "KeyJ"
+    ],
+    "grab": [
+      "KeyL"
+    ],
+    "grind": [
+      "KeyI"
+    ],
+    "spinL": [
+      "KeyU"
+    ],
+    "spinR": [
+      "KeyO"
+    ],
+    "revert": [
+      "Semicolon"
+    ],
+    "slide": [
+      "ShiftLeft",
+      "ShiftRight"
+    ],
+    "walk": [
+      "KeyE"
+    ],
+    "interact": [
+      "KeyF"
+    ],
+    "nose": [
+      "KeyQ"
+    ],
+    "markerSet": [
+      "KeyZ"
+    ],
+    "markerGo": [
+      "Backspace"
+    ]
+  },
+  "gamepad": {
+    "_doc": "Standard-mapping pad (PlayStation layout): cross ollie, square flip, circle grab, triangle grind, L1/R1 spin, L2 powerslide, R2 revert, L3 (left stick click) step off / drop the board, d-pad or left stick for direction, options = Enter. rumble: the pad shakes (where the browser supports it) on a landing, a bail, a grind catch and a car hit: ms, strong and weak motor 0..1; a landing scales with its impact between rumbleLandImpact [from, to] (softer landings do not shake). interact: the talk button (triangle) while a talk prompt is up by a character or a neighbourhood's challenges (story.ts), or by a vehicle or in one (get in, get out: drivekey.ts); it grinds as before otherwise.",
+    "buttons": {
+      "ollie": [
+        0
+      ],
+      "grab": [
+        1
+      ],
+      "flip": [
+        2
+      ],
+      "grind": [
+        3
+      ],
+      "spinL": [
+        4
+      ],
+      "spinR": [
+        5
+      ],
+      "revert": [
+        7
+      ],
+      "slide": [
+        6
+      ],
+      "walk": [
+        10
+      ],
+      "up": [
+        12
+      ],
+      "down": [
+        13
+      ],
+      "left": [
+        14
+      ],
+      "right": [
+        15
+      ]
+    },
+    "stickDeadzone": 0.4,
+    "start": 9,
+    "radio": 8,
+    "replay": 11,
+    "rumble": {
+      "land": {
+        "ms": 90,
+        "strong": 0.55,
+        "weak": 0.35
+      },
+      "bail": {
+        "ms": 260,
+        "strong": 0.9,
+        "weak": 0.6
+      },
+      "grind": {
+        "ms": 60,
+        "strong": 0.15,
+        "weak": 0.4
+      },
+      "carHit": {
+        "ms": 380,
+        "strong": 1,
+        "weak": 0.8
+      }
+    },
+    "rumbleLandImpact": [
+      1.2,
+      5
+    ],
+    "interact": 3
+  },
+  "player2": {
+    "_doc": "Player 2 (two players, split screen): the arrows and the numpad on the same keyboard, laid out like player 1's hand (numpad 4 5 6 = J K L, 7 8 9 = U I O, + = ;, 0 = Shift, . = E, Enter = F: get in or out of a vehicle), or the second pad (pad: which connected pad, from 0) with player 1's buttons. While two play, player 1 gives way on these keys (the arrows are player 1's otherwise). Rebinds are kept per player.",
+    "keyboard": {
+      "up": [
+        "ArrowUp"
+      ],
+      "down": [
+        "ArrowDown"
+      ],
+      "left": [
+        "ArrowLeft"
+      ],
+      "right": [
+        "ArrowRight"
+      ],
+      "ollie": [
+        "Numpad5"
+      ],
+      "flip": [
+        "Numpad4"
+      ],
+      "grab": [
+        "Numpad6"
+      ],
+      "grind": [
+        "Numpad8"
+      ],
+      "spinL": [
+        "Numpad7"
+      ],
+      "spinR": [
+        "Numpad9"
+      ],
+      "revert": [
+        "NumpadAdd"
+      ],
+      "slide": [
+        "Numpad0"
+      ],
+      "walk": [
+        "NumpadDecimal"
+      ],
+      "interact": [
+        "NumpadEnter"
+      ],
+      "nose": [
+        "Numpad1"
+      ]
+    },
+    "pad": 1
+  },
+  "dev": {
+    "save": "F5",
+    "load": "F9",
+    "clip": "F8",
+    "pin": "F7",
+    "tuning": "Backquote",
+    "respawn": "KeyR",
+    "nextSpot": "KeyN",
+    "pause": "KeyP",
+    "stepTick": "Period",
+    "camera": "KeyC",
+    "layers": {
+      "park": "Digit1",
+      "context": "Digit2",
+      "skater": "Digit3",
+      "hud": "Digit4",
+      "rails": "Digit5",
+      "debug": "Digit6",
+      "shadows": "Digit7",
+      "pins": "Digit8"
+    },
+    "help": "KeyH",
+    "style": "KeyG",
+    "character": "Tab",
+    "emote": "KeyT",
+    "radio": "BracketRight",
+    "radioPrev": "BracketLeft",
+    "radioOff": "Backslash",
+    "share": "KeyV",
+    "photo": "KeyB",
+    "replay": "KeyX",
+    "map": "KeyM"
+  }
+}

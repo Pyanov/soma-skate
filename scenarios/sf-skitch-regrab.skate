@@ -1,0 +1,22 @@
+# Letting go of a car and grabbing it again is not a new trick in the same combo: a 2.7 s skitch,
+# let go, grab again within the landing grace (4 ticks later): the first Skitch banks (510) before
+# the second starts, which banks on its own (295). (They used to link, Skitch + Skitch, so grabbing
+# on and off paid a multiplier for nothing.)
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 0 seed 7
+cmd 0 teleport -62.3 -322 2.31 0
+cmd 1 car -51.1 -331.2 356 7
+cmd 60 teleport -49.44 -330.22 2.11 355.2
+cmd 66 set skater.vel.x -0.58
+cmd 66 set skater.vel.y 6.97
+hold grab 72..400
+hold grab 404..560
+run 700
+expect event skitchEnd{reason=let go,points=510} within 400..402
+expect event comboLanded{name=Skitch,points=510,multiplier=1} within 404..406
+expect event skitchStart within 404..406
+expect event skitchEnd{reason=let go,points=295} within 560..562
+expect event comboLanded{name=Skitch,points=295,multiplier=1} within 570..574
+expect no event bail

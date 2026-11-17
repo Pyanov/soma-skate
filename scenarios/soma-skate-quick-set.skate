@@ -1,0 +1,15 @@
+# A quick set counts. Kenji bails his set, so you set; you push off the moment you are put at the
+# start and pop 0.95 m from the mark at tick 801, before the 2 s pause is over (the clock starts at
+# 829). Your try is watched from the turn's start, so the Ollie stands as your set.
+park soma
+cmd 0 run skate kenji
+hold up 592..712
+hold ollie 760..800
+run 1000
+expect event skateSetMiss{by=local,reason=bail} within 585..593
+expect event skateTurn{who=player,role=set} within 585..593
+expect event pop within 798..804
+expect session.skatePause == 0 at 829
+expect event skateSet{by=player,trick=ollie,name=Ollie,at=0.95} within 913..921
+expect event skateTurn{who=local,role=match,trick=ollie} within 913..921
+expect no event skateSetMiss{by=player}

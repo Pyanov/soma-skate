@@ -1,0 +1,36 @@
+# A great run on Hill Country (the score tiers' measure; the hills only, no
+# Dolores Park seat walls, which are now outside the level: exclude). One combo all the way down the
+# Dolores bomb from 20th to 18th: crouched to the crest at 19th, the pop with a 360 flip and a
+# kickflip over SENT IT ON DOLORES, a manual out of the landing, ollie out with a heelflip, a bert
+# slide to scrub speed popped into a pop shove-it, a nose manual, an impossible over 18th St: nine
+# tricks, 27,774 (and a burrito, 28,024). Riding back up Dolores takes longer than the run, so it is
+# one line a run. Pro (3,500) and Sick (23,500) both come with it. A decent run (the pop at the crest
+# with a kickflip, 2,600, and the two bert slides banked on their own) scores 3,684.
+park sf
+cmd 0 traffic clear
+cmd 0 run level hills
+hold up 20..200
+hold ollie 200..900
+tap flip+down+left 903
+tap flip 906
+tap flip+left 966
+tap up 1033
+tap down 1036
+bot balance
+hold ollie 1120..1150
+tap flip+right 1153
+hold slide 1270..1350
+hold ollie 1270..1350
+tap flip+down 1353
+tap down 1468
+tap up 1471
+hold ollie 1570..1600
+tap flip+up 1601
+run 14700
+expect event gap{id=doloressend} within 1030..1034
+expect event comboLanded{name=360 Flip + Kickflip + SENT IT ON DOLORES + Manual + Heelflip + FS Bert Slide + Pop Shove-It + Nose Manual + Impossible,points=27774,multiplier=9} within 1721..1725
+expect event levelGoal{level=hills,id=pro,name=Pro Score} within 1721..1725
+expect event levelGoal{level=hills,id=sick,name=Sick Score} within 1721..1725
+expect event levelOver{level=hills,score=28024} within 14399..14402
+expect no event levelWrongWay
+expect no event bail

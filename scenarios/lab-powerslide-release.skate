@@ -1,0 +1,14 @@
+# A short powerslide to scrub speed, then let go: the board swings back in line (forward, it never
+# passed 90 degrees) and rolls on at the lower speed. The slide curved the travel a little toward
+# the nose (north), so it rolls on at about heading 80.
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold slide 10..60
+run 160
+expect skater.speed < 6.8 at 70
+expect skater.speed > 5.6 at 70
+expect skater.heading > 70 at 160
+expect skater.heading < 90 at 160
+expect max skater.slip < 0.05 over 120..160
+expect no event bail

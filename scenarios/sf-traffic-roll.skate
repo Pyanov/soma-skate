@@ -1,0 +1,9 @@
+# Rolling around Valencia with the full random traffic (80 cars from world.rng: junctions, the
+# bubble, yielding) for 15 s. It guards traffic determinism (also run Node vs Chromium in check --full).
+park sf
+spawn valencia_shops
+hold up 0..300
+hold left 400..460
+hold up 500..900
+run 1800
+expect min skater.pos.z > 1

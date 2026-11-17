@@ -1,0 +1,33 @@
+# City sweep steep-lot-corner (found after city phase 8, fixed in the sim in physics phase 19):
+# random keys on a 58-degree lot below Upper Market slide the skater into a building's outside corner,
+# where it stopped, wedged, for good (the sweep's 'trapped'). Stopped for half a second on a slope
+# steeper than safe ground (ground.safeNormalZ, about 37 degrees) is now wedged: back on the last
+# safe spot, stood up (unstuck). City phase 9 then eased the lots themselves (under about 40 degrees;
+# this corner is 32 now), so the same keys never wedge at all: no unstuck, still riding at the end.
+# The ground wedge rule itself is covered by a lab scenario. Since city phase 11 moved the curbs once,
+# the same keys carry on 2 m further and, at tick 940, run head-on at 5 m/s into a building's inside
+# corner on a gentle part of the lot, where the skater stops and cannot turn out (no wedge: the
+# ground is safe); that is scenarios/city-sweep/building-inside-corner.skate, open.
+# Here the run ends just before it (tick 760: since the feel pass's park carve the keys reach the corner
+# at about 790; at 910 since physics phase 27).
+park sf
+cmd 0 traffic clear
+cmd 0 teleport -1315 -565 100.56 223
+hold up+right 0..72
+hold up+flip 72..114
+hold up+flip 114..212
+hold up+left 212..234
+hold up+left 234..294
+hold up+right+grab+slide 294..388
+hold up+flip+grind 388..502
+hold up 502..601
+hold up+flip 601..691
+hold up 691..750
+hold up 750..771
+hold left 771..801
+hold up+right+grab 801..838
+hold up 838..926
+hold up+grind 926..971
+run 760
+expect no event unstuck
+expect skater.speed > 1.5 at 760

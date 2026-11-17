@@ -1,0 +1,12 @@
+# 'Nothing gated' (docs/squeeze.md): the crew van from the park to 24th_mission by street (484 m), the driving autopilot on the
+# sim's own traffic network (tools/squeeze/routes.ts writes this file). The van must arrive within 25 m of the route's end.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 57.5 -17.8 -1.1 270
+tap use 30
+bot drive 57.5,-15.6 53.1,-34.2 55.1,-63.0 57.2,-91.8 71.7,-115.0 100.7,-115.0 129.7,-115.0 158.6,-115.0 187.5,-115.0 216.4,-115.0 234.2,-138.7 247.0,-165.8 247.0,-194.9 259.6,-211.5 288.7,-209.5 316.7,-207.5 329.6,-206.5 329.6,-206.5 from 100 speed 8 corner 4 stop
+run 21723
+expect skater.pos.x > 304.6 at 21723
+expect skater.pos.x < 354.6 at 21723
+expect skater.pos.y > -231.5 at 21723
+expect skater.pos.y < -181.5 at 21723

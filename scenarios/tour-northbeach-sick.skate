@@ -1,0 +1,268 @@
+# A great run on North Beach (the score tiers' measure): down Columbus along the square every 10 s (the
+# teleport stands in for pushing back up; before the squeeze it was down from Broadway, 9,612): a kickflip
+# into a manual, a 360 flip out of it into another, a varial heelflip into a third, ollied out: 9,630;
+# twelve, 115,560. Pro (17,500) on the second, Sick
+# (105,000) on the eleventh. A decent run (a kickflip to manual, a heelflip to manual, 2,992, every 20 s)
+# scores 17,952.
+park sf
+cmd 0 traffic clear
+cmd 0 run level northbeach
+bot balance
+cmd 1 teleport 34.82 678.47 5.69 308.9
+cmd 3 set skater.vel.x -3.89
+cmd 3 set skater.vel.y 3.14
+cmd 1201 teleport 34.82 678.47 5.69 308.9
+cmd 1203 set skater.vel.x -3.89
+cmd 1203 set skater.vel.y 3.14
+cmd 2401 teleport 34.82 678.47 5.69 308.9
+cmd 2403 set skater.vel.x -3.89
+cmd 2403 set skater.vel.y 3.14
+cmd 3601 teleport 34.82 678.47 5.69 308.9
+cmd 3603 set skater.vel.x -3.89
+cmd 3603 set skater.vel.y 3.14
+cmd 4801 teleport 34.82 678.47 5.69 308.9
+cmd 4803 set skater.vel.x -3.89
+cmd 4803 set skater.vel.y 3.14
+cmd 6001 teleport 34.82 678.47 5.69 308.9
+cmd 6003 set skater.vel.x -3.89
+cmd 6003 set skater.vel.y 3.14
+cmd 7201 teleport 34.82 678.47 5.69 308.9
+cmd 7203 set skater.vel.x -3.89
+cmd 7203 set skater.vel.y 3.14
+cmd 8401 teleport 34.82 678.47 5.69 308.9
+cmd 8403 set skater.vel.x -3.89
+cmd 8403 set skater.vel.y 3.14
+cmd 9601 teleport 34.82 678.47 5.69 308.9
+cmd 9603 set skater.vel.x -3.89
+cmd 9603 set skater.vel.y 3.14
+cmd 10801 teleport 34.82 678.47 5.69 308.9
+cmd 10803 set skater.vel.x -3.89
+cmd 10803 set skater.vel.y 3.14
+cmd 12001 teleport 34.82 678.47 5.69 308.9
+cmd 12003 set skater.vel.x -3.89
+cmd 12003 set skater.vel.y 3.14
+cmd 13201 teleport 34.82 678.47 5.69 308.9
+cmd 13203 set skater.vel.x -3.89
+cmd 13203 set skater.vel.y 3.14
+hold ollie 50..80
+hold ollie 401..416
+hold ollie 701..716
+hold ollie 1001..1016
+hold ollie 1250..1280
+hold ollie 1601..1616
+hold ollie 1901..1916
+hold ollie 2201..2216
+hold ollie 2450..2480
+hold ollie 2801..2816
+hold ollie 3101..3116
+hold ollie 3401..3416
+hold ollie 3650..3680
+hold ollie 4001..4016
+hold ollie 4301..4316
+hold ollie 4601..4616
+hold ollie 4850..4880
+hold ollie 5201..5216
+hold ollie 5501..5516
+hold ollie 5801..5816
+hold ollie 6050..6080
+hold ollie 6401..6416
+hold ollie 6701..6716
+hold ollie 7001..7016
+hold ollie 7250..7280
+hold ollie 7601..7616
+hold ollie 7901..7916
+hold ollie 8201..8216
+hold ollie 8450..8480
+hold ollie 8801..8816
+hold ollie 9101..9116
+hold ollie 9401..9416
+hold ollie 9650..9680
+hold ollie 10001..10016
+hold ollie 10301..10316
+hold ollie 10601..10616
+hold ollie 10850..10880
+hold ollie 11201..11216
+hold ollie 11501..11516
+hold ollie 11801..11816
+hold ollie 12050..12080
+hold ollie 12401..12416
+hold ollie 12701..12716
+hold ollie 13001..13016
+hold ollie 13250..13280
+hold ollie 13601..13616
+hold ollie 13901..13916
+hold ollie 14201..14216
+tap flip 82
+tap up 188
+tap down 193
+tap down 418
+tap left 418
+tap flip 418
+tap flip 421
+tap up 505
+tap down 510
+tap down 718
+tap right 718
+tap flip 718
+tap up 804
+tap down 809
+tap flip 1282
+tap up 1388
+tap down 1393
+tap down 1618
+tap left 1618
+tap flip 1618
+tap flip 1621
+tap up 1705
+tap down 1710
+tap down 1918
+tap right 1918
+tap flip 1918
+tap up 2004
+tap down 2009
+tap flip 2482
+tap up 2588
+tap down 2593
+tap down 2818
+tap left 2818
+tap flip 2818
+tap flip 2821
+tap up 2905
+tap down 2910
+tap down 3118
+tap right 3118
+tap flip 3118
+tap up 3204
+tap down 3209
+tap flip 3682
+tap up 3788
+tap down 3793
+tap down 4018
+tap left 4018
+tap flip 4018
+tap flip 4021
+tap up 4105
+tap down 4110
+tap down 4318
+tap right 4318
+tap flip 4318
+tap up 4404
+tap down 4409
+tap flip 4882
+tap up 4988
+tap down 4993
+tap down 5218
+tap left 5218
+tap flip 5218
+tap flip 5221
+tap up 5305
+tap down 5310
+tap down 5518
+tap right 5518
+tap flip 5518
+tap up 5604
+tap down 5609
+tap flip 6082
+tap up 6188
+tap down 6193
+tap down 6418
+tap left 6418
+tap flip 6418
+tap flip 6421
+tap up 6505
+tap down 6510
+tap down 6718
+tap right 6718
+tap flip 6718
+tap up 6804
+tap down 6809
+tap flip 7282
+tap up 7388
+tap down 7393
+tap down 7618
+tap left 7618
+tap flip 7618
+tap flip 7621
+tap up 7705
+tap down 7710
+tap down 7918
+tap right 7918
+tap flip 7918
+tap up 8004
+tap down 8009
+tap flip 8482
+tap up 8588
+tap down 8593
+tap down 8818
+tap left 8818
+tap flip 8818
+tap flip 8821
+tap up 8905
+tap down 8910
+tap down 9118
+tap right 9118
+tap flip 9118
+tap up 9204
+tap down 9209
+tap flip 9682
+tap up 9788
+tap down 9793
+tap down 10018
+tap left 10018
+tap flip 10018
+tap flip 10021
+tap up 10105
+tap down 10110
+tap down 10318
+tap right 10318
+tap flip 10318
+tap up 10404
+tap down 10409
+tap flip 10882
+tap up 10988
+tap down 10993
+tap down 11218
+tap left 11218
+tap flip 11218
+tap flip 11221
+tap up 11305
+tap down 11310
+tap down 11518
+tap right 11518
+tap flip 11518
+tap up 11604
+tap down 11609
+tap flip 12082
+tap up 12188
+tap down 12193
+tap down 12418
+tap left 12418
+tap flip 12418
+tap flip 12421
+tap up 12505
+tap down 12510
+tap down 12718
+tap right 12718
+tap flip 12718
+tap up 12804
+tap down 12809
+tap flip 13282
+tap up 13388
+tap down 13393
+tap down 13618
+tap left 13618
+tap flip 13618
+tap flip 13621
+tap up 13705
+tap down 13710
+tap down 13918
+tap right 13918
+tap flip 13918
+tap up 14004
+tap down 14009
+run 14700
+expect event comboLanded{name=Kickflip + Manual + 360 Flip + Manual + Varial Heelflip + Manual,points=9630} count == 12
+expect event levelGoal{level=northbeach,id=pro} within 2323..2327
+expect event levelGoal{level=northbeach,id=sick} within 13123..13127
+expect event levelOver{level=northbeach,score=115560} within 14399..14402
+expect no event bail

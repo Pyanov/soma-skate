@@ -1,0 +1,25 @@
+# Missions: the garbage truck's route (data/vehicles.json routes.garbage; game/missions.ts collect with
+# a vehicle; docs/mechanics/missions.md). A test mission (its data set in this run only; Kevin's Garbage Run is
+# the story's to write) places Kevin's truck at the park gate (mission vehicles) and has you empty five bins
+# round SoMa West's block in it: a collect step with vehicle and stop, so a bin counts only with the truck
+# rolling no faster than 3 m/s within 6 m of it. The truck drives the block in the right-hand lane, stopping
+# at each bin (missionItem each), without a bump. The mission done, its truck goes and you are out of it.
+park sf
+cmd 0 traffic clear
+cmd 0 vehicle clear crew_van
+cmd 0 setData missions.missions.test-garbage {"id":"test-garbage","name":"Test Garbage","kind":"side","area":"soma","giver":"karl","blurb":"A test.","world":"sf","vehicles":[{"name":"kevins_truck","type":"garbage","at":[57.5,-15.6,270]}],"steps":[{"kind":"collect","text":"Empty the bins","items":[[20.6,-3.4,-0.59],[-7.9,64.3,0.62],[19.3,178.9,0.4],[107.4,121.2,-1.96],[97.7,13.1,-2.42]],"radius":6,"item":"bin","vehicle":"kevins_truck","stop":true}]}
+cmd 1 mission start test-garbage
+cmd 2 vehicle enter kevins_truck
+bot drive 57.5,-15.6 46,-10 30,-6 21,-7 from 10 lane 1.8 speed 9 corner 4 stop
+bot drive 21,-7 12,-8 0,-9 -7,-4 -8,9 -9,22 -9,34 -10,46 -11,58 -11.5,64 from 1300 lane 1.8 speed 9 corner 4 stop
+bot drive -11.5,64 -12,70 -13,82 -14,94 -15,106 -16,118 -17,130 -18,142 -19,154 -19,166 -18,178 -12,180 0,181 13,182 19,182.5 from 3800 lane 1.8 speed 9 corner 4 stop
+bot drive 19,182.5 25,183 37,184 60,185 74,183 86,184 96,189 104,182 108,164 109,150 110,132 111,121.5 from 7000 lane 1.8 speed 9 corner 4 stop
+bot drive 111,121.5 112,111 114,87 115,74 116,60 117,48 118,31 118,19 112,10 104,10 98,9.5 from 10200 lane 1.8 speed 9 corner 4 stop
+run 13600
+expect event vehicleEnter{name=kevins_truck} within 2..3
+expect event missionItem{item=bin} count == 5
+expect event missionDone{mission=test-garbage} within 10200..13600
+expect event vehicleExit{name=kevins_truck} within 10200..13600
+expect state ground at end
+expect no event vanBump
+expect no event missionFailed

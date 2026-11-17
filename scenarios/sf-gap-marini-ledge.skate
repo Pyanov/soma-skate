@@ -1,0 +1,17 @@
+# MARINI PLAZA LEDGE (city phase 13's granite ledges in Marini Plaza, at Washington Square's corner on
+# Columbus): an ollie onto a ledge and a 50-50 along it.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 13.86 675.67 6.10 160.8
+cmd 3 set skater.vel.x 1.316
+cmd 3 set skater.vel.y -3.777
+hold ollie 78..108
+tap grind 120..178 every 4
+bot balance
+run 600
+expect event grindStart{trick=BS 50-50,line=ledge_16_669} within 119..123
+expect event grindEnd{reason=stall} within 400..404
+expect event gap{id=marini_ledge,gap=MARINI PLAZA LEDGE,points=250} within 400..404
+expect event land{quality=clean} within 408..412
+expect event comboLanded{name=BS 50-50 + MARINI PLAZA LEDGE} within 419..423
+expect no event bail

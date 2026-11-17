@@ -1,0 +1,13 @@
+# One press of J is the plain flip: a second press after doubleTapTicks (16) does not turn a Kickflip
+# into a Double Kickflip (it is ignored while the flip runs, as before the double tap).
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+tap flip+left 96
+tap flip 116
+run 300
+expect event trickEnd{trick=Kickflip} within 120..160
+expect no event trickStart{trick=Double Kickflip}
+expect event comboLanded{name=Kickflip,points=100} within 160..240
+expect no event bail

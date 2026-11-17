@@ -1,0 +1,17 @@
+# F-LINE RAIL (Tour level 6): the streetcar rails in Market St (the park's and UN Plaza's pieces in the
+# squeezed city) pay a gap when a grind on them ends (sf-grind-fline is the grind itself). Down UN Plaza's
+# Market from 8th at 5 m/s, a 50-50 on the outbound track's rail, balanced until it stalls 9.5 s later:
+# BS 50-50 + F-LINE RAIL, 4,476.
+park sf
+cmd 0 traffic clear
+cmd 0 teleport 278.8 262.3 0.05 45.1
+cmd 2 set skater.vel.x 3.546
+cmd 2 set skater.vel.y 3.525
+hold ollie 10..20
+tap grind 26
+bot balance
+run 1400
+expect event grindStart{line=rail_264_248} within 26..30
+expect event gap{id=fline_rail,gap=F-LINE RAIL,points=250} count == 1
+expect event comboLanded{name=BS 50-50 + F-LINE RAIL} count == 1
+expect no event bail

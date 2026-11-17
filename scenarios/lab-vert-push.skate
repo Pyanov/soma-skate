@@ -1,0 +1,9 @@
+# Pushing alone (no help from commands) gets enough speed to air out of the 3.4 m vert ramp.
+park lab
+spawn lab_vert
+hold up 0..220
+run 700
+expect event air within 100..450
+expect max skater.pos.z > 3.45
+expect no event bail
+expect state ground at end

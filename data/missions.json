@@ -1,0 +1,5349 @@
+{
+  "_doc": "Missions (src/sim/game/missions.ts, docs/mechanics/missions.md; the script is docs/story.md): the story's chapters (kind story) and the side stories (kind side). Each: id, name, area (the journal's neighbourhood), giver (data/cast.json: where its marker stands), blurb, world (default sf; worlds: others with the same ground), after (missions done or skipped before its marker shows; the client's save), reward (sticker: a Sticker Book id; unlock: a secret skater), fail (lines said when it fails that way: time, lost, bail, mode), steps. Step kinds: talk (who, lines; offer: the first step, ending in Accept or Not now; phone: starts at once wherever you are; radius: how close to who), go (to a place, within radius), trick (an air of air seconds, a grind of grind metres on a line of feature, or a banked combo of points holding one of gaps or tricks; in its area: near a place within radius and/or inside box; count times, each: barks between), collect (items, within radius, item: what they are), deliver (from a place, if given, to a place within radius; noBail: a bail spills it), follow (who rides path at speed; stay within distance; more than lose seconds behind fails), mode (a game the game has: courier, bomb, muni, escape, skate, graffiti, combo, with route, won by win: deliveries, place, maxSeconds, pieces, best; muni, escape and skate are won by winning). Every step: text (the objective), say (barks as it starts), done (barks when done), seconds (a clock), actors (cast id -> x y z heading: where they stand from this step on). A place is a spot id, cast:<id> (where that character stands now) or x y z. A line: id (its voice line, assets/sound/voice/<id>.mp3, tools/gen_voices.py), who, text, say (a spelling for the voice). talkRadius, goRadius, collectRadius, deliverRadius: metres when a step gives none; height: metres up or down that still count as there; intro: the mission that starts by itself the first time.",
+  "talkRadius": 6,
+  "goRadius": 10,
+  "collectRadius": 1.6,
+  "deliverRadius": 6,
+  "driveRadius": 8,
+  "carryRadius": 6,
+  "carryEvery": 8,
+  "height": 4,
+  "intro": "ch1",
+  "missions": [
+    {
+      "id": "ch1",
+      "name": "New in Town",
+      "kind": "story",
+      "chapter": 1,
+      "area": "SoMa",
+      "giver": "karl",
+      "world": "sf",
+      "worlds": [
+        "soma"
+      ],
+      "blurb": "Karl the Fog appoints himself your mentor. Rosa decides if you can stay.",
+      "reward": {
+        "sticker": "story-ch1",
+        "deck": "karl"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "karl",
+          "offer": true,
+          "text": "Talk to Karl",
+          "lines": [
+            {
+              "id": "ch1-01",
+              "who": "karl",
+              "text": "Oh good, you're up. I'm Karl. Karl the Fog. You've seen my work."
+            },
+            {
+              "id": "ch1-02",
+              "who": "karl",
+              "text": "Every summer I keep this whole city at fifty-eight degrees. You're welcome."
+            },
+            {
+              "id": "ch1-03",
+              "who": "karl",
+              "text": "You just moved here with a board and a duffel bag. Bold. I'll be your mentor, since nobody asked."
+            },
+            {
+              "id": "ch1-04",
+              "who": "karl",
+              "text": "First rule of SoMa West: the locals decide who stays. Go say hi to Rosa, by the wave."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "rosa",
+          "text": "Find Rosa by the wave",
+          "lines": [
+            {
+              "id": "ch1-05",
+              "who": "rosa",
+              "text": "New kid. Show me a kickflip."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Kickflip for Rosa",
+          "tricks": [
+            "kickflip"
+          ],
+          "near": "cast:rosa",
+          "radius": 40
+        },
+        {
+          "kind": "talk",
+          "who": "rosa",
+          "text": "Talk to Rosa",
+          "radius": 40,
+          "actors": {
+            "chad": [
+              50.0,
+              30.0,
+              -1.06,
+              250
+            ]
+          },
+          "lines": [
+            {
+              "id": "ch1-06",
+              "who": "rosa",
+              "text": "Mid."
+            },
+            {
+              "id": "ch1-07",
+              "who": "rosa",
+              "text": "Like a six-dollar coffee. You'll drink it. You won't post it."
+            },
+            {
+              "id": "ch1-08",
+              "who": "chad",
+              "text": "Hey hey hey! Chad Vantage, Vantage Mobility. Love the energy in here. Very raw."
+            },
+            {
+              "id": "ch1-09",
+              "who": "chad",
+              "text": "We're going to activate this space. Picture it: a micro-mobility experience hub."
+            },
+            {
+              "id": "ch1-10",
+              "who": "rosa",
+              "text": "It's a skatepark."
+            },
+            {
+              "id": "ch1-11",
+              "who": "chad",
+              "text": "Exactly. For now. Let's circle back on your little hobby."
+            },
+            {
+              "id": "ch1-12",
+              "who": "karl",
+              "text": "I don't trust a man who wears a vest outdoors. Outdoors is my job."
+            },
+            {
+              "id": "ch1-13",
+              "who": "rosa",
+              "text": "Land three real combos and you can stay. Before the vest comes back."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Land three combos of 500 or more in the park",
+          "points": 500,
+          "count": 3,
+          "box": [
+            -5,
+            2,
+            100,
+            34
+          ],
+          "each": [
+            {
+              "id": "ch1-14",
+              "who": "rosa",
+              "text": "Okay."
+            },
+            {
+              "id": "ch1-15",
+              "who": "rosa",
+              "text": "Hm. Fine.",
+              "say": "Hmm. Fine."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "rosa",
+          "text": "Back to Rosa",
+          "radius": 60,
+          "lines": [
+            {
+              "id": "ch1-16",
+              "who": "rosa",
+              "text": "Fine. You can stay. Don't make it weird."
+            },
+            {
+              "id": "ch1-17",
+              "who": "karl",
+              "text": "I mentored that. Write it down."
+            },
+            {
+              "id": "ch1-18",
+              "who": "karl",
+              "text": "Chad'll be back. Guys like him always come back, like a cold. Go explore, I'll find you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "name": "Get Seen",
+      "kind": "story",
+      "chapter": 2,
+      "area": "SoMa",
+      "giver": "marisol",
+      "after": [
+        "ch1"
+      ],
+      "blurb": "Marisol needs a video part: Clarion Alley, Dolores Park and the EMB ledges.",
+      "reward": {
+        "sticker": "story-ch2",
+        "outfit": "karl/july"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "marisol",
+          "offer": true,
+          "text": "Talk to Marisol",
+          "lines": [
+            {
+              "id": "ch2-01",
+              "who": "marisol",
+              "text": "You. With the face. I'm Marisol, I film. Chad's people only listen to views."
+            },
+            {
+              "id": "ch2-02",
+              "who": "marisol",
+              "text": "I need three clips: Clarion Alley, Dolores Park and the EMB ledges. I'll meet you there. Bring your good face."
+            },
+            {
+              "id": "ch2-03",
+              "who": "karl",
+              "text": "She's good. She once filmed me for six hours and I didn't move once."
+            }
+          ]
+        },
+        {
+          "kind": "go",
+          "text": "Meet Marisol in Clarion Alley",
+          "to": "clarion_alley",
+          "radius": 25,
+          "actors": {
+            "marisol": [
+              -26.0,
+              -395.0,
+              1.65,
+              90
+            ]
+          }
+        },
+        {
+          "kind": "trick",
+          "text": "Wallride a Clarion mural, twice",
+          "gaps": [
+            "clarion_wallride"
+          ],
+          "count": 2,
+          "say": [
+            {
+              "id": "ch2-04",
+              "who": "marisol",
+              "text": "Rolling. Wallride a mural. The wall, not the face."
+            }
+          ],
+          "each": [
+            {
+              "id": "ch2-05",
+              "who": "marisol",
+              "text": "Again, but with feeling."
+            }
+          ],
+          "done": [
+            {
+              "id": "ch2-06",
+              "who": "marisol",
+              "text": "That's the one. Probably."
+            }
+          ]
+        },
+        {
+          "kind": "go",
+          "text": "Dolores Park, the seat walls",
+          "to": "dolores_ledges",
+          "radius": 30,
+          "actors": {
+            "marisol": [
+              -230.0,
+              -156.0,
+              8.1,
+              0
+            ]
+          }
+        },
+        {
+          "kind": "trick",
+          "text": "A 1,500 combo with a Dolores seat wall",
+          "points": 1500,
+          "gaps": [
+            "dolores_seatwall"
+          ],
+          "say": [
+            {
+              "id": "ch2-07",
+              "who": "marisol",
+              "text": "Long line on the seat walls. Pretend the dogs aren't watching."
+            }
+          ],
+          "done": [
+            {
+              "id": "ch2-08",
+              "who": "marisol",
+              "text": "Is that your face or is the fisheye doing that? Either way, keep it."
+            }
+          ]
+        },
+        {
+          "kind": "go",
+          "text": "The Embarcadero: EMB (take Muni from the map)",
+          "to": "emb",
+          "radius": 40,
+          "actors": {
+            "marisol": [
+              592.0,
+              710.0,
+              -9.2,
+              230
+            ]
+          }
+        },
+        {
+          "kind": "trick",
+          "text": "Grind an EMB ledge",
+          "gaps": [
+            "emb_ledge"
+          ],
+          "say": [
+            {
+              "id": "ch2-09",
+              "who": "marisol",
+              "text": "EMB. Half of skate history happened on these ledges. Don't embarrass it."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "marisol",
+          "text": "Talk to Marisol",
+          "radius": 40,
+          "lines": [
+            {
+              "id": "ch2-10",
+              "who": "marisol",
+              "text": "That's a part. That's a whole part."
+            },
+            {
+              "id": "ch2-11",
+              "who": "marisol",
+              "text": "I'll post it at two in the morning, when the real heads are awake."
+            },
+            {
+              "id": "ch2-12",
+              "who": "karl",
+              "text": "I'm in every shot. You're welcome, cinema."
+            },
+            {
+              "id": "ch2-13",
+              "who": "marisol",
+              "text": "Chad just commented \"love this energy\". Bad sign. That's his attack phrase."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pigeons",
+      "name": "Freeway Pigeons",
+      "kind": "side",
+      "area": "SoMa",
+      "giver": "pigeon",
+      "world": "sf",
+      "worlds": [
+        "soma"
+      ],
+      "blurb": "The Pigeon wants five crumbs before the seagulls get them.",
+      "reward": {
+        "sticker": "side-pigeons",
+        "deck": "crumbs"
+      },
+      "fail": {
+        "time": [
+          {
+            "id": "pigeons-01",
+            "who": "pigeon",
+            "text": "Seagulls got 'em. This is why we can't have nice things."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "pigeon",
+          "offer": true,
+          "text": "Talk to the Pigeon",
+          "lines": [
+            {
+              "id": "pigeons-02",
+              "who": "pigeon",
+              "text": "Psst. Kid. Over here, under the freeway, where business happens."
+            },
+            {
+              "id": "pigeons-03",
+              "who": "pigeon",
+              "text": "I run these columns. Every crumb that drops in this park, I hear about it."
+            },
+            {
+              "id": "pigeons-04",
+              "who": "pigeon",
+              "text": "Five crumbs fell off a sandwich this morning. Bring 'em to me before the seagulls do."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find five crumbs round the park",
+          "item": "crumb",
+          "seconds": 90,
+          "radius": 2.0,
+          "items": [
+            [
+              13.0,
+              21.3,
+              0.44
+            ],
+            [
+              30.0,
+              24.0,
+              -0.61
+            ],
+            [
+              55.7,
+              25.5,
+              -0.79
+            ],
+            [
+              67.0,
+              15.1,
+              -0.44
+            ],
+            [
+              9.2,
+              8.7,
+              0.67
+            ]
+          ],
+          "say": [
+            {
+              "id": "pigeons-05",
+              "who": "pigeon",
+              "text": "Clock's ticking. The seagulls are already circling."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "pigeon",
+          "text": "Bring them to the Pigeon",
+          "lines": [
+            {
+              "id": "pigeons-06",
+              "who": "pigeon",
+              "text": "Sourdough. You've got taste, kid."
+            },
+            {
+              "id": "pigeons-07",
+              "who": "pigeon",
+              "text": "You're under my protection now. Mostly from other pigeons."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit7",
+      "name": "Unit 7 Learns to Ollie",
+      "kind": "side",
+      "area": "SoMa",
+      "giver": "unit7",
+      "blurb": "A robotaxi wants to know why humans clap when you go up and come down.",
+      "reward": {
+        "sticker": "side-unit7",
+        "unlock": "robotaxi",
+        "deck": "robotaxi"
+      },
+      "fail": {
+        "lost": [
+          {
+            "id": "unit7-01",
+            "who": "unit7",
+            "text": "You have left the recreational zone. I will wait here and process my feelings."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "unit7",
+          "offer": true,
+          "text": "Talk to Unit 7",
+          "lines": [
+            {
+              "id": "unit7-02",
+              "who": "unit7",
+              "text": "Hello. I am Unit 7. I have driven nine hundred thousand miles and I have never once had fun.",
+              "say": "Hello. I am Unit Seven. I have driven nine hundred thousand miles and I have never once had fun."
+            },
+            {
+              "id": "unit7-03",
+              "who": "unit7",
+              "text": "I have observed you. You go up. You come down. Humans clap. Please explain."
+            },
+            {
+              "id": "unit7-04",
+              "who": "unit7",
+              "text": "Follow me around the block. I will proceed at a recreational speed."
+            }
+          ]
+        },
+        {
+          "kind": "follow",
+          "who": "unit7",
+          "text": "Keep up with Unit 7",
+          "speed": 4.5,
+          "distance": 25,
+          "lose": 6,
+          "path": [
+            [
+              43.0,
+              4.0
+            ],
+            [
+              70.0,
+              5.5
+            ],
+            [
+              104.0,
+              7.5
+            ],
+            [
+              111.0,
+              4.0
+            ],
+            [
+              100.0,
+              0.0
+            ],
+            [
+              60.0,
+              -3.0
+            ],
+            [
+              30.0,
+              -7.0
+            ],
+            [
+              8.0,
+              -9.0
+            ],
+            [
+              -8.0,
+              -7.0
+            ],
+            [
+              -9.0,
+              20.0
+            ]
+          ],
+          "say": [
+            {
+              "id": "unit7-05",
+              "who": "unit7",
+              "text": "Beginning recreational drive. Hazard lights on, for joy."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Show Unit 7 an ollie",
+          "air": 0.4,
+          "near": "cast:unit7",
+          "radius": 25,
+          "say": [
+            {
+              "id": "unit7-06",
+              "who": "unit7",
+              "text": "Now show me. The up part."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "unit7",
+          "text": "Talk to Unit 7",
+          "radius": 30,
+          "lines": [
+            {
+              "id": "unit7-07",
+              "who": "unit7",
+              "text": "Recording. Recording. I understand nothing, and it is wonderful."
+            },
+            {
+              "id": "unit7-08",
+              "who": "unit7",
+              "text": "I will now attempt it myself. Please stand behind the cone."
+            },
+            {
+              "id": "unit7-09",
+              "who": "karl",
+              "text": "It's going to drive into the bay, isn't it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "burrito",
+      "name": "The Burrito Run",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "hector",
+      "blurb": "Hector's delivery guy quit to do improv. Three deliveries, hot.",
+      "reward": {
+        "sticker": "side-burrito",
+        "deck": "burrito"
+      },
+      "fail": {
+        "mode": [
+          {
+            "id": "burrito-01",
+            "who": "hector",
+            "text": "Cold burrito. The foil did its best. You did not."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "hector",
+          "offer": true,
+          "text": "Talk to Hector",
+          "lines": [
+            {
+              "id": "burrito-02",
+              "who": "hector",
+              "text": "You skate? Good. My delivery guy quit to do improv."
+            },
+            {
+              "id": "burrito-03",
+              "who": "hector",
+              "text": "Orders go out hot and land hot. Double foil. Always double foil."
+            },
+            {
+              "id": "burrito-04",
+              "who": "hector",
+              "text": "Three deliveries and you eat free tonight."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "courier",
+          "win": {
+            "deliveries": 3
+          },
+          "text": "Three deliveries before the food gets cold",
+          "say": [
+            {
+              "id": "burrito-05",
+              "who": "hector",
+              "text": "First order's on the counter. Go, go, go!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "hector",
+          "phone": true,
+          "text": "Hector calls",
+          "lines": [
+            {
+              "id": "burrito-06",
+              "who": "hector",
+              "text": "Three for three. You're a natural. Your mother must be so worried."
+            },
+            {
+              "id": "burrito-07",
+              "who": "hector",
+              "text": "Come by for your burrito. Not the big one. The big one's for the improv guy, he came back."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clarion",
+      "name": "Clarion Touch-up",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "tash",
+      "blurb": "Tash wants the alley tagged back to life, filmed on a flip phone.",
+      "reward": {
+        "sticker": "side-clarion"
+      },
+      "fail": {
+        "mode": [
+          {
+            "id": "clarion-01",
+            "who": "tash",
+            "text": "Not quite eight? That's a sketch. I'm keeping it, sketches sell."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "tash",
+          "offer": true,
+          "text": "Talk to Tash",
+          "lines": [
+            {
+              "id": "clarion-02",
+              "who": "tash",
+              "text": "Don't mind me, I'm filming. It's a flip phone. It's analog-adjacent."
+            },
+            {
+              "id": "clarion-03",
+              "who": "tash",
+              "text": "The city painted over half of Clarion. We're putting it back, one grind at a time."
+            },
+            {
+              "id": "clarion-04",
+              "who": "tash",
+              "text": "Tag eight things in two minutes. Rails, ledges, gaps. Whatever's ugly."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "graffiti",
+          "win": {
+            "pieces": 8
+          },
+          "text": "Tag eight things before the clock runs out",
+          "say": [
+            {
+              "id": "clarion-05",
+              "who": "tash",
+              "text": "Recording. I think. There's a red light, that's either good or bad."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "tash",
+          "phone": true,
+          "text": "Tash calls",
+          "lines": [
+            {
+              "id": "clarion-06",
+              "who": "tash",
+              "text": "Got it all. Well, I got the first four seconds. Then the phone folded itself."
+            },
+            {
+              "id": "clarion-07",
+              "who": "tash",
+              "text": "You're in the archive now. The archive is a shoebox."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disco",
+      "name": "Disco Escort",
+      "kind": "side",
+      "area": "The Castro",
+      "giver": "donna",
+      "blurb": "Donna glides down Castro St tonight and needs an escort who can keep up.",
+      "reward": {
+        "sticker": "side-disco"
+      },
+      "fail": {
+        "lost": [
+          {
+            "id": "disco-01",
+            "who": "donna",
+            "text": "Gone, like disco. Like my knees. Come back when you're ready, baby."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "donna",
+          "offer": true,
+          "text": "Talk to Donna",
+          "lines": [
+            {
+              "id": "disco-02",
+              "who": "donna",
+              "text": "Honey, I have been rolling this street since the Carter administration."
+            },
+            {
+              "id": "disco-03",
+              "who": "donna",
+              "text": "Tonight I glide past the Castro Theatre, and I need an escort who can keep up."
+            },
+            {
+              "id": "disco-04",
+              "who": "donna",
+              "text": "Fall behind and you fall out of my life. No pressure, sugar."
+            }
+          ]
+        },
+        {
+          "kind": "follow",
+          "who": "donna",
+          "text": "Keep up with Donna down Castro St",
+          "speed": 5.5,
+          "distance": 20,
+          "lose": 6,
+          "path": [
+            [
+              -587.0,
+              -35.0
+            ],
+            [
+              -577.0,
+              -38.0
+            ],
+            [
+              -574.0,
+              -72.0
+            ],
+            [
+              -571.0,
+              -98.0
+            ],
+            [
+              -568.0,
+              -135.0
+            ],
+            [
+              -565.0,
+              -172.0
+            ],
+            [
+              -563.0,
+              -199.0
+            ],
+            [
+              -561.0,
+              -221.0
+            ]
+          ],
+          "say": [
+            {
+              "id": "disco-05",
+              "who": "donna",
+              "text": "Five, six, seven, eight!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "donna",
+          "text": "Talk to Donna",
+          "radius": 25,
+          "lines": [
+            {
+              "id": "disco-06",
+              "who": "donna",
+              "text": "You kept up! My last escort stopped for a burrito on Eighteenth."
+            },
+            {
+              "id": "disco-07",
+              "who": "donna",
+              "text": "Take this sticker. It's sequined. Do not ask me how."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rainbow",
+      "name": "Rainbow Manual",
+      "kind": "side",
+      "area": "The Castro",
+      "giver": "bev",
+      "blurb": "Bev guards the rainbow crosswalk. Every crossing is a runway walk.",
+      "reward": {
+        "sticker": "side-rainbow"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "bev",
+          "offer": true,
+          "text": "Talk to Bev",
+          "lines": [
+            {
+              "id": "rainbow-01",
+              "who": "bev",
+              "text": "Nineteen years on this rainbow crosswalk. Every crossing is a runway walk. Even the mail carrier's."
+            },
+            {
+              "id": "rainbow-02",
+              "who": "bev",
+              "text": "Manual all the way across. Wheels up, chin up, no stopping."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 600 combo with a manual, started on the rainbow crossing",
+          "points": 600,
+          "tricks": [
+            "manual",
+            "nosemanual"
+          ],
+          "box": [
+            -590,
+            -265,
+            -535,
+            -205
+          ],
+          "say": [
+            {
+              "id": "rainbow-03",
+              "who": "bev",
+              "text": "Traffic is stopped. Mostly. Walk it! Roll it!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "bev",
+          "text": "Talk to Bev",
+          "radius": 30,
+          "lines": [
+            {
+              "id": "rainbow-04",
+              "who": "bev",
+              "text": "Gorgeous. Fierce. Legally a pedestrian."
+            },
+            {
+              "id": "rainbow-05",
+              "who": "bev",
+              "text": "You may cross my rainbow anytime. On the wheels or off them."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scooters",
+      "name": "Chad's Scooter Fleet",
+      "kind": "side",
+      "area": "Hayes Valley",
+      "giver": "chad",
+      "after": [
+        "ch1"
+      ],
+      "blurb": "Chad bets his e-scooter fleet beats you down Hayes. Loser gives up Saturdays.",
+      "reward": {
+        "sticker": "side-scooters",
+        "deck": "startup"
+      },
+      "fail": {
+        "mode": [
+          {
+            "id": "scooters-01",
+            "who": "chad",
+            "text": "Great hustle! Your Saturdays are mine now. Kidding. Unless?"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "chad",
+          "offer": true,
+          "text": "Talk to Chad",
+          "lines": [
+            {
+              "id": "scooters-02",
+              "who": "chad",
+              "text": "Hey! The hobby guy! Quick pitch: e-scooters, but they follow you home."
+            },
+            {
+              "id": "scooters-03",
+              "who": "chad",
+              "text": "Race my fleet down Hayes. My scooters have never lost. They've never raced, but still."
+            },
+            {
+              "id": "scooters-04",
+              "who": "chad",
+              "text": "You win, I'll circle back. I win, I own your Saturdays. Deal? Deal."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "bomb",
+          "route": "hayes",
+          "win": {
+            "place": 1
+          },
+          "text": "Win the race down Hayes",
+          "say": [
+            {
+              "id": "scooters-05",
+              "who": "chad",
+              "text": "Scooters, activate! Disrupt him!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "chad",
+          "phone": true,
+          "text": "Chad calls",
+          "lines": [
+            {
+              "id": "scooters-06",
+              "who": "chad",
+              "text": "Wow. Okay. Huge learnings."
+            },
+            {
+              "id": "scooters-07",
+              "who": "chad",
+              "text": "We're pivoting to scooters that only go uphill. Nobody's doing that."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postcard",
+      "name": "Painted Ladies Photo",
+      "kind": "side",
+      "area": "Hayes Valley",
+      "giver": "skye",
+      "blurb": "Skye needs you flying through the shot with the Painted Ladies behind you.",
+      "reward": {
+        "sticker": "side-postcard",
+        "deck": "victorians"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "skye",
+          "offer": true,
+          "text": "Talk to Skye",
+          "lines": [
+            {
+              "id": "postcard-01",
+              "who": "skye",
+              "text": "Oh my god, a real skater. Can you be candid for me? But on purpose?"
+            },
+            {
+              "id": "postcard-02",
+              "who": "skye",
+              "text": "I need you flying through the shot with the Painted Ladies behind you. Big air, golden-hour energy."
+            },
+            {
+              "id": "postcard-03",
+              "who": "skye",
+              "text": "Just pretend I'm not here. I'll be shouting directions."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Big air off the Alamo Square slope",
+          "air": 0.9,
+          "box": [
+            -1078,
+            395,
+            -996,
+            505
+          ],
+          "say": [
+            {
+              "id": "postcard-04",
+              "who": "skye",
+              "text": "Okay, and... be natural. More natural. Less natural."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "skye",
+          "text": "Talk to Skye",
+          "radius": 60,
+          "lines": [
+            {
+              "id": "postcard-05",
+              "who": "skye",
+              "text": "Stop. That's the one. Forty thousand people are going to pretend they were there."
+            },
+            {
+              "id": "postcard-06",
+              "who": "skye",
+              "text": "I tagged you as \"local legend\". I'll untag you if it underperforms."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stamp",
+      "name": "Gloria's Lost Stamp",
+      "kind": "side",
+      "area": "Civic Center",
+      "giver": "gloria",
+      "blurb": "Gloria's APPROVED stamp blew into the plaza. Nothing in the city can be approved.",
+      "reward": {
+        "sticker": "side-stamp"
+      },
+      "fail": {
+        "time": [
+          {
+            "id": "stamp-01",
+            "who": "gloria",
+            "text": "The window is closed. Come back tomorrow. The window is always closed."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "offer": true,
+          "text": "Talk to Gloria",
+          "lines": [
+            {
+              "id": "stamp-02",
+              "who": "gloria",
+              "text": "Do you have an appointment? Nobody has an appointment. Take a number."
+            },
+            {
+              "id": "stamp-03",
+              "who": "gloria",
+              "text": "I have misplaced my APPROVED stamp. Without it, nothing in this city is approved. Nothing."
+            },
+            {
+              "id": "stamp-04",
+              "who": "gloria",
+              "text": "It blew into the plaza with my ink pad and form 27-B. Bring all three. Any order, I'm not a monster.",
+              "say": "It blew into the plaza with my ink pad and form twenty-seven B. Bring all three. Any order, I'm not a monster."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find the stamp, the ink pad and the form",
+          "item": "paperwork",
+          "seconds": 120,
+          "radius": 2.0,
+          "items": [
+            [
+              60.0,
+              320.0,
+              2.64
+            ],
+            [
+              110.0,
+              405.0,
+              2.59
+            ],
+            [
+              158.0,
+              340.0,
+              2.32
+            ]
+          ],
+          "say": [
+            {
+              "id": "stamp-05",
+              "who": "gloria",
+              "text": "The clock is running. Not my clock. The city's."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "text": "Back to Gloria",
+          "lines": [
+            {
+              "id": "stamp-06",
+              "who": "gloria",
+              "text": "My stamp. Hello, old friend."
+            },
+            {
+              "id": "stamp-07",
+              "who": "gloria",
+              "text": "There. APPROVED. Your permit to skate is approved. It expires when you stop skating."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "delay",
+      "name": "Dolores's Delay",
+      "kind": "side",
+      "area": "Downtown",
+      "giver": "dolores",
+      "blurb": "The F is parked for good, so Dolores drives the J Church now. Race her streetcar down through Dolores Park. She'll be delayed. She can feel it.",
+      "reward": {
+        "sticker": "side-delay",
+        "deck": "muni"
+      },
+      "fail": {
+        "mode": [
+          {
+            "id": "delay-01",
+            "who": "dolores",
+            "text": "Huh. We weren't delayed. First time in fifteen years. I'm shaking."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "dolores",
+          "offer": true,
+          "text": "Talk to Dolores",
+          "lines": [
+            {
+              "id": "delay-02",
+              "who": "dolores",
+              "text": "Good afternoon. This is Dolores, operator of the F line. We are being held."
+            },
+            {
+              "id": "delay-03",
+              "who": "dolores",
+              "text": "We are always being held. Fifteen years, and I have never left a stop on time. It's peaceful."
+            },
+            {
+              "id": "delay-08",
+              "who": "dolores",
+              "text": "Now they've parked the F for good. So for once, I'm exactly where the timetable says I am."
+            },
+            {
+              "id": "delay-09",
+              "who": "dolores",
+              "text": "So they gave me the J Church. Meet me at Liberty and race my streetcar down through Dolores Park. You'll win. I'll be delayed. I can feel it."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "muni",
+          "route": "j",
+          "win": {},
+          "text": "Beat the J Church to 18th Street",
+          "say": [
+            {
+              "id": "delay-05",
+              "who": "dolores",
+              "text": "Doors closing. Eventually."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "dolores",
+          "phone": true,
+          "text": "Dolores on the radio",
+          "lines": [
+            {
+              "id": "delay-06",
+              "who": "dolores",
+              "text": "You beat a streetcar. Most people beat a streetcar. Still, well done."
+            },
+            {
+              "id": "delay-07",
+              "who": "dolores",
+              "text": "Here's a transfer. It's good for ninety minutes, or forever. Nobody checks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "turntable",
+      "name": "Sal's Turntable",
+      "kind": "side",
+      "area": "Downtown",
+      "giver": "sal",
+      "blurb": "Sal has turned the cable car by hand for forty years. Show the tourists some respect.",
+      "reward": {
+        "sticker": "side-turntable",
+        "unlock": "cablecar",
+        "deck": "cablecar"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "sal",
+          "offer": true,
+          "text": "Talk to Sal",
+          "lines": [
+            {
+              "id": "turntable-01",
+              "who": "sal",
+              "text": "Forty years I've turned this cable car by hand. Forty years of tourists asking if it's a ride."
+            },
+            {
+              "id": "turntable-02",
+              "who": "sal",
+              "text": "Grind the slot up Powell. Show the tourists what a cable car is for."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Grind the cable car slot up Powell for 10 m",
+          "grind": 10,
+          "feature": "cable car slot",
+          "near": "cast:sal",
+          "radius": 300,
+          "say": [
+            {
+              "id": "turntable-03",
+              "who": "sal",
+              "text": "Stay in the slot. The tourists will think you're part of the tour."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "sal",
+          "text": "Back to Sal",
+          "lines": [
+            {
+              "id": "turntable-04",
+              "who": "sal",
+              "text": "Forty years. First time a tourist filmed the slot."
+            },
+            {
+              "id": "turntable-05",
+              "who": "sal",
+              "text": "Come back anytime. Skip the line. The line is two hours. For a cable car."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barnacle",
+      "name": "Captain Barnacle Wants to Skate",
+      "kind": "side",
+      "area": "The Embarcadero",
+      "giver": "barnacle",
+      "blurb": "The elder of the K-dock wants the tourists to watch him shred, not nap.",
+      "reward": {
+        "sticker": "side-barnacle",
+        "unlock": "sealion",
+        "outfit": "sealion/oldsalt"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "barnacle",
+          "offer": true,
+          "text": "Talk to Captain Barnacle",
+          "lines": [
+            {
+              "id": "barnacle-01",
+              "who": "barnacle",
+              "text": "Ork. Ork. I am Captain Barnacle, elder of the K-dock. We have had seniority here since 1990.",
+              "say": "Ork. Ork. I am Captain Barnacle, elder of the K dock. We have had seniority here since nineteen ninety."
+            },
+            {
+              "id": "barnacle-02",
+              "who": "barnacle",
+              "text": "Every day the tourists watch us nap. I want them to watch me shred."
+            },
+            {
+              "id": "barnacle-03",
+              "who": "barnacle",
+              "text": "Teach me, land-dweller. Start with a grind on one of these benches."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Grind a bench by Pier 39",
+          "grind": 0.8,
+          "near": "cast:barnacle",
+          "radius": 70,
+          "done": [
+            {
+              "id": "barnacle-04",
+              "who": "barnacle",
+              "text": "Magnificent. Like a herring sliding off a warm rock."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A big air by Pier 39",
+          "air": 0.75,
+          "near": "cast:barnacle",
+          "radius": 90,
+          "say": [
+            {
+              "id": "barnacle-05",
+              "who": "barnacle",
+              "text": "Now a big air. The kind that frightens gulls."
+            }
+          ],
+          "done": [
+            {
+              "id": "barnacle-06",
+              "who": "barnacle",
+              "text": "The gulls are frightened. Good. They know what they did."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 1,500 combo by Pier 39",
+          "points": 1500,
+          "near": "cast:barnacle",
+          "radius": 120,
+          "say": [
+            {
+              "id": "barnacle-07",
+              "who": "barnacle",
+              "text": "Now link it all together, like sea lions in a pile."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "barnacle",
+          "text": "Back to Captain Barnacle",
+          "radius": 30,
+          "lines": [
+            {
+              "id": "barnacle-08",
+              "who": "barnacle",
+              "text": "I have seen enough. Lend me your board, child. I will take it from here."
+            },
+            {
+              "id": "barnacle-09",
+              "who": "barnacle",
+              "text": "Tell the tourists the Captain skates now. Admission is still free."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chowder",
+      "name": "Chowder Delivery",
+      "kind": "side",
+      "area": "The Embarcadero",
+      "giver": "marge",
+      "blurb": "A bread bowl of chowder for Captain Barnacle at Pier 39. Do not spill it.",
+      "reward": {
+        "sticker": "side-chowder",
+        "deck": "pier39"
+      },
+      "fail": {
+        "bail": [
+          {
+            "id": "chowder-01",
+            "who": "marge",
+            "text": "You spilled it. A gull is eating it right now. He's looking at me."
+          }
+        ],
+        "time": [
+          {
+            "id": "chowder-02",
+            "who": "marge",
+            "text": "Soggy. A soggy bread bowl is just a sad hat."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "marge",
+          "offer": true,
+          "text": "Talk to Marge",
+          "lines": [
+            {
+              "id": "chowder-03",
+              "who": "marge",
+              "text": "Chowder in a bread bowl for Captain Barnacle at Pier 39. He tips in fish. Don't ask."
+            },
+            {
+              "id": "chowder-04",
+              "who": "marge",
+              "text": "Don't spill it, don't drop it, and do not make eye contact with a seagull."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Chowder to Captain Barnacle at Pier 39, no spills",
+          "item": "chowder",
+          "to": "cast:barnacle",
+          "seconds": 90,
+          "noBail": true,
+          "say": [
+            {
+              "id": "chowder-05",
+              "who": "marge",
+              "text": "Go! That bread bowl is getting soggy as we speak!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "barnacle",
+          "text": "Give it to Captain Barnacle",
+          "lines": [
+            {
+              "id": "chowder-06",
+              "who": "barnacle",
+              "text": "Ork! Chowder! You are a good child. Not a good skater yet, but a good child."
+            },
+            {
+              "id": "chowder-07",
+              "who": "barnacle",
+              "text": "Tell Marge the Captain is pleased. She will pretend not to care."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "name": "Get Permits",
+      "kind": "story",
+      "chapter": 4,
+      "area": "Civic Center",
+      "giver": "gloria",
+      "after": [
+        "ch3"
+      ],
+      "blurb": "Gloria's form 88-S needs five signatures, one from each neighbourhood. In ink.",
+      "reward": {
+        "sticker": "story-ch4"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "offer": true,
+          "text": "Talk to Gloria",
+          "lines": [
+            {
+              "id": "ch4-01",
+              "who": "gloria",
+              "text": "You want to save a skatepark? Wonderful. That's form 88-S. It needs five signatures.",
+              "say": "You want to save a skatepark? Wonderful. That's form eighty-eight S. It needs five signatures."
+            },
+            {
+              "id": "ch4-02",
+              "who": "gloria",
+              "text": "Hector, Donna, Skye, Sal and Captain Barnacle. In ink. Pencil is for cowards."
+            },
+            {
+              "id": "ch4-03",
+              "who": "karl",
+              "text": "Five signatures. I could just fog up City Hall until nobody can find the vote."
+            },
+            {
+              "id": "ch4-04",
+              "who": "gloria",
+              "text": "The window closes when it closes. Go."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "hector",
+          "text": "Hector's signature (the Mission)",
+          "lines": [
+            {
+              "id": "ch4-05",
+              "who": "hector",
+              "text": "Sign for the skatepark? Of course. But first, a clean line past my window. With feeling."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 500 combo by the taqueria",
+          "points": 500,
+          "near": "cast:hector",
+          "radius": 60,
+          "done": [
+            {
+              "id": "ch4-06",
+              "who": "hector",
+              "text": "Clean. Signed. The burrito gave its blessing."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "donna",
+          "text": "Donna's signature (the Castro)",
+          "lines": [
+            {
+              "id": "ch4-07",
+              "who": "donna",
+              "text": "A signature? Darling, I only sign autographs. Do me a manual and I will think of it as one."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A manual for Donna",
+          "tricks": [
+            "manual",
+            "nosemanual"
+          ],
+          "near": "cast:donna",
+          "radius": 60,
+          "done": [
+            {
+              "id": "ch4-08",
+              "who": "donna",
+              "text": "Fabulous. I signed it with a heart. Gloria is going to hate it."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "skye",
+          "text": "Skye's signature (Alamo Square)",
+          "lines": [
+            {
+              "id": "ch4-09",
+              "who": "skye",
+              "text": "I'll sign if it's content. One big air, and I'm filming vertically."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A big air for Skye",
+          "air": 0.7,
+          "near": "cast:skye",
+          "radius": 90,
+          "done": [
+            {
+              "id": "ch4-10",
+              "who": "skye",
+              "text": "Signed. And posted. Your permit already has six likes."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "sal",
+          "text": "Sal's signature (Powell St)",
+          "lines": [
+            {
+              "id": "ch4-11",
+              "who": "sal",
+              "text": "I sign nothing a tourist could read. Grind the slot and I will sign it in grease."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Grind the cable car slot for Sal",
+          "grind": 6,
+          "feature": "cable car slot",
+          "near": "cast:sal",
+          "radius": 300,
+          "done": [
+            {
+              "id": "ch4-12",
+              "who": "sal",
+              "text": "There. Sal. Spelled right, for once."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "barnacle",
+          "text": "Captain Barnacle's signature (Pier 39)",
+          "lines": [
+            {
+              "id": "ch4-13",
+              "who": "barnacle",
+              "text": "Ork. A sea lion cannot hold a pen. A sea lion can stamp a paw. Bring me a fish first."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "A fish for the Captain",
+          "item": "fish",
+          "items": [
+            [
+              235.0,
+              988.0,
+              -8.74
+            ]
+          ],
+          "radius": 2.0,
+          "done": [
+            {
+              "id": "ch4-14",
+              "who": "barnacle",
+              "text": "Ork! A paw print. Legally binding in the state of the docks."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "text": "Back to Gloria at City Hall",
+          "lines": [
+            {
+              "id": "ch4-15",
+              "who": "gloria",
+              "text": "Five signatures. One is a paw print, one is a heart and one is in grease."
+            },
+            {
+              "id": "ch4-16",
+              "who": "gloria",
+              "text": "Approved. Stamped. In triplicate. The vote is on the calendar."
+            },
+            {
+              "id": "ch4-17",
+              "who": "karl",
+              "text": "Chad is going to hate this. I'm going to love watching. From above, as usual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "name": "Chad's Move",
+      "kind": "story",
+      "chapter": 5,
+      "area": "SoMa",
+      "giver": "karl",
+      "after": [
+        "ch4"
+      ],
+      "blurb": "Chad's robotaxis come to tow the ramps. Then Chad races the petition to Civic Center, and Gloria's window closes at five.",
+      "reward": {
+        "sticker": "story-ch5",
+        "deck": "fog",
+        "outfit": "robotaxi/coned"
+      },
+      "retry": [
+        2,
+        4
+      ],
+      "fail": {
+        "mode": [
+          {
+            "id": "ch5-01",
+            "who": "karl",
+            "text": "They caught you. I fogged the street so nobody saw. Let's try that again."
+          }
+        ],
+        "time": [
+          {
+            "id": "ch5-02",
+            "who": "gloria",
+            "text": "Five o'clock. The window is closed. Come back when it is open, which is never, which is tomorrow."
+          }
+        ],
+        "lost": [
+          {
+            "id": "ch5-19",
+            "who": "chad",
+            "text": "First in line! Gloria stamped my appeal 'received'. In startup, that's basically 'approved'."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "karl",
+          "offer": true,
+          "text": "Talk to Karl",
+          "lines": [
+            {
+              "id": "ch5-03",
+              "who": "karl",
+              "text": "Bad news, and I'm only a little smug about it. Chad got a tow order for the ramps."
+            },
+            {
+              "id": "ch5-04",
+              "who": "karl",
+              "text": "His robotaxis are on the way. If they catch you, they tow the ramps. And probably you."
+            },
+            {
+              "id": "ch5-05",
+              "who": "karl",
+              "text": "Keep them busy for a minute and a half. I'll be up here, supervising."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "chad",
+          "text": "Chad, at the gate",
+          "actors": {
+            "chad": [
+              18.0,
+              6.0,
+              -0.4,
+              0
+            ]
+          },
+          "lines": [
+            {
+              "id": "ch5-06",
+              "who": "chad",
+              "text": "Hey! Love the energy. Quick heads-up: we're relocating the ramps to a more synergistic location."
+            },
+            {
+              "id": "ch5-07",
+              "who": "chad",
+              "text": "Don't worry, the robotaxis are super gentle. They've only towed four people. Today."
+            },
+            {
+              "id": "ch5-08",
+              "who": "unit7",
+              "text": "Tow order received. Tow order declined. I am a skater now."
+            },
+            {
+              "id": "ch5-09",
+              "who": "chad",
+              "text": "Unit 7, buddy. Let's take this offline."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "escape",
+          "win": {},
+          "text": "Lose Chad's robotaxis",
+          "say": [
+            {
+              "id": "ch5-10",
+              "who": "unit7",
+              "text": "I will block the left lane. Skate."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "phone": true,
+          "text": "Gloria, on the phone",
+          "lines": [
+            {
+              "id": "ch5-11",
+              "who": "gloria",
+              "text": "Gloria, City Hall. Your petition needs my stamp by five o'clock. It is four fifty-two."
+            },
+            {
+              "id": "ch5-17",
+              "who": "gloria",
+              "text": "Mr. Vantage is on his way with an appeal. Whoever reaches my window first is served first. I wrote that rule. It's my favourite."
+            }
+          ]
+        },
+        {
+          "kind": "race",
+          "who": "chad",
+          "text": "Beat Chad to Civic Center",
+          "path": [
+            [
+              18.0,
+              5.0
+            ],
+            [
+              30.0,
+              3.0
+            ],
+            [
+              72.0,
+              5.6
+            ],
+            [
+              100.5,
+              9.4
+            ],
+            [
+              118.0,
+              32.8
+            ],
+            [
+              115.6,
+              62.5
+            ],
+            [
+              113.1,
+              91.8
+            ],
+            [
+              110.6,
+              121.5
+            ],
+            [
+              108.8,
+              149.6
+            ],
+            [
+              105.5,
+              178.7
+            ],
+            [
+              113.4,
+              206.3
+            ],
+            [
+              120.0,
+              226.0
+            ],
+            [
+              118.0,
+              250.0
+            ],
+            [
+              112.0,
+              272.0
+            ],
+            [
+              110.0,
+              283.0
+            ]
+          ],
+          "speed": 6.5,
+          "distance": 15,
+          "finish": 12,
+          "say": [
+            {
+              "id": "ch5-18",
+              "who": "chad",
+              "text": "I'm at the gate on my brand-new skateboard. Race you to Civic Center. Respectfully, I'm going to disrupt you."
+            }
+          ]
+        },
+        {
+          "kind": "go",
+          "to": "cast:gloria",
+          "radius": 12,
+          "seconds": 45,
+          "text": "Gloria's window before five",
+          "say": [
+            {
+              "id": "ch5-14",
+              "who": "karl",
+              "text": "Through Civic Center Plaza. It's the shortcut. I'd know, I'm everywhere."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "gloria",
+          "text": "Gloria, at her window",
+          "lines": [
+            {
+              "id": "ch5-15",
+              "who": "gloria",
+              "text": "Four fifty-nine. Stamped. I want you to know I hated every second of that."
+            },
+            {
+              "id": "ch5-16",
+              "who": "gloria",
+              "text": "The Supervisors vote at the jam. In your park. Wear something without holes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "name": "The Jam",
+      "kind": "story",
+      "chapter": 6,
+      "area": "SoMa",
+      "giver": "karl",
+      "after": [
+        "ch5"
+      ],
+      "world": "sf",
+      "worlds": [
+        "soma"
+      ],
+      "blurb": "The Save SoMa West jam: three big combos in the park while the crowd and the Supervisors watch. Then the vote.",
+      "reward": {
+        "sticker": "story-ch6",
+        "deck": "team",
+        "outfit": "skeleton/golden"
+      },
+      "retry": [
+        2
+      ],
+      "fail": {
+        "time": [
+          {
+            "id": "ch6-01",
+            "who": "okafor",
+            "text": "Our time is up. The Board will reconvene after snacks. Try again."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "karl",
+          "offer": true,
+          "text": "Talk to Karl",
+          "lines": [
+            {
+              "id": "ch6-02",
+              "who": "karl",
+              "text": "This is it. The jam. The Supervisors are coming, the crowd is coming, and I'm here, which is the main thing."
+            },
+            {
+              "id": "ch6-03",
+              "who": "karl",
+              "text": "Big combos in the park while they watch. Make it look easy. Make it look like a public good."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "okafor",
+          "text": "The Supervisors, by the fence",
+          "actors": {
+            "okafor": [
+              9.3,
+              33.5,
+              -0.06,
+              111
+            ],
+            "pham": [
+              11.5,
+              35.0,
+              -0.11,
+              114
+            ],
+            "delgado": [
+              16.0,
+              34.9,
+              -0.22,
+              116
+            ],
+            "biglou": [
+              24.8,
+              35.4,
+              -0.43,
+              125
+            ],
+            "gloria": [
+              28.0,
+              35.0,
+              -0.51,
+              128
+            ],
+            "hector": [
+              34.0,
+              35.0,
+              -0.65,
+              137
+            ],
+            "donna": [
+              40.5,
+              33.9,
+              -0.82,
+              149
+            ],
+            "dolores": [
+              51.8,
+              32.6,
+              -1.09,
+              187
+            ],
+            "sal": [
+              58.0,
+              32.0,
+              -1.25,
+              210
+            ],
+            "marge": [
+              63.0,
+              28.0,
+              -1.38,
+              232
+            ],
+            "barnacle": [
+              66.0,
+              31.0,
+              -1.45,
+              231
+            ],
+            "tash": [
+              72.0,
+              31.0,
+              -1.6,
+              239
+            ],
+            "chad": [
+              80.0,
+              30.0,
+              -1.79,
+              248
+            ],
+            "skye": [
+              94.0,
+              25.0,
+              -2.14,
+              261
+            ],
+            "unit7": [
+              18.0,
+              6.0,
+              -0.4,
+              69
+            ]
+          },
+          "lines": [
+            {
+              "id": "ch6-04",
+              "who": "okafor",
+              "text": "Supervisor Okafor. We are here to observe the park in its natural use. Please begin naturally."
+            },
+            {
+              "id": "ch6-05",
+              "who": "delgado",
+              "text": "Is anyone going to sign a waiver? I brought waivers."
+            },
+            {
+              "id": "ch6-06",
+              "who": "pham",
+              "text": "I brought a sign. It says 'skate'. I didn't know what else to write."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "points": 1200,
+          "count": 3,
+          "box": [
+            -5,
+            2,
+            100,
+            34
+          ],
+          "seconds": 180,
+          "text": "Three 1,200 combos while they watch",
+          "each": [
+            {
+              "id": "ch6-07",
+              "who": "pham",
+              "text": "Sick! Is that the word? I'm putting it in the minutes."
+            },
+            {
+              "id": "ch6-08",
+              "who": "rosa",
+              "text": "Okay. That one was... fine."
+            }
+          ],
+          "done": [
+            {
+              "id": "ch6-09",
+              "who": "delgado",
+              "text": "No one fell. I am writing that down. No one fell."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "okafor",
+          "text": "The vote",
+          "lines": [
+            {
+              "id": "ch6-10",
+              "who": "okafor",
+              "text": "On the matter of SoMa West Skatepark. All in favour?",
+              "say": "On the matter of SoMa West Skatepark. All in favor?"
+            },
+            {
+              "id": "ch6-11",
+              "who": "pham",
+              "text": "Aye. Huge aye."
+            },
+            {
+              "id": "ch6-12",
+              "who": "delgado",
+              "text": "Aye. Pending a waiver. Fine. Aye."
+            },
+            {
+              "id": "ch6-13",
+              "who": "okafor",
+              "text": "Aye. The motion carries. SoMa West stays."
+            },
+            {
+              "id": "ch6-14",
+              "who": "chad",
+              "text": "Okay. Pivoting. What if the ramps were... the product?"
+            },
+            {
+              "id": "ch6-15",
+              "who": "rosa",
+              "text": "That was not mid."
+            },
+            {
+              "id": "ch6-16",
+              "who": "karl",
+              "text": "I'd like to thank me, for the mentoring. And you, a little. Mostly me."
+            },
+            {
+              "id": "ch6-17",
+              "who": "karl",
+              "text": "Now go on. The city's still out there, and everybody in San Francisco still needs something."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "name": "Get Sponsored",
+      "kind": "story",
+      "chapter": 3,
+      "area": "The Mission",
+      "giver": "biglou",
+      "after": [
+        "ch2"
+      ],
+      "blurb": "Big Lou of Fog City Skate Shop wants proof: his flyers up round the Mission, and Dre beaten at S.K.A.T.E.",
+      "reward": {
+        "sticker": "story-ch3",
+        "outfit": "redmonster/fogjersey"
+      },
+      "fail": {
+        "mode": [
+          {
+            "id": "ch3-01",
+            "who": "dre",
+            "text": "That's a letter. That's all the letters. Tell Lou I said hi."
+          }
+        ],
+        "time": [
+          {
+            "id": "ch3-02",
+            "who": "biglou",
+            "text": "Flyers in a puddle. Story of my life. Come back and try again."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "biglou",
+          "offer": true,
+          "text": "Talk to Big Lou",
+          "lines": [
+            {
+              "id": "ch3-03",
+              "who": "biglou",
+              "text": "You're the kid from Marisol's video? I went pro in '94. Then I fell off a roof. Long story. Short roof.",
+              "say": "You're the kid from Marisol's video? I went pro in ninety-four. Then I fell off a roof. Long story. Short roof."
+            },
+            {
+              "id": "ch3-04",
+              "who": "biglou",
+              "text": "Fog City Skate Shop sponsors riders who show up. So show up."
+            },
+            {
+              "id": "ch3-05",
+              "who": "biglou",
+              "text": "Staple my flyers round the Mission, then beat Dre at S.K.A.T.E. in the park."
+            },
+            {
+              "id": "ch3-06",
+              "who": "karl",
+              "text": "He was pro for eleven days. I was there. I'm always there."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Staple four flyers round the Mission",
+          "item": "flyer",
+          "items": [
+            [
+              98.0,
+              -209.0,
+              -1.93
+            ],
+            [
+              -41.0,
+              -310.0,
+              2.17
+            ],
+            [
+              30.0,
+              -426.0,
+              -0.05
+            ],
+            [
+              -235.0,
+              -155.0,
+              8.06
+            ]
+          ],
+          "radius": 2.5,
+          "seconds": 150,
+          "say": [
+            {
+              "id": "ch3-07",
+              "who": "biglou",
+              "text": "Staple them high. The last kid stapled them low and a dog ate my brand."
+            }
+          ],
+          "done": [
+            {
+              "id": "ch3-08",
+              "who": "biglou",
+              "text": "Flyers up. My phone already rang. Wrong number, but still."
+            }
+          ]
+        },
+        {
+          "kind": "mode",
+          "mode": "skate",
+          "route": "dre",
+          "win": {},
+          "text": "Beat Dre at S.K.A.T.E. in the park",
+          "say": [
+            {
+              "id": "ch3-09",
+              "who": "dre",
+              "text": "Big Lou sent you? I'll spell it slow so you can keep up. S. K. A. T. E."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "biglou",
+          "phone": true,
+          "text": "Big Lou calls",
+          "lines": [
+            {
+              "id": "ch3-10",
+              "who": "biglou",
+              "text": "You beat Dre? Nobody beats Dre. Dre beats Dre sometimes, on weekends."
+            },
+            {
+              "id": "ch3-11",
+              "who": "biglou",
+              "text": "You're on the team. Your board has my face on it now. Don't ride it near roofs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cartrace",
+      "name": "Grandma Wu's Cart Race",
+      "kind": "side",
+      "area": "Chinatown",
+      "giver": "grandmawu",
+      "reward": {
+        "sticker": "side-cartrace"
+      },
+      "blurb": "The fastest grandma in San Francisco races you up Grant Ave with her shopping cart. She pays in dumplings.",
+      "fail": {
+        "lost": [
+          {
+            "id": "cartrace-01",
+            "who": "grandmawu",
+            "text": "Too slow! The dumplings are mine. They were always mine."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "grandmawu",
+          "offer": true,
+          "text": "Talk to Grandma Wu",
+          "lines": [
+            {
+              "id": "cartrace-02",
+              "who": "grandmawu",
+              "text": "You are the skateboard kid? Everybody says you are fast. Everybody is wrong about many things."
+            },
+            {
+              "id": "cartrace-03",
+              "who": "grandmawu",
+              "text": "Race me up Grant Avenue. I have a shopping cart and forty years of shortcuts."
+            },
+            {
+              "id": "cartrace-04",
+              "who": "grandmawu",
+              "text": "You win, I pay you in dumplings. I win, you carry my groceries. Up the hill."
+            }
+          ]
+        },
+        {
+          "kind": "race",
+          "who": "grandmawu",
+          "text": "Beat Grandma Wu up Grant Ave",
+          "path": [
+            [
+              263.0,
+              665.0
+            ],
+            [
+              257.0,
+              709.0
+            ],
+            [
+              251.0,
+              747.0
+            ],
+            [
+              249.0,
+              759.0
+            ],
+            [
+              238.7,
+              757.2
+            ],
+            [
+              224.6,
+              754.9
+            ],
+            [
+              211.3,
+              752.8
+            ],
+            [
+              198.4,
+              750.7
+            ],
+            [
+              189.8,
+              749.3
+            ],
+            [
+              189.2,
+              758.8
+            ],
+            [
+              188.4,
+              768.2
+            ],
+            [
+              187.7,
+              777.6
+            ],
+            [
+              186.9,
+              787.1
+            ],
+            [
+              185.8,
+              800.7
+            ],
+            [
+              185.1,
+              819.0
+            ]
+          ],
+          "speed": 5.4,
+          "distance": 15,
+          "finish": 12,
+          "say": [
+            {
+              "id": "cartrace-05",
+              "who": "grandmawu",
+              "text": "Ready? I already started."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "grandmawu",
+          "text": "Back to Grandma Wu",
+          "radius": 40,
+          "lines": [
+            {
+              "id": "cartrace-06",
+              "who": "grandmawu",
+              "text": "Hmph. You won. The cart has a bad wheel. The cart always has a bad wheel."
+            },
+            {
+              "id": "cartrace-07",
+              "who": "grandmawu",
+              "text": "Here, dumplings. Pork and chive. Do not tell my sister, she thinks she is the fastest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lombard",
+      "name": "Brayden's Lombard Challenge",
+      "kind": "side",
+      "area": "Russian Hill",
+      "giver": "brayden",
+      "reward": {
+        "sticker": "side-lombard",
+        "outfit": "techbro/playa"
+      },
+      "blurb": "Brayden races you down the crooked block on his e-scooter. His startup pivots every time you meet.",
+      "fail": {
+        "lost": [
+          {
+            "id": "lombard-01",
+            "who": "brayden",
+            "text": "Crushed it. My scooter is now worth eleven million dollars."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "brayden",
+          "offer": true,
+          "text": "Talk to Brayden",
+          "lines": [
+            {
+              "id": "lombard-02",
+              "who": "brayden",
+              "text": "Bro. Brayden. Founder of Scootly. Well, it was Scootly. Now it's Lombr. Lombard, but an app.",
+              "say": "Bro. Brayden. Founder of Scootly. Well, it was Scootly. Now it's Lomber. Lombard, but an app."
+            },
+            {
+              "id": "lombard-03",
+              "who": "brayden",
+              "text": "Race me down the crooked block. Eight turns. My scooter has traction control and a mission statement."
+            },
+            {
+              "id": "lombard-04",
+              "who": "brayden",
+              "text": "Loser hears my pitch. So does the winner. It's a great pitch, bro."
+            }
+          ]
+        },
+        {
+          "kind": "race",
+          "who": "brayden",
+          "text": "Beat Brayden down the crooked block",
+          "path": [
+            [
+              -292.5,
+              698.1
+            ],
+            [
+              -281.8,
+              699.1
+            ],
+            [
+              -273.1,
+              708.2
+            ],
+            [
+              -269.8,
+              709.3
+            ],
+            [
+              -265,
+              707.4
+            ],
+            [
+              -258.4,
+              699.7
+            ],
+            [
+              -255.5,
+              698.5
+            ],
+            [
+              -253,
+              698.6
+            ],
+            [
+              -249.8,
+              701
+            ],
+            [
+              -245.5,
+              711.7
+            ],
+            [
+              -243.6,
+              713.3
+            ],
+            [
+              -241,
+              713.9
+            ],
+            [
+              -236.8,
+              712.5
+            ],
+            [
+              -228.8,
+              703.9
+            ],
+            [
+              -224.1,
+              703.2
+            ],
+            [
+              -221.9,
+              704.4
+            ],
+            [
+              -220.5,
+              706.4
+            ],
+            [
+              -216.6,
+              716.3
+            ],
+            [
+              -213,
+              718.4
+            ],
+            [
+              -210.3,
+              718.3
+            ],
+            [
+              -208,
+              717.2
+            ],
+            [
+              -199.9,
+              708.6
+            ],
+            [
+              -195.1,
+              707.8
+            ],
+            [
+              -191.9,
+              710.3
+            ],
+            [
+              -187.7,
+              720.9
+            ],
+            [
+              -184.1,
+              723.1
+            ],
+            [
+              -181.4,
+              722.9
+            ],
+            [
+              -179.1,
+              721.8
+            ],
+            [
+              -171.7,
+              713.6
+            ],
+            [
+              -167.1,
+              712.2
+            ],
+            [
+              -164.2,
+              713.6
+            ],
+            [
+              -158.9,
+              721.6
+            ],
+            [
+              -153.5,
+              722.8
+            ],
+            [
+              -147.8,
+              722.9
+            ]
+          ],
+          "speed": 3.6,
+          "distance": 15,
+          "finish": 10,
+          "say": [
+            {
+              "id": "lombard-05",
+              "who": "brayden",
+              "text": "Go go go! Disrupting the hill!"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "brayden",
+          "text": "Back to Brayden",
+          "radius": 40,
+          "lines": [
+            {
+              "id": "lombard-06",
+              "who": "brayden",
+              "text": "Okay. Okay. The hill is a stakeholder now. We'll align."
+            },
+            {
+              "id": "lombard-07",
+              "who": "brayden",
+              "text": "We're pivoting to skateboards. Lombr is now Boardr. You're our first user. You owe us nothing. Yet.",
+              "say": "We're pivoting to skateboards. Lomber is now Boarder. You're our first user. You owe us nothing. Yet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mariachi",
+      "name": "Mariachi Tempo",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "ramon",
+      "blurb": "Don Ramón's trumpet player is stuck on the 14 Mission. He needs a rhythm.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "ramon",
+          "offer": true,
+          "text": "Talk to Don Ramón",
+          "lines": [
+            {
+              "id": "mariachi-01",
+              "who": "ramon",
+              "text": "My trumpet player is stuck on the 14 Mission again. I need a rhythm, and you have wheels."
+            },
+            {
+              "id": "mariachi-02",
+              "who": "ramon",
+              "text": "Give me a manual. Four bars, nice and steady."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A manual for the band",
+          "tricks": [
+            "manual",
+            "nosemanual"
+          ],
+          "near": "cast:ramon",
+          "radius": 45,
+          "done": [
+            {
+              "id": "mariachi-03",
+              "who": "ramon",
+              "text": "Perfecto. You're in the band now. The pay is applause and one tamale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paletas",
+      "name": "Paleta Rescue",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "lupita",
+      "blurb": "Lupita's mango paletas are melting. Two of them need to get to 18th St.",
+      "fail": {
+        "time": [
+          {
+            "id": "paletas-01",
+            "who": "lupita",
+            "text": "They're soup. Mango soup, a dollar. Bring your own cup."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "lupita",
+          "offer": true,
+          "text": "Talk to Lupita",
+          "lines": [
+            {
+              "id": "paletas-02",
+              "who": "lupita",
+              "text": "My mango paletas are melting faster than my patience. Take two up to 18th Street."
+            },
+            {
+              "id": "paletas-03",
+              "who": "lupita",
+              "text": "Forty-five seconds, then they are soup."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Paletas to 18th St before they melt",
+          "item": "paletas",
+          "to": [
+            123.5,
+            -149.7,
+            -2.51
+          ],
+          "seconds": 45,
+          "say": [
+            {
+              "id": "paletas-04",
+              "who": "lupita",
+              "text": "Go! Mangos wait for no one!",
+              "say": "Go, go, go! Mangos wait for no one!"
+            }
+          ],
+          "done": [
+            {
+              "id": "paletas-05",
+              "who": "lupita",
+              "text": "Still frozen? You're a hero. A sticky hero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chancla",
+      "name": "The Chancla",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "rosaura",
+      "blurb": "Abuela Rosaura's chancla flew off mid-lecture. It's down the block.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "rosaura",
+          "offer": true,
+          "text": "Talk to Abuela Rosaura",
+          "lines": [
+            {
+              "id": "chancla-01",
+              "who": "rosaura",
+              "text": "Mijo. My chancla flew off while I was disciplining a pigeon. It landed down the block."
+            },
+            {
+              "id": "chancla-02",
+              "who": "rosaura",
+              "text": "Bring it back before your mother sees. She will know what it means."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find the chancla",
+          "item": "chancla",
+          "items": [
+            [
+              166.9,
+              -438.1,
+              -2.46
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 45,
+          "done": [
+            {
+              "id": "chancla-03",
+              "who": "rosaura",
+              "text": "Gracias. Now go, before I remember why I took it off."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frisbees",
+      "name": "Nine Dogs, One Frisbee",
+      "kind": "side",
+      "area": "Duboce Triangle",
+      "giver": "priya",
+      "blurb": "Priya's nine dogs came back with three frisbees. None of them are hers.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "priya",
+          "offer": true,
+          "text": "Talk to Priya",
+          "lines": [
+            {
+              "id": "frisbees-01",
+              "who": "priya",
+              "text": "I walk nine dogs. They chased one frisbee and came back with three. None of them are ours."
+            },
+            {
+              "id": "frisbees-02",
+              "who": "priya",
+              "text": "Find the other frisbees before the corgi starts a union."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find three frisbees",
+          "item": "frisbee",
+          "items": [
+            [
+              -470.0,
+              200.0,
+              25.46
+            ],
+            [
+              -430.0,
+              220.0,
+              22.91
+            ],
+            [
+              -505.0,
+              235.0,
+              27.25
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 60,
+          "done": [
+            {
+              "id": "frisbees-03",
+              "who": "priya",
+              "text": "Perfect. The corgi says thank you. The corgi is lying."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kombucha",
+      "name": "Fragile Kombucha",
+      "kind": "side",
+      "area": "Duboce Triangle",
+      "giver": "ezra",
+      "blurb": "Ezra's kombucha is alive. It has to reach Duboce Park without being shaken.",
+      "fail": {
+        "bail": [
+          {
+            "id": "kombucha-01",
+            "who": "ezra",
+            "text": "You shook it. It's foaming. It knows your name now."
+          }
+        ],
+        "time": [
+          {
+            "id": "kombucha-02",
+            "who": "ezra",
+            "text": "It fermented on the way. It is now vinegar. And wiser."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "ezra",
+          "offer": true,
+          "text": "Talk to Ezra",
+          "lines": [
+            {
+              "id": "kombucha-03",
+              "who": "ezra",
+              "text": "This kombucha is alive. Like, legally. Take it to Duboce Park without shaking it."
+            },
+            {
+              "id": "kombucha-04",
+              "who": "ezra",
+              "text": "If it foams, it's angry. Don't make it angry."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Kombucha to Duboce Park, no bails",
+          "item": "kombucha",
+          "to": "duboce_park",
+          "radius": 20,
+          "seconds": 80,
+          "noBail": true,
+          "done": [
+            {
+              "id": "kombucha-05",
+              "who": "ezra",
+              "text": "It arrived calm. You have a gift. Want a scoby? Everyone wants a scoby."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gravity",
+      "name": "Peer Review",
+      "kind": "side",
+      "area": "Duboce Triangle",
+      "giver": "gravity",
+      "blurb": "Dr. Gravity has a theory that skaters cannot fly. He would love to be wrong, for the grant.",
+      "reward": {
+        "deck": "xray"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gravity",
+          "offer": true,
+          "text": "Talk to Dr. Gravity",
+          "lines": [
+            {
+              "id": "gravity-01",
+              "who": "gravity",
+              "text": "I'm a physicist. My theory is that skaters can't fly. Please prove me wrong, I need the grant."
+            },
+            {
+              "id": "gravity-02",
+              "who": "gravity",
+              "text": "One big air. I'll write it up as an anomaly."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A big air for science",
+          "air": 0.6,
+          "near": "cast:gravity",
+          "radius": 70,
+          "done": [
+            {
+              "id": "gravity-03",
+              "who": "gravity",
+              "text": "Remarkable. Gravity is still on, but you clearly had words with it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "name": "Rare Records",
+      "kind": "side",
+      "area": "Lower Haight",
+      "giver": "dez",
+      "blurb": "The wind took three records off Dez's stall. One is rare jazz. Two are his demo.",
+      "reward": {
+        "deck": "coffin"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "dez",
+          "offer": true,
+          "text": "Talk to Dez",
+          "lines": [
+            {
+              "id": "records-01",
+              "who": "dez",
+              "text": "The wind took three records off my stall. One is rare jazz. Two are my demo."
+            },
+            {
+              "id": "records-02",
+              "who": "dez",
+              "text": "Bring them back. Especially the jazz. Leave the demo if you want, I'd understand."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find three records",
+          "item": "record",
+          "items": [
+            [
+              -558.8,
+              294.5,
+              25.17
+            ],
+            [
+              -490.3,
+              294.6,
+              22.67
+            ],
+            [
+              -410.7,
+              295.9,
+              18.44
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 75,
+          "done": [
+            {
+              "id": "records-03",
+              "who": "dez",
+              "text": "You brought the demo back too. Bold. Want to hear it? No? Correct answer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "critic",
+      "name": "Performance Art",
+      "kind": "side",
+      "area": "Hayes Valley",
+      "giver": "philippa",
+      "blurb": "Philippa, an art critic, needs Patricia's Green's bench ground with meaning.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "philippa",
+          "offer": true,
+          "text": "Talk to Philippa",
+          "lines": [
+            {
+              "id": "critic-01",
+              "who": "philippa",
+              "text": "This sculpture is about the tension between steel and lunch. Your skating could be about something too."
+            },
+            {
+              "id": "critic-02",
+              "who": "philippa",
+              "text": "Grind that bench. Make it say capitalism."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Grind Patricia's bench, with meaning",
+          "gaps": [
+            "patricia_bench"
+          ],
+          "done": [
+            {
+              "id": "critic-03",
+              "who": "philippa",
+              "text": "Divine. It said capitalism. It also said ouch. Layered."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mural",
+      "name": "Mural Model",
+      "kind": "side",
+      "area": "Calle 24",
+      "giver": "xochitl",
+      "blurb": "Xóchitl is painting a skater flying over Calle 24 and needs a reference.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "xochitl",
+          "offer": true,
+          "text": "Talk to Xóchitl",
+          "lines": [
+            {
+              "id": "mural-01",
+              "who": "xochitl",
+              "text": "I'm painting a skater flying over Calle 24. I need a reference. Fly."
+            },
+            {
+              "id": "mural-02",
+              "who": "xochitl",
+              "text": "One big air. Make it heroic. Or at least make it not a bail."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A big air for the mural",
+          "air": 0.6,
+          "near": "cast:xochitl",
+          "radius": 50,
+          "done": [
+            {
+              "id": "mural-03",
+              "who": "xochitl",
+              "text": "Got it. I'm giving you better hair in the mural. Don't thank me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "concha",
+      "name": "Concha Express",
+      "kind": "side",
+      "area": "Calle 24",
+      "giver": "beto",
+      "blurb": "Xóchitl hasn't eaten since the mural started. Don Beto's concha is warm.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "beto",
+          "offer": true,
+          "text": "Talk to Don Beto",
+          "lines": [
+            {
+              "id": "concha-01",
+              "who": "beto",
+              "text": "Xóchitl hasn't eaten since she started that mural. Take her this concha before she paints with it."
+            },
+            {
+              "id": "concha-02",
+              "who": "beto",
+              "text": "Thirty seconds, while it is warm. Cold conchas make me sad."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "A warm concha to Xóchitl",
+          "item": "concha",
+          "to": "cast:xochitl",
+          "seconds": 30,
+          "done": [
+            {
+              "id": "concha-04",
+              "who": "xochitl",
+              "text": "Concha! I was about to eat the yellow paint. Gracias."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lowrider",
+      "name": "Lowrider Hop-off",
+      "kind": "side",
+      "area": "Calle 24",
+      "giver": "memo",
+      "blurb": "Tío Memo says his three lowriders hop higher than you. Get up on all three.",
+      "reward": {
+        "outfit": "can/retro"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "memo",
+          "offer": true,
+          "text": "Talk to Tío Memo",
+          "lines": [
+            {
+              "id": "lowrider-01",
+              "who": "memo",
+              "text": "See those three? Mine. They hop higher than you, mijo. They have hydraulics."
+            },
+            {
+              "id": "lowrider-02",
+              "who": "memo",
+              "text": "Get up on all three, roof to roof. Then we talk about who hops."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Up on all three lowriders",
+          "item": "a lowrider's roof",
+          "radius": 2.0,
+          "height": 0.6,
+          "seconds": 60,
+          "items": [
+            [
+              429.47,
+              -205.58,
+              -5.22
+            ],
+            [
+              436.85,
+              -205.01,
+              -5.35
+            ],
+            [
+              444.22,
+              -204.44,
+              -5.48
+            ]
+          ],
+          "each": [
+            {
+              "id": "lowrider-04",
+              "who": "memo",
+              "text": "One. Careful, she is sensitive about her paint."
+            },
+            {
+              "id": "lowrider-05",
+              "who": "memo",
+              "text": "Two. Easy on the next one. That one is my retirement."
+            }
+          ],
+          "done": [
+            {
+              "id": "lowrider-03",
+              "who": "memo",
+              "text": "All three! Okay. You hop like a '64 lowrider. That's the highest compliment on this street."
+            }
+          ]
+        }
+      ],
+      "fail": {
+        "time": [
+          {
+            "id": "lowrider-06",
+            "who": "memo",
+            "text": "Time. The cars win. They always win. They have hydraulics."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pigeonmafia",
+      "name": "The Union Square Pigeon Mafia",
+      "kind": "side",
+      "area": "Downtown",
+      "giver": "vinny",
+      "blurb": "The Pigeon's cousin Vinny runs Powell St. He hears you're good with crumbs.",
+      "reward": {
+        "outfit": "pigeon/goldengate"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "vinny",
+          "offer": true,
+          "text": "Talk to Vinny",
+          "lines": [
+            {
+              "id": "pigeonmafia-01",
+              "who": "vinny",
+              "text": "You know my cousin, under the freeway? He says you are good with crumbs."
+            },
+            {
+              "id": "pigeonmafia-02",
+              "who": "vinny",
+              "text": "Three crumbs on Powell. The tourists drop 'em, we collect. That's the business."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Three crumbs on Powell",
+          "item": "crumb",
+          "items": [
+            [
+              595.0,
+              522.0,
+              -6.24
+            ],
+            [
+              578.0,
+              466.0,
+              -7.66
+            ],
+            [
+              581.7,
+              510.7,
+              -6.75
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 60,
+          "done": [
+            {
+              "id": "pigeonmafia-03",
+              "who": "vinny",
+              "text": "Nice work. You're connected now. If anybody asks, you never saw a pigeon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bags",
+      "name": "Retail Therapy",
+      "kind": "side",
+      "area": "Downtown",
+      "giver": "tiffany",
+      "blurb": "Tiffany bought eleven scarves and her robotaxi quit. Emotionally.",
+      "fail": {
+        "bail": [
+          {
+            "id": "bags-01",
+            "who": "tiffany",
+            "text": "You scuffed them. The bags are ruined. The scarves are fine, who cares about scarves."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "tiffany",
+          "offer": true,
+          "text": "Talk to Tiffany",
+          "lines": [
+            {
+              "id": "bags-02",
+              "who": "tiffany",
+              "text": "I bought eleven scarves and my robotaxi quit on me. Emotionally."
+            },
+            {
+              "id": "bags-03",
+              "who": "tiffany",
+              "text": "Carry these to the F line stop on Market. Don't scuff the bags, the bags cost more than the scarves."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The bags to the F line stop",
+          "item": "shopping bags",
+          "to": "cast:dolores",
+          "seconds": 40,
+          "noBail": true,
+          "done": [
+            {
+              "id": "bags-04",
+              "who": "tiffany",
+              "text": "You're a lifesaver. Take a scarf. Take two. I don't remember buying them."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "standup",
+      "name": "Standup in Forty-Five",
+      "kind": "side",
+      "area": "Financial District",
+      "giver": "trent",
+      "blurb": "Trent's standup starts in forty-five seconds and his laptop is still in his hand.",
+      "reward": {
+        "outfit": "techbro/lunch"
+      },
+      "fail": {
+        "time": [
+          {
+            "id": "standup-01",
+            "who": "trent",
+            "text": "I missed it. They did the standup without me. They said it was the best one."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "trent",
+          "offer": true,
+          "text": "Talk to Trent",
+          "lines": [
+            {
+              "id": "standup-02",
+              "who": "trent",
+              "text": "My standup starts in forty-five seconds and my laptop is still in my hand. Like an animal."
+            },
+            {
+              "id": "standup-03",
+              "who": "trent",
+              "text": "Get it to the plaza at EMB. I'll dial in from the elevator."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The laptop to EMB in time",
+          "item": "laptop",
+          "to": "emb",
+          "radius": 25,
+          "seconds": 45,
+          "done": [
+            {
+              "id": "standup-04",
+              "who": "trent",
+              "text": "You made it. I'm putting you in the deck. Slide twelve: logistics."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peaches",
+      "name": "Farmers' Market Rush",
+      "kind": "side",
+      "area": "The Embarcadero",
+      "giver": "june",
+      "blurb": "Chefs buy every peach by nine. Farmer June needs her crate at the Ferry Building.",
+      "fail": {
+        "bail": [
+          {
+            "id": "peaches-01",
+            "who": "june",
+            "text": "Bruised. All of them. I guess it is a jam day."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "june",
+          "offer": true,
+          "text": "Talk to Farmer June",
+          "lines": [
+            {
+              "id": "peaches-02",
+              "who": "june",
+              "text": "Chefs buy every peach by nine. It's eight fifty-nine. Get this crate to the Ferry Building.",
+              "say": "The chefs buy every peach by nine. It's eight fifty-nine. Get this crate to the Ferry Building."
+            },
+            {
+              "id": "peaches-03",
+              "who": "june",
+              "text": "Don't drop it. Chefs can smell a bruise from the parking lot."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Peaches to the Ferry Building, no bails",
+          "item": "peaches",
+          "to": [
+            710.9,
+            747.5,
+            -9.58
+          ],
+          "radius": 8,
+          "seconds": 30,
+          "noBail": true,
+          "done": [
+            {
+              "id": "peaches-04",
+              "who": "june",
+              "text": "Sold in four seconds. A chef cried. Good crying."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statue",
+      "name": "Don't Move",
+      "kind": "side",
+      "area": "Fisherman's Wharf",
+      "giver": "gus",
+      "reward": {
+        "sticker": "side-statue"
+      },
+      "blurb": "Gus has been a silver statue since 1987. Tourists stopped tipping. He needs a distraction.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gus",
+          "offer": true,
+          "text": "Talk to Gus",
+          "lines": [
+            {
+              "id": "statue-01",
+              "who": "gus",
+              "text": "Don't talk to me. I'm a statue. I've been a statue since 1987.",
+              "say": "Don't talk to me. I'm a statue. I've been a statue since nineteen eighty-seven."
+            },
+            {
+              "id": "statue-02",
+              "who": "gus",
+              "text": "Tourists stopped tipping. Do something loud near me, so I can keep not moving next to it."
+            },
+            {
+              "id": "statue-03",
+              "who": "gus",
+              "text": "A big combo. I stay perfectly still. That's the contrast. That's the art."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 1,200 combo by Gus",
+          "points": 1200,
+          "near": "cast:gus",
+          "radius": 80,
+          "say": [
+            {
+              "id": "statue-04",
+              "who": "gus",
+              "text": "Go. I'm already not moving."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "gus",
+          "text": "Back to Gus",
+          "radius": 25,
+          "lines": [
+            {
+              "id": "statue-05",
+              "who": "gus",
+              "text": "Forty dollars in the bucket. I didn't blink. You almost made me blink."
+            },
+            {
+              "id": "statue-06",
+              "who": "gus",
+              "text": "Come back tomorrow. Same time. I'll be here. I'm always here. I can't feel my legs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fries",
+      "name": "Fry Thief",
+      "kind": "side",
+      "area": "Fisherman's Wharf",
+      "giver": "steve",
+      "blurb": "Steve is a seagull. He steals fries. He dropped two, and wants them back.",
+      "reward": {
+        "outfit": "mascot/seagull"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "steve",
+          "offer": true,
+          "text": "Talk to Steve",
+          "lines": [
+            {
+              "id": "fries-01",
+              "who": "steve",
+              "text": "Kid. I'm a seagull. I steal fries. It's a calling."
+            },
+            {
+              "id": "fries-02",
+              "who": "steve",
+              "text": "I dropped two escaping a toddler. Fetch 'em and I won't follow you home.",
+              "say": "I dropped two escaping a toddler. Fetch them, and I won't follow you home."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find Steve's fries",
+          "item": "fries",
+          "items": [
+            [
+              125.0,
+              969.0,
+              -9.11
+            ],
+            [
+              80.0,
+              961.0,
+              -9.14
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 45,
+          "done": [
+            {
+              "id": "fries-03",
+              "who": "steve",
+              "text": "Fresh fries. You're alright. From now on I only steal from people in hats."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "poet",
+      "name": "Free Verse",
+      "kind": "side",
+      "area": "North Beach",
+      "giver": "rocco",
+      "reward": {
+        "sticker": "side-poet",
+        "outfit": "vampire/daywalker"
+      },
+      "blurb": "Rocco writes poems about the fog. The fog never writes back. He needs a line with no rhythm and all feeling.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "rocco",
+          "offer": true,
+          "text": "Talk to Rocco",
+          "lines": [
+            {
+              "id": "poet-01",
+              "who": "rocco",
+              "text": "I am Rocco. I write poems about the fog. The fog never writes back."
+            },
+            {
+              "id": "poet-02",
+              "who": "karl",
+              "text": "I read them. They are mid."
+            },
+            {
+              "id": "poet-03",
+              "who": "rocco",
+              "text": "Skate me a line with no rhythm and all feeling. A long combo, here in the square."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 1,500 combo in Washington Square",
+          "points": 1500,
+          "near": "cast:rocco",
+          "radius": 120
+        },
+        {
+          "kind": "talk",
+          "who": "rocco",
+          "text": "Back to Rocco",
+          "radius": 40,
+          "lines": [
+            {
+              "id": "poet-04",
+              "who": "rocco",
+              "text": "Yes. A line that rhymes with nothing. That's North Beach."
+            },
+            {
+              "id": "poet-05",
+              "who": "rocco",
+              "text": "I will call it Ode to a Kid Falling Up. Don't read it. Nobody reads it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "espresso",
+      "name": "Espresso, Not Expresso",
+      "kind": "side",
+      "area": "North Beach",
+      "giver": "nonna",
+      "blurb": "Every day for forty years Nonna Gia has brought Vito his espresso. Today her knees said no.",
+      "fail": {
+        "bail": [
+          {
+            "id": "espresso-01",
+            "who": "nonna",
+            "text": "You spilled it. On a Tuesday. Vito will talk about this for years."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "nonna",
+          "offer": true,
+          "text": "Talk to Nonna Gia",
+          "lines": [
+            {
+              "id": "espresso-02",
+              "who": "nonna",
+              "text": "Every day for forty years I bring Vito his espresso. Today my knees said no."
+            },
+            {
+              "id": "espresso-03",
+              "who": "nonna",
+              "text": "Take it to the square. Don't spill. And it's espresso. If you say expresso, I'll know."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The espresso to Vito, no spills",
+          "item": "espresso",
+          "to": "cast:vito",
+          "seconds": 50,
+          "noBail": true,
+          "done": [
+            {
+              "id": "espresso-04",
+              "who": "vito",
+              "text": "Espresso! Nonna is never late. Forty years. Must be love."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bocce",
+      "name": "Bocce Ball",
+      "kind": "side",
+      "area": "North Beach",
+      "giver": "vito",
+      "blurb": "Enzo threw the bocce ball like a teenager. It rolled down Columbus.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "vito",
+          "offer": true,
+          "text": "Talk to Vito",
+          "lines": [
+            {
+              "id": "bocce-01",
+              "who": "vito",
+              "text": "We play bocce since 1961. Today Enzo threw like a teenager, and the ball went down Columbus.",
+              "say": "We play bocce since nineteen sixty-one. Today Enzo threw like a teenager, and the ball went down Columbus."
+            },
+            {
+              "id": "bocce-02",
+              "who": "vito",
+              "text": "Bring it back. Enzo is too proud and I am too comfortable."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find the bocce ball down Columbus",
+          "item": "bocce ball",
+          "items": [
+            [
+              60.0,
+              705.0,
+              5.33
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 60,
+          "done": [
+            {
+              "id": "bocce-03",
+              "who": "vito",
+              "text": "Grazie. Enzo says it does not count. Enzo says that about everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brakeshoe",
+      "name": "The Brake Shoe",
+      "kind": "side",
+      "area": "Russian Hill",
+      "giver": "mo",
+      "blurb": "The Hyde St cable car's brake shoe rolled downhill. Mo would like it back before the next run.",
+      "reward": {
+        "outfit": "cablecar/california"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "mo",
+          "offer": true,
+          "text": "Talk to Mo",
+          "lines": [
+            {
+              "id": "brakeshoe-01",
+              "who": "mo",
+              "text": "Hyde Street cable car. I work the brake. The brake shoe fell off and rolled downhill."
+            },
+            {
+              "id": "brakeshoe-02",
+              "who": "mo",
+              "text": "Find it before we try the hill without it. The tourists would love it. The insurance would not."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find the brake shoe down Hyde",
+          "item": "brake shoe",
+          "items": [
+            [
+              -290.0,
+              700.0,
+              28.11
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 50,
+          "done": [
+            {
+              "id": "brakeshoe-03",
+              "who": "mo",
+              "text": "Brake shoe! You saved forty tourists and one very nervous pigeon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hydrangeas",
+      "name": "Hydrangea Patrol",
+      "kind": "side",
+      "area": "Russian Hill",
+      "giver": "fitch",
+      "blurb": "Tourists keep picking Mrs. Fitch's hydrangeas on Lombard for photos.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "fitch",
+          "offer": true,
+          "text": "Talk to Mrs. Fitch",
+          "lines": [
+            {
+              "id": "hydrangeas-01",
+              "who": "fitch",
+              "text": "Tourists pick my hydrangeas for photos. Two hundred photos a day, one hydrangea left."
+            },
+            {
+              "id": "hydrangeas-02",
+              "who": "fitch",
+              "text": "Grind the curb by my beds. Loudly. Make them think twice."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Grind a curb by the flower beds",
+          "grind": 1.5,
+          "near": "cast:fitch",
+          "radius": 70,
+          "done": [
+            {
+              "id": "hydrangeas-03",
+              "who": "fitch",
+              "text": "They fled. One even put a hydrangea back. Progress."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lionluck",
+      "name": "Lion's Luck",
+      "kind": "side",
+      "area": "Chinatown",
+      "giver": "kenny",
+      "blurb": "Kenny's lion dance needs luck before tonight. The old way is drums.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "kenny",
+          "offer": true,
+          "text": "Talk to Kenny",
+          "lines": [
+            {
+              "id": "lionluck-01",
+              "who": "kenny",
+              "text": "Our lion dance needs luck before tonight. The old way is drums. The new way is you."
+            },
+            {
+              "id": "lionluck-02",
+              "who": "kenny",
+              "text": "Ollie through the Dragon Gate. Big. The lion is watching. The lion is two guys."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Big air by the Dragon Gate",
+          "air": 0.5,
+          "near": "dragon_gate",
+          "radius": 40,
+          "done": [
+            {
+              "id": "lionluck-03",
+              "who": "kenny",
+              "text": "Lucky! The lion nodded. That was Eddie in the back. He is a fan."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hargow",
+      "name": "Har Gow Express",
+      "kind": "side",
+      "area": "Chinatown",
+      "giver": "mei",
+      "blurb": "The lion dancers ordered har gow and are too busy being a lion to fetch it.",
+      "fail": {
+        "time": [
+          {
+            "id": "hargow-01",
+            "who": "mei",
+            "text": "Cold har gow. I'm telling your mother."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "mei",
+          "offer": true,
+          "text": "Talk to Auntie Mei",
+          "lines": [
+            {
+              "id": "hargow-02",
+              "who": "mei",
+              "text": "The lion dancers ordered har gow. They are too busy being a lion to come get it."
+            },
+            {
+              "id": "hargow-03",
+              "who": "mei",
+              "text": "Down Grant to the gate, still steaming. Steam is how you know it is love."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Har gow to the lion dancers, still steaming",
+          "item": "har gow",
+          "to": "cast:kenny",
+          "seconds": 60,
+          "done": [
+            {
+              "id": "hargow-04",
+              "who": "kenny",
+              "text": "Still steaming. Auntie Mei says hi, and also that we are too skinny."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sandwich",
+      "name": "Named After You",
+      "kind": "side",
+      "area": "Lower Haight",
+      "giver": "benny",
+      "blurb": "Benny names every sandwich after a regular. He's out of regulars.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "benny",
+          "offer": true,
+          "text": "Talk to Benny",
+          "lines": [
+            {
+              "id": "sandwich-01",
+              "who": "benny",
+              "text": "Every sandwich here is named after a regular. I'm out of regulars. Three of them are named after my landlord."
+            },
+            {
+              "id": "sandwich-02",
+              "who": "benny",
+              "text": "Do something worth a sandwich. Right here, where I can see it."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 500 combo in front of the shop",
+          "points": 500,
+          "near": "cast:benny",
+          "radius": 60,
+          "done": [
+            {
+              "id": "sandwich-03",
+              "who": "benny",
+              "text": "Done! The New Kid. Turkey, avocado, a little gravel. Eighteen dollars."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wiggle",
+      "name": "The Wiggle",
+      "kind": "side",
+      "area": "Lower Haight",
+      "giver": "juniper",
+      "blurb": "Juniper got a flat on the Wiggle. Her zine has to reach Duboce Park.",
+      "fail": {
+        "time": [
+          {
+            "id": "wiggle-01",
+            "who": "juniper",
+            "text": "You're late. That's fine. The zine is also about letting go."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "juniper",
+          "offer": true,
+          "text": "Talk to Juniper",
+          "lines": [
+            {
+              "id": "wiggle-02",
+              "who": "juniper",
+              "text": "I ride the Wiggle every day. Today the Wiggle won. Flat tire."
+            },
+            {
+              "id": "wiggle-03",
+              "who": "juniper",
+              "text": "Take this envelope to Duboce Park in one minute. It's a zine about not having brakes."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The zine to Duboce Park",
+          "item": "zine",
+          "to": "duboce_park",
+          "radius": 20,
+          "seconds": 60,
+          "say": [
+            {
+              "id": "wiggle-04",
+              "who": "juniper",
+              "text": "Go. Pretend you're a bike. Bikes are faster. Sorry."
+            }
+          ],
+          "done": [
+            {
+              "id": "wiggle-05",
+              "who": "juniper",
+              "text": "Delivered? Rad. You'd make a decent messenger. Lose the brakes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune, Written Daily",
+      "kind": "side",
+      "area": "Chinatown",
+      "giver": "lau",
+      "blurb": "Mr. Lau has written cookie fortunes for fifty years. Today he has writer's block.",
+      "reward": {
+        "deck": "cookie"
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "lau",
+          "offer": true,
+          "text": "Talk to Mr. Lau",
+          "lines": [
+            {
+              "id": "fortune-01",
+              "who": "lau",
+              "text": "I write the fortunes for the cookie bakery. Fifty years. Today, nothing. Writer's block."
+            },
+            {
+              "id": "fortune-02",
+              "who": "lau",
+              "text": "Do something I can write down. Something true. A kickflip, here, where I can see it."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A kickflip for Mr. Lau",
+          "tricks": [
+            "kickflip"
+          ],
+          "near": "cast:lau",
+          "radius": 40,
+          "done": [
+            {
+              "id": "fortune-03",
+              "who": "lau",
+              "text": "'You will see a kickflip on Grant Avenue.' Ten thousand cookies, and finally, all of them true."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parrot",
+      "name": "New Word",
+      "kind": "side",
+      "area": "Telegraph Hill",
+      "giver": "pistachio",
+      "blurb": "Pistachio the parrot knows one word, and a skater taught it. Teach it a better one.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "pistachio",
+          "offer": true,
+          "text": "Talk to Pistachio",
+          "lines": [
+            {
+              "id": "parrot-01",
+              "who": "pistachio",
+              "text": "Squawk! Pretty bird knows one word! A skater taught me! Mid! Mid!"
+            },
+            {
+              "id": "parrot-02",
+              "who": "pistachio",
+              "text": "Pretty bird wants a new word! Show pretty bird flying! Squawk!"
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Fly for Pistachio (half a second of air)",
+          "air": 0.5,
+          "near": "cast:pistachio",
+          "radius": 60,
+          "done": [
+            {
+              "id": "parrot-03",
+              "who": "pistachio",
+              "text": "Fly! Fly! Pretty bird says fly! Squawk!"
+            },
+            {
+              "id": "parrot-04",
+              "who": "pistachio",
+              "text": "Mid."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cruise",
+      "name": "Shore Leave",
+      "kind": "side",
+      "area": "The Embarcadero",
+      "giver": "herb",
+      "blurb": "Herb has four hours off the cruise ship and wants one real skateboard trick for the Christmas letter.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "herb",
+          "offer": true,
+          "text": "Talk to Herb",
+          "lines": [
+            {
+              "id": "cruise-01",
+              "who": "herb",
+              "text": "Four hours off the boat and we've seen fog, a sea lion and a man dressed as a bush."
+            },
+            {
+              "id": "cruise-02",
+              "who": "herb",
+              "text": "Linda wants a real skateboard trick for the Christmas letter. Something big. Linda, get the camera!"
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Something big for Linda's camera (an 800 combo)",
+          "points": 800,
+          "near": "cast:herb",
+          "radius": 80,
+          "done": [
+            {
+              "id": "cruise-03",
+              "who": "herb",
+              "text": "Linda! Did you get it? ... She got the bush man again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tour",
+      "name": "Follow the Flag",
+      "kind": "side",
+      "area": "Telegraph Hill",
+      "giver": "bernadette",
+      "blurb": "Bernadette's Coit Tower tour rented scooters and left without her. They follow the flag, not her.",
+      "fail": {
+        "time": [
+          {
+            "id": "tour-01",
+            "who": "bernadette",
+            "text": "They're in Sausalito. They'll be back. They always come back. For the gift shop."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "bernadette",
+          "offer": true,
+          "text": "Talk to Bernadette",
+          "lines": [
+            {
+              "id": "tour-02",
+              "who": "bernadette",
+              "text": "Welcome to Coit Tower. My tour group rented scooters and left without me."
+            },
+            {
+              "id": "tour-03",
+              "who": "bernadette",
+              "text": "They follow the flag, not me. Take it to Pier 23 and they'll stop. Probably."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The tour flag to Pier 23",
+          "item": "tour flag",
+          "to": [
+            575.0,
+            905.0,
+            -9.67
+          ],
+          "radius": 12,
+          "seconds": 55,
+          "done": [
+            {
+              "id": "tour-04",
+              "who": "bernadette",
+              "text": "They stopped! They're following you now. Congratulations, you're a tour guide. The pay is terrible."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "slackline",
+      "name": "Balance Solidarity",
+      "kind": "side",
+      "area": "Mission Dolores",
+      "giver": "jasper",
+      "blurb": "Jasper fell off his slackline again. He needs to see someone else balance.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "jasper",
+          "offer": true,
+          "text": "Talk to Jasper",
+          "lines": [
+            {
+              "id": "slackline-01",
+              "who": "jasper",
+              "text": "I fell off the slackline. Again. The palm tree says hi."
+            },
+            {
+              "id": "slackline-02",
+              "who": "jasper",
+              "text": "Do a manual for me. It's a slackline, but on wheels, and worse."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A manual in Dolores Park",
+          "tricks": [
+            "manual",
+            "nosemanual"
+          ],
+          "near": "cast:jasper",
+          "radius": 60,
+          "done": [
+            {
+              "id": "slackline-03",
+              "who": "jasper",
+              "text": "Beautiful. You wobbled exactly like me. We are the same now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oatmilk",
+      "name": "Oat Milk Emergency",
+      "kind": "side",
+      "area": "Noe Valley",
+      "giver": "gideon",
+      "blurb": "Gideon's twins are finally asleep. He left the oat milk on the café table across 24th.",
+      "fail": {
+        "time": [
+          {
+            "id": "oatmilk-01",
+            "who": "gideon",
+            "text": "Someone took it. It's Noe Valley. It was probably a golden retriever."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gideon",
+          "offer": true,
+          "text": "Talk to Gideon",
+          "lines": [
+            {
+              "id": "oatmilk-02",
+              "who": "gideon",
+              "text": "The twins are asleep. If I move, they wake up. If they wake up, I move to Oakland."
+            },
+            {
+              "id": "oatmilk-03",
+              "who": "gideon",
+              "text": "My oat milk is on the café table across the street. Thirty seconds. Whisper-fast."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Fetch the oat milk",
+          "item": "oat milk",
+          "items": [
+            [
+              -458.0,
+              -478.0,
+              58.43
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 35,
+          "done": [
+            {
+              "id": "oatmilk-04",
+              "who": "gideon",
+              "text": "You're a hero. A quiet hero. Shh. Hero quieter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fogcousin",
+      "name": "Above the Fog",
+      "kind": "side",
+      "area": "Twin Peaks",
+      "giver": "misty",
+      "blurb": "Misty, Karl's cousin, sits on Twin Peaks. She wants to see someone get above her.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "misty",
+          "offer": true,
+          "text": "Talk to Misty",
+          "lines": [
+            {
+              "id": "fogcousin-01",
+              "who": "misty",
+              "text": "I'm Misty. Karl's cousin. He gets the city. I get this hill and a parking lot."
+            },
+            {
+              "id": "fogcousin-02",
+              "who": "misty",
+              "text": "Show me something higher than me. Nobody's higher than me. That's the problem."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Get some air on Twin Peaks",
+          "air": 0.6,
+          "near": "cast:misty",
+          "radius": 90,
+          "done": [
+            {
+              "id": "fogcousin-03",
+              "who": "misty",
+              "text": "Huh. You were above the fog for a second there. Don't tell Karl."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jchurch",
+      "name": "Four Minutes",
+      "kind": "side",
+      "area": "Mission Dolores",
+      "giver": "walter",
+      "blurb": "Walter has waited for the J Church since 2009. He could use some entertainment.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "walter",
+          "offer": true,
+          "text": "Talk to Walter",
+          "lines": [
+            {
+              "id": "jchurch-01",
+              "who": "walter",
+              "text": "The sign says the J is four minutes away. The sign has said that since 2009."
+            },
+            {
+              "id": "jchurch-02",
+              "who": "walter",
+              "text": "Do a little something while we wait. Anything. Something with points."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 400 combo by the J Church stop",
+          "points": 400,
+          "near": "cast:walter",
+          "radius": 60,
+          "done": [
+            {
+              "id": "jchurch-03",
+              "who": "walter",
+              "text": "Very nice. The J still isn't here. See you in 2031."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pug",
+      "name": "Mayor Biscuits",
+      "kind": "side",
+      "area": "Civic Center",
+      "giver": "lorraine",
+      "blurb": "Lorraine's pug, Mayor Biscuits, ran off down Market and dropped things on the way.",
+      "fail": {
+        "time": [
+          {
+            "id": "pug-01",
+            "who": "lorraine",
+            "text": "Too slow. He found the hot dog. Now he is asleep on it. Classic Mayor.",
+            "say": "Too slow. He found the hot dog. Now he's asleep on it. Classic Mayor."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "lorraine",
+          "offer": true,
+          "text": "Talk to Lorraine",
+          "lines": [
+            {
+              "id": "pug-02",
+              "who": "lorraine",
+              "text": "Mayor Biscuits got away from me again. He dropped my keys, my shoe and a hot dog that is not ours."
+            },
+            {
+              "id": "pug-03",
+              "who": "lorraine",
+              "text": "Find all three before he circles back for the hot dog."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Find what Mayor Biscuits dropped",
+          "item": "pug things",
+          "items": [
+            [
+              130.0,
+              355.0,
+              2.45
+            ],
+            [
+              70.0,
+              300.0,
+              2.47
+            ],
+            [
+              150.0,
+              315.0,
+              2.31
+            ]
+          ],
+          "radius": 2.0,
+          "seconds": 60,
+          "done": [
+            {
+              "id": "pug-04",
+              "who": "lorraine",
+              "text": "Keys, shoe... no hot dog. He ate the hot dog. He always eats the hot dog."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "honey",
+      "name": "Local Honey",
+      "kind": "side",
+      "area": "Civic Center",
+      "giver": "ruth",
+      "blurb": "Gloria ordered a jar of honey from Ruth at the UN Plaza market. It has to reach City Hall in one piece.",
+      "fail": {
+        "time": [
+          {
+            "id": "honey-01",
+            "who": "ruth",
+            "text": "Gloria's office is closed. She says the honey can reapply tomorrow."
+          }
+        ],
+        "bail": [
+          {
+            "id": "honey-02",
+            "who": "ruth",
+            "text": "Oh dear. The bees felt that. All of them."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "ruth",
+          "offer": true,
+          "text": "Talk to Ruth",
+          "lines": [
+            {
+              "id": "honey-03",
+              "who": "ruth",
+              "text": "Gloria at City Hall ordered a jar of honey. She ordered it in triplicate."
+            },
+            {
+              "id": "honey-04",
+              "who": "ruth",
+              "text": "Take it to her. Don't drop it. If the jar breaks, the bees will know."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The honey to Gloria at City Hall, no bails",
+          "item": "honey",
+          "to": "cast:gloria",
+          "radius": 8,
+          "seconds": 80,
+          "noBail": true,
+          "done": [
+            {
+              "id": "honey-05",
+              "who": "gloria",
+              "text": "Honey. Acceptable. Tell Ruth that is my highest rating."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "churros",
+      "name": "Sugar Run",
+      "kind": "side",
+      "area": "Calle 24",
+      "giver": "chela",
+      "blurb": "Doña Chela is out of sugar. Don Beto's bakery on 24th has sugar, and opinions.",
+      "fail": {
+        "time": [
+          {
+            "id": "churros-01",
+            "who": "chela",
+            "text": "Too late. I sold them plain. Everyone said 'interesting'."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "chela",
+          "offer": true,
+          "text": "Talk to Doña Chela",
+          "lines": [
+            {
+              "id": "churros-02",
+              "who": "chela",
+              "text": "Mija, I'm out of sugar. A churro without sugar is just a stick."
+            },
+            {
+              "id": "churros-03",
+              "who": "chela",
+              "text": "Don Beto has sugar. He also has opinions. Get the sugar, skip the opinions."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Sugar from Don Beto's bakery",
+          "item": "sugar",
+          "from": "cast:beto",
+          "to": "cast:chela",
+          "radius": 6,
+          "seconds": 90,
+          "done": [
+            {
+              "id": "churros-04",
+              "who": "chela",
+              "text": "Sugar! Here, a churro. Don't tell Beto I said he has opinions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weddingshot",
+      "name": "Something Very San Francisco",
+      "kind": "side",
+      "area": "Civic Center",
+      "giver": "haverford",
+      "blurb": "The wedding shoot on the City Hall steps needs something very San Francisco in the background.",
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "haverford",
+          "offer": true,
+          "text": "Talk to Mrs. Haverford",
+          "lines": [
+            {
+              "id": "weddingshot-01",
+              "who": "haverford",
+              "text": "My daughter wants something very San Francisco in the background of her wedding photos."
+            },
+            {
+              "id": "weddingshot-02",
+              "who": "haverford",
+              "text": "You are very San Francisco. Do a trick behind them. Tasteful. Then leave."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Some air behind the wedding photo",
+          "air": 0.5,
+          "near": [
+            12.0,
+            348.0,
+            5.63
+          ],
+          "radius": 30,
+          "done": [
+            {
+              "id": "weddingshot-03",
+              "who": "haverford",
+              "text": "Perfect. The bride is crying. The groom is also crying. Unclear why."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "speedchess",
+      "name": "Speed Chess",
+      "kind": "side",
+      "area": "Downtown",
+      "giver": "lev",
+      "blurb": "Lev plays speed chess on Market Street. He moves, you land a trick.",
+      "fail": {
+        "time": [
+          {
+            "id": "speedchess-01",
+            "who": "lev",
+            "text": "Checkmate. Coffee. Black, four sugars."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "lev",
+          "offer": true,
+          "text": "Talk to Lev",
+          "lines": [
+            {
+              "id": "speedchess-02",
+              "who": "lev",
+              "text": "Speed chess. I move, you land a trick. Three of my moves, three of your tricks."
+            },
+            {
+              "id": "speedchess-03",
+              "who": "lev",
+              "text": "If I checkmate first, you buy the coffee. I always checkmate first."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "Three tricks before Lev checkmates (300 points each)",
+          "points": 300,
+          "count": 3,
+          "seconds": 45,
+          "near": [
+            640.0,
+            405.0,
+            -8.92
+          ],
+          "radius": 40,
+          "each": [
+            {
+              "id": "speedchess-04",
+              "who": "lev",
+              "text": "Your move. I moved already."
+            },
+            {
+              "id": "speedchess-05",
+              "who": "lev",
+              "text": "Pawn takes pawn. Kid takes curb."
+            }
+          ],
+          "done": [
+            {
+              "id": "speedchess-06",
+              "who": "lev",
+              "text": "You won. I don't say that. I said it once, in 1988. Now twice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statueoff",
+      "name": "Statue-Off",
+      "kind": "side",
+      "area": "Fisherman's Wharf",
+      "giver": "gus",
+      "blurb": "There's a new silver statue at Pier 39. Gus wants to know if he's the real thing.",
+      "after": [
+        "statue"
+      ],
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "gus",
+          "offer": true,
+          "text": "Talk to Gus",
+          "lines": [
+            {
+              "id": "statueoff-01",
+              "who": "gus",
+              "text": "There's a new statue at Pier 39. Silver paint. My silver. A copycat."
+            },
+            {
+              "id": "statueoff-02",
+              "who": "gus",
+              "text": "Go do something big next to him. If he moves, he's not a statue. He's just a guy."
+            }
+          ]
+        },
+        {
+          "kind": "trick",
+          "text": "A 1,000 combo by the Pier 39 statue",
+          "points": 1000,
+          "near": [
+            285.0,
+            988.0,
+            -8.6
+          ],
+          "radius": 40,
+          "done": [
+            {
+              "id": "statueoff-03",
+              "who": "gus",
+              "text": "He moved? He moved! Thirty-seven years and I never moved. Copycat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garbage",
+      "name": "Kevin's Garbage Run",
+      "kind": "side",
+      "area": "SoMa",
+      "giver": "kevin",
+      "blurb": "Kevin sprained his ankle bombing Dolores. Somebody has to drive his route.",
+      "vehicles": [
+        {
+          "name": "kevins_truck",
+          "type": "garbage",
+          "at": [
+            40.0,
+            -6.0,
+            284
+          ]
+        }
+      ],
+      "fail": {
+        "time": [
+          {
+            "id": "garbage-01",
+            "who": "kevin",
+            "text": "The raccoons got there first. They always get there first."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "kevin",
+          "offer": true,
+          "text": "Talk to Kevin",
+          "lines": [
+            {
+              "id": "garbage-02",
+              "who": "kevin",
+              "text": "Kevin. Three Bin Hauling. I bomb Dolores on my lunch break. Today Dolores bombed me."
+            },
+            {
+              "id": "garbage-03",
+              "who": "kevin",
+              "text": "Sprained ankle. Can you drive my route? Five bins round the park. The truck is very forgiving. The bins are not."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Kevin's route: five bins round the park, in the truck",
+          "item": "bin",
+          "items": [
+            [
+              20.6,
+              -3.4,
+              -0.59
+            ],
+            [
+              -7.9,
+              64.3,
+              0.62
+            ],
+            [
+              19.3,
+              178.9,
+              0.4
+            ],
+            [
+              107.4,
+              121.2,
+              -1.96
+            ],
+            [
+              97.7,
+              13.1,
+              -2.42
+            ]
+          ],
+          "radius": 6,
+          "vehicle": "kevins_truck",
+          "stop": true,
+          "seconds": 240,
+          "say": [
+            {
+              "id": "garbage-04",
+              "who": "kevin",
+              "text": "Pull up next to the bins. Beeping is optional but encouraged."
+            }
+          ],
+          "each": [
+            {
+              "id": "garbage-05",
+              "who": "kevin",
+              "text": "One down. The raccoons will be furious."
+            },
+            {
+              "id": "garbage-06",
+              "who": "kevin",
+              "text": "Ooh. That one smelled like a startup."
+            },
+            {
+              "id": "garbage-07",
+              "who": "kevin",
+              "text": "Halfway. You stop better than I do. Nine years, I still miss the green one."
+            },
+            {
+              "id": "garbage-08",
+              "who": "kevin",
+              "text": "One more. The raccoons are filing a complaint."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "kevin",
+          "phone": true,
+          "text": "Kevin, on the phone",
+          "lines": [
+            {
+              "id": "garbage-09",
+              "who": "kevin",
+              "text": "Five for five. Everything is trash if you love it enough."
+            },
+            {
+              "id": "garbage-10",
+              "who": "kevin",
+              "text": "Leave the truck anywhere. Seriously. It's a garbage truck. Nobody steals a garbage truck."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tourist",
+      "name": "The Lost Tourist",
+      "kind": "side",
+      "area": "Civic Center",
+      "giver": "bjorn",
+      "blurb": "Bjorn from Stockholm is looking for the Golden Gate Bridge with a map from 1987. Drive him to Pier 39 and let him narrate.",
+      "actors": {
+        "bjorn": [
+          102.0,
+          279.0,
+          2.29,
+          200
+        ]
+      },
+      "vehicles": [
+        {
+          "name": "tour_van",
+          "type": "van",
+          "at": [
+            88.0,
+            272.0,
+            90
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "bjorn",
+          "offer": true,
+          "text": "Talk to Bjorn",
+          "lines": [
+            {
+              "id": "tourist-01",
+              "who": "bjorn",
+              "text": "Hello! Bjorn, from Stockholm. I am looking for the Golden Gate Bridge. My map says it is here."
+            },
+            {
+              "id": "tourist-02",
+              "who": "bjorn",
+              "text": "My map is from 1987. Can you drive me? I will narrate. I am very good at narrating."
+            }
+          ]
+        },
+        {
+          "kind": "carry",
+          "text": "Drive Bjorn to Pier 39",
+          "who": "bjorn",
+          "to": [
+            290.0,
+            958.0,
+            -8.82
+          ],
+          "radius": 15,
+          "vehicle": "tour_van",
+          "every": 40,
+          "say": [
+            {
+              "id": "tourist-03",
+              "who": "bjorn",
+              "text": "Here! Over here! I am the one with the map!"
+            }
+          ],
+          "lines": [
+            {
+              "id": "tourist-04",
+              "who": "bjorn",
+              "text": "Ah! That building, I know it. The Golden Gate Bridge. Shorter than in the films."
+            },
+            {
+              "id": "tourist-05",
+              "who": "bjorn",
+              "text": "And this must be the famous crooked street. It is so straight."
+            },
+            {
+              "id": "tourist-06",
+              "who": "bjorn",
+              "text": "Alcatraz is very close to downtown, yes? My map says it is everywhere."
+            },
+            {
+              "id": "tourist-07",
+              "who": "bjorn",
+              "text": "In 1987 my map says this was all water. Progress!"
+            }
+          ],
+          "done": [
+            {
+              "id": "tourist-08",
+              "who": "bjorn",
+              "text": "We are here! The Golden Gate Bridge. Why is it barking?"
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "text": "Bjorn, at Pier 39",
+          "who": "bjorn",
+          "lines": [
+            {
+              "id": "tourist-09",
+              "who": "bjorn",
+              "text": "Thank you! I will tell everyone in Stockholm that San Francisco is exactly as I imagined. Wrong, but exactly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "boarddrop",
+      "name": "Board Drop",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "biglou",
+      "blurb": "A shipment of decks came in at Fog City Skate Shop for the kids at SoMa West. Big Lou's knee is not driving.",
+      "vehicles": [
+        {
+          "name": "shop_van",
+          "type": "van",
+          "at": [
+            -54.0,
+            -265.0,
+            0
+          ]
+        }
+      ],
+      "fail": {
+        "time": [
+          {
+            "id": "boarddrop-01",
+            "who": "biglou",
+            "text": "The kids skated the old boards. Fine. The old boards are mostly tape anyway."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "biglou",
+          "offer": true,
+          "text": "Talk to Big Lou",
+          "lines": [
+            {
+              "id": "boarddrop-02",
+              "who": "biglou",
+              "text": "Shipment came in. Twelve decks for the kids at SoMa West. My knee says I'm not driving."
+            },
+            {
+              "id": "boarddrop-03",
+              "who": "biglou",
+              "text": "Take the crew van. Corners slow. In 1996 I took a corner fast. That's the other knee."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Twelve decks to the park gate, in the van",
+          "item": "decks",
+          "to": [
+            19.0,
+            -5.0,
+            -0.55
+          ],
+          "radius": 12,
+          "vehicle": "shop_van",
+          "seconds": 150,
+          "say": [
+            {
+              "id": "boarddrop-04",
+              "who": "biglou",
+              "text": "Easy on the brakes. They're decks, not eggs. Still."
+            }
+          ],
+          "done": [
+            {
+              "id": "boarddrop-05",
+              "who": "kenji",
+              "text": "New decks! I'll lose this one by Friday. Maybe Thursday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "catering",
+      "name": "Catering, Gently",
+      "kind": "side",
+      "area": "The Mission",
+      "giver": "hector",
+      "blurb": "City Hall ordered forty burritos for the permit office. Hector says the van must not hit anything.",
+      "vehicles": [
+        {
+          "name": "taqueria_van",
+          "type": "van",
+          "at": [
+            -54.0,
+            -250.0,
+            0
+          ]
+        }
+      ],
+      "fail": {
+        "time": [
+          {
+            "id": "catering-01",
+            "who": "hector",
+            "text": "The permit office ate lunch somewhere else. They have never done that. I am hurt."
+          }
+        ],
+        "bump": [
+          {
+            "id": "catering-02",
+            "who": "hector",
+            "text": "You hit something. I heard it from here. The salsa heard it too."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "hector",
+          "offer": true,
+          "text": "Talk to Hector",
+          "lines": [
+            {
+              "id": "catering-03",
+              "who": "hector",
+              "text": "City Hall ordered forty burritos for the permit office. Forty. Gloria signed for them in advance."
+            },
+            {
+              "id": "catering-04",
+              "who": "hector",
+              "text": "Take the van. Do not hit anything. A burrito that has been in a crash is a bowl."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "Forty burritos to City Hall, without a bump",
+          "item": "burritos",
+          "to": "cast:gloria",
+          "radius": 40,
+          "vehicle": "taqueria_van",
+          "noBump": 3,
+          "seconds": 200,
+          "say": [
+            {
+              "id": "catering-05",
+              "who": "hector",
+              "text": "Gently! Gently is the whole recipe."
+            }
+          ],
+          "done": [
+            {
+              "id": "catering-06",
+              "who": "gloria",
+              "text": "Forty burritos. Thirty-nine intact. I am noting the one."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kenjiboard",
+      "name": "Kenji's Board",
+      "kind": "side",
+      "area": "SoMa",
+      "giver": "kenji",
+      "blurb": "Kenji lost his board again. A seagull left it on a low roof by Duboce Park.",
+      "reward": {
+        "sticker": "side-kenji"
+      },
+      "fail": {
+        "time": [
+          {
+            "id": "kenjiboard-01",
+            "who": "kenji",
+            "text": "Too slow. The seagull came back for it. We're not friends anymore."
+          }
+        ]
+      },
+      "steps": [
+        {
+          "kind": "talk",
+          "who": "kenji",
+          "offer": true,
+          "text": "Talk to Kenji",
+          "lines": [
+            {
+              "id": "kenjiboard-02",
+              "who": "kenji",
+              "text": "Dude. I lost my board. Again. Fourth time this week."
+            },
+            {
+              "id": "kenjiboard-03",
+              "who": "kenji",
+              "text": "It's on a roof by Duboce Park. A seagull took it. I don't want to talk about it."
+            }
+          ]
+        },
+        {
+          "kind": "collect",
+          "text": "Kenji's board, on a low roof by Duboce Park",
+          "item": "Kenji's board",
+          "items": [
+            [
+              -403.85,
+              217.6,
+              25.940
+            ]
+          ],
+          "radius": 1.6,
+          "height": 1.2,
+          "actors": {
+            "kenji": [
+              -295.0,
+              207.0,
+              14.52,
+              280
+            ]
+          },
+          "say": [
+            {
+              "id": "kenjiboard-04",
+              "who": "kenji",
+              "text": "Pallets to the dumpster to the roof. Or the stairs, if you're boring."
+            }
+          ]
+        },
+        {
+          "kind": "deliver",
+          "text": "The board to Kenji, down in the park",
+          "item": "Kenji's board",
+          "to": "cast:kenji",
+          "radius": 4,
+          "seconds": 45,
+          "say": [
+            {
+              "id": "kenjiboard-05",
+              "who": "kenji",
+              "text": "Got it? I'm down in the park. Forty-five seconds, before I cry."
+            }
+          ]
+        },
+        {
+          "kind": "talk",
+          "who": "kenji",
+          "text": "Kenji, reunited",
+          "lines": [
+            {
+              "id": "kenjiboard-06",
+              "who": "kenji",
+              "text": "My board! Was it always this ugly? I love it."
+            },
+            {
+              "id": "kenjiboard-07",
+              "who": "kenji",
+              "text": "Next time it's up there, just leave it. It's happier up there."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

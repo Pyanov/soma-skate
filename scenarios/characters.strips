@@ -1,0 +1,10 @@
+# Character review in the real look: ./skate strip --sheet scenarios/characters.strips --height 300
+# Each row: idle, ollie, kickflip catch, Indy grab, BS 50-50, landing celebration, bail.
+# label | moments | - | camera | character | style
+Can of Hella Fría | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | can | real
+Big Blob | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | blob | real
+Eucalyptus Monster | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | redmonster | real
+Guy in the Orange Suit | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | mascot | real
+Count Kickflip | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | vampire | real
+Mr. Bones | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | skeleton | real
+Tech Bro | soma-idle@260, soma-big3-kickflip@200, soma-big3-kickflip@243, soma-big3-indy@255, soma-5050-ledge@95, soma-big3-kickflip@372, soma-big3-bail@345 | - | orbit:150,10,3.2,0.9 | techbro | real

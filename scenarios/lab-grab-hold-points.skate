@@ -1,0 +1,11 @@
+# Charged ollie, Indy grab (L + right) held about half a second: more points the longer it is held.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold grab+right 93..95
+hold grab 95..150
+run 320
+expect event trickEnd{trick=Indy} within 140..190
+expect event comboLanded within 160..240
+expect no event bail

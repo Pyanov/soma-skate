@@ -1,0 +1,11 @@
+# Powerslide (Shift) with right held as it starts: the nose swings toward the stick, clockwise, the
+# other way from lab-powerslide, so a regular rider going forward slides backside (toes leading).
+park lab
+cmd 0 teleport -20 -12 0.13 90
+cmd 9 speed 9
+hold right 9..12
+hold slide 10..240
+run 240
+expect event powerslide{on=true} within 10..12
+expect event trickEnd{trick=BS Powerslide} within 150..210
+expect no event bail

@@ -1,0 +1,19 @@
+# A walker who sees you coming steps aside. On Valencia's west sidewalk a walker heads north; you
+# roll at them head-on at 6 m/s along their line. Closing on them within 1.3 s, in their view, they
+# step 1.1 m to their left (pedStep) and you go by 1.1 m off: a NEAR MISS (250), not a hit.
+park sf
+spawn valencia_shops
+cmd 0 traffic clear
+cmd 1 ped at -65.5 -270 356
+cmd 1 teleport -66.06 -256 2.48 175.66
+cmd 2 set skater.vel.x 0.4536
+cmd 2 set skater.vel.y -5.983
+run 360
+expect peds.alive == 1 at 2
+expect event pedStep{side=1.1} within 108..112
+expect peds.aside == 1 at 200
+expect event nearMiss{points=250,distance=1.1} within 254..258
+expect event comboLanded{name=NEAR MISS,points=250} within 266..270
+expect peds.aside == 0 at 360
+expect no event pedHit
+expect no event bail

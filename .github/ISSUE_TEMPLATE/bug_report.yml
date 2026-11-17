@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in the game or the harness does not work as it should.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what happened, and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: "A spot (?spot=...), or the coordinates from the debug layer (key 6), and the world (sf, soma or lab)."
+  - type: textarea
+    id: clip
+    attributes:
+      label: Clip or scenario
+      description: "Press F8 right after it happens: the game saves the last 20 seconds with your note into inbox/. Attach the .replay.json and the .png, or paste a scenario (scenarios/*.skate) that shows it."
+  - type: input
+    id: version
+    attributes:
+      label: Commit
+      description: "git rev-parse --short HEAD"
+  - type: input
+    id: env
+    attributes:
+      label: Browser and OS
+      description: Needed for rendering, sound and input problems.
+  - type: textarea
+    id: check
+    attributes:
+      label: Harness output
+      description: "For harness problems: the command and what it printed (./skate check, ./skate run -v ...)."
+      render: text

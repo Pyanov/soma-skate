@@ -1,0 +1,15 @@
+# Keys pressed together land a tick or two apart on a keyboard (W D and flip, 2026-11-16).
+# W held, J pressed, D two ticks later: within tricks.dirTicks (5) of J the held up grows into up right,
+# and the flip is the Inward Heelflip, not the Impossible.
+park lab
+spawn lab_ledge
+hold up 0..60
+hold ollie 60..90
+hold up 94..99
+tap flip 96
+hold right 98..101
+run 300
+expect event trickStart{trick=Impossible} within 97..97
+expect event trickStart{trick=Inward Heelflip} within 99..99
+expect event comboLanded{name=Inward Heelflip,points=400} within 160..240
+expect no event bail

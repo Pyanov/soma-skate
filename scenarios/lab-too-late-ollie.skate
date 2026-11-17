@@ -1,0 +1,7 @@
+# Same roll-off, released 20 ticks after leaving the edge: too late, no pop.
+park lab
+spawn lab_stairs
+hold up 0..120
+hold ollie 129..159
+run 400
+expect no event pop

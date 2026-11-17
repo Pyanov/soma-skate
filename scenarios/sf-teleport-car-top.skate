@@ -1,0 +1,17 @@
+# A teleport onto a parked car (commands.ts teleport; a report from Washington
+# Square). The point given, 951 3412 10.3, is 1.2 m under the car's roof (11.5) and 0.3 m over the road:
+# the skater used to land on the road inside the car's body, creep out through its side, and draw inside
+# the car (a clip looked like a fall through the ground; Node and Chromium agreed all along). Below the
+# top of a body, seen as an up-facing surface straight above within 4 m, a teleport now goes on top of
+# it: onto the hood box (11.02), then the cabin roof (11.5). The skater lands there and stays put.
+park sf
+cmd 0 traffic clear
+cmd 1 teleport 11 712 4.3
+run 480
+expect event teleport within 1..3
+expect state ground at 30
+expect skater.pos.z > 5.55 at 30
+expect skater.pos.z > 5.55 at end
+expect max skater.pos.y < 712.2
+expect skater.speed < 0.1 at end
+expect no event bail
